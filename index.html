@@ -755,6 +755,9 @@ function memberView(box){const m=ST.member,first=(m.full_name||"").split(" ")[0]
    <label class="fld">Phone number<input id="mPhone" type="tel" value="${esc(m.phone||"")}"></label>
    <label class="fld ck"><input type="checkbox" id="mList" ${m.listed?"checked":""}><span>Show my name, year and major on the public REL page.</span></label>
    <div class="row"><button class="btn primary sm" type="submit">Save</button></div><p class="vres" id="mMsg" role="status" aria-live="polite"></p></form></div>
+  <div class="card" style="margin-top:20px"><h3 style="margin-bottom:12px">Change password</h3><form id="pwForm" novalidate>
+   <label class="fld">New password (at least 8 characters)<input type="password" id="wPass" autocomplete="new-password"></label>
+   <div class="row"><button class="btn primary sm" type="submit">Change password</button></div><p class="vres" id="wMsg" role="status" aria-live="polite"></p></form></div>
  </div><div>
   <div class="card"><h3 style="margin-bottom:8px">Your card</h3><p class="muted">Your card code proves your REL card is real. Keep it private. Creating a new code cancels the old one.</p>
    <div class="row"><button type="button" class="btn primary sm" data-mkcode>Create my card code</button></div><div id="codeOut"></div><div id="myCardImg"></div></div>
@@ -853,7 +856,8 @@ document.addEventListener("input",e=>{if(e.target.id==="tmQ")drawMembers()});
 document.addEventListener("submit",async e=>{const f=e.target;if(!f||!f.id)return;
  if(f.id==="authForm"){e.preventDefault();const mode=f.dataset.mode,email=$("#aEmail").value.trim().toLowerCase(),pw=$("#aPass")?$("#aPass").value:"",msg=$("#aMsg"),btn=f.querySelector("button[type=submit]");
   if(!/^\S+@\S+\.\S+$/.test(email)){say(msg,"Please enter a valid email.");return}
-  if(mode!=="reset"&&pw.length<8){say(msg,"The password needs at least 8 characters.");return}
+  if(mode==="signup"&&pw.length<8){say(msg,"The password needs at least 8 characters.");return}
+  if(mode==="login"&&!pw){say(msg,"Please enter your password.");return}
   btn.disabled=true;say(msg,"Please wait...",true);
   try{if(mode==="login"){const {error}=await SB.auth.signInWithPassword({email,password:pw});if(error)throw error;await loadUser();renderAccount();renderTeam();refreshPublic();return}
    if(mode==="signup"){const {data,error}=await SB.auth.signUp({email,password:pw,options:{emailRedirectTo:location.origin+location.pathname}});if(error)throw error;
@@ -869,6 +873,8 @@ document.addEventListener("submit",async e=>{const f=e.target;if(!f||!f.id)retur
   const btn=f.querySelector("button[type=submit]");btn.disabled=true;say(msg,"Sending...",true);
   const {error}=await SB.rpc("submit_application",{p_full_name:v("#pName"),p_uni_id:uni,p_faculty:v("#pFac"),p_year:$("#pYear").value,p_major:v("#pMajor"),p_phone:v("#pPhone"),p_why:v("#pWhy"),p_listed:$("#pList").checked});
   if(error){say(msg,errText(error));btn.disabled=false;return}await loadUser();renderAccount();toast("Application sent");return}
+ if(f.id==="pwForm"){e.preventDefault();const pw=$("#wPass").value,msg=$("#wMsg");if(pw.length<8){say(msg,"The password needs at least 8 characters.");return}
+  const {error}=await SB.auth.updateUser({password:pw});if(error){say(msg,errText(error));return}$("#wPass").value="";say(msg,"Password changed.",true);return}
  if(f.id==="profForm"){e.preventDefault();const msg=$("#mMsg");const {error}=await SB.from("members").update({bio:$("#mBio").value.trim()||null,phone:$("#mPhone").value.trim()||null,listed:$("#mList").checked}).eq("user_id",ST.user.id);
   if(error){say(msg,errText(error));return}await loadUser();say($("#mMsg"),"Saved.",true);refreshPublic();return}
  if(f.id==="evForm"){e.preventDefault();const msg=$("#eMsg"),title=$("#eTitle").value.trim();if(!title){say(msg,"Please add a title.");return}
