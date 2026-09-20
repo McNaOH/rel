@@ -676,6 +676,16 @@ openJoin("member",false);
 let authMode="login",authNote="",authOk=false,teamTab="apps",teamEdit=null;const teamCache={};
 const fromEmailLink=/type=(signup|invite|recovery|magiclink|email_change)/.test(location.hash);
 const LEVEL=["1st year","2nd year","3rd year","4th year","5th year"];
+const DRAFT_FORMS=["authForm","applyForm","profForm","evForm","anForm"];let DRAFT={};
+try{DRAFT=JSON.parse(sessionStorage.getItem("relDraft")||"{}")}catch(err){DRAFT={}}
+const saveDraft=()=>{try{sessionStorage.setItem("relDraft",JSON.stringify(DRAFT))}catch(err){}};
+const draftKey=f=>f.id+(f.dataset&&f.dataset.id?":"+f.dataset.id:"");
+function restoreDraft(id){const f=document.getElementById(id);if(!f)return;const d=DRAFT[draftKey(f)];if(!d)return;
+ f.querySelectorAll("input,textarea,select").forEach(el=>{if(!el.id||el.type==="password"||!(el.id in d))return;if(el.type==="checkbox")el.checked=!!d[el.id];else el.value=d[el.id]})}
+function clearDraft(f){if(!f)return;delete DRAFT[draftKey(f)];saveDraft()}
+function keepDraft(e){const el=e.target,f=el.closest?el.closest("form"):null;if(!f||!DRAFT_FORMS.includes(f.id)||!el.id||el.type==="password")return;
+ const k=draftKey(f);DRAFT[k]=DRAFT[k]||{};DRAFT[k][el.id]=el.type==="checkbox"?el.checked:el.value;saveDraft()}
+document.addEventListener("input",keepDraft);document.addEventListener("change",keepDraft);
 const isAdmin=()=>!!(ST.team&&(ST.team.role==="president"||ST.team.role==="vice_president"));
 function errText(e){const m=(e&&e.message)||String(e||"");
  if(/Database error saving new user|Sign-up is only open/i.test(m))return "Sign-up is only open to LU student emails (name@st.ul.edu.lb).";
@@ -722,7 +732,7 @@ function authView(box){const m=authMode==="signup"?"signup":authMode==="reset"?"
  <p class="vres ${authNote?(authOk?"ok":"no"):""}" id="aMsg" role="status" aria-live="polite">${esc(authNote)}</p>
  ${m==="login"?'<p class="alt-links"><button type="button" class="idlink" data-am="reset">Forgot your password?</button></p>':""}
  ${m==="reset"?'<p class="alt-links"><button type="button" class="idlink" data-am="login">Back to log in</button></p>':""}
- </form></div>`}
+ </form></div>`;restoreDraft("authForm")}
 function recoveryView(box){box.innerHTML=accHead("Choose a new password")+`<div class="card" style="max-width:520px;background:var(--bg)"><form id="recForm" novalidate><label class="fld">New password *<input type="password" id="rPass" autocomplete="new-password"></label><div class="row"><button class="btn primary" type="submit">Save password</button></div><p class="vres" id="rMsg" role="status" aria-live="polite"></p></form></div>`}
 
 function applyView(box){box.innerHTML=accHead("Apply for membership","Fill in the form. The President or Vice President reviews it, and you will see the result here.")+
@@ -737,7 +747,7 @@ function applyView(box){box.innerHTML=accHead("Apply for membership","Fill in th
  <label class="fld ck"><input type="checkbox" id="pList"><span>Show my name, year and major on the public REL page. My phone, email and university ID are never shown.</span></label>
  <label class="fld ck"><input type="checkbox" id="pTrue"><span>I confirm that the information is true. *</span></label>
  <div class="row"><button class="btn primary" type="submit">Send my application</button></div>
- <p class="vres" id="pMsg" role="status" aria-live="polite"></p></form></div>`+accountBar()}
+ <p class="vres" id="pMsg" role="status" aria-live="polite"></p></form></div>`+accountBar();restoreDraft("applyForm")}
 function appStatusView(box){const a=ST.app,st=a.status;
  const t=st==="pending"?"Your application is under review":st==="rejected"?"Your application was not accepted":"Your application was accepted";
  const p=st==="pending"?"The President or Vice President will decide soon. Come back to this page to see the result.":st==="rejected"?(a.note?"Note from the board: "+a.note:"You can contact the board for more information."):"Please refresh this page to see your profile.";
@@ -763,7 +773,7 @@ function memberView(box){const m=ST.member,first=(m.full_name||"").split(" ")[0]
    <div class="row"><button type="button" class="btn primary sm" data-mkcode>Create my card code</button></div><div id="codeOut"></div><div id="myCardImg"></div></div>
   ${ST.team?'<div class="card" style="margin-top:20px"><h3 style="margin-bottom:8px">Team area</h3><p class="muted">Manage applications, events and announcements.</p><a class="btn primary sm" href="#team">Open the team area</a></div>':""}
  </div></div>`+accountBar();
- showCard(rec,$("#myCardImg"))}
+ restoreDraft("profForm");showCard(rec,$("#myCardImg"))}
 
 /* ---- team area ---- */
 function renderTeam(){const box=$("#teamBody");if(!box)return;
@@ -803,7 +813,7 @@ function evForm(e){e=e||{};return `<div class="card" style="background:var(--bg)
  <label class="fld">Recap after the event (optional)<textarea id="eRecap">${esc(e.recap||"")}</textarea></label>
  <div class="row"><button class="btn primary sm" type="submit">${e.id?"Save changes":"Add event"}</button>${e.id?'<button type="button" class="btn sm" data-evcancel>Cancel</button>':""}</div><p class="vres" id="eMsg" role="status" aria-live="polite"></p></form></div>`}
 async function paneEvents(){loading();const {data,error}=await SB.from("events").select("*").order("date",{ascending:true});if(error)return paneErr(error);teamCache.events=data;
- tpane().innerHTML=evForm(teamEdit&&teamEdit.kind==="event"?teamEdit.row:null)+`<h3 style="margin-bottom:12px">All events (${data.length})</h3>${data.length?data.map(e=>`<div class="ev" style="grid-template-columns:1fr auto"><div><h3>${esc(e.title)}<span class="tag">${esc(e.type)}</span></h3><p class="muted" style="margin:0">${esc(e.date?dshort(e.date):"Date to be announced")}${e.place?". "+esc(e.place):""}</p></div><div class="row"><button type="button" class="btn sm" data-evedit="${esc(e.id)}">Edit</button><button type="button" class="btn sm" data-evdel="${esc(e.id)}">Delete</button></div></div>`).join(""):'<div class="empty"><p>No events yet.</p></div>'}`}
+ tpane().innerHTML=evForm(teamEdit&&teamEdit.kind==="event"?teamEdit.row:null)+`<h3 style="margin-bottom:12px">All events (${data.length})</h3>${data.length?data.map(e=>`<div class="ev" style="grid-template-columns:1fr auto"><div><h3>${esc(e.title)}<span class="tag">${esc(e.type)}</span></h3><p class="muted" style="margin:0">${esc(e.date?dshort(e.date):"Date to be announced")}${e.place?". "+esc(e.place):""}</p></div><div class="row"><button type="button" class="btn sm" data-evedit="${esc(e.id)}">Edit</button><button type="button" class="btn sm" data-evdel="${esc(e.id)}">Delete</button></div></div>`).join(""):'<div class="empty"><p>No events yet.</p></div>'}`;restoreDraft("evForm")}
 function newsForm(a){a=a||{};return `<div class="card" style="background:var(--bg);margin-bottom:28px"><h3 style="margin-bottom:12px">${a.id?"Edit announcement":"Add an announcement"}</h3><form id="anForm" novalidate data-id="${esc(a.id||"")}">
  <label class="fld">Title *<input id="nTitle" value="${esc(a.title||"")}"></label>
  <label class="fld">Text<textarea id="nBody">${esc(a.body||"")}</textarea></label>
@@ -812,7 +822,7 @@ function newsForm(a){a=a||{};return `<div class="card" style="background:var(--b
  <label class="fld ck"><input type="checkbox" id="nPin" ${a.pinned?"checked":""}><span>Pin this announcement on top</span></label>
  <div class="row"><button class="btn primary sm" type="submit">${a.id?"Save changes":"Post announcement"}</button>${a.id?'<button type="button" class="btn sm" data-evcancel>Cancel</button>':""}</div><p class="vres" id="nMsg" role="status" aria-live="polite"></p></form></div>`}
 async function paneNews(){loading();const {data,error}=await SB.from("announcements").select("*").order("date",{ascending:false});if(error)return paneErr(error);teamCache.news=data;
- tpane().innerHTML=newsForm(teamEdit&&teamEdit.kind==="news"?teamEdit.row:null)+`<h3 style="margin-bottom:12px">All announcements (${data.length})</h3>${data.length?data.map(a=>`<div class="ev" style="grid-template-columns:1fr auto"><div><h3>${esc(a.title)}${a.pinned?'<span class="tag">Pinned</span>':""}</h3><p class="muted" style="margin:0">${esc(dshort(a.date))}</p></div><div class="row"><button type="button" class="btn sm" data-anedit="${esc(a.id)}">Edit</button><button type="button" class="btn sm" data-andel="${esc(a.id)}">Delete</button></div></div>`).join(""):'<div class="empty"><p>No announcements yet.</p></div>'}`}
+ tpane().innerHTML=newsForm(teamEdit&&teamEdit.kind==="news"?teamEdit.row:null)+`<h3 style="margin-bottom:12px">All announcements (${data.length})</h3>${data.length?data.map(a=>`<div class="ev" style="grid-template-columns:1fr auto"><div><h3>${esc(a.title)}${a.pinned?'<span class="tag">Pinned</span>':""}</h3><p class="muted" style="margin:0">${esc(dshort(a.date))}</p></div><div class="row"><button type="button" class="btn sm" data-anedit="${esc(a.id)}">Edit</button><button type="button" class="btn sm" data-andel="${esc(a.id)}">Delete</button></div></div>`).join(""):'<div class="empty"><p>No announcements yet.</p></div>'}`;restoreDraft("anForm")}
 async function paneMembers(){loading();const admin=isAdmin();
  const q=admin?SB.from("members").select("rel_id,full_name,role,position,year,major,faculty,uni_id,email,phone,joined,listed,active").order("rel_id",{ascending:true}):SB.from("team_member_list").select("*").order("rel_id",{ascending:true});
  const {data,error}=await q;if(error)return paneErr(error);teamCache.members=data;
@@ -850,7 +860,7 @@ document.addEventListener("click",async e=>{
  const ed=e.target.closest("[data-evdel]");if(ed){if(!confirm("Delete this event?"))return;const {error}=await SB.from("events").delete().eq("id",ed.dataset.evdel);if(error){toast(errText(error));return}toast("Event deleted");teamEdit=null;paneEvents();refreshPublic();return}
  const ne=e.target.closest("[data-anedit]");if(ne){teamEdit={kind:"news",row:(teamCache.news||[]).find(x=>x.id===ne.dataset.anedit)};paneNews();window.scrollTo(0,0);return}
  const nd=e.target.closest("[data-andel]");if(nd){if(!confirm("Delete this announcement?"))return;const {error}=await SB.from("announcements").delete().eq("id",nd.dataset.andel);if(error){toast(errText(error));return}toast("Announcement deleted");teamEdit=null;paneNews();refreshPublic();return}
- if(e.target.closest("[data-evcancel]")){teamEdit=null;teamTab==="news"?paneNews():paneEvents();return}
+ if(e.target.closest("[data-evcancel]")){clearDraft(document.querySelector("#evForm,#anForm"));teamEdit=null;teamTab==="news"?paneNews():paneEvents();return}
  const sr=e.target.closest("[data-setrole]");if(sr){const {error}=await SB.rpc("set_member_role",{p_rel_id:sr.dataset.setrole,p_role:sr.dataset.to});if(error){toast(errText(error));return}toast("Role updated");paneAmb();refreshPublic()}});
 document.addEventListener("input",e=>{if(e.target.id==="tmQ")drawMembers()});
 document.addEventListener("submit",async e=>{const f=e.target;if(!f||!f.id)return;
@@ -867,28 +877,33 @@ document.addEventListener("submit",async e=>{const f=e.target;if(!f||!f.id)retur
  if(f.id==="recForm"){e.preventDefault();const pw=$("#rPass").value,msg=$("#rMsg");if(pw.length<8){say(msg,"The password needs at least 8 characters.");return}
   const {error}=await SB.auth.updateUser({password:pw});if(error){say(msg,errText(error));return}authMode="login";await loadUser();renderAccount();toast("Password saved");return}
  if(f.id==="applyForm"){e.preventDefault();const msg=$("#pMsg"),v=id=>$(id).value.trim(),uni=v("#pUni");
-  if(v("#pName").length<3||!v("#pFac")||!v("#pMajor")||v("#pWhy").length<10){say(msg,"Please fill in all the fields marked with *. Tell us a little more about why you want to join.");return}
-  if(!/^[0-9]{4}$/.test(uni)){say(msg,"Your university ID must be exactly 4 digits.");return}
+  f.querySelectorAll("[aria-invalid]").forEach(x=>x.removeAttribute("aria-invalid"));
+  const need=[["#pName",3,"your full name"],["#pFac",1,"your faculty"],["#pMajor",1,"your major"],["#pWhy",10,"the box \u201CWhy do you want to join REL?\u201D (at least 10 characters)"]];
+  for(const [s,min,label] of need){if(v(s).length<min){$(s).setAttribute("aria-invalid","true");$(s).focus();say(msg,"Please fill in "+label+".");return}}
+  if(!/^[0-9]{4}$/.test(uni)){$("#pUni").setAttribute("aria-invalid","true");$("#pUni").focus();say(msg,"Your university ID must be exactly 4 digits.");return}
   if(!$("#pTrue").checked){say(msg,"Please confirm that the information is true.");return}
   const btn=f.querySelector("button[type=submit]");btn.disabled=true;say(msg,"Sending...",true);
   const {error}=await SB.rpc("submit_application",{p_full_name:v("#pName"),p_uni_id:uni,p_faculty:v("#pFac"),p_year:$("#pYear").value,p_major:v("#pMajor"),p_phone:v("#pPhone"),p_why:v("#pWhy"),p_listed:$("#pList").checked});
-  if(error){say(msg,errText(error));btn.disabled=false;return}await loadUser();renderAccount();toast("Application sent");return}
+  if(error){say(msg,errText(error));btn.disabled=false;return}clearDraft(f);await loadUser();renderAccount();toast("Application sent");return}
  if(f.id==="pwForm"){e.preventDefault();const pw=$("#wPass").value,msg=$("#wMsg");if(pw.length<8){say(msg,"The password needs at least 8 characters.");return}
   const {error}=await SB.auth.updateUser({password:pw});if(error){say(msg,errText(error));return}$("#wPass").value="";say(msg,"Password changed.",true);return}
  if(f.id==="profForm"){e.preventDefault();const msg=$("#mMsg");const {error}=await SB.from("members").update({bio:$("#mBio").value.trim()||null,phone:$("#mPhone").value.trim()||null,listed:$("#mList").checked}).eq("user_id",ST.user.id);
-  if(error){say(msg,errText(error));return}await loadUser();say($("#mMsg"),"Saved.",true);refreshPublic();return}
+  if(error){say(msg,errText(error));return}clearDraft(f);await loadUser();say($("#mMsg"),"Saved.",true);refreshPublic();return}
  if(f.id==="evForm"){e.preventDefault();const msg=$("#eMsg"),title=$("#eTitle").value.trim();if(!title){say(msg,"Please add a title.");return}
   const row={title,type:$("#eType").value,date:$("#eDate").value||null,time:$("#eTime").value||null,end_time:$("#eEnd").value||null,place:$("#ePlace").value.trim()||null,description:$("#eDesc").value.trim()||null,form_url:$("#eForm").value.trim()||null,tentative:$("#eTent").checked,recap:$("#eRecap").value.trim()||null},id=f.dataset.id;
   const {error}=id?await SB.from("events").update(row).eq("id",id):await SB.from("events").insert(row);
-  if(error){say(msg,errText(error));return}toast(id?"Event saved":"Event added");teamEdit=null;paneEvents();refreshPublic();return}
+  if(error){say(msg,errText(error));return}toast(id?"Event saved":"Event added");clearDraft(f);teamEdit=null;paneEvents();refreshPublic();return}
  if(f.id==="anForm"){e.preventDefault();const msg=$("#nMsg"),title=$("#nTitle").value.trim();if(!title){say(msg,"Please add a title.");return}
   const row={title,body:$("#nBody").value.trim()||null,link:$("#nLink").value.trim()||null,date:$("#nDate").value||new Date().toISOString().slice(0,10),pinned:$("#nPin").checked},id=f.dataset.id;
   const {error}=id?await SB.from("announcements").update(row).eq("id",id):await SB.from("announcements").insert(row);
-  if(error){say(msg,errText(error));return}toast(id?"Announcement saved":"Announcement posted");teamEdit=null;paneNews();refreshPublic();return}});
+  if(error){say(msg,errText(error));return}toast(id?"Announcement saved":"Announcement posted");clearDraft(f);teamEdit=null;paneNews();refreshPublic();return}});
 async function initAuth(){renderAccount();renderTeam();
  if(!SB)return;
  try{const r=await SB.from("events").select("id").limit(1);if(r.error&&/api key|jwt/i.test(r.error.message||"")&&SB_KEY2){const c=makeClient(SB_KEY2);if(c)SB=c}}catch(err){}
- SB.auth.onAuthStateChange((ev)=>{setTimeout(async()=>{if(ev==="PASSWORD_RECOVERY")authMode="recovery";await loadUser();renderAccount();renderTeam();if(ev==="SIGNED_IN"||ev==="INITIAL_SESSION")refreshPublic()},0)});
+ SB.auth.onAuthStateChange((ev)=>{setTimeout(async()=>{const bu=ST.user&&ST.user.id,bm=ST.member&&ST.member.rel_id,ba=ST.app&&ST.app.status;
+  if(ev==="PASSWORD_RECOVERY")authMode="recovery";await loadUser();
+  const changed=ev==="PASSWORD_RECOVERY"||ev==="SIGNED_OUT"||bu!==(ST.user&&ST.user.id)||bm!==(ST.member&&ST.member.rel_id)||ba!==(ST.app&&ST.app.status);
+  if(changed){renderAccount();renderTeam()}if(ev==="SIGNED_IN"||ev==="INITIAL_SESSION")refreshPublic()},0)});
  await loadUser();renderAccount();renderTeam();refreshPublic();
  if(fromEmailLink)showPage("account")}
 
