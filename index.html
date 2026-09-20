@@ -1,0 +1,1106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>REL club: Relations, Entrepreneurship and Leadership</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFFFFF;--surface:#FFFFFF;--alt:#FAF7F2;--ink:#1F1416;--muted:#665A5D;--fill:#800020;--on-fill:#FFFFFF;--brand-ink:#800020;--line:#EBDFE1;--tint:#F6ECEE;--band:#800020;--on-band:#FFFFFF;--band-muted:#E8C9C9;--focus:#800020;--grid:#1F1416}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#140C0E;--surface:#1C1215;--alt:#180F12;--ink:#F6F1F2;--muted:#BBA9AD;--fill:#A3243F;--on-fill:#FFFFFF;--brand-ink:#F2B8C4;--line:#32222A;--tint:#2A1A1F;--band:#4A0F1F;--on-band:#FFFFFF;--focus:#F2B8C4;--grid:#F6F1F2}}
+:root[data-theme="dark"]{--bg:#140C0E;--surface:#1C1215;--alt:#180F12;--ink:#F6F1F2;--muted:#BBA9AD;--fill:#A3243F;--on-fill:#FFFFFF;--brand-ink:#F2B8C4;--line:#32222A;--tint:#2A1A1F;--band:#4A0F1F;--on-band:#FFFFFF;--focus:#F2B8C4;--grid:#F6F1F2}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 'Barlow',system-ui,sans-serif;-webkit-text-size-adjust:100%}
+img{max-width:100%}
+a{color:var(--brand-ink)}
+h1,h2,h3{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;line-height:1;margin:0;letter-spacing:.005em}
+h2{font-size:clamp(2.2rem,6vw,3.6rem);color:var(--brand-ink)}
+h3{font-size:1.7rem;color:var(--ink)}
+p{margin:0 0 1em}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.muted{color:var(--muted)}
+.small{font-size:.9rem}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--fill);color:var(--on-fill);padding:10px 16px;border-radius:8px;z-index:100}
+.skip:focus{left:8px}
+[hidden]{display:none!important}
+.lg-light{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .lg-burg{display:none}:root:not([data-theme="light"]) .lg-light{display:block}}
+:root[data-theme="dark"] .lg-burg{display:none}:root[data-theme="dark"] .lg-light{display:block}
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:20px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--brand-ink);font:800 1.7rem 'Barlow Condensed',sans-serif}
+.brand img{height:38px;width:auto}
+#menu{display:flex;gap:4px;margin-left:auto}
+#menu a{padding:8px 12px;text-decoration:none;color:var(--ink);font-weight:500;border-radius:8px}
+#menu a:hover{background:var(--tint)}
+.menu-btn{display:none;margin-left:auto;background:none;border:2px solid var(--line);color:var(--ink);border-radius:999px;padding:8px 16px;font:600 15px 'Barlow',sans-serif;cursor:pointer}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:999px;border:2px solid var(--fill);font:600 16px/1 'Barlow',sans-serif;text-decoration:none;cursor:pointer;background:transparent;color:var(--brand-ink)}
+.btn.primary{background:var(--fill);color:var(--on-fill)}
+.btn.sm{min-height:40px;padding:0 20px;font-size:15px}
+.btn:hover{filter:brightness(1.08)}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+/* hero */
+.hero{position:relative;overflow:hidden;padding:64px 0 72px}
+.hero .mark{position:absolute;right:-60px;top:-30px;height:620px;width:auto;opacity:.07;pointer-events:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(2.7rem,8.6vw,6rem);font-weight:800;color:var(--brand-ink);margin-bottom:24px}
+.hero h1 span{display:block}
+.lead{font-size:1.2rem;max-width:34em;margin-bottom:28px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px}
+.next .nx-name{font:700 1.6rem/1.15 'Barlow Condensed',sans-serif;margin:8px 0 18px}
+.cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.cd div{background:var(--tint);border-radius:12px;text-align:center;padding:12px 4px}
+.cd b{display:block;font:800 2.1rem/1 'Barlow Condensed',sans-serif;color:var(--brand-ink)}
+.cd span{font-size:.8rem;color:var(--muted)}
+.facts{list-style:none;margin:18px 0 0;padding:16px 0 0;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 22px}
+.facts b{font:800 1.5rem 'Barlow Condensed',sans-serif;color:var(--brand-ink);margin-right:4px}
+/* sections */
+.sec{padding:88px 0}
+.sec.alt{background:var(--alt)}
+.sec-head{max-width:40em;margin-bottom:40px}
+.sec-head p{margin:14px 0 0;color:var(--muted);font-size:1.1rem}
+.band{background:var(--band);color:var(--on-band);padding:72px 0}
+.stmt{font:700 clamp(1.9rem,4.6vw,3.2rem)/1.08 'Barlow Condensed',sans-serif;margin:0;padding:22px 0;border-bottom:1px solid rgba(248,246,241,.28)}
+.stmt:first-child{padding-top:0}.stmt:last-child{border-bottom:0;padding-bottom:0}
+.stmts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.st{border:1px solid rgba(248,246,241,.32);border-radius:18px;padding:26px 26px 30px;display:flex;flex-direction:column;gap:18px;min-height:270px}
+.st .lt{font:800 6.5rem/.8 'Barlow Condensed',sans-serif;color:var(--band-muted)}
+.st p{font:700 clamp(1.7rem,2.6vw,2.2rem)/1.1 'Barlow Condensed',sans-serif;margin:auto 0 0}
+.qz-o{display:grid;gap:10px;margin:16px 0}
+.qz-o button{text-align:left;min-height:48px;border:2px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);padding:10px 16px;font:500 17px 'Barlow',sans-serif;cursor:pointer}
+.qz-o button:disabled{cursor:default}
+.qz-o button.ok{border-color:#2E7D32;font-weight:600}
+.qz-o button.no{border-color:#B3261E}
+#menu{position:relative}
+#menu a{position:relative;z-index:1;font-weight:600;transition:color .25s}
+#menu a:hover{background:transparent;color:var(--brand-ink)}
+#menu a.on{color:var(--brand-ink)}
+.pill{position:absolute;top:50%;left:0;height:38px;margin-top:-19px;border-radius:999px;background:var(--tint);opacity:0;pointer-events:none;z-index:0;transition:transform .4s cubic-bezier(.3,.7,.3,1),width .4s cubic-bezier(.3,.7,.3,1),opacity .2s}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.hero h1 span{animation:up .7s both}
+.hero h1 span:nth-child(2){animation-delay:.12s}
+.hero h1 span:nth-child(3){animation-delay:.24s}
+.hero .lead,.hero .row{animation:up .7s .4s both}
+.jp{display:grid;grid-template-columns:1fr 1.1fr;gap:36px}
+.jp h3{font-size:2.2rem;color:var(--brand-ink);margin-bottom:10px}
+.fld{display:block;margin-bottom:14px;font-weight:500}
+.fld input,.fld select,.fld textarea{display:block;width:100%;margin-top:6px;min-height:48px;border:2px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);padding:10px 14px;font:400 17px 'Barlow',sans-serif}
+.fld textarea{min-height:110px;resize:vertical}
+.fld.ck{display:flex;gap:10px;align-items:flex-start;font-weight:400}
+.fld.ck input{width:22px;min-height:22px;margin:3px 0 0}
+.fld [aria-invalid="true"]{border-color:#B3261E}
+.alt-links{margin-top:18px;font-size:.95rem;color:var(--muted)}
+.sbtn{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border:2px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);font:600 15px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s}
+.sbtn:hover{border-color:var(--fill)}
+.sbtn svg{width:18px;height:18px}
+.sov{position:fixed;inset:0;z-index:150;background:rgba(20,8,11,.6);display:none;align-items:flex-start;justify-content:center;padding:10vh 16px 16px}
+.sov.on{display:flex}
+.sbox{width:100%;max-width:620px;background:var(--bg);border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 70px rgba(0,0,0,.4);overflow:hidden;animation:pop .25s ease}
+@keyframes pop{from{opacity:0;transform:translateY(-10px) scale(.98)}to{opacity:1;transform:none}}
+.sbox input{width:100%;min-height:62px;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);padding:0 22px;font:500 19px 'Barlow',sans-serif}
+.sbox input:focus-visible{outline:none;box-shadow:inset 0 -3px 0 var(--fill)}
+.sres{max-height:52vh;overflow:auto;padding:8px}
+.sres button{display:flex;width:100%;justify-content:space-between;align-items:center;gap:12px;text-align:left;border:0;background:transparent;color:var(--ink);padding:12px 14px;border-radius:12px;font:500 17px 'Barlow',sans-serif;cursor:pointer}
+.sres button:hover,.sres button:focus-visible{background:var(--tint)}
+.sres small{display:block;color:var(--muted);font-size:.86rem;font-weight:400}
+.sres .k{flex:none;font-size:.78rem;font-weight:600;color:var(--brand-ink);border:1.5px solid var(--fill);border-radius:999px;padding:1px 10px}
+.shint{padding:10px 22px 14px;color:var(--muted);font-size:.9rem;margin:0}
+button.mem{text-align:left;font:inherit;color:inherit;cursor:pointer;width:100%}
+button.mem:hover{border-color:var(--fill)}
+.idlink{margin-top:12px;background:none;border:0;padding:0;color:var(--brand-ink);font:600 15px 'Barlow',sans-serif;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.pbox{max-width:560px;padding:28px;max-height:88vh;overflow:auto}
+.pbox .prow{display:flex;gap:18px;align-items:center}
+.pbox .ph{width:96px;height:96px;margin:0;flex:none}
+.pbox h3{font-size:2.1rem;color:var(--brand-ink);margin-bottom:4px}
+.pd{display:grid;grid-template-columns:auto 1fr;gap:10px 22px;margin:22px 0 14px}
+.pd dt{color:var(--muted)}
+.pd dd{margin:0;font-weight:500}
+.vbox{border-top:1px solid var(--line);margin-top:20px;padding-top:18px}
+.vbox h4{font:700 1.3rem 'Barlow Condensed',sans-serif;margin:0 0 6px;color:var(--brand-ink)}
+.vbox input{flex:1 1 180px;min-height:44px;border:2px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);padding:0 18px;font:600 17px 'Barlow',sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.vres{min-height:1.6em;margin:10px 0 0;font-weight:600}
+.vres.ok{color:#2E7D32}
+.vres.no{color:#B3261E}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .vres.ok{color:#7BD88F}:root:not([data-theme="light"]) .vres.no{color:#FF8A80}}
+.ev-act{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 0}
+.thumbs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+.thumb{width:84px;height:84px;padding:0;border:0;border-radius:10px;overflow:hidden;cursor:pointer}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.lbox{background:var(--bg);border-radius:16px;padding:14px;max-width:min(92vw,900px);width:100%}
+.lbox img{display:block;max-width:100%;max-height:68vh;margin:0 auto;border-radius:10px}
+.lbar{display:flex;gap:10px;justify-content:space-between;align-items:center;margin-top:12px;flex-wrap:wrap}
+.card-img{width:100%;border-radius:14px;display:block;margin-top:10px}
+.qa{border-bottom:1px solid var(--line)}
+.qa summary{cursor:pointer;padding:18px 0;font:700 1.4rem/1.15 'Barlow Condensed',sans-serif;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"+";font:600 1.6rem/1 'Barlow',sans-serif;color:var(--brand-ink);transition:transform .25s}
+.qa[open] summary::after{transform:rotate(45deg)}
+.qa p{margin:0 0 18px;color:var(--muted);max-width:44em}
+.ct{display:grid;gap:8px}
+.ct div{display:flex;gap:14px;align-items:baseline}
+.ct span{width:52px;flex:none;opacity:.75;font-size:.9rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:2px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:9px 16px;font:600 15px 'Barlow',sans-serif;cursor:pointer;transition:background .2s,border-color .2s}
+.chip:hover{border-color:var(--fill)}
+.chip[aria-pressed="true"]{background:var(--fill);border-color:var(--fill);color:var(--on-fill)}
+.chip[aria-pressed="true"]::before{content:"\2713  "}
+.tile{display:block;text-decoration:none;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px;transition:transform .25s ease,border-color .25s ease}
+.tile:hover,.tile:focus-visible{transform:translateY(-4px);border-color:var(--fill)}
+.tile h3{font-size:1.9rem;color:var(--brand-ink);margin-bottom:6px}
+.tile p{margin:0;color:var(--muted)}
+.subtabs{margin-bottom:28px}
+@keyframes fadein{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.enter{animation:fadein .4s ease both}
+.pg:not([data-pg="home"])>section.sec{min-height:62vh}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.do{display:grid;grid-template-columns:repeat(2,1fr);gap:32px 40px;margin-top:8px}
+.do div{border-top:3px solid var(--fill);padding-top:14px}
+.do h3{margin-bottom:6px}
+.do p{color:var(--muted);margin:0}
+.sub{margin:56px 0 20px}
+.sub h3{font-size:2rem;color:var(--brand-ink)}
+.tl{list-style:none;margin:0;padding:0 0 0 22px;border-left:3px solid var(--line)}
+.tl li{position:relative;padding:0 0 22px 18px}
+.tl li::before{content:"";position:absolute;left:-31px;top:8px;width:13px;height:13px;border-radius:50%;background:var(--fill)}
+.tl b{font:700 1.3rem 'Barlow Condensed',sans-serif;color:var(--brand-ink);display:block}
+/* tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.tab{border:2px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:9px 18px;font:600 15px 'Barlow',sans-serif;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--fill);border-color:var(--fill);color:var(--on-fill)}
+.ev{display:grid;grid-template-columns:78px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.ev .d{background:var(--tint);border-radius:12px;text-align:center;padding:8px 4px;font:700 1.05rem/1.1 'Barlow Condensed',sans-serif;color:var(--brand-ink)}
+.ev .d small{display:block;font:500 .78rem 'Barlow',sans-serif;color:var(--muted)}
+.ev h3{font-size:1.4rem;margin-bottom:4px}
+.tag{display:inline-block;font-size:.8rem;font-weight:600;color:var(--brand-ink);border:1.5px solid var(--fill);border-radius:999px;padding:1px 10px;margin-left:8px;vertical-align:middle}
+.empty{border:2px dashed var(--line);border-radius:14px;padding:24px;color:var(--muted)}
+.empty p:last-child{margin:0}
+/* calendar */
+.cal-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cal-h h3{font-size:1.6rem}
+.cal-h button{width:44px;height:44px;border-radius:50%;border:2px solid var(--line);background:transparent;color:var(--ink);font:600 20px 'Barlow',sans-serif;cursor:pointer}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cal .w{font-size:.8rem;color:var(--muted);padding:4px 0}
+.cal .c{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:10px;font-weight:500}
+.cal .c.has{background:var(--fill);color:var(--on-fill);font-weight:600}
+.cal .c.today{outline:2px solid var(--brand-ink);outline-offset:-2px}
+/* people */
+.person{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px}
+.alt .person{background:var(--bg)}
+.ph{width:104px;height:104px;border-radius:50%;background:var(--tint);color:var(--brand-ink);display:flex;align-items:center;justify-content:center;font:800 1.9rem 'Barlow Condensed',sans-serif;margin-bottom:14px;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover}
+.person h3{font-size:1.5rem;margin-bottom:2px}
+.person .role{color:var(--brand-ink);font-weight:600;margin-bottom:8px}
+.person p{color:var(--muted);margin:0;font-size:.98rem}
+.amb{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.amb .ph{width:52px;height:52px;font-size:1.2rem;margin:0;flex:none}
+.amb b{display:block}
+.search{width:100%;min-height:52px;border:2px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);padding:0 16px;font:400 17px 'Barlow',sans-serif}
+.res{margin-top:16px;display:grid;gap:12px}
+.mem{display:grid;grid-template-columns:auto 1fr auto;gap:6px 16px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.mem .id{font:700 1.15rem 'Barlow Condensed',sans-serif;color:var(--brand-ink)}
+.mem .meta{grid-column:1/-1;color:var(--muted);font-size:.95rem}
+.samp{font-size:.75rem;font-weight:600;border:1.5px solid var(--muted);color:var(--muted);border-radius:999px;padding:0 8px;margin-left:8px}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line)}
+th{font-weight:600;color:var(--muted);font-size:.9rem}
+td.n{font:700 1.3rem 'Barlow Condensed',sans-serif;color:var(--brand-ink);width:48px}
+td.p,th.p{text-align:right;font-weight:600}
+/* resources */
+.res-cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:20px}
+.res-cols h4{font:700 1.25rem 'Barlow Condensed',sans-serif;margin:0 0 10px;color:var(--brand-ink)}
+.book{padding:0 0 14px}
+.book b{display:block;line-height:1.3}
+.book span{display:block;font-size:.9rem;color:var(--muted)}
+.book em{font-style:normal;font-size:.95rem}
+.doc{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+/* puzzle */
+.qwrap{display:grid;grid-template-columns:minmax(0,440px) 1fr;gap:48px;align-items:start}
+#qgrid{display:grid;grid-template-columns:repeat(7,1fr);width:100%;max-width:440px;border:3px solid var(--grid);background:var(--grid)}
+#qgrid button{aspect-ratio:1;padding:0;border:0 solid var(--grid);color:#2A1518;font:600 1.3rem 'Barlow',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;position:relative}
+#qgrid button svg{width:62%;height:62%;fill:#800020}
+#qgrid button.bad svg{fill:#B3261E}
+#qgrid button.bad{box-shadow:inset 0 0 0 3px #B3261E}
+#qgrid button:disabled{cursor:default}
+.qstat{display:flex;gap:16px;align-items:center;margin:14px 0}
+.qstat b{font:800 2rem 'Barlow Condensed',sans-serif;color:var(--brand-ink)}
+.rules{padding-left:1.2em;margin:0 0 20px}
+.rules li{margin-bottom:6px}
+/* map */
+.map{width:100%;max-width:520px;height:auto}
+.map .ln{stroke:var(--line);stroke-width:2}
+.map .hub{fill:var(--fill)}
+.map .hub-t{fill:var(--on-fill);font:800 34px 'Barlow Condensed',sans-serif;text-anchor:middle}
+.map .nd{fill:var(--tint);stroke:var(--fill);stroke-width:2}
+.map .nd-t{fill:var(--brand-ink);font:700 28px 'Barlow Condensed',sans-serif;text-anchor:middle}
+.map .lb{fill:var(--ink);font:500 20px 'Barlow',sans-serif;text-anchor:middle}
+/* join */
+.join{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.join .card{display:flex;flex-direction:column;gap:14px}
+.join h3{font-size:2.2rem;color:var(--brand-ink)}
+.join p{color:var(--muted);margin:0}
+.join .btn{align-self:flex-start;margin-top:auto}
+.nl{display:flex;flex-wrap:wrap;gap:10px}
+.nl input{flex:1 1 240px;min-height:48px;border:2px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);padding:0 20px;font:400 17px 'Barlow',sans-serif}
+footer{background:var(--band);color:var(--on-band);padding:48px 0 32px}
+footer .lg{height:56px;width:auto;display:block}
+footer a{color:var(--on-band)}
+.foot{display:flex;flex-wrap:wrap;gap:24px 48px;justify-content:space-between;align-items:flex-start}
+.soc{display:flex;flex-wrap:wrap;gap:10px}
+.soc a,.soc button{border:2px solid rgba(248,246,241,.6);border-radius:999px;padding:8px 18px;font:600 15px 'Barlow',sans-serif;color:var(--on-band);background:transparent;text-decoration:none;cursor:pointer}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:12px;font-weight:500;opacity:0;pointer-events:none;transition:opacity .2s;z-index:200;max-width:90vw;text-align:center}
+.toast.on{opacity:1}
+@media (max-width:860px){
+ .jp{grid-template-columns:1fr}
+ .hero-grid,.grid2,.qwrap,.join{grid-template-columns:1fr}
+ .grid3{grid-template-columns:1fr 1fr}
+ .res-cols{grid-template-columns:1fr 1fr}
+ .do{grid-template-columns:1fr}
+ .hero .mark{height:420px;right:-90px}
+}
+@media (max-width:860px){.stmts{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;padding-bottom:12px}.st{flex:0 0 82%;scroll-snap-align:start;min-height:240px}}
+@media (max-width:720px){
+ .menu-btn{display:block}
+ #menu{display:none;position:absolute;top:64px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;padding:8px 20px 16px;margin:0}
+ #menu.open{display:flex}
+ .pill{display:none}
+ .sbtn{margin-left:auto;padding:0 11px}
+ .sbtn span{display:none}
+ .menu-btn{margin-left:0}
+ .nav-in{gap:10px}
+ #menu a.on{background:var(--tint)}
+ .nav .btn.sm{margin-left:0}
+ .sec{padding:60px 0}
+}
+@media (max-width:520px){.grid3,.res-cols{grid-template-columns:1fr}.mem{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important;animation:none!important}.rv{opacity:1;transform:none}}
+
+/* clean theme: white, calm, burgundy as the main color */
+h2,h3{font-family:'Barlow',system-ui,sans-serif;font-weight:600;letter-spacing:-.012em;line-height:1.12}
+h2{font-size:clamp(1.9rem,4.4vw,2.7rem)}
+h3{font-size:1.3rem}
+.sec{padding:96px 0}
+.sec-head{margin-bottom:36px}
+.sec-head p{font-size:1.08rem}
+.btn{border-radius:10px}
+.btn.sm{border-radius:8px}
+.card,.person,.mem,.tile,.empty{border-radius:12px}
+.tabs{gap:4px 28px;border-bottom:1px solid var(--line);margin-bottom:30px}
+.tab{border:0;border-bottom:3px solid transparent;border-radius:0;margin-bottom:-1px;padding:12px 2px;color:var(--muted);background:transparent}
+.tab:hover{color:var(--brand-ink)}
+.tab[aria-selected="true"]{background:transparent;color:var(--brand-ink);border-bottom-color:var(--fill)}
+.chip{border-radius:10px}
+.tag{border-radius:6px}
+.sbtn,.menu-btn,.nl input,.vbox input{border-radius:10px}
+.pill{border-radius:8px}
+.hero{background:var(--band);padding:88px 0 96px}
+.hero h1{color:var(--on-band)}
+.hero .lead{color:rgba(255,255,255,.88)}
+.hero .mark.lg-burg{display:none}
+.hero .mark.lg-light{display:block!important}
+.hero .mark{opacity:.08}
+.hero .btn{color:var(--on-band);border-color:rgba(255,255,255,.65)}
+.hero .btn.primary{background:#fff;color:var(--band);border-color:#fff}
+.hero .btn:hover{filter:none;background:rgba(255,255,255,.12)}
+.hero .btn.primary:hover{background:#F6ECEE}
+.band{background:var(--bg);color:var(--ink);padding:88px 0 40px}
+.stmts{gap:40px}
+.st{border:0;border-radius:0;border-top:3px solid var(--fill);padding:20px 0 0;min-height:0;gap:14px}
+.st .lt{color:var(--brand-ink);font-size:4.5rem}
+.st p{font:600 clamp(1.3rem,2vw,1.6rem)/1.25 'Barlow',sans-serif;margin:0;color:var(--ink)}
+.tile{padding:26px}
+.tile h3{font-size:1.35rem}
+.tile p{font-size:1rem}
+.jp h3,.join h3{font-size:1.9rem}
+.person h3{font-size:1.25rem}
+.pbox h3{font-size:1.7rem}
+.ev h3{font-size:1.2rem}
+.do h3{font-size:1.25rem}
+.sub h3{font-size:1.5rem}
+.cal-h h3{font-size:1.3rem}
+.vbox h4,.res-cols h4{font:600 1.1rem 'Barlow',sans-serif}
+@media (max-width:860px){.stmts{gap:20px}.st{min-height:0}}
+@media (max-width:720px){.sec{padding:64px 0}.hero{padding:56px 0 64px}}
+
+/* accounts */
+.acct-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:start}
+.badge{display:inline-flex;align-items:center;font-size:.85rem;font-weight:600;padding:3px 10px;border-radius:6px;border:1.5px solid var(--line);color:var(--muted)}
+.badge.ok{border-color:#2E7D32;color:#2E7D32}
+.badge.warn{border-color:#B26A00;color:#B26A00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .badge.ok{border-color:#7BD88F;color:#7BD88F}:root:not([data-theme="light"]) .badge.warn{border-color:#FFC266;color:#FFC266}}
+.appc{border:1px solid var(--line);border-radius:12px;padding:22px;margin-bottom:16px;background:var(--surface)}
+.sigs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 20px;margin:14px 0}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0;font-weight:500;overflow-wrap:anywhere}
+.codebox{font:800 2.2rem 'Barlow Condensed',sans-serif;letter-spacing:.12em;color:var(--brand-ink);background:var(--tint);border-radius:10px;padding:14px 20px;display:inline-block;margin:12px 0 8px;user-select:all}
+.tbl{overflow-x:auto}
+.tbl table{min-width:620px}
+@media (max-width:860px){.acct-grid{grid-template-columns:1fr}}
+#menu a,.nav .btn,.brand{white-space:nowrap}
+#menu a{padding:8px 10px}
+@media (max-width:1400px){.sbtn span{display:none}.sbtn{padding:0 12px}}
+.nav-in.wrap{max-width:1240px}
+@media (max-width:1220px){
+ .menu-btn{display:block;margin-left:0}
+ #menu{display:none;position:absolute;top:64px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;padding:8px 20px 16px;margin:0}
+ #menu.open{display:flex}
+ .pill{display:none}
+ #menu a.on{background:var(--tint)}
+ .sbtn{margin-left:auto;padding:0 11px}
+ .sbtn span{display:none}
+ .nav-in{gap:10px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap nav-in">
+<a class="brand" href="#top" aria-label="REL home"><img class="lg-burg" data-logo="burg" alt=""><img class="lg-light" data-logo="light" alt=""><span>REL</span></a>
+<nav id="menu" aria-label="Main"><span class="pill" id="pill" aria-hidden="true"></span><a href="#about">About</a><a href="#events">Events</a><a href="#people">People</a><a href="#points">Leaderboard</a><a href="#learn">Learn</a><a href="#play">Play</a><a href="#community">Community</a><a href="#team" id="navTeam" hidden>Team</a><a href="#account" id="navAcct">Log in</a></nav>
+<button class="sbtn" id="sBtn" type="button" aria-label="Search the site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>Search</span></button>
+<button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu">Menu</button>
+<a class="btn primary sm" href="#join" data-goto="member">Join REL</a>
+</div></header>
+<main id="main">
+<div class="pg" data-pg="home"><section id="top" class="hero"><img class="mark lg-burg" data-logo="burg" alt=""><img class="mark lg-light" data-logo="light" alt="">
+<div class="wrap hero-grid">
+<div>
+<h1><span>Relations</span><span>Entrepreneurship</span><span>Leadership</span></h1>
+<p class="lead">REL is the club of the Faculty of Engineering, Branch 2 (ULFG2) at the Lebanese University, for students who want to build their network, start something of their own and learn to lead.</p>
+<div class="row"><a class="btn primary" href="#join" data-goto="member">Join REL</a><a class="btn" href="#events">See upcoming events</a></div>
+</div>
+<aside class="card next" aria-labelledby="nxT">
+<h2 id="nxT" style="font-size:1.1rem;color:var(--muted);font-weight:600;font-family:'Barlow',sans-serif">Next event</h2>
+<p class="nx-name" id="nxName"></p>
+<div class="cd" id="cd" role="timer"><div><b id="cdD">--</b><span>days</span></div><div><b id="cdH">--</b><span>hours</span></div><div><b id="cdM">--</b><span>minutes</span></div><div><b id="cdS">--</b><span>seconds</span></div></div>
+<p class="muted small" id="nxNote"></p>
+<ul class="facts"><li><b>7</b>on-campus events</li><li><b>9</b>online workshops</li><li><b>1</b>flagship event</li></ul>
+</aside>
+</div></section><section class="band" aria-label="What we believe"><div class="wrap"><div class="stmts">
+<div class="st"><span class="lt" aria-hidden="true">R</span><p>Great careers are built on great relationships.</p></div>
+<div class="st"><span class="lt" aria-hidden="true">E</span><p>Ideas become companies when someone takes the first step.</p></div>
+<div class="st"><span class="lt" aria-hidden="true">L</span><p>Leadership is learned by doing, not by waiting.</p></div>
+</div></div></section><section class="sec" id="latest" hidden><div class="wrap">
+<div class="sec-head"><h2>Latest news</h2></div>
+<div id="annHome" style="max-width:820px"></div>
+<p style="margin:18px 0 0"><button type="button" class="btn sm" data-annall>All announcements</button></p>
+</div></section>
+<section class="sec alt"><div class="wrap">
+<div class="sec-head"><h2>Explore REL</h2><p>Everything we do, one tap away.</p></div>
+<div class="grid3">
+<a class="tile" href="#events"><h3>Events and workshops</h3><p>What is coming up and what we already did.</p></a>
+<a class="tile" href="#people"><h3>The people</h3><p>The board, the ambassadors and member search.</p></a>
+<a class="tile" href="#points"><h3>Leaderboard</h3><p>Points, and how to earn them.</p></a>
+<a class="tile" href="#learn"><h3>Learn</h3><p>Books, the journal, speakers and documents.</p></a>
+<a class="tile" href="#play"><h3>Play</h3><p>A daily puzzle and a business question.</p></a>
+<a class="tile" href="#partner"><h3>Work with REL</h3><p>Sponsors, companies and other clubs.</p></a>
+</div></div></section><section id="news" class="sec" style="padding:56px 0"><div class="wrap grid2" style="align-items:center"><div><h2 style="font-size:clamp(2rem,5vw,2.8rem)">Newsletter</h2><p class="muted" style="margin:10px 0 0">One short message with what is coming up. No spam.</p></div><div id="nlBtn"></div></div></section></div>
+<div class="pg" data-pg="about" hidden><section id="about" class="sec"><div class="wrap"><div class="sec-head"><h2>About REL</h2><p>The Relations, Entrepreneurship and Leadership club brings LU students together to meet people, try ideas and practice leading. Everything we run is open to every student.</p></div><div class="pane" data-pane="what" data-label="What we do"><div class="do">
+<div><h3>Events on campus</h3><p>Competitions, activities and one flagship event with a guest speaker, companies and a buffet.</p></div>
+<div><h3>Online workshops</h3><p>Short live sessions on skills that matter in a real career.</p></div>
+<div><h3>Members and ambassadors</h3><p>A community of official members, with ambassadors who represent REL across campus.</p></div>
+<div><h3>Partners and startups</h3><p>Companies and organizations that open doors, with a startup accelerator as our long-term goal.</p></div>
+</div>
+</div><div class="pane" data-pane="history" data-label="Our history"><ol class="tl" id="history"></ol></div><div class="pane" id="faq" data-pane="faq" data-label="FAQ"><p class="muted" style="margin:0 0 12px">Quick answers about joining, IDs, events and points.</p><div id="faqList" style="max-width:820px"></div></div></div></section></div>
+<div class="pg" data-pg="events" hidden><section id="events" class="sec alt"><div class="wrap">
+<div class="sec-head"><h2>Events and workshops</h2><p>What is coming up, what we already did, and when it all happens.</p></div>
+<div class="grid2">
+<div>
+<div class="tabs" role="tablist" aria-label="Events"><button class="tab" role="tab" aria-selected="true" data-ev="up">Upcoming</button><button class="tab" role="tab" aria-selected="false" data-ev="past">Past</button><button class="tab" role="tab" aria-selected="false" data-ev="news">Announcements</button></div>
+<div id="evList"></div>
+</div>
+<div class="card" style="background:var(--bg)">
+<div class="cal-h"><button id="calPrev" aria-label="Previous month">&lsaquo;</button><h3 id="calT"></h3><button id="calNext" aria-label="Next month">&rsaquo;</button></div>
+<div class="cal" id="cal"></div>
+<div id="calList" class="small muted" style="margin-top:14px"></div>
+</div>
+</div>
+</div></section></div>
+<div class="pg" data-pg="people" hidden><section id="people" class="sec"><div class="wrap"><div class="sec-head"><h2>The people of REL</h2><p>The board that runs the club, the ambassadors who spread it, and every member who joins. Already a member? <a href="#join" data-goto="card">Get your digital card</a>.</p></div><div class="pane" data-pane="board" data-label="The board"><div class="grid3" id="board"></div></div><div class="pane" data-pane="ambassadors" data-label="Ambassadors"><div class="grid2"><div id="ambs"></div><div><p class="muted">Ambassadors represent REL in their class and major, bring in new members and share our events. Want to be one?</p><div id="ambBtn"></div></div></div>
+</div><div class="pane" data-pane="find" data-label="Find a member"><label for="memQ" class="muted small">Search by name or REL ID (like #0001). Only people who agreed to be listed appear here. Phone numbers and emails are never shown.</label>
+<input id="memQ" class="search" type="search" placeholder="Name or ID, like #0001" autocomplete="off">
+<div class="res" id="memRes" aria-live="polite"></div>
+</div></div></section></div>
+<div class="pg" data-pg="points" hidden><section id="points" class="sec alt"><div class="wrap">
+<div class="sec-head"><h2>Leaderboard</h2><p>Members earn points by showing up and helping out. The board updates the table after each event.</p></div>
+<div class="grid2">
+<div><h3 style="margin-bottom:12px">Top members</h3><table><thead><tr><th>#</th><th>Member</th><th class="p">Points</th></tr></thead><tbody id="lb"></tbody></table></div>
+<div><h3 style="margin-bottom:12px">How to earn points</h3><table><thead><tr><th>Action</th><th class="p">Points</th></tr></thead><tbody id="pts"></tbody></table></div>
+</div>
+</div></section></div>
+<div class="pg" data-pg="learn" hidden><section id="learn" class="sec"><div class="wrap"><div class="sec-head"><h2>Learn with REL</h2><p>Books, articles, presentations and templates, grouped by topic.</p></div><div class="pane" data-pane="resources" data-label="Resources"><div class="tabs" role="tablist" aria-label="Topics" id="resTabs"></div>
+<div id="resBody"></div>
+
+</div><div class="pane" data-pane="journal" data-label="Journal"><div id="journal"></div></div><div class="pane" data-pane="speakers" data-label="Speakers"><div id="speakers"></div></div><div class="pane" data-pane="documents" data-label="Documents"><div id="docs"></div></div><div class="pane" data-pane="report" data-label="Annual report"><div class="empty"><p>The 2026–27 report will be published at the end of the academic year, with our events, members and results.</p><p><button class="btn small" disabled aria-disabled="true" style="opacity:.55;cursor:not-allowed">Coming at the end of the year</button></p></div></div></div></section></div>
+<div class="pg" data-pg="play" hidden><section id="play" class="sec alt"><div class="wrap"><div class="sec-head"><h2>Play</h2><p>A new puzzle and a new business question every day, the same for everyone.</p></div><div class="pane" data-pane="puzzle" data-label="Daily puzzle"><div class="qwrap">
+<div><div id="qgrid" aria-label="Puzzle board"></div></div>
+<div>
+<ul class="rules"><li>Put one crown in every row, every column and every colored region.</li><li>No two crowns can touch, not even diagonally.</li><li>Tap a square once for an ×, twice for a crown, three times to clear it.</li></ul>
+<div class="qstat"><div><span class="muted small">Time</span><br><b id="qTime">0:00</b></div><div><span class="muted small">Crowns</span><br><b id="qCount">0 / 7</b></div></div>
+<p id="qMsg" role="status" aria-live="polite" style="min-height:1.6em;font-weight:600;color:var(--brand-ink)"></p>
+<div class="row"><button class="btn" id="qReset">Start over</button><button class="btn primary" id="qShare" hidden>Copy my result</button></div>
+</div>
+</div>
+</div><div class="pane" data-pane="quiz" data-label="Business question">
+<div class="card" style="background:var(--bg);max-width:720px"><p id="qzQ" style="font:700 1.7rem/1.15 'Barlow Condensed',sans-serif;margin:0"></p><div class="qz-o" id="qzO"></div><p id="qzE" role="status" aria-live="polite" style="margin:0;min-height:1.6em;font-weight:600;color:var(--brand-ink)"></p></div>
+</div></div></section></div>
+<div class="pg" data-pg="community" hidden><section id="community" class="sec"><div class="wrap"><div class="sec-head"><h2>Community</h2><p>REL grows through the people around it. Here is how the network looks and how you can take part.</p></div><div class="pane" data-pane="network" data-label="Network"><div class="grid2">
+<div><svg class="map" id="map" viewBox="0 0 520 400" role="img" aria-label="REL network map: the board, ambassadors, members, partners and speakers connected to REL"></svg></div>
+<div>
+<h3 style="margin-bottom:10px">Partners</h3>
+<div id="partners" class="empty"><p>Our first partners will appear here.</p></div>
+<h3 style="margin:28px 0 10px">Want to sponsor, partner or collaborate?</h3>
+<p class="muted">Companies, organizations and other clubs are welcome. Choose how you want to work with us and tell the board.</p>
+<div id="pitchBtn"></div>
+</div>
+</div>
+</div><div class="pane" data-pane="vote" data-label="Vote and feedback"><div class="grid3">
+<div class="card"><h3 style="margin-bottom:8px">Member voting</h3><p class="muted">Members decide what REL does next, like workshop topics and event ideas.</p><div id="voteBtn"></div></div>
+<div class="card"><h3 style="margin-bottom:8px">Ask a question</h3><p class="muted">Anything about REL, joining or events. The board answers.</p><div id="askBtn"></div></div>
+<div class="card"><h3 style="margin-bottom:8px">Give a recommendation</h3><p class="muted">Suggest a speaker, a book, a workshop or a way to improve REL.</p><div id="recBtn"></div></div>
+</div>
+</div><div class="pane" id="partner" data-pane="work" data-label="Work with REL"><div class="sec-head"><h3 style="font-size:2.2rem;color:var(--brand-ink)">Work with REL</h3><p>Sponsors, companies, organizations and other clubs: pick who you are, choose how you want to work with us and tell the board.</p></div><div class="tabs" role="tablist" aria-label="Who are you" id="pTabs"></div>
+<div class="card" id="pPanel" style="background:var(--bg)"></div>
+</div></div></section></div>
+<div class="pg" data-pg="join" hidden><section id="join" class="sec alt"><div class="wrap">
+<div class="sec-head"><h2>Join REL</h2><p>Membership is free. Pick what you want to do, fill in the short form and send it.</p></div>
+<div class="tabs" role="tablist" aria-label="Join and contact" id="jTabs"></div>
+<div class="card" id="jPanel" style="background:var(--bg)"></div>
+</div></section></div>
+<div class="pg" data-pg="account" hidden><section id="account" class="sec"><div class="wrap"><div id="acctBody"></div></div></section></div>
+<div class="pg" data-pg="team" hidden><section id="team" class="sec alt"><div class="wrap"><div id="teamBody"></div></div></section></div>
+</main>
+<footer><div class="wrap foot">
+<div><img class="lg" data-logo="light" alt="REL club logo"><p class="small" style="margin:12px 0 0;max-width:24em">Relations, Entrepreneurship and Leadership club. Lebanese University, Faculty of Engineering, Branch 2 (ULFG2), Roumieh.</p></div>
+<div><p style="margin:0 0 10px;font-weight:600">Follow REL</p><div class="soc" id="soc"></div></div>
+<div><p style="margin:0 0 10px;font-weight:600">Contact</p><div class="ct small"><div><span>Email</span><a href="mailto:rel.committee@gmail.com">rel.committee@gmail.com</a></div><div><span>Phone</span><a href="tel:+96171628112">+961 71 628 112</a></div></div></div>
+</div><div class="wrap small" style="margin-top:28px;opacity:.8">&copy; <span id="yr"></span> REL club. Built by the board.</div></footer>
+<div class="sov" id="sov" aria-hidden="true"><div class="sbox" role="dialog" aria-modal="true" aria-label="Search the site"><input id="sq" type="search" placeholder="Search events, people, books, forms" autocomplete="off" aria-label="Search"><div class="sres" id="sres"></div><p class="shint">Press Esc to close. Tip: press / anywhere to search.</p></div></div>
+<div class="sov" id="pov" aria-hidden="true"><div class="sbox pbox" role="dialog" aria-modal="true" aria-labelledby="pT"><div id="pbody"></div></div></div>
+<div class="sov" id="lbx" aria-hidden="true"><div class="lbox" role="dialog" aria-modal="true" aria-label="Photo viewer"><img id="lbImg" alt=""><div class="lbar"><button type="button" class="btn sm" id="lbPrev">Previous</button><span id="lbCount" class="muted"></span><button type="button" class="btn sm" id="lbNext">Next</button><button type="button" class="btn sm" id="lbSave" hidden>Save photo</button><button type="button" class="btn sm primary" id="lbClose">Close</button></div></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const LOGO={burg:"data:image/png;base64,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",light:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMwAAAF1CAYAAACkkAX7AAAjbUlEQVR4nO2deZxlRXXHv9PNMAPDoGwCIgojIBFcUWQzQSGoiIBiVGIU3NDgCho1BiMxGgRFR1ETMCKgUdGIDC4QRQHBhQFEo6Osg1EWBWdYFJite/JHvUvfefOWe86tulW37vl+Pv3p7vfq3Hu63/u92k6dM2vFA/diGEY1JmI7YBhtwgRjGAJMMIYhwARjGAJMMIYhYIPYDnSU7YD9e9/nARv1vub2vjYA5vTaTpbspoC1wDTuw+5e4DfAt4Grw7ttzLJl5aA8Engm8CTgicAuwM6B7jUF3AbcDvwa+BmwGLgWWBnonp3DBOOP7YC9gOcC+wG7xnVnHe4Dfgj8ALgc1xuZiBSYYHTMAg4EngccQrheIyS/xQnoIuBHwC1x3WkHJpjq7AO8FNeD7AjMjuuOV6aB64FFwHnAVXHdSRcTzGiOAF4JPBvYJLIvTXInruf5PHBxZF+SwgSzPk8B3g0cDmwY15UkuAPX63wWt4DQaUwwjg2AdwBvBbaJ7EvKLAE+B3wCWB3Zlyh0XTALgA/g5ia2iVudKeBs4F9wiwedoatvkv2BK4GbgSPp7v9ByyTwauD/gO8Aj4/rTnN07Y2yB/Ar4BJgz8i+5MJf44Zq38D12FnTFcHshutRrgb+IrIvuXIIrsf+d2DjyL4EI/c5zGbAacDLYzvSYwq4C/gjsBy4AbgOuBVYhosNuw+3L7Km9zWrZzuJiy97GPBw4BHATriwmx2A+cCWwKZN/CFjuBc4EVgY1w3/5CyYk3DLwzFYhRvf34DbTV8M/BInlCbYHjf83Be3h7QTcYR0A3A88K0I9w5CjoJ5LvBl3CdxU6wCfg5cCPwP8BNcL5ESW+KGTYcCB9CsgM4Gjm7wfsHISTBbAufiPlGb4BZcWP0i4LsN3dMnOwIvAY6hmcn6MuDvcBEErSUXwbwBN9kMzVXAF4EzcXONXJjACefvcccQQtLq3qbtgpmDWyLeO+A9fgqcAZwe8B4pMQd4J/Am3MJCCK4DDgJ+F+j6wWizYF6Im6uEiPe6A/gSbpWndS+qR54LvA93zsc3K3A9zbkBrh2Mtu7DfBQXEOhbLN8HDsOdlHw73RYLuPnG3riTohd4vvZc3AfeSZ6vG5Q29jCX4040+mIaF97xdlwUgDGc7XH7Wod5vu55uKMUydMmwWyN26l/lMdr/gA4FhfaYVRnAW5Od6DHay4BnoXb2E2WtgzJ9sUNj3yJ5Qbg+cBfYWLRsBQXQ/bU3s8+2A23GPA4T9cLQhsE8xrgCvwcCV6F2/1/HG4PxajHtcBjcZHLqzxcb3OcaJ7u4VpBSH1Idjpuf8AHFwJ/A9zv6XrG+izCRRL44FnApZ6u5Y2Ue5hF+BHLMuBFwMGYWEJzGC56wEdvcwnumHhSpNrD+FoJuxD3InbyOG1E5uNWHn3s37wadyw6CVLsYa6hvlhWAW/E9Somlub5E27/5kMernUm/obltUmth7kaF5Zeh1tx49+b6rtjeOBA3KbnRjWvcxRwTn136pFSD/N96ovlAtzmmoklHS7GHSW4ruZ1zsbfgoKaVATzeVyvUId/xP8OtOGHNbij4YtqXmcRkZecUxDMx3HnJLTcB/wlfsbLRlgOB06ueY0riJjoPfYc5ljgUzXsb8aJ5XY/7hgN8WZcMkAty4BtibCgE7OHOZh6YvkB7qy6iaV9nAa8vob9FrhzSo0TSzA7US8xwkW4ODCjvZxBPdHsTjOnbNchlmCurGH7VVxdFqP91BXNG4C/9eRLJWII5se4IDsNF+BCL4x8qCuaz9FgAvmmi8J+FH24xMW0Z9n49bjjt/2bdbNwH1KzcEn9Jpgp8DpVajeNm9BO9X6eKn0Vz92Pm/zegQuxX4Kra9lGzsC9FzVz2g1xWXue4NWjITQpmJcCxyltf4o7f9EW9iTMOfhx3I3rhT9F+6qIfRqXYvbDCtvdgU/iEncEpakh2Xzc5qSGm6kfAdA0sQoxbYYLIVmM6218nohsgo+gP+P/Rupvfo+lKcFchu4A2IP4Pb/fFJOxHcDlXP4ubnd8TmRfJLwHfWJE7YdyZZoQzD/jyuBpeAHwe4++NEVKaWIPxe1VPS22IwIOwgXRStmO+uE3IwktmK1xVao0vAv4nkdfuszmuHzPB8R2RMDT0X3wHAq82LMvDxFaMNo3/CLgFJ+OGEziEqUnnWSixO/RCzzY0CykYN6CywQi5WYSPJqaCZO4M0dt4VJccK6UuQRK7RtKMBPAxxR207RrrN1GNsEdAW8Lb8NVSpByDLoP7JGEEsyXldc+GrjHqyfGIPbDLai0BW2y+TO9ekEYweyBS2ck5QIaWBY0HqJNc8Q/oKsmtyfwCp+OhBCM5k2/nPaEveTCrrRrrngyrsqblI/4dMJ3aMzB6KoU5xZQuVZhcy0ukHCKmZizcgzZWtxkdhNcdYFdgX16v2s5Dji/hn3THIqrHSrhEbi9wPf7cMD3icsbgJ2FNv9FvSPKKXI28EqhzfHoFkqOQb8iNEXzAbh1+TDwDqHN/dT7YHkIn0OytyAXyyryEwvoehhttsgzcDvcmuO6k7ik7G3iH4A7hTbz8FSHxqdgNJ+OR3m8f9uZW8P2dvQpiA6qcd9YvFRh83Zgq7o39iWYkxTX+glu+TlHpsY3WY+6AZsX4TKqSGlbJDi4Dc1LhDaz8bAA4EswmiW/F3q6d4rMUtj4iCjWnHHf1sN9Y6CJF3sl9XpyL4J5r8LmHNoZhRwSjcj60ezgz/dw3xgsB/5TYacJtXkIH4L5R2H71bS4TntAfLwWmiK2sQ67+eB1CptX1blh3RfpVciTTJ+MbhWpTWj+rz56GA2x7usLaULA2cBrtTerKxjpZtCD6IZwbUMz6ffRw2iyp2h8TYm3Iv8b1O/BOi/SM5EXaW1T/FIdYn1qv1xhs8K7F83zSWH7R6PMMlNHMB8Qtn8QOLHG/dpErCHZPytspJuAKXK8wuYEzY20gpmHSwIu4VTlvYxqnI+rwyLlR579iME0cJ7Q5ggUS/lawfyrwsZL8FvG1Fmt+hr6aO86Oa5TQroXOImrIiBCK5jXCNtfgNWaHIf0025jXODlnbgq0RpWk49gbkQe/i9eltZEqr4Qedcv3avpIsfgsmUWpdGLlLKze98ne1/zcbvzPqJvz/VwjZQ4Efi6oP0uwAJcqt1KaML7FyMrm7YUeKz0Ji3nLNoRWPpYBG+WlrAclwG0Kv8B/H3VxtIh2abIawx2ZSm5TBs2A88jP7GAO+4g4QhJY6lgxJMkAqW7SZzUIxmm0O3ZtAHpB/RWCBLHSwUjnez/UNjeaIZjyWPDchDLcaU/JFQePksEMwfYUeiItHvMhZSHZP9F/q+LtJc5vGpDiWA0iSrOUdjkQKpDsmvI80h4P9L33TZUjMOTCOZtQie+L2yfEymUu+jnKrqVVXSxsH2lOZ1EME8VOtB4hduESC0C+ExcUrsu8Rlhe6+C0ZTLC1qnw6jEUpxQpIs1OSDdlH1SlUZVBXOk8Oa/xEJhUuBk2lfr0hd/wq2YVWUCeE6VRlWQTvg/K2xvhKELh/VGIR3lHD6uQRXBzMaF80v4krC9ARfiShvuigtZWYCLGdsclyDx/uGmQ3kUrlhqV/mKsP0h4xpUEYw0M+KtuGzrhoyi8vH1uLnHLbjMOncDNwHvVF5XcxQjFy4Wth97griKYKQZFS8Uts8RzcbluHqOn0aXmmoz4DSFXQ6sAe4S2oyMlawimOcKb2jDMd05oypl2Y9WXBfgTciH1bkg/QAfuSJc5YWVZkaUpvDMEU0PU2Wz83/Qr3pdoLRrO5LzMeBKtgxlnGD2Fd7sBmH7XNH0MFVtNIm4AZ4NPEtp22YuErYfWR5w3IsknfBry4znhqaHqSqYW4DvKK4P3TxqsQK4Q9B+ghHHxce9SM8U3Ahswl+gCb6UiGzsBtsQdsYdhe4a0mHsPsOeGCcYafm9S4XtjRmkwzhprFRBrWTcLUU6f3v2sCfGvUhbCG6yHBeOYISb9JfR9hRz6d4ys3SqMPQE5ijBSEPBrxa2z5kQ1akHIa31WNC1ZebfCNsPDcQc9cJKc89eI2yfM02lij0VFwmgQVMevs3cJ2g7tLTfqBd2d8ENAH4tbJ8zmgNk2kNnlVME9fFC4MlK2zbyW2H77QY9OEow0gm/7cHUQ3vo7Fxc1kcNC5V2beRmYfuBufRGCWZr4Q0ka93G+tQ51qxNmfRXwIE17tsmpEvLuwx6cJRgNhbeQNrl5UyVuLB+6iwUXIU+pdWHaty3TUirFDxm0IM+BWPMMC7yeBB1T6hqazfugSDNUIu5Sdh++0EPjhKMZA/mNpkv2bMmwj1vBL6gtJVW8Goj0qMROwx6cFT2fsk6/TKRK/lzIa6HnsSJZwWwEjexn8D1QBO4odskrjaMj7CiV/Tu+xjccvN9pftO9e67tve96AU36PmwGfol6jYwV9h+4CrxsOz9c5ClEv0xI+JvDCMBdkW29THFgA5l2JBMWtxHkp3DMNrAwFXLYYKRFuuxIZmROtfhIfXXMMFI9wRMMEYb+HTdCwwTjLSU3/V1HTGMBpDu9q/HMMFIAwG7nHjcaA/BhmTSXWdtLJNhNMnQKOSq+OphDKMNSDbjBzJMMJIz6ZowEMOIwYZ1LzBMMBIRNHW60DDq8ue6F/AhGID5dR0xjAZ4oO4FhglGuprwgrqOGEYD7FD3AsMEIz39Jz3/bxgx2F/QdmCnMUww0vD0BcL2hhGDgYfChrBq0IPDBCMd6w1MGGAYLWZgjj1fgpEGaxpG0zxc2P6Pgx6UxowNY0tP12k7E8CduENcxYGtydJzxYbw2gE/l+eN5X2w/hXLSWYOgRXXLR8MKw6lgRtWnEq3q5AV7CRsv3TQg6MEs5rqyRy2ETqTKxvhYTfZIxsBm8Z2IhH2FLa/ZdCDozYdB3ZJQ6iTIignNNlijGYYWfdlAAPjI0cJRnqKUprHLEdSDBPSJgjMjd2E7QcmphwlmDuFN5AmL88RTV2Y0Fjv73i0sP1vBj04SjADDUawn7B9jqT4aZ6iTzGQzi3FQ7KfCW8gHSPmSIpDMkMeiTI07fEowSwW3sTCY4xU2V/Yfmge5lGCkRZI2pxuFekZRIpHHWJk4UyNA4TtLx32xKgXeA3woPBGXZ/HpHhS1eYw8Axh+6El/sZ9Iv5ceKODhO2N8KTY6zXJbOQb6/877IlxoTFXM6JA5gCkXZ/hWILLg1zkXAbXW5XDXorea4qZMJjiexGGUyw6TJauIa2LkhvPE7a/ddST4wTzPVwB0ao8XtDWmEFaHtGozouE7S8f9eS47voi4c1mIx8v5kSKG5ddRzpN+M6oJ8cJZgWyLP7gSi50lRQn/V1mDrCt0KaWYAAuFt5QOmbMCW0PY0ILw4uF7aeB20c1qCKYLwtvugAL95fi61ySsS4vEba/clyDKoL5ivCmAEcpbLqMzX3CcIiw/dj3ehXBrEZeUryr8xhtLJntxvvnicj3oM4f16DqBT8jvPFudDO5n3ZX3YZk/nmjsP2dVIjQryqYjwtvDvoy2F3Eopz981ph+y9VaVRVMMuRV9h9nbB9DmjnItIKv8ZodkY+HKtUsl1y0c8KHdgdeWqbtqNdHra8bn55h7D9CipG50sEc5bQCYBjFDZtRtvD3ICLDP8TsLL3c/G1Epcnrv+x4ucHSl8rcamV7qG7Cy8g/9svrNpQMtlcgisXIEnadyxwiqB926mz2uVzWPYwupsr7mW49FISTqvaUDrOk25iPoZuvXAphdJ3NeWTdDh2N3BJ1cbSF3ihsD3A8QqbtmIbkHHZGNhDaPMNSWOpYJYg38R8s7B9m0lJMF08aflvCpuPSBprhhCfELbfhO4UXEopiLKLezvSyf4dwC8kBhrBfExhIx1XtpWUepiucTAuEYuEc6Q30QhmJYJJUo+/xPYamialBYgmeI/CZqHUQPtPPUlh80HlvdqEDcnisCWwr9DmWuD30htpBfNd5CWcj8SCDJukS8PD9ytspHNxoF63faaw/YbA22vcz5BRuyZ9izhaYXOW5kazVjxwr8YOXDd4l9DmbuQTszYxC91Q6ATgNmZSK4FLlVQe4pUrlhW9R3npuJxiaQr4Im6+mTv/BHxAaPMFlKFDdQQD7kintLLTi4Cv17lpwkyg2/9Iae7TNu7BhQJJWMCQCmPjqLuS8mGFzftq3tMwCg5FLpYlKMUC9XsYcAGH0qI9e1Eh4UALsR6mWa4HdhHavBj4mvaGPtbqRaEFPTSrGm1AuzJlq4dynoFcLPdTQyzgRzDvVdgcRJ6Tf+spmmOhwkYTpbIOPgSzGliksDvZw71zwYQmY3tkSfILpKtp6+ErfOI4hY00SUEb6NJmYUz+U2Hz33hYZvclmFuA6xR2lU+6tQRtT2FCq87W6OoQHevj5j4D9DTnXiSlNHJmTmwHWoQmpOUy5JvsA/EpmIuRHy4D3aEfo5vMRZ4vGeAffDngOwRcs1z85gB+tI3thzxehMrM7n3NxRXenT/g+1xcTzWbfP+fmg/Xa/BYhc3HxmU/9yDfff0IHj8FIqLduAzJMvJJRPJn5JW6nw9825cDIT6JPqqweat3L+KQ4uR9s9gOeOJtyMVyJx7FAmF6GNC9cT5B+4WjjVYOTQ77PMuQb3YfheIY8ihCjXU1vcwbaH+ISIo9TIoClvJa5GJZjWexQDjBaA6KbYiHndjIpPhJntqcSoMmwl1zjH4soYZk4BKkSStAPYhLxtZWUhySrUCeOjUlDkd3firIh1fI5UfNfGQj4F99O9IgKQ7JpEcvUmOhwuarvp0oCNnDACwGni60uR9ZwvPUSE00q3HD3TbyfOCbCrttgD949gUIv8GlmcvMA97t25GGaPuiRWpIE62Ay2gURCwQvocB+COwhdBmina++VLcuFxFO2PVjgFOV9jtDNzk2ZeHaCKE4vUKm0ngNb4daYCNSG/Svyq2A0o+pLC5goBigWZ6GND1MncAjwzgS2jejZuDFWmS1pa+l+c3RU9UXs2ZKH1fO+D54rnp0vNrS9ea7v28tvfzJC61VduOUbycijUn+3gK8DO/rqxLU4J5BbpNpEMR1u8wsuB3wKOENlchT/klpinBgC4o8+fAk717YqTM4ej2XfYDfujXlfVpMgxcs4v/JOAA344YSXOqwmYJDYgFmu1hwFX6le46N9LVGkmwP/JSKgCHARf4dWUwTR80WqiweTqwm2c/jDTR5Lj7LQ2JBZrvYUC3E/5jYB/fjhhJsRvwS4Xdy4BzPfsylBhHWT+psNkbeJxvR4yk0OSpu5cGxQJxBPMupZ2muzbawTxc3JiUEz37MZYYgnkA3Z7MIdhcJlf+Q2EzjW5OXItY2UU0OcxAV17DSJsNgL9T2GmG9rWJJZj7gIsUds+jneEyxnC0eemilH+Mmb/qnUo7zcaWkS6a9Fpfx9UlapwYy8plNDFDsG5wotFe3gJ8XGG3C3CjZ18qETtDonYuo11pM9LiBIXNZUQSC8TvYcAlvpgrtGn7MWbDxQherLDbG/iJZ18qE7uHAV1Q5jxcrcIcaONpSB9o5qLXEVEskIZgPojulOJ7fDviib9h5rBYla8VBD4lmCALcJHoUqJXrUtBMABnK2yeAjzNtyMe0OQynu/di7T5F4XNcuAsz36ISUUw2km81ZZpJ5qNyiS2E1IRzF3oJoB/jTyje2g0/9PUEmeE5A1KuyQ+HFMRDOjnJJq8uyHp0ptfg2Yp+UvevVCSkmCuApYq7I7y7UhNNP/T1HKZheIpwHYKu2T23VISDOgmg49AFxpuNI8m19hPcBEhSZCaYLT1PN7m04kIpPY6hGA2unLhSZVASfGF0uTTPZB0ymRYjNtgNEGWy4Fv+XakDikK5r1Ku7d49UKPCWYwmsWZ8307UZcUBXM7Ls+UlDf5dkRJilXIYvM0dCU3TvTsR21SFAzoxq3bIa9FEwJND5O7yDSjhp+T0GS/IFXBfFlp9w6vXujQ7MPkPow7VGETpEZlXVIVDOhWzF7i3YtmyHmz85UKmykaTp9UlZQFc4rS7givXsjpyiZkVTRn77/m3QtPpCyYJbgYMynH+XZEiGZ4leuQbAPgiQo77YdlcFIWDOgiVPf17kV4cp30ayb7/wdc49sRX6QuGO2BIW1ErA9s0j/DqxU2n/HuhUdSFwzo6n68yrsXhpSd0GUEin6qchRtEIxmeXFP5Ik1fJFrbyFFUwz4h0TKN1aVNgjmW+gqAR/t2Y+q5LxELEGznKwpM94obRAMwHkKm9TOyXSJR+KOXUj5vG9HfNMWwSxU2OxFeseXu8JrFTbf9e5FANoimCtxyfukaFZpYpDbMO5IhU0rKjO0RTAAX1HYtGVY1qbXoQq7Kmysh/HMpxQ2e3j3whjHKxQ23/TuRSDaJJhr0A3LYseWVSGnnf6XKmw0Fcii0CbBgC7djmZ509CjObef1DHkUbRNMJrCsAd492I0Xd643BWX7ELChSEcCUXbBHM98GehzTzg8QF8GUZOwyspr1PYJB071k/bBAO605hNHizrcg9ztMLm676dCEkbBbNQYaOZiBoyNgU2F9pcFsKRkLRRMJqMMpp9AUPG4Qqb03w7EZo2CgZ06/Z7effCKHOYwuYC714Epq2C0SwvP8+7F0aZFwjbLwFWh3AkJG0VjGbir9kfMKojXU4+K4QToWmrYKYBaflnC5MJx/4KmyTTKI2jrYIBeSqe2cDjQjjigTa/DiAvN3IvCWa1rEKbXyjNsKzpXf+qtD28X5rZ8kdBvGiANgtGEw7+HO9erE8Xs8bsImyvOaqRBG0WDMB1wvZN9DCTCps29zCaPa5WxY+VabtgviBs38SR5a7VuDxc2P4W4A8B/GiEtgtGsx/zBO9edBvp/tblQbxoiLYLZimwQmhzcAhHOsxThe2/HcSLhmi7YABuFrbfL4gXM3QpvH8OsInQZlEIR5pig9gOeOB7wG6C9vuEcqQGO+JKFa7G7RdtgCtxN83MIkKxkjYLN+eZ6H1f23tsZe/36dJj16ILiqzKs4TtlyEfESRFDoL5BrKCsJvjKi4/EMYdNdvGdkDBXwjb/ziIFw2Sw5DsewqbkCUxUvqfbhT4+tIl5VakUhpFSi+ulrXICy+FnMekNIcJvVwt3de6OIgXDZKDYAB+KWwfMhBTGrXbVjYGHitoPw38KpAvjZGLYC4Vtg+ZFCOlHiZkyI10P+umIF40TC6Ckc5jdgzihSMlwYQMuZGuNl4RxIuGyUUwixU2Kb2xQxGyh3mysP1FIZxomlwEsxp4UGjzpBCOoAu+bCPSFbJLgnjRMLkIBuAGYftQE/+UJv0hV8keLWz/xyBeNExOgpGWqpZEB0jYMNB1NWhKHVZFkoNsaTAvGiYnwUgnlTuEcIK0MqGEKrC6PbIPhisD+dE4OYTGFEhflJ2DeOGyodyCC0wshkRFzNd03/fywkO57WTp93IsWf/8aLpkM1G6bmEf6tzJ04TtrwriRQRyEox0U0w6Bq/K3cD5ga6dCtsL22tWMZMkpyEZyCa5mwbzIn82Frb/RRAvIpCbYKRnY6QvvOGQRClPAfeFcqRpchPMT4XtUwvxbwuSoMvbgnkRgdwEIw3CTGnPpE1sJ2jb+oDLMrkJ5mph+4eHcCJzpIsl2cxfID/BSF+c3YN4kTfS+Yg0AiNpchPM7cL2lnJJzj3C9teHcCIWuQlGSqjNS2OGG2M74JMcBSOJn9ommBf5Il0o+X0QLyKRo2CWCdpuEcyLfNlb0Dab/ZeCHAUjWVoOnVUlR44WtM0ipL9MjoL5jKDtnGBe5Ivk4NitwbyIRI6C+aqgbUpnV9rCZoK20lCl5MlRMBK6/vdrkHzIZLWkDHm+YSR/U1fO3/tEMoz9fjAvIpGjYCSphbqQOcY3kh4mm4NjBTkKxghL1UOHfw7qRSS6Lpg2l8qLRdX3TJa9d66CqVosNte/PwWyPDqR6xvmBxXb2aQ/HFku2ecqmLsrtrNz/XI6/SGTq2CqshVhM/nnSNVVyN8G9SISOaVZKiP5IFgSzIt69L8xi8Tik33PTfT9Xs53Vk5GPqvv+SJ/WWE76H9W1Mxcg4sCX0P1XvmDFdu1ilwFkwOjRN//XJ2Rwijbyd7XbOSBqsvVHiVMrkMyWy6OT5YZeUwwhiHABGOEwjYuDUOAbVy2COth4pPlfk2ugjHik1KdHG/kKhjrYeKT5WuQq2CyHA60DBNMiwhZbtuoRpaCyXWn/05cKMeGrFsmr0whqum+36FaqEk//SEmxRumPySl3GYURfhK/8/9z/c/NzXg+SJ8ZpL1w2Um+n6eAlYAd/W+bsPt2q/sPV6wGvc/Lv6/q3rf5+EKxkoTw7eCWSseuDe2D6GYjRPMGmbioaznGcwsZsJgpghXTLb15NrDgPsEzHKlJgBrcSIxoYwh1zmMYQTBBGMYAkwwhiHABGMYAkwwhiHABGMYAkwwhiHABGMYAkwwhiEg553+frbEFQNaiyvZMFn6gnXjqvrTD5XjzYowkgnkx3DLMW39P9P7fbr0M8zEhpXbFLYTfd+LWLGyX8P+pv42/R+e5Yjv/ri7ws9VuGQXfyDTpBf9dEUwlwP7xXYic5YDi4DjgXviuhKOnIMvAebjisQ+OrYjHeIuYH/gV5H9CELuc5hfYGJpmq2Ar8R2IhQ5C+ZE4DGxnegouwEvi+1ECHIWzKGxHeg4J8R2IAQ5C2bb2A50nAWxHQhBzoKZH9uBjiMpztsachZMlpkXW0SW9WFyFsxdsR3oOP8e24EQ5CyYM2I70GGWAqfFdiIEOQvm/cAlsZ3oKK+K7UAochYMwLOBj8Z2okOsBg6hehXr1pF7aEzBfOAY4InAw3H5yooAxCJYcYqZRHblx/sp2vUHMvYn6ptm3UR6/UyXHi/sJkvPwWi7/u/FdSb6vpf9mmTdaw7zrT/5YBEAOoETxRQz+cumcLFjv8LVtcw6tVVXBGMYXsh9SGYYXjHBGIYAE4xhCDDBGIYAE4xhCDDBGIYAE4xhCDDBGIYAE4xhCOhKmqV+5uE+LGbjwkXmMhM2Ug4fKYeYFBTPDQqNgXXDSkbRn+tsWCjOOAbZFXnLBuUWG+TfIPuC1b3fp3B5yIrwIXr3WEHGaZX66YpgTgGeA+wAbBrXlSx5EPg18G/A1yL7EpTcY8nm417I7WI70iG+g/twypLc5zDXYGJpmoOAL8Z2IhQ5C+Y4YOfYTnSUI4Enx3YiBDkL5nWxHeg4743tQAhynsOsxB0UM+KwHNgithO+ybmHMbHE5WGxHQhBzoKZGt/ECMh9sR0IQc6CWRrbgY7zrdgOhCBnwZwe24GO857YDoQgZ8GciiumZDTP+4HfxXYiBDmvkhVcAewb24kO8U3gBbGdCEUXBAOwF3AELi9ZEWgJM0GKRXAhpd+Lx4YVcS3nMisjzVrfn5us//H+65ULtJaDK8v5yMrXm2TdYMoJBgdsTpaeL5hm+N831bvOqtLPlwEfI2O6IhjD8ELOcxjD8I4JxjAEmGAMQ4AJxjAEmGAMQ4AJxjAEmGAMQ4AJxjAEmGAMQ4AJxjAEdCUvWRVOx9W/LBLW9Se8K8d0lWthVvnQmWR43cpBsWKDHpvV9/sgRiUEHHfdcoxYOa5uArgXOGHIPTuFCcaxFa5orDGcu3FHJjqNDckcdv5/PM+I7UAKmGAcdv5/PLvEdiAFTDAO+z+MZ+vYDqSAvVEc0kNfXWTj2A6kgAnGMa40heFKg3QeE4xRFU3tmuwwwRhVsfcK9k8osFUyoxImGKMqNiTDBFOwMrYDLcDeK9g/oeD+2A60gNWxHUgBE4zD9mHGY70wJpgyJprRWDUETDBlLo3tQOJcHtuBFDDBzHBGbAcS5/OxHUgBy628LhYiM5gbsWhlwHqYft4V24FEOTq2A6lgglmXU7AiTP18DvhRbCdSwYZk6zMHuAl4VGxHEmAxdtJyHayHWZ+VwPZYT3MtJpb1MMEM5wnASbGdiMQ5wFNjO5EiNiQbzzzgn4BnAo/EZdrZkJlUSwVFSqL+EoBF0OKgiOhyWb5xpfuK5yZKbQY9N6jMXpF+qbgXwJqeT6uBPwG34YZgnyXTgq4+MMEYhgAbkhmGABOMYQgwwRiGABOMYQj4f5+/LqHrILQxAAAAAElFTkSuQmCC"};
+document.querySelectorAll("[data-logo]").forEach(i=>{i.src=LOGO[i.dataset.logo]});
+/* ---- Supabase (public keys, safe to be in the page) ---- */
+const SB_URL="https://ygvodjbocaakzzggphxd.supabase.co",SB_KEY="sb_publishable_RZ-mMosMfTz0WP2dhKokhw_lfO7H6ge",SB_KEY2="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlndm9kamJvY2Fha3p6Z2dwaHhkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk4ODMyODYsImV4cCI6MjEwNTQ1OTI4Nn0.tjs2RLptzkPTsPxbBWF9jaZBzFn6mLp1QAEf8EpeFTsM";
+let SB=null;
+function makeClient(k){try{return window.supabase?window.supabase.createClient(SB_URL,k,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}):null}catch(err){return null}}
+SB=makeClient(SB_KEY);
+const ST={user:null,team:null,member:null,app:null,ready:false};
+function accountPromo(k){return ST.user?'<p class="muted">You are logged in.</p><a class="btn primary" href="#account">Go to my account</a>':`<p class="muted">${k==="card"?"Log in to see and save your digital card.":"Create a free account with your LU student email, then fill in the short application."}</p><div class="row"><a class="btn primary" href="#account" data-am-go="signup">Create account</a><a class="btn" href="#account" data-am-go="login">Log in</a></div>`}
+/* ---- Edit here: links, dates and lists ---- */
+const CONFIG={
+ email:"rel.committee@gmail.com",wa:"96171628112",
+ socials:[{n:"Instagram",u:"https://www.instagram.com/relulfg"},{n:"LinkedIn",u:"https://www.linkedin.com/company/relulfg"},{n:"WhatsApp",u:"https://chat.whatsapp.com/Kph5TBt947mDEe8bfAvUQM"}],
+ forms:{event:"",member:"",ambassador:"https://docs.google.com/forms/d/e/1FAIpQLSeZ8xlzk_AKVMU-7c4ujnSUoxft4jZUg5GmrQAXwwDGHPffOg/viewform",question:"",recommendation:"",pitch:"",newsletter:"",vote:"",journal:""},
+ nextEvent:null /* filled automatically from the first upcoming dated event */
+};
+const FORMS={ /* [key,label,type,required,options] . If a Google Form link is set in CONFIG.forms, that tab shows an "Open the form" button instead. */
+ member:{custom:"account",tab:"Become a member",title:"Become a member",blurb:"Get access to events and workshops, earn points on the leaderboard and vote on what REL does next.",note:"The President or Vice President reviews your application. If it is accepted, your profile and REL ID are created automatically.",subject:"Membership request",fields:[["name","Full name","text",1],["yearMajor","Year and major","text",1],["phone","Phone number","tel",0],["invited","Who invited you? (an ambassador or a friend)","text",0],["listed","I agree to be listed on the REL website","check",0]]},
+ ambassador:{tab:"Become an ambassador",title:"Become an ambassador",blurb:"Represent REL in your class or major, bring in new members and share our events. You get a certificate and a title for your LinkedIn.",note:"The board will contact you with your first tasks.",subject:"Ambassador application",fields:[["name","Full name","text",1],["yearMajor","Year and major","text",1],["group","Class or group you would represent","text",0],["why","Why do you want to be an ambassador?","area",1]]},
+ card:{tab:"My digital card",title:"Get your digital card",blurb:"Log in to your account to see your digital card and save it to your phone or computer.",note:"Your card code is created in your account. Never share it.",custom:"card"},
+ checkin:{tab:"Event check-in",title:"Check in at an event",blurb:"Are you at an event? Check in with your REL ID so your points are counted.",note:"You need the event code shown at the event. Only people who are there know it.",subject:"Event check-in",fields:[["id","Your REL ID (like 0001)","text",1],["event","Which event?","text",1],["code","Event code","text",1]]},
+ question:{tab:"Ask a question",title:"Ask a question",blurb:"Anything about REL, joining or events. The board answers.",subject:"Question",fields:[["name","Your name (optional)","text",0],["q","Your question","area",1]]},
+ recommendation:{tab:"Give a recommendation",title:"Give a recommendation",blurb:"Suggest a speaker, a book, a workshop topic or a way to improve REL.",subject:"Recommendation",fields:[["type","What are you recommending?","select",1,["Speaker","Book","Workshop topic","Something else"]],["rec","Your recommendation","area",1],["why","Why is it a good fit?","area",0],["name","Your name (optional)","text",0]]},
+ pitch:{tab:"Pitch your idea",title:"Pitch your idea to REL",blurb:"Have a startup idea? Tell the board. The best ideas may be invited to present at a REL event. Sponsors, companies and clubs: see Work with REL.",subject:"Pitch",fields:[["name","Your name and role","text",1],["pitch","Your idea in three sentences","area",1],["looking","What are you looking for?","area",0]]},
+ journal:{tab:"Write for the Journal",title:"Write for the REL Journal",blurb:"Student-written articles on entrepreneurship, leadership and careers. Have something to say? Write for the first issue.",subject:"Journal submission",fields:[["name","Your name","text",1],["title","Title or topic","text",1],["idea","Your idea, or a link to your draft","area",0]]},
+ newsletter:{tab:"Newsletter",title:"Newsletter",blurb:"One short message with what is coming up. No spam.",subject:"Newsletter signup",fields:[["email","Your email","email",1],["name","Your name (optional)","text",0]]},
+ vote:{tab:"Member voting",title:"Member voting",blurb:"Members decide what REL does next, like workshop topics and event ideas.",empty:"There is no open vote right now. When the board opens one, only members can vote, once each, using their REL ID and card code. Results are published after the vote closes."}
+};
+const EVENTS=[ /* add form:"https://docs.google.com/forms/..." to each event for its own registration form, or set CONFIG.forms.event for one shared form */
+ {title:"Introduction session",type:"On campus",date:"2026-09-24",tentative:true,place:"LU Roumieh",blurb:"Meet the board, learn what REL is and how to take part. Date to be confirmed."},
+ {title:"Recruitment day",type:"On campus",date:null,place:"LU Roumieh",blurb:"Meet the board, see what REL offers and sign up as an official member."},
+ {title:"Flagship event",type:"Flagship",date:null,place:"LU Roumieh",blurb:"A guest speaker, companies on campus and a buffet after the talk."}
+]; /* dated events also appear on the calendar: date:"2026-11-20" */
+const PAST=[]; /* {title,type,date:"2026-10-02",place,blurb,recap:"What happened",photos:["data:image/jpeg;base64,..."]} newest first */
+const ANNOUNCEMENTS=[]; /* {date:"2026-09-20",title:"",text:"",link:"",pinned:false} */
+/* events move to Past by themselves once their date has passed; the countdown follows the next dated event */
+function prepEvents(){const today=new Date().toISOString().slice(0,10);
+ for(let i=EVENTS.length-1;i>=0;i--){if(EVENTS[i].date&&EVENTS[i].date<today)PAST.unshift(...EVENTS.splice(i,1))}
+ EVENTS.sort((a,b)=>(a.date||"9999").localeCompare(b.date||"9999"));PAST.sort((a,b)=>(b.date||"").localeCompare(a.date||""));
+ CONFIG.nextEvent=null;const n=EVENTS.find(e=>e.date);if(n)CONFIG.nextEvent={title:n.title,date:n.date+"T"+(n.time||"10:00")+":00",tentative:!!n.tentative};
+ ANN.length=0;ANN.push(...[...ANNOUNCEMENTS].sort((a,b)=>(b.pinned?1:0)-(a.pinned?1:0)||String(b.date).localeCompare(String(a.date))))}
+const ANN=[];prepEvents();
+const HISTORY=[
+ {y:"Before REL",t:"The club began as the PR club."},
+ {y:"2025–26",t:"The PR club was rebranded as REL: Relations, Entrepreneurship and Leadership."},
+ {y:"2026–27",t:"A new board builds the next chapter of REL, with recruitment, ambassadors, workshops and a first flagship event."}
+];
+const BOARD=[
+ {role:"President",id:"0001",name:"Johny",bio:"Third-year mechanical engineering student with experience in equity research and entrepreneurship. CFA Institute Research Challenge 2026 local finalist and winning team leader of the Leo Burnett case at LAUCC 2026. E-commerce venture founder and liaison officer at the Roumieh Consulting Club (RCC). Team leader at 180 Degrees Consulting ULFG-2.",photo:"data:image/jpeg;base64,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"},
+ {role:"Vice President",id:"0002",name:"Carole Aoun",bio:"Backs the board and keeps every task moving. Leads REL's reach across the Lebanese University.",photo:""},
+ {role:"Events Officer",id:"0003",name:"Perla Farah",bio:"Plans on-campus events and competitions, including the flagship event.",photo:""},
+ {role:"Outreach Officer",id:"0004",name:"Georges Al Sarnouk",bio:"Connects with speakers and companies and leads sponsorship.",photo:""},
+ {role:"Marketing Manager",id:"0005",name:"Antonio Moussalem",bio:"Runs marketing: Instagram, posters and the club's visual identity.",photo:""},
+ {role:"Secretary",id:"0006",name:"Daniel Makhlouf",bio:"Keeps the records: minutes, the member list and the tracking sheet.",photo:""}
+];
+const AMBS=[{},{},{},{},{},{}]; /* {name:"",info:"Mechanical Eng, 2nd year",photo:""} */
+const RECORDS=[ /* one per person: board, ambassadors and members. Only a salted hash of each private card code is stored here, never the code itself. Add {year,major,faculty,joined:"2026-09"} when known. Set listed:false to hide a person. Phone numbers and emails are never stored on this site. */
+ {"id":"0001","type":"Board","name":"Johny","role":"President","year":"3rd year","major":"Mechanical Engineering","faculty":"Faculty of Engineering, Branch 2 (ULFG2)","listed":true,"salt":"21134a84e02236a8","hash":"6072923deeb0037a7bccbd7c656a50becd6ee1a8a3e5d611d9961117f2f8afc6"},
+ {"id":"0002","type":"Board","name":"Carole Aoun","role":"Vice President","listed":true,"salt":"dbac0d6e16b0ca8a","hash":"dc050ffa598e8e99afa218c8b73ec833da46f102355b1180c07d17a4bbcf2e9a"},
+ {"id":"0003","type":"Board","name":"Perla Farah","role":"Events Officer","listed":true,"salt":"f2f0df668a567ddf","hash":"02a69c41c335f3aca77f88d01fa76517fbb5469c3c66e4a68d0570082e1fb077"},
+ {"id":"0004","type":"Board","name":"Georges Al Sarnouk","role":"Outreach Officer","listed":true,"salt":"e8fba27786343419","hash":"7cf5553fd74ffc31aae51904049cb7b41a2f219d498b09f54b96600347e616f2"},
+ {"id":"0005","type":"Board","name":"Antonio Moussalem","role":"Marketing Manager","listed":true,"salt":"11a6e2ea22c0ac54","hash":"b44912d8b47b4d83462d7a86c94c83cfa68a1ed37e968ecb46310b759bd2ed1d"},
+ {"id":"0006","type":"Board","name":"Daniel Makhlouf","role":"Secretary","listed":true,"salt":"1f048738a1455eef","hash":"4f0773855d098bb5bb91caa49f2386113a3e83d11353bc41feadf4d25994b822"}
+];
+const LEADERS=[]; /* {name:"",pts:0} */
+const POINTS=[["Attend an on-campus event",10],["Attend an online workshop",5],["Volunteer at an event",20],["Bring a new official member",15],["Complete an ambassador task",10],["Win a REL competition",30],["Publish an article in the REL Journal",25]];
+const PARTNERS=[],SPEAKERS=[],JOURNAL=[];
+const DOCS=[{t:"REL club rules and policy",k:"PDF",u:""},{t:"2026–27 plan",k:"Presentation",u:""},{t:"Membership guide",k:"PDF",u:""},{t:"Ambassador guide",k:"PDF",u:""}];
+const RES=[
+ {id:"ent",n:"Entrepreneurship",intro:"From first idea to first customers.",books:[["The Lean Startup","Eric Ries","How to test ideas quickly with small experiments before building too much."],["Zero to One","Peter Thiel with Blake Masters","How to think about building something new instead of copying what exists."]]},
+ {id:"lead",n:"Leadership",intro:"Leading teams, starting with yourself.",books:[["Start With Why","Simon Sinek","Why people follow leaders who explain their purpose first."],["Extreme Ownership","Jocko Willink and Leif Babin","Lessons on taking full responsibility for results."]]},
+ {id:"fin",n:"Finance",intro:"Money, markets and how to think about both.",books:[["The Psychology of Money","Morgan Housel","How behavior, more than intelligence, shapes financial decisions."],["The Intelligent Investor","Benjamin Graham","The classic on value investing and staying rational in markets."]]},
+ {id:"car",n:"Career",intro:"Choosing a direction and getting hired.",books:[["So Good They Can't Ignore You","Cal Newport","Why building rare skills beats following your passion."],["Designing Your Life","Bill Burnett and Dave Evans","A practical way to explore career options with small experiments."]]},
+ {id:"con",n:"Consulting",intro:"Structuring problems and cracking cases.",books:[["Case in Point","Marc P. Cosentino","A step-by-step guide to case interviews."],["The McKinsey Way","Ethan M. Rasiel","How top consultants structure problems and communicate."]]},
+ {id:"eng",n:"Engineering × Business",intro:"Where technical skills meet company decisions.",books:[["The Goal","Eliyahu M. Goldratt","A novel that teaches how to find and fix bottlenecks in operations."],["The Toyota Way","Jeffrey K. Liker","The principles behind Toyota's lean manufacturing approach."]]}
+];
+/* ---- Code ---- */
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=t=>String(t??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const initials=n=>n?n.split(/\s+/).map(w=>w[0]).slice(0,2).join("").toUpperCase():"REL";
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove("on"),2600)}
+function gbtn(key,label,cls){return `<a class="btn ${cls||"primary"}" href="#join" data-goto="${key}">${esc(label)}</a>`}
+document.addEventListener("click",e=>{if(e.target.closest("[data-pending]"))toast("This form is not connected yet. The board will add the link soon.")});
+const gb=(sel,key,label,cls)=>{$(sel).innerHTML=gbtn(key,label,cls)};
+gb("#ambBtn","ambassador","Become an ambassador");gb("#nlBtn","newsletter","Subscribe to the newsletter");$("#pitchBtn").innerHTML='<a class="btn primary" href="#partner">Work with REL</a>';gb("#voteBtn","vote","See the current vote");gb("#askBtn","question","Ask a question");gb("#recBtn","recommendation","Give a recommendation");
+$("#soc").innerHTML=CONFIG.socials.map(s=>s.u?`<a href="${esc(s.u)}" target="_blank" rel="noopener">${esc(s.n)}</a>`:`<button data-pending="1">${esc(s.n)}</button>`).join("");
+$("#yr").textContent=new Date().getFullYear();
+$("#menuBtn").addEventListener("click",()=>{const o=$("#menu").classList.toggle("open");$("#menuBtn").setAttribute("aria-expanded",o)});
+$$("#menu a").forEach(a=>a.addEventListener("click",()=>{$("#menu").classList.remove("open");$("#menuBtn").setAttribute("aria-expanded","false")}));
+/* countdown */
+function tick(){const ev=CONFIG.nextEvent;const set=(a,b,c,d)=>{$("#cdD").textContent=a;$("#cdH").textContent=b;$("#cdM").textContent=c;$("#cdS").textContent=d};
+ if(!ev){$("#nxName").textContent="To be announced";$("#nxNote").textContent="The date of our next event will appear here.";set("--","--","--","--");return}
+ $("#nxName").textContent=ev.title;const ms=new Date(ev.date)-Date.now();
+ if(ms<=0){$("#nxNote").textContent="Happening now or already done. Check the events list.";set("0","0","0","0");return}
+ $("#nxNote").textContent=ev.tentative?"Date to be confirmed.":"";const s=Math.floor(ms/1000);set(Math.floor(s/86400),Math.floor(s%86400/3600),Math.floor(s%3600/60),s%60)}
+tick();setInterval(tick,1000);
+/* history */
+$("#history").innerHTML=HISTORY.map(h=>`<li><b>${esc(h.y)}</b>${esc(h.t)}</li>`).join("");
+/* events */
+const fmt=(d,o)=>new Date(d+"T12:00:00").toLocaleDateString("en",o);
+const calUrl=e=>{if(!e.date)return"";const d=e.date.replace(/-/g,"");let dates;
+ if(e.time){const p=n=>n.replace(":","")+"00";dates=d+"T"+p(e.time)+"/"+d+"T"+p(e.endTime||e.time)}else{const nx=new Date(e.date+"T12:00:00");nx.setDate(nx.getDate()+1);dates=d+"/"+nx.getFullYear()+String(nx.getMonth()+1).padStart(2,"0")+String(nx.getDate()).padStart(2,"0")}
+ return "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(e.title+" (REL)")+"&dates="+dates+(e.time?"&ctz=Asia%2FBeirut":"")+"&details="+encodeURIComponent(e.blurb||"")+"&location="+encodeURIComponent(e.place||"")}
+function evItem(e,up,idx){const d=e.date?`<div class="d">${fmt(e.date,{day:"numeric"})}<small>${fmt(e.date,{month:"short"})}</small></div>`:`<div class="d">TBA<small>date</small></div>`;
+ const rf=e.form||CONFIG.forms.event;
+ const act=up?`<p class="ev-act">${rf?`<a class="btn primary sm" href="${esc(rf)}" target="_blank" rel="noopener">Register to attend</a>`:`<button class="btn sm" data-pending="1">Registration opens soon</button>`}${e.date?`<a class="btn sm" href="${esc(calUrl(e))}" target="_blank" rel="noopener">Add to calendar</a>`:""}</p>`:"";
+ const rec=!up&&e.recap?`<p style="margin:10px 0 0">${esc(e.recap)}</p>`:"";
+ const ph=!up&&e.photos&&e.photos.length?`<div class="thumbs">${e.photos.slice(0,6).map((p,i)=>`<button type="button" class="thumb" data-gal="${idx}" data-i="${i}" aria-label="Open photo ${i+1} of ${esc(e.title)}"><img src="${esc(p)}" alt="${esc(e.title)} photo ${i+1}"></button>`).join("")}${e.photos.length>6?`<span class="muted small">+${e.photos.length-6} more</span>`:""}</div>`:"";
+ return `<div class="ev">${d}<div><h3>${esc(e.title)}<span class="tag">${esc(e.type)}</span></h3><p class="muted" style="margin:0">${esc(e.blurb||"")}${e.place?" Location: "+esc(e.place)+".":""}${e.time?" Time: "+esc(e.time)+(e.endTime?" to "+esc(e.endTime):"")+".":""}</p>${rec}${ph}${act}</div></div>`}
+const annItem=a=>`<div class="ev"><div class="d">${fmt(a.date,{day:"numeric"})}<small>${fmt(a.date,{month:"short"})}</small></div><div><h3>${esc(a.title)}${a.pinned?'<span class="tag">Pinned</span>':""}</h3><p class="muted" style="margin:0">${esc(a.text||"")}</p>${a.link?`<p style="margin:10px 0 0"><a href="${esc(a.link)}" target="_blank" rel="noopener">Read more</a></p>`:""}</div></div>`;
+function showEv(k){if(k==="news"){$("#evList").innerHTML=ANN.length?ANN.map(annItem).join(""):`<div class="empty"><p>No announcements yet.</p><p>News from the board will appear here.</p></div>`;$$("[data-ev]").forEach(b=>b.setAttribute("aria-selected",b.dataset.ev===k));return}
+ const list=k==="up"?EVENTS:PAST;$("#evList").innerHTML=list.length?list.map((e,i)=>evItem(e,k==="up",i)).join(""):`<div class="empty"><p>Nothing here yet.</p><p>${k==="up"?"Our first events are being planned for this semester.":"Photos and recaps of our events will appear here after each event."}</p></div>`;
+ $$("[data-ev]").forEach(b=>b.setAttribute("aria-selected",b.dataset.ev===k))}
+$$("[data-ev]").forEach(b=>b.addEventListener("click",()=>showEv(b.dataset.ev)));showEv("up");
+if(ANN.length){$("#latest").hidden=false;$("#annHome").innerHTML=ANN.slice(0,3).map(annItem).join("")}
+document.addEventListener("click",e=>{if(e.target.closest("[data-annall]")){route("#events");showEv("news")}});
+/* calendar */
+let cm=new Date();cm=new Date(cm.getFullYear(),cm.getMonth(),1);
+function drawCal(){const y=cm.getFullYear(),m=cm.getMonth();$("#calT").textContent=cm.toLocaleDateString("en",{month:"long",year:"numeric"});
+ const first=(new Date(y,m,1).getDay()+6)%7,days=new Date(y,m+1,0).getDate(),t=new Date();
+ const all=[...EVENTS,...PAST].filter(e=>e.date&&new Date(e.date+"T12:00:00").getMonth()===m&&new Date(e.date+"T12:00:00").getFullYear()===y);
+ let h=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].map(d=>`<div class="w">${d}</div>`).join("")+"<div></div>".repeat(first);
+ for(let d=1;d<=days;d++){const has=all.some(e=>new Date(e.date+"T12:00:00").getDate()===d),td=t.getDate()===d&&t.getMonth()===m&&t.getFullYear()===y;h+=`<div class="c${has?" has":""}${td?" today":""}">${d}</div>`}
+ $("#cal").innerHTML=h;$("#calList").innerHTML=all.length?all.map(e=>`<div><b>${fmt(e.date,{day:"numeric",month:"short"})}</b> ${esc(e.title)}</div>`).join(""):"No dated events this month."}
+$("#calPrev").addEventListener("click",()=>{cm=new Date(cm.getFullYear(),cm.getMonth()-1,1);drawCal()});
+$("#calNext").addEventListener("click",()=>{cm=new Date(cm.getFullYear(),cm.getMonth()+1,1);drawCal()});drawCal();
+/* board, ambassadors */
+const ph=(n,p)=>`<div class="ph">${p?`<img src="${esc(p)}" alt="${esc(n)}">`:esc(initials(n))}</div>`;
+$("#board").innerHTML=BOARD.map(b=>`<div class="person">${ph(b.name,b.photo)}<h3>${b.name?esc(b.name):'<span class="muted">Name coming soon</span>'}</h3><div class="role">${esc(b.role)}</div><p>${esc(b.bio)}</p>${b.id?`<button type="button" class="idlink" data-prof="${b.id}">#${b.id}, view profile</button>`:""}</div>`).join("");
+$("#ambs").innerHTML=AMBS.map(a=>`<div class="amb">${ph(a.name,a.photo)}<div><b>${a.name?esc(a.name):'<span class="muted">Name coming soon</span>'}</b><span class="muted small">${esc(a.info||"REL ambassador")}</span></div></div>`).join("");
+/* members */
+const asId=q=>/^[#\s]*(rel-?)?\d{1,4}$/i.test(q.trim())?q.replace(/\D/g,"").padStart(4,"0"):null;
+function recMatch(q){const id=asId(q),l=q.trim().toLowerCase();return RECORDS.filter(r=>r.listed!==false&&(id?r.id===id:r.name.toLowerCase().includes(l)))}
+function drawMem(){const q=$("#memQ").value.trim();
+ $("#memRes").innerHTML=!q?`<p class="muted" style="margin:0">Type a name or an ID like #0001.</p>`:(()=>{const r=recMatch(q);return r.length?r.map(m=>`<button type="button" class="mem" data-prof="${m.id}"><span class="id">#${esc(m.id)}</span><b>${esc(m.name)}<span class="tag">${esc(m.type)}</span></b><span class="muted small">View profile</span>${m.year||m.major?`<span class="meta">${esc([m.year,m.major].filter(Boolean).join(", "))}</span>`:""}</button>`).join(""):`<p class="muted" style="margin:0">No one found. Check the spelling or the ID.</p>`})()}
+$("#memQ").addEventListener("input",drawMem);drawMem();
+/* leaderboard */
+$("#lb").innerHTML=LEADERS.length?LEADERS.map((l,i)=>`<tr><td class="n">${i+1}</td><td>${esc(l.name)}${l.sample?'<span class="samp">sample</span>':""}</td><td class="p">${l.pts}</td></tr>`).join(""):`<tr><td colspan="3" class="muted">Points start after our first event.</td></tr>`;
+$("#pts").innerHTML=POINTS.map(p=>`<tr><td>${esc(p[0])}</td><td class="p">+${p[1]}</td></tr>`).join("");
+/* resources */
+let rt=0;function drawRes(){$("#resTabs").innerHTML=RES.map((r,i)=>`<button class="tab" role="tab" aria-selected="${i===rt}" data-r="${i}">${esc(r.n)}</button>`).join("");
+ const r=RES[rt],none=w=>`<p class="muted small">No ${w} yet. Have one to share? Use the recommendation form.</p>`;
+ $("#resBody").innerHTML=`<p class="muted">${esc(r.intro)}</p><div class="res-cols"><div><h4>Book recommendations</h4>${r.books.map(b=>`<div class="book"><b>${esc(b[0])}</b><span>${esc(b[1])}</span><em>${esc(b[2])}</em></div>`).join("")}</div><div><h4>Articles</h4>${none("articles")}</div><div><h4>Presentations</h4>${none("presentations")}</div><div><h4>Templates</h4>${none("templates")}</div></div>`;
+ $$("[data-r]").forEach(b=>b.addEventListener("click",()=>{rt=+b.dataset.r;drawRes()}))}
+drawRes();
+/* journal, speakers, docs */
+$("#journal").innerHTML=JOURNAL.length?"":`<div class="empty"><p>Student-written articles on entrepreneurship, leadership and careers.</p><p>Have something to say? Write for the first issue.</p><div>${gbtn("journal","Submit an article","")}</div></div>`;
+$("#speakers").innerHTML=SPEAKERS.length?"":`<div class="empty"><p>Our guest speakers will be listed here, with their talks and topics.</p><p>Know someone we should invite? Use the recommendation form.</p></div>`;
+$("#partners").innerHTML=PARTNERS.length?PARTNERS.map(p=>`<span>${esc(p)}</span>`).join(""):`<p>Our first partners will appear here. Interested in partnering with REL? Send us your pitch.</p>`;
+$("#docs").innerHTML=DOCS.map(d=>`<div class="doc"><div><b>${esc(d.t)}</b><br><span class="muted small">${esc(d.k)}</span></div>${d.u?`<a class="btn sm" href="${esc(d.u)}" target="_blank" rel="noopener">Open</a>`:`<button class="btn sm" data-pending="1">Coming soon</button>`}</div>`).join("");
+/* network map */
+(function(){const c={x:260,y:200},nodes=[["Board",BOARD.length,-90],["Ambassadors",AMBS.length,-18],["Members","",54],["Partners",PARTNERS.length||"",126],["Speakers",SPEAKERS.length||"",198]];
+ let s="";nodes.forEach(n=>{const a=n[2]*Math.PI/180;n.x=c.x+175*Math.cos(a);n.y=c.y+128*Math.sin(a);s+=`<line class="ln" x1="${c.x}" y1="${c.y}" x2="${n.x}" y2="${n.y}"/>`});
+ s+=`<circle class="hub" cx="${c.x}" cy="${c.y}" r="48"/><text class="hub-t" x="${c.x}" y="${c.y+11}">REL</text>`;
+ nodes.forEach(n=>{s+=`<circle class="nd" cx="${n.x}" cy="${n.y}" r="40"/>`+(n[1]!==""?`<text class="nd-t" x="${n.x}" y="${n.y+9}">${n[1]}</text>`:"")+`<text class="lb" x="${n.x}" y="${n.y+64}">${n[0]}</text>`});
+ $("#map").innerHTML=s})();
+/* join hub */
+let jt="member";
+function msgOf(k){const F=FORMS[k];const lines=F.fields.map(f=>{const el=document.querySelector('[data-f="'+f[0]+'"]');if(!el)return null;const v=f[2]==="check"?(el.checked?"Yes":"No"):el.value.trim();return v?f[1]+": "+v:null}).filter(Boolean);return "REL website - "+F.subject+"\n"+lines.join("\n")}
+function fieldHtml(f){const [k,l,ty,req,opts]=f,r=req?" *":"";
+ if(ty==="check")return `<label class="fld ck"><input type="checkbox" data-f="${k}"><span>${esc(l)}</span></label>`;
+ if(ty==="area")return `<label class="fld">${esc(l)}${r}<textarea data-f="${k}" ${req?"data-req":""}></textarea></label>`;
+ if(ty==="select")return `<label class="fld">${esc(l)}${r}<select data-f="${k}" ${req?"data-req":""}>${opts.map(o=>`<option>${esc(o)}</option>`).join("")}</select></label>`;
+ return `<label class="fld">${esc(l)}${r}<input type="${ty}" data-f="${k}" ${req?"data-req":""} autocomplete="off"></label>`}
+function drawJoin(){const keys=Object.keys(FORMS);
+ $("#jTabs").innerHTML=keys.map(k=>`<button class="tab" role="tab" aria-selected="${k===jt}" data-j="${k}">${esc(FORMS[k].tab)}</button>`).join("");
+ const F=FORMS[jt],u=CONFIG.forms[jt];let right;
+ if(F.custom==="card"||F.custom==="account")right=accountPromo(F.custom);
+ else if(F.empty&&!u)right=`<div class="empty"><p>${esc(F.empty)}</p></div>`;
+ else if(u)right=`<p class="muted">Fill in the form. It takes about two minutes.</p><a class="btn primary" href="${esc(u)}" target="_blank" rel="noopener">Open the form</a>`;
+ else right=F.fields.map(fieldHtml).join("")+`<div class="row"><a class="btn primary" id="jSend" href="#" target="_blank" rel="noopener">Send on WhatsApp</a></div><p class="alt-links">Prefer email? <a id="jMail" href="#" target="_blank" rel="noopener">Send it by email instead</a>.</p>`;
+ $("#jPanel").innerHTML=`<div class="jp"><div><h3>${esc(F.title)}</h3><p class="muted">${esc(F.blurb)}</p>${F.note?`<p class="muted small">${esc(F.note)}</p>`:""}<p class="alt-links">Just want to chat? <a href="${esc(CONFIG.socials[2].u)}" target="_blank" rel="noopener">Join the WhatsApp group</a> or message us on <a href="${esc(CONFIG.socials[0].u)}" target="_blank" rel="noopener">Instagram</a>.</p></div><div>${right}</div></div>`;
+ sync()}
+function sync(){const s=$("#jSend");if(!s)return;const m=msgOf(jt);s.href="https://wa.me/"+CONFIG.wa+"?text="+encodeURIComponent(m);$("#jMail").href="mailto:"+CONFIG.email+"?subject="+encodeURIComponent("REL website - "+FORMS[jt].subject)+"&body="+encodeURIComponent(m)}
+function openJoin(k,scroll){if(FORMS[k])jt=k;drawJoin();if(scroll)route("#join")}
+document.addEventListener("click",e=>{if(e.target.closest("#mcBtn")){myCard();return}const pf=e.target.closest("[data-prof]");if(pf){openProfile(pf.dataset.prof);return}const g=e.target.closest("[data-goto]");if(g){e.preventDefault();openJoin(g.dataset.goto,true);return}
+ const tb=e.target.closest("[data-j]");if(tb){jt=tb.dataset.j;drawJoin();return}
+ const s=e.target.closest("#jSend");if(s){const miss=[...document.querySelectorAll("#jPanel [data-req]")].filter(el=>!el.value.trim());document.querySelectorAll("#jPanel [data-req]").forEach(el=>el.removeAttribute("aria-invalid"));
+  if(miss.length){e.preventDefault();miss.forEach(el=>el.setAttribute("aria-invalid","true"));miss[0].focus();toast("Please fill in the fields marked with *.")}else toast("Opening WhatsApp. Press send there to finish.")}});
+$("#jPanel").addEventListener("keydown",e=>{if(e.key==="Enter"&&(e.target.id==="mcCode"||e.target.id==="mcId"))myCard()});
+$("#jPanel").addEventListener("input",sync);$("#jPanel").addEventListener("change",sync);
+openJoin("member",false);
+/* ---------- accounts, applications and the team area (Supabase) ---------- */
+let authMode="login",authNote="",authOk=false,teamTab="apps",teamEdit=null;const teamCache={};
+const fromEmailLink=/type=(signup|invite|recovery|magiclink|email_change)/.test(location.hash);
+const LEVEL=["1st year","2nd year","3rd year","4th year","5th year"];
+const isAdmin=()=>!!(ST.team&&(ST.team.role==="president"||ST.team.role==="vice_president"));
+function errText(e){const m=(e&&e.message)||String(e||"");
+ if(/Database error saving new user|Sign-up is only open/i.test(m))return "Sign-up is only open to LU student emails (name@st.ul.edu.lb).";
+ if(/Invalid login credentials/i.test(m))return "Wrong email or password.";
+ if(/Email not confirmed/i.test(m))return "Please confirm your email first. Open the link we sent you.";
+ if(/already registered/i.test(m))return "This email already has an account. Try logging in.";
+ if(/rate limit|too many/i.test(m))return "Too many tries. Please wait a few minutes.";
+ if(/Failed to fetch|NetworkError|network/i.test(m))return "Could not reach the server. Check your connection.";
+ return m.slice(0,220)}
+const accHead=(t,p)=>`<div class="sec-head"><h2>${esc(t)}</h2>${p?`<p>${esc(p)}</p>`:""}</div>`;
+const say=(el,t,ok)=>{if(!el)return;el.className="vres "+(ok?"ok":"no");el.textContent=t};
+const accountBar=()=>`<p class="alt-links" style="margin-top:28px">Signed in as ${esc(ST.user.email||"")}. <button type="button" class="idlink" data-logout>Log out</button></p>`;
+const cardRec=m=>({id:m.rel_id,name:m.full_name,role:m.position||"Member",year:m.year,major:m.major,type:m.role});
+
+async function loadUser(){ST.team=ST.member=ST.app=null;
+ if(!SB){ST.user=null;ST.ready=true;updateNav();return}
+ try{const {data}=await SB.auth.getSession();ST.user=data&&data.session?data.session.user:null;
+  if(ST.user){const em=(ST.user.email||"").toLowerCase();
+   try{await SB.rpc("claim_team_profile")}catch(err){}
+   const t=await SB.from("team").select("*").eq("email",em).maybeSingle();ST.team=t.data||null;
+   const m=await SB.from("members").select("rel_id,full_name,role,position,year,major,faculty,joined,listed,bio,active,email,phone,uni_id").eq("user_id",ST.user.id).maybeSingle();ST.member=m.data||null;
+   const a=await SB.from("applications").select("*").eq("user_id",ST.user.id).maybeSingle();ST.app=a.data||null}
+ }catch(err){}
+ ST.ready=true;updateNav()}
+function updateNav(){const a=$("#navAcct"),t=$("#navTeam");if(a)a.textContent=ST.user?"Account":"Log in";if(t)t.hidden=!ST.team;setNav(cur.pg)}
+
+function renderAccount(){const box=$("#acctBody");if(!box)return;
+ if(!SB){box.innerHTML=accHead("Your account","Accounts are not available on this version of the site.");return}
+ if(!ST.ready){box.innerHTML=accHead("Your account")+'<p class="muted">Loading...</p>';return}
+ if(!ST.user)return authView(box);
+ if(authMode==="recovery")return recoveryView(box);
+ if(ST.member)return memberView(box);
+ if(ST.app)return appStatusView(box);
+ return applyView(box)}
+
+function authView(box){const m=authMode==="signup"?"signup":authMode==="reset"?"reset":"login";
+ box.innerHTML=accHead("Your account","Log in, or create an account with your LU student email to apply for membership.")+
+ `<div class="tabs" role="tablist">${[["login","Log in"],["signup","Create account"]].map(t=>`<button type="button" class="tab" role="tab" aria-selected="${m===t[0]}" data-am="${t[0]}">${t[1]}</button>`).join("")}</div>
+ <div class="card" style="max-width:520px;background:var(--bg)"><form id="authForm" data-mode="${m}" novalidate>
+ <label class="fld">Email${m==="signup"?" (your LU student email)":""} *<input type="email" id="aEmail" autocomplete="email" placeholder="name@st.ul.edu.lb"></label>
+ ${m==="reset"?"":`<label class="fld">Password *<input type="password" id="aPass" autocomplete="${m==="signup"?"new-password":"current-password"}"></label>`}
+ ${m==="signup"?'<p class="muted small">At least 8 characters. We only use your details for REL membership.</p>':""}
+ <div class="row"><button class="btn primary" type="submit">${m==="signup"?"Create account":m==="reset"?"Send reset link":"Log in"}</button></div>
+ <p class="vres ${authNote?(authOk?"ok":"no"):""}" id="aMsg" role="status" aria-live="polite">${esc(authNote)}</p>
+ ${m==="login"?'<p class="alt-links"><button type="button" class="idlink" data-am="reset">Forgot your password?</button></p>':""}
+ ${m==="reset"?'<p class="alt-links"><button type="button" class="idlink" data-am="login">Back to log in</button></p>':""}
+ </form></div>`}
+function recoveryView(box){box.innerHTML=accHead("Choose a new password")+`<div class="card" style="max-width:520px;background:var(--bg)"><form id="recForm" novalidate><label class="fld">New password *<input type="password" id="rPass" autocomplete="new-password"></label><div class="row"><button class="btn primary" type="submit">Save password</button></div><p class="vres" id="rMsg" role="status" aria-live="polite"></p></form></div>`}
+
+function applyView(box){box.innerHTML=accHead("Apply for membership","Fill in the form. The President or Vice President reviews it, and you will see the result here.")+
+ `<div class="card" style="max-width:640px;background:var(--bg)"><form id="applyForm" novalidate>
+ <label class="fld">Full name *<input id="pName" autocomplete="name"></label>
+ <label class="fld">University ID (4 digits) *<input id="pUni" inputmode="numeric" maxlength="4" autocomplete="off"></label>
+ <label class="fld">Faculty *<input id="pFac" value="Faculty of Engineering, Branch 2 (ULFG2)"></label>
+ <label class="fld">Year *<select id="pYear">${LEVEL.map(l=>`<option>${l}</option>`).join("")}</select></label>
+ <label class="fld">Major *<input id="pMajor"></label>
+ <label class="fld">Phone number (optional)<input id="pPhone" type="tel" autocomplete="tel"></label>
+ <label class="fld">Why do you want to join REL? *<textarea id="pWhy"></textarea></label>
+ <label class="fld ck"><input type="checkbox" id="pList"><span>Show my name, year and major on the public REL page. My phone, email and university ID are never shown.</span></label>
+ <label class="fld ck"><input type="checkbox" id="pTrue"><span>I confirm that the information is true. *</span></label>
+ <div class="row"><button class="btn primary" type="submit">Send my application</button></div>
+ <p class="vres" id="pMsg" role="status" aria-live="polite"></p></form></div>`+accountBar()}
+function appStatusView(box){const a=ST.app,st=a.status;
+ const t=st==="pending"?"Your application is under review":st==="rejected"?"Your application was not accepted":"Your application was accepted";
+ const p=st==="pending"?"The President or Vice President will decide soon. Come back to this page to see the result.":st==="rejected"?(a.note?"Note from the board: "+a.note:"You can contact the board for more information."):"Please refresh this page to see your profile.";
+ box.innerHTML=accHead(t,p)+`<div class="card" style="max-width:640px"><dl class="kv"><dt>Name</dt><dd>${esc(a.full_name)}</dd><dt>Year</dt><dd>${esc(a.year)}</dd><dt>Major</dt><dd>${esc(a.major)}</dd><dt>Sent</dt><dd>${esc(String(a.created_at||"").slice(0,10))}</dd></dl></div>`+accountBar()}
+
+function memberView(box){const m=ST.member,first=(m.full_name||"").split(" ")[0],rec=cardRec(m),since=m.joined?fmt(String(m.joined).slice(0,10),{month:"long",year:"numeric"}):"";
+ const rows=[["Position",m.position||m.role],["Year",m.year],["Major",m.major],["Faculty",m.faculty],["Member since",since]].filter(x=>x[1]);
+ box.innerHTML=accHead("Hello, "+first,"You are signed in as "+(ST.user.email||""))+
+ `<div class="acct-grid"><div>
+  <div class="card"><div class="prow">${ph(m.full_name,photoOf(rec))}<div><h3>${esc(m.full_name)}</h3><p style="margin:0"><b>#${esc(m.rel_id)}</b><span class="tag">${esc(m.role==="member"?"Member":(m.position||m.role))}</span></p></div></div>
+   <dl class="kv">${rows.map(x=>`<dt>${esc(x[0])}</dt><dd>${esc(x[1])}</dd>`).join("")}</dl>
+   <p class="muted small" style="margin:0">Your phone number, email and university ID are private. Only the President and Vice President can see them.</p></div>
+  <div class="card" style="margin-top:20px"><h3 style="margin-bottom:12px">Edit your profile</h3><form id="profForm" novalidate>
+   <label class="fld">Short bio<textarea id="mBio">${esc(m.bio||"")}</textarea></label>
+   <label class="fld">Phone number<input id="mPhone" type="tel" value="${esc(m.phone||"")}"></label>
+   <label class="fld ck"><input type="checkbox" id="mList" ${m.listed?"checked":""}><span>Show my name, year and major on the public REL page.</span></label>
+   <div class="row"><button class="btn primary sm" type="submit">Save</button></div><p class="vres" id="mMsg" role="status" aria-live="polite"></p></form></div>
+ </div><div>
+  <div class="card"><h3 style="margin-bottom:8px">Your card</h3><p class="muted">Your card code proves your REL card is real. Keep it private. Creating a new code cancels the old one.</p>
+   <div class="row"><button type="button" class="btn primary sm" data-mkcode>Create my card code</button></div><div id="codeOut"></div><div id="myCardImg"></div></div>
+  ${ST.team?'<div class="card" style="margin-top:20px"><h3 style="margin-bottom:8px">Team area</h3><p class="muted">Manage applications, events and announcements.</p><a class="btn primary sm" href="#team">Open the team area</a></div>':""}
+ </div></div>`+accountBar();
+ showCard(rec,$("#myCardImg"))}
+
+/* ---- team area ---- */
+function renderTeam(){const box=$("#teamBody");if(!box)return;
+ if(!SB||!ST.team){box.innerHTML=accHead("Team area","This area is only for the REL team.");return}
+ const tabs=isAdmin()?[["apps","Applications"],["events","Events"],["news","Announcements"],["members","Members"],["amb","Ambassadors"]]:[["members","Members"]];
+ if(!tabs.some(t=>t[0]===teamTab))teamTab=tabs[0][0];
+ box.innerHTML=accHead("Team area","You are logged in as "+ST.team.position+".")+`<div class="tabs" role="tablist">${tabs.map(t=>`<button type="button" class="tab" role="tab" aria-selected="${t[0]===teamTab}" data-tt="${t[0]}">${t[1]}</button>`).join("")}</div><div id="teamPane"></div>`;
+ ({apps:paneApps,events:paneEvents,news:paneNews,members:paneMembers,amb:paneAmb})[teamTab]()}
+const tpane=()=>$("#teamPane");
+const loading=()=>{const p=tpane();if(p)p.innerHTML='<p class="muted">Loading...</p>'};
+const paneErr=e=>{const p=tpane();if(p)p.innerHTML=`<div class="empty"><p>${esc(errText(e))}</p></div>`};
+const dshort=s=>s?fmt(String(s).slice(0,10),{day:"numeric",month:"short",year:"numeric"}):"";
+function appCard(a){const sig=[`<span class="badge ok">&#10003; LU student email</span>`,
+  a.list_match?`<span class="badge ok">&#10003; ID is on the faculty list${a.list_name?": "+esc(a.list_name):""}</span>`:`<span class="badge warn">! ID is not on the faculty list. Check by hand.</span>`];
+ if(a.list_match)sig.push(a.list_name_matches?`<span class="badge ok">&#10003; Name matches the list</span>`:`<span class="badge warn">! Name differs from the list</span>`);
+ sig.push(a.name_matches_email?`<span class="badge ok">&#10003; Name looks like the email</span>`:`<span class="badge warn">! Name does not look like the email</span>`);
+ return `<div class="appc"><h3>${esc(a.full_name)}</h3><p class="muted small" style="margin:0">${esc(a.email)}. Applied ${esc(dshort(a.created_at))}</p>
+ <div class="sigs">${sig.join("")}</div>
+ <dl class="kv"><dt>University ID</dt><dd>${esc(a.uni_id)}</dd><dt>Faculty</dt><dd>${esc(a.faculty)}</dd><dt>Year</dt><dd>${esc(a.year)}</dd><dt>Major</dt><dd>${esc(a.major)}</dd><dt>Phone</dt><dd>${esc(a.phone||"Not given")}</dd><dt>Public profile</dt><dd>${a.listed?"Yes":"No"}</dd></dl>
+ <p style="margin:0 0 12px"><b>Why REL?</b><br>${esc(a.why)}</p>
+ <label class="fld">Note for the applicant (optional)<input id="note-${esc(a.id)}"></label>
+ <div class="row"><button type="button" class="btn primary sm" data-decide="${esc(a.id)}" data-accept="1">Accept</button><button type="button" class="btn sm" data-decide="${esc(a.id)}" data-accept="0">Reject</button></div><p class="vres" id="dm-${esc(a.id)}" role="status"></p></div>`}
+async function paneApps(){loading();const {data,error}=await SB.from("applications").select("*").order("created_at",{ascending:false});if(error)return paneErr(error);
+ const pend=data.filter(a=>a.status==="pending"),done=data.filter(a=>a.status!=="pending");
+ tpane().innerHTML=`<h3 style="margin-bottom:14px">Waiting for a decision (${pend.length})</h3>${pend.length?pend.map(appCard).join(""):'<div class="empty"><p>No applications are waiting.</p></div>'}
+ <h3 style="margin:32px 0 14px">Decided (${done.length})</h3>${done.length?`<div class="tbl"><table><thead><tr><th>Name</th><th>Result</th><th>Decided</th><th>Note</th></tr></thead><tbody>${done.map(a=>`<tr><td>${esc(a.full_name)}</td><td>${esc(a.status)}</td><td>${esc(dshort(a.decided_at))}</td><td>${esc(a.note||"")}</td></tr>`).join("")}</tbody></table></div>`:'<p class="muted">Nothing yet.</p>'}`}
+
+const EV_TYPES=["On campus","Workshop","Competition","Flagship","Online"];
+function evForm(e){e=e||{};return `<div class="card" style="background:var(--bg);margin-bottom:28px"><h3 style="margin-bottom:12px">${e.id?"Edit event":"Add an event"}</h3><form id="evForm" novalidate data-id="${esc(e.id||"")}">
+ <label class="fld">Title *<input id="eTitle" value="${esc(e.title||"")}"></label>
+ <label class="fld">Type<select id="eType">${EV_TYPES.map(t=>`<option ${t===(e.type||"On campus")?"selected":""}>${t}</option>`).join("")}</select></label>
+ <div class="row" style="gap:16px"><label class="fld" style="flex:1 1 150px">Date<input type="date" id="eDate" value="${esc(e.date||"")}"></label><label class="fld" style="flex:1 1 120px">Start time<input type="time" id="eTime" value="${esc((e.time||"").slice(0,5))}"></label><label class="fld" style="flex:1 1 120px">End time<input type="time" id="eEnd" value="${esc((e.end_time||"").slice(0,5))}"></label></div>
+ <label class="fld">Place<input id="ePlace" value="${esc(e.place||"")}"></label>
+ <label class="fld">Description<textarea id="eDesc">${esc(e.description||"")}</textarea></label>
+ <label class="fld">Registration form link (optional)<input type="url" id="eForm" value="${esc(e.form_url||"")}" placeholder="https://"></label>
+ <label class="fld ck"><input type="checkbox" id="eTent" ${e.tentative?"checked":""}><span>The date is not confirmed yet</span></label>
+ <label class="fld">Recap after the event (optional)<textarea id="eRecap">${esc(e.recap||"")}</textarea></label>
+ <div class="row"><button class="btn primary sm" type="submit">${e.id?"Save changes":"Add event"}</button>${e.id?'<button type="button" class="btn sm" data-evcancel>Cancel</button>':""}</div><p class="vres" id="eMsg" role="status" aria-live="polite"></p></form></div>`}
+async function paneEvents(){loading();const {data,error}=await SB.from("events").select("*").order("date",{ascending:true});if(error)return paneErr(error);teamCache.events=data;
+ tpane().innerHTML=evForm(teamEdit&&teamEdit.kind==="event"?teamEdit.row:null)+`<h3 style="margin-bottom:12px">All events (${data.length})</h3>${data.length?data.map(e=>`<div class="ev" style="grid-template-columns:1fr auto"><div><h3>${esc(e.title)}<span class="tag">${esc(e.type)}</span></h3><p class="muted" style="margin:0">${esc(e.date?dshort(e.date):"Date to be announced")}${e.place?". "+esc(e.place):""}</p></div><div class="row"><button type="button" class="btn sm" data-evedit="${esc(e.id)}">Edit</button><button type="button" class="btn sm" data-evdel="${esc(e.id)}">Delete</button></div></div>`).join(""):'<div class="empty"><p>No events yet.</p></div>'}`}
+function newsForm(a){a=a||{};return `<div class="card" style="background:var(--bg);margin-bottom:28px"><h3 style="margin-bottom:12px">${a.id?"Edit announcement":"Add an announcement"}</h3><form id="anForm" novalidate data-id="${esc(a.id||"")}">
+ <label class="fld">Title *<input id="nTitle" value="${esc(a.title||"")}"></label>
+ <label class="fld">Text<textarea id="nBody">${esc(a.body||"")}</textarea></label>
+ <label class="fld">Link (optional)<input type="url" id="nLink" value="${esc(a.link||"")}" placeholder="https://"></label>
+ <label class="fld">Date<input type="date" id="nDate" value="${esc(a.date||new Date().toISOString().slice(0,10))}"></label>
+ <label class="fld ck"><input type="checkbox" id="nPin" ${a.pinned?"checked":""}><span>Pin this announcement on top</span></label>
+ <div class="row"><button class="btn primary sm" type="submit">${a.id?"Save changes":"Post announcement"}</button>${a.id?'<button type="button" class="btn sm" data-evcancel>Cancel</button>':""}</div><p class="vres" id="nMsg" role="status" aria-live="polite"></p></form></div>`}
+async function paneNews(){loading();const {data,error}=await SB.from("announcements").select("*").order("date",{ascending:false});if(error)return paneErr(error);teamCache.news=data;
+ tpane().innerHTML=newsForm(teamEdit&&teamEdit.kind==="news"?teamEdit.row:null)+`<h3 style="margin-bottom:12px">All announcements (${data.length})</h3>${data.length?data.map(a=>`<div class="ev" style="grid-template-columns:1fr auto"><div><h3>${esc(a.title)}${a.pinned?'<span class="tag">Pinned</span>':""}</h3><p class="muted" style="margin:0">${esc(dshort(a.date))}</p></div><div class="row"><button type="button" class="btn sm" data-anedit="${esc(a.id)}">Edit</button><button type="button" class="btn sm" data-andel="${esc(a.id)}">Delete</button></div></div>`).join(""):'<div class="empty"><p>No announcements yet.</p></div>'}`}
+async function paneMembers(){loading();const admin=isAdmin();
+ const q=admin?SB.from("members").select("rel_id,full_name,role,position,year,major,faculty,uni_id,email,phone,joined,listed,active").order("rel_id",{ascending:true}):SB.from("team_member_list").select("*").order("rel_id",{ascending:true});
+ const {data,error}=await q;if(error)return paneErr(error);teamCache.members=data;
+ tpane().innerHTML=`<label for="tmQ" class="muted small">Search by name or REL ID</label><input id="tmQ" class="search" type="search" placeholder="Name or ID" autocomplete="off"><div class="tbl" style="margin-top:16px" id="tmList"></div>${admin?"":'<p class="muted small">Phone numbers, emails and university IDs are only visible to the President and Vice President.</p>'}`;drawMembers()}
+function drawMembers(){const admin=isAdmin(),q=(($("#tmQ")||{}).value||"").trim().toLowerCase().replace(/^#/,""),rows=(teamCache.members||[]).filter(r=>!q||String(r.full_name).toLowerCase().includes(q)||String(r.rel_id).includes(q));
+ $("#tmList").innerHTML=rows.length?`<table><thead><tr><th>ID</th><th>Name</th><th>Position</th><th>Year</th><th>Major</th>${admin?"<th>Uni ID</th><th>Email</th><th>Phone</th>":""}</tr></thead><tbody>${rows.map(r=>`<tr><td>#${esc(r.rel_id)}</td><td>${esc(r.full_name)}</td><td>${esc(r.position||r.role)}</td><td>${esc(r.year||"")}</td><td>${esc(r.major||"")}</td>${admin?`<td>${esc(r.uni_id||"")}</td><td>${esc(r.email||"")}</td><td>${esc(r.phone||"")}</td>`:""}</tr>`).join("")}</tbody></table>`:'<div class="empty"><p>No members found.</p></div>'}
+async function paneAmb(){loading();const {data,error}=await SB.from("members").select("rel_id,full_name,role,position,year,major").in("role",["member","ambassador"]).order("rel_id",{ascending:true});if(error)return paneErr(error);
+ tpane().innerHTML=`<p class="muted">Ambassadors represent REL in their class or major. You can promote a member here, or change them back.</p>${data.length?`<div class="tbl"><table><thead><tr><th>ID</th><th>Name</th><th>Year</th><th>Major</th><th>Role</th><th></th></tr></thead><tbody>${data.map(r=>`<tr><td>#${esc(r.rel_id)}</td><td>${esc(r.full_name)}</td><td>${esc(r.year||"")}</td><td>${esc(r.major||"")}</td><td>${esc(r.role)}</td><td><button type="button" class="btn sm" data-setrole="${esc(r.rel_id)}" data-to="${r.role==="member"?"ambassador":"member"}">${r.role==="member"?"Make ambassador":"Make member"}</button></td></tr>`).join("")}</tbody></table></div>`:'<div class="empty"><p>No members yet.</p></div>'}`}
+
+/* ---- events for everyone come from the database ---- */
+const mapEv=e=>({title:e.title,type:e.type,date:e.date||null,time:e.time?String(e.time).slice(0,5):undefined,endTime:e.end_time?String(e.end_time).slice(0,5):undefined,place:e.place||"",blurb:e.description||"",form:e.form_url||"",tentative:!!e.tentative,recap:e.recap||""});
+const mapAn=a=>({date:a.date,title:a.title,text:a.body||"",link:a.link||"",pinned:!!a.pinned});
+const mapRec=r=>({id:r.rel_id,type:r.role==="ambassador"?"Ambassador":r.role==="member"?"Member":"Board",name:r.full_name,role:r.position||"Member",year:r.year,major:r.major,faculty:r.faculty,joined:r.joined,bio:r.bio,listed:true,db:true});
+const STATIC_RECORDS=RECORDS.slice();
+function homeNews(){if(ANN.length){$("#latest").hidden=false;$("#annHome").innerHTML=ANN.slice(0,3).map(annItem).join("")}else $("#latest").hidden=true}
+async function refreshPublic(){if(!SB)return;
+ try{const [ev,an,pp]=await Promise.all([SB.from("events").select("*").order("date",{ascending:true}),SB.from("announcements").select("*"),SB.from("public_profiles").select("*")]);
+  if(!ev.error&&ev.data){EVENTS.length=0;PAST.length=0;EVENTS.push(...ev.data.map(mapEv))}
+  if(!an.error&&an.data){ANNOUNCEMENTS.length=0;ANNOUNCEMENTS.push(...an.data.map(mapAn))}
+  if(!pp.error&&pp.data){RECORDS.length=0;RECORDS.push(...STATIC_RECORDS,...pp.data.filter(r=>!STATIC_RECORDS.some(s=>s.id===r.rel_id)).map(mapRec))}
+  prepEvents();const k=($("[data-ev][aria-selected=true]")||{dataset:{ev:"up"}}).dataset.ev;showEv(k);drawCal();homeNews();tick();drawMem()}catch(err){}}
+
+/* ---- clicks and forms ---- */
+document.addEventListener("click",async e=>{
+ const am=e.target.closest("[data-am]");if(am){authMode=am.dataset.am;authNote="";renderAccount();return}
+ const ag=e.target.closest("[data-am-go]");if(ag){authMode=ag.dataset.amGo;authNote="";renderAccount();return}
+ if(e.target.closest("[data-logout]")){await SB.auth.signOut();await loadUser();renderAccount();renderTeam();showPage("home");return}
+ const tt=e.target.closest("[data-tt]");if(tt){teamTab=tt.dataset.tt;teamEdit=null;renderTeam();return}
+ if(e.target.closest("[data-mkcode]")){const out=$("#codeOut");out.innerHTML='<p class="muted small">Creating...</p>';const {data,error}=await SB.rpc("regenerate_card_code");
+  out.innerHTML=error?`<p class="vres no">${esc(errText(error))}</p>`:`<div class="codebox">${esc(data)}</div><p class="muted small" style="margin:0">Save this code now. It is shown only once. Anyone who has your ID and this code can use your card.</p>`;return}
+ const d=e.target.closest("[data-decide]");if(d){const id=d.dataset.decide,acc=d.dataset.accept==="1";if(!acc&&!confirm("Reject this application?"))return;
+  const note=(($("#note-"+id)||{}).value||"").trim()||null,msg=$("#dm-"+id);d.disabled=true;const {data,error}=await SB.rpc("decide_application",{p_id:id,p_accept:acc,p_note:note});
+  if(error){say(msg,errText(error));d.disabled=false;return}toast(acc?"Accepted as #"+data:"Application rejected");paneApps();return}
+ const ee=e.target.closest("[data-evedit]");if(ee){teamEdit={kind:"event",row:(teamCache.events||[]).find(x=>x.id===ee.dataset.evedit)};paneEvents();window.scrollTo(0,0);return}
+ const ed=e.target.closest("[data-evdel]");if(ed){if(!confirm("Delete this event?"))return;const {error}=await SB.from("events").delete().eq("id",ed.dataset.evdel);if(error){toast(errText(error));return}toast("Event deleted");teamEdit=null;paneEvents();refreshPublic();return}
+ const ne=e.target.closest("[data-anedit]");if(ne){teamEdit={kind:"news",row:(teamCache.news||[]).find(x=>x.id===ne.dataset.anedit)};paneNews();window.scrollTo(0,0);return}
+ const nd=e.target.closest("[data-andel]");if(nd){if(!confirm("Delete this announcement?"))return;const {error}=await SB.from("announcements").delete().eq("id",nd.dataset.andel);if(error){toast(errText(error));return}toast("Announcement deleted");teamEdit=null;paneNews();refreshPublic();return}
+ if(e.target.closest("[data-evcancel]")){teamEdit=null;teamTab==="news"?paneNews():paneEvents();return}
+ const sr=e.target.closest("[data-setrole]");if(sr){const {error}=await SB.rpc("set_member_role",{p_rel_id:sr.dataset.setrole,p_role:sr.dataset.to});if(error){toast(errText(error));return}toast("Role updated");paneAmb();refreshPublic()}});
+document.addEventListener("input",e=>{if(e.target.id==="tmQ")drawMembers()});
+document.addEventListener("submit",async e=>{const f=e.target;if(!f||!f.id)return;
+ if(f.id==="authForm"){e.preventDefault();const mode=f.dataset.mode,email=$("#aEmail").value.trim().toLowerCase(),pw=$("#aPass")?$("#aPass").value:"",msg=$("#aMsg"),btn=f.querySelector("button[type=submit]");
+  if(!/^\S+@\S+\.\S+$/.test(email)){say(msg,"Please enter a valid email.");return}
+  if(mode!=="reset"&&pw.length<8){say(msg,"The password needs at least 8 characters.");return}
+  btn.disabled=true;say(msg,"Please wait...",true);
+  try{if(mode==="login"){const {error}=await SB.auth.signInWithPassword({email,password:pw});if(error)throw error;await loadUser();renderAccount();renderTeam();refreshPublic();return}
+   if(mode==="signup"){const {data,error}=await SB.auth.signUp({email,password:pw,options:{emailRedirectTo:location.origin+location.pathname}});if(error)throw error;
+    if(data&&data.session){await loadUser();renderAccount();renderTeam();return}say(msg,"Almost done. We sent a confirmation link to "+email+". Open it, then log in here.",true)}
+   else{const {error}=await SB.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname});if(error)throw error;say(msg,"If this email has an account, a reset link is on its way.",true)}
+  }catch(err){say(msg,errText(err))}btn.disabled=false;return}
+ if(f.id==="recForm"){e.preventDefault();const pw=$("#rPass").value,msg=$("#rMsg");if(pw.length<8){say(msg,"The password needs at least 8 characters.");return}
+  const {error}=await SB.auth.updateUser({password:pw});if(error){say(msg,errText(error));return}authMode="login";await loadUser();renderAccount();toast("Password saved");return}
+ if(f.id==="applyForm"){e.preventDefault();const msg=$("#pMsg"),v=id=>$(id).value.trim(),uni=v("#pUni");
+  if(v("#pName").length<3||!v("#pFac")||!v("#pMajor")||v("#pWhy").length<10){say(msg,"Please fill in all the fields marked with *. Tell us a little more about why you want to join.");return}
+  if(!/^[0-9]{4}$/.test(uni)){say(msg,"Your university ID must be exactly 4 digits.");return}
+  if(!$("#pTrue").checked){say(msg,"Please confirm that the information is true.");return}
+  const btn=f.querySelector("button[type=submit]");btn.disabled=true;say(msg,"Sending...",true);
+  const {error}=await SB.rpc("submit_application",{p_full_name:v("#pName"),p_uni_id:uni,p_faculty:v("#pFac"),p_year:$("#pYear").value,p_major:v("#pMajor"),p_phone:v("#pPhone"),p_why:v("#pWhy"),p_listed:$("#pList").checked});
+  if(error){say(msg,errText(error));btn.disabled=false;return}await loadUser();renderAccount();toast("Application sent");return}
+ if(f.id==="profForm"){e.preventDefault();const msg=$("#mMsg");const {error}=await SB.from("members").update({bio:$("#mBio").value.trim()||null,phone:$("#mPhone").value.trim()||null,listed:$("#mList").checked}).eq("user_id",ST.user.id);
+  if(error){say(msg,errText(error));return}await loadUser();say($("#mMsg"),"Saved.",true);refreshPublic();return}
+ if(f.id==="evForm"){e.preventDefault();const msg=$("#eMsg"),title=$("#eTitle").value.trim();if(!title){say(msg,"Please add a title.");return}
+  const row={title,type:$("#eType").value,date:$("#eDate").value||null,time:$("#eTime").value||null,end_time:$("#eEnd").value||null,place:$("#ePlace").value.trim()||null,description:$("#eDesc").value.trim()||null,form_url:$("#eForm").value.trim()||null,tentative:$("#eTent").checked,recap:$("#eRecap").value.trim()||null},id=f.dataset.id;
+  const {error}=id?await SB.from("events").update(row).eq("id",id):await SB.from("events").insert(row);
+  if(error){say(msg,errText(error));return}toast(id?"Event saved":"Event added");teamEdit=null;paneEvents();refreshPublic();return}
+ if(f.id==="anForm"){e.preventDefault();const msg=$("#nMsg"),title=$("#nTitle").value.trim();if(!title){say(msg,"Please add a title.");return}
+  const row={title,body:$("#nBody").value.trim()||null,link:$("#nLink").value.trim()||null,date:$("#nDate").value||new Date().toISOString().slice(0,10),pinned:$("#nPin").checked},id=f.dataset.id;
+  const {error}=id?await SB.from("announcements").update(row).eq("id",id):await SB.from("announcements").insert(row);
+  if(error){say(msg,errText(error));return}toast(id?"Announcement saved":"Announcement posted");teamEdit=null;paneNews();refreshPublic();return}});
+async function initAuth(){renderAccount();renderTeam();
+ if(!SB)return;
+ try{const r=await SB.from("events").select("id").limit(1);if(r.error&&/api key|jwt/i.test(r.error.message||"")&&SB_KEY2){const c=makeClient(SB_KEY2);if(c)SB=c}}catch(err){}
+ SB.auth.onAuthStateChange((ev)=>{setTimeout(async()=>{if(ev==="PASSWORD_RECOVERY")authMode="recovery";await loadUser();renderAccount();renderTeam();if(ev==="SIGNED_IN"||ev==="INITIAL_SESSION")refreshPublic()},0)});
+ await loadUser();renderAccount();renderTeam();refreshPublic();
+ if(fromEmailLink)showPage("account")}
+
+/* pages: every menu item is its own page, long ones have sub-tabs */
+const PAGES=["home","about","events","people","points","learn","play","community","join","account","team"],cur={pg:"home",sub:{}};
+const paneList=pg=>[...document.querySelectorAll('.pg[data-pg="'+pg+'"] .pane')];
+function setNav(pg){const links=$$("#menu a"),pill=$("#pill");let on=null;
+ links.forEach(a=>{const is=a.getAttribute("href").slice(1)===pg;a.classList.toggle("on",is);if(is){on=a;a.setAttribute("aria-current","page")}else a.removeAttribute("aria-current")});
+ if(on){const fresh=pill.style.opacity!=="1";if(fresh)pill.style.transition="none";pill.style.width=on.offsetWidth+"px";pill.style.transform="translateX("+on.offsetLeft+"px)";if(fresh){pill.offsetWidth;pill.style.transition=""}pill.style.opacity="1"}else pill.style.opacity="0"}
+function showPage(pg,sub,o){o=o||{};if(!PAGES.includes(pg))pg="home";
+ $$(".pg").forEach(el=>{const show=el.dataset.pg===pg;if(show&&el.hidden){el.classList.remove("enter");void el.offsetWidth;el.classList.add("enter")}el.hidden=!show});
+ const panes=paneList(pg);
+ if(panes.length){const names=panes.map(p=>p.dataset.pane),s=sub&&names.includes(sub)?sub:(o.reset?names[0]:(names.includes(cur.sub[pg])?cur.sub[pg]:names[0]));cur.sub[pg]=s;
+  panes.forEach(p=>{const show=p.dataset.pane===s;if(show&&p.hidden){p.classList.remove("enter");void p.offsetWidth;p.classList.add("enter")}p.hidden=!show});
+  $$('.pg[data-pg="'+pg+'"] [data-sub]').forEach(b=>b.setAttribute("aria-selected",b.dataset.sub===s))}
+ cur.pg=pg;setNav(pg);if(!o.keep&&!o.noScroll)window.scrollTo(0,0);
+ if(pg==="account")renderAccount();if(pg==="team")renderTeam();
+ try{const h="#/"+pg+(panes.length?"/"+cur.sub[pg]:"");if(location.hash!==h&&!/access_token|refresh_token|error_description|type=/.test(location.hash))history.replaceState(null,"",h)}catch(err){}}
+function route(h){const m=/^#\/(\w+)(?:\/(\w+))?$/.exec(h);if(m){showPage(m[1],m[2],{reset:!m[2]});return true}
+ let el;try{el=document.querySelector(h)}catch(err){return false}if(!el)return false;const pgEl=el.closest(".pg");if(!pgEl)return false;
+ const pane=el.closest(".pane"),top=el.matches(".sec")||el.id==="top"||el.matches(".pane");
+ showPage(pgEl.dataset.pg,pane?pane.dataset.pane:null,{reset:el.matches(".sec")||el.id==="top",keep:!top});
+ if(top)window.scrollTo({top:0,behavior:"smooth"});else el.scrollIntoView({behavior:"smooth",block:"start"});return true}
+$$(".pg").forEach(pgEl=>{const panes=[...pgEl.querySelectorAll(".pane")];if(!panes.length)return;const bar=document.createElement("div");bar.className="tabs subtabs";bar.setAttribute("role","tablist");
+ bar.innerHTML=panes.map(p=>`<button class="tab" role="tab" aria-selected="false" data-sub="${esc(p.dataset.pane)}">${esc(p.dataset.label)}</button>`).join("");panes[0].before(bar)});
+document.addEventListener("click",e=>{if(e.defaultPrevented)return;
+ const st=e.target.closest("[data-sub]");if(st){showPage(st.closest(".pg").dataset.pg,st.dataset.sub,{noScroll:true});return}
+ const a=e.target.closest('a[href^="#"]');if(!a)return;const h=a.getAttribute("href");if(h==="#"||h==="#main")return;if(route(h))e.preventDefault()});
+addEventListener("hashchange",()=>{const m=/^#\/(\w+)(?:\/(\w+))?/.exec(location.hash||"");if(m&&(m[1]!==cur.pg||(m[2]&&m[2]!==cur.sub[cur.pg])))showPage(m[1],m[2])});
+addEventListener("resize",()=>setNav(cur.pg));if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>setNav(cur.pg));
+(function(){const m=/^#\/(\w+)(?:\/(\w+))?/.exec(location.hash||"");showPage(m?m[1]:"home",m?m[2]:null,{noScroll:true})})();
+initAuth();
+/* gentle reveal on scroll */
+(function(){const sel=".sec-head,.do>div,.tl li,.ev,.person,.amb,.st,.res-cols>div,.doc,.qwrap>div,.grid3>.card,#jTabs,#jPanel,.map,.empty,.sub";
+ const els=[...document.querySelectorAll(sel)];if(!("IntersectionObserver"in window)||matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+ const count=new Map(),io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.1,rootMargin:"0px 0px -30px 0px"});
+ els.forEach(el=>{const p=el.parentElement,n=count.get(p)||0;count.set(p,n+1);el.style.transitionDelay=Math.min(n,4)*90+"ms";el.classList.add("rv");io.observe(el)})})();
+/* profiles and card verification */
+const photoOf=r=>{const b=BOARD.find(x=>x.id===r.id);return b?b.photo:(r.photo||"")},bioOf=r=>{const b=BOARD.find(x=>x.id===r.id);return b?b.bio:(r.bio||"")};
+async function checkCode(r,raw){const c=raw.toUpperCase().replace(/[^A-Z0-9]/g,"");if(c.length!==10)return "format";
+ if(r.hash&&window.crypto&&crypto.subtle){const enc=new TextEncoder(),k=await crypto.subtle.importKey("raw",enc.encode(c),"PBKDF2",false,["deriveBits"]);
+  const bits=await crypto.subtle.deriveBits({name:"PBKDF2",salt:enc.encode(r.salt),iterations:100000,hash:"SHA-256"},k,256);
+  if([...new Uint8Array(bits)].map(b=>b.toString(16).padStart(2,"0")).join("")===r.hash)return "ok"}
+ if(SB){try{const {data,error}=await SB.rpc("verify_card",{p_rel_id:r.id,p_code:c});if(!error&&data===true)return "ok"}catch(err){}return "no"}
+ return r.hash?"no":"unsupported"}
+function openProfile(id){const r=RECORDS.find(x=>x.id===id&&x.listed!==false);if(!r)return;
+ const since=r.joined?fmt(r.joined.length===7?r.joined+"-01":r.joined,{month:"long",year:"numeric"}):"";
+ const rows=[["Position",r.role],["Year",r.year],["Major",r.major],["Faculty",r.faculty],["Member since",since]].filter(x=>x[1]),bio=bioOf(r);
+ $("#pbody").innerHTML=`<div class="prow">${ph(r.name,photoOf(r))}<div><h3 id="pT">${esc(r.name)}</h3><p style="margin:0"><b>#${esc(r.id)}</b><span class="tag">${esc(r.type)}</span></p></div></div>
+ <dl class="pd">${rows.map(x=>`<dt>${esc(x[0])}</dt><dd>${esc(x[1])}</dd>`).join("")}</dl>${bio?`<p class="muted">${esc(bio)}</p>`:""}
+ <div class="vbox"><h4>Check a card</h4><p class="muted small" style="margin:0 0 10px">Did someone show you a REL card with this ID? Enter the private code printed on it. A fake card will not have the right code.</p><div class="row"><input id="vCode" maxlength="11" placeholder="XXXXX-XXXXX" autocomplete="off" aria-label="Card code"><button type="button" class="btn primary sm" id="vBtn">Verify</button></div><p class="vres" id="vRes" role="status" aria-live="polite"></p><div id="cardBox"></div></div>
+ <p class="muted small">Phone numbers and emails are private and never shown on this site. To reach a member, message the board.</p><div class="row"><button type="button" class="btn sm" data-pclose>Close</button></div>`;
+ const o=$("#pov");o.classList.add("on");o.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";
+ const go=async()=>{const v=$("#vRes");v.className="vres";v.textContent="Checking...";$("#cardBox").innerHTML="";const s=await checkCode(r,$("#vCode").value);
+  if(s==="ok"){v.className="vres ok";v.textContent="Verified. This is a valid REL card for "+r.name+".";showCard(r)}else if(s==="no"){v.className="vres no";v.textContent="This code does not match this ID. Do not trust this card."}else if(s==="format"){v.className="vres no";v.textContent="Enter the full 10-character code."}else{v.className="vres no";v.textContent="Verification is not available in this browser."}};
+ $("#vBtn").addEventListener("click",go);$("#vCode").addEventListener("keydown",e=>{if(e.key==="Enter")go()});$("[data-pclose]").focus()}
+function closeProfile(){const o=$("#pov");o.classList.remove("on");o.setAttribute("aria-hidden","true");document.body.style.overflow=""}
+$("#pov").addEventListener("click",e=>{if(e.target.id==="pov"||e.target.closest("[data-pclose]"))closeProfile()});
+document.addEventListener("keydown",e=>{const o=$("#pov");if(!o.classList.contains("on"))return;if(e.key==="Escape")closeProfile();
+ if(e.key==="Tab"){const f=[...o.querySelectorAll("input,button")],i=f.indexOf(document.activeElement);e.preventDefault();f[(i+(e.shiftKey?-1:1)+f.length)%f.length].focus()}});
+/* downloads (a real Save button when the viewer allows it) */
+let DL=null;if(window.claude&&claude.use){claude.use("downloads").then(d=>{DL=d}).catch(()=>{})}
+function dataBlob(u){const m=/^data:([^;,]+)?(;base64)?,(.*)$/.exec(u);if(!m)return null;if(m[2]){const bin=atob(m[3]),a=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)a[i]=bin.charCodeAt(i);return new Blob([a],{type:m[1]||"image/png"})}return new Blob([decodeURIComponent(m[3])],{type:m[1]||"text/plain"})}
+async function saveFile(u,name){const b=dataBlob(u);if(!b){toast("Could not save the file. Press and hold the image to save it.");return}
+ if(!DL){const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);toast("Saved");return}
+ try{await DL.save({filename:name,data:b});toast("Saved")}catch(err){if(!err||err.code!=="declined")toast("Could not save the file. Press and hold the image to save it.")}}
+async function myCard(){const v=$("#mcRes"),box=$("#myCard");box.innerHTML="";v.className="vres";const id=asId($("#mcId").value),r=id&&RECORDS.find(x=>x.id===id&&x.listed!==false);
+ if(!r){v.className="vres no";v.textContent="We could not find that ID or code.";return}
+ v.textContent="Checking...";const s=await checkCode(r,$("#mcCode").value);
+ if(s==="ok"){v.className="vres ok";v.textContent="Verified. Welcome, "+r.name+".";showCard(r,box)}else{v.className="vres no";v.textContent=s==="format"?"Enter the full 10-character code.":s==="unsupported"?"Verification is not available in this browser.":"We could not find that ID or code."}}
+/* digital membership card */
+async function cardUrl(r){const W=1012,H=638,c=document.createElement("canvas");c.width=W;c.height=H;const x=c.getContext("2d");
+ try{await Promise.all([document.fonts.load('800 60px "Barlow Condensed"'),document.fonts.load('600 30px "Barlow"')])}catch(err){}
+ const load=s=>new Promise(res=>{if(!s)return res(null);const i=new Image();i.onload=()=>res(i);i.onerror=()=>res(null);i.src=s});
+ const [logo,pic]=await Promise.all([load(LOGO.light),load(photoOf(r))]);
+ x.fillStyle="#800020";x.fillRect(0,0,W,H);
+ x.globalAlpha=.09;x.fillStyle="#F8F6F1";x.beginPath();x.arc(W-40,H+60,340,0,Math.PI*2);x.fill();x.beginPath();x.arc(W-40,H+60,210,0,Math.PI*2);x.fill();x.globalAlpha=1;
+ let lx=52;if(logo){const h=130,w=h*logo.width/logo.height;x.drawImage(logo,52,48,w,h);lx=52+w+26}
+ x.fillStyle="#F8F6F1";x.font='800 40px "Barlow Condensed", "Arial Narrow", Arial, sans-serif';x.fillText("REL member card",lx,100);
+ x.fillStyle="#E8C9C9";x.font='500 24px "Barlow", Arial, sans-serif';x.fillText("Lebanese University, ULFG2",lx,138);
+ const d=190,px=W-52-d,py=48;x.save();x.beginPath();x.arc(px+d/2,py+d/2,d/2,0,Math.PI*2);x.clip();
+ if(pic){const s=Math.max(d/pic.width,d/pic.height);x.drawImage(pic,px+(d-pic.width*s)/2,py+(d-pic.height*s)/2,pic.width*s,pic.height*s)}
+ else{x.fillStyle="#F8F6F1";x.fillRect(px,py,d,d);x.fillStyle="#800020";x.font='800 80px "Barlow Condensed", Arial, sans-serif';x.textAlign="center";x.fillText(initials(r.name),px+d/2,py+d/2+28);x.textAlign="left"}
+ x.restore();
+ let fs=88;x.fillStyle="#F8F6F1";do{x.font='800 '+fs+'px "Barlow Condensed", "Arial Narrow", Arial, sans-serif';fs-=4}while(x.measureText(r.name).width>W-104&&fs>32);x.fillText(r.name,52,372);
+ x.fillStyle="#E8C9C9";x.font='600 40px "Barlow", Arial, sans-serif';x.fillText(r.role,52,430);
+ const line=[r.year,r.major].filter(Boolean).join(", ");if(line){x.font='500 30px "Barlow", Arial, sans-serif';x.fillText(line,52,476)}
+ x.fillStyle="rgba(248,246,241,.35)";x.fillRect(52,522,W-104,2);
+ x.fillStyle="#F8F6F1";x.font='800 64px "Barlow Condensed", Arial, sans-serif';x.fillText("#"+r.id,52,598);
+ x.textAlign="right";x.fillStyle="#E8C9C9";x.font='500 24px "Barlow", Arial, sans-serif';x.fillText("Verified on the REL website",W-52,592);x.textAlign="left";
+ return c.toDataURL("image/png")}
+async function showCard(r,box){box=box||$("#cardBox");box.innerHTML='<p class="muted small">Preparing your card...</p>';const u=await cardUrl(r);
+ box.innerHTML=`<h4 style="margin-top:16px">Your digital card</h4><img class="card-img" src="${u}" alt="REL membership card for ${esc(r.name)}"><div class="row" style="margin-top:12px"><button type="button" class="btn primary sm" data-dl>Download card</button></div><p class="muted small" style="margin:8px 0 0">You can also press and hold the card on a phone, or right-click it on a computer, then choose Save image.</p>`;
+ const b=box.querySelector("[data-dl]");if(b)b.addEventListener("click",()=>saveFile(u,"REL-card-"+r.id+".png"))}
+/* FAQ */
+const FAQ=[
+ ["What is REL?", "REL stands for Relations, Entrepreneurship and Leadership. We are the club of the Faculty of Engineering, Branch 2 (ULFG2) at the Lebanese University. We run events, workshops and a community that helps students build their network, start something of their own and learn to lead."],
+ ["Is REL the best club in Roumieh?", "ABSOLUTELY yes. Next question. Okay, fine, we will explain: there is no room for competition. We checked. Twice."],
+ ["Who can join, and does it cost anything?", "Membership is free for students with an LU student email (name@st.ul.edu.lb). Create an account, then fill in the short application."],
+ ["What happens after I join?", "The President or Vice President reviews your application. If it is accepted, your profile and REL ID are created automatically, and you can create your private card code and get your digital card from your account."],
+ ["What is the card code, and who can see it?", "It is a private 10-character code that proves your REL card is real. Never share it. Anyone who has your ID and code could claim to be you."],
+ ["How do I check someone's REL card?", "Search their ID under People, open their profile and enter the code printed on their card in Check a card. If it does not match, the card is fake."],
+ ["How do I register for an event?", "Open Events, pick an upcoming event and press Register to attend. At the event, use Event check-in with your REL ID and the event code, so your points are counted."],
+ ["How do points and the leaderboard work?", "You earn points for attending events and workshops, volunteering, bringing new members and more. The full list is under Leaderboard, and the board updates the table after each event."],
+ ["Are my phone number and email public?", "No. Phone numbers and emails are never shown on this site. Only the name, position, year, major and faculty of people who agreed to be listed appear."],
+ ["What does an ambassador do?", "Ambassadors represent REL in their class or major, bring in new members and share our events. They get a certificate and a title they can add to LinkedIn."],
+ ["Can my company sponsor REL?", "Yes, and we will act surprised. Sponsors get visibility at our events and in front of the most ambitious students in Roumieh, plus our eternal gratitude, which is worth more than it sounds. Open Work with REL, choose I want to sponsor and the board will reply before your coffee gets cold."],
+ ["We are a company or an organization. Can we partner with REL?", "Please do. We are open to workshops, talks, site visits, internships and ideas we have not thought of yet. Open Work with REL, choose the company or organization option and tell us what you have in mind."],
+ ["Can another club collaborate with us?", "Yes, we love a crossover episode. Joint events, workshops, competitions, anything. Just come with a plan and snacks. Open Work with REL and choose We are a club."],
+ ["Can I pitch a startup idea?", "Yes. Open Join REL, choose Pitch your idea and tell the board. The best ideas may be invited to present at a REL event."],
+ ["Is this a real club or just a group chat with ambition?", "A real club, with a real board, real events and yes, also a very ambitious group chat."],
+ ["I have never networked before. Is that a problem?", "It is the perfect starting point. Everyone begins by standing near the snacks, pretending to read their phone. We will teach you to walk two meters and say hello."],
+ ["Do you accept complaints?", "Always. They go into a special folder called Great Ideas We Have Not Understood Yet. Use the Ask a question tab."]
+];
+$("#faqList").innerHTML=FAQ.map(f=>`<details class="qa"><summary>${esc(f[0])}</summary><p>${esc(f[1])}</p></details>`).join("");
+/* photo viewer */
+(function(){const o=$("#lbx"),img=$("#lbImg");let arr=[],i=0,ttl="";
+ const draw=()=>{img.src=arr[i];img.alt=ttl+" photo "+(i+1);$("#lbCount").textContent=(i+1)+" / "+arr.length;$("#lbSave").hidden=!DL};
+ const close=()=>{o.classList.remove("on");o.setAttribute("aria-hidden","true");document.body.style.overflow=""};
+ document.addEventListener("click",e=>{const t=e.target.closest("[data-gal]");
+  if(t){const ev=PAST[+t.dataset.gal];arr=ev.photos;ttl=ev.title;i=+t.dataset.i;draw();o.classList.add("on");o.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";$("#lbClose").focus();return}
+  if(e.target===o||e.target.id==="lbClose")close();
+  if(e.target.id==="lbPrev"){i=(i+arr.length-1)%arr.length;draw()}
+  if(e.target.id==="lbNext"){i=(i+1)%arr.length;draw()}
+  if(e.target.id==="lbSave"){const u=arr[i],ext=(/^data:image\/(png|webp|gif)/.exec(u)||[0,"jpg"])[1];saveFile(u,(ttl||"REL").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"")+"-photo-"+(i+1)+"."+ext)}});
+ document.addEventListener("keydown",e=>{if(!o.classList.contains("on"))return;if(e.key==="Escape")close();if(e.key==="ArrowRight"){i=(i+1)%arr.length;draw()}if(e.key==="ArrowLeft"){i=(i+arr.length-1)%arr.length;draw()}})})();
+/* work with REL */
+const WORK=[
+ {tab:"I want to sponsor",title:"Sponsor REL",blurb:"Put your name in front of ambitious engineering students and help us run better events.",ways:["Sponsor the flagship event","Sponsor a workshop or competition","Logo and mention on our Instagram and LinkedIn","A stand or a table at an event","Prizes or gifts for participants"]},
+ {tab:"We are a company or organization",title:"Partner with REL",blurb:"Open doors for students with talks, workshops, visits and first experiences.",ways:["Give a talk or a workshop","Host a company or site visit","Offer internships or jobs","Mentor students","Support our startup accelerator goal"]},
+ {tab:"We are a club",title:"Collaborate with REL",blurb:"Two clubs make a better event than one. Bring the idea and the snacks, we will bring the energy.",ways:["A joint event","A joint workshop or talk","A competition or challenge","Share each other's audiences on social media","Something else"]}
+];
+let wk=0,wSel=new Set();
+function drawWork(){const w=WORK[wk],u=CONFIG.forms.pitch;
+ $("#pTabs").innerHTML=WORK.map((x,i)=>`<button class="tab" role="tab" aria-selected="${i===wk}" data-wt="${i}">${esc(x.tab)}</button>`).join("");
+ const chips=w.ways.map((x,i)=>`<button type="button" class="chip" aria-pressed="${wSel.has(i)}" data-w="${i}">${esc(x)}</button>`).join("");
+ const right=u?`<p class="muted">Fill in the partnership form. It takes about two minutes.</p><a class="btn primary" href="${esc(u)}" target="_blank" rel="noopener">Open the form</a>`:`<label class="fld">Your name *<input data-wf="name" data-req autocomplete="off"></label><label class="fld">Company, organization or club *<input data-wf="org" data-req autocomplete="off"></label><label class="fld">Anything else we should know?<textarea data-wf="note"></textarea></label><div class="row"><a class="btn primary" id="wSend" href="#" target="_blank" rel="noopener">Send to the board on WhatsApp</a></div><p class="alt-links">Prefer email? <a id="wMail" href="#" target="_blank" rel="noopener">Send it by email instead</a>.</p>`;
+ $("#pPanel").innerHTML=`<div class="jp"><div><h3>${esc(w.title)}</h3><p class="muted">${esc(w.blurb)}</p><p class="muted small" style="margin-bottom:8px">Ways we can work together. Pick any that interest you.</p><div class="chips">${chips}</div><p class="alt-links">Planned this year: 7 on-campus events, 9 online workshops and 1 flagship event.</p></div><div>${right}</div></div>`;wSync()}
+function wMsg(){const w=WORK[wk],g=k=>{const el=document.querySelector('[data-wf="'+k+'"]');return el?el.value.trim():""};
+ const ways=[...wSel].sort((a,b)=>a-b).map(i=>w.ways[i]);
+ return "REL website - Partnership request ("+w.title+")\n"+[["Name",g("name")],["Company, organization or club",g("org")],["Interested in",ways.join("; ")],["Notes",g("note")]].filter(r=>r[1]).map(r=>r[0]+": "+r[1]).join("\n")}
+function wSync(){const s=$("#wSend");if(!s)return;const m=wMsg();s.href="https://wa.me/"+CONFIG.wa+"?text="+encodeURIComponent(m);$("#wMail").href="mailto:"+CONFIG.email+"?subject="+encodeURIComponent("REL website - Partnership request")+"&body="+encodeURIComponent(m)}
+document.addEventListener("click",e=>{const t=e.target.closest("[data-wt]");if(t){wk=+t.dataset.wt;wSel=new Set();drawWork();return}
+ const c=e.target.closest("[data-w]");if(c){const i=+c.dataset.w;if(wSel.has(i))wSel.delete(i);else wSel.add(i);c.setAttribute("aria-pressed",wSel.has(i));wSync();return}
+ const s=e.target.closest("#wSend");if(s){const all=[...document.querySelectorAll("#pPanel [data-req]")];all.forEach(el=>el.removeAttribute("aria-invalid"));const miss=all.filter(el=>!el.value.trim());
+  if(miss.length){e.preventDefault();miss.forEach(el=>el.setAttribute("aria-invalid","true"));miss[0].focus();toast("Please fill in the fields marked with *.")}else toast("Opening WhatsApp. Press send there to finish.")}});
+$("#pPanel").addEventListener("input",wSync);
+drawWork();
+/* site search */
+(function(){const ov=$("#sov"),q=$("#sq"),box=$("#sres"),btn=$("#sBtn");let list=[];
+ const go=h=>()=>route(h);
+ function index(){const L=[];
+  [["#about","About REL","What REL is, what we do and our history","club history pr club rebrand mission"],["#events","Events and workshops","Upcoming, past and the calendar","calendar schedule"],["#people","People","Board, ambassadors and member search","team"],["#points","Leaderboard","Points and how to earn them","ranking score"],["#learn","Learn","Books, journal, speakers, documents","resources articles templates presentations"],["#play","Play","Daily puzzle and business question","game quiz crown"],["#community","Community","Network map, partners, pitch, voting","network"],["#partner","Work with REL","Sponsors, companies, organizations and clubs","sponsor sponsorship partner partnership collaborate collaboration company organization club"],["#faq","FAQ","Quick answers about joining, IDs, events and points","help questions answers"],["#join","Join REL","Become a member, ambassador and more","sign up register"]].forEach(s=>L.push({t:s[1],k:"Section",sub:s[2],s:s[1]+" "+s[2]+" "+s[3],a:go(s[0])}));
+  [...EVENTS.map(e=>[e,"up"]),...PAST.map(e=>[e,"past"])].forEach(([e,w])=>L.push({t:e.title,k:"Event",sub:e.date?fmt(e.date,{day:"numeric",month:"long"}):"Date to be announced",s:[e.title,e.type,e.blurb,e.place].join(" "),a:()=>{showEv(w);go("#events")()}}));
+  BOARD.filter(b=>!b.name).forEach(b=>L.push({t:b.role,k:"Board",sub:"Name coming soon",s:b.role+" "+b.bio,a:go("#board")}));
+  AMBS.filter(a=>a.name).forEach(a=>L.push({t:a.name,k:"Ambassador",sub:a.info||"",s:[a.name,a.info].join(" "),a:go("#ambs")}));
+  RECORDS.filter(r=>r.listed!==false).forEach(r=>L.push({t:r.name,k:"#"+r.id,sub:r.role+", "+r.type,s:[r.name,r.id,"#"+r.id,"rel-"+r.id,r.role,r.type,r.major,r.year,r.faculty].join(" "),a:()=>openProfile(r.id)}));
+  RES.forEach((r,ri)=>{const open=()=>{rt=ri;drawRes();go("#learn")()};L.push({t:r.n,k:"Topic",sub:r.intro,s:r.n+" "+r.intro,a:open});r.books.forEach(b=>L.push({t:b[0],k:"Book",sub:b[1],s:[b[0],b[1],b[2],r.n].join(" "),a:open}))});
+  DOCS.forEach(d=>L.push({t:d.t,k:"Document",sub:d.k,s:d.t+" "+d.k,a:go("#docs")}));
+  Object.keys(FORMS).forEach(k=>L.push({t:FORMS[k].tab,k:"Join",sub:FORMS[k].blurb,s:FORMS[k].tab+" "+FORMS[k].blurb,a:()=>openJoin(k,true)}));
+  WORK.forEach((w,i)=>L.push({t:w.tab,k:"Work with REL",sub:w.blurb,s:w.tab+" "+w.title+" "+w.blurb+" "+w.ways.join(" "),a:()=>{wk=i;wSel=new Set();drawWork();go("#partner")()}}));
+  ANN.forEach(a=>L.push({t:a.title,k:"News",sub:a.text,s:a.title+" "+(a.text||""),a:()=>{route("#events");showEv("news")}}));
+  FAQ.forEach((f,i)=>L.push({t:f[0],k:"FAQ",sub:f[1],s:f[0]+" "+f[1],a:()=>{route("#faq");const d=$$("#faqList details")[i];d.open=true;setTimeout(()=>d.scrollIntoView({behavior:"smooth",block:"center"}),80)}}));
+  HISTORY.forEach(h=>L.push({t:h.y,k:"History",sub:h.t,s:h.y+" "+h.t,a:go("#history")}));
+  L.push({t:"Contact us",k:"Contact",sub:"Email, phone and social links",s:"contact email phone whatsapp instagram linkedin",a:()=>document.querySelector("footer").scrollIntoView({behavior:"smooth"})});
+  return L}
+ function draw(){const v=q.value.trim().toLowerCase();list=index();let r;
+  if(!v){r=list.filter(x=>x.k==="Section").concat(list.filter(x=>x.t==="Become a member"));box.innerHTML=r.map((x,i)=>row(x,i)).join("");return}
+  const w=v.split(/\s+/);r=list.map(x=>{const h=(x.t+" "+x.s).toLowerCase();if(!w.every(z=>h.includes(z)))return null;const t=x.t.toLowerCase();return{x,sc:(t.startsWith(v)?4:t.includes(v)?3:1)}}).filter(Boolean).sort((a,b)=>b.sc-a.sc).slice(0,8).map(o=>o.x);
+  list=r;box.innerHTML=r.length?r.map((x,i)=>row(x,i)).join(""):`<p class="shint">Nothing found for "${esc(q.value.trim())}". Try a name, an event or a topic.</p>`}
+ const row=(x,i)=>`<button type="button" data-si="${i}"><span>${esc(x.t)}${x.sub?`<small>${esc(String(x.sub).slice(0,80))}</small>`:""}</span><span class="k">${esc(x.k)}</span></button>`;
+ function show(){ov.classList.add("on");ov.setAttribute("aria-hidden","false");q.value="";draw();document.body.style.overflow="hidden";q.focus()}
+ function hide(back){ov.classList.remove("on");ov.setAttribute("aria-hidden","true");document.body.style.overflow="";if(back)btn.focus({preventScroll:true})}
+ btn.addEventListener("click",show);q.addEventListener("input",draw);
+ ov.addEventListener("click",e=>{if(e.target===ov){hide(true);return}const b=e.target.closest("[data-si]");if(b){const a=list[+b.dataset.si].a;hide(false);setTimeout(a,60)}});
+ document.addEventListener("keydown",e=>{const on=ov.classList.contains("on");
+  if(e.key==="Escape"&&on){hide(true);return}
+  if(e.key==="/"&&!on&&!/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){e.preventDefault();show();return}
+  if(e.key==="Tab"&&on){const f=[q,...box.querySelectorAll("button")],i=f.indexOf(document.activeElement);e.preventDefault();f[(i+(e.shiftKey?-1:1)+f.length)%f.length].focus()}});
+})();
+/* daily business question */
+const QZ=[["What does MVP stand for in the startup world?",["Most Valuable Player","Minimum Viable Product","Maximum Value Proposition","Main Venture Plan"],1,"An MVP is the simplest version of a product that real users can test."],["What is a unicorn in business?",["A company with 1,000 employees","A private startup valued at over $1 billion","A company listed on two stock markets","A startup with no competitors"],1,"Such startups are rare, which is where the name comes from."],["What does ROI stand for?",["Rate of Inflation","Return on Investment","Revenue of Industry","Risk of Innovation"],1,"ROI compares what you gained to what you spent."],["What does B2B mean?",["Back to business","Business to business","Brand to brand","Buyer to buyer"],1,"A B2B company sells to other companies, not to individuals."],["Revenue minus costs equals what?",["Equity","Profit","Cash flow","Market share"],1,"Profit is what remains after all costs are paid."],["What is inflation?",["A fall in unemployment","A general rise in prices over time","A rise in interest rates","Growth in company profits"],1,"When prices rise, the same money buys less."],["In a startup, what does equity mean?",["A loan from a bank","Ownership in the company","A monthly salary","The company's debt"],1,"Equity is a share of ownership, often held by founders and investors."],["What is a pivot?",["A product launch party","A major change in strategy","A new office","A price discount"],1,"Startups pivot when the first idea is not working."],["What does IPO stand for?",["Initial Public Offering","Internal Profit Option","International Price Order","Investment Planning Office"],0,"An IPO is when a company first sells its shares to the public."],["What does a SWOT analysis cover?",["Sales, Wages, Orders, Taxes","Strengths, Weaknesses, Opportunities, Threats","Suppliers, Workers, Offers, Trends","Savings, Wealth, Options, Time"],1,"It looks at a company or idea from four simple angles."],["What is bootstrapping?",["Raising money from venture capital","Building a company with your own money and sales","Selling a company","Buying a competitor"],1,"Bootstrapped founders keep control but grow with limited cash."],["What is a stock?",["A loan to a company","A share of ownership in a company","A type of bank account","A tax on profits"],1,"Owning a stock means owning a small piece of the company."],["What does diversification mean in investing?",["Putting all your money in one asset","Spreading money across different assets","Selling everything","Only buying gold"],1,"It reduces the risk that one bad investment hurts everything."],["What is compound interest?",["Interest only on the original amount","Interest on the original amount and on past interest","A fee charged by banks","A tax-free bonus"],1,"Compounding is why starting early matters so much."],["What does KPI stand for?",["Key Performance Indicator","Known Profit Index","Keep Progress Improving","Kinetic Product Idea"],0,"KPIs are the numbers a team tracks to know if it is succeeding."],["The Pareto principle says roughly what?",["50% of work gives 50% of results","80% of results come from 20% of causes","Every task takes twice as long","Profit doubles each year"],1,"It is a rule of thumb: focus on the few things that matter most."],["What does CEO stand for?",["Chief Executive Officer","Central Economic Office","Chief Engineering Owner","Company Equity Officer"],0,"The CEO is the top executive responsible for the whole company."],["What is cash flow?",["The total value of a company","Money moving in and out of a business","Yearly profit","The price of a share"],1,"A profitable company can still fail if it runs out of cash."],["What does GDP measure?",["A country's total debt","The value of goods and services a country produces","The average salary","The number of companies"],1,"GDP is the main measure of the size of an economy."],["What is venture capital?",["A bank loan for homes","Funding for early-stage, high-growth companies in exchange for equity","A government grant","A tax refund"],1,"VCs invest in many startups hoping a few become very large."],["Which of these is a fixed cost?",["Raw materials per unit","Monthly office rent","Sales commissions","Shipping per order"],1,"Fixed costs stay the same however much you sell."],["What does SaaS stand for?",["Software as a Service","Sales as a Strategy","Startup and Scale Systems","Secure and Safe Software"],0,"SaaS is software you pay for by subscription instead of buying once."],["What is market share?",["A company's portion of total sales in its market","The price of one share","The size of a store","A company's yearly profit"],0,"With 20% market share, a company sells one in every five units in its market."],["What is a stakeholder?",["Only the owner","Anyone affected by or interested in a business","Only the employees","A type of investor"],1,"Customers, employees, investors and communities are all stakeholders."],["What is an elevator pitch?",["A pitch made only in buildings","A 30 to 60 second explanation of your idea","A written business plan","A sales discount"],1,"It is short enough to deliver during an elevator ride."],["What is due diligence?",["A tax form","Careful checking of a deal or company before committing","A company holiday","A type of loan"],1,"Investors do it before putting money in."],["What is a recession?",["A period of strong growth","A significant decline in economic activity","A fall in stock prices for one day","A rise in inflation only"],1,"Recessions usually bring lower spending, weaker hiring and falling output."],["What is a business model?",["The company logo","How a company creates value and earns money","The office layout","A list of employees"],1,"Two companies can sell the same product with very different business models."],["What does scalable mean for a business?",["It is very small","It can grow without costs growing at the same rate","It has no employees","It sells only online"],1,"Scalable businesses can serve many more customers without proportionally more effort."],["What is a value proposition?",["The price of a share","The reason customers should choose you","A yearly report","An investor's offer"],1,"A good one is clear, specific and about the customer, not about you."]];
+(function(){const d=new Date(),key=d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate(),day=Math.floor(new Date(d.getFullYear(),d.getMonth(),d.getDate())/864e5),it=QZ[day%QZ.length],box=$("#qzO");
+ $("#qzQ").textContent=it[0];
+ function show(pick){[...box.children].forEach((b,i)=>{b.disabled=true;if(i===it[2]){b.classList.add("ok");b.append(" (correct)")}else if(i===pick){b.classList.add("no");b.append(" (your answer)")}});$("#qzE").textContent=(pick===it[2]?"Correct. ":"Not quite. ")+it[3]+" A new question comes tomorrow."}
+ it[1].forEach((txt,i)=>{const b=document.createElement("button");b.type="button";b.textContent=txt;b.addEventListener("click",()=>{try{localStorage.setItem("rel-qz-"+key,String(i))}catch(err){}show(i)});box.appendChild(b)});
+ try{const s=localStorage.getItem("rel-qz-"+key);if(s!==null)show(+s)}catch(err){}})();
+/* daily puzzle */
+(function(){const N=7,COL=["#F4C9CF","#F6DFA4","#BEDCC6","#B9D3EA","#D8C6EC","#F5BFA0","#D5D1CC"],T=new Date(),key=T.getFullYear()+"-"+String(T.getMonth()+1).padStart(2,"0")+"-"+String(T.getDate()).padStart(2,"0");
+ function seedOf(s){let h=2166136261;for(const c of s){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0}
+ function rngOf(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+ const rnd=rngOf(seedOf("rel-"+key));const shuf=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+ const q=[];(function put(r){if(r===N)return true;for(const c of shuf([...Array(N).keys()])){if(q.slice(0,r).includes(c)||(r>0&&Math.abs(q[r-1]-c)<=1))continue;q[r]=c;if(put(r+1))return true}q.length=r;return false})(0);
+ const reg=Array.from({length:N},()=>Array(N).fill(-1)),cells=[];q.forEach((c,r)=>{reg[r][c]=r;cells.push([[r,c]])});
+ let left=N*N-N;while(left>0){let moved=false;for(const i of shuf([...Array(N).keys()])){if(!left)break;const cand=[];for(const[r,c]of cells[i])for(const[dr,dc]of[[1,0],[-1,0],[0,1],[0,-1]]){const nr=r+dr,nc=c+dc;if(nr>=0&&nc>=0&&nr<N&&nc<N&&reg[nr][nc]===-1)cand.push([nr,nc])}
+  if(cand.length){const[nr,nc]=cand[Math.floor(rnd()*cand.length)];reg[nr][nc]=i;cells[i].push([nr,nc]);left--;moved=true}}if(!moved)break}
+ const S=Array.from({length:N},()=>Array(N).fill(0));let t0=null,timer=null,done=false,secs=0;
+ const CROWN='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19h18v2H3zM3 7l4.5 4.5L12 4l4.5 7.5L21 7l-2 10H5z"/></svg>';
+ const mmss=s=>Math.floor(s/60)+":"+String(s%60).padStart(2,"0");
+ function analyze(){const qs=[];S.forEach((row,r)=>row.forEach((v,c)=>{if(v===2)qs.push([r,c])}));const bad=new Set();
+  for(let i=0;i<qs.length;i++)for(let j=i+1;j<qs.length;j++){const a=qs[i],b=qs[j];if(a[0]===b[0]||a[1]===b[1]||reg[a[0]][a[1]]===reg[b[0]][b[1]]||(Math.abs(a[0]-b[0])<=1&&Math.abs(a[1]-b[1])<=1)){bad.add(a.join());bad.add(b.join())}}
+  return{qs,bad}}
+ function draw(){const{qs,bad}=analyze();const g=$("#qgrid");g.innerHTML="";
+  for(let r=0;r<N;r++)for(let c=0;c<N;c++){const b=document.createElement("button");b.type="button";const v=S[r][c];
+   const w=(a,d)=>a?"3px":"1px";const top=r===0||reg[r-1][c]!==reg[r][c],bot=r===N-1||reg[r+1][c]!==reg[r][c],lf=c===0||reg[r][c-1]!==reg[r][c],rt=c===N-1||reg[r][c+1]!==reg[r][c];
+   b.style.background=COL[reg[r][c]];b.style.borderWidth=`${top?3:1}px ${rt?3:1}px ${bot?3:1}px ${lf?3:1}px`;
+   b.setAttribute("aria-label",`Row ${r+1}, column ${c+1}, ${v===2?"crown":v===1?"marked empty":"empty"}`);
+   if(v===2){b.innerHTML=CROWN;if(bad.has([r,c].join()))b.classList.add("bad")}else if(v===1)b.textContent="×";
+   b.disabled=done;b.addEventListener("click",()=>click(r,c));g.appendChild(b)}
+  $("#qCount").textContent=qs.length+" / "+N}
+ function click(r,c){if(done)return;if(t0===null){t0=Date.now();timer=setInterval(()=>{secs=Math.floor((Date.now()-t0)/1000);$("#qTime").textContent=mmss(secs)},500)}
+  S[r][c]=(S[r][c]+1)%3;const{qs,bad}=analyze();draw();
+  if(qs.length===N&&bad.size===0){done=true;clearInterval(timer);secs=Math.floor((Date.now()-t0)/1000);$("#qTime").textContent=mmss(secs);$("#qMsg").textContent="Solved in "+mmss(secs)+". Come back tomorrow for a new board.";$("#qShare").hidden=false;draw();try{localStorage.setItem("rel-q-"+key,String(secs))}catch(e){}}
+  else $("#qMsg").textContent=bad.size?"Two crowns clash. Check rows, columns, colors and neighbors.":""}
+ $("#qReset").addEventListener("click",()=>{S.forEach(r=>r.fill(0));clearInterval(timer);t0=null;done=false;secs=0;$("#qTime").textContent="0:00";$("#qMsg").textContent="";$("#qShare").hidden=true;draw()});
+ $("#qShare").addEventListener("click",async()=>{const m="I solved today's REL puzzle in "+mmss(secs)+". Can you beat it?";try{await navigator.clipboard.writeText(m);toast("Result copied")}catch(e){toast(m)}});
+ try{const p=localStorage.getItem("rel-q-"+key);if(p)$("#qMsg").textContent="Your best time today: "+mmss(+p)+"."}catch(e){}
+ draw()})();
+</script>
+</body>
+</html>
