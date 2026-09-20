@@ -498,6 +498,7 @@ let SB=null;
 function makeClient(k){try{return window.supabase?window.supabase.createClient(SB_URL,k,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}):null}catch(err){return null}}
 SB=makeClient(SB_KEY);
 const ST={user:null,team:null,member:null,app:null,ready:false};
+const SHOW_CARD_CODE=false; /* the private card code is switched off for now */
 function accountPromo(k){return ST.user?'<p class="muted">You are logged in.</p><a class="btn primary" href="#account">Go to my account</a>':`<p class="muted">${k==="card"?"Log in to see and save your digital card.":"Create a free account with your LU student email, then fill in the short application."}</p><div class="row"><a class="btn primary" href="#account" data-am-go="signup">Create account</a><a class="btn" href="#account" data-am-go="login">Log in</a></div>`}
 /* ---- Edit here: links, dates and lists ---- */
 const CONFIG={
@@ -509,7 +510,7 @@ const CONFIG={
 const FORMS={ /* [key,label,type,required,options] . If a Google Form link is set in CONFIG.forms, that tab shows an "Open the form" button instead. */
  member:{custom:"account",tab:"Become a member",title:"Become a member",blurb:"Get access to events and workshops, earn points on the leaderboard and vote on what REL does next.",note:"The President or Vice President reviews your application. If it is accepted, your profile and REL ID are created automatically.",subject:"Membership request",fields:[["name","Full name","text",1],["yearMajor","Year and major","text",1],["phone","Phone number","tel",0],["invited","Who invited you? (an ambassador or a friend)","text",0],["listed","I agree to be listed on the REL website","check",0]]},
  ambassador:{tab:"Become an ambassador",title:"Become an ambassador",blurb:"Represent REL in your class or major, bring in new members and share our events. You get a certificate and a title for your LinkedIn.",note:"The board will contact you with your first tasks.",subject:"Ambassador application",fields:[["name","Full name","text",1],["yearMajor","Year and major","text",1],["group","Class or group you would represent","text",0],["why","Why do you want to be an ambassador?","area",1]]},
- card:{tab:"My digital card",title:"Get your digital card",blurb:"Log in to your account to see your digital card and save it to your phone or computer.",note:"Your card code is created in your account. Never share it.",custom:"card"},
+ card:{tab:"My digital card",title:"Get your digital card",blurb:"Log in to your account to see your digital card and save it to your phone or computer.",note:"You can save the card to your phone or computer.",custom:"card"},
  checkin:{tab:"Event check-in",title:"Check in at an event",blurb:"Are you at an event? Check in with your REL ID so your points are counted.",note:"You need the event code shown at the event. Only people who are there know it.",subject:"Event check-in",fields:[["id","Your REL ID (like 0001)","text",1],["event","Which event?","text",1],["code","Event code","text",1]]},
  question:{tab:"Ask a question",title:"Ask a question",blurb:"Anything about REL, joining or events. The board answers.",subject:"Question",fields:[["name","Your name (optional)","text",0],["q","Your question","area",1]]},
  recommendation:{tab:"Give a recommendation",title:"Give a recommendation",blurb:"Suggest a speaker, a book, a workshop topic or a way to improve REL.",subject:"Recommendation",fields:[["type","What are you recommending?","select",1,["Speaker","Book","Workshop topic","Something else"]],["rec","Your recommendation","area",1],["why","Why is it a good fit?","area",0],["name","Your name (optional)","text",0]]},
@@ -526,7 +527,7 @@ const EVENTS=[ /* add form:"https://docs.google.com/forms/..." to each event for
 const PAST=[]; /* {title,type,date:"2026-10-02",place,blurb,recap:"What happened",photos:["data:image/jpeg;base64,..."]} newest first */
 const ANNOUNCEMENTS=[]; /* {date:"2026-09-20",title:"",text:"",link:"",pinned:false} */
 /* events move to Past by themselves once their date has passed; the countdown follows the next dated event */
-function prepEvents(){const today=new Date().toISOString().slice(0,10);
+function prepEvents(){const today=beirutDay();
  for(let i=EVENTS.length-1;i>=0;i--){if(EVENTS[i].date&&EVENTS[i].date<today)PAST.unshift(...EVENTS.splice(i,1))}
  EVENTS.sort((a,b)=>(a.date||"9999").localeCompare(b.date||"9999"));PAST.sort((a,b)=>(b.date||"").localeCompare(a.date||""));
  CONFIG.nextEvent=null;const n=EVENTS.find(e=>e.date);if(n)CONFIG.nextEvent={title:n.title,date:n.date+"T"+(n.time||"10:00")+":00",tentative:!!n.tentative};
@@ -692,13 +693,15 @@ function errText(e){const m=(e&&e.message)||String(e||"");
  if(/Invalid login credentials/i.test(m))return "Wrong email or password.";
  if(/Email not confirmed/i.test(m))return "Please confirm your email first. Open the link we sent you.";
  if(/already registered/i.test(m))return "This email already has an account. Try logging in.";
+ if(/row-level security|permission denied/i.test(m))return "You are not allowed to do this.";
  if(/rate limit|too many/i.test(m))return "Too many tries. Please wait a few minutes.";
  if(/Failed to fetch|NetworkError|network/i.test(m))return "Could not reach the server. Check your connection.";
  return m.slice(0,220)}
 const accHead=(t,p)=>`<div class="sec-head"><h2>${esc(t)}</h2>${p?`<p>${esc(p)}</p>`:""}</div>`;
 const say=(el,t,ok)=>{if(!el)return;el.className="vres "+(ok?"ok":"no");el.textContent=t};
 const accountBar=()=>`<p class="alt-links" style="margin-top:28px">Signed in as ${esc(ST.user.email||"")}. <button type="button" class="idlink" data-logout>Log out</button></p>`;
-const cardRec=m=>({id:m.rel_id,name:m.full_name,role:m.position||"Member",year:m.year,major:m.major,type:m.role});
+const photoUrl=p=>{try{return p&&SB?SB.storage.from("avatars").getPublicUrl(p).data.publicUrl:""}catch(err){return ""}};
+const cardRec=m=>({id:m.rel_id,name:m.full_name,role:m.position||"Member",year:m.year,major:m.major,type:m.role,photo:m.photo_path?photoUrl(m.photo_path):""});
 
 async function loadUser(){ST.team=ST.member=ST.app=null;
  if(!SB){ST.user=null;ST.ready=true;updateNav();return}
@@ -706,7 +709,7 @@ async function loadUser(){ST.team=ST.member=ST.app=null;
   if(ST.user){const em=(ST.user.email||"").toLowerCase();
    try{await SB.rpc("claim_team_profile")}catch(err){}
    const t=await SB.from("team").select("*").eq("email",em).maybeSingle();ST.team=t.data||null;
-   const m=await SB.from("members").select("rel_id,full_name,role,position,year,major,faculty,joined,listed,bio,active,email,phone,uni_id").eq("user_id",ST.user.id).maybeSingle();ST.member=m.data||null;
+   const m=await SB.from("members").select("rel_id,full_name,role,position,year,major,faculty,joined,listed,bio,active,email,phone,uni_id,photo_path").eq("user_id",ST.user.id).maybeSingle();ST.member=m.data||null;
    const a=await SB.from("applications").select("*").eq("user_id",ST.user.id).maybeSingle();ST.app=a.data||null}
  }catch(err){}
  ST.ready=true;updateNav()}
@@ -725,7 +728,7 @@ function authView(box){const m=authMode==="signup"?"signup":authMode==="reset"?"
  box.innerHTML=accHead("Your account","Log in, or create an account with your LU student email to apply for membership.")+
  `<div class="tabs" role="tablist">${[["login","Log in"],["signup","Create account"]].map(t=>`<button type="button" class="tab" role="tab" aria-selected="${m===t[0]}" data-am="${t[0]}">${t[1]}</button>`).join("")}</div>
  <div class="card" style="max-width:520px;background:var(--bg)"><form id="authForm" data-mode="${m}" novalidate>
- <label class="fld">Email${m==="signup"?" (your LU student email)":""} *<input type="email" id="aEmail" autocomplete="email" placeholder="name@st.ul.edu.lb"></label>
+ <label class="fld">Email${m==="signup"?" (your LU student email, ending in @st.ul.edu.lb)":""} *<input type="email" id="aEmail" autocomplete="email" placeholder="name@st.ul.edu.lb"></label>
  ${m==="reset"?"":`<label class="fld">Password *<input type="password" id="aPass" autocomplete="${m==="signup"?"new-password":"current-password"}"></label>`}
  ${m==="signup"?'<p class="muted small">At least 8 characters. We only use your details for REL membership.</p>':""}
  <div class="row"><button class="btn primary" type="submit">${m==="signup"?"Create account":m==="reset"?"Send reset link":"Log in"}</button></div>
@@ -760,6 +763,8 @@ function memberView(box){const m=ST.member,first=(m.full_name||"").split(" ")[0]
   <div class="card"><div class="prow">${ph(m.full_name,photoOf(rec))}<div><h3>${esc(m.full_name)}</h3><p style="margin:0"><b>#${esc(m.rel_id)}</b><span class="tag">${esc(m.role==="member"?"Member":(m.position||m.role))}</span></p></div></div>
    <dl class="kv">${rows.map(x=>`<dt>${esc(x[0])}</dt><dd>${esc(x[1])}</dd>`).join("")}</dl>
    <p class="muted small" style="margin:0">Your phone number, email and university ID are private. Only the President and Vice President can see them.</p></div>
+  <div class="card" style="margin-top:20px"><h3 style="margin-bottom:12px">Profile photo</h3><div class="prow">${ph(m.full_name,photoOf(rec))}<div><p class="muted small" style="margin:0 0 10px">Choose a clear picture of your face. It is cropped to a square from the center.</p>
+   <button type="button" class="btn primary sm" data-phpick>Choose a photo</button><input type="file" id="phFile" accept="image/jpeg,image/png,image/webp" hidden>${m.photo_path?'<button type="button" class="btn sm" data-phrm style="margin-left:8px">Remove</button>':""}</div></div><p class="vres" id="phMsg" role="status" aria-live="polite"></p></div>
   <div class="card" style="margin-top:20px"><h3 style="margin-bottom:12px">Edit your profile</h3><form id="profForm" novalidate>
    <label class="fld">Short bio<textarea id="mBio">${esc(m.bio||"")}</textarea></label>
    <label class="fld">Phone number<input id="mPhone" type="tel" value="${esc(m.phone||"")}"></label>
@@ -769,8 +774,7 @@ function memberView(box){const m=ST.member,first=(m.full_name||"").split(" ")[0]
    <label class="fld">New password (at least 8 characters)<input type="password" id="wPass" autocomplete="new-password"></label>
    <div class="row"><button class="btn primary sm" type="submit">Change password</button></div><p class="vres" id="wMsg" role="status" aria-live="polite"></p></form></div>
  </div><div>
-  <div class="card"><h3 style="margin-bottom:8px">Your card</h3><p class="muted">Your card code proves your REL card is real. Keep it private. Creating a new code cancels the old one.</p>
-   <div class="row"><button type="button" class="btn primary sm" data-mkcode>Create my card code</button></div><div id="codeOut"></div><div id="myCardImg"></div></div>
+  <div class="card"><h3 style="margin-bottom:8px">Your REL card</h3>${SHOW_CARD_CODE?'<p class="muted">Your card code proves your REL card is real. Keep it private. Creating a new code cancels the old one.</p><div class="row"><button type="button" class="btn primary sm" data-mkcode>Create my card code</button></div><div id="codeOut"></div>':'<p class="muted">Show this card at REL events. You can save it to your phone or computer.</p>'}<div id="myCardImg"></div></div>
   ${ST.team?'<div class="card" style="margin-top:20px"><h3 style="margin-bottom:8px">Team area</h3><p class="muted">Manage applications, events and announcements.</p><a class="btn primary sm" href="#team">Open the team area</a></div>':""}
  </div></div>`+accountBar();
  restoreDraft("profForm");showCard(rec,$("#myCardImg"))}
@@ -832,10 +836,28 @@ function drawMembers(){const admin=isAdmin(),q=(($("#tmQ")||{}).value||"").trim(
 async function paneAmb(){loading();const {data,error}=await SB.from("members").select("rel_id,full_name,role,position,year,major").in("role",["member","ambassador"]).order("rel_id",{ascending:true});if(error)return paneErr(error);
  tpane().innerHTML=`<p class="muted">Ambassadors represent REL in their class or major. You can promote a member here, or change them back.</p>${data.length?`<div class="tbl"><table><thead><tr><th>ID</th><th>Name</th><th>Year</th><th>Major</th><th>Role</th><th></th></tr></thead><tbody>${data.map(r=>`<tr><td>#${esc(r.rel_id)}</td><td>${esc(r.full_name)}</td><td>${esc(r.year||"")}</td><td>${esc(r.major||"")}</td><td>${esc(r.role)}</td><td><button type="button" class="btn sm" data-setrole="${esc(r.rel_id)}" data-to="${r.role==="member"?"ambassador":"member"}">${r.role==="member"?"Make ambassador":"Make member"}</button></td></tr>`).join("")}</tbody></table></div>`:'<div class="empty"><p>No members yet.</p></div>'}`}
 
+/* ---- profile photo ---- */
+function squareJpeg(file,size){size=size||400;return new Promise((res,rej)=>{const url=URL.createObjectURL(file),img=new Image();
+ img.onload=()=>{const s=Math.min(img.width,img.height),c=document.createElement("canvas");c.width=c.height=size;c.getContext("2d").drawImage(img,(img.width-s)/2,(img.height-s)/2,s,s,0,0,size,size);URL.revokeObjectURL(url);c.toBlob(b=>b?res(b):rej(new Error("Could not read the picture.")),"image/jpeg",0.85)};
+ img.onerror=()=>{URL.revokeObjectURL(url);rej(new Error("This file is not a picture we can read."))};img.src=url})}
+async function uploadPhoto(file){const msg=$("#phMsg");if(!file)return;
+ if(!/^image\//.test(file.type)){say(msg,"Please choose a picture.");return}
+ if(file.size>12*1024*1024){say(msg,"That picture is too large. Choose one under 12 MB.");return}
+ say(msg,"Uploading...",true);
+ try{const blob=await squareJpeg(file),uid=ST.user.id,path=uid+"/avatar-"+Date.now()+".jpg",old=ST.member&&ST.member.photo_path;
+  const up=await SB.storage.from("avatars").upload(path,blob,{contentType:"image/jpeg",upsert:false});if(up.error)throw up.error;
+  const {error}=await SB.from("members").update({photo_path:path}).eq("user_id",uid);if(error)throw error;
+  if(old){try{await SB.storage.from("avatars").remove([old])}catch(err){}}
+  await loadUser();renderAccount();refreshPublic();toast("Photo updated")}catch(err){say($("#phMsg"),errText(err))}}
+async function removePhoto(){const old=ST.member&&ST.member.photo_path;if(!old)return;
+ const {error}=await SB.from("members").update({photo_path:null}).eq("user_id",ST.user.id);if(error){toast(errText(error));return}
+ try{await SB.storage.from("avatars").remove([old])}catch(err){}await loadUser();renderAccount();refreshPublic();toast("Photo removed")}
+document.addEventListener("change",e=>{if(e.target.id==="phFile")uploadPhoto(e.target.files[0])});
+
 /* ---- events for everyone come from the database ---- */
 const mapEv=e=>({title:e.title,type:e.type,date:e.date||null,time:e.time?String(e.time).slice(0,5):undefined,endTime:e.end_time?String(e.end_time).slice(0,5):undefined,place:e.place||"",blurb:e.description||"",form:e.form_url||"",tentative:!!e.tentative,recap:e.recap||""});
 const mapAn=a=>({date:a.date,title:a.title,text:a.body||"",link:a.link||"",pinned:!!a.pinned});
-const mapRec=r=>({id:r.rel_id,type:r.role==="ambassador"?"Ambassador":r.role==="member"?"Member":"Board",name:r.full_name,role:r.position||"Member",year:r.year,major:r.major,faculty:r.faculty,joined:r.joined,bio:r.bio,listed:true,db:true});
+const mapRec=r=>({id:r.rel_id,type:r.role==="ambassador"?"Ambassador":r.role==="member"?"Member":"Board",name:r.full_name,role:r.position||"Member",year:r.year,major:r.major,faculty:r.faculty,joined:r.joined,bio:r.bio,photo:r.photo_path?photoUrl(r.photo_path):"",listed:true,db:true});
 const STATIC_RECORDS=RECORDS.slice();
 function homeNews(){if(ANN.length){$("#latest").hidden=false;$("#annHome").innerHTML=ANN.slice(0,3).map(annItem).join("")}else $("#latest").hidden=true}
 async function refreshPublic(){if(!SB)return;
@@ -847,6 +869,8 @@ async function refreshPublic(){if(!SB)return;
 
 /* ---- clicks and forms ---- */
 document.addEventListener("click",async e=>{
+ if(e.target.closest("[data-phpick]")){$("#phFile").click();return}
+ if(e.target.closest("[data-phrm]")){removePhoto();return}
  const am=e.target.closest("[data-am]");if(am){authMode=am.dataset.am;authNote="";renderAccount();return}
  const ag=e.target.closest("[data-am-go]");if(ag){authMode=ag.dataset.amGo;authNote="";renderAccount();return}
  if(e.target.closest("[data-logout]")){await SB.auth.signOut();await loadUser();renderAccount();renderTeam();showPage("home");return}
@@ -866,6 +890,7 @@ document.addEventListener("input",e=>{if(e.target.id==="tmQ")drawMembers()});
 document.addEventListener("submit",async e=>{const f=e.target;if(!f||!f.id)return;
  if(f.id==="authForm"){e.preventDefault();const mode=f.dataset.mode,email=$("#aEmail").value.trim().toLowerCase(),pw=$("#aPass")?$("#aPass").value:"",msg=$("#aMsg"),btn=f.querySelector("button[type=submit]");
   if(!/^\S+@\S+\.\S+$/.test(email)){say(msg,"Please enter a valid email.");return}
+  if(mode==="signup"&&!/^[^\s@]+@st\.ul\.edu\.lb$/i.test(email)){say(msg,"Please use your LU student email, the one that ends with @st.ul.edu.lb.");return}
   if(mode==="signup"&&pw.length<8){say(msg,"The password needs at least 8 characters.");return}
   if(mode==="login"&&!pw){say(msg,"Please enter your password.");return}
   btn.disabled=true;say(msg,"Please wait...",true);
@@ -914,6 +939,7 @@ function setNav(pg){const links=$$("#menu a"),pill=$("#pill");let on=null;
  links.forEach(a=>{const is=a.getAttribute("href").slice(1)===pg;a.classList.toggle("on",is);if(is){on=a;a.setAttribute("aria-current","page")}else a.removeAttribute("aria-current")});
  if(on){const fresh=pill.style.opacity!=="1";if(fresh)pill.style.transition="none";pill.style.width=on.offsetWidth+"px";pill.style.transform="translateX("+on.offsetLeft+"px)";if(fresh){pill.offsetWidth;pill.style.transition=""}pill.style.opacity="1"}else pill.style.opacity="0"}
 function showPage(pg,sub,o){o=o||{};if(!PAGES.includes(pg))pg="home";
+ if(pg==="play"&&typeof gameStale==="function"&&gameStale()){location.reload();return}
  $$(".pg").forEach(el=>{const show=el.dataset.pg===pg;if(show&&el.hidden){el.classList.remove("enter");void el.offsetWidth;el.classList.add("enter")}el.hidden=!show});
  const panes=paneList(pg);
  if(panes.length){const names=panes.map(p=>p.dataset.pane),s=sub&&names.includes(sub)?sub:(o.reset?names[0]:(names.includes(cur.sub[pg])?cur.sub[pg]:names[0]));cur.sub[pg]=s;
@@ -942,7 +968,7 @@ initAuth();
  const count=new Map(),io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.1,rootMargin:"0px 0px -30px 0px"});
  els.forEach(el=>{const p=el.parentElement,n=count.get(p)||0;count.set(p,n+1);el.style.transitionDelay=Math.min(n,4)*90+"ms";el.classList.add("rv");io.observe(el)})})();
 /* profiles and card verification */
-const photoOf=r=>{const b=BOARD.find(x=>x.id===r.id);return b?b.photo:(r.photo||"")},bioOf=r=>{const b=BOARD.find(x=>x.id===r.id);return b?b.bio:(r.bio||"")};
+const photoOf=r=>{const b=BOARD.find(x=>x.id===r.id);return (b&&b.photo)||r.photo||""},bioOf=r=>{const b=BOARD.find(x=>x.id===r.id);return b?b.bio:(r.bio||"")};
 async function checkCode(r,raw){const c=raw.toUpperCase().replace(/[^A-Z0-9]/g,"");if(c.length!==10)return "format";
  if(r.hash&&window.crypto&&crypto.subtle){const enc=new TextEncoder(),k=await crypto.subtle.importKey("raw",enc.encode(c),"PBKDF2",false,["deriveBits"]);
   const bits=await crypto.subtle.deriveBits({name:"PBKDF2",salt:enc.encode(r.salt),iterations:100000,hash:"SHA-256"},k,256);
@@ -954,12 +980,12 @@ function openProfile(id){const r=RECORDS.find(x=>x.id===id&&x.listed!==false);if
  const rows=[["Position",r.role],["Year",r.year],["Major",r.major],["Faculty",r.faculty],["Member since",since]].filter(x=>x[1]),bio=bioOf(r);
  $("#pbody").innerHTML=`<div class="prow">${ph(r.name,photoOf(r))}<div><h3 id="pT">${esc(r.name)}</h3><p style="margin:0"><b>#${esc(r.id)}</b><span class="tag">${esc(r.type)}</span></p></div></div>
  <dl class="pd">${rows.map(x=>`<dt>${esc(x[0])}</dt><dd>${esc(x[1])}</dd>`).join("")}</dl>${bio?`<p class="muted">${esc(bio)}</p>`:""}
- <div class="vbox"><h4>Check a card</h4><p class="muted small" style="margin:0 0 10px">Did someone show you a REL card with this ID? Enter the private code printed on it. A fake card will not have the right code.</p><div class="row"><input id="vCode" maxlength="11" placeholder="XXXXX-XXXXX" autocomplete="off" aria-label="Card code"><button type="button" class="btn primary sm" id="vBtn">Verify</button></div><p class="vres" id="vRes" role="status" aria-live="polite"></p><div id="cardBox"></div></div>
+ ${SHOW_CARD_CODE?`<div class="vbox"><h4>Check a card</h4><p class="muted small" style="margin:0 0 10px">Did someone show you a REL card with this ID? Enter the private code printed on it. A fake card will not have the right code.</p><div class="row"><input id="vCode" maxlength="11" placeholder="XXXXX-XXXXX" autocomplete="off" aria-label="Card code"><button type="button" class="btn primary sm" id="vBtn">Verify</button></div><p class="vres" id="vRes" role="status" aria-live="polite"></p><div id="cardBox"></div></div>`:""}
  <p class="muted small">Phone numbers and emails are private and never shown on this site. To reach a member, message the board.</p><div class="row"><button type="button" class="btn sm" data-pclose>Close</button></div>`;
  const o=$("#pov");o.classList.add("on");o.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";
  const go=async()=>{const v=$("#vRes");v.className="vres";v.textContent="Checking...";$("#cardBox").innerHTML="";const s=await checkCode(r,$("#vCode").value);
   if(s==="ok"){v.className="vres ok";v.textContent="Verified. This is a valid REL card for "+r.name+".";showCard(r)}else if(s==="no"){v.className="vres no";v.textContent="This code does not match this ID. Do not trust this card."}else if(s==="format"){v.className="vres no";v.textContent="Enter the full 10-character code."}else{v.className="vres no";v.textContent="Verification is not available in this browser."}};
- $("#vBtn").addEventListener("click",go);$("#vCode").addEventListener("keydown",e=>{if(e.key==="Enter")go()});$("[data-pclose]").focus()}
+ if($("#vBtn")){$("#vBtn").addEventListener("click",go);$("#vCode").addEventListener("keydown",e=>{if(e.key==="Enter")go()})}$("[data-pclose]").focus()}
 function closeProfile(){const o=$("#pov");o.classList.remove("on");o.setAttribute("aria-hidden","true");document.body.style.overflow=""}
 $("#pov").addEventListener("click",e=>{if(e.target.id==="pov"||e.target.closest("[data-pclose]"))closeProfile()});
 document.addEventListener("keydown",e=>{const o=$("#pov");if(!o.classList.contains("on"))return;if(e.key==="Escape")closeProfile();
@@ -977,7 +1003,7 @@ async function myCard(){const v=$("#mcRes"),box=$("#myCard");box.innerHTML="";v.
 /* digital membership card */
 async function cardUrl(r){const W=1012,H=638,c=document.createElement("canvas");c.width=W;c.height=H;const x=c.getContext("2d");
  try{await Promise.all([document.fonts.load('800 60px "Barlow Condensed"'),document.fonts.load('600 30px "Barlow"')])}catch(err){}
- const load=s=>new Promise(res=>{if(!s)return res(null);const i=new Image();i.onload=()=>res(i);i.onerror=()=>res(null);i.src=s});
+ const load=s=>new Promise(res=>{if(!s)return res(null);const i=new Image();if(/^https?:/.test(s))i.crossOrigin="anonymous";i.onload=()=>res(i);i.onerror=()=>res(null);i.src=s});
  const [logo,pic]=await Promise.all([load(LOGO.light),load(photoOf(r))]);
  x.fillStyle="#800020";x.fillRect(0,0,W,H);
  x.globalAlpha=.09;x.fillStyle="#F8F6F1";x.beginPath();x.arc(W-40,H+60,340,0,Math.PI*2);x.fill();x.beginPath();x.arc(W-40,H+60,210,0,Math.PI*2);x.fill();x.globalAlpha=1;
@@ -999,11 +1025,11 @@ async function showCard(r,box){box=box||$("#cardBox");box.innerHTML='<p class="m
  box.innerHTML=`<h4 style="margin-top:16px">Your digital card</h4><img class="card-img" src="${u}" alt="REL membership card for ${esc(r.name)}"><div class="row" style="margin-top:12px"><button type="button" class="btn primary sm" data-dl>Download card</button></div><p class="muted small" style="margin:8px 0 0">You can also press and hold the card on a phone, or right-click it on a computer, then choose Save image.</p>`;
  const b=box.querySelector("[data-dl]");if(b)b.addEventListener("click",()=>saveFile(u,"REL-card-"+r.id+".png"))}
 /* FAQ */
-const FAQ=[
+const FAQ_ALL=[
  ["What is REL?", "REL stands for Relations, Entrepreneurship and Leadership. We are the club of the Faculty of Engineering, Branch 2 (ULFG2) at the Lebanese University. We run events, workshops and a community that helps students build their network, start something of their own and learn to lead."],
  ["Is REL the best club in Roumieh?", "ABSOLUTELY yes. Next question. Okay, fine, we will explain: there is no room for competition. We checked. Twice."],
  ["Who can join, and does it cost anything?", "Membership is free for students with an LU student email (name@st.ul.edu.lb). Create an account, then fill in the short application."],
- ["What happens after I join?", "The President or Vice President reviews your application. If it is accepted, your profile and REL ID are created automatically, and you can create your private card code and get your digital card from your account."],
+ ["What happens after I join?", "The President or Vice President reviews your application. If it is accepted, your profile and REL ID are created automatically, and you can get your digital card from your account."],
  ["What is the card code, and who can see it?", "It is a private 10-character code that proves your REL card is real. Never share it. Anyone who has your ID and code could claim to be you."],
  ["How do I check someone's REL card?", "Search their ID under People, open their profile and enter the code printed on their card in Check a card. If it does not match, the card is fake."],
  ["How do I register for an event?", "Open Events, pick an upcoming event and press Register to attend. At the event, use Event check-in with your REL ID and the event code, so your points are counted."],
@@ -1018,6 +1044,7 @@ const FAQ=[
  ["I have never networked before. Is that a problem?", "It is the perfect starting point. Everyone begins by standing near the snacks, pretending to read their phone. We will teach you to walk two meters and say hello."],
  ["Do you accept complaints?", "Always. They go into a special folder called Great Ideas We Have Not Understood Yet. Use the Ask a question tab."]
 ];
+const FAQ=FAQ_ALL.filter(f=>SHOW_CARD_CODE||!/card code|REL card/i.test(f[0]));
 $("#faqList").innerHTML=FAQ.map(f=>`<details class="qa"><summary>${esc(f[0])}</summary><p>${esc(f[1])}</p></details>`).join("");
 /* photo viewer */
 (function(){const o=$("#lbx"),img=$("#lbImg");let arr=[],i=0,ttl="";
@@ -1084,15 +1111,22 @@ drawWork();
   if(e.key==="/"&&!on&&!/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)){e.preventDefault();show();return}
   if(e.key==="Tab"&&on){const f=[q,...box.querySelectorAll("button")],i=f.indexOf(document.activeElement);e.preventDefault();f[(i+(e.shiftKey?-1:1)+f.length)%f.length].focus()}});
 })();
+/* games follow Beirut time: everyone gets the same puzzle, and it changes at midnight in Lebanon */
+function beirutDay(){return new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Beirut",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date())}
+function secsToBeirutMidnight(){const p=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Beirut",hour:"2-digit",minute:"2-digit",second:"2-digit",hourCycle:"h23"}).formatToParts(new Date()),g=t=>+p.find(x=>x.type===t).value;return 86400-(g("hour")*3600+g("minute")*60+g("second"))}
+const GAME_START=beirutDay();
+const gameStale=()=>beirutDay()!==GAME_START;
+(function(){const head=document.querySelector('.pg[data-pg="play"] .sec-head');if(!head)return;const el=document.createElement("p");el.className="muted small";el.id="nextGame";el.style.marginTop="10px";head.appendChild(el);
+ const pad=n=>String(n).padStart(2,"0"),tick=()=>{const s=secsToBeirutMidnight();el.textContent="New puzzle and question in "+pad(Math.floor(s/3600))+":"+pad(Math.floor(s%3600/60))+":"+pad(s%60)+" (midnight, Beirut time).";if(gameStale()&&cur.pg==="play")location.reload()};tick();setInterval(tick,1000)})();
 /* daily business question */
 const QZ=[["What does MVP stand for in the startup world?",["Most Valuable Player","Minimum Viable Product","Maximum Value Proposition","Main Venture Plan"],1,"An MVP is the simplest version of a product that real users can test."],["What is a unicorn in business?",["A company with 1,000 employees","A private startup valued at over $1 billion","A company listed on two stock markets","A startup with no competitors"],1,"Such startups are rare, which is where the name comes from."],["What does ROI stand for?",["Rate of Inflation","Return on Investment","Revenue of Industry","Risk of Innovation"],1,"ROI compares what you gained to what you spent."],["What does B2B mean?",["Back to business","Business to business","Brand to brand","Buyer to buyer"],1,"A B2B company sells to other companies, not to individuals."],["Revenue minus costs equals what?",["Equity","Profit","Cash flow","Market share"],1,"Profit is what remains after all costs are paid."],["What is inflation?",["A fall in unemployment","A general rise in prices over time","A rise in interest rates","Growth in company profits"],1,"When prices rise, the same money buys less."],["In a startup, what does equity mean?",["A loan from a bank","Ownership in the company","A monthly salary","The company's debt"],1,"Equity is a share of ownership, often held by founders and investors."],["What is a pivot?",["A product launch party","A major change in strategy","A new office","A price discount"],1,"Startups pivot when the first idea is not working."],["What does IPO stand for?",["Initial Public Offering","Internal Profit Option","International Price Order","Investment Planning Office"],0,"An IPO is when a company first sells its shares to the public."],["What does a SWOT analysis cover?",["Sales, Wages, Orders, Taxes","Strengths, Weaknesses, Opportunities, Threats","Suppliers, Workers, Offers, Trends","Savings, Wealth, Options, Time"],1,"It looks at a company or idea from four simple angles."],["What is bootstrapping?",["Raising money from venture capital","Building a company with your own money and sales","Selling a company","Buying a competitor"],1,"Bootstrapped founders keep control but grow with limited cash."],["What is a stock?",["A loan to a company","A share of ownership in a company","A type of bank account","A tax on profits"],1,"Owning a stock means owning a small piece of the company."],["What does diversification mean in investing?",["Putting all your money in one asset","Spreading money across different assets","Selling everything","Only buying gold"],1,"It reduces the risk that one bad investment hurts everything."],["What is compound interest?",["Interest only on the original amount","Interest on the original amount and on past interest","A fee charged by banks","A tax-free bonus"],1,"Compounding is why starting early matters so much."],["What does KPI stand for?",["Key Performance Indicator","Known Profit Index","Keep Progress Improving","Kinetic Product Idea"],0,"KPIs are the numbers a team tracks to know if it is succeeding."],["The Pareto principle says roughly what?",["50% of work gives 50% of results","80% of results come from 20% of causes","Every task takes twice as long","Profit doubles each year"],1,"It is a rule of thumb: focus on the few things that matter most."],["What does CEO stand for?",["Chief Executive Officer","Central Economic Office","Chief Engineering Owner","Company Equity Officer"],0,"The CEO is the top executive responsible for the whole company."],["What is cash flow?",["The total value of a company","Money moving in and out of a business","Yearly profit","The price of a share"],1,"A profitable company can still fail if it runs out of cash."],["What does GDP measure?",["A country's total debt","The value of goods and services a country produces","The average salary","The number of companies"],1,"GDP is the main measure of the size of an economy."],["What is venture capital?",["A bank loan for homes","Funding for early-stage, high-growth companies in exchange for equity","A government grant","A tax refund"],1,"VCs invest in many startups hoping a few become very large."],["Which of these is a fixed cost?",["Raw materials per unit","Monthly office rent","Sales commissions","Shipping per order"],1,"Fixed costs stay the same however much you sell."],["What does SaaS stand for?",["Software as a Service","Sales as a Strategy","Startup and Scale Systems","Secure and Safe Software"],0,"SaaS is software you pay for by subscription instead of buying once."],["What is market share?",["A company's portion of total sales in its market","The price of one share","The size of a store","A company's yearly profit"],0,"With 20% market share, a company sells one in every five units in its market."],["What is a stakeholder?",["Only the owner","Anyone affected by or interested in a business","Only the employees","A type of investor"],1,"Customers, employees, investors and communities are all stakeholders."],["What is an elevator pitch?",["A pitch made only in buildings","A 30 to 60 second explanation of your idea","A written business plan","A sales discount"],1,"It is short enough to deliver during an elevator ride."],["What is due diligence?",["A tax form","Careful checking of a deal or company before committing","A company holiday","A type of loan"],1,"Investors do it before putting money in."],["What is a recession?",["A period of strong growth","A significant decline in economic activity","A fall in stock prices for one day","A rise in inflation only"],1,"Recessions usually bring lower spending, weaker hiring and falling output."],["What is a business model?",["The company logo","How a company creates value and earns money","The office layout","A list of employees"],1,"Two companies can sell the same product with very different business models."],["What does scalable mean for a business?",["It is very small","It can grow without costs growing at the same rate","It has no employees","It sells only online"],1,"Scalable businesses can serve many more customers without proportionally more effort."],["What is a value proposition?",["The price of a share","The reason customers should choose you","A yearly report","An investor's offer"],1,"A good one is clear, specific and about the customer, not about you."]];
-(function(){const d=new Date(),key=d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate(),day=Math.floor(new Date(d.getFullYear(),d.getMonth(),d.getDate())/864e5),it=QZ[day%QZ.length],box=$("#qzO");
+(function(){const key=GAME_START,[yy,mm,dd]=key.split("-").map(Number),day=Math.floor(Date.UTC(yy,mm-1,dd)/864e5),it=QZ[day%QZ.length],box=$("#qzO");
  $("#qzQ").textContent=it[0];
  function show(pick){[...box.children].forEach((b,i)=>{b.disabled=true;if(i===it[2]){b.classList.add("ok");b.append(" (correct)")}else if(i===pick){b.classList.add("no");b.append(" (your answer)")}});$("#qzE").textContent=(pick===it[2]?"Correct. ":"Not quite. ")+it[3]+" A new question comes tomorrow."}
  it[1].forEach((txt,i)=>{const b=document.createElement("button");b.type="button";b.textContent=txt;b.addEventListener("click",()=>{try{localStorage.setItem("rel-qz-"+key,String(i))}catch(err){}show(i)});box.appendChild(b)});
  try{const s=localStorage.getItem("rel-qz-"+key);if(s!==null)show(+s)}catch(err){}})();
 /* daily puzzle */
-(function(){const N=7,COL=["#F4C9CF","#F6DFA4","#BEDCC6","#B9D3EA","#D8C6EC","#F5BFA0","#D5D1CC"],T=new Date(),key=T.getFullYear()+"-"+String(T.getMonth()+1).padStart(2,"0")+"-"+String(T.getDate()).padStart(2,"0");
+(function(){const N=7,COL=["#F4C9CF","#F6DFA4","#BEDCC6","#B9D3EA","#D8C6EC","#F5BFA0","#D5D1CC"],key=GAME_START;
  function seedOf(s){let h=2166136261;for(const c of s){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0}
  function rngOf(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
  const rnd=rngOf(seedOf("rel-"+key));const shuf=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
