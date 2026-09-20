@@ -975,7 +975,8 @@ $("#calPrev").addEventListener("click",()=>{cm=new Date(cm.getFullYear(),cm.getM
 $("#calNext").addEventListener("click",()=>{cm=new Date(cm.getFullYear(),cm.getMonth()+1,1);drawCal()});drawCal();
 /* board, ambassadors */
 const ph=(n,p)=>`<div class="ph">${p?`<img src="${esc(p)}" alt="${esc(n)}">`:esc(initials(n))}</div>`;
-$("#board").innerHTML=BOARD.map(b=>`<div class="person">${ph(b.name,b.photo)}<h3>${b.name?esc(b.name):'<span class="muted">Name coming soon</span>'}</h3><div class="role">${esc(b.role)}</div><p>${esc(b.bio)}</p>${b.id?`<button type="button" class="idlink" data-prof="${b.id}">#${b.id}, view profile</button>`:""}</div>`).join("");
+function drawBoard(){$("#board").innerHTML=BOARD.map(b=>`<div class="person">${ph(b.name,b.photo)}<h3>${b.name?esc(b.name):'<span class="muted">Name coming soon</span>'}</h3><div class="role">${esc(b.role)}</div><p>${esc(b.bio)}</p>${b.id?`<button type="button" class="idlink" data-prof="${b.id}">#${b.id}, view profile</button>`:""}</div>`).join("")}
+drawBoard();
 $("#ambs").innerHTML=AMBS.map(a=>`<div class="amb">${ph(a.name,a.photo)}<div><b>${a.name?esc(a.name):'<span class="muted">Name coming soon</span>'}</b><span class="muted small">${esc(a.info||"REL ambassador")}</span></div></div>`).join("");
 /* members */
 const asId=q=>/^[#\s]*(rel-?)?\d{1,4}$/i.test(q.trim())?q.replace(/\D/g,"").padStart(4,"0"):null;
@@ -1028,7 +1029,7 @@ openJoin("member",false);
 let authMode="login",authNote="",authOk=false,teamTab="apps",teamEdit=null;const teamCache={};
 const fromEmailLink=/type=(signup|invite|recovery|magiclink|email_change)/.test(location.hash);
 const LEVEL=["1st year","2nd year","3rd year","4th year","5th year"];
-const DRAFT_FORMS=["authForm","applyForm","profForm","evForm","anForm","ptForm","hoForm"];let DRAFT={};
+const DRAFT_FORMS=["authForm","applyForm","profForm","evForm","anForm","ptForm","hoForm","tmForm"];let DRAFT={};
 try{DRAFT=JSON.parse(sessionStorage.getItem("relDraft")||"{}")}catch(err){DRAFT={}}
 const saveDraft=()=>{try{sessionStorage.setItem("relDraft",JSON.stringify(DRAFT))}catch(err){}};
 const draftKey=f=>f.id+(f.dataset&&f.dataset.id?":"+f.dataset.id:"");
@@ -1039,6 +1040,9 @@ function keepDraft(e){const el=e.target,f=el.closest?el.closest("form"):null;if(
  const k=draftKey(f);DRAFT[k]=DRAFT[k]||{};DRAFT[k][el.id]=el.type==="checkbox"?el.checked:el.value;saveDraft()}
 document.addEventListener("input",keepDraft);document.addEventListener("change",keepDraft);
 const isAdmin=()=>!!(ST.team&&(ST.team.role==="president"||ST.team.role==="vice_president"));
+const PERMS=[["events","Add, edit and remove events"],["announcements","Post announcements"],["applications","Accept or reject applications"],["points","Give points"],["honors","Choose the member of the month"],["newsletter","See the newsletter list"],["members","See members' phone, email and university ID"],["ambassadors","Make members ambassadors"]];
+const PRESETS={vice_president:PERMS.map(p=>p[0]),board:[]};
+const can=p=>!!(ST.team&&(ST.team.role==="president"||(ST.team.perms||[]).includes(p)));
 function errText(e){const m=(e&&e.message)||String(e||"");
  if(/Database error saving new user|Sign-up is only open/i.test(m))return "Sign-up is only open to LU student emails (name@st.ul.edu.lb).";
  if(/Invalid login credentials/i.test(m))return "Wrong email or password.";
@@ -1128,17 +1132,18 @@ function memberView(box){const m=ST.member,first=(m.full_name||"").split(" ")[0]
    <div class="row"><button class="btn primary sm" type="submit">Change password</button></div><p class="vres" id="wMsg" role="status" aria-live="polite"></p></form></div>
  </div><div>
   <div class="card"><h3 style="margin-bottom:8px">Your REL card</h3>${SHOW_CARD_CODE?'<p class="muted">Your card code proves your REL card is real. Keep it private. Creating a new code cancels the old one.</p><div class="row"><button type="button" class="btn primary sm" data-mkcode>Create my card code</button></div><div id="codeOut"></div>':'<p class="muted">Show this card at REL events. You can save it to your phone or computer.</p>'}<div id="myCardImg"></div></div>
-  ${ST.team?'<div class="card" style="margin-top:20px"><h3 style="margin-bottom:8px">Team area</h3><p class="muted">Manage applications, events and announcements.</p><a class="btn primary sm" href="#team">Open the team area</a></div>':""}
+  ${ST.team?`<div class="card" style="margin-top:20px"><h3 style="margin-bottom:8px">Team area</h3><p class="muted">You are on the REL team as <b>${esc(ST.team.position)}</b>. Your REL ID and profile are the same as on the board page.</p>${(()=>{const l=ST.team.role==="president"?["Everything, including who can do what"]:PERMS.filter(p=>can(p[0])).map(p=>p[1]);return `<p class="muted small" style="margin:0 0 6px">What you can do:</p><ul class="muted small" style="margin:0 0 16px;padding-left:1.2em">${l.length?l.map(x=>`<li>${esc(x)}</li>`).join(""):"<li>See the member list</li>"}</ul>`})()}<a class="btn primary sm" href="#team">Open the team area</a></div>`:""}
  </div></div>`+accountBar();
  restoreDraft("profForm");showCard(rec,$("#myCardImg"))}
 
 /* ---- team area ---- */
 function renderTeam(){const box=$("#teamBody");if(!box)return;
  if(!SB||!ST.team){box.innerHTML=accHead("Team area","This area is only for the REL team.");return}
- const tabs=isAdmin()?[["apps","Applications"],["events","Events"],["news","Announcements"],["points","Points"],["honors","Member of the month"],["subs","Newsletter"],["members","Members"],["amb","Ambassadors"]]:[["members","Members"]];
+ const tabs=[];[["applications","apps","Applications"],["events","events","Events"],["announcements","news","Announcements"],["points","points","Points"],["honors","honors","Member of the month"],["newsletter","subs","Newsletter"]].forEach(x=>{if(can(x[0]))tabs.push([x[1],x[2]])});
+ tabs.push(["members","Members"]);if(can("ambassadors"))tabs.push(["amb","Ambassadors"]);if(ST.team.role==="president")tabs.push(["access","Access"]);
  if(!tabs.some(t=>t[0]===teamTab))teamTab=tabs[0][0];
  box.innerHTML=accHead("Team area","You are logged in as "+ST.team.position+".")+`<div class="tabs" role="tablist">${tabs.map(t=>`<button type="button" class="tab" role="tab" aria-selected="${t[0]===teamTab}" data-tt="${t[0]}">${t[1]}</button>`).join("")}</div><div id="teamPane"></div>`;
- ({apps:paneApps,events:paneEvents,news:paneNews,members:paneMembers,amb:paneAmb,points:panePoints,honors:paneHonors,subs:paneSubs})[teamTab]()}
+ ({apps:paneApps,events:paneEvents,news:paneNews,members:paneMembers,amb:paneAmb,points:panePoints,honors:paneHonors,subs:paneSubs,access:paneAccess})[teamTab]()}
 const tpane=()=>$("#teamPane");
 const loading=()=>{const p=tpane();if(p)p.innerHTML='<p class="muted">Loading...</p>'};
 const paneErr=e=>{const p=tpane();if(p)p.innerHTML=`<div class="empty"><p>${esc(errText(e))}</p></div>`};
@@ -1180,13 +1185,13 @@ function newsForm(a){a=a||{};return `<div class="card" style="background:var(--b
  <div class="row"><button class="btn primary sm" type="submit">${a.id?"Save changes":"Post announcement"}</button>${a.id?'<button type="button" class="btn sm" data-evcancel>Cancel</button>':""}</div><p class="vres" id="nMsg" role="status" aria-live="polite"></p></form></div>`}
 async function paneNews(){loading();const {data,error}=await SB.from("announcements").select("*").order("date",{ascending:false});if(error)return paneErr(error);teamCache.news=data;
  tpane().innerHTML=newsForm(teamEdit&&teamEdit.kind==="news"?teamEdit.row:null)+`<h3 style="margin-bottom:12px">All announcements (${data.length})</h3>${data.length?data.map(a=>`<div class="ev" style="grid-template-columns:1fr auto"><div><h3>${esc(a.title)}${a.pinned?'<span class="tag">Pinned</span>':""}</h3><p class="muted" style="margin:0">${esc(dshort(a.date))}</p></div><div class="row"><button type="button" class="btn sm" data-anedit="${esc(a.id)}">Edit</button><button type="button" class="btn sm" data-andel="${esc(a.id)}">Delete</button></div></div>`).join(""):'<div class="empty"><p>No announcements yet.</p></div>'}`;restoreDraft("anForm")}
-async function paneMembers(){loading();const admin=isAdmin();
+async function paneMembers(){loading();const admin=can("members");
  const q=admin?SB.from("members").select("rel_id,full_name,role,position,year,major,faculty,uni_id,email,phone,joined,listed,active").order("rel_id",{ascending:true}):SB.from("team_member_list").select("*").order("rel_id",{ascending:true});
  const {data,error}=await q;if(error)return paneErr(error);teamCache.members=data;
  tpane().innerHTML=`<label for="tmQ" class="muted small">Search by name or REL ID</label><input id="tmQ" class="search" type="search" placeholder="Name or ID" autocomplete="off"><div class="tbl" style="margin-top:16px" id="tmList"></div>${admin?"":'<p class="muted small">Phone numbers, emails and university IDs are only visible to the President and Vice President.</p>'}`;drawMembers()}
-function drawMembers(){const admin=isAdmin(),q=(($("#tmQ")||{}).value||"").trim().toLowerCase().replace(/^#/,""),rows=(teamCache.members||[]).filter(r=>!q||String(r.full_name).toLowerCase().includes(q)||String(r.rel_id).includes(q));
+function drawMembers(){const admin=can("members"),q=(($("#tmQ")||{}).value||"").trim().toLowerCase().replace(/^#/,""),rows=(teamCache.members||[]).filter(r=>!q||String(r.full_name).toLowerCase().includes(q)||String(r.rel_id).includes(q));
  $("#tmList").innerHTML=rows.length?`<table><thead><tr><th>ID</th><th>Name</th><th>Position</th><th>Year</th><th>Major</th>${admin?"<th>Uni ID</th><th>Email</th><th>Phone</th>":""}</tr></thead><tbody>${rows.map(r=>`<tr><td>#${esc(r.rel_id)}</td><td>${esc(r.full_name)}</td><td>${esc(r.position||r.role)}</td><td>${esc(r.year||"")}</td><td>${esc(r.major||"")}</td>${admin?`<td>${esc(r.uni_id||"")}</td><td>${esc(r.email||"")}</td><td>${esc(r.phone||"")}</td>`:""}</tr>`).join("")}</tbody></table>`:'<div class="empty"><p>No members found.</p></div>'}
-async function paneAmb(){loading();const {data,error}=await SB.from("members").select("rel_id,full_name,role,position,year,major").in("role",["member","ambassador"]).order("rel_id",{ascending:true});if(error)return paneErr(error);
+async function paneAmb(){loading();const {data,error}=await SB.from("team_member_list").select("rel_id,full_name,role,position,year,major").in("role",["member","ambassador"]).order("rel_id",{ascending:true});if(error)return paneErr(error);
  tpane().innerHTML=`<p class="muted">Ambassadors represent REL in their class or major. You can promote a member here, or change them back.</p>${data.length?`<div class="tbl"><table><thead><tr><th>ID</th><th>Name</th><th>Year</th><th>Major</th><th>Role</th><th></th></tr></thead><tbody>${data.map(r=>`<tr><td>#${esc(r.rel_id)}</td><td>${esc(r.full_name)}</td><td>${esc(r.year||"")}</td><td>${esc(r.major||"")}</td><td>${esc(r.role)}</td><td><button type="button" class="btn sm" data-setrole="${esc(r.rel_id)}" data-to="${r.role==="member"?"ambassador":"member"}">${r.role==="member"?"Make ambassador":"Make member"}</button></td></tr>`).join("")}</tbody></table></div>`:'<div class="empty"><p>No members yet.</p></div>'}`}
 
 /* ---- profile photo ---- */
@@ -1211,13 +1216,16 @@ document.addEventListener("change",e=>{if(e.target.id==="phFile")uploadPhoto(e.t
 const mapEv=e=>({title:e.title,type:e.type,date:e.date||null,time:e.time?String(e.time).slice(0,5):undefined,endTime:e.end_time?String(e.end_time).slice(0,5):undefined,place:e.place||"",blurb:e.description||"",form:e.form_url||"",tentative:!!e.tentative,recap:e.recap||""});
 const mapAn=a=>({date:a.date,title:a.title,text:a.body||"",link:a.link||"",pinned:!!a.pinned});
 const mapRec=r=>({id:r.rel_id,type:r.role==="ambassador"?"Ambassador":r.role==="member"?"Member":"Board",name:r.full_name,role:r.position||"Member",year:r.year,major:r.major,faculty:r.faculty,joined:r.joined,bio:r.bio,photo:r.photo_path?photoUrl(r.photo_path):"",listed:true,db:true});
-const STATIC_RECORDS=RECORDS.slice();
+const STATIC_RECORDS=RECORDS.slice(),STATIC_BOARD=BOARD.map(b=>({...b}));
+const mapBoard=r=>{const s=STATIC_BOARD.find(x=>x.id===r.rel_id)||{};return{id:r.rel_id,role:r.position,name:r.full_name,bio:r.bio||s.bio||"",photo:r.photo_path?photoUrl(r.photo_path):(s.photo||"")}};
+const mapBoardRec=r=>({id:r.rel_id,type:"Board",name:r.full_name,role:r.position,year:r.year,major:r.major,faculty:r.faculty,bio:r.bio,photo:r.photo_path?photoUrl(r.photo_path):"",listed:true,db:true});
 function homeNews(){if(ANN.length){$("#latest").hidden=false;$("#annHome").innerHTML=ANN.slice(0,3).map(annItem).join("")}else $("#latest").hidden=true;if(typeof updateAnnBar==="function")updateAnnBar()}
 async function refreshPublic(){if(!SB)return;
- try{const [ev,an,pp]=await Promise.all([SB.from("events").select("*").order("date",{ascending:true}),SB.from("announcements").select("*"),SB.from("public_profiles").select("*")]);
+ try{const [ev,an,pp,pb]=await Promise.all([SB.from("events").select("*").order("date",{ascending:true}),SB.from("announcements").select("*"),SB.from("public_profiles").select("*"),SB.from("public_board").select("*")]);
   if(!ev.error&&ev.data){EVENTS.length=0;PAST.length=0;EVENTS.push(...ev.data.map(mapEv))}
   if(!an.error&&an.data){ANNOUNCEMENTS.length=0;ANNOUNCEMENTS.push(...an.data.map(mapAn))}
   if(!pp.error&&pp.data){RECORDS.length=0;RECORDS.push(...STATIC_RECORDS,...pp.data.filter(r=>!STATIC_RECORDS.some(s=>s.id===r.rel_id)).map(mapRec))}
+  if(!pb.error&&pb.data&&pb.data.length){BOARD.length=0;BOARD.push(...pb.data.map(mapBoard));pb.data.forEach(r=>{if(!RECORDS.some(x=>x.id===r.rel_id))RECORDS.push(mapBoardRec(r))});if(typeof drawBoard==="function")drawBoard()}
   prepEvents();const k=($("[data-ev][aria-selected=true]")||{dataset:{ev:"up"}}).dataset.ev;showEv(k);drawCal();homeNews();tick();drawMem();loadBoards();drawMap();updateChip()}catch(err){}}
 
 /* ---- clicks and forms ---- */
@@ -1317,7 +1325,7 @@ document.addEventListener("submit",async e=>{const f=e.target;if(!f.classList||!
 const memberOptions=(list,sel)=>'<option value="">Choose a member</option>'+list.map(m=>`<option value="${esc(m.rel_id)}" ${m.rel_id===sel?"selected":""}>#${esc(m.rel_id)} ${esc(m.full_name)}</option>`).join("");
 async function paneSubs(){loading();const {data,error}=await SB.from("newsletter").select("*").order("created_at",{ascending:false});if(error)return paneErr(error);teamCache.subs=data;
  tpane().innerHTML=`<p class="muted">${data.length} ${data.length===1?"person is":"people are"} subscribed. Copy the list and paste it into the Bcc field of an email.</p><div class="row" style="margin:0 0 20px"><button type="button" class="btn primary sm" data-copysubs>Copy all emails</button></div>${data.length?`<div class="tbl"><table><thead><tr><th>Email</th><th>Since</th><th></th></tr></thead><tbody>${data.map(r=>`<tr><td>${esc(r.email)}</td><td>${esc(dshort(r.created_at))}</td><td><button type="button" class="btn sm" data-subdel="${esc(r.email)}">Remove</button></td></tr>`).join("")}</tbody></table></div>`:'<div class="empty"><p>No subscribers yet.</p></div>'}`}
-async function panePoints(){loading();const [ms,ps]=await Promise.all([SB.from("members").select("rel_id,full_name").order("rel_id",{ascending:true}),SB.from("points").select("*").order("created_at",{ascending:false}).limit(40)]);
+async function panePoints(){loading();const [ms,ps]=await Promise.all([SB.from("team_member_list").select("rel_id,full_name").order("rel_id",{ascending:true}),SB.from("points").select("*").order("created_at",{ascending:false}).limit(40)]);
  if(ms.error)return paneErr(ms.error);if(ps.error)return paneErr(ps.error);const nm=id=>((ms.data.find(m=>m.rel_id===id)||{}).full_name)||"";
  tpane().innerHTML=`<div class="card" style="background:var(--bg);margin-bottom:28px"><h3 style="margin-bottom:12px">Give points</h3><form id="ptForm" novalidate>
   <label class="fld">Member *<select id="tMem">${memberOptions(ms.data)}</select></label>
@@ -1325,7 +1333,7 @@ async function panePoints(){loading();const [ms,ps]=await Promise.all([SB.from("
   <label class="fld">Reason *<input id="tWhy" placeholder="For example: volunteered at the workshop"></label>
   <div class="row"><button class="btn primary sm" type="submit">Add points</button></div><p class="vres" id="tMsg" role="status" aria-live="polite"></p></form></div>
   <h3 style="margin-bottom:12px">Recent points</h3>${ps.data.length?`<div class="tbl"><table><thead><tr><th>Date</th><th>Member</th><th>Points</th><th>Reason</th><th></th></tr></thead><tbody>${ps.data.map(r=>`<tr><td>${esc(dshort(r.created_at))}</td><td>#${esc(r.rel_id)} ${esc(nm(r.rel_id))}</td><td>${r.points>0?"+":""}${r.points}</td><td>${esc(r.reason)}</td><td><button type="button" class="btn sm" data-ptdel="${esc(r.id)}">Undo</button></td></tr>`).join("")}</tbody></table></div>`:'<div class="empty"><p>No points given yet.</p></div>'}`;restoreDraft("ptForm")}
-async function paneHonors(){loading();const [ms,hs]=await Promise.all([SB.from("members").select("rel_id,full_name").order("rel_id",{ascending:true}),SB.from("honors").select("*").order("created_at",{ascending:false})]);
+async function paneHonors(){loading();const [ms,hs]=await Promise.all([SB.from("team_member_list").select("rel_id,full_name").order("rel_id",{ascending:true}),SB.from("honors").select("*").order("created_at",{ascending:false})]);
  if(ms.error)return paneErr(ms.error);if(hs.error)return paneErr(hs.error);const nm=id=>((ms.data.find(m=>m.rel_id===id)||{}).full_name)||"";
  tpane().innerHTML=`<div class="card" style="background:var(--bg);margin-bottom:28px"><h3 style="margin-bottom:12px">Choose the member of the month or semester</h3><form id="hoForm" novalidate>
   <label class="fld">Type<select id="hKind"><option value="month">Member of the month</option><option value="semester">Member of the semester</option></select></label>
@@ -1348,6 +1356,42 @@ document.addEventListener("submit",async e=>{const f=e.target;if(!f||!f.id)retur
  if(f.id==="hoForm"){e.preventDefault();const msg=$("#hMsg"),kind=$("#hKind").value,period=$("#hPeriod").value.trim(),rel=$("#hMem").value,note=$("#hNote").value.trim()||null;
   if(!rel){say(msg,"Please choose a member.");return}if(period.length<4){say(msg,"Please write the period, like 2026-09 or 2026-fall.");return}
   const {error}=await SB.from("honors").upsert({kind,period,rel_id:rel,note},{onConflict:"kind,period"});if(error){say(msg,errText(error));return}clearDraft(f);toast("Saved");paneHonors();loadBoards()}});
+
+
+/* ---- Access: who can do what (President only) ---- */
+const permBoxes=sel=>PERMS.map(p=>`<label class="fld ck"><input type="checkbox" data-perm="${p[0]}" ${sel.includes(p[0])?"checked":""}><span>${esc(p[1])}</span></label>`).join("");
+async function paneAccess(){loading();const {data,error}=await SB.from("team").select("*").order("rel_id",{ascending:true});if(error)return paneErr(error);
+ const rank=t=>t.role==="president"?0:t.role==="vice_president"?1:2;data.sort((x,y)=>rank(x)-rank(y)||x.rel_id.localeCompare(y.rel_id));
+ tpane().innerHTML=`<p class="muted">Choose who can do what in the Team area. The President always has full access. Changes apply right away, and nobody needs to log in again.</p>
+ ${data.map(t=>t.role==="president"?`<div class="appc"><h3>${esc(t.full_name)}</h3><p class="muted small" style="margin:0">${esc(t.position)}. #${esc(t.rel_id)}. ${esc(t.email)}</p><div class="sigs"><span class="badge ok">&#10003; Full access</span></div></div>`
+ :`<div class="appc" data-team="${esc(t.email)}"><h3>${esc(t.full_name)}</h3><p class="muted small" style="margin:0">#${esc(t.rel_id)}. ${/@pending\.rel$/.test(t.email)?"Email not set yet":esc(t.email)}</p>
+  ${/@pending\.rel$/.test(t.email)?'<div class="sigs"><span class="badge warn">! Add their email so they can log in</span></div>':""}
+  <label class="fld" style="margin:14px 0 0">Email<input data-f="email" type="email" value="${/@pending\.rel$/.test(t.email)?"":esc(t.email)}" placeholder="name@st.ul.edu.lb"></label>
+  <div class="row" style="gap:16px;margin:16px 0 8px"><label class="fld" style="flex:1 1 200px;margin:0">Position<input data-f="position" value="${esc(t.position)}"></label><label class="fld" style="flex:1 1 180px;margin:0">Role<select data-f="role"><option value="vice_president" ${t.role==="vice_president"?"selected":""}>Vice President</option><option value="board" ${t.role==="board"?"selected":""}>Board member</option></select></label></div>
+  ${permBoxes(t.perms||[])}
+  <div class="row" style="margin-top:8px"><button type="button" class="btn primary sm" data-teamsave="${esc(t.email)}">Save</button><button type="button" class="btn sm" data-teamdel="${esc(t.email)}">Remove access</button></div><p class="vres" data-teammsg role="status" aria-live="polite"></p></div>`).join("")}
+ <div class="card" style="background:var(--bg);margin-top:28px"><h3 style="margin-bottom:12px">Add someone to the team</h3><form id="tmForm" novalidate>
+  <label class="fld">Their email *<input id="tmEmail" type="email" placeholder="name@st.ul.edu.lb"></label>
+  <label class="fld">Full name *<input id="tmName"></label>
+  <label class="fld">Position, like Treasurer *<input id="tmPos"></label>
+  <label class="fld">Role<select id="tmRole"><option value="board">Board member</option><option value="vice_president">Vice President</option></select></label>
+  <p class="muted small" style="margin:6px 0 4px">What can they do?</p>${permBoxes([])}
+  <div class="row"><button type="button" class="btn sm" data-preset="vice_president">Vice President preset</button><button type="button" class="btn sm" data-preset="board">View only</button></div>
+  <div class="row" style="margin-top:16px"><button class="btn primary sm" type="submit">Add to the team</button></div><p class="vres" id="tmMsg" role="status" aria-live="polite"></p></form>
+  <p class="muted small" style="margin:14px 0 0">They can then create an account or log in with that email. Their board page card and their account share the same REL ID.</p></div>`;restoreDraft("tmForm")}
+document.addEventListener("click",async e=>{
+ const ps=e.target.closest("[data-preset]");if(ps){const f=$("#tmForm");f.querySelectorAll("[data-perm]").forEach(c=>{c.checked=PRESETS[ps.dataset.preset].includes(c.dataset.perm)});$("#tmRole").value=ps.dataset.preset;return}
+ const sv=e.target.closest("[data-teamsave]");if(sv){const card=sv.closest("[data-team]"),msg=card.querySelector("[data-teammsg]"),perms=[...card.querySelectorAll("[data-perm]:checked")].map(c=>c.dataset.perm);
+  let mail=sv.dataset.teamsave;const typed=card.querySelector('[data-f="email"]').value.trim().toLowerCase();
+  if(typed&&typed!==mail){if(!/^\S+@\S+\.\S+$/.test(typed)){say(msg,"Please enter a valid email.");return}const c=await SB.rpc("change_team_email",{p_old:mail,p_new:typed});if(c.error){say(msg,errText(c.error));return}mail=typed}
+  const {error}=await SB.rpc("set_team_member",{p_email:mail,p_role:card.querySelector('[data-f="role"]').value,p_position:card.querySelector('[data-f="position"]').value.trim(),p_perms:perms});
+  if(error){say(msg,errText(error));return}toast("Saved");paneAccess();refreshPublic();return}
+ const dl=e.target.closest("[data-teamdel]");if(dl){if(!confirm("Remove this person's team access? They stay a normal member."))return;const {error}=await SB.rpc("remove_team_member",{p_email:dl.dataset.teamdel});if(error){toast(errText(error));return}toast("Access removed");paneAccess();refreshPublic()}});
+document.addEventListener("submit",async e=>{const f=e.target;if(!f||f.id!=="tmForm")return;e.preventDefault();const msg=$("#tmMsg"),email=$("#tmEmail").value.trim(),name=$("#tmName").value.trim(),pos=$("#tmPos").value.trim();
+ if(!/^\S+@\S+\.\S+$/.test(email)){say(msg,"Please enter a valid email.");return}if(name.length<3||pos.length<2){say(msg,"Please fill in the name and the position.");return}
+ const perms=[...f.querySelectorAll("[data-perm]:checked")].map(c=>c.dataset.perm);
+ const {data,error}=await SB.rpc("add_team_member",{p_email:email,p_name:name,p_position:pos,p_role:$("#tmRole").value,p_perms:perms});
+ if(error){say(msg,errText(error));return}clearDraft(f);toast("Added with REL ID #"+data);paneAccess();refreshPublic()});
 
 async function initAuth(){renderAccount();renderTeam();
  if(!SB)return;
