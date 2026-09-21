@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-vvCs94Sjy8T6mEaPDv6xEp3qnDoEFt+iZDjGAMKY+Aw='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-PSVKCkbz1QyAncwAn7EH1caiIu1ChtHN1ts3bOgHFJU='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -696,6 +696,25 @@ a.ptn:hover{border-color:var(--fill)}
 
 .verify{background:var(--alt);border-radius:14px;padding:24px 26px}.verify h3{color:var(--brand-ink);margin-bottom:10px}.verify p{margin:0 0 12px}
 
+/* work with REL, galleries */
+.partner{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.partner-copy h3{font-size:1.9rem;color:var(--brand-ink);margin-bottom:12px}
+.lead2{font-size:1.15rem;color:var(--ink);max-width:28em}
+.partner-list{list-style:none;padding:0;margin:26px 0}
+.partner-list li{border-top:1px solid var(--ink);padding:16px 0}
+.partner-list b{display:block;font:500 1.35rem var(--f-display);margin-bottom:2px}
+.partner-list span{color:var(--muted)}
+.partner-form{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px}
+.partner-form h3{font-size:1.5rem;margin-bottom:12px}
+.wkinds{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.gal-list{display:flex;flex-wrap:wrap;gap:12px;margin:8px 0}
+.gal-item{position:relative}
+.gal-item img{height:72px;border-radius:8px;display:block}
+.gal-item button{position:absolute;top:-7px;right:-7px;width:24px;height:24px;border-radius:50%;border:0;background:var(--fill);color:var(--on-fill);cursor:pointer;font:700 15px/1 var(--f-body)}
+@media (max-width:900px){.partner{grid-template-columns:1fr;gap:32px}}
+
+#pPanel{border:0!important;background:transparent!important;padding:0!important;box-shadow:none!important}
+
 </style>
 </head>
 <body>
@@ -847,7 +866,7 @@ a.ptn:hover{border-color:var(--fill)}
 <div class="card"><h3 style="margin-bottom:8px">Ask a question</h3><p class="muted">Anything about REL, joining or events. The board answers.</p><div id="askBtn"></div></div>
 <div class="card"><h3 style="margin-bottom:8px">Give a recommendation</h3><p class="muted">Suggest a speaker, a book, a workshop or a way to improve REL.</p><div id="recBtn"></div></div>
 </div>
-</div><div class="pane" id="partner" data-pane="work" data-label="Work with REL"><div class="sec-head"><h3 style="font-size:2.2rem;color:var(--brand-ink)">Work with REL</h3><p>Sponsors, companies, organizations and other clubs: pick who you are, choose how you want to work with us and tell the board.</p></div><div class="tabs" role="tablist" aria-label="Who are you" id="pTabs"></div>
+</div><div class="pane" id="partner" data-pane="work" data-label="Work with REL"><div class="tabs" role="tablist" aria-label="Who are you" id="pTabs" hidden></div>
 <div class="card" id="pPanel" style="background:var(--bg)"></div>
 </div></div></section></div>
 <div class="pg" data-pg="join" hidden><section id="join" class="sec alt"><div class="wrap">
@@ -895,17 +914,24 @@ SB=makeClient(SB_KEY);
 const ST={user:null,team:null,member:null,app:null,ready:false};
 const SHOW_CARD_CODE=false; /* the private card code is switched off for now */
 let DBRES=[];
-function accountPromo(k){return ST.user?'<p class="muted">You are logged in.</p><a class="btn primary" href="#account">Go to my account</a>':`<p class="muted">${k==="card"?"Log in to see and save your digital card.":"Create a free account with your LU student email, then fill in the short application."}</p><div class="row"><a class="btn primary" href="#account" data-am-go="signup">Create account</a><a class="btn" href="#account" data-am-go="login">Log in</a></div>`}
+const GALS=[];
+function accountPromo(k){
+ if(k==="ambassador"){if(ST.member&&ST.member.role==="ambassador")return '<p class="muted">You are already a REL ambassador. Thank you!</p>';
+  if(ST.member&&ST.member.role==="member")return '<p class="muted">Apply from your account. It takes two minutes.</p><a class="btn primary" href="#account">Apply in my account</a>';
+  if(ST.member)return '<p class="muted">You are already part of the REL team.</p>';
+  if(ST.user)return '<p class="muted">Ambassadors are chosen from our members. Send your membership application first, then come back here.</p><a class="btn primary" href="#account">Go to my account</a>';
+  return '<p class="muted">Ambassadors are chosen from our members. Log in, or become a member first.</p><div class="row"><a class="btn primary" href="#account" data-am-go="login">Log in</a><a class="btn" href="#account" data-am-go="signup">Create account</a></div>'}
+ return ST.user?'<p class="muted">You are logged in.</p><a class="btn primary" href="#account">Go to my account</a>':`<p class="muted">${k==="card"?"Log in to see and save your digital card.":"Create a free account with your LU student email, then fill in the short application."}</p><div class="row"><a class="btn primary" href="#account" data-am-go="signup">Create account</a><a class="btn" href="#account" data-am-go="login">Log in</a></div>`}
 /* ---- Edit here: links, dates and lists ---- */
 const CONFIG={
  email:"rel.committee@gmail.com",wa:"96171628112",
  socials:[{n:"Instagram",u:"https://www.instagram.com/relulfg"},{n:"LinkedIn",u:"https://www.linkedin.com/company/relulfg"},{n:"WhatsApp",u:"https://chat.whatsapp.com/Kph5TBt947mDEe8bfAvUQM"}],
- forms:{event:"",member:"",ambassador:"https://docs.google.com/forms/d/e/1FAIpQLSeZ8xlzk_AKVMU-7c4ujnSUoxft4jZUg5GmrQAXwwDGHPffOg/viewform",question:"",recommendation:"",pitch:"",newsletter:"",vote:"",journal:""},
+ forms:{event:"",member:"",ambassador:"",question:"",recommendation:"",pitch:"",newsletter:"",vote:"",journal:""},
  nextEvent:null /* filled automatically from the first upcoming dated event */
 };
 const FORMS={ /* [key,label,type,required,options] . If a Google Form link is set in CONFIG.forms, that tab shows an "Open the form" button instead. */
  member:{custom:"account",tab:"Become a member",title:"Become a member",blurb:"Get access to events and workshops, earn points on the leaderboard and vote on what REL does next.",note:"The President or Vice President reviews your application. If it is accepted, your profile and REL ID are created automatically.",subject:"Membership request",fields:[["name","Full name","text",1],["yearMajor","Year and major","text",1],["phone","Phone number","tel",0],["invited","Who invited you? (an ambassador or a friend)","text",0],["listed","I agree to be listed on the REL website","check",0]]},
- ambassador:{tab:"Become an ambassador",title:"Become an ambassador",blurb:"Represent REL in your class or major, bring in new members and share our events. You get a certificate and a title for your LinkedIn.",note:"The board will contact you with your first tasks.",subject:"Ambassador application",fields:[["name","Full name","text",1],["yearMajor","Year and major","text",1],["group","Class or group you would represent","text",0],["why","Why do you want to be an ambassador?","area",1]]},
+ ambassador:{custom:"ambassador",tab:"Become an ambassador",title:"Become an ambassador",blurb:"Represent REL in your class or major, bring in new members and share our events. You get a certificate and a title for your LinkedIn.",note:"The board will contact you with your first tasks.",subject:"Ambassador application",fields:[["name","Full name","text",1],["yearMajor","Year and major","text",1],["group","Class or group you would represent","text",0],["why","Why do you want to be an ambassador?","area",1]]},
  card:{tab:"My digital card",title:"Get your digital card",blurb:"Log in to your account to see your digital card and save it to your phone or computer.",note:"You can save the card to your phone or computer.",custom:"card"},
  checkin:{tab:"Event check-in",title:"Check in at an event",blurb:"Are you at an event? Check in with your REL ID so your points are counted.",note:"You need the event code shown at the event. Only people who are there know it.",subject:"Event check-in",fields:[["id","Your REL ID (like 0001)","text",1],["event","Which event?","text",1],["code","Event code","text",1]]},
  question:{tab:"Ask a question",title:"Ask a question",blurb:"Anything about REL, joining or events. The board answers.",subject:"Question",fields:[["name","Your name (optional)","text",0],["q","Your question","area",1]]},
@@ -994,11 +1020,11 @@ function evItem(e,up,idx){const d=e.date?`<div class="d">${fmt(e.date,{day:"nume
  const rf=e.form||CONFIG.forms.event;
  const act=up?`<p class="ev-act">${rf?`<a class="btn primary sm" href="${esc(rf)}" target="_blank" rel="noopener noreferrer">Register to attend</a>`:`<button class="btn sm" data-pending="1">Registration opens soon</button>`}${e.date?`<a class="btn sm" href="${esc(calUrl(e))}" target="_blank" rel="noopener noreferrer">Google Calendar</a><button type="button" class="btn sm" data-ics="${idx}">Apple or Outlook</button>`:'<span class="muted small">You can add it to your calendar once the date is set.</span>'}</p>`:"";
  const rec=!up&&e.recap?`<p style="margin:10px 0 0">${esc(e.recap)}</p>`:"";
- const ph=!up&&e.photos&&e.photos.length?`<div class="thumbs">${e.photos.slice(0,6).map((p,i)=>`<button type="button" class="thumb" data-gal="${idx}" data-i="${i}" aria-label="Open photo ${i+1} of ${esc(e.title)}"><img src="${esc(p)}" alt="${esc(e.title)} photo ${i+1}"></button>`).join("")}${e.photos.length>6?`<span class="muted small">+${e.photos.length-6} more</span>`:""}</div>`:"";
+ const gi=e.photos&&e.photos.length?GALS.push(e)-1:-1,ph=gi>=0?`<div class="thumbs">${e.photos.slice(0,6).map((p,i)=>`<button type="button" class="thumb" data-gal="${gi}" data-i="${i}" aria-label="Open photo ${i+1} of ${esc(e.title)}"><img src="${esc(p)}" alt="${esc(e.title)} photo ${i+1}"></button>`).join("")}${e.photos.length>6?`<span class="muted small">+${e.photos.length-6} more</span>`:""}</div>`:"";
  const pst=e.poster?`<button type="button" class="poster" data-poster="${esc(e.poster)}" data-ptitle="${esc(e.title)}"><img src="${esc(e.poster)}" alt="Poster of ${esc(e.title)}" loading="lazy"><span>View poster</span></button>`:"";
  return `<div class="ev">${d}<div><h3>${esc(e.title)}<span class="tag">${esc(e.type)}</span></h3><p class="muted" style="margin:0">${esc(e.blurb||"")}${e.place?" Location: "+esc(e.place)+".":""}${e.time?" Time: "+esc(e.time)+(e.endTime?" to "+esc(e.endTime):"")+".":""}</p>${rec}${ph}${pst}${act}</div></div>`}
-const annItem=a=>`<div class="ev"><div class="d">${fmt(a.date,{day:"numeric"})}<small>${fmt(a.date,{month:"short"})}</small></div><div><h3>${esc(a.title)}${a.pinned?'<span class="tag">Pinned</span>':""}</h3><p class="muted" style="margin:0">${esc(a.text||"")}</p>${a.link?`<p style="margin:10px 0 0"><a href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Read more</a></p>`:""}</div></div>`;
-function showEv(k){if(k==="news"){markSeen();$("#evList").innerHTML=waNote()+(ANN.length?ANN.map(annItem).join(""):`<div class="empty"><p>No announcements yet.</p><p>News from the board will appear here.</p></div>`);$$("[data-ev]").forEach(b=>b.setAttribute("aria-selected",b.dataset.ev===k));return}
+const annItem=a=>`<div class="ev"><div class="d">${fmt(a.date,{day:"numeric"})}<small>${fmt(a.date,{month:"short"})}</small></div><div><h3>${esc(a.title)}${a.pinned?'<span class="tag">Pinned</span>':""}</h3><p class="muted" style="margin:0">${esc(a.text||"")}</p>${a.link?`<p style="margin:10px 0 0"><a href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Read more</a></p>`:""}${a.image?`<button type="button" class="poster" data-poster="${esc(a.image)}" data-ptitle="${esc(a.title)}"><img src="${esc(a.image)}" alt="" loading="lazy"><span>View picture</span></button>`:""}</div></div>`;
+function showEv(k){GALS.length=0;if(k==="news"){markSeen();$("#evList").innerHTML=waNote()+(ANN.length?ANN.map(annItem).join(""):`<div class="empty"><p>No announcements yet.</p><p>News from the board will appear here.</p></div>`);$$("[data-ev]").forEach(b=>b.setAttribute("aria-selected",b.dataset.ev===k));return}
  const list=k==="up"?EVENTS:PAST;$("#evList").innerHTML=list.length?list.map((e,i)=>evItem(e,k==="up",i)).join("")+(k==="up"&&list.some(e=>e.date)?'<p class="ev-all"><button type="button" class="btn sm" data-icsall>Add all upcoming events to my calendar</button></p>':""):`<div class="empty"><p>Nothing here yet.</p><p>${k==="up"?"Our first events are being planned for this semester.":"Photos and recaps of our events will appear here after each event."}</p></div>`;
  $$("[data-ev]").forEach(b=>b.setAttribute("aria-selected",b.dataset.ev===k))}
 $$("[data-ev]").forEach(b=>b.addEventListener("click",()=>showEv(b.dataset.ev)));showEv("up");
@@ -1050,7 +1076,7 @@ function fieldHtml(f){const [k,l,ty,req,opts]=f,r=req?" *":"";
 function drawJoin(){const keys=Object.keys(FORMS);
  $("#jTabs").innerHTML=keys.map(k=>`<button class="tab" role="tab" aria-selected="${k===jt}" data-j="${k}">${esc(FORMS[k].tab)}</button>`).join("");
  const F=FORMS[jt],u=CONFIG.forms[jt];let right;
- if(F.custom==="card"||F.custom==="account")right=accountPromo(F.custom);
+ if(F.custom==="card"||F.custom==="account"||F.custom==="ambassador")right=accountPromo(F.custom);
  else if(F.custom==="newsletter")right=nlForm();
  else if(F.empty&&!u)right=`<div class="empty"><p>${esc(F.empty)}</p></div>`;
  else if(u)right=`<p class="muted">Fill in the form. It takes about two minutes.</p><a class="btn primary" href="${esc(u)}" target="_blank" rel="noopener noreferrer">Open the form</a>`;
@@ -1070,7 +1096,7 @@ openJoin("member",false);
 let authMode="login",authNote="",authOk=false,teamTab="apps",teamEdit=null;const teamCache={};
 const fromEmailLink=/type=(signup|invite|recovery|magiclink|email_change)/.test(location.hash);
 const LEVEL=["1st year","2nd year","3rd year","4th year","5th year"];
-const DRAFT_FORMS=["authForm","applyForm","profForm","evForm","anForm","ptForm","hoForm","tmForm"];let DRAFT={};
+const DRAFT_FORMS=["authForm","applyForm","profForm","evForm","anForm","ptForm","hoForm","tmForm","ambForm"];let DRAFT={};
 try{DRAFT=JSON.parse(sessionStorage.getItem("relDraft")||"{}")}catch(err){DRAFT={}}
 const saveDraft=()=>{try{sessionStorage.setItem("relDraft",JSON.stringify(DRAFT))}catch(err){}};
 const draftKey=f=>f.id+(f.dataset&&f.dataset.id?":"+f.dataset.id:"");
@@ -1096,17 +1122,17 @@ function errText(e){const m=(e&&e.message)||String(e||"");
 const accHead=(t,p)=>`<div class="sec-head"><h2>${esc(t)}</h2>${p?`<p>${esc(p)}</p>`:""}</div>`;
 const say=(el,t,ok)=>{if(!el)return;el.className="vres "+(ok?"ok":"no");el.textContent=t};
 const accountBar=()=>`<p class="alt-links" style="margin-top:28px">Signed in as ${esc(ST.user.email||"")}. <button type="button" class="idlink" data-logout>Log out</button></p>`;
-const photoUrl=p=>{try{return p&&SB?SB.storage.from("avatars").getPublicUrl(p).data.publicUrl:""}catch(err){return ""}};
+const photoUrl=p=>{try{if(!p||!SB)return "";const b=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\//i.test(p)?"avatars":"media";return SB.storage.from(b).getPublicUrl(p).data.publicUrl}catch(err){return ""}};
 const cardRec=m=>({id:m.rel_id,name:m.full_name,role:m.position||"Member",year:m.year,major:m.major,type:m.role,photo:m.photo_path?photoUrl(m.photo_path):""});
 
-async function loadUser(){ST.team=ST.member=ST.app=null;
+async function loadUser(){ST.team=ST.member=ST.app=ST.amb=null;
  if(!SB){ST.user=null;ST.ready=true;updateNav();return}
  try{const {data}=await SB.auth.getSession();ST.user=data&&data.session?data.session.user:null;
   if(ST.user){const em=(ST.user.email||"").toLowerCase();
    try{await SB.rpc("claim_team_profile")}catch(err){}
    const t=await SB.from("team").select("*").eq("email",em).maybeSingle();ST.team=t.data||null;
    const m=await SB.from("members").select("rel_id,full_name,role,position,year,major,faculty,joined,listed,bio,active,email,phone,uni_id,photo_path").eq("user_id",ST.user.id).maybeSingle();ST.member=m.data||null;
-   const a=await SB.from("applications").select("*").eq("user_id",ST.user.id).maybeSingle();ST.app=a.data||null}
+   const a=await SB.from("applications").select("*").eq("user_id",ST.user.id).maybeSingle();ST.app=a.data||null;const ab=await SB.from("ambassador_applications").select("*").eq("user_id",ST.user.id).maybeSingle();ST.amb=ab.data||null}
  }catch(err){}
  ST.ready=true;updateNav()}
 function updateNav(){const a=$("#navAcct"),t=$("#navTeam");if(a)a.textContent=ST.user?"Account":"Log in";if(t)t.hidden=!ST.team;setNav(cur.pg)}
@@ -1173,7 +1199,7 @@ function memberView(box){const m=ST.member,first=(m.full_name||"").split(" ")[0]
    <div class="row"><button class="btn primary sm" type="submit">Change password</button></div><p class="vres" id="wMsg" role="status" aria-live="polite"></p></form></div>
  </div><div>
   <div class="card"><h3 style="margin-bottom:8px">Your REL card</h3>${SHOW_CARD_CODE?'<p class="muted">Your card code proves your REL card is real. Keep it private. Creating a new code cancels the old one.</p><div class="row"><button type="button" class="btn primary sm" data-mkcode>Create my card code</button></div><div id="codeOut"></div>':'<p class="muted">Show this card at REL events. You can save it to your phone or computer.</p>'}<div id="myCardImg"></div></div>
-  ${ST.team?`<div class="card" style="margin-top:20px"><h3 style="margin-bottom:8px">Team area</h3><p class="muted">You are on the REL team as <b>${esc(ST.team.position)}</b>. Your REL ID and profile are the same as on the board page.</p>${(()=>{const l=ST.team.role==="president"?["Everything, including who can do what"]:PERMS.filter(p=>can(p[0])).map(p=>p[1]);return `<p class="muted small" style="margin:0 0 6px">What you can do:</p><ul class="muted small" style="margin:0 0 16px;padding-left:1.2em">${l.length?l.map(x=>`<li>${esc(x)}</li>`).join(""):"<li>See the member list</li>"}</ul>`})()}<a class="btn primary sm" href="#team">Open the team area</a></div>`:""}
+  ${ambCard(m)}${ST.team?`<div class="card" style="margin-top:20px"><h3 style="margin-bottom:8px">Team area</h3><p class="muted">You are on the REL team as <b>${esc(ST.team.position)}</b>. Your REL ID and profile are the same as on the board page.</p>${(()=>{const l=ST.team.role==="president"?["Everything, including who can do what"]:PERMS.filter(p=>can(p[0])).map(p=>p[1]);return `<p class="muted small" style="margin:0 0 6px">What you can do:</p><ul class="muted small" style="margin:0 0 16px;padding-left:1.2em">${l.length?l.map(x=>`<li>${esc(x)}</li>`).join(""):"<li>See the member list</li>"}</ul>`})()}<a class="btn primary sm" href="#team">Open the team area</a></div>`:""}
  </div></div>`+accountBar();
  restoreDraft("profForm");showCard(rec,$("#myCardImg"))}
 
@@ -1215,6 +1241,7 @@ function evForm(e){e=e||{};return `<div class="card" style="background:var(--bg)
  <label class="fld ck"><input type="checkbox" id="eTent" ${e.tentative?"checked":""}><span>The date is not confirmed yet</span></label>
  <label class="fld">Recap after the event (optional)<textarea id="eRecap">${esc(e.recap||"")}</textarea></label>
  ${upField("ePoster","Poster (optional)","posters",1400,false,"image/jpeg,image/png,image/webp",e.poster_path)}
+ ${galField("ePhotos","Photos of the event (optional)",e.photo_paths)}
  <div class="row"><button class="btn primary sm" type="submit">${e.id?"Save changes":"Add event"}</button>${e.id?'<button type="button" class="btn sm" data-evcancel>Cancel</button>':""}</div><p class="vres" id="eMsg" role="status" aria-live="polite"></p></form></div>`}
 async function paneEvents(){loading();const {data,error}=await SB.from("events").select("*").order("date",{ascending:true});if(error)return paneErr(error);teamCache.events=data;
  tpane().innerHTML=evForm(teamEdit&&teamEdit.kind==="event"?teamEdit.row:null)+`<h3 style="margin-bottom:12px">All events (${data.length})</h3>${data.length?data.map(e=>`<div class="ev" style="grid-template-columns:1fr auto"><div><h3>${esc(e.title)}<span class="tag">${esc(e.type)}</span></h3><p class="muted" style="margin:0">${esc(e.date?dshort(e.date):"Date to be announced")}${e.place?". "+esc(e.place):""}</p></div><div class="row"><button type="button" class="btn sm" data-evedit="${esc(e.id)}">Edit</button><button type="button" class="btn sm" data-evdel="${esc(e.id)}">Delete</button></div></div>`).join(""):'<div class="empty"><p>No events yet.</p></div>'}`;restoreDraft("evForm")}
@@ -1223,6 +1250,7 @@ function newsForm(a){a=a||{};return `<div class="card" style="background:var(--b
  <label class="fld">Text<textarea id="nBody">${esc(a.body||"")}</textarea></label>
  <label class="fld">Link (optional)<input type="url" id="nLink" value="${esc(a.link||"")}" placeholder="https://"></label>
  <label class="fld">Date<input type="date" id="nDate" value="${esc(a.date||new Date().toISOString().slice(0,10))}"></label>
+ ${upField("nImage","Image (optional)","announcements",1400,false,"image/jpeg,image/png,image/webp",a.image_path)}
  <label class="fld ck"><input type="checkbox" id="nPin" ${a.pinned?"checked":""}><span>Pin this announcement on top</span></label>
  <div class="row"><button class="btn primary sm" type="submit">${a.id?"Save changes":"Post announcement"}</button>${a.id?'<button type="button" class="btn sm" data-evcancel>Cancel</button>':""}</div><p class="vres" id="nMsg" role="status" aria-live="polite"></p></form></div>`}
 async function paneNews(){loading();const {data,error}=await SB.from("announcements").select("*").order("date",{ascending:false});if(error)return paneErr(error);teamCache.news=data;
@@ -1233,8 +1261,13 @@ async function paneMembers(){loading();const admin=can("members");
  tpane().innerHTML=`<label for="tmQ" class="muted small">Search by name or REL ID</label><input id="tmQ" class="search" type="search" placeholder="Name or ID" autocomplete="off"><div class="tbl" style="margin-top:16px" id="tmList"></div>${admin?"":'<p class="muted small">Phone numbers, emails and university IDs are only visible to the President and Vice President.</p>'}`;drawMembers()}
 function drawMembers(){const admin=can("members"),q=(($("#tmQ")||{}).value||"").trim().toLowerCase().replace(/^#/,""),rows=(teamCache.members||[]).filter(r=>!q||String(r.full_name).toLowerCase().includes(q)||String(r.rel_id).includes(q));
  $("#tmList").innerHTML=rows.length?`<table><thead><tr><th>ID</th><th>Name</th><th>Position</th><th>Year</th><th>Major</th>${admin?"<th>Uni ID</th><th>Email</th><th>Phone</th>":""}</tr></thead><tbody>${rows.map(r=>`<tr><td>#${esc(r.rel_id)}</td><td>${esc(r.full_name)}</td><td>${esc(r.position||r.role)}</td><td>${esc(r.year||"")}</td><td>${esc(r.major||"")}</td>${admin?`<td>${esc(r.uni_id||"")}</td><td>${esc(r.email||"")}</td><td>${esc(r.phone||"")}</td>`:""}</tr>`).join("")}</tbody></table>`:'<div class="empty"><p>No members found.</p></div>'}
-async function paneAmb(){loading();const {data,error}=await SB.from("team_member_list").select("rel_id,full_name,role,position,year,major").in("role",["member","ambassador"]).order("rel_id",{ascending:true});if(error)return paneErr(error);
- tpane().innerHTML=`<p class="muted">Ambassadors represent REL in their class or major. You can promote a member here, or change them back.</p>${data.length?`<div class="tbl"><table><thead><tr><th>ID</th><th>Name</th><th>Year</th><th>Major</th><th>Role</th><th></th></tr></thead><tbody>${data.map(r=>`<tr><td>#${esc(r.rel_id)}</td><td>${esc(r.full_name)}</td><td>${esc(r.year||"")}</td><td>${esc(r.major||"")}</td><td>${esc(r.role)}</td><td><button type="button" class="btn sm" data-setrole="${esc(r.rel_id)}" data-to="${r.role==="member"?"ambassador":"member"}">${r.role==="member"?"Make ambassador":"Make member"}</button></td></tr>`).join("")}</tbody></table></div>`:'<div class="empty"><p>No members yet.</p></div>'}`}
+async function paneAmb(){loading();
+ const [ml,ap]=await Promise.all([SB.from("team_member_list").select("rel_id,full_name,role,position,year,major,joined").in("role",["member","ambassador"]).order("rel_id",{ascending:true}),SB.from("ambassador_applications").select("*").order("created_at",{ascending:false})]);
+ if(ml.error)return paneErr(ml.error);if(ap.error)return paneErr(ap.error);const data=ml.data,info=id=>data.find(m=>m.rel_id===id)||{},pend=ap.data.filter(a=>a.status==="pending"),done=ap.data.filter(a=>a.status!=="pending");
+ tpane().innerHTML=`<h3 style="margin-bottom:14px">Ambassador applications (${pend.length})</h3>${pend.length?pend.map(a=>{const m=info(a.rel_id);return `<div class="appc"><h3>${esc(m.full_name||"#"+a.rel_id)}</h3><p class="muted small" style="margin:0">#${esc(a.rel_id)}. ${esc([m.year,m.major].filter(Boolean).join(", "))}. Member since ${esc(dshort(m.joined))}. Applied ${esc(dshort(a.created_at))}</p><dl class="kv"><dt>Why</dt><dd>${esc(a.why)}</dd>${a.plan?`<dt>What they would do</dt><dd>${esc(a.plan)}</dd>`:""}</dl>
+  <label class="fld">Note for the applicant (optional)<input id="anote-${esc(a.id)}"></label><div class="row"><button type="button" class="btn primary sm" data-adecide="${esc(a.id)}" data-aaccept="1">Accept</button><button type="button" class="btn sm" data-adecide="${esc(a.id)}" data-aaccept="0">Reject</button></div><p class="vres" id="adm-${esc(a.id)}" role="status"></p></div>`}).join(""):'<div class="empty"><p>No ambassador applications are waiting.</p></div>'}
+ ${done.length?`<h3 style="margin:32px 0 12px">Decided (${done.length})</h3><div class="tbl"><table><thead><tr><th>Member</th><th>Result</th><th>Decided</th><th>Note</th></tr></thead><tbody>${done.map(a=>`<tr><td>#${esc(a.rel_id)} ${esc(info(a.rel_id).full_name||"")}</td><td>${esc(a.status)}</td><td>${esc(dshort(a.decided_at))}</td><td>${esc(a.note||"")}</td></tr>`).join("")}</tbody></table></div>`:""}
+ <h3 style="margin:32px 0 8px">Members and ambassadors</h3><p class="muted">You can also promote a member directly, or change an ambassador back.</p>${data.length?`<div class="tbl"><table><thead><tr><th>ID</th><th>Name</th><th>Year</th><th>Major</th><th>Role</th><th></th></tr></thead><tbody>${data.map(r=>`<tr><td>#${esc(r.rel_id)}</td><td>${esc(r.full_name)}</td><td>${esc(r.year||"")}</td><td>${esc(r.major||"")}</td><td>${esc(r.role)}</td><td><button type="button" class="btn sm" data-setrole="${esc(r.rel_id)}" data-to="${r.role==="member"?"ambassador":"member"}">${r.role==="member"?"Make ambassador":"Make member"}</button></td></tr>`).join("")}</tbody></table></div>`:'<div class="empty"><p>No members yet.</p></div>'}`}
 
 /* ---- profile photo ---- */
 function squareJpeg(file,size){size=size||400;return new Promise((res,rej)=>{const url=URL.createObjectURL(file),img=new Image();
@@ -1255,8 +1288,8 @@ async function removePhoto(){const old=ST.member&&ST.member.photo_path;if(!old)r
 document.addEventListener("change",e=>{if(e.target.id==="phFile")uploadPhoto(e.target.files[0])});
 
 /* ---- events for everyone come from the database ---- */
-const mapEv=e=>({poster:e.poster_path?mediaUrl(e.poster_path):"",title:e.title,type:e.type,date:e.date||null,time:e.time?String(e.time).slice(0,5):undefined,endTime:e.end_time?String(e.end_time).slice(0,5):undefined,place:e.place||"",blurb:e.description||"",form:safeUrl(e.form_url),tentative:!!e.tentative,recap:e.recap||""});
-const mapAn=a=>({date:a.date,title:a.title,text:a.body||"",link:safeUrl(a.link),pinned:!!a.pinned});
+const mapEv=e=>({poster:e.poster_path?mediaUrl(e.poster_path):"",photos:(e.photo_paths||[]).map(mediaUrl),title:e.title,type:e.type,date:e.date||null,time:e.time?String(e.time).slice(0,5):undefined,endTime:e.end_time?String(e.end_time).slice(0,5):undefined,place:e.place||"",blurb:e.description||"",form:safeUrl(e.form_url),tentative:!!e.tentative,recap:e.recap||""});
+const mapAn=a=>({image:a.image_path?mediaUrl(a.image_path):"",date:a.date,title:a.title,text:a.body||"",link:safeUrl(a.link),pinned:!!a.pinned});
 const mapRec=r=>({id:r.rel_id,type:r.role==="ambassador"?"Ambassador":r.role==="member"?"Member":"Board",name:r.full_name,role:r.position||"Member",year:r.year,major:r.major,faculty:r.faculty,joined:r.joined,bio:r.bio,photo:r.photo_path?photoUrl(r.photo_path):"",listed:true,db:true});
 const STATIC_RECORDS=RECORDS.slice(),STATIC_BOARD=BOARD.map(b=>({...b}));
 const mapBoard=r=>{const s=STATIC_BOARD.find(x=>x.id===r.rel_id)||{};return{id:r.rel_id,role:r.position,name:r.full_name,bio:r.bio||s.bio||"",photo:r.photo_path?photoUrl(r.photo_path):(s.photo||"")}};
@@ -1323,11 +1356,11 @@ document.addEventListener("submit",async e=>{const f=e.target;if(!f||!f.id)retur
  if(f.id==="profForm"){e.preventDefault();const msg=$("#mMsg");const {error}=await SB.from("members").update({bio:$("#mBio").value.trim()||null,phone:$("#mPhone").value.trim()||null,listed:$("#mList").checked}).eq("user_id",ST.user.id);
   if(error){say(msg,errText(error));return}clearDraft(f);await loadUser();say($("#mMsg"),"Saved.",true);refreshPublic();return}
  if(f.id==="evForm"){e.preventDefault();const msg=$("#eMsg"),title=$("#eTitle").value.trim();if(!title){say(msg,"Please add a title.");return}
-  const row={title,type:$("#eType").value,date:$("#eDate").value||null,time:$("#eTime").value||null,end_time:$("#eEnd").value||null,place:$("#ePlace").value.trim()||null,description:$("#eDesc").value.trim()||null,form_url:$("#eForm").value.trim()||null,tentative:$("#eTent").checked,recap:$("#eRecap").value.trim()||null,poster_path:$("#ePoster").value||null},id=f.dataset.id;
+  const row={title,type:$("#eType").value,date:$("#eDate").value||null,time:$("#eTime").value||null,end_time:$("#eEnd").value||null,place:$("#ePlace").value.trim()||null,description:$("#eDesc").value.trim()||null,form_url:$("#eForm").value.trim()||null,tentative:$("#eTent").checked,recap:$("#eRecap").value.trim()||null,poster_path:$("#ePoster").value||null,photo_paths:galValues("ePhotos")},id=f.dataset.id;
   const {error}=id?await SB.from("events").update(row).eq("id",id):await SB.from("events").insert(row);
   if(error){say(msg,errText(error));return}toast(id?"Event saved":"Event added");clearDraft(f);teamEdit=null;paneEvents();refreshPublic();return}
  if(f.id==="anForm"){e.preventDefault();const msg=$("#nMsg"),title=$("#nTitle").value.trim();if(!title){say(msg,"Please add a title.");return}
-  const row={title,body:$("#nBody").value.trim()||null,link:$("#nLink").value.trim()||null,date:$("#nDate").value||new Date().toISOString().slice(0,10),pinned:$("#nPin").checked},id=f.dataset.id;
+  const row={title,body:$("#nBody").value.trim()||null,link:$("#nLink").value.trim()||null,image_path:$("#nImage").value||null,date:$("#nDate").value||new Date().toISOString().slice(0,10),pinned:$("#nPin").checked},id=f.dataset.id;
   const {error}=id?await SB.from("announcements").update(row).eq("id",id):await SB.from("announcements").insert(row);
   if(error){say(msg,errText(error));return}toast(id?"Announcement saved":"Announcement posted");clearDraft(f);teamEdit=null;paneNews();refreshPublic();return}});
 /* ---------- newsletter, points, honors, games boards ---------- */
@@ -1338,20 +1371,20 @@ function periodLabel(kind,p){if(kind==="month"&&/^\d{4}-\d{2}$/.test(p)){const [
  if(kind==="semester"){const m=/^(\d{4})-(fall|spring)$/i.exec(p);if(m)return m[2][0].toUpperCase()+m[2].slice(1).toLowerCase()+" "+m[1]}return p}
 function defaultPeriod(kind){const d=beirutNow(),y=d.slice(0,4),m=+d.slice(5,7);return kind==="month"?d.slice(0,7):y+"-"+(m>=8||m<=1?"fall":"spring")}
 const mmss2=s=>Math.floor(s/60)+":"+String(s%60).padStart(2,"0");
-const avatar=(name,path,big)=>`<span class="lb-av${big?" big":""}">${path?`<img src="${esc(photoUrl(path))}" alt="">`:esc(initials(name))}</span>`;
+const avatar=(name,path,big,rel)=>{const u=path?photoUrl(path):(rel?photoOf({id:rel}):"");return `<span class="lb-av${big?" big":""}">${u?`<img src="${esc(u)}" alt="">`:esc(initials(name))}</span>`};
 async function loadBoards(){if(!SB)return;
  try{const q=n=>SB.from(n).select("*");const [a,m,t,g,h]=await Promise.all([q("leaderboard_all"),q("leaderboard_month"),q("games_today"),q("games_totals"),q("honors_public")]);
   BOARDS.all=a.data||[];BOARDS.month=m.data||[];BOARDS.today=t.data||[];BOARDS.totals=g.data||[];BOARDS.honors=h.data||[]}catch(err){}
  drawBoards()}
 function drawBoards(){if(!$("#lb"))return;const rows=BOARDS[lbRange]||[];
- $("#lb").innerHTML=rows.length?rows.map((r,i)=>`<tr><td class="n">${i+1}</td><td><span class="lb-who">${avatar(r.full_name,r.photo_path)}${esc(r.full_name)}</span></td><td class="p">${r.pts}</td></tr>`).join(""):`<tr><td colspan="3" class="muted">${lbRange==="month"?"No points this month yet.":"Points start after our first event."}</td></tr>`;
+ $("#lb").innerHTML=rows.length?rows.map((r,i)=>`<tr><td class="n">${i+1}</td><td><span class="lb-who">${avatar(r.full_name,r.photo_path,false,r.rel_id)}${esc(r.full_name)}</span></td><td class="p">${r.pts}</td></tr>`).join(""):`<tr><td colspan="3" class="muted">${lbRange==="month"?"No points this month yet.":"Points start after our first event."}</td></tr>`;
  $$("[data-lbr]").forEach(b=>b.setAttribute("aria-selected",b.dataset.lbr===lbRange));
  const H=BOARDS.honors||[],pick=k=>H.find(h=>h.kind===k);
- const card=(h,title)=>h?`<article class="honor"><span class="hk">${title}</span><div class="ho-body">${avatar(h.full_name,h.photo_path,true)}<div><h3>${esc(h.full_name)}</h3><p>${esc(periodLabel(h.kind,h.period))}${h.note?". "+esc(h.note):""}</p></div></div></article>`:"";
+ const card=(h,title)=>h?`<article class="honor"><span class="hk">${title}</span><div class="ho-body">${avatar(h.full_name,h.photo_path,true,h.rel_id)}<div><h3>${esc(h.full_name)}</h3><p>${esc(periodLabel(h.kind,h.period))}${h.note?". "+esc(h.note):""}</p></div></div></article>`:"";
  $("#honors").innerHTML=(card(pick("month"),"Member of the month")+card(pick("semester"),"Member of the semester"))||'<div class="empty"><p>Member of the month and member of the semester will be announced here.</p></div>';
  const T=BOARDS.today||[],G=BOARDS.totals||[];
- $("#gToday").innerHTML=T.length?T.map((r,i)=>`<tr><td class="n">${i+1}</td><td><span class="lb-who">${avatar(r.full_name,r.photo_path)}${esc(r.full_name)}</span></td><td class="p">${mmss2(r.seconds)}</td></tr>`).join(""):'<tr><td colspan="3" class="muted">No one has solved today\'s puzzle yet. Be the first.</td></tr>';
- $("#gTotals").innerHTML=G.length?G.map((r,i)=>`<tr><td class="n">${i+1}</td><td><span class="lb-who">${avatar(r.full_name,r.photo_path)}${esc(r.full_name)}</span></td><td class="p">${r.puzzles+r.quiz_right}</td></tr>`).join(""):'<tr><td colspan="3" class="muted">The games leaderboard starts with the first result.</td></tr>'}
+ $("#gToday").innerHTML=T.length?T.map((r,i)=>`<tr><td class="n">${i+1}</td><td><span class="lb-who">${avatar(r.full_name,r.photo_path,false,r.rel_id)}${esc(r.full_name)}</span></td><td class="p">${mmss2(r.seconds)}</td></tr>`).join(""):'<tr><td colspan="3" class="muted">No one has solved today\'s puzzle yet. Be the first.</td></tr>';
+ $("#gTotals").innerHTML=G.length?G.map((r,i)=>`<tr><td class="n">${i+1}</td><td><span class="lb-who">${avatar(r.full_name,r.photo_path,false,r.rel_id)}${esc(r.full_name)}</span></td><td class="p">${r.puzzles+r.quiz_right}</td></tr>`).join(""):'<tr><td colspan="3" class="muted">The games leaderboard starts with the first result.</td></tr>'}
 async function submitGame(game,seconds,correct){if(!SB)return;
  if(!ST.user){toast("Log in as a member to appear on the games leaderboard.");return}
  if(!ST.member){toast("Only members appear on the games leaderboard.");return}
@@ -1387,6 +1420,7 @@ async function paneHonors(){loading();const [ms,hs]=await Promise.all([SB.from("
   <label class="fld">Period (like 2026-09 for a month, or 2026-fall for a semester) *<input id="hPeriod" value="${esc(defaultPeriod("month"))}"></label>
   <label class="fld">Member *<select id="hMem">${memberOptions(ms.data)}</select></label>
   <label class="fld">Why this member? (optional)<input id="hNote" maxlength="300"></label>
+  ${upField("hPhoto","Photo for the announcement (optional)","honors",1000,false,"image/jpeg,image/png,image/webp","")}
   <div class="row"><button class="btn primary sm" type="submit">Save</button></div><p class="vres" id="hMsg" role="status" aria-live="polite"></p></form></div>
   <h3 style="margin-bottom:12px">Chosen so far</h3>${hs.data.length?`<div class="tbl"><table><thead><tr><th>Title</th><th>Period</th><th>Member</th><th></th></tr></thead><tbody>${hs.data.map(h=>`<tr><td>${h.kind==="month"?"Member of the month":"Member of the semester"}</td><td>${esc(periodLabel(h.kind,h.period))}</td><td>#${esc(h.rel_id)} ${esc(nm(h.rel_id))}</td><td><button type="button" class="btn sm" data-hodel="${esc(h.id)}">Remove</button></td></tr>`).join("")}</tbody></table></div>`:'<div class="empty"><p>Nobody chosen yet.</p></div>'}`;restoreDraft("hoForm")}
 document.addEventListener("click",async e=>{
@@ -1402,19 +1436,37 @@ document.addEventListener("submit",async e=>{const f=e.target;if(!f||!f.id)retur
   const {error}=await SB.from("points").insert({rel_id:rel,points:pts,reason:why,source:"manual"});if(error){say(msg,errText(error));return}clearDraft(f);toast("Points added");panePoints();loadBoards();return}
  if(f.id==="hoForm"){e.preventDefault();const msg=$("#hMsg"),kind=$("#hKind").value,period=$("#hPeriod").value.trim(),rel=$("#hMem").value,note=$("#hNote").value.trim()||null;
   if(!rel){say(msg,"Please choose a member.");return}if(period.length<4){say(msg,"Please write the period, like 2026-09 or 2026-fall.");return}
-  const {error}=await SB.from("honors").upsert({kind,period,rel_id:rel,note},{onConflict:"kind,period"});if(error){say(msg,errText(error));return}clearDraft(f);toast("Saved");paneHonors();loadBoards()}});
+  const {error}=await SB.from("honors").upsert({kind,period,rel_id:rel,note,photo_path:$("#hPhoto").value||null},{onConflict:"kind,period"});if(error){say(msg,errText(error));return}clearDraft(f);toast("Saved");paneHonors();loadBoards()}});
 
+
+
+/* ---- ambassador application (like the membership application) ---- */
+function ambCard(m){if(!m)return "";
+ if(m.role==="ambassador")return `<div class="card" style="margin-top:20px"><h3 style="margin-bottom:8px">REL ambassador</h3><p class="muted" style="margin:0">Thank you for representing REL. You are one of our ambassadors.</p></div>`;
+ if(m.role!=="member")return "";const a=ST.amb;
+ if(a&&a.status==="pending")return `<div class="card" style="margin-top:20px"><h3 style="margin-bottom:8px">Ambassador application</h3><p class="muted" style="margin:0">Your application is under review. The board will decide soon, and you will see the result here.</p></div>`;
+ if(a&&a.status==="rejected"&&a.decided_at&&(Date.now()-new Date(a.decided_at).getTime()<30*864e5))return `<div class="card" style="margin-top:20px"><h3 style="margin-bottom:8px">Ambassador application</h3><p class="muted" style="margin:0">Your application was not accepted this time.${a.note?" Note from the board: "+esc(a.note):""} You can apply again 30 days after the decision.</p></div>`;
+ return `<div class="card" style="margin-top:20px"><h3 style="margin-bottom:8px">Become an ambassador</h3><p class="muted">Ambassadors represent REL in their year or major. They receive a certificate, a LinkedIn title, priority at the flagship event, a monthly shoutout and a recommendation letter.</p>
+  <form id="ambForm" novalidate><label class="fld">Why do you want to be an ambassador? *<textarea id="aWhy"></textarea></label><label class="fld">What would you do for REL? (optional)<textarea id="aPlan" placeholder="For example: share events with my class, help at events, bring friends."></textarea></label>
+  <div class="row"><button class="btn primary sm" type="submit">Send my application</button></div><p class="vres" id="aMsg2" role="status" aria-live="polite"></p></form></div>`}
+document.addEventListener("submit",async e=>{const f=e.target;if(!f||f.id!=="ambForm")return;e.preventDefault();const msg=$("#aMsg2"),why=$("#aWhy").value.trim();
+ if(why.length<10){say(msg,"Please tell us a little more about why you want to be an ambassador.");return}
+ const {error}=await SB.rpc("apply_ambassador",{p_why:why,p_plan:$("#aPlan").value.trim()||null});if(error){say(msg,errText(error));return}clearDraft(f);await loadUser();renderAccount();toast("Application sent")});
+document.addEventListener("click",async e=>{const d=e.target.closest("[data-adecide]");if(!d)return;const id=d.dataset.adecide,acc=d.dataset.aaccept==="1";if(!acc&&!confirm("Reject this application?"))return;
+ const note=(($("#anote-"+id)||{}).value||"").trim()||null,msg=$("#adm-"+id);d.disabled=true;const {error}=await SB.rpc("decide_ambassador",{p_id:id,p_accept:acc,p_note:note});
+ if(error){say(msg,errText(error));d.disabled=false;return}toast(acc?"New ambassador":"Application rejected");paneAmb();refreshPublic()});
 
 /* ---- Access: who can do what (President only) ---- */
 const permBoxes=sel=>PERMS.map(p=>`<label class="fld ck"><input type="checkbox" data-perm="${p[0]}" ${sel.includes(p[0])?"checked":""}><span>${esc(p[1])}</span></label>`).join("");
 async function paneAccess(){loading();const {data,error}=await SB.from("team").select("*").order("rel_id",{ascending:true});if(error)return paneErr(error);
  const rank=t=>t.role==="president"?0:t.role==="vice_president"?1:2;data.sort((x,y)=>rank(x)-rank(y)||x.rel_id.localeCompare(y.rel_id));
  tpane().innerHTML=`<p class="muted">Choose who can do what in the Team area. The President always has full access. Changes apply right away, and nobody needs to log in again.</p>
- ${data.map(t=>t.role==="president"?`<div class="appc"><h3>${esc(t.full_name)}</h3><p class="muted small" style="margin:0">${esc(t.position)}. #${esc(t.rel_id)}. ${esc(t.email)}</p><div class="sigs"><span class="badge ok">&#10003; Full access</span></div></div>`
+ ${data.map(t=>t.role==="president"?`<div class="appc" data-teamp="${esc(t.email)}"><h3>${esc(t.full_name)}</h3><p class="muted small" style="margin:0">${esc(t.position)}. #${esc(t.rel_id)}. ${esc(t.email)}</p><div class="sigs"><span class="badge ok">&#10003; Full access</span></div>${upField("tp_"+t.rel_id,"Photo","team",800,true,"image/jpeg,image/png,image/webp",t.photo_path,"photo")}<div class="row"><button type="button" class="btn sm" data-savephoto="${esc(t.email)}">Save photo</button></div><p class="vres" data-teammsg role="status" aria-live="polite"></p></div>`
  :`<div class="appc" data-team="${esc(t.email)}"><h3>${esc(t.full_name)}</h3><p class="muted small" style="margin:0">#${esc(t.rel_id)}. ${/@pending\.rel$/.test(t.email)?"Email not set yet":esc(t.email)}</p>
   ${/@pending\.rel$/.test(t.email)?'<div class="sigs"><span class="badge warn">! Add their email so they can log in</span></div>':""}
   <label class="fld" style="margin:14px 0 0">Email<input data-f="email" type="email" value="${/@pending\.rel$/.test(t.email)?"":esc(t.email)}" placeholder="name@st.ul.edu.lb"></label>
   <div class="row" style="gap:16px;margin:16px 0 8px"><label class="fld" style="flex:1 1 200px;margin:0">Position<input data-f="position" value="${esc(t.position)}"></label><label class="fld" style="flex:1 1 180px;margin:0">Role<select data-f="role"><option value="vice_president" ${t.role==="vice_president"?"selected":""}>Vice President</option><option value="board" ${t.role==="board"?"selected":""}>Board member</option></select></label></div>
+  ${upField("tp_"+t.rel_id,"Photo","team",800,true,"image/jpeg,image/png,image/webp",t.photo_path,"photo")}
   ${permBoxes(t.perms||[])}
   <div class="row" style="margin-top:8px"><button type="button" class="btn primary sm" data-teamsave="${esc(t.email)}">Save</button><button type="button" class="btn sm" data-teamdel="${esc(t.email)}">Remove access</button></div><p class="vres" data-teammsg role="status" aria-live="polite"></p></div>`).join("")}
  <div class="card" style="background:var(--bg);margin-top:28px"><h3 style="margin-bottom:12px">Add someone to the team</h3><form id="tmForm" novalidate>
@@ -1432,7 +1484,10 @@ document.addEventListener("click",async e=>{
   let mail=sv.dataset.teamsave;const typed=card.querySelector('[data-f="email"]').value.trim().toLowerCase();
   if(typed&&typed!==mail){if(!/^\S+@\S+\.\S+$/.test(typed)){say(msg,"Please enter a valid email.");return}const c=await SB.rpc("change_team_email",{p_old:mail,p_new:typed});if(c.error){say(msg,errText(c.error));return}mail=typed}
   const {error}=await SB.rpc("set_team_member",{p_email:mail,p_role:card.querySelector('[data-f="role"]').value,p_position:card.querySelector('[data-f="position"]').value.trim(),p_perms:perms});
-  if(error){say(msg,errText(error));return}toast("Saved");paneAccess();refreshPublic();return}
+  if(error){say(msg,errText(error));return}
+  const ph=card.querySelector('[data-cf="photo"]');if(ph){const r2=await SB.from("team").update({photo_path:ph.value||null}).eq("email",mail);if(r2.error){say(msg,errText(r2.error));return}}
+  toast("Saved");paneAccess();refreshPublic();return}
+ const sp=e.target.closest("[data-savephoto]");if(sp){const card=sp.closest("[data-teamp]"),ph=card.querySelector('[data-cf="photo"]'),msg=card.querySelector("[data-teammsg]");const {error}=await SB.from("team").update({photo_path:ph.value||null}).eq("email",sp.dataset.savephoto);if(error){say(msg,errText(error));return}say(msg,"Saved.",true);refreshPublic();return}
  const dl=e.target.closest("[data-teamdel]");if(dl){if(!confirm("Remove this person's team access? They stay a normal member."))return;const {error}=await SB.rpc("remove_team_member",{p_email:dl.dataset.teamdel});if(error){toast(errText(error));return}toast("Access removed");paneAccess();refreshPublic()}});
 document.addEventListener("submit",async e=>{const f=e.target;if(!f||f.id!=="tmForm")return;e.preventDefault();const msg=$("#tmMsg"),email=$("#tmEmail").value.trim(),name=$("#tmName").value.trim(),pos=$("#tmPos").value.trim();
  if(!/^\S+@\S+\.\S+$/.test(email)){say(msg,"Please enter a valid email.");return}if(name.length<3||pos.length<2){say(msg,"Please fill in the name and the position.");return}
@@ -1461,6 +1516,10 @@ document.addEventListener("change",async e=>{const i=e.target;if(!i.matches||!i.
  catch(err){say(msg,errText(err))}i.value=""});
 
 
+
+function replyLink(r){const em=String(r.contact||"").match(/[^\s@,;]+@[^\s@,;]+\.[^\s@,;]+/);if(!em)return "";
+ const body="Hello "+(r.name||"")+",\n\nThank you for your interest in working with REL (reference "+(r.ref||"")+"). To move forward, could you please reply from your organization's official email address, and suggest a time for a short call?\n\nBest regards,\nThe REL board";
+ return `<a class="btn primary sm" href="mailto:${esc(em[0])}?subject=${encodeURIComponent("REL partnership request "+(r.ref||""))}&body=${encodeURIComponent(body)}">Reply by email</a>`}
 const FREEMAIL=/@(gmail|googlemail|yahoo|hotmail|outlook|live|msn|icloud|me|proton|protonmail|aol|gmx|mail|yandex)\./i;
 function siteHost(u){try{return new URL(/^https?:\/\//i.test(u)?u:"https://"+u).hostname.replace(/^www\./,"").toLowerCase()}catch(err){return ""}}
 function reqHints(r){const out=[],em=String(r.contact||"").match(/[^\s@,;]+@([^\s@,;]+)/),host=siteHost(r.link||"");
@@ -1468,6 +1527,17 @@ function reqHints(r){const out=[],em=String(r.contact||"").match(/[^\s@,;]+@([^\
  else out.push(["warn","! No email given"]);
  if(/(instagram|facebook|linkedin|tiktok|twitter)\.com|(^|\.)x\.com$/i.test(host))out.push(["warn","! The link is a social media page"]);
  return out}
+
+/* ---- event photo gallery ---- */
+const galThumbs=list=>list.length?list.map((p,i)=>`<span class="gal-item"><img src="${esc(mediaUrl(p))}" alt=""><button type="button" data-galrm="${i}" aria-label="Remove photo ${i+1}">&times;</button></span>`).join(""):'<span class="muted small">No photos yet</span>';
+const galField=(id,label,paths)=>{const list=(paths||[]).filter(Boolean);return `<div class="fld"><span>${esc(label)}</span><input type="hidden" id="${id}" value="${esc(list.join("\n"))}"><div class="gal-list" data-gallist="${id}">${galThumbs(list)}</div><div class="upfield"><button type="button" class="btn sm" data-galpick="${id}">Add photos</button><input type="file" hidden multiple data-galup="${id}" accept="image/jpeg,image/png,image/webp"></div><p class="vres" data-upmsg="${id}" role="status" aria-live="polite"></p></div>`};
+const galValues=id=>($("#"+id).value||"").split("\n").filter(Boolean);
+document.addEventListener("click",e=>{const p=e.target.closest("[data-galpick]");if(p){const i=document.querySelector('[data-galup="'+p.dataset.galpick+'"]');if(i)i.click();return}
+ const r=e.target.closest("[data-galrm]");if(r){const box=r.closest("[data-gallist]"),id=box.dataset.gallist,list=galValues(id);list.splice(+r.dataset.galrm,1);$("#"+id).value=list.join("\n");box.innerHTML=galThumbs(list);keepDraft({target:$("#"+id)})}});
+document.addEventListener("change",async e=>{const i=e.target;if(!i.matches||!i.matches("[data-galup]")||!i.files.length)return;const id=i.dataset.galup,msg=document.querySelector('[data-upmsg="'+id+'"]'),list=galValues(id);
+ try{for(let n=0;n<i.files.length;n++){if(list.length>=30){say(msg,"You can add up to 30 photos.");break}say(msg,"Uploading "+(n+1)+" of "+i.files.length+"...",true);list.push(await uploadMedia(i.files[n],"events",1600,false))}
+  $("#"+id).value=list.join("\n");document.querySelector('[data-gallist="'+id+'"]').innerHTML=galThumbs(list);keepDraft({target:$("#"+id)});say(msg,"Photos added.",true)}catch(err){say(msg,errText(err))}i.value=""});
+
 /* ---- Content tab ---- */
 const TOPICS=[["ent","Entrepreneurship"],["lead","Leadership"],["fin","Finance"],["car","Career"],["con","Consulting"],["eng","Engineering x Business"]],KINDS=[["article","Article"],["book","Book"],["presentation","Presentation"],["template","Template"]];
 const CT={
@@ -1486,12 +1556,12 @@ function ctField(f,row){const [k,label,type,req,opts]=f,v=row&&row[k]!=null?row[
 async function paneContent(){loading();
  const seg=`<div class="tabs seg" role="tablist" aria-label="Content type">${Object.keys(CT).map(k=>`<button type="button" class="tab" role="tab" aria-selected="${k===ctSel}" data-ct="${k}">${CT[k].label}</button>`).join("")}<button type="button" class="tab" role="tab" aria-selected="${ctSel==="requests"}" data-ct="requests">Requests</button></div>`;
  if(ctSel==="requests"){const {data,error}=await SB.from("partner_requests").select("*").order("created_at",{ascending:false});if(error)return paneErr(error);
-  const ST2={new:["warn","! Not checked yet"],emailed:["warn","Email received. Still check the sender"],verified:["ok","&#10003; Verified"],declined:["","Declined"]};
-  tpane().innerHTML=seg+`<div class="card" style="background:var(--bg);margin-bottom:24px"><h3 style="margin-bottom:8px">How to check a request</h3><ol class="muted" style="margin:0;padding-left:1.2em"><li>Every request has a reference code. The company or club must email <b>${esc(CONFIG.email)}</b> from its own official address and write that code in the subject.</li><li>Look at the sender's email address in Gmail. Its domain (the part after the @) must match their website. Gmail, Yahoo or Hotmail addresses are not enough for a company.</li><li>If you still have doubts, call the phone number on their official website. Do not use the number typed in the form.</li><li>For sponsorship money, get everything in writing before you announce anything.</li><li>Only then mark it as verified and add them under Partners.</li></ol></div>
+  const ST2={new:["warn","! Not checked yet"],emailed:["warn","In contact. Still confirm who they are"],verified:["ok","&#10003; Verified"],declined:["","Declined"]};
+  tpane().innerHTML=seg+`<div class="card" style="background:var(--bg);margin-bottom:24px"><h3 style="margin-bottom:8px">How to check a request</h3><ol class="muted" style="margin:0;padding-left:1.2em"><li>Reply to them (the button on each request opens your email app). Ask them to answer from their official company or club address, and to suggest a time for a short call.</li><li>Look at the sender's address in Gmail. Its domain (the part after the @) should match their website. Gmail, Yahoo or Hotmail is not enough for a company.</li><li>If you still have doubts, call the number on their official website. Do not use a number typed in the form.</li><li>For sponsorship money, get everything in writing before you announce anything.</li><li>Only then mark it as verified and add them under Partners.</li></ol></div>
   ${data.length?data.map(r=>{const s=ST2[r.status]||ST2.new;return `<div class="appc"><h3>${esc(r.org)}</h3><p class="muted small" style="margin:0">${esc(r.kind)}. ${esc(dshort(r.created_at))}. Code <b>${esc(r.ref||"none")}</b></p>
    <div class="sigs"><span class="badge ${s[0]}">${s[1]}</span>${reqHints(r).map(h=>`<span class="badge ${h[0]}">${h[1]}</span>`).join("")}</div>
-   <dl class="kv"><dt>Contact person</dt><dd>${esc(r.name)}</dd><dt>Email or phone</dt><dd>${esc(r.contact)}</dd><dt>Website or page</dt><dd>${/^https?:\/\//i.test(r.link)?`<a href="${esc(r.link)}" target="_blank" rel="noopener noreferrer">${esc(r.link)}</a>`:esc(r.link)}</dd>${r.ways?`<dt>Interested in</dt><dd>${esc(r.ways)}</dd>`:""}${r.note?`<dt>Note</dt><dd>${esc(r.note)}</dd>`:""}</dl>
-   <div class="row"><button type="button" class="btn sm" data-preq="${esc(r.id)}" data-st="emailed">Their email arrived</button><button type="button" class="btn primary sm" data-preq="${esc(r.id)}" data-st="verified">Mark as verified</button><button type="button" class="btn sm" data-preq="${esc(r.id)}" data-st="declined">Decline</button><button type="button" class="btn sm" data-preqdel="${esc(r.id)}">Delete</button></div></div>`}).join(""):'<div class="empty"><p>No requests yet.</p></div>'}`;return}
+   <dl class="kv"><dt>Contact person</dt><dd>${esc(r.name)}</dd><dt>Email or phone</dt><dd>${esc(r.contact)}</dd>${r.link?`<dt>Website or page</dt><dd>${/^https?:\/\//i.test(r.link)?`<a href="${esc(r.link)}" target="_blank" rel="noopener noreferrer">${esc(r.link)}</a>`:esc(r.link)}</dd>`:""}${r.ways?`<dt>Interested in</dt><dd>${esc(r.ways)}</dd>`:""}${r.note?`<dt>Note</dt><dd>${esc(r.note)}</dd>`:""}</dl>
+   <div class="row">${replyLink(r)}<button type="button" class="btn sm" data-preq="${esc(r.id)}" data-st="emailed">In contact</button><button type="button" class="btn primary sm" data-preq="${esc(r.id)}" data-st="verified">Mark as verified</button><button type="button" class="btn sm" data-preq="${esc(r.id)}" data-st="declined">Decline</button><button type="button" class="btn sm" data-preqdel="${esc(r.id)}">Delete</button></div></div>`}).join(""):'<div class="empty"><p>No requests yet.</p></div>'}`;return}
  const cfg=CT[ctSel];let q=SB.from(cfg.table).select("*");if(cfg.order)q=q.order(cfg.order,{ascending:!cfg.desc});const {data,error}=await q;if(error)return paneErr(error);teamCache.ct=data;
  const row=ctEdit&&ctEdit.table===cfg.table?ctEdit.row:null;
  tpane().innerHTML=seg+`<div class="card" style="background:var(--bg);margin-bottom:28px"><h3 style="margin-bottom:12px">${row?"Edit":"Add"}: ${esc(cfg.label)}</h3><form id="ctForm" novalidate data-id="${esc(row?row.id:"")}">${cfg.fields.map(f=>ctField(f,row)).join("")}
@@ -1525,13 +1595,18 @@ function drawPartners(){const el=$("#partners");if(!el||!PARTNERS.length)return;
 function resItems(id,kind){return DBRES.filter(r=>r.topic===id&&r.kind===kind)}
 function resCol(label,id,kind,none){const it=resItems(id,kind);return `<div><h4>${label}</h4>${it.length?it.map(r=>`<${r.href?`a href="${esc(r.href)}" target="_blank" rel="noopener noreferrer"`:"div"} class="ritem"><b>${esc(r.title)}</b><span>${esc([r.author,r.source].filter(Boolean).join(", "))}</span></${r.href?"a":"div"}>`).join(""):none}</div>`}
 function workForm(){return `<label class="fld">Your name *<input data-wf="name" data-req autocomplete="name"></label><label class="fld">Company, organization or club *<input data-wf="org" data-req autocomplete="organization"></label><label class="fld">Your email or phone *<input data-wf="contact" data-req autocomplete="off"></label><label class="fld">Website or social media page *<input data-wf="link" data-req autocomplete="off" placeholder="https://"></label><label class="fld">Anything else we should know?<textarea data-wf="note"></textarea></label><div class="row"><button type="button" class="btn primary" id="wSubmit">Send my request</button></div><p class="vres" id="wMsg2" role="status" aria-live="polite"></p><p class="muted small" style="margin:8px 0 0">We check every request before anything is published. The board will contact you.</p>`}
-document.addEventListener("click",async e=>{if(!e.target.closest("#wSubmit"))return;const all=[...document.querySelectorAll("#pPanel [data-req]")],msg=$("#wMsg2");all.forEach(x=>x.removeAttribute("aria-invalid"));
+var wKind="Company or organization";
+function partnerFallback(){return `<h3>Get in touch</h3><p class="muted">Write to the board and tell us your idea.</p><p><a class="btn primary" href="mailto:${esc(CONFIG.email)}?subject=${encodeURIComponent("Partnership with REL")}">Email the board</a></p>`}
+function partnerForm(){return `<h3>Tell us about your idea</h3><div class="wkinds" role="group" aria-label="You are">${["Sponsor","Company or organization","Club","Other"].map(k=>`<button type="button" class="chip" aria-pressed="${k===wKind}" data-wkind="${esc(k)}">${esc(k)}</button>`).join("")}</div>
+ <label class="fld">Your name *<input data-wf="name" data-req autocomplete="name"></label><label class="fld">Organization or club *<input data-wf="org" data-req autocomplete="organization"></label><label class="fld">Email or phone *<input data-wf="contact" data-req autocomplete="off"></label><label class="fld">Website or LinkedIn page (optional)<input data-wf="link" autocomplete="off"></label><label class="fld">What would you like to do together? *<textarea data-wf="note" data-req placeholder="For example: sponsor the flagship event, give a talk, host a visit, or organize a joint event."></textarea></label>
+ <div class="row"><button type="button" class="btn primary" id="wSubmit">Send</button></div><p class="vres" id="wMsg2" role="status" aria-live="polite"></p><p class="muted small" style="margin:8px 0 0">We reply to the email you give. Before we announce anything together, we confirm everything with you directly.</p>`}
+document.addEventListener("click",e=>{const k=e.target.closest("[data-wkind]");if(!k)return;wKind=k.dataset.wkind;document.querySelectorAll("[data-wkind]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.wkind===wKind))});
+document.addEventListener("click",async e=>{const btn=e.target.closest("#wSubmit");if(!btn)return;const all=[...document.querySelectorAll("#pPanel [data-req]")],msg=$("#wMsg2");all.forEach(x=>x.removeAttribute("aria-invalid"));
  const miss=all.filter(x=>!x.value.trim());if(miss.length){miss.forEach(x=>x.setAttribute("aria-invalid","true"));miss[0].focus();say(msg,"Please fill in the fields marked with *.");return}
- const g=k=>{const x=document.querySelector('[data-wf="'+k+'"]');return x?x.value.trim():""},w=WORK[wk],b=e.target.closest("#wSubmit");b.disabled=true;
- const {data,error}=await SB.rpc("submit_partner_request",{p_kind:w.title,p_name:g("name"),p_org:g("org"),p_contact:g("contact"),p_link:g("link"),p_ways:[...wSel].sort((x,y)=>x-y).map(i=>w.ways[i]).join("; "),p_note:g("note")});b.disabled=false;
+ const g=k=>{const x=document.querySelector('[data-wf="'+k+'"]');return x?x.value.trim():""},contact=g("contact");btn.disabled=true;
+ const {data,error}=await SB.rpc("submit_partner_request",{p_kind:wKind,p_name:g("name"),p_org:g("org"),p_contact:contact,p_link:g("link")||null,p_ways:null,p_note:g("note")});btn.disabled=false;
  if(error){say(msg,errText(error));return}
- const code=String(data||""),org=g("org"),mail="mailto:"+CONFIG.email+"?subject="+encodeURIComponent(code+" "+org)+"&body="+encodeURIComponent("Reference: "+code+"\nOrganization: "+org+"\nName: "+g("name")+"\n"),box=$("#pPanel .jp > div:last-child");
- if(box)box.innerHTML=`<div class="verify"><h3>One last step: confirm who you are</h3><p>Your request is saved. To protect our students we only work with organizations we can confirm. Please email <b>${esc(CONFIG.email)}</b> from your <b>official company or club email address</b> (not Gmail, Yahoo or similar) and write this reference in the subject:</p><p class="codebox">${esc(code)}</p><p><a class="btn primary sm" href="${esc(mail)}">Open my email app</a></p><p class="muted small">Clubs can also send a message from their official Instagram page to @relulfg with the reference. We contact you after we check.</p></div>`});
+ const box=$("#partnerBox");if(box)box.innerHTML=`<div class="verify"><h3>Thank you, we received your request</h3><p>We will reply to <b>${esc(contact)}</b> within a few days.</p><p>Before we announce anything together, we confirm everything with you directly, with a short call or an email from your official address. This protects our students and your organization.</p><p class="muted small" style="margin:0">Your reference: <b>${esc(String(data||""))}</b></p></div>`});
 document.addEventListener("click",e=>{const p=e.target.closest("[data-poster]");if(p&&window.openLb)openLb([p.dataset.poster],0,p.dataset.ptitle||"Poster")});
 
 async function initAuth(){renderAccount();renderTeam();
@@ -1698,7 +1773,7 @@ $("#faqList").innerHTML=FAQ.map(f=>`<details class="qa"><summary>${esc(f[0])}</s
  const draw=()=>{img.src=arr[i];img.alt=ttl+(arr.length>1?" photo "+(i+1):"");$("#lbCount").textContent=arr.length>1?(i+1)+" / "+arr.length:"";$("#lbPrev").hidden=$("#lbNext").hidden=arr.length<2;$("#lbSave").hidden=!DL||!/^data:/.test(arr[i])};
  const close=()=>{o.classList.remove("on");o.setAttribute("aria-hidden","true");document.body.style.overflow=""};
  document.addEventListener("click",e=>{const t=e.target.closest("[data-gal]");
-  if(t){const ev=PAST[+t.dataset.gal];arr=ev.photos;ttl=ev.title;i=+t.dataset.i;draw();o.classList.add("on");o.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";$("#lbClose").focus();return}
+  if(t){const ev=GALS[+t.dataset.gal];arr=ev.photos;ttl=ev.title;i=+t.dataset.i;draw();o.classList.add("on");o.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";$("#lbClose").focus();return}
   if(e.target===o||e.target.id==="lbClose")close();
   if(e.target.id==="lbPrev"){i=(i+arr.length-1)%arr.length;draw()}
   if(e.target.id==="lbNext"){i=(i+1)%arr.length;draw()}
@@ -1883,6 +1958,14 @@ setInterval(()=>{if(document.visibilityState==="visible")rollEvents()},300000);
  function arm(){clearTimeout(t);t=null;if(!ST.team)return;t=setTimeout(async()=>{try{await SB.auth.signOut()}catch(err){}await loadUser();renderAccount();renderTeam();showPage("home");toast("You were logged out after 30 minutes without activity, to protect the club.")},LIMIT)}
  ["click","keydown","scroll","touchstart"].forEach(ev=>addEventListener(ev,arm,{passive:true}));
  setInterval(()=>{if(ST.team&&!t)arm();if(!ST.team&&t){clearTimeout(t);t=null}},5000)})();
+
+/* Work with REL: a short pitch and one simple form */
+function drawWork(){const pp=$("#pPanel"),pt=$("#pTabs");if(!pp)return;if(pt)pt.hidden=true;
+ pp.innerHTML=`<div class="partner"><div class="partner-copy"><h3>Let's build something together</h3><p class="lead2">We connect ambitious engineering students with the people and organizations shaping their careers. If you would like to reach them, we would like to hear from you.</p>
+  <ul class="partner-list"><li><b>Sponsors</b><span>Put your name on our events and help us run better ones.</span></li><li><b>Companies and organizations</b><span>Give a talk, host a visit, offer internships or mentor students.</span></li><li><b>Clubs</b><span>Two clubs make a better event than one. Bring an idea, we will bring the energy.</span></li></ul>
+  <p class="muted small" style="margin:0">Planned this year: 7 on-campus events, 9 online workshops and 1 flagship event.</p></div>
+  <div class="partner-form" id="partnerBox">${SB?partnerForm():partnerFallback()}</div></div>`}
+drawWork();
 
 </script>
 </body>
