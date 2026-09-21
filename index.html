@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-7g4cKhpLO4nkkLeYXeK7vgeUVXEbsKsd3/skNWTIm7w='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-clzKhJCd51Rin/z+1oShspdoJSzFipiag5NfbQl19rE='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -815,6 +815,51 @@ a.ptn:hover{border-color:var(--fill)}
 
 .vote:disabled{opacity:.6;cursor:default}
 
+/* idea lab */
+.lab-dots{display:flex;flex-wrap:wrap;gap:8px 18px;list-style:none;margin:0 0 30px;padding:0}
+.lab-dots li{display:flex;align-items:center;gap:8px;font:600 .85rem var(--f-body);color:var(--muted)}
+.lab-dots li span{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:.8rem}
+.lab-dots li.on{color:var(--brand-ink)}.lab-dots li.on span{background:var(--fill);border-color:var(--fill);color:var(--on-fill)}
+.lab-dots li.done span{background:var(--tint);border-color:var(--tint);color:var(--brand-ink)}
+.lab-body{max-width:820px}
+.lab-body h3{font-size:1.9rem;color:var(--brand-ink);margin-bottom:8px}
+.lab-paths{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.lab-path{text-align:left;border:1.5px solid var(--line);border-radius:16px;padding:26px;background:var(--surface);cursor:pointer;display:flex;flex-direction:column;gap:6px;font:inherit;color:var(--ink);transition:border-color .3s var(--ease),transform .4s var(--ease)}
+.lab-path:hover{border-color:var(--fill);transform:translateY(-3px)}
+.lab-path b{font:500 1.4rem var(--f-display);color:var(--brand-ink)}
+.lab-path span{color:var(--muted)}
+.lab-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin:26px 0}
+.lab-card{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--surface);display:flex;flex-direction:column;gap:8px}
+.lab-card p{margin:0}
+.lab-idea{font:500 1.1rem/1.35 var(--f-display);color:var(--brand-ink)}
+.lab-card .btn{align-self:flex-start;margin-top:auto}
+.lab-nav{margin-top:26px}
+.lab-nav .btn[disabled]{opacity:.45;cursor:not-allowed}
+.lab-res-head{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.lab-score{background:var(--band);color:var(--on-band);border-radius:14px;padding:16px 22px;text-align:center;min-width:170px}
+.lab-score b{display:block;font:500 1.5rem var(--f-display)}
+.lab-score span{color:var(--rose);font-size:.95rem}
+.lab-bars{display:grid;gap:10px;margin:18px 0 6px}
+.lab-bar{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center;font-size:.95rem}
+.lab-bar i{display:block;height:10px;border-radius:6px;background:var(--alt);overflow:hidden}
+.lab-bar u{display:block;height:100%;background:var(--fill);text-decoration:none;border-radius:6px}
+.lab-bar i.p0 u{width:6%!important;background:#C9A0A6}
+.lab-next{margin:0;padding-left:1.2em}.lab-next li{margin-bottom:8px}
+.lab-script{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:16px;font:400 1.02rem/1.6 var(--f-body);background:var(--surface);color:var(--ink);resize:vertical}
+.pipe{list-style:none;margin:0 0 26px;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.pipe li{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--surface);display:flex;flex-direction:column;gap:8px;position:relative}
+.pipe .pn{font:500 2.2rem/1 var(--f-display);color:var(--brand-ink)}
+.pipe b{font:500 1.2rem var(--f-display)}
+.pipe .pd{color:var(--muted);font-size:.94rem;flex:1}
+.pipe .tag{align-self:flex-start}
+.pipe .tag.live{background:var(--fill);color:var(--on-fill);border-color:var(--fill)}
+.pipe .btn{align-self:flex-start}
+.pipe-h{font:600 .8rem var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+@media (max-width:1000px){.pipe{grid-template-columns:1fr 1fr}.lab-paths{grid-template-columns:1fr}}
+@media (max-width:560px){.pipe{grid-template-columns:1fr}.lab-bar{grid-template-columns:1fr}}
+
+.lab-card .tag{align-self:flex-start}
+
 </style>
 </head>
 <body>
@@ -866,7 +911,7 @@ a.ptn:hover{border-color:var(--fill)}
 
 <section class="fact" aria-label="Fact of the day"><div class="wrap fact-in"><div><p class="fact-k">Fact of the day</p><p class="fact-t" id="factText"></p></div><p class="muted small" id="factNext"></p></div></section>
 
-<section class="spot-home" aria-label="Startup of the week" hidden><div class="wrap spot-in"><div><p class="fact-k">Startup of the week</p><h3 id="spotHomeName"></h3><p id="spotHomeOne" class="lead2" style="margin:0"></p></div><div class="row"><a class="btn primary" href="#startups">Open the Startup Hub</a><a class="btn" href="#startups" data-suidea>Share your idea</a></div></div></section>
+<section class="spot-home" aria-label="Startup of the week" hidden><div class="wrap spot-in"><div><p class="fact-k">Startup of the week</p><h3 id="spotHomeName"></h3><p id="spotHomeOne" class="lead2" style="margin:0"></p></div><div class="row"><a class="btn primary" href="#startups">Open the Startup Hub</a><a class="btn" href="#startups" data-openlab>Try the Idea Lab</a></div></div></section>
 
 <section class="sec steps"><div class="wrap">
 <div class="sec-head"><h2>Join in three steps</h2><p>It takes about five minutes.</p></div>
@@ -951,13 +996,14 @@ a.ptn:hover{border-color:var(--fill)}
 <div class="sec-head"><h2>Startups</h2><p>Where REL students learn how startups work, share their ideas and find people to build with.</p></div>
 <div class="pane" data-pane="hub" data-label="Startup Hub">
 <div class="su-hero"><div><h3>Build something of your own</h3><p class="lead2">Entrepreneurship is one third of our name. Learn the language of startups, see how famous companies began, share your own idea and find people to build it with.</p>
-<div class="row"><button type="button" class="btn primary" data-suidea>Share your idea</button><button type="button" class="btn" data-embed="REL-Pitch-Deck-Outline.pdf">Pitch deck outline (PDF)</button><a class="btn" href="#learn" data-glossary>Startup glossary</a></div></div>
+<div class="row"><button type="button" class="btn primary" data-openlab>Start the Idea Lab</button><button type="button" class="btn" data-suidea>Share your idea</button><button type="button" class="btn" data-embed="REL-Pitch-Deck-Outline.pdf">Pitch deck outline (PDF)</button><a class="btn" href="#learn" data-glossary>Startup glossary</a></div></div>
 <aside class="su-fact"><p class="fact-k">Fact of the day</p><p class="fact-t" id="suFact"></p></aside></div>
 <section class="pw-sec"><h4>Startup of the week</h4><div id="spotBox"></div></section>
 <section class="pw-sec"><h4>Coming up</h4><div id="suEvents"></div></section>
-<section class="pw-sec"><h4>The REL Startup Track</h4><div class="pw-ways" id="suTrack"></div></section>
+<section class="pw-sec"><h4>The REL Startup Track</h4><p class="muted" style="margin:-8px 0 20px;max-width:44em">From a spark to a demo day. Every stage is open to every member.</p><ol class="pipe" id="suPipe"></ol><h5 class="pipe-h">Always on</h5><div class="pw-ways" id="suTrack"></div></section>
 <section class="pw-sec"><h4>Keep learning</h4><div class="pw-3"><div class="pw-card"><b>Startup glossary</b><p>46 words you will hear about startups, funding and the stock market.</p><a class="btn sm" href="#learn" data-glossary>Open the glossary</a></div><div class="pw-card"><b>Practice your pitch</b><p>Get a topic and speak about it for one minute, alone or with a friend.</p><a class="btn sm" href="#play" data-talk>Open 1-minute talk</a></div><div class="pw-card"><b>Read and watch</b><p>Books, articles and templates on entrepreneurship, picked by the board.</p><a class="btn sm" href="#learn">Open Learn</a></div></div></section>
 </div>
+<div class="pane" data-pane="lab" data-label="Idea Lab"><div id="labBox"></div></div>
 <div class="pane" data-pane="ideas" data-label="Idea board"><div id="ideaBoard"></div></div>
 </div></section></div>
 <div class="pg" data-pg="play" hidden><section id="play" class="sec alt"><div class="wrap"><div class="sec-head"><h2>Play</h2><p>A new puzzle and a new business question every day, the same for everyone.</p></div><div class="pane" data-pane="puzzle" data-label="Daily puzzle"><div class="qwrap">
@@ -1259,7 +1305,7 @@ async function loadUser(){ST.team=ST.member=ST.app=ST.amb=null;
    const m=await SB.from("members").select("rel_id,full_name,role,position,year,major,faculty,joined,listed,bio,active,email,phone,uni_id,photo_path").eq("user_id",ST.user.id).maybeSingle();ST.member=m.data||null;
    const a=await SB.from("applications").select("*").eq("user_id",ST.user.id).maybeSingle();ST.app=a.data||null;const ab=await SB.from("ambassador_applications").select("*").eq("user_id",ST.user.id).maybeSingle();ST.amb=ab.data||null}
  }catch(err){}
- ST.ready=true;updateNav()}
+ ST.ready=true;updateNav();if(typeof drawLab==="function"){const ae=document.activeElement;if(!(ae&&ae.matches&&ae.matches("[data-lab],#labScript")))drawLab()}}
 function updateNav(){const a=$("#navAcct"),t=$("#navTeam");if(a)a.textContent=ST.user?"Account":"Log in";if(t)t.hidden=!ST.team;setNav(cur.pg)}
 
 function renderAccount(){const box=$("#acctBody");if(!box)return;
@@ -1744,7 +1790,8 @@ document.addEventListener("click",e=>{const p=e.target.closest("[data-poster]");
 var SPOT=[],IDEAS=[],MYVOTES=new Set(),MYIDEAS=[],IINT=[],ideaSort="top",ideaStage="All",ideaSkill="All",ideaQ="",ideaFormOpen=false,ideaEdit=null,interestOpen=null;
 const SKILL={software:"Software",hardware:"Hardware and engineering",business:"Business and finance",design:"Design",marketing:"Marketing",operations:"Operations",mentor:"A mentor"};
 const STAGE={idea:"Just an idea",prototype:"Prototype","first users":"First users",earning:"Earning money"};
-const SU_TRACK=[["Founder Talk","A founder tells the real story: the first idea, the mistakes and the turning points."],["Pitch Night","Students pitch in five minutes to a jury of founders and investors."],["Idea Sprint","Teams form, build and pitch an idea in one afternoon on campus."],["IPOs and markets","How companies go public, together with the Roumieh Investment Club."],["Case Club","One company story, one hour of discussion: what worked, what failed, what you would do."]];
+const SU_PIPE=[["Idea Lab","Turn a spark into a one-page idea, a readiness score and a 60-second pitch.","Live now","lab"],["Idea Board","Share your idea, collect votes and find teammates.","Live now","ideas"],["Idea Sprint","One afternoon on campus: teams form, build a first version and pitch it.","Planned"],["Pitch Night","Five-minute pitches in front of a jury of founders and investors.","Planned"],["Founder Circle","An eight-week mini incubator for the best teams, with mentors and weekly check-ins, ending with a Demo Day.","Planned"]];
+const SU_ALWAYS=[["Founder Talks","A founder tells the real story: the first idea, the mistakes and the turning points."],["Case Club","One company story, one hour of discussion: what worked, what failed, what you would do."],["IPOs and markets","How companies go public, together with the Roumieh Investment Club."],["Startup of the week","A new startup story every Monday on the website and Instagram."]];
 const mapSpot=r=>({name:r.name,one:r.one_liner,story:r.story||"",lesson:r.lesson||"",url:safeUrl(r.url),image:r.image_path?mediaUrl(r.image_path):"",week:r.week_of});
 function spotNow(){if(!SPOT.length)return null;const today=beirutDay(),list=[...SPOT].sort((a,b)=>String(a.week).localeCompare(String(b.week))),past=list.filter(s=>String(s.week)<=today);return past.length?past[past.length-1]:list[0]}
 function drawSpot(){const s=spotNow(),box=$("#spotBox"),hn=$("#spotHomeName"),ho=$("#spotHomeOne"),sec=$(".spot-home");
@@ -1755,7 +1802,8 @@ function drawSpot(){const s=spotNow(),box=$("#spotBox"),hn=$("#spotHomeName"),ho
  box.innerHTML=`<article class="spot">${s.image?`<img src="${esc(s.image)}" alt="" loading="lazy">`:""}<div><h3>${esc(s.name)}</h3><p class="lead2" style="margin:0 0 12px">${esc(s.one)}</p>${s.story?`<p>${esc(s.story)}</p>`:""}${s.lesson?`<div class="spot-lesson"><b>The lesson</b><span>${esc(s.lesson)}</span></div>`:""}${s.url?`<p style="margin:14px 0 0"><a class="btn sm" href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">Learn more</a></p>`:""}</div></article>${prev.length?`<p class="muted small" style="margin:14px 0 0"><b>Earlier:</b> ${prev.map(x=>esc(x.name)).join(", ")}</p>`:""}`}
 function drawStartupEvents(){const el=$("#suEvents");if(!el)return;const rx=/founder|pitch|startup|sprint|entrepreneur|ipo|case club/i,list=EVENTS.filter(e=>rx.test(e.title+" "+(e.type||"")));
  el.innerHTML=list.length?list.map(e=>evItem(e,true,EVENTS.indexOf(e))).join(""):'<div class="empty"><p>Startup events are being planned. Subscribe to the newsletter to hear first.</p></div>'}
-function drawTrack(){const el=$("#suTrack");if(!el)return;el.innerHTML=SU_TRACK.map(x=>`<article class="pw-way"><span class="tag" style="align-self:flex-start;margin-bottom:10px">Planned</span><h5>${esc(x[0])}</h5><p style="margin:0">${esc(x[1])}</p></article>`).join("")}
+function drawTrack(){const p=$("#suPipe");if(p)p.innerHTML=SU_PIPE.map((x,i)=>`<li><span class="pn">${i+1}</span><b>${esc(x[0])}</b><span class="pd">${esc(x[1])}</span><span class="tag${x[2]==="Live now"?" live":""}">${esc(x[2])}</span>${x[3]?`<button type="button" class="btn sm" data-gopane="${x[3]}">Open</button>`:""}</li>`).join("");
+ const el=$("#suTrack");if(el)el.innerHTML=SU_ALWAYS.map(x=>`<article class="pw-way"><h5>${esc(x[0])}</h5><p style="margin:0">${esc(x[1])}</p></article>`).join("")}
 
 /* ---- ideas ---- */
 async function loadIdeas(){if(!SB)return;
@@ -2008,7 +2056,7 @@ drawWork();
 (function(){const ov=$("#sov"),q=$("#sq"),box=$("#sres"),btn=$("#sBtn");let list=[];
  const go=h=>()=>route(h);
  function index(){const L=[];
-  [["#startups","Startups","Startup Hub, startup of the week and the idea board","startup startups founder idea cofounder co-founder pitch ipo silicon valley unicorn entrepreneurship"],["#about","About REL","What REL is, what we do and our history","club history pr club rebrand mission"],["#events","Events and workshops","Upcoming, past and the calendar","calendar schedule"],["#people","People","Board, ambassadors and member search","team"],["#points","Leaderboard","Points and how to earn them","ranking score"],["#learn","Learn","Books, journal, speakers, documents","resources articles templates presentations"],["#play","Play","Daily puzzle and business question","game quiz crown"],["#community","Community","Network map, partners, pitch, voting","network"],["#partner","Work with REL","Sponsors, companies, organizations and clubs","sponsor sponsorship partner partnership collaborate collaboration company organization club"],["#faq","FAQ","Quick answers about joining, IDs, events and points","help questions answers"],["#join","Join REL","Become a member, ambassador and more","sign up register"]].forEach(s=>L.push({t:s[1],k:"Section",sub:s[2],s:s[1]+" "+s[2]+" "+s[3],a:go(s[0])}));
+  [["#startups","Startups","Startup Hub, startup of the week and the idea board","startup startups founder idea lab brainstorm cofounder co-founder pitch ipo silicon valley unicorn entrepreneurship"],["#about","About REL","What REL is, what we do and our history","club history pr club rebrand mission"],["#events","Events and workshops","Upcoming, past and the calendar","calendar schedule"],["#people","People","Board, ambassadors and member search","team"],["#points","Leaderboard","Points and how to earn them","ranking score"],["#learn","Learn","Books, journal, speakers, documents","resources articles templates presentations"],["#play","Play","Daily puzzle and business question","game quiz crown"],["#community","Community","Network map, partners, pitch, voting","network"],["#partner","Work with REL","Sponsors, companies, organizations and clubs","sponsor sponsorship partner partnership collaborate collaboration company organization club"],["#faq","FAQ","Quick answers about joining, IDs, events and points","help questions answers"],["#join","Join REL","Become a member, ambassador and more","sign up register"]].forEach(s=>L.push({t:s[1],k:"Section",sub:s[2],s:s[1]+" "+s[2]+" "+s[3],a:go(s[0])}));
   [...EVENTS.map(e=>[e,"up"]),...PAST.map(e=>[e,"past"])].forEach(([e,w])=>L.push({t:e.title,k:"Event",sub:e.date?fmt(e.date,{day:"numeric",month:"long"}):"Date to be announced",s:[e.title,e.type,e.blurb,e.place].join(" "),a:()=>{showEv(w);go("#events")()}}));
   BOARD.filter(b=>!b.name).forEach(b=>L.push({t:b.role,k:"Board",sub:"Name coming soon",s:b.role+" "+b.bio,a:go("#board")}));
   AMBS.filter(a=>a.name).forEach(a=>L.push({t:a.name,k:"Ambassador",sub:a.info||"",s:[a.name,a.info].join(" "),a:go("#ambs")}));
@@ -2381,6 +2429,181 @@ drawGlossary();
 document.addEventListener("click",e=>{const g=e.target.closest("[data-glossary]");if(g){e.preventDefault();showPage("learn","glossary");return}
  const t=e.target.closest("[data-talk]");if(t){e.preventDefault();showPage("play","talk")}});
 drawSpot();drawStartupEvents();drawTrack();drawIdeas();
+
+/* ---------- Idea Lab: from "I have no idea" to a one-page startup idea ---------- */
+const LAB_AREAS=[
+["study","Studying and university",[
+ ["engineering students","cannot find a study partner for hard courses","A matching app that pairs students by course, level and free hours"],
+ ["first-year students","get lost in the first weeks of university","A buddy program and a simple guide to campus, administration and courses"],
+ ["students before exams","waste hours looking for good past exams and summaries","A shared library of past exams and summaries, rated by students"],
+ ["students who work part time","struggle to plan classes, work and revision","A weekly planner that builds a realistic study schedule around their job"]]],
+["money","Money and savings",[
+ ["students","run out of money before the end of the month","A budgeting tool with weekly limits and simple reminders on WhatsApp"],
+ ["friends who share costs","argue about who owes what","An app that splits bills and trips and tracks who has paid"],
+ ["young people","want to save but never start","A micro-saving challenge with small weekly goals and rewards"],
+ ["small sellers","lose track of invoices and payments","A simple invoice and payment tracker that works from a phone"]]],
+["jobs","Jobs and careers",[
+ ["final-year engineers","do not know which internships exist","A live board of internships and graduate programs with deadlines"],
+ ["students","have no one to review their CV","A CV review exchange where students and alumni give feedback"],
+ ["companies","cannot find motivated interns","A short-project marketplace where students solve a real task for a company"],
+ ["students who want to study abroad","get lost in applications and deadlines","A guide and tracker for scholarships, exchange programs and applications"]]],
+["transport","Transport and cars",[
+ ["commuters","waste money going alone by car","A carpool matching app for people on the same route"],
+ ["students without a car","depend on unreliable transport","A shared ride and shuttle board for campus routes"],
+ ["car owners","do not know when maintenance is due","A reminder service that tracks service history and finds trusted mechanics"],
+ ["delivery riders","lose time on bad routes","A route planner for short deliveries in dense areas"]]],
+["food","Food and daily life",[
+ ["students on campus","spend too much on lunch","A group lunch ordering tool that splits delivery and unlocks discounts"],
+ ["busy families","throw away food they did not use","A meal planner that uses what is already in the fridge"],
+ ["home cooks","cannot reach customers beyond their friends","A local marketplace for home-cooked meals"],
+ ["small restaurants","have unsold food at closing time","A last-hour discount board for meals"]]],
+["health","Health and fitness",[
+ ["students","sit all day and never exercise","A campus fitness challenge with small daily goals"],
+ ["people who want to run","quit after two weeks","A running partner matching and accountability app"],
+ ["families","forget to take medicines on time","A simple medicine reminder for the whole family"],
+ ["students","do not know which sports and groups exist around them","A community board for sports groups, walks and wellbeing events"]]],
+["energy","Energy and electricity",[
+ ["homes with long power cuts","do not know how much energy they use","A dashboard that tracks generator and grid use and finds savings"],
+ ["small shops","pay high energy bills","A service that audits energy use and installs simple savings"],
+ ["building owners","share generators unfairly","A tool that measures each apartment's share and bills it fairly"],
+ ["families","want solar but do not know where to start","A guide and calculator that compares solar options and installers"]]],
+["tech","Internet and technology",[
+ ["small businesses","have no website and no time","A tool that builds a simple website and WhatsApp catalog in minutes"],
+ ["people with unstable internet","lose work when the connection drops","A tool that saves work offline and syncs automatically"],
+ ["teachers","spend hours grading","A grading assistant that gives fast feedback on quizzes and short answers"],
+ ["students","cannot find people to build projects with","A skills-based matching board for student projects"]]],
+["shop","Shopping and small business",[
+ ["small shops","only sell to people who walk by","A neighborhood app that lists local shops and their offers"],
+ ["buyers of second-hand items","do not trust sellers","A student marketplace with verified profiles and ratings"],
+ ["makers and artists","cannot reach customers abroad","A shop that ships handmade products to the diaspora"],
+ ["people who shop together","miss group discounts","A group-buying platform for bulk discounts"]]],
+["events","Events and social life",[
+ ["student clubs","struggle to get attendance","An event app with reminders, check-in and rewards"],
+ ["students","never know what is happening on campus","One shared calendar for all clubs and events"],
+ ["groups of friends","spend hours planning outings","A group planner that finds a date, place and budget everyone accepts"],
+ ["organizers and speakers","lose the best questions from the audience","A live question wall that ranks what the audience wants to hear"]]],
+["environment","Environment and waste",[
+ ["neighborhoods","do not know where to recycle","A map and pickup service for recycling"],
+ ["restaurants and hotels","waste large amounts of food","A platform that redirects surplus food to people who need it"],
+ ["students","throw away electronics and clothes","A swap and repair community for used items"],
+ ["farmers","lose part of their harvest before it sells","A direct-to-customer box for seasonal produce"]]],
+["freelance","Work and freelancing",[
+ ["freelancers","get paid late or not at all","A payment protection tool with milestones and reminders"],
+ ["students who want to earn","do not know how to find clients","A marketplace for student services like design, tutoring and coding"],
+ ["small remote teams","lose track of tasks and files","A simple project board built for WhatsApp users"],
+ ["engineers","repeat the same calculations again and again","A library of ready calculation templates for engineering tasks"]]]
+];
+const LAB_TWISTS=["run through a WhatsApp bot","paid by a small monthly subscription","free to start with paid upgrades","built for the Lebanese diaspora too","built together with a university","powered by simple AI","with points and rewards for users","with local shops as partners"];
+const LAB_MODELS=[["subscription","Monthly subscription","customers pay a small monthly subscription"],["commission","Commission per sale","we take a small commission on each sale"],["once","One-time payment","customers pay once for the product"],["ads","Ads and sponsors","we earn from advertising and sponsors"],["freemium","Free basics, paid extras","the basics are free and advanced features are paid"],["service","Charging for the service","we charge for the service we provide"],["unsure","Not sure yet","we are still testing the best way to earn"]];
+const LAB_TESTS=[["talk","Interview 5 people","This week I will interview five people who have this problem."],["page","A simple sign-up page","This week I will put up a simple page and collect sign-ups."],["wa","Offer it on WhatsApp","This week I will offer it to ten people on WhatsApp and see who says yes."],["proto","Build a prototype","This week I will build a simple prototype and show it to users."],["manual","Do it by hand first","This week I will deliver it by hand to three customers to learn what matters."]];
+const LAB_WHO=["Students","Freelancers","Small shops","Parents","Engineers","Companies","People abroad"];
+const LAB_CHECK=[
+ ["evidence","Have you talked to at least 5 people who have this problem?","Evidence","Talk to five people this week. Ask: \"Tell me about the last time you had this problem.\" Do not pitch your idea yet, just listen."],
+ ["pain","Do people already spend time or money on a workaround?","Real pain","Find out what people do today and what it costs them. If nobody spends time or money on it, the pain may be too small."],
+ ["reach","Could you get a first user or customer within 30 days?","Reach","Write down the first ten people you could show it to. Start with your class, your WhatsApp groups and REL."],
+ ["build","Can you build a simple first version yourself in 4 weeks?","Feasibility","Cut the idea down to the smallest useful version. What could you build, or fake by hand, in one weekend?"],
+ ["commit","Would you still want to work on this in two years?","Commitment","Find a teammate who complements you. Post your idea on the Idea Board and say who you are looking for."],
+ ["money","Is there a clear way to make money, even a small one?","Business model","Write one sentence: who pays whom for what. Ask three people what they would really pay."]];
+const LAB_STEPS=["start","spark","problem","solution","team","check","result"];
+var LAB=(function(){let s=null;try{s=JSON.parse(localStorage.getItem("relLab")||"null")}catch(err){}return s||{step:0,path:"",areas:[],cards:[],a:{title:"",who:"",problem:"",work:"",solution:"",why:"",model:"",price:"",test:"",testText:"",stage:"idea",looking:[]},c:{}}})();
+if(!LAB.a)LAB.a={title:"",who:"",problem:"",work:"",solution:"",why:"",model:"",price:"",test:"",testText:"",stage:"idea",looking:[]};if(!LAB.c)LAB.c={};if(!LAB.cards)LAB.cards=[];if(!LAB.areas)LAB.areas=[];
+const labSave=()=>{try{localStorage.setItem("relLab",JSON.stringify(LAB))}catch(err){}};
+const cap=s=>{s=String(s||"").trim();return s?s[0].toUpperCase()+s.slice(1):s};
+const dot=s=>{s=String(s||"").trim();return s&&!/[.!?]$/.test(s)?s+".":s};
+const lc=s=>{s=String(s||"").trim();return s?s[0].toLowerCase()+s.slice(1):s};
+function labSpin(){const pool=[];(LAB.areas.length?LAB_AREAS.filter(a=>LAB.areas.includes(a[0])):LAB_AREAS).forEach(a=>a[2].forEach(s=>pool.push({area:a[1],who:s[0],pain:s[1],idea:s[2]})));
+ const pick=[];while(pick.length<6&&pool.length){const i=Math.floor(Math.random()*pool.length);pick.push({...pool.splice(i,1)[0],twist:LAB_TWISTS[Math.floor(Math.random()*LAB_TWISTS.length)]})}LAB.cards=pick;labSave()}
+function labScore(){let t=0;const dims=LAB_CHECK.map(q=>{const v=LAB.c[q[0]];const p=v==="yes"?2:v==="little"?1:0;t+=p;return{k:q[0],label:q[2],p,tip:q[3]}});
+ const level=t>=9?["Ready to test","Your idea is ready for a real test. Pick your one-week test and start this week."]:t>=5?["Promising","There is something here. Run one small test before you build anything."]:["A spark","Every big company started as a spark. Talk to people first, and let their answers shape the idea."];
+ return{total:t,dims,level:level[0],msg:level[1],next:[...dims].sort((a,b)=>a.p-b.p).filter(d=>d.p<2).slice(0,3)}}
+const joinList=arr=>arr.length<2?arr.join(""):arr.slice(0,-1).join(", ")+" and "+arr[arr.length-1];
+function labPitch(){const a=LAB.a,me=(ST.member&&ST.member.full_name)||"[your name]",model=(LAB_MODELS.find(m=>m[0]===a.model)||[])[2]||"we are still testing the best way to earn",test=(LAB_TESTS.find(t=>t[0]===a.test)||[])[2]||dot(a.testText)||"This week I will talk to five potential users.";
+ const who=String(a.who||"").trim(),prob=dot(a.problem)||"a problem worth solving.",startsWho=who&&lc(prob).startsWith(lc(who)),first=startsWho?cap(prob):`${cap(who||"People")} face a real problem: ${lc(prob)}`;
+ const look=(a.looking||[]).length?"I am looking for "+joinList(a.looking.map(k=>lc(SKILL[k]||k)))+" to build this with me. ":"",price=String(a.price||"").trim();
+ return `Hello, I am ${me}. ${first} ${a.work?"Today, "+lc(dot(a.work))+" That is not good enough. ":""}That is why I am building ${a.title||"this idea"}: ${lc(dot(a.solution)||"a simple solution.")} ${a.why?cap(dot(a.why))+" ":""}To make money, ${model}${price?", around "+lc(price):""}. ${test} ${look}If this problem sounds familiar, come and talk to me. Thank you.`.replace(/\s+/g," ").trim()}
+function labSummary(){const a=LAB.a,sc=labScore();return `${a.title||"My startup idea"}\n\nWho has the problem: ${a.who||"-"}\nThe problem: ${a.problem||"-"}\nToday they: ${a.work||"-"}\nMy solution: ${a.solution||"-"}\nWhy me: ${a.why||"-"}\nHow it makes money: ${(LAB_MODELS.find(m=>m[0]===a.model)||[])[1]||"-"}${a.price?" ("+a.price+")":""}\nTest this week: ${(LAB_TESTS.find(t=>t[0]===a.test)||[])[1]||a.testText||"-"}\nStage: ${STAGE[a.stage]||a.stage}\nReadiness: ${sc.level} (${sc.total}/12)\n\nMade with the REL Idea Lab. relulfg.com`}
+function wrapText(x,text,maxW,lh,y,maxLines){const words=String(text||"").split(/\s+/),lines=[];let cur="";for(const w of words){const t=cur?cur+" "+w:w;if(x.measureText(t).width>maxW&&cur){lines.push(cur);cur=w}else cur=t}if(cur)lines.push(cur);
+ const out=maxLines&&lines.length>maxLines?lines.slice(0,maxLines):lines;if(maxLines&&lines.length>maxLines)out[maxLines-1]=out[maxLines-1].replace(/\s*\S*$/,"")+"...";out.forEach((l,i)=>x.fillText(l,x.__x||0,y+i*lh));return y+out.length*lh}
+async function labCardUrl(){const a=LAB.a,sc=labScore(),W=1080,H=1350,c=document.createElement("canvas");c.width=W;c.height=H;const x=c.getContext("2d");
+ try{await Promise.all([document.fonts.load('600 60px "Fraunces"'),document.fonts.load('500 30px "Hanken Grotesk"'),document.fonts.load('700 26px "Hanken Grotesk"')])}catch(err){}
+ x.fillStyle="#F8F6F1";x.fillRect(0,0,W,H);x.fillStyle="#800020";x.fillRect(0,0,W,300);
+ const logo=await new Promise(res=>{const i=new Image();i.onload=()=>res(i);i.onerror=()=>res(null);i.src=LOGO.light});if(logo){const h=120,w=h*logo.width/logo.height;x.drawImage(logo,72,58,w,h)}
+ x.fillStyle="#E8C9CC";x.font='700 26px "Hanken Grotesk", sans-serif';x.textAlign="left";x.fillText("REL IDEA LAB",190,102);x.fillStyle="#F8F6F1";x.font='500 26px "Hanken Grotesk", sans-serif';x.fillText("Relations. Entrepreneurship. Leadership.",190,142);
+ x.font='600 72px "Fraunces", Georgia, serif';x.fillStyle="#F8F6F1";x.__x=72;wrapText(x,a.title||"My startup idea",936,80,250,2);
+ let y=372;const block=(label,text,lines)=>{x.fillStyle="#800020";x.font='700 24px "Hanken Grotesk", sans-serif';x.fillText(label.toUpperCase(),72,y);y+=14;x.fillStyle="#1D1315";x.font='500 34px "Hanken Grotesk", sans-serif';x.__x=72;y=wrapText(x,text||"-",936,46,y+34,lines)+30};
+ block("Who has the problem",a.who,1);block("The problem",a.problem,3);block("My solution",a.solution,3);
+ block("How it makes money",(LAB_MODELS.find(m=>m[0]===a.model)||[])[1]||"Still testing",1);block("My test this week",(LAB_TESTS.find(t=>t[0]===a.test)||[])[1]||a.testText||"Talk to five potential users",1);
+ x.fillStyle="#F0E3E4";const py=H-190;x.fillRect(72,py,936,110);x.fillStyle="#800020";x.font='700 24px "Hanken Grotesk", sans-serif';x.fillText("READINESS",100,py+40);x.font='600 48px "Fraunces", Georgia, serif';x.fillText(sc.level,100,py+90);x.textAlign="right";x.font='500 40px "Fraunces", Georgia, serif';x.fillText(sc.total+" / 12",980,py+82);
+ x.textAlign="left";x.fillStyle="#6B5F62";x.font='500 24px "Hanken Grotesk", sans-serif';x.fillText("Made with the REL Idea Lab  |  @relulfg",72,H-32);return c.toDataURL("image/png")}
+/* ---- drawing ---- */
+function labDots(){const names=["Start","Spark","Problem","Solution","Team","Check","Result"];return `<ol class="lab-dots" aria-label="Progress">${names.map((n,i)=>`<li class="${i===LAB.step?"on":i<LAB.step?"done":""}"><span>${i+1}</span>${esc(n)}</li>`).join("")}</ol>`}
+function labNav(next,label,back){return `<div class="row lab-nav">${back!==false&&LAB.step>0?'<button type="button" class="btn" data-labback>Back</button>':""}<button type="button" class="btn primary" data-labnext ${next?"":"disabled"}>${label||"Next"}</button></div>`}
+const labCk=(k,arr)=>`<div class="wkinds">${arr.map(o=>`<button type="button" class="chip" aria-pressed="${Array.isArray(LAB.a[k])?LAB.a[k].includes(o[0]):LAB.a[k]===o[0]}" data-labpick="${esc(k)}" data-v="${esc(o[0])}">${esc(o[1])}</button>`).join("")}</div>`;
+function drawLab(){const box=$("#labBox");if(!box)return;const st=LAB_STEPS[LAB.step],a=LAB.a;let h="";
+ if(st==="start"){h=`<div class="lab-intro"><h3>Turn a spark into a startup idea</h3><p class="lead2">Answer a few short questions and leave with a one-page idea, a readiness score, your next steps and a 60-second pitch. It takes about ten minutes.</p>
+  <div class="lab-paths"><button type="button" class="lab-path" data-labpath="find"><b>Help me find an idea</b><span>Pick what bothers you, and I will suggest ideas to explore.</span></button><button type="button" class="lab-path" data-labpath="have"><b>I already have an idea</b><span>Go straight to shaping it into something clear.</span></button></div>
+  ${(a.title||a.problem||a.solution)?`<p class="muted small" style="margin:18px 0 0">You have an idea in progress${a.title?": <b>"+esc(a.title)+"</b>":""}. <button type="button" class="idlink" data-labcontinue>Continue</button> or <button type="button" class="idlink" data-labreset>start over</button>.</p>`:""}</div>`}
+ else if(st==="spark"){h=`<h3>What bothers you?</h3><p class="muted">Pick up to three areas. The best startups solve problems their founders feel themselves.</p><div class="wkinds">${LAB_AREAS.map(x=>`<button type="button" class="chip" aria-pressed="${LAB.areas.includes(x[0])}" data-labarea="${esc(x[0])}">${esc(x[1])}</button>`).join("")}</div>
+  <div class="row"><button type="button" class="btn primary" data-labspin>${LAB.cards.length?"Show me other ideas":"Show me ideas"}</button></div>
+  ${LAB.cards.length?`<div class="lab-cards">${LAB.cards.map((c,i)=>`<article class="lab-card"><span class="tag">${esc(c.area)}</span><p><b>${esc(cap(c.who))}</b> ${esc(c.pain)}.</p><p class="lab-idea">${esc(c.idea)}, ${esc(c.twist)}.</p><button type="button" class="btn sm" data-labuse="${i}">Develop this idea</button></article>`).join("")}</div>`:""}
+  ${labNav(false,"Next")}`.replace('<button type="button" class="btn primary" data-labnext disabled>Next</button>','<button type="button" class="btn" data-labskip>I will use my own idea</button>')}
+ else if(st==="problem"){h=`<h3>The problem</h3><p class="muted">Great ideas start with a clear problem and a clear person who has it.</p>
+  <label class="fld">Name of your idea (a working name is fine)<input data-lab="title" maxlength="90" value="${esc(a.title)}" placeholder="For example: StudyBuddy"></label>
+  <div class="fld"><span>Who has this problem? *</span>${labCk("who",LAB_WHO.map(w=>[w.toLowerCase(),w]))}<input data-lab="who" maxlength="120" value="${esc(a.who)}" placeholder="Or write it in your own words" aria-label="Who has this problem"></div>
+  <label class="fld">What is the problem? Describe it like a story. *<textarea data-lab="problem" maxlength="500" placeholder="For example: Before every exam, students lose hours searching for old exams in different WhatsApp groups.">${esc(a.problem)}</textarea></label>
+  <label class="fld">What do they do about it today?<textarea data-lab="work" maxlength="300" placeholder="For example: They ask friends one by one, and often find nothing.">${esc(a.work)}</textarea></label>
+  ${labNav(!!(a.who.trim()&&a.problem.trim().length>=10),"Next")}`}
+ else if(st==="solution"){h=`<h3>Your solution</h3><p class="muted">Keep it simple. If you cannot say it in one sentence, it is not clear yet.</p>
+  <label class="fld">Your solution in one sentence *<textarea data-lab="solution" maxlength="400" placeholder="For example: One place where students upload and rate past exams for each course.">${esc(a.solution)}</textarea></label>
+  <label class="fld">Why are you the right person to build it?<input data-lab="why" maxlength="200" value="${esc(a.why)}" placeholder="For example: I am a third-year engineer and I feel this problem myself."></label>
+  <div class="fld"><span>How could it make money?</span>${labCk("model",LAB_MODELS)}</div>
+  <label class="fld">A price you could imagine (optional)<input data-lab="price" maxlength="60" value="${esc(a.price)}" placeholder="For example: 3 dollars per month"></label>
+  <div class="fld"><span>What is your cheapest test this week? *</span>${labCk("test",LAB_TESTS)}</div>
+  ${labNav(!!(a.solution.trim().length>=10&&a.test),"Next")}`}
+ else if(st==="team"){h=`<h3>Build with others</h3><p class="muted">Most startups fail alone. Say where you are, and who would make your team stronger.</p>
+  <div class="fld"><span>Where are you now?</span>${labCk("stage",Object.keys(STAGE).map(k=>[k,STAGE[k]]))}</div>
+  <div class="fld"><span>Who would you like to build with?</span>${labCk("looking",Object.keys(SKILL).map(k=>[k,SKILL[k]]))}</div>
+  ${labNav(true,"Next")}`}
+ else if(st==="check"){h=`<h3>Check your idea honestly</h3><p class="muted">Six questions. There are no wrong answers. Honest answers give you better next steps.</p>${LAB_CHECK.map((q,i)=>`<div class="fld"><span>${i+1}. ${esc(q[1])}</span><div class="wkinds">${[["yes","Yes"],["little","A little"],["no","Not yet"]].map(o=>`<button type="button" class="chip" aria-pressed="${LAB.c[q[0]]===o[0]}" data-labcheck="${esc(q[0])}" data-v="${o[0]}">${o[1]}</button>`).join("")}</div></div>`).join("")}
+  ${labNav(LAB_CHECK.every(q=>LAB.c[q[0]]),"See my result")}`}
+ else{const sc=labScore(),script=LAB.script||labPitch(),words=script.split(/\s+/).length;
+  h=`<div class="lab-res"><div class="lab-res-head"><div><p class="fact-k">Your idea</p><h3>${esc(a.title||"My startup idea")}</h3><p class="lead2" style="margin:0">${esc(cap(a.who))}: ${esc(lc(a.problem))}</p></div><div class="lab-score"><b>${esc(sc.level)}</b><span>${sc.total} / 12</span></div></div>
+  <p>${esc(sc.msg)}</p>
+  <div class="lab-bars">${sc.dims.map(d=>`<div class="lab-bar"><span>${esc(d.label)}</span><i class="p${d.p}"><u style="width:${d.p*50}%"></u></i></div>`).join("")}</div>
+  <h4 class="idea-h">Your next steps</h4><ol class="lab-next">${(sc.next.length?sc.next.map(d=>d.tip):["Share your idea on the Idea Board and ask for feedback.","Run your one-week test and write down what you learn."]).map(t=>`<li>${esc(t)}</li>`).join("")}<li>Practice your pitch out loud, then share your idea on the Idea Board.</li></ol>
+  <h4 class="idea-h">Your 60-second pitch</h4><textarea id="labScript" class="lab-script" rows="8" aria-label="Your pitch">${esc(script)}</textarea><p class="muted small" id="labWords" style="margin:6px 0 16px">About ${words} words, around ${Math.round(words/2.2)} seconds when spoken. Edit it until it sounds like you.</p>
+  <div class="row"><button type="button" class="btn primary" data-labpractice>Practice this pitch</button><button type="button" class="btn" data-labshare>Share on the Idea Board</button><button type="button" class="btn" data-labpng>Download idea card</button><button type="button" class="btn" data-labcopy>Copy summary</button></div>
+  <p class="vres" id="labMsg" role="status" aria-live="polite"></p>
+  <p class="muted small" style="margin:18px 0 0"><button type="button" class="idlink" data-labback>Change my answers</button> &nbsp; <button type="button" class="idlink" data-labreset>Start a new idea</button></p></div>`}
+ box.innerHTML=labDots()+`<div class="lab-body">${h}</div>`}
+function labGo(n){if(n<LAB_STEPS.length-1)LAB.script="";LAB.step=Math.max(0,Math.min(LAB_STEPS.length-1,n));labSave();drawLab();const b=$("#labBox");if(b)window.scrollTo({top:b.getBoundingClientRect().top+scrollY-110,behavior:"smooth"})}
+document.addEventListener("click",async e=>{const t=e.target;if(!t.closest)return;
+
+ const p=t.closest("[data-labpath]");if(p){LAB.path=p.dataset.labpath;labGo(LAB.path==="find"?1:2);return}
+ if(t.closest("[data-labcontinue]")){labGo(LAB.step>0?LAB.step:2);return}
+ if(t.closest("[data-labreset]")){if(!confirm("Start over? Your current answers will be cleared."))return;LAB={step:0,path:"",areas:[],cards:[],a:{title:"",who:"",problem:"",work:"",solution:"",why:"",model:"",price:"",test:"",testText:"",stage:"idea",looking:[]},c:{}};labSave();drawLab();return}
+ const ar=t.closest("[data-labarea]");if(ar){const k=ar.dataset.labarea;if(LAB.areas.includes(k))LAB.areas=LAB.areas.filter(x=>x!==k);else if(LAB.areas.length<3)LAB.areas.push(k);else toast("Pick up to three areas.");labSave();drawLab();return}
+ if(t.closest("[data-labspin]")){labSpin();drawLab();return}
+ const us=t.closest("[data-labuse]");if(us){const c=LAB.cards[+us.dataset.labuse];if(c){LAB.a.who=c.who;LAB.a.problem=cap(c.who)+" "+c.pain+".";LAB.a.solution=c.idea+", "+c.twist+".";labGo(2)}return}
+ if(t.closest("[data-labskip]")){labGo(2);return}
+ const pk=t.closest("[data-labpick]");if(pk){const k=pk.dataset.labpick,v=pk.dataset.v;if(Array.isArray(LAB.a[k])){LAB.a[k]=LAB.a[k].includes(v)?LAB.a[k].filter(x=>x!==v):[...LAB.a[k],v]}else if(k==="who"){LAB.a.who=cap(pk.textContent)}else LAB.a[k]=LAB.a[k]===v?"":v;labSave();drawLab();return}
+ const ck=t.closest("[data-labcheck]");if(ck){LAB.c[ck.dataset.labcheck]=ck.dataset.v;labSave();drawLab();return}
+ if(t.closest("[data-labnext]")){const b=t.closest("[data-labnext]");if(!b.disabled)labGo(LAB.step+1);return}
+ if(t.closest("[data-labback]")){LAB.script="";labGo(LAB.step-1===1&&LAB.path!=="find"?0:LAB.step-1);return}
+ if(t.closest("[data-labcopy]")){try{await navigator.clipboard.writeText(labSummary()+"\n\nMy pitch:\n"+(($("#labScript")||{}).value||labPitch()));say($("#labMsg"),"Copied.",true)}catch(err){say($("#labMsg"),"Could not copy. Select the text by hand.")}return}
+ if(t.closest("[data-labpng]")){const m=$("#labMsg");say(m,"Creating your card...",true);try{const u=await labCardUrl();await saveFile(u,"REL-idea-card.png");say(m,"Your idea card is saved.",true)}catch(err){say(m,"Could not create the card.")}return}
+ if(t.closest("[data-labpractice]")){const s=($("#labScript")||{}).value||LAB.script||labPitch();showPage("play","talk");showTalk(["Pitch",s]);return}
+ if(t.closest("[data-labshare]")){const m=$("#labMsg");if(!needMember("share an idea"))return;const a=LAB.a,ti=(a.title||"").trim()||"My startup idea",mod=(LAB_MODELS.find(x=>x[0]===a.model)||[])[1],te=(LAB_TESTS.find(x=>x[0]===a.test)||[])[1]||a.testText;
+  const problem=(cap(a.who)+": "+a.problem+(a.work?" Today: "+a.work:"")).slice(0,500),idea=(a.solution+(mod?" Money: "+mod+".":"")+(te?" Test: "+te+".":"")).slice(0,800);
+  const {error}=await SB.rpc("post_idea",{p_title:ti.length<4?ti+" idea":ti,p_problem:problem,p_idea:idea,p_stage:a.stage||"idea",p_looking:a.looking||[]});
+  if(error){say(m,errText(error));return}say(m,"Your idea is on the Idea Board.",true);toast("Your idea is on the board");loadIdeas();return}
+});
+document.addEventListener("input",e=>{const el=e.target;if(el.matches&&el.matches("[data-lab]")){LAB.a[el.dataset.lab]=el.value;labSave();const b=$("[data-labnext]");if(b){const st=LAB_STEPS[LAB.step],a=LAB.a;b.disabled=st==="problem"?!(a.who.trim()&&a.problem.trim().length>=10):st==="solution"?!(a.solution.trim().length>=10&&a.test):false}}
+ if(el.id==="labScript"){LAB.script=el.value;labSave();const w=el.value.trim().split(/\s+/).filter(Boolean).length,n=$("#labWords");if(n)n.textContent="About "+w+" words, around "+Math.round(w/2.2)+" seconds when spoken. Edit it until it sounds like you."}});
+
+document.addEventListener("click",e=>{const o=e.target.closest("[data-openlab]");if(o){e.preventDefault();showPage("startups","lab");return}
+ const g=e.target.closest("[data-gopane]");if(g){e.preventDefault();showPage("startups",g.dataset.gopane)}});
+drawLab();
 
 </script>
 </body>
