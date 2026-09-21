@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-NJQB8qdL1fGsQ4qYneVVD+oKneCWydQ2IX4OLHu7zxY='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-7g4cKhpLO4nkkLeYXeK7vgeUVXEbsKsd3/skNWTIm7w='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -751,6 +751,70 @@ a.ptn:hover{border-color:var(--fill)}
 @media (max-width:900px){.pw-hero{grid-template-columns:1fr;gap:28px}.pw-3,.pw-steps{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.pw-3,.pw-steps{grid-template-columns:1fr}}
 
+/* fact of the day, one-minute talk, glossary */
+.fact{background:var(--bg);padding:64px 0;border-bottom:1px solid var(--line)}
+.fact-in{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end}
+.fact-k{font:600 .8rem var(--f-body);letter-spacing:.22em;text-transform:uppercase;color:var(--brand-ink);margin:0 0 12px}
+.fact-t{font:500 clamp(1.5rem,3vw,2.3rem)/1.2 var(--f-display);letter-spacing:-.015em;margin:0;max-width:26em}
+.talk-card{background:var(--band);color:var(--on-band);border-radius:16px;padding:32px;margin:22px 0;max-width:720px}
+.talk-kind{display:inline-block;font:600 .78rem var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin-bottom:12px}
+.talk-text{font:500 clamp(1.5rem,3vw,2.2rem)/1.2 var(--f-display);letter-spacing:-.015em;margin:0}
+.talk-timer{font:500 4rem/1 var(--f-display);color:var(--brand-ink);margin:24px 0 10px;letter-spacing:-.03em}
+.talk-timer.done{color:var(--muted)}
+.gl-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.gl-item{border:1px solid var(--line);border-radius:12px;padding:20px;background:var(--surface)}
+.gl-item h3{font-size:1.15rem;margin:0 0 8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.gl-item p{margin:0;color:var(--muted);font-size:.98rem}
+@media (max-width:800px){.fact-in{grid-template-columns:1fr}}
+
+/* startup hub and idea board */
+.su-hero{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center;padding-bottom:44px;border-bottom:1px solid var(--line)}
+.su-hero h3{font-size:clamp(2rem,4vw,3rem);color:var(--brand-ink);margin-bottom:14px}
+.su-hero .row{margin-top:22px}
+.su-fact{background:var(--band);color:var(--on-band);border-radius:16px;padding:28px}
+.su-fact .fact-k{color:var(--rose)}
+.su-fact .fact-t{font-size:1.35rem;color:var(--on-band)}
+.spot{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start;border:1px solid var(--line);border-radius:16px;padding:28px;background:var(--surface)}
+.spot:not(:has(img)){grid-template-columns:1fr}
+.spot img{width:180px;height:180px;border-radius:14px;object-fit:cover}
+.spot h3{font-size:1.9rem;color:var(--brand-ink);margin-bottom:6px}
+.spot-lesson{background:var(--tint);border-radius:12px;padding:14px 18px;margin-top:14px;display:flex;flex-direction:column;gap:4px}
+.spot-lesson b{font:600 .78rem var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--brand-ink)}
+.spot-home{background:var(--band);color:var(--on-band);padding:56px 0}
+.spot-home[hidden]{display:none}
+.spot-in{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
+.spot-home .fact-k{color:var(--rose)}
+.spot-home h3{font-size:clamp(1.8rem,3.4vw,2.6rem);color:var(--on-band);margin:0 0 8px}
+.spot-home .lead2{color:var(--rose)}
+.spot-home .btn:not(.primary){color:var(--on-band);border-color:rgba(248,246,241,.5);background:transparent}
+.spot-home .btn:not(.primary):hover{background:var(--on-band);color:var(--band)}
+.spot-home .btn.primary{background:var(--on-band);color:var(--band);border-color:var(--on-band)}
+.idea-head{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;margin-bottom:24px}
+.idea-h{font:500 1.5rem var(--f-display);color:var(--brand-ink);margin:8px 0 14px}
+.idea-tools{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin:28px 0 18px}
+.idea-tools select{min-height:44px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);padding:0 12px;font:400 15px var(--f-body);color:var(--ink)}
+.idea-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+.idea{border:1px solid var(--line);border-radius:14px;padding:24px;background:var(--surface);display:flex;flex-direction:column;gap:6px}
+.idea.mine{border-color:var(--fill);margin-bottom:18px}
+.idea header{margin-bottom:6px}
+.idea h3{font-size:1.35rem;margin:8px 0 4px}
+.idea p{margin:0 0 6px}
+.idea-look{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chip.sm{min-height:0;padding:3px 10px;font-size:.82rem;cursor:default}
+.idea-act{margin-top:auto;padding-top:10px;gap:10px}
+.vote.on{background:var(--fill);color:var(--on-fill);border-color:var(--fill)}
+.tri-up{display:inline-block;width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:9px solid currentColor;margin-right:4px}
+.int-form{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.int-item{border-top:1px solid var(--line);padding:10px 0}
+.chip-ck{display:inline-flex}
+.chip-ck input{position:absolute;opacity:0;width:0;height:0}
+.chip-ck span{display:inline-block;padding:8px 14px;border:1.5px solid var(--line);border-radius:999px;font:600 .9rem var(--f-body);cursor:pointer;transition:all .25s}
+.chip-ck input:checked+span{background:var(--fill);color:var(--on-fill);border-color:var(--fill)}
+.chip-ck input:focus-visible+span{outline:2px solid var(--fill);outline-offset:2px}
+@media (max-width:900px){.su-hero,.spot-in{grid-template-columns:1fr}.spot{grid-template-columns:1fr}}
+
+.vote:disabled{opacity:.6;cursor:default}
+
 </style>
 </head>
 <body>
@@ -758,7 +822,7 @@ a.ptn:hover{border-color:var(--fill)}
 <div class="annbar" id="annBar" hidden><a href="#events" data-annall><span class="nw">New</span><span id="annBarT"></span></a><button type="button" class="ann-x" aria-label="Close this announcement">&times;</button></div>
 <header class="nav"><div class="wrap nav-in">
 <a class="brand" href="#top" aria-label="REL home"><img class="lg-burg" data-logo="burg" alt=""><img class="lg-light" data-logo="light" alt=""><span>REL</span></a>
-<nav id="menu" aria-label="Main"><span class="pill" id="pill" aria-hidden="true"></span><a href="#about">About</a><a href="#events">Events</a><a href="#people">People</a><a href="#points">Leaderboard</a><a href="#learn">Learn</a><a href="#play">Play</a><a href="#community">Community</a><a href="#team" id="navTeam" hidden>Team</a><a href="#account" id="navAcct">Log in</a></nav>
+<nav id="menu" aria-label="Main"><span class="pill" id="pill" aria-hidden="true"></span><a href="#about">About</a><a href="#events">Events</a><a href="#people">People</a><a href="#points">Leaderboard</a><a href="#learn">Learn</a><a href="#startups">Startups</a><a href="#play">Play</a><a href="#community">Community</a><a href="#team" id="navTeam" hidden>Team</a><a href="#account" id="navAcct">Log in</a></nav>
 <button class="sbtn" id="sBtn" type="button" aria-label="Search the site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>Search</span></button>
 <button class="bell" id="bell" type="button" aria-label="Announcements" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.7 20a2 2 0 0 1-3.4 0"/></svg><span class="bdot" id="bdot" hidden></span></button>
 <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu">Menu</button>
@@ -800,6 +864,10 @@ a.ptn:hover{border-color:var(--fill)}
 <div class="num" aria-label="6 board members"><b data-count="6">0</b><span>board members running the year</span></div>
 </div></div></section>
 
+<section class="fact" aria-label="Fact of the day"><div class="wrap fact-in"><div><p class="fact-k">Fact of the day</p><p class="fact-t" id="factText"></p></div><p class="muted small" id="factNext"></p></div></section>
+
+<section class="spot-home" aria-label="Startup of the week" hidden><div class="wrap spot-in"><div><p class="fact-k">Startup of the week</p><h3 id="spotHomeName"></h3><p id="spotHomeOne" class="lead2" style="margin:0"></p></div><div class="row"><a class="btn primary" href="#startups">Open the Startup Hub</a><a class="btn" href="#startups" data-suidea>Share your idea</a></div></div></section>
+
 <section class="sec steps"><div class="wrap">
 <div class="sec-head"><h2>Join in three steps</h2><p>It takes about five minutes.</p></div>
 <ol class="steps3">
@@ -823,8 +891,9 @@ a.ptn:hover{border-color:var(--fill)}
 <a class="row2" href="#people"><span class="rn">02</span><span class="rt">The people</span><span class="rd">The board, the ambassadors and member search.</span><span class="ra" aria-hidden="true"></span></a>
 <a class="row2" href="#points"><span class="rn">03</span><span class="rt">Leaderboard</span><span class="rd">Points, and how to earn them.</span><span class="ra" aria-hidden="true"></span></a>
 <a class="row2" href="#learn"><span class="rn">04</span><span class="rt">Learn</span><span class="rd">Books, the journal, speakers and documents.</span><span class="ra" aria-hidden="true"></span></a>
-<a class="row2" href="#play"><span class="rn">05</span><span class="rt">Play</span><span class="rd">A daily puzzle and a business question.</span><span class="ra" aria-hidden="true"></span></a>
-<a class="row2" href="#partner"><span class="rn">06</span><span class="rt">Work with REL</span><span class="rd">Sponsors, companies and other clubs.</span><span class="ra" aria-hidden="true"></span></a>
+<a class="row2" href="#startups"><span class="rn">05</span><span class="rt">Startups</span><span class="rd">The Startup Hub and an idea board to build with others.</span><span class="ra" aria-hidden="true"></span></a>
+<a class="row2" href="#play"><span class="rn">06</span><span class="rt">Play</span><span class="rd">A daily puzzle, a business question and a topic to talk about.</span><span class="ra" aria-hidden="true"></span></a>
+<a class="row2" href="#partner"><span class="rn">07</span><span class="rt">Work with REL</span><span class="rd">Sponsors, companies and other clubs.</span><span class="ra" aria-hidden="true"></span></a>
 </div></div></section>
 
 
@@ -874,7 +943,23 @@ a.ptn:hover{border-color:var(--fill)}
 <div class="pg" data-pg="learn" hidden><section id="learn" class="sec"><div class="wrap"><div class="sec-head"><h2>Learn with REL</h2><p>Books, articles, presentations and templates, grouped by topic.</p></div><div class="pane" data-pane="resources" data-label="Resources"><div class="tabs" role="tablist" aria-label="Topics" id="resTabs"></div>
 <div id="resBody"></div>
 
-</div><div class="pane" data-pane="journal" data-label="Journal"><div id="journal"></div></div><div class="pane" data-pane="speakers" data-label="Speakers"><div id="speakers"></div></div><div class="pane" data-pane="documents" data-label="Documents"><div id="docs"></div></div><div class="pane" data-pane="report" data-label="Annual report"><div class="empty"><p>The 2026–27 report will be published at the end of the academic year, with our events, members and results.</p><p><button class="btn small" disabled aria-disabled="true" style="opacity:.55;cursor:not-allowed">Coming at the end of the year</button></p></div></div></div></section></div>
+</div><div class="pane" data-pane="journal" data-label="Journal"><div id="journal"></div></div><div class="pane" data-pane="speakers" data-label="Speakers"><div id="speakers"></div></div><div class="pane" data-pane="documents" data-label="Documents"><div id="docs"></div></div><div class="pane" data-pane="glossary" data-label="Startup glossary"><p class="muted" style="max-width:38em">Short, clear definitions of the words you hear about startups, funding and the stock market.</p>
+<input id="glQ" class="search" type="search" placeholder="Search a word, like IPO or runway" aria-label="Search the glossary" autocomplete="off">
+<div class="chips" id="glCats" style="margin:16px 0"></div><div id="glList" class="gl-list"></div></div>
+<div class="pane" data-pane="report" data-label="Annual report"><div class="empty"><p>The 2026–27 report will be published at the end of the academic year, with our events, members and results.</p><p><button class="btn small" disabled aria-disabled="true" style="opacity:.55;cursor:not-allowed">Coming at the end of the year</button></p></div></div></div></section></div>
+<div class="pg" data-pg="startups" hidden><section id="startups" class="sec"><div class="wrap">
+<div class="sec-head"><h2>Startups</h2><p>Where REL students learn how startups work, share their ideas and find people to build with.</p></div>
+<div class="pane" data-pane="hub" data-label="Startup Hub">
+<div class="su-hero"><div><h3>Build something of your own</h3><p class="lead2">Entrepreneurship is one third of our name. Learn the language of startups, see how famous companies began, share your own idea and find people to build it with.</p>
+<div class="row"><button type="button" class="btn primary" data-suidea>Share your idea</button><button type="button" class="btn" data-embed="REL-Pitch-Deck-Outline.pdf">Pitch deck outline (PDF)</button><a class="btn" href="#learn" data-glossary>Startup glossary</a></div></div>
+<aside class="su-fact"><p class="fact-k">Fact of the day</p><p class="fact-t" id="suFact"></p></aside></div>
+<section class="pw-sec"><h4>Startup of the week</h4><div id="spotBox"></div></section>
+<section class="pw-sec"><h4>Coming up</h4><div id="suEvents"></div></section>
+<section class="pw-sec"><h4>The REL Startup Track</h4><div class="pw-ways" id="suTrack"></div></section>
+<section class="pw-sec"><h4>Keep learning</h4><div class="pw-3"><div class="pw-card"><b>Startup glossary</b><p>46 words you will hear about startups, funding and the stock market.</p><a class="btn sm" href="#learn" data-glossary>Open the glossary</a></div><div class="pw-card"><b>Practice your pitch</b><p>Get a topic and speak about it for one minute, alone or with a friend.</p><a class="btn sm" href="#play" data-talk>Open 1-minute talk</a></div><div class="pw-card"><b>Read and watch</b><p>Books, articles and templates on entrepreneurship, picked by the board.</p><a class="btn sm" href="#learn">Open Learn</a></div></div></section>
+</div>
+<div class="pane" data-pane="ideas" data-label="Idea board"><div id="ideaBoard"></div></div>
+</div></section></div>
 <div class="pg" data-pg="play" hidden><section id="play" class="sec alt"><div class="wrap"><div class="sec-head"><h2>Play</h2><p>A new puzzle and a new business question every day, the same for everyone.</p></div><div class="pane" data-pane="puzzle" data-label="Daily puzzle"><div class="qwrap">
 <div><div id="qgrid" aria-label="Puzzle board"></div></div>
 <div>
@@ -886,7 +971,11 @@ a.ptn:hover{border-color:var(--fill)}
 </div>
 </div><div class="pane" data-pane="quiz" data-label="Business question">
 <div class="card" style="background:var(--bg);max-width:720px"><p id="qzQ" style="font:700 1.7rem/1.15 var(--f-display),sans-serif;margin:0"></p><div class="qz-o" id="qzO"></div><p id="qzE" role="status" aria-live="polite" style="margin:0;min-height:1.6em;font-weight:600;color:var(--brand-ink)"></p></div>
-</div></div></section></div>
+</div><div class="pane" data-pane="talk" data-label="1-minute talk"><p class="muted" style="max-width:38em">A new topic every day. Speak about it for one minute, alone or with a friend. The timer is optional. Not your topic? Pick another one.</p>
+<div class="talk-card"><span class="talk-kind" id="talkKind"></span><p class="talk-text" id="talkText"></p></div>
+<div class="row"><button type="button" class="btn primary" id="talkStart">Start 1-minute timer</button><button type="button" class="btn" id="talkNew">Another topic</button><button type="button" class="btn" id="talkToday">Today's topic</button></div>
+<div class="talk-timer" id="talkTimer" aria-live="polite">1:00</div>
+<p class="muted" id="talkTips" style="max-width:38em"></p></div></div></section></div>
 <div class="pg" data-pg="community" hidden><section id="community" class="sec"><div class="wrap"><div class="sec-head"><h2>Community</h2><p>REL grows through the people around it. Here is how the network looks and how you can take part.</p></div><div class="pane" data-pane="network" data-label="Network"><div class="grid2">
 <div><svg class="map" id="map" viewBox="0 0 860 430" role="img" aria-label="REL network map: the board, ambassadors, members, partners and speakers connected to REL"></svg><ul class="map-list" id="mapList"></ul></div>
 <div>
@@ -920,7 +1009,7 @@ a.ptn:hover{border-color:var(--fill)}
 <div><p style="margin:0 0 12px;font-weight:600">Contact</p><div class="ct small"><div><span>Email</span><a href="mailto:rel.committee@gmail.com">rel.committee@gmail.com</a></div><div><span>Phone</span><a href="tel:+96171628112">+961 71 628 112</a></div><div><span>Partners</span><a href="#partner">Partner with us</a></div></div></div>
 </div>
 <div class="foot-word" aria-hidden="true">REL</div>
-<div class="wrap small foot-copy" style="opacity:.8">&copy; <span id="yr"></span> REL club. Built by the board.</div></footer>
+<div class="wrap small foot-copy" style="opacity:.8">&copy; <span id="yr"></span> REL club. Built by the McNaOH.</div></footer>
 <div class="sov" id="sov" aria-hidden="true"><div class="sbox" role="dialog" aria-modal="true" aria-label="Search the site"><input id="sq" type="search" placeholder="Search events, people, books, forms" autocomplete="off" aria-label="Search"><div class="sres" id="sres"></div><p class="shint">Press Esc to close. Tip: press / anywhere to search.</p></div></div>
 <div class="sov" id="pov" aria-hidden="true"><div class="sbox pbox" role="dialog" aria-modal="true" aria-labelledby="pT"><div id="pbody"></div></div></div>
 <div class="sov" id="lbx" aria-hidden="true"><div class="lbox" role="dialog" aria-modal="true" aria-label="Photo viewer"><img id="lbImg" alt=""><div class="lbar"><button type="button" class="btn sm" id="lbPrev">Previous</button><span id="lbCount" class="muted"></span><button type="button" class="btn sm" id="lbNext">Next</button><button type="button" class="btn sm" id="lbSave" hidden>Save photo</button><button type="button" class="btn sm primary" id="lbClose">Close</button></div></div></div>
@@ -1132,7 +1221,7 @@ openJoin("member",false);
 let authMode="login",authNote="",authOk=false,teamTab="apps",teamEdit=null;const teamCache={};
 const fromEmailLink=/type=(signup|invite|recovery|magiclink|email_change)/.test(location.hash);
 const LEVEL=["1st year","2nd year","3rd year","4th year","5th year"];
-const DRAFT_FORMS=["authForm","applyForm","profForm","evForm","anForm","ptForm","hoForm","tmForm","ambForm"];let DRAFT={};
+const DRAFT_FORMS=["authForm","applyForm","profForm","evForm","anForm","ptForm","hoForm","tmForm","ambForm","ideaForm","intForm"];let DRAFT={};
 try{DRAFT=JSON.parse(sessionStorage.getItem("relDraft")||"{}")}catch(err){DRAFT={}}
 const saveDraft=()=>{try{sessionStorage.setItem("relDraft",JSON.stringify(DRAFT))}catch(err){}};
 const draftKey=f=>f.id+(f.dataset&&f.dataset.id?":"+f.dataset.id:"");
@@ -1266,7 +1355,7 @@ async function paneApps(){loading();const {data,error}=await SB.from("applicatio
  tpane().innerHTML=`<h3 style="margin-bottom:14px">Waiting for a decision (${pend.length})</h3>${pend.length?pend.map(appCard).join(""):'<div class="empty"><p>No applications are waiting.</p></div>'}
  <h3 style="margin:32px 0 14px">Decided (${done.length})</h3>${done.length?`<div class="tbl"><table><thead><tr><th>Name</th><th>Result</th><th>Decided</th><th>Note</th></tr></thead><tbody>${done.map(a=>`<tr><td>${esc(a.full_name)}</td><td>${esc(a.status)}</td><td>${esc(dshort(a.decided_at))}</td><td>${esc(a.note||"")}</td></tr>`).join("")}</tbody></table></div>`:'<p class="muted">Nothing yet.</p>'}`}
 
-const EV_TYPES=["On campus","Guest speaker","Workshop","Competition","Flagship","Online"];
+const EV_TYPES=["On campus","Guest speaker","Founder talk","Pitch night","Idea sprint","Workshop","Competition","Flagship","Online"];
 function evForm(e){e=e||{};return `<div class="card" style="background:var(--bg);margin-bottom:28px"><h3 style="margin-bottom:12px">${e.id?"Edit event":"Add an event"}</h3><form id="evForm" novalidate data-id="${esc(e.id||"")}">
  <label class="fld">Title *<input id="eTitle" value="${esc(e.title||"")}"></label>
  <label class="fld">Type<select id="eType">${EV_TYPES.map(t=>`<option ${t===(e.type||"On campus")?"selected":""}>${t}</option>`).join("")}</select></label>
@@ -1332,7 +1421,7 @@ const mapBoard=r=>{const s=STATIC_BOARD.find(x=>x.id===r.rel_id)||{};return{id:r
 const mapBoardRec=r=>({id:r.rel_id,type:"Board",name:r.full_name,role:r.position,year:r.year,major:r.major,faculty:r.faculty,bio:r.bio,photo:r.photo_path?photoUrl(r.photo_path):"",listed:true,db:true});
 function homeNews(){if(ANN.length){$("#latest").hidden=false;$("#annHome").innerHTML=ANN.slice(0,3).map(annItem).join("")}else $("#latest").hidden=true;if(typeof updateAnnBar==="function")updateAnnBar()}
 async function refreshPublic(){if(!SB)return;
- try{const [ev,an,pp,pb,sp,rs,dc,pt]=await Promise.all([SB.from("events").select("*").order("date",{ascending:true}),SB.from("announcements").select("*"),SB.from("public_profiles").select("*"),SB.from("public_board").select("*"),SB.from("speakers").select("*"),SB.from("resources").select("*"),SB.from("documents").select("*").order("sort",{ascending:true}),SB.from("partners").select("*")]);
+ try{const [ev,an,pp,pb,sp,rs,dc,pt,ss]=await Promise.all([SB.from("events").select("*").order("date",{ascending:true}),SB.from("announcements").select("*"),SB.from("public_profiles").select("*"),SB.from("public_board").select("*"),SB.from("speakers").select("*"),SB.from("resources").select("*"),SB.from("documents").select("*").order("sort",{ascending:true}),SB.from("partners").select("*"),SB.from("startup_spotlight").select("*")]);
   if(!ev.error&&ev.data){EVENTS.length=0;PAST.length=0;EVENTS.push(...ev.data.map(mapEv))}
   if(!an.error&&an.data){ANNOUNCEMENTS.length=0;ANNOUNCEMENTS.push(...an.data.map(mapAn))}
   if(!pp.error&&pp.data){RECORDS.length=0;RECORDS.push(...STATIC_RECORDS,...pp.data.filter(r=>!STATIC_RECORDS.some(s=>s.id===r.rel_id)).map(mapRec))}
@@ -1342,6 +1431,7 @@ async function refreshPublic(){if(!SB)return;
   if(!dc.error&&dc.data&&dc.data.length){DOCS.length=0;DOCS.push(...dc.data.map(mapDoc))}
   if(!pt.error&&pt.data){PARTNERS.length=0;PARTNERS.push(...pt.data.map(mapPartner))}
   drawSpeakers();drawDocs();drawPartners();if(typeof refreshWorkData==="function")refreshWorkData();
+  if(!ss.error&&ss.data)SPOT=ss.data.map(mapSpot);drawSpot();drawStartupEvents();loadIdeas();
   prepEvents();const k=($("[data-ev][aria-selected=true]")||{dataset:{ev:"up"}}).dataset.ev;showEv(k);drawCal();homeNews();tick();drawMem();loadBoards();drawMap();updateChip()}catch(err){}}
 
 /* ---- clicks and forms ---- */
@@ -1580,6 +1670,7 @@ const CT={
  speakers:{label:"Speakers",table:"speakers",order:"talk_date",desc:true,fields:[["name","Name","text",1],["title","Title or affiliation","text"],["topic","Topic of the talk","text"],["talk_date","Date of the talk","date"],["bio","Short bio (optional)","area"],["photo_path","Photo (optional)","image"]],show:r=>[r.name,r.topic].filter(Boolean).join(". ")},
  resources:{label:"Resources",table:"resources",order:"created_at",desc:true,fields:[["topic","Topic","sel",1,TOPICS],["kind","Type","sel",1,KINDS],["title","Title","text",1],["author","Author","text"],["source","Source","text"],["url","Link","url"],["file_path","Or upload a file (PDF or slides)","file"]],show:r=>r.title+" ("+r.kind+", "+r.topic+")"},
  documents:{label:"Documents",table:"documents",order:"sort",fields:[["title","Title","text",1],["kind","Type, like PDF or Template","text"],["url","Link","url"],["file_path","Or upload a file","file"],["sort","Order (1 shows first)","num"]],show:r=>r.title},
+ spotlight:{label:"Startup of the week",table:"startup_spotlight",order:"week_of",desc:true,fields:[["name","Startup name","text",1],["one_liner","One sentence","text",1],["story","The story","area"],["lesson","The lesson","text"],["url","Link (optional)","url"],["image_path","Picture (optional)","image"],["week_of","Week starting (a Monday)","date",1]],show:r=>r.name+" ("+r.week_of+")"},
  partners:{label:"Partners",table:"partners",order:"created_at",desc:true,fields:[["name","Name","text",1],["url","Website","url"],["note","What they do with REL","area"],["logo_path","Logo (optional)","image"]],show:r=>r.name}
 };
 let ctSel="speakers",ctEdit=null;
@@ -1590,7 +1681,7 @@ function ctField(f,row){const [k,label,type,req,opts]=f,v=row&&row[k]!=null?row[
  if(type==="file")return upField("cf_"+k,label,"files",0,false,"application/pdf,image/jpeg,image/png,image/webp,.docx,.pptx,.xlsx",v,k);
  return `<label class="fld">${L}<input data-cf="${k}" type="${type==="num"?"number":type==="date"?"date":type==="url"?"url":"text"}" value="${esc(v)}"></label>`}
 async function paneContent(){loading();
- const seg=`<div class="tabs seg" role="tablist" aria-label="Content type">${Object.keys(CT).map(k=>`<button type="button" class="tab" role="tab" aria-selected="${k===ctSel}" data-ct="${k}">${CT[k].label}</button>`).join("")}<button type="button" class="tab" role="tab" aria-selected="${ctSel==="requests"}" data-ct="requests">Requests</button></div>`;
+ const seg=`<div class="tabs seg" role="tablist" aria-label="Content type">${Object.keys(CT).map(k=>`<button type="button" class="tab" role="tab" aria-selected="${k===ctSel}" data-ct="${k}">${CT[k].label}</button>`).join("")}<button type="button" class="tab" role="tab" aria-selected="${ctSel==="requests"}" data-ct="requests">Requests</button><button type="button" class="tab" role="tab" aria-selected="${ctSel==="ideas"}" data-ct="ideas">Ideas</button></div>`;
  if(ctSel==="requests"){const {data,error}=await SB.from("partner_requests").select("*").order("created_at",{ascending:false});if(error)return paneErr(error);
   const ST2={new:["warn","! Not checked yet"],emailed:["warn","In contact. Still confirm who they are"],verified:["ok","&#10003; Verified"],declined:["","Declined"]};
   tpane().innerHTML=seg+`<div class="card" style="background:var(--bg);margin-bottom:24px"><h3 style="margin-bottom:8px">How to check a request</h3><ol class="muted" style="margin:0;padding-left:1.2em"><li>Reply to them (the button on each request opens your email app). Ask them to answer from their official company or club address, and to suggest a time for a short call.</li><li>Look at the sender's address in Gmail. Its domain (the part after the @) should match their website. Gmail, Yahoo or Hotmail is not enough for a company.</li><li>If you still have doubts, call the number on their official website. Do not use a number typed in the form.</li><li>For sponsorship money, get everything in writing before you announce anything.</li><li>Only then mark it as verified and add them under Partners.</li></ol></div>
@@ -1598,6 +1689,8 @@ async function paneContent(){loading();
    <div class="sigs"><span class="badge ${s[0]}">${s[1]}</span>${reqHints(r).map(h=>`<span class="badge ${h[0]}">${h[1]}</span>`).join("")}</div>
    <dl class="kv"><dt>Contact person</dt><dd>${esc(r.name)}</dd><dt>Email or phone</dt><dd>${esc(r.contact)}</dd>${r.link?`<dt>Website or page</dt><dd>${/^https?:\/\//i.test(r.link)?`<a href="${esc(r.link)}" target="_blank" rel="noopener noreferrer">${esc(r.link)}</a>`:esc(r.link)}</dd>`:""}${r.ways?`<dt>Interested in</dt><dd>${esc(r.ways)}</dd>`:""}${r.note?`<dt>Note</dt><dd>${esc(r.note)}</dd>`:""}</dl>
    <div class="row">${replyLink(r)}<button type="button" class="btn sm" data-preq="${esc(r.id)}" data-st="emailed">In contact</button><button type="button" class="btn primary sm" data-preq="${esc(r.id)}" data-st="verified">Mark as verified</button><button type="button" class="btn sm" data-preq="${esc(r.id)}" data-st="declined">Decline</button><button type="button" class="btn sm" data-preqdel="${esc(r.id)}">Delete</button></div></div>`}).join(""):'<div class="empty"><p>No requests yet.</p></div>'}`;return}
+ if(ctSel==="ideas"){const {data,error}=await SB.from("ideas").select("*").order("created_at",{ascending:false});if(error)return paneErr(error);
+  tpane().innerHTML=seg+`<p class="muted">Ideas shared by members. Hide an idea to take it off the public board without deleting it, or delete it for good.</p>${data.length?data.map(r=>`<div class="ev" style="grid-template-columns:1fr auto"><div><h3 style="font-size:1.15rem">${esc(r.title)} <span class="tag">${esc(r.status)}</span></h3><p class="muted small" style="margin:0">#${esc(r.rel_id)}. ${esc(dshort(r.created_at))}. ${esc(String(r.problem).slice(0,140))}</p></div><div class="row"><button type="button" class="btn sm" data-idstatus="${esc(r.id)}" data-hide="${r.status==="published"?"1":"0"}">${r.status==="published"?"Hide":"Show"}</button><button type="button" class="btn sm" data-iddel="${esc(r.id)}">Delete</button></div></div>`).join(""):'<div class="empty"><p>No ideas yet.</p></div>'}`;return}
  const cfg=CT[ctSel];let q=SB.from(cfg.table).select("*");if(cfg.order)q=q.order(cfg.order,{ascending:!cfg.desc});const {data,error}=await q;if(error)return paneErr(error);teamCache.ct=data;
  const row=ctEdit&&ctEdit.table===cfg.table?ctEdit.row:null;
  tpane().innerHTML=seg+`<div class="card" style="background:var(--bg);margin-bottom:28px"><h3 style="margin-bottom:12px">${row?"Edit":"Add"}: ${esc(cfg.label)}</h3><form id="ctForm" novalidate data-id="${esc(row?row.id:"")}">${cfg.fields.map(f=>ctField(f,row)).join("")}
@@ -1605,6 +1698,8 @@ async function paneContent(){loading();
   <h3 style="margin-bottom:12px">All (${data.length})</h3>${data.length?data.map(r=>`<div class="ev" style="grid-template-columns:1fr auto"><div><h3 style="font-size:1.15rem">${esc(cfg.show(r))}</h3></div><div class="row"><button type="button" class="btn sm" data-ctedit="${esc(r.id)}">Edit</button><button type="button" class="btn sm" data-ctdel="${esc(r.id)}">Delete</button></div></div>`).join(""):'<div class="empty"><p>Nothing yet.</p></div>'}`}
 document.addEventListener("click",async e=>{
  const ct=e.target.closest("[data-ct]");if(ct){ctSel=ct.dataset.ct;ctEdit=null;paneContent();return}
+ const ih=e.target.closest("[data-idstatus]");if(ih){const {error}=await SB.rpc("set_idea_status",{p_id:ih.dataset.idstatus,p_hidden:ih.dataset.hide==="1"});if(error){toast(errText(error));return}toast(ih.dataset.hide==="1"?"Idea hidden":"Idea shown");paneContent();loadIdeas();return}
+ const idd=e.target.closest("[data-iddel]");if(idd){if(!confirm("Delete this idea for good?"))return;const {error}=await SB.rpc("delete_idea",{p_id:idd.dataset.iddel});if(error){toast(errText(error));return}toast("Deleted");paneContent();loadIdeas();return}
  const ed=e.target.closest("[data-ctedit]");if(ed){ctEdit={table:CT[ctSel].table,row:(teamCache.ct||[]).find(x=>x.id===ed.dataset.ctedit)};paneContent();window.scrollTo(0,0);return}
  const dl=e.target.closest("[data-ctdel]");if(dl){if(!confirm("Delete this?"))return;const {error}=await SB.from(CT[ctSel].table).delete().eq("id",dl.dataset.ctdel);if(error){toast(errText(error));return}toast("Deleted");ctEdit=null;paneContent();refreshPublic();return}
  if(e.target.closest("[data-ctcancel]")){clearDraft($("#ctForm"));ctEdit=null;paneContent();return}
@@ -1645,6 +1740,78 @@ document.addEventListener("click",async e=>{const btn=e.target.closest("#wSubmit
  const box=$("#partnerBox");if(box)box.innerHTML=`<div class="verify"><h3>Thank you, we received your request</h3><p>We will reply to <b>${esc(contact)}</b> within a few days.</p><p>Before we announce anything together, we confirm everything with you directly, with a short call or an email from your official address. This protects our students and your organization.</p><p class="muted small" style="margin:0">Your reference: <b>${esc(String(data||""))}</b></p></div>`});
 document.addEventListener("click",e=>{const p=e.target.closest("[data-poster]");if(p&&window.openLb)openLb([p.dataset.poster],0,p.dataset.ptitle||"Poster")});
 
+/* ---------- Startup Hub and idea board ---------- */
+var SPOT=[],IDEAS=[],MYVOTES=new Set(),MYIDEAS=[],IINT=[],ideaSort="top",ideaStage="All",ideaSkill="All",ideaQ="",ideaFormOpen=false,ideaEdit=null,interestOpen=null;
+const SKILL={software:"Software",hardware:"Hardware and engineering",business:"Business and finance",design:"Design",marketing:"Marketing",operations:"Operations",mentor:"A mentor"};
+const STAGE={idea:"Just an idea",prototype:"Prototype","first users":"First users",earning:"Earning money"};
+const SU_TRACK=[["Founder Talk","A founder tells the real story: the first idea, the mistakes and the turning points."],["Pitch Night","Students pitch in five minutes to a jury of founders and investors."],["Idea Sprint","Teams form, build and pitch an idea in one afternoon on campus."],["IPOs and markets","How companies go public, together with the Roumieh Investment Club."],["Case Club","One company story, one hour of discussion: what worked, what failed, what you would do."]];
+const mapSpot=r=>({name:r.name,one:r.one_liner,story:r.story||"",lesson:r.lesson||"",url:safeUrl(r.url),image:r.image_path?mediaUrl(r.image_path):"",week:r.week_of});
+function spotNow(){if(!SPOT.length)return null;const today=beirutDay(),list=[...SPOT].sort((a,b)=>String(a.week).localeCompare(String(b.week))),past=list.filter(s=>String(s.week)<=today);return past.length?past[past.length-1]:list[0]}
+function drawSpot(){const s=spotNow(),box=$("#spotBox"),hn=$("#spotHomeName"),ho=$("#spotHomeOne"),sec=$(".spot-home");
+ if(sec)sec.hidden=!s;if(s&&hn){hn.textContent=s.name;ho.textContent=s.one}
+ const f=$("#suFact");if(f)f.textContent=factToday();
+ if(!box)return;if(!s){box.innerHTML='<div class="empty"><p>A new startup story every week. The first one is coming soon.</p></div>';return}
+ const prev=SPOT.filter(x=>x!==s&&String(x.week)<=beirutDay()).sort((a,b)=>String(b.week).localeCompare(String(a.week)));
+ box.innerHTML=`<article class="spot">${s.image?`<img src="${esc(s.image)}" alt="" loading="lazy">`:""}<div><h3>${esc(s.name)}</h3><p class="lead2" style="margin:0 0 12px">${esc(s.one)}</p>${s.story?`<p>${esc(s.story)}</p>`:""}${s.lesson?`<div class="spot-lesson"><b>The lesson</b><span>${esc(s.lesson)}</span></div>`:""}${s.url?`<p style="margin:14px 0 0"><a class="btn sm" href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">Learn more</a></p>`:""}</div></article>${prev.length?`<p class="muted small" style="margin:14px 0 0"><b>Earlier:</b> ${prev.map(x=>esc(x.name)).join(", ")}</p>`:""}`}
+function drawStartupEvents(){const el=$("#suEvents");if(!el)return;const rx=/founder|pitch|startup|sprint|entrepreneur|ipo|case club/i,list=EVENTS.filter(e=>rx.test(e.title+" "+(e.type||"")));
+ el.innerHTML=list.length?list.map(e=>evItem(e,true,EVENTS.indexOf(e))).join(""):'<div class="empty"><p>Startup events are being planned. Subscribe to the newsletter to hear first.</p></div>'}
+function drawTrack(){const el=$("#suTrack");if(!el)return;el.innerHTML=SU_TRACK.map(x=>`<article class="pw-way"><span class="tag" style="align-self:flex-start;margin-bottom:10px">Planned</span><h5>${esc(x[0])}</h5><p style="margin:0">${esc(x[1])}</p></article>`).join("")}
+
+/* ---- ideas ---- */
+async function loadIdeas(){if(!SB)return;
+ try{const r=await SB.from("ideas_public").select("*");if(!r.error)IDEAS=r.data||[];
+  if(ST.user){const [v,mi,it]=await Promise.all([SB.from("idea_votes").select("idea_id"),SB.from("ideas").select("*").eq("user_id",ST.user.id).order("created_at",{ascending:false}),SB.from("idea_interests").select("*").order("created_at",{ascending:false})]);
+   MYVOTES=new Set((v.data||[]).map(x=>x.idea_id));MYIDEAS=mi.data||[];IINT=it.data||[]}else{MYVOTES=new Set();MYIDEAS=[];IINT=[]}}catch(err){}
+ drawIdeas()}
+const iDate=s=>s?dshort(s):"";
+function ideaForm(){const e=ideaEdit||{};return `<div class="card" style="background:var(--bg);margin-bottom:26px"><h3 style="margin-bottom:12px">${e.id?"Edit your idea":"Share your idea"}</h3><form id="ideaForm" novalidate data-id="${esc(e.id||"")}">
+ <label class="fld">Name of the idea *<input id="iTitle" maxlength="90" value="${esc(e.title||"")}"></label>
+ <label class="fld">The problem: who has it and why it hurts *<textarea id="iProblem" maxlength="500">${esc(e.problem||"")}</textarea></label>
+ <label class="fld">Your idea: how would you solve it? *<textarea id="iIdea" maxlength="800">${esc(e.idea||"")}</textarea></label>
+ <label class="fld">Where are you now?<select id="iStage">${Object.keys(STAGE).map(k=>`<option value="${esc(k)}" ${k===(e.stage||"idea")?"selected":""}>${esc(STAGE[k])}</option>`).join("")}</select></label>
+ <p class="muted small" style="margin:6px 0 4px">Who would you like to build with?</p><div class="wkinds" role="group" aria-label="Looking for">${Object.keys(SKILL).map(k=>`<label class="chip-ck"><input type="checkbox" id="sk_${k}" data-skill="${k}" ${(e.looking_for||[]).includes(k)?"checked":""}><span>${esc(SKILL[k])}</span></label>`).join("")}</div>
+ <div class="row"><button class="btn primary sm" type="submit">${e.id?"Save changes":"Share on the board"}</button><button type="button" class="btn sm" data-ideacancel>Cancel</button></div><p class="vres" id="iMsg" role="status" aria-live="polite"></p></form></div>`}
+function intForm(i){return `<form id="intForm" class="int-form" novalidate data-id="${esc(i.id)}"><label class="fld">Tell the author what you can bring *<textarea id="xMsg" maxlength="400" placeholder="For example: I study computer engineering and can build the first version."></textarea></label><label class="fld">How can they reach you? *<input id="xContact" maxlength="120" placeholder="Instagram, WhatsApp or email"></label><p class="muted small" style="margin:0 0 8px">Only the author and the REL board will see this.</p><div class="row"><button class="btn primary sm" type="submit">Send</button><button type="button" class="btn sm" data-intcancel>Cancel</button></div><p class="vres" id="xErr" role="status" aria-live="polite"></p></form>`}
+function ideaCard(i){const voted=MYVOTES.has(i.id),own=MYIDEAS.some(x=>x.id===i.id),sent=IINT.some(x=>x.idea_id===i.id&&ST.user&&x.user_id===ST.user.id);
+ return `<article class="idea"><header><span class="tag">${esc(STAGE[i.stage]||i.stage)}</span><h3>${esc(i.title)}</h3><p class="muted small" style="margin:0">${esc(i.author_name)}${i.author_rel?" #"+esc(i.author_rel):""}. ${esc(iDate(i.created_at))}</p></header>
+ <p><b>The problem.</b> ${esc(i.problem)}</p><p><b>The idea.</b> ${esc(i.idea)}</p>${(i.looking_for||[]).length?`<p class="idea-look"><b>Looking for:</b> ${i.looking_for.map(s=>`<span class="chip sm">${esc(SKILL[s]||s)}</span>`).join("")}</p>`:""}
+ <div class="row idea-act"><button type="button" class="btn sm vote ${voted?"on":""}" data-vote="${esc(i.id)}" aria-pressed="${voted}" ${own?"disabled":""} ${own?'title="You cannot vote for your own idea"':""}><span class="tri-up" aria-hidden="true"></span> ${i.votes}</button>${own?'<span class="muted small">Your idea</span>':`<button type="button" class="btn sm" data-int="${esc(i.id)}">${sent?"Message sent":"I am interested"}${i.interested?" ("+i.interested+")":""}</button>`}</div>
+ ${interestOpen===i.id?intForm(i):""}</article>`}
+function drawIdeas(){const box=$("#ideaBoard");if(!box)return;
+ if(!SB){box.innerHTML='<div class="empty"><p>The idea board is not available on this version of the site.</p></div>';return}
+ let list=IDEAS.filter(i=>(ideaStage==="All"||i.stage===ideaStage)&&(ideaSkill==="All"||(i.looking_for||[]).includes(ideaSkill))&&(!ideaQ||(i.title+" "+i.problem+" "+i.idea).toLowerCase().includes(ideaQ)));
+ list=[...list].sort((a,b)=>ideaSort==="new"?String(b.created_at).localeCompare(String(a.created_at)):(b.votes-a.votes)||(b.interested-a.interested)||String(b.created_at).localeCompare(String(a.created_at)));
+ const mine=MYIDEAS.map(m=>{const got=IINT.filter(x=>x.idea_id===m.id&&x.user_id!==(ST.user&&ST.user.id));return `<article class="idea mine"><header><span class="tag">${esc(STAGE[m.stage]||m.stage)}</span>${m.status==="hidden"?'<span class="tag">Hidden by the board</span>':""}<h3>${esc(m.title)}</h3></header><p><b>The problem.</b> ${esc(m.problem)}</p><p><b>The idea.</b> ${esc(m.idea)}</p>
+  <div class="row"><button type="button" class="btn sm" data-ideaedit="${esc(m.id)}">Edit</button><button type="button" class="btn sm" data-ideadel="${esc(m.id)}">Delete</button></div>
+  <h4 style="margin:18px 0 8px;font:600 1rem var(--f-body)">People who are interested (${got.length})</h4>${got.length?got.map(x=>`<div class="int-item"><b>${esc(x.full_name)}</b> <span class="muted small">#${esc(x.rel_id)}${x.year?", "+esc(x.year):""}${x.major?", "+esc(x.major):""}</span><p style="margin:4px 0">${esc(x.message)}</p><p class="small" style="margin:0"><b>Contact:</b> ${esc(x.contact)}</p></div>`).join(""):'<p class="muted small" style="margin:0">Nobody yet. Share the board with your friends.</p>'}</article>`}).join("");
+ box.innerHTML=`<div class="idea-head"><p class="muted" style="margin:0;max-width:40em">Members share startup ideas here. Vote for the ones you like, and tell an author what you can bring to build it together.</p><button type="button" class="btn primary" data-suidea>Share your idea</button></div>
+ ${ideaFormOpen?ideaForm():""}
+ ${mine?`<h4 class="idea-h">Your ideas</h4>${mine}`:""}
+ <div class="idea-tools"><div class="chips" role="group" aria-label="Stage">${["All",...Object.keys(STAGE)].map(k=>`<button type="button" class="chip" aria-pressed="${k===ideaStage}" data-istage="${esc(k)}">${esc(k==="All"?"All stages":STAGE[k])}</button>`).join("")}</div>
+  <div class="row" style="gap:12px"><select id="iSkill" aria-label="Looking for"><option value="All">Anyone</option>${Object.keys(SKILL).map(k=>`<option value="${k}" ${k===ideaSkill?"selected":""}>${esc(SKILL[k])}</option>`).join("")}</select><select id="iSort" aria-label="Sort"><option value="top" ${ideaSort==="top"?"selected":""}>Most votes</option><option value="new" ${ideaSort==="new"?"selected":""}>Newest</option></select><input id="iQ" class="search" type="search" placeholder="Search ideas" value="${esc(ideaQ)}" style="max-width:260px" autocomplete="off"></div></div>
+ <div class="idea-list">${list.length?list.map(ideaCard).join(""):'<div class="empty"><p>No ideas match yet. Be the first to share one.</p></div>'}</div>`;
+ restoreDraft("ideaForm");restoreDraft("intForm");const q=$("#iQ");if(q&&document.activeElement&&document.activeElement.id==="iQ")q.focus()}
+function needMember(what){if(!ST.user){toast("Log in as a member to "+what+".");authMode="login";showPage("account");return false}if(!ST.member){toast("Only REL members can "+what+". Send your membership application first.");showPage("account");return false}return true}
+document.addEventListener("click",async e=>{
+ if(e.target.closest("[data-suidea]")){e.preventDefault();showPage("startups","ideas");if(needMember("share an idea")){ideaFormOpen=true;ideaEdit=null;drawIdeas();const f=$("#ideaForm");if(f)f.scrollIntoView({behavior:"smooth",block:"center"})}return}
+ if(e.target.closest("[data-ideacancel]")){clearDraft($("#ideaForm"));ideaFormOpen=false;ideaEdit=null;drawIdeas();return}
+ const ie=e.target.closest("[data-ideaedit]");if(ie){ideaEdit=MYIDEAS.find(x=>x.id===ie.dataset.ideaedit)||null;ideaFormOpen=!!ideaEdit;drawIdeas();const f=$("#ideaForm");if(f)f.scrollIntoView({behavior:"smooth",block:"center"});return}
+ const idl=e.target.closest("[data-ideadel]");if(idl){if(!confirm("Delete this idea and its messages?"))return;const {error}=await SB.rpc("delete_idea",{p_id:idl.dataset.ideadel});if(error){toast(errText(error));return}toast("Idea deleted");loadIdeas();return}
+ const st=e.target.closest("[data-istage]");if(st){ideaStage=st.dataset.istage;drawIdeas();return}
+ const vt=e.target.closest("[data-vote]");if(vt){if(!needMember("vote"))return;const id=vt.dataset.vote,{data,error}=await SB.rpc("vote_idea",{p_id:id});if(error){toast(errText(error));return}
+  const it=IDEAS.find(x=>x.id===id);if(it){it.votes+=data?1:-1}if(data)MYVOTES.add(id);else MYVOTES.delete(id);drawIdeas();return}
+ const nt=e.target.closest("[data-int]");if(nt){if(!needMember("get in touch"))return;interestOpen=interestOpen===nt.dataset.int?null:nt.dataset.int;drawIdeas();const f=$("#intForm");if(f)f.scrollIntoView({behavior:"smooth",block:"center"});return}
+ if(e.target.closest("[data-intcancel]")){clearDraft($("#intForm"));interestOpen=null;drawIdeas()}});
+document.addEventListener("change",e=>{if(e.target.id==="iSkill"){ideaSkill=e.target.value;drawIdeas()}if(e.target.id==="iSort"){ideaSort=e.target.value;drawIdeas()}});
+document.addEventListener("input",e=>{if(e.target.id==="iQ"){ideaQ=e.target.value.trim().toLowerCase();drawIdeas()}});
+document.addEventListener("submit",async e=>{const f=e.target;if(!f||!f.id)return;
+ if(f.id==="ideaForm"){e.preventDefault();const msg=$("#iMsg"),title=$("#iTitle").value.trim(),problem=$("#iProblem").value.trim(),idea=$("#iIdea").value.trim(),skills=[...f.querySelectorAll("[data-skill]:checked")].map(x=>x.dataset.skill);
+  if(title.length<4){say(msg,"Please give your idea a name (at least 4 characters).");return}if(problem.length<10||idea.length<10){say(msg,"Please describe the problem and your idea (at least 10 characters each).");return}
+  const id=f.dataset.id,args={p_title:title,p_problem:problem,p_idea:idea,p_stage:$("#iStage").value,p_looking:skills},{error}=id?await SB.rpc("edit_idea",{p_id:id,...args}):await SB.rpc("post_idea",args);
+  if(error){say(msg,errText(error));return}clearDraft(f);ideaFormOpen=false;ideaEdit=null;toast(id?"Idea saved":"Your idea is on the board");loadIdeas();return}
+ if(f.id==="intForm"){e.preventDefault();const err=$("#xErr"),m=$("#xMsg").value.trim(),c=$("#xContact").value.trim();if(m.length<10){say(err,"Please write a short message (at least 10 characters).");return}if(c.length<3){say(err,"Please add how the author can reach you.");return}
+  const {error}=await SB.rpc("express_interest",{p_id:f.dataset.id,p_message:m,p_contact:c});if(error){say(err,errText(error));return}clearDraft(f);interestOpen=null;toast("Sent. The author will see your message.");loadIdeas()}});
+
 async function initAuth(){renderAccount();renderTeam();
  if(!SB)return;
  try{const r=await Promise.race([SB.from("events").select("id").limit(1),new Promise(res=>setTimeout(()=>res({error:null}),4000))]);if(r.error&&/api key|jwt/i.test(r.error.message||"")&&SB_KEY2){const c=makeClient(SB_KEY2);if(c)SB=c}}catch(err){}
@@ -1656,7 +1823,7 @@ async function initAuth(){renderAccount();renderTeam();
  if(fromEmailLink)showPage("account")}
 
 /* pages: every menu item is its own page, long ones have sub-tabs */
-const PAGES=["home","about","events","people","points","learn","play","community","join","account","team"],cur={pg:"home",sub:{}};
+const PAGES=["home","about","events","people","points","learn","startups","play","community","join","account","team"],cur={pg:"home",sub:{}};
 const paneList=pg=>[...document.querySelectorAll('.pg[data-pg="'+pg+'"] .pane')];
 function setNav(pg){const links=$$("#menu a"),pill=$("#pill");let on=null;
  links.forEach(a=>{const is=a.getAttribute("href").slice(1)===pg;a.classList.toggle("on",is);if(is){on=a;a.setAttribute("aria-current","page")}else a.removeAttribute("aria-current")});
@@ -1689,7 +1856,7 @@ initAuth();
 (function(){
  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches,hasIO="IntersectionObserver"in window;
  /* 1. every page opens with a header band */
- const NAMES={about:"About",events:"Events",people:"People",points:"Leaderboard",learn:"Learn",play:"Play",community:"Community",join:"Join"};let n=0;
+ const NAMES={about:"About",events:"Events",people:"People",points:"Leaderboard",learn:"Learn",startups:"Startups",play:"Play",community:"Community",join:"Join"};let n=0;
  $$(".pg").forEach(pg=>{const k=pg.dataset.pg;if(!NAMES[k])return;n++;const sec=pg.querySelector("section.sec"),head=sec&&sec.querySelector(".sec-head");if(!head)return;
   const h=head.querySelector("h2"),band=document.createElement("div");band.className="pagehead";
   band.innerHTML='<img class="ph-mark" alt="" aria-hidden="true" data-par="0.08"><div class="wrap"><p class="pnum rv">'+String(n).padStart(2,"0")+" / "+NAMES[k]+'</p><h1 class="rv" style="--d:.08s"></h1></div>';
@@ -1841,7 +2008,7 @@ drawWork();
 (function(){const ov=$("#sov"),q=$("#sq"),box=$("#sres"),btn=$("#sBtn");let list=[];
  const go=h=>()=>route(h);
  function index(){const L=[];
-  [["#about","About REL","What REL is, what we do and our history","club history pr club rebrand mission"],["#events","Events and workshops","Upcoming, past and the calendar","calendar schedule"],["#people","People","Board, ambassadors and member search","team"],["#points","Leaderboard","Points and how to earn them","ranking score"],["#learn","Learn","Books, journal, speakers, documents","resources articles templates presentations"],["#play","Play","Daily puzzle and business question","game quiz crown"],["#community","Community","Network map, partners, pitch, voting","network"],["#partner","Work with REL","Sponsors, companies, organizations and clubs","sponsor sponsorship partner partnership collaborate collaboration company organization club"],["#faq","FAQ","Quick answers about joining, IDs, events and points","help questions answers"],["#join","Join REL","Become a member, ambassador and more","sign up register"]].forEach(s=>L.push({t:s[1],k:"Section",sub:s[2],s:s[1]+" "+s[2]+" "+s[3],a:go(s[0])}));
+  [["#startups","Startups","Startup Hub, startup of the week and the idea board","startup startups founder idea cofounder co-founder pitch ipo silicon valley unicorn entrepreneurship"],["#about","About REL","What REL is, what we do and our history","club history pr club rebrand mission"],["#events","Events and workshops","Upcoming, past and the calendar","calendar schedule"],["#people","People","Board, ambassadors and member search","team"],["#points","Leaderboard","Points and how to earn them","ranking score"],["#learn","Learn","Books, journal, speakers, documents","resources articles templates presentations"],["#play","Play","Daily puzzle and business question","game quiz crown"],["#community","Community","Network map, partners, pitch, voting","network"],["#partner","Work with REL","Sponsors, companies, organizations and clubs","sponsor sponsorship partner partnership collaborate collaboration company organization club"],["#faq","FAQ","Quick answers about joining, IDs, events and points","help questions answers"],["#join","Join REL","Become a member, ambassador and more","sign up register"]].forEach(s=>L.push({t:s[1],k:"Section",sub:s[2],s:s[1]+" "+s[2]+" "+s[3],a:go(s[0])}));
   [...EVENTS.map(e=>[e,"up"]),...PAST.map(e=>[e,"past"])].forEach(([e,w])=>L.push({t:e.title,k:"Event",sub:e.date?fmt(e.date,{day:"numeric",month:"long"}):"Date to be announced",s:[e.title,e.type,e.blurb,e.place].join(" "),a:()=>{showEv(w);go("#events")()}}));
   BOARD.filter(b=>!b.name).forEach(b=>L.push({t:b.role,k:"Board",sub:"Name coming soon",s:b.role+" "+b.bio,a:go("#board")}));
   AMBS.filter(a=>a.name).forEach(a=>L.push({t:a.name,k:"Ambassador",sub:a.info||"",s:[a.name,a.info].join(" "),a:go("#ambs")}));
@@ -2033,6 +2200,187 @@ document.addEventListener("click",e=>{const sc=e.target.closest("[data-scroll]")
  const w=e.target.closest("[data-way]");if(w){const way=PW_WAYS[+w.dataset.way];if(!way)return;wKind=way.k;document.querySelectorAll("[data-wkind]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.wkind===wKind));
   const note=document.querySelector('[data-wf="note"]');if(note&&!note.value.trim())note.value="I am interested in: "+way.t+". ";const t=document.getElementById("partnerBox");if(t)t.scrollIntoView({behavior:"smooth",block:"center"})}});
 drawWork();
+
+/* ---------- fact of the day, one-minute talks, startup glossary ---------- */
+const FACTS=[
+"A unicorn is a privately held startup valued at more than one billion dollars. Investor Aileen Lee coined the term in 2013.",
+"IPO stands for initial public offering: the first time a company sells its shares to the public on a stock exchange.",
+"The Dutch East India Company, founded in 1602, is often called the first company to issue shares to the public.",
+"Silicon Valley got its name in 1971, when journalist Don Hoefler used it in articles about the region's semiconductor industry.",
+"Hewlett-Packard started in 1939 in a garage in Palo Alto, California. The garage is now a historical landmark known as the birthplace of Silicon Valley.",
+"Y Combinator, founded in 2005, helped launch companies such as Airbnb, Dropbox and Stripe.",
+"MVP means minimum viable product: the simplest version of a product that lets you learn from real customers.",
+"To pivot means to change your business direction based on what you learn. Eric Ries helped make the word famous in his book The Lean Startup.",
+"Bootstrapping means building a company with your own savings and the money your customers pay you, instead of outside investors.",
+"Runway is the number of months a startup can keep operating before its cash runs out.",
+"Amazon started in 1994 as an online bookstore. Jeff Bezos founded it in Bellevue, Washington.",
+"Google was founded in 1998 by Larry Page and Sergey Brin, who met as PhD students at Stanford University.",
+"Apple was founded in 1976 by Steve Jobs, Steve Wozniak and Ronald Wayne. Wayne sold his share back within weeks for 800 dollars.",
+"Nokia began in 1865 as a paper mill. Companies can reinvent themselves completely over time.",
+"Netflix started in 1997 as a DVD-by-mail rental service, long before it began streaming.",
+"Elon Musk did not found Tesla. Martin Eberhard and Marc Tarpenning founded it in 2003, and Musk joined in 2004 as an investor and chairman.",
+"Instagram was bought by Facebook in 2012 for about one billion dollars, when the company had only 13 employees.",
+"Facebook bought WhatsApp in 2014 for about 19 billion dollars.",
+"Nasdaq, launched in 1971, is often described as the world's first electronic stock market.",
+"The word entrepreneur comes from the French verb entreprendre, which means to undertake.",
+"An elevator pitch is a short summary of your idea that you could deliver during an elevator ride, roughly 30 to 60 seconds.",
+"Product-market fit means your product satisfies a real market need. Investor Marc Andreessen made the term popular.",
+"A term sheet is a non-binding document that lists the main conditions of an investment before the final contracts are signed.",
+"Dilution happens when a company issues new shares. Existing owners keep their shares but own a smaller percentage.",
+"Startup funding rounds are usually named in order: pre-seed, seed, then Series A, Series B and so on.",
+"A decacorn is a startup valued at more than ten billion dollars.",
+"Post-it Notes came from an experiment at 3M that produced a glue too weak to stick things permanently.",
+"James Dyson built 5,127 prototypes before his first bagless vacuum cleaner worked the way he wanted.",
+"Kaizen is a Japanese word for continuous improvement. It is a core idea of the Toyota Production System.",
+"The rule of 72 gives a quick estimate: divide 72 by the yearly return to see about how many years it takes money to double.",
+"Warren Buffett bought his first stock at age 11.",
+"Lego takes its name from the Danish words leg godt, which mean play well.",
+"When a company files for an IPO, it enters a quiet period in which it must limit what it says publicly about its business.",
+"Market capitalization is the share price multiplied by the number of shares. It shows what the stock market values the whole company at.",
+"Angel investors are wealthy individuals who invest their own money in very early startups.",
+"Accelerators like Y Combinator run short, intense programs. Incubators usually support young startups for longer.",
+"Churn is the share of customers who stop using a product in a given period. Low churn is a sign that customers value it.",
+"CAC is customer acquisition cost: how much you spend to win one new customer.",
+"A moat is a lasting advantage that protects a business from competitors, like a strong brand, low costs or a network effect.",
+"B2B means business to business, and B2C means business to consumer. Who your customer is changes how you sell.",
+"The New York Stock Exchange traces its roots to the Buttonwood Agreement, signed by 24 stockbrokers in 1792.",
+"SaaS means software as a service: software you use online and pay for by subscription instead of buying once.",
+"A cap table shows who owns what percentage of a company, including founders, employees and investors.",
+"Vesting means founders and employees earn their shares gradually over time, often over four years."
+];
+const TALKS=[
+["Pitch","Pitch a startup that solves a daily problem for students at your faculty."],
+["Pitch","You have 60 seconds to convince an investor to back a company that reduces electricity waste in homes."],
+["Pitch","Pitch an app that helps engineering students find internships."],
+["Pitch","Sell a simple object on your desk as if it were a startup."],
+["Pitch","Pitch a service that brings fresh local food to busy students."],
+["Pitch","Invent a business around a problem you had this week, and pitch it."],
+["Pitch","Pitch a startup that helps small shops go digital."],
+["Pitch","You are a founder at a demo day. Pitch your company in three sentences."],
+["Pitch","Pitch a club activity that would bring 100 students to campus."],
+["Pitch","Pitch a product that a Lebanese engineer could build for the whole world."],
+["Pitch","Convince your friends to start a company with you. Why now?"],
+["Pitch","Pitch a startup that makes studying more fun."],
+["Explain","Explain what an IPO is to a friend who has never heard of it."],
+["Explain","Explain what a unicorn is and why investors want one."],
+["Explain","Explain compound interest using a simple example."],
+["Explain","Explain the difference between a startup and a small business."],
+["Explain","Explain what a minimum viable product is, and give an example."],
+["Explain","Explain why some startups pivot."],
+["Explain","Explain what venture capital does, in simple words."],
+["Explain","Explain what a stock is and why its price moves."],
+["Explain","Explain how a company makes money, using one company you know."],
+["Explain","Explain what makes a good team."],
+["Explain","Explain what product-market fit means."],
+["Explain","Explain the difference between revenue and profit."],
+["Networking","Introduce yourself to a stranger at an event in 60 seconds."],
+["Networking","You meet a guest speaker in the corridor. What do you say?"],
+["Networking","Describe your studies to someone who knows nothing about engineering."],
+["Networking","Tell a recruiter why they should remember you."],
+["Networking","Say the first three sentences of a message to someone you admire."],
+["Networking","Start a conversation with a new classmate with one compliment and one question."],
+["Networking","Tell a mentor what you want to be doing in five years."],
+["Networking","Thank someone who helped you, and say what you learned."],
+["Leadership","Describe a leader you admire and one lesson you learned from them."],
+["Leadership","How do you motivate a team when everyone is tired?"],
+["Leadership","Tell a story about a time you led without a title."],
+["Leadership","What would you change first if you became president of a club?"],
+["Leadership","How do you give feedback to a friend without hurting them?"],
+["Leadership","How should a leader handle a mistake?"],
+["Leadership","Describe your ideal team member."],
+["Leadership","When is it right to say no?"],
+["Opinion","Is it better to start a company at 20 or at 40?"],
+["Opinion","Should every engineer learn business?"],
+["Opinion","Is failure necessary to succeed?"],
+["Opinion","Is a degree from abroad worth the effort?"],
+["Opinion","Which matters more: a great idea or great execution?"],
+["Opinion","Should students work while they study?"],
+["Opinion","Will AI create more startups or fewer jobs?"],
+["Opinion","What makes a city good for startups?"]
+];
+const TALK_TIPS={Pitch:"Hook them in 10 seconds with the problem. Then say what you built, who pays, and why you. Finish with one clear ask.",Explain:"Start with one simple sentence. Add one example from daily life. Finish by saying it again in your own words.",Networking:"Say your name, one interesting fact, and one question. People remember questions and warmth, not lists.",Leadership:"Tell a short story: the situation, what you did, what happened. Then say the lesson in one sentence.",Opinion:"Take a side in your first sentence. Give two reasons, one example, then say what would change your mind."};
+const GLOSSARY=[
+["Startup","Startups","A young company built to grow fast by solving a problem in a new way, usually with an idea that can reach many customers."],
+["MVP (minimum viable product)","Startups","The simplest version of a product that lets you test your idea with real customers and learn before you build more."],
+["Product-market fit","Startups","The point when a product satisfies a real need in a market, and customers keep using it and tell others."],
+["Pivot","Startups","A change of direction in a startup's product or business model, based on what it learned from customers."],
+["Bootstrapping","Startups","Building a company with your own savings and customer revenue instead of outside investment."],
+["Traction","Startups","Proof that people want what you are building: users, sales, growth or strong feedback."],
+["Lean startup","Startups","An approach that builds a product in small steps, tests each step with customers and adjusts quickly. Popularized by Eric Ries."],
+["Scalability","Startups","The ability of a business to grow its revenue much faster than its costs."],
+["Moat","Startups","A lasting advantage that protects a business from competitors, like a strong brand, low costs or a network effect."],
+["Value proposition","Startups","The reason a customer should choose you: the problem you solve and the benefit they get."],
+["Pitch deck","Startups","A short presentation, often around ten slides, that explains your company to investors or partners."],
+["Elevator pitch","Startups","A summary of your idea that you could give in the time of an elevator ride, about 30 to 60 seconds."],
+["B2B and B2C","Startups","B2B means selling to other businesses. B2C means selling to individual consumers."],
+["SaaS","Startups","Software as a service: software you use online and pay for by subscription instead of buying once."],
+["Churn","Startups","The share of customers who stop using a product in a given period."],
+["CAC","Startups","Customer acquisition cost: what you spend on marketing and sales to win one new customer."],
+["LTV","Startups","Lifetime value: the total money you expect to earn from one customer over the time they stay."],
+["Unit economics","Startups","The revenue and costs of a single unit, such as one customer or one order. It shows whether each sale makes or loses money."],
+["Seed round","Funding","An early funding round that helps a startup build its first product and find its first customers."],
+["Series A","Funding","A funding round after the seed stage, when a startup has early traction and raises money to grow."],
+["Venture capital (VC)","Funding","Investment in young companies with high growth potential, made by funds that take ownership shares in return."],
+["Angel investor","Funding","A wealthy individual who invests their own money in very early startups."],
+["Accelerator","Funding","A short, intense program that gives startups mentoring, connections and often money, usually in exchange for a small share."],
+["Incubator","Funding","An organization that supports young startups, often for longer, with space, guidance and resources."],
+["Term sheet","Funding","A non-binding document that lists the main terms of an investment before the final contracts are signed."],
+["Cap table","Funding","A table showing who owns what percentage of a company: founders, employees and investors."],
+["Equity","Funding","Ownership in a company, held as shares."],
+["Dilution","Funding","The drop in an owner's percentage when a company issues new shares."],
+["Vesting","Funding","Earning shares gradually over time, often over four years, so that people stay and keep contributing."],
+["Runway","Funding","The number of months a company can operate before its cash runs out."],
+["Burn rate","Funding","The amount of cash a company spends each month beyond what it earns."],
+["Valuation","Funding","The estimated value of a company, used to decide how much ownership investors receive for their money."],
+["Unicorn","Funding","A private startup valued at more than one billion dollars."],
+["Decacorn","Funding","A private startup valued at more than ten billion dollars."],
+["Exit","Funding","When founders and investors turn their ownership into cash, through an acquisition or an IPO."],
+["IPO","Stock market","Initial public offering: the first time a company sells shares to the public on a stock exchange."],
+["Stock exchange","Stock market","A marketplace where shares of public companies are bought and sold, like the NYSE or Nasdaq."],
+["Market capitalization","Stock market","Share price times the number of shares. It shows what the stock market values the whole company at."],
+["Dividend","Stock market","A part of a company's profit paid to its shareholders."],
+["Prospectus","Stock market","The official document that tells investors about a company and its shares before an IPO."],
+["Quiet period","Stock market","The time around an IPO when a company must limit what it says publicly about its business."],
+["Bull and bear market","Stock market","In a bull market prices are generally rising. In a bear market they are generally falling."],
+["Acquisition","Business","When one company buys another."],
+["Due diligence","Business","The careful checking of a company's finances, contracts and risks before an investment or purchase."],
+["Revenue and profit","Business","Revenue is the money a company earns from sales. Profit is what is left after subtracting all costs."],
+["Cash flow","Business","The money moving in and out of a business. A profitable company can still fail if it runs out of cash."]
+];
+/* ---- daily rhythm: everything follows the Beirut day ---- */
+const dayIdx=()=>{const [y,m,d]=beirutDay().split("-").map(Number);return Math.floor(Date.UTC(y,m-1,d)/864e5)};
+const factToday=()=>FACTS[dayIdx()%FACTS.length];
+const talkToday=()=>TALKS[(dayIdx()*5+3)%TALKS.length];
+function drawFact(){const t=$("#factText");if(!t)return;t.textContent=factToday();const n=$("#factNext");if(n){const s=secsToBeirutMidnight(),h=Math.floor(s/3600),m=Math.floor(s%3600/60);n.textContent="A new fact in "+h+" h "+m+" min"}}
+/* ---- one-minute talk ---- */
+var talkCur=null,talkEnd=0,talkTimer=null,talkLeft=60;
+function showTalk(item){talkCur=item;$("#talkKind").textContent=item[0];$("#talkText").textContent=item[1];$("#talkTips").textContent=TALK_TIPS[item[0]]||"";resetTalk()}
+function fmtT(s){return Math.floor(s/60)+":"+String(s%60).padStart(2,"0")}
+function resetTalk(){clearInterval(talkTimer);talkTimer=null;talkLeft=60;const b=$("#talkStart"),t=$("#talkTimer");if(t){t.textContent="1:00";t.classList.remove("done")}if(b)b.textContent="Start 1-minute timer"}
+function tickTalk(){const left=Math.max(0,Math.ceil((talkEnd-Date.now())/1000)),t=$("#talkTimer");talkLeft=left;t.textContent=fmtT(left);if(left<=0){clearInterval(talkTimer);talkTimer=null;t.textContent="Time!";t.classList.add("done");$("#talkStart").textContent="Try again";return}}
+document.addEventListener("click",e=>{
+ if(e.target.closest("#talkStart")){if(talkTimer){clearInterval(talkTimer);talkTimer=null;$("#talkStart").textContent="Resume";return}
+  if($("#talkTimer").classList.contains("done"))resetTalk();talkEnd=Date.now()+talkLeft*1000;$("#talkStart").textContent="Pause";tickTalk();talkTimer=setInterval(tickTalk,250);return}
+ if(e.target.closest("#talkNew")){let n;do{n=TALKS[Math.floor(Math.random()*TALKS.length)]}while(TALKS.length>1&&n===talkCur);showTalk(n);return}
+ if(e.target.closest("#talkToday")){showTalk(talkToday());return}});
+/* ---- startup glossary ---- */
+var glCat="All";
+function drawGlossary(){const list=$("#glList");if(!list)return;const q=(($("#glQ")||{}).value||"").trim().toLowerCase(),cats=["All",...new Set(GLOSSARY.map(g=>g[1]))];
+ $("#glCats").innerHTML=cats.map(c=>`<button type="button" class="chip" aria-pressed="${c===glCat}" data-glcat="${esc(c)}">${esc(c)}</button>`).join("");
+ const rows=GLOSSARY.filter(g=>(glCat==="All"||g[1]===glCat)&&(!q||g[0].toLowerCase().includes(q)||g[2].toLowerCase().includes(q))).sort((a,b)=>a[0].localeCompare(b[0]));
+ list.innerHTML=rows.length?rows.map(g=>`<article class="gl-item"><h3>${esc(g[0])}<span class="tag">${esc(g[1])}</span></h3><p>${esc(g[2])}</p></article>`).join(""):'<div class="empty"><p>No word found. Try another search.</p></div>'}
+document.addEventListener("click",e=>{const c=e.target.closest("[data-glcat]");if(c){glCat=c.dataset.glcat;drawGlossary()}});
+document.addEventListener("input",e=>{if(e.target.id==="glQ")drawGlossary()});
+/* ---- Join REL goes straight to creating an account ---- */
+document.addEventListener("click",e=>{const a=e.target.closest('[data-goto="member"]');if(!a||!SB)return;e.preventDefault();e.stopImmediatePropagation();if(!ST.user)authMode="signup";authNote="";showPage("account")},true);
+drawFact();setInterval(drawFact,30000);
+if($("#talkText"))showTalk(talkToday());
+drawGlossary();
+
+/* Startup Hub */
+document.addEventListener("click",e=>{const g=e.target.closest("[data-glossary]");if(g){e.preventDefault();showPage("learn","glossary");return}
+ const t=e.target.closest("[data-talk]");if(t){e.preventDefault();showPage("play","talk")}});
+drawSpot();drawStartupEvents();drawTrack();drawIdeas();
 
 </script>
 </body>
