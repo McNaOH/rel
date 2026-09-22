@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-htpkzWNtEy8Cuxg5Afrn9uF+ql4krxZHmDLNan/u7Lk='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-CwV/81C8vATUhMdr0OQB/EIRN3jrem9itR8jSPR5IBU='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -860,6 +860,34 @@ a.ptn:hover{border-color:var(--fill)}
 
 .lab-card .tag{align-self:flex-start}
 
+/* Mobilité Internationale */
+.mob-lang-wrap{margin-top:22px}
+.mob-lang{display:inline-flex;gap:6px;background:rgba(248,246,241,.14);border-radius:999px;padding:4px}
+.mob-lang .chip{min-height:34px;padding:0 18px;border:0;background:transparent;color:var(--on-band);font-weight:700}
+.mob-lang .chip[aria-pressed=true]{background:var(--on-band);color:var(--band)}
+.pagehead .mob-lang-wrap .mob-lang{background:rgba(248,246,241,.16)}
+.mob-hero{max-width:52em}
+.mob-why{margin:0 0 4px;padding-left:1.2em}
+.mob-why li{margin-bottom:8px}
+.mob-steps{margin-top:14px}
+.mob-steps-v{grid-template-columns:1fr;max-width:44em}
+.mob-steps-v li{border-top:1px solid var(--ink);padding:18px 0}
+.mob-steps-v li b{font:500 1.6rem var(--f-display);color:var(--brand-ink);margin-right:14px}
+.mob-note{background:var(--alt);border-radius:14px;padding:20px 24px;margin:22px 0;max-width:52em}
+.mob-note.ok{background:var(--tint)}
+.mob-note.warn{background:var(--tint)}
+.mob-note.warn b{display:block;color:var(--brand-ink);margin-bottom:8px;font-weight:700}
+.mob-note ul{margin:0;padding-left:1.2em}
+.mob-note li{margin-bottom:6px}
+.mob-warnline{color:var(--brand-ink);font-weight:600;margin:10px 0 0}
+.mob-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.mob-uni{border:1px solid var(--line);border-radius:14px;padding:22px;background:var(--surface)}
+.mob-uni h3{font-size:1.25rem;margin-bottom:4px}
+.mob-dept{color:var(--muted);font-size:.92rem;margin:0 0 10px}
+.mob-uni ul{margin:0 0 14px;padding-left:1.15em}
+.mob-uni li{margin-bottom:5px;font-size:.95rem}
+@media (max-width:800px){.mob-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -867,7 +895,7 @@ a.ptn:hover{border-color:var(--fill)}
 <div class="annbar" id="annBar" hidden><a href="#events" data-annall><span class="nw">New</span><span id="annBarT"></span></a><button type="button" class="ann-x" aria-label="Close this announcement">&times;</button></div>
 <header class="nav"><div class="wrap nav-in">
 <a class="brand" href="#top" aria-label="REL home"><img class="lg-burg" data-logo="burg" alt=""><img class="lg-light" data-logo="light" alt=""><span>REL</span></a>
-<nav id="menu" aria-label="Main"><span class="pill" id="pill" aria-hidden="true"></span><a href="#about">About</a><a href="#events">Events</a><a href="#people">People</a><a href="#points">Leaderboard</a><a href="#learn">Learn</a><a href="#startups">Startups</a><a href="#play">Play</a><a href="#community">Community</a><a href="#team" id="navTeam" hidden>Team</a><a href="#account" id="navAcct">Log in</a></nav>
+<nav id="menu" aria-label="Main"><span class="pill" id="pill" aria-hidden="true"></span><a href="#about">About</a><a href="#events">Events</a><a href="#people">People</a><a href="#points">Leaderboard</a><a href="#learn">Learn</a><a href="#mobilite">Mobilité</a><a href="#startups">Startups</a><a href="#play">Play</a><a href="#community">Community</a><a href="#team" id="navTeam" hidden>Team</a><a href="#account" id="navAcct">Log in</a></nav>
 <button class="sbtn" id="sBtn" type="button" aria-label="Search the site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>Search</span></button>
 <button class="bell" id="bell" type="button" aria-label="Announcements" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.7 20a2 2 0 0 1-3.4 0"/></svg><span class="bdot" id="bdot" hidden></span></button>
 <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu">Menu</button>
@@ -936,9 +964,10 @@ a.ptn:hover{border-color:var(--fill)}
 <a class="row2" href="#people"><span class="rn">02</span><span class="rt">The people</span><span class="rd">The board, the ambassadors and member search.</span><span class="ra" aria-hidden="true"></span></a>
 <a class="row2" href="#points"><span class="rn">03</span><span class="rt">Leaderboard</span><span class="rd">Points, and how to earn them.</span><span class="ra" aria-hidden="true"></span></a>
 <a class="row2" href="#learn"><span class="rn">04</span><span class="rt">Learn</span><span class="rd">Books, the journal, speakers and documents.</span><span class="ra" aria-hidden="true"></span></a>
-<a class="row2" href="#startups"><span class="rn">05</span><span class="rt">Startups</span><span class="rd">The Startup Hub and an idea board to build with others.</span><span class="ra" aria-hidden="true"></span></a>
-<a class="row2" href="#play"><span class="rn">06</span><span class="rt">Play</span><span class="rd">A daily puzzle, a business question and a topic to talk about.</span><span class="ra" aria-hidden="true"></span></a>
-<a class="row2" href="#partner"><span class="rn">07</span><span class="rt">Work with REL</span><span class="rd">Sponsors, companies and other clubs.</span><span class="ra" aria-hidden="true"></span></a>
+<a class="row2" href="#mobilite"><span class="rn">05</span><span class="rt">Mobilité</span><span class="rd">Study abroad and double-degree programs, explained step by step.</span><span class="ra" aria-hidden="true"></span></a>
+<a class="row2" href="#startups"><span class="rn">06</span><span class="rt">Startups</span><span class="rd">The Startup Hub and an idea board to build with others.</span><span class="ra" aria-hidden="true"></span></a>
+<a class="row2" href="#play"><span class="rn">07</span><span class="rt">Play</span><span class="rd">A daily puzzle, a business question and a topic to talk about.</span><span class="ra" aria-hidden="true"></span></a>
+<a class="row2" href="#partner"><span class="rn">08</span><span class="rt">Work with REL</span><span class="rd">Sponsors, companies and other clubs.</span><span class="ra" aria-hidden="true"></span></a>
 </div></div></section>
 
 
@@ -992,7 +1021,14 @@ a.ptn:hover{border-color:var(--fill)}
 <input id="glQ" class="search" type="search" placeholder="Search a word, like IPO or runway" aria-label="Search the glossary" autocomplete="off">
 <div class="chips" id="glCats" style="margin:16px 0"></div><div id="glList" class="gl-list"></div></div>
 <div class="pane" data-pane="report" data-label="Annual report"><div class="empty"><p>The 2026–27 report will be published at the end of the academic year, with our events, members and results.</p><p><button class="btn small" disabled aria-disabled="true" style="opacity:.55;cursor:not-allowed">Coming at the end of the year</button></p></div></div></div></section></div>
-<div class="pg" data-pg="startups" hidden><section id="startups" class="sec"><div class="wrap">
+<div class="pg" data-pg="mobilite" hidden><section id="mobilite" class="sec"><div class="wrap">
+<div class="sec-head"><h2>International Mobility</h2><p class="mob-lead">Study part of your engineering degree abroad, most often in France, and sometimes graduate with two diplomas instead of one.</p><div class="mob-lang-wrap" id="mobLangHead"></div></div>
+<div class="pane" data-pane="overview" data-label="Overview"><div id="mobOverview"></div></div>
+<div class="pane" data-pane="apply" data-label="How to Apply"><div id="mobApply"></div></div>
+<div class="pane" data-pane="types" data-label="Program Types"><div id="mobTypes"></div></div>
+<div class="pane" data-pane="uni" data-label="Partner Universities"><div id="mobUni"></div></div>
+<div class="pane" data-pane="eiffel" data-label="Eiffel Scholarship"><div id="mobEiffel"></div></div>
+</div></section></div><div class="pg" data-pg="startups" hidden><section id="startups" class="sec"><div class="wrap">
 <div class="sec-head"><h2>Startups</h2><p>Where REL students learn how startups work, share their ideas and find people to build with.</p></div>
 <div class="pane" data-pane="hub" data-label="Startup Hub">
 <div class="su-hero"><div><h3>Build something of your own</h3><p class="lead2">Entrepreneurship is one third of our name. Learn the language of startups, see how famous companies began, share your own idea and find people to build it with.</p>
@@ -4183,13 +4219,14 @@ async function initAuth(){renderAccount();renderTeam();
  if(fromEmailLink)showPage("account")}
 
 /* pages: every menu item is its own page, long ones have sub-tabs */
-const PAGES=["home","about","events","people","points","learn","startups","play","community","join","account","team"],cur={pg:"home",sub:{}};
+const PAGES=["home","about","events","people","points","learn","mobilite","startups","play","community","join","account","team"],cur={pg:"home",sub:{}};
 const paneList=pg=>[...document.querySelectorAll('.pg[data-pg="'+pg+'"] .pane')];
 function setNav(pg){const links=$$("#menu a"),pill=$("#pill");let on=null;
  links.forEach(a=>{const is=a.getAttribute("href").slice(1)===pg;a.classList.toggle("on",is);if(is){on=a;a.setAttribute("aria-current","page")}else a.removeAttribute("aria-current")});
  if(on){const fresh=pill.style.opacity!=="1";if(fresh)pill.style.transition="none";pill.style.width=on.offsetWidth+"px";pill.style.transform="translateX("+on.offsetLeft+"px)";if(fresh){pill.offsetWidth;pill.style.transition=""}pill.style.opacity="1"}else pill.style.opacity="0"}
 function showPage(pg,sub,o){o=o||{};if(!PAGES.includes(pg))pg="home";
  if(pg==="play"&&typeof gameStale==="function"&&gameStale()){location.reload();return}
+ const pgChanged=cur.pg!==pg;
  $$(".pg").forEach(el=>{const show=el.dataset.pg===pg;if(show&&el.hidden){el.classList.remove("enter");void el.offsetWidth;el.classList.add("enter")}el.hidden=!show});
  const panes=paneList(pg);
  if(panes.length){const names=panes.map(p=>p.dataset.pane),s=sub&&names.includes(sub)?sub:(o.reset?names[0]:(names.includes(cur.sub[pg])?cur.sub[pg]:names[0]));cur.sub[pg]=s;
@@ -4197,7 +4234,12 @@ function showPage(pg,sub,o){o=o||{};if(!PAGES.includes(pg))pg="home";
   $$('.pg[data-pg="'+pg+'"] [data-sub]').forEach(b=>b.setAttribute("aria-selected",b.dataset.sub===s))}
  cur.pg=pg;setNav(pg);document.body.classList.toggle("navsolid",pg==="account"||pg==="team");if(window.__navState)__navState();if(window.__onScroll)__onScroll();if(!o.keep&&!o.noScroll)window.scrollTo(0,0);
  if(pg==="account")renderAccount();if(pg==="team")renderTeam();
- try{const h="#/"+pg+(panes.length?"/"+cur.sub[pg]:"");if(location.hash!==h&&!/access_token|refresh_token|error_description|type=/.test(location.hash))history.replaceState(null,"",h)}catch(err){}}
+ if(o.fromHistory)return;
+ /* every page becomes a real stop in the browser's history, so back / forward (and an edge
+    swipe on a phone) move within the site rather than leaving it */
+ try{const h="#/"+pg+(panes.length?"/"+cur.sub[pg]:"");if(location.hash!==h&&!/access_token|refresh_token|error_description|type=/.test(location.hash)){
+  if(o.initial||!pgChanged)history.replaceState({pg:pg,sub:cur.sub[pg]},"",h);else history.pushState({pg:pg,sub:cur.sub[pg]},"",h)}
+ }catch(err){}}
 function route(h){const m=/^#\/(\w+)(?:\/(\w+))?$/.exec(h);if(m){showPage(m[1],m[2],{reset:!m[2]});return true}
  let el;try{el=document.querySelector(h)}catch(err){return false}if(!el)return false;const pgEl=el.closest(".pg");if(!pgEl)return false;
  const pane=el.closest(".pane"),top=el.matches(".sec")||el.id==="top"||el.matches(".pane");
@@ -4208,15 +4250,15 @@ $$(".pg").forEach(pgEl=>{const panes=[...pgEl.querySelectorAll(".pane")];if(!pan
 document.addEventListener("click",e=>{if(e.defaultPrevented)return;
  const st=e.target.closest("[data-sub]");if(st){showPage(st.closest(".pg").dataset.pg,st.dataset.sub,{noScroll:true});return}
  const a=e.target.closest('a[href^="#"]');if(!a)return;const h=a.getAttribute("href");if(h==="#"||h==="#main")return;if(route(h))e.preventDefault()});
-addEventListener("hashchange",()=>{const m=/^#\/(\w+)(?:\/(\w+))?/.exec(location.hash||"");if(m&&(m[1]!==cur.pg||(m[2]&&m[2]!==cur.sub[cur.pg])))showPage(m[1],m[2])});
+addEventListener("hashchange",()=>{const m=/^#\/(\w+)(?:\/(\w+))?/.exec(location.hash||"");if(m)showPage(m[1],m[2],{fromHistory:true,noScroll:true})});
 addEventListener("resize",()=>setNav(cur.pg));if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>setNav(cur.pg));
-(function(){const m=/^#\/(\w+)(?:\/(\w+))?/.exec(location.hash||"");showPage(m?m[1]:"home",m?m[2]:null,{noScroll:true})})();
+(function(){const m=/^#\/(\w+)(?:\/(\w+))?/.exec(location.hash||"");showPage(m?m[1]:"home",m?m[2]:null,{noScroll:true,initial:true})})();
 initAuth();
 /* ---------- premium look: page headers, nav state, reversible reveals, story, counters, parallax ---------- */
 (function(){
  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches,hasIO="IntersectionObserver"in window;
  /* 1. every page opens with a header band */
- const NAMES={about:"About",events:"Events",people:"People",points:"Leaderboard",learn:"Learn",startups:"Startups",play:"Play",community:"Community",join:"Join"};let n=0;
+ const NAMES={about:"About",events:"Events",people:"People",points:"Leaderboard",learn:"Learn",mobilite:"Mobilité",startups:"Startups",play:"Play",community:"Community",join:"Join"};let n=0;
  $$(".pg").forEach(pg=>{const k=pg.dataset.pg;if(!NAMES[k])return;n++;const sec=pg.querySelector("section.sec"),head=sec&&sec.querySelector(".sec-head");if(!head)return;
   const h=head.querySelector("h2"),band=document.createElement("div");band.className="pagehead";
   band.innerHTML='<img class="ph-mark" alt="" aria-hidden="true" data-par="0.08"><div class="wrap"><p class="pnum rv">'+String(n).padStart(2,"0")+" / "+NAMES[k]+'</p><h1 class="rv" style="--d:.08s"></h1></div>';
@@ -4369,7 +4411,7 @@ drawWork();
 (function(){const ov=$("#sov"),q=$("#sq"),box=$("#sres"),btn=$("#sBtn");let list=[];
  const go=h=>()=>route(h);
  function index(){const L=[];
-  [["#startups","Startups","Startup Hub, startup of the week and the idea board","startup startups founder idea lab brainstorm cofounder co-founder pitch ipo silicon valley unicorn entrepreneurship"],["#about","About REL","What REL is, what we do and our history","club history pr club rebrand mission"],["#events","Events and workshops","Upcoming, past and the calendar","calendar schedule"],["#people","People","Board, ambassadors and member search","team"],["#points","Leaderboard","Points and how to earn them","ranking score"],["#learn","Learn","Books, journal, speakers, documents","resources articles templates presentations"],["#play","Play","Daily puzzle and business question","game quiz crown"],["#community","Community","Network map, partners, pitch, voting","network"],["#partner","Work with REL","Sponsors, companies, organizations and clubs","sponsor sponsorship partner partnership collaborate collaboration company organization club"],["#faq","FAQ","Quick answers about joining, IDs, events and points","help questions answers"],["#join","Join REL","Become a member, ambassador and more","sign up register"]].forEach(s=>L.push({t:s[1],k:"Section",sub:s[2],s:s[1]+" "+s[2]+" "+s[3],a:go(s[0])}));
+  [["#mobilite","Mobilité","Study abroad, double-degree and M2 programs, partner universities, Eiffel scholarship","mobilite mobility exchange abroad double diplome degree erasmus campusfrance eiffel scholarship france university partner"],["#startups","Startups","Startup Hub, startup of the week and the idea board","startup startups founder idea lab brainstorm cofounder co-founder pitch ipo silicon valley unicorn entrepreneurship"],["#about","About REL","What REL is, what we do and our history","club history pr club rebrand mission"],["#events","Events and workshops","Upcoming, past and the calendar","calendar schedule"],["#people","People","Board, ambassadors and member search","team"],["#points","Leaderboard","Points and how to earn them","ranking score"],["#learn","Learn","Books, journal, speakers, documents","resources articles templates presentations"],["#play","Play","Daily puzzle and business question","game quiz crown"],["#community","Community","Network map, partners, pitch, voting","network"],["#partner","Work with REL","Sponsors, companies, organizations and clubs","sponsor sponsorship partner partnership collaborate collaboration company organization club"],["#faq","FAQ","Quick answers about joining, IDs, events and points","help questions answers"],["#join","Join REL","Become a member, ambassador and more","sign up register"]].forEach(s=>L.push({t:s[1],k:"Section",sub:s[2],s:s[1]+" "+s[2]+" "+s[3],a:go(s[0])}));
   [...EVENTS.map(e=>[e,"up"]),...PAST.map(e=>[e,"past"])].forEach(([e,w])=>L.push({t:e.title,k:"Event",sub:e.date?fmt(e.date,{day:"numeric",month:"long"}):"Date to be announced",s:[e.title,e.type,e.blurb,e.place].join(" "),a:()=>{showEv(w);go("#events")()}}));
   BOARD.filter(b=>!b.name).forEach(b=>L.push({t:b.role,k:"Board",sub:"Name coming soon",s:b.role+" "+b.bio,a:go("#board")}));
   AMBS.filter(a=>a.name).forEach(a=>L.push({t:a.name,k:"Ambassador",sub:a.info||"",s:[a.name,a.info].join(" "),a:go("#ambs")}));
@@ -4920,6 +4962,129 @@ document.addEventListener("input",e=>{const el=e.target;if(el.matches&&el.matche
 document.addEventListener("click",e=>{const o=e.target.closest("[data-openlab]");if(o){e.preventDefault();showPage("startups","lab");return}
  const g=e.target.closest("[data-gopane]");if(g){e.preventDefault();showPage("startups",g.dataset.gopane)}});
 drawLab();
+/* ---------- Mobilité Internationale: a bilingual (EN/FR) hub for LU exchange programs ---------- */
+const MOB_UNI = [{"name": "CentraleSupélec", "cats": ["dd4"], "dept": {"en": "All departments", "fr": "Tous les départements"}, "notes": {"en": ["Apply through ULFG", "File: transcript, class-ranking certificate, CV, cover letter and a recommendation letter", "Selection: on file, then a motivation interview", "Tuition: €6,190 / year"], "fr": ["Candidature via l'ULFG", "Dossier : relevé de notes, attestation de classement général, CV, lettre de motivation et lettre de recommandation", "Recrutement sur dossier puis entretien de motivation", "Scolarité : 6 190 €/an"]}, "site": "http://www.centralesupelec.fr"}, {"name": "Mines ParisTech", "cats": ["dd4"], "dept": {"en": "All departments", "fr": "Tous les départements"}, "notes": {"en": ["Nomination through ULFG, then an online application", "A motivation interview, then a scientific interview", "Registration fees are waived"], "fr": ["Nomination via l'ULFG, puis candidature en ligne", "Entretien de motivation, puis entretien scientifique", "Exemption des frais d'inscription"]}, "site": "http://www.mines-paristech.fr"}, {"name": "Télécom ParisTech", "cats": ["dd4"], "dept": {"en": "Electrical Engineering department", "fr": "Département électrique"}, "notes": {"en": ["Nomination through ULFG, then an online application", "A motivation interview", "Registration fees are waived"], "fr": ["Nomination via l'ULFG, puis candidature en ligne", "Entretien de motivation", "Exemption des frais d'inscription"]}, "site": "http://www.telecom-paristech.fr"}, {"name": "ENSTA – Paris Campus", "cats": ["dd4"], "dept": {"en": "Electrical and Mechanical Engineering departments", "fr": "Départements électrique et mécanique"}, "notes": {"en": ["Nomination through ULFG, then an online application", "A motivation interview", "Registration fees are waived"], "fr": ["Nomination via l'ULFG, puis candidature en ligne", "Entretien de motivation", "Exemption des frais d'inscription"]}, "site": null}, {"name": "Mines Saint-Étienne", "cats": ["dd4"], "dept": {"en": "All departments", "fr": "Tous les départements"}, "notes": {"en": ["Applications through ULFG", "Two programs: ICM and ISMIN", "Selection: on file, then a motivation interview", "Registration fees are waived"], "fr": ["Candidatures via l'ULFG", "Deux programmes : ICM et ISMIN", "Recrutement sur dossier puis entretien de motivation", "Exemption des frais d'inscription"]}, "site": "http://www.mines-stetienne.fr"}, {"name": "Centrale Nantes", "cats": ["dd4"], "dept": {"en": "Electrical, Mechanical and Civil Engineering departments", "fr": "Départements électrique, mécanique et civil"}, "notes": {"en": ["Applications through ULFG", "Selection: on file, plus a motivation interview", "Registration fees are waived"], "fr": ["Candidatures via l'ULFG", "Recrutement sur dossier, plus entretien de motivation", "Exemption des frais d'inscription"]}, "site": "http://www.ec-nantes.fr"}, {"name": "ISAE-SUPAERO", "cats": ["dd4"], "dept": {"en": "Electrical and Mechanical Engineering departments", "fr": "Départements électrique et mécanique"}, "notes": {"en": ["Nomination through ULFG (two calls for applications each year)", "Application submitted online", "Registration fee: €4,800 / year (one scholarship is offered to the top candidate, covering the fee in full)"], "fr": ["Nomination via l'ULFG (deux appels à candidatures par an)", "Candidature en ligne", "Frais d'inscription : 4 800 €/an (une bourse offerte au premier des candidats, avec exemption des frais)"]}, "site": "http://www.isae-supaero.fr"}, {"name": "École Centrale de Lille", "cats": ["dd4"], "dept": {"en": null, "fr": null}, "notes": {"en": ["Nomination through ULFG, then an online application", "Registration fees are waived"], "fr": ["Nomination via l'ULFG, puis candidature en ligne", "Exemption des frais d'inscription"]}, "site": null}, {"name": "Polytechnique Montréal", "cats": ["dd4"], "dept": {"en": "All departments", "fr": "Tous les départements"}, "notes": {"en": ["Nomination through ULFG, then an online application", "Selection: on file", "Registration fee: the first two candidates may get the Québec-student rate; the rest pay the international-student rate"], "fr": ["Nomination via l'ULFG, puis candidature en ligne", "Recrutement sur dossier", "Frais d'inscription : les 2 premiers candidats peuvent bénéficier du tarif étudiant québécois, les autres du tarif étudiant international"]}, "site": "http://www.polymtl.ca"}, {"name": "ENISE (École Nationale des Ingénieurs de Saint-Étienne) – Centrale Lyon", "cats": ["dd4"], "dept": {"en": "Mechanical, Civil and Petroleum Engineering departments", "fr": "Départements mécanique, civil et pétrole"}, "notes": {"en": ["Applications through ULFG", "Selection: on file", "Registration fees are waived for the double degree"], "fr": ["Candidatures via l'ULFG", "Recrutement sur dossier", "Exemption des frais d'inscription pour le double diplôme"]}, "site": "https://www.enise.fr/"}, {"name": "École des Mines de Nancy", "cats": ["dd4"], "dept": {"en": "Civil and Mechanical Engineering departments", "fr": "Départements civil et mécanique"}, "notes": {"en": ["Applications through ULFG — 5 places offered", "Selection: on file", "Registration fees are waived for the double degree and the M2", "Tracks open to our students: ICM cycle, Industrial and Materials Engineering, Mechanical Engineering, Design (2-year Master), Civil Engineering and Risk (Master), Resource Exploitation and Risk (Master)"], "fr": ["Candidatures via l'ULFG — 5 places offertes", "Recrutement sur dossier", "Exemption des frais d'inscription pour le double diplôme et le M2", "Parcours ouverts à nos étudiants : cycle ICM, Génie industriel et matériaux, Génie mécanique, Master Design (2 ans), Master Génie civil et risques, Master Exploitation des ressources et risques"]}, "site": "https://mines-nancy.univ-lorraine.fr/"}, {"name": "ENSI – Poitiers", "cats": ["dd4"], "dept": {"en": null, "fr": null}, "notes": {"en": ["Applications through ULFG", "Selection: on file", "Registration fee: €600 / year"], "fr": ["Candidatures via l'ULFG", "Recrutement sur dossier", "Frais d'inscription : 600 €/an"]}, "site": "http://www.ensip.univ-poitiers.fr"}, {"name": "INSA Rennes", "cats": ["dd4"], "dept": {"en": "Electrical, Civil and Mechanical Engineering departments", "fr": "Départements électrique, civil et mécanique"}, "notes": {"en": ["Nomination through ULFG, then an online application", "Two programs offered: Mechanical and Automation Engineering; Communication Systems and Networks", "Selection: on file", "Registration fee: €600 / year"], "fr": ["Nomination via l'ULFG, puis candidature en ligne", "Deux programmes offerts : Génie mécanique et automatique, Systèmes et réseaux de communications", "Recrutement sur dossier", "Frais d'inscription : 600 €/an"]}, "site": "http://www.insa-rennes.fr"}, {"name": "INP Grenoble", "cats": ["dd3"], "dept": {"en": "Electrical, Civil and Mechanical Engineering departments", "fr": "Départements électrique, civil et mécanique"}, "notes": {"en": ["Applications through ULFG (ULFG nomination, then an online application)", "Several schools within INP Grenoble take part: ENSE3 (Automation & Intelligent Systems · Hydraulics, Structures & Environment · Electrical Energy Engineering · Energy Mechanics · Energy Systems & Markets — 1 place per track); PHELMA (SEOC–SEI–BIOMED, 1 per track); Polytech (GGC–IESE, 2 per track); ESISAR (EIS, up to 2)", "Selection: on file", "A limited number of places (up to 14)", "Registration fees are waived"], "fr": ["Candidatures via l'ULFG (nomination ULFG, puis candidature en ligne)", "Plusieurs écoles de l'INP Grenoble participent : ENSE3 (Automatique et systèmes intelligents · Hydraulique, ouvrages & environnement · Ingénierie de l'énergie électrique · Mécanique énergétique · Systèmes énergétiques et marchés — 1 place/filière) ; PHELMA (SEOC-SEI-BIOMED, 1/filière) ; Polytech (GGC-IESE, 2/filière) ; ESISAR (EIS, max 2)", "Recrutement sur dossier", "Nombre de places limité (max 14)", "Exemption des frais d'inscription"]}, "site": "http://www.grenoble-inp.fr"}, {"name": "Polytech Paris-Saclay", "cats": ["dd3"], "dept": {"en": "Electrical and Mechanical Engineering departments", "fr": "Départements électrique et mécanique"}, "notes": {"en": ["Applications through ULFG", "Tracks: Electronics and Robotic Systems (better suited to 4th-year students); Materials – Mechanics – Energy", "Selection: on file", "A limited number of places", "Registration fees are waived"], "fr": ["Candidatures via l'ULFG", "Parcours : Électronique et systèmes robotisés (préférable en 4ème année) ; Matériaux – Mécanique – Énergie", "Recrutement sur dossier", "Nombre de places limité", "Exemption des frais d'inscription"]}, "site": "https://www.polytech.universite-paris-saclay.fr/"}, {"name": "ENSTA Bretagne", "cats": ["dd3"], "dept": {"en": "Electrical and Mechanical Engineering departments", "fr": "Départements électrique et mécanique"}, "notes": {"en": ["Nomination through ULFG, then an online application", "Selection: on file", "Registration fees are waived"], "fr": ["Nomination via l'ULFG, puis candidature en ligne", "Recrutement sur dossier", "Exemption des frais d'inscription"]}, "site": "http://www.ensta-bretagne.fr"}, {"name": "ENIB (École Nationale d'Ingénieurs de Brest)", "cats": ["dd3"], "dept": {"en": "Electrical and Mechanical Engineering departments", "fr": "Départements électrique et mécanique"}, "notes": {"en": ["Applications through ULFG", "Selection: on file", "Registration fees are waived"], "fr": ["Candidatures via l'ULFG", "Recrutement sur dossier", "Exemption des frais d'inscription"]}, "site": "http://www.enib.fr"}, {"name": "ULB (Université Libre de Bruxelles)", "cats": ["dd3"], "dept": {"en": "Electrical, Petroleum and Mechanical Engineering departments", "fr": "Départements électrique, pétrole et mécanique"}, "notes": {"en": ["Applications through ULFG (nomination, then an online application)", "Selection: on file", "Registration fee: €4,500 / year"], "fr": ["Candidatures via l'ULFG (nomination, puis candidature en ligne)", "Recrutement sur dossier", "Frais d'inscription : 4 500 €/an"]}, "site": "http://www.ulb.ac.be"}, {"name": "Politecnico di Torino", "cats": ["dd3"], "dept": {"en": null, "fr": null}, "notes": {"en": ["Applications through ULFG (nomination, then an online application)", "Programs offered: Environmental Protection Technology; Electronics and Automation", "Selection: on file", "Registration fees are waived", "Every candidate must already have their IELTS score at the time of nomination"], "fr": ["Candidatures via l'ULFG (nomination, puis candidature en ligne)", "Programmes offerts : Environmental Protection Technology ; Electronics and Automation", "Recrutement sur dossier", "Exemption des frais d'inscription", "Chaque candidat devra avoir la note du test de langue IELTS demandée au moment de la nomination"]}, "site": "http://www.polito.it"}, {"name": "PolytechNantes", "cats": ["dd3"], "dept": {"en": null, "fr": null}, "notes": {"en": ["Listed among the schools that also admit after the 3rd year", "A full description of this track has not been published yet — check the official ULFG partner list"], "fr": ["Listée parmi les écoles qui accueillent aussi après la 3ème année", "Le détail de ce parcours n'a pas encore été publié — consultez la liste officielle des partenaires de l'ULFG"]}, "site": null}, {"name": "INSA Toulouse", "cats": ["m2"], "dept": {"en": null, "fr": null}, "notes": {"en": ["Nomination through ULFG, then an online application", "Registration fees are waived for the Master's programs run by INSAT: ID-RIMS, SMMS, RT, DEFT"], "fr": ["Nomination via l'ULFG, puis candidature en ligne", "Exemption des frais d'inscription pour les masters gérés par l'INSAT : ID-RIMS, SMMS, RT, DEFT"]}, "site": null}, {"name": "INSA Rennes", "cats": ["m2"], "dept": {"en": null, "fr": null}, "notes": {"en": ["Nomination through ULFG, then an online application", "Registration fee: the same rate as French students"], "fr": ["Nomination via l'ULFG, puis candidature en ligne", "Frais d'inscription identiques à ceux appliqués aux étudiants français"]}, "site": null}, {"name": "PolytechNantes", "cats": ["m2"], "dept": {"en": null, "fr": null}, "notes": {"en": ["Applications through ULFG", "International Master's programs: €8,000 / year"], "fr": ["Candidatures via l'ULFG", "Masters internationaux : 8 000 €/an"]}, "site": null}, {"name": "Phelma – INP Grenoble", "cats": ["m2"], "dept": {"en": null, "fr": null}, "notes": {"en": ["Nomination through ULFG, then an online application", "Registration fees are waived for the SIGMA Master's"], "fr": ["Nomination via l'ULFG, puis candidature en ligne", "Exemption des frais d'inscription pour le master SIGMA"]}, "site": null}, {"name": "École Nationale des Ingénieurs de Brest", "cats": ["m2"], "dept": {"en": null, "fr": null}, "notes": {"en": ["Nomination and applications through ULFG", "Registration fees are waived"], "fr": ["Nomination et candidatures via l'ULFG", "Exonération des frais d'inscription"]}, "site": null}, {"name": "ENISE (École Nationale des Ingénieurs de Saint-Étienne)", "cats": ["m2"], "dept": {"en": null, "fr": null}, "notes": {"en": ["Nomination and applications through ULFG", "Registration fees are waived"], "fr": ["Nomination et candidature via l'ULFG", "Exemption des frais d'inscription"]}, "site": null}, {"name": "Paris-Saclay", "cats": ["m2"], "dept": {"en": null, "fr": null}, "notes": {"en": ["Apply directly on their website", "Note: some Master's programs there are international Master's, with their own tuition", "Our agreement only covers CentraleSupélec's M2 programs within Paris-Saclay — for the other Paris-Saclay institutions there is no agreement yet"], "fr": ["Candidature directement sur leur site web", "Attention : certains masters sont des masters internationaux, avec leurs propres frais", "L'accord ne couvre que les M2 de CentraleSupélec au sein de Paris-Saclay — pour les autres établissements, il n'y a pas encore d'avenant"]}, "site": null}, {"name": "École Centrale de Lille", "cats": ["m2"], "dept": {"en": null, "fr": null}, "notes": {"en": ["Apply via CampusFrance, and ULFG sends them our list of candidates", "Programs: Geomaterials and Structures in Civil Engineering (GMS); Electrical Engineering for Sustainable Development (E2SD); Sustainable Industrial Processes, Catalysis and Processes track (CP); Mechanics, R&D in Materials Mechanics track (RDMM)", "Registration fee: €4,500"], "fr": ["Candidature via CampusFrance, avec envoi par l'ULFG de la liste de nos candidats", "Programmes : Géomatériaux et structures en génie civil (GMS) ; Electrical Engineering for Sustainable Development (E2SD) ; Master Procédés industriels durables, spécialité Catalyse et procédés (CP) ; Master Mécanique, filière R&D en mécanique des matériaux (RDMM)", "Frais d'inscription : 4 500 €"]}, "site": null}, {"name": "Centrale Nantes", "cats": ["m2"], "dept": {"en": null, "fr": null}, "notes": {"en": ["Applications through ULFG", "A reduced registration fee"], "fr": ["Candidatures via l'ULFG", "Réduction des frais d'inscription"]}, "site": "http://www.ec-nantes.fr"}, {"name": "Mines Saint-Étienne", "cats": ["m2"], "dept": {"en": null, "fr": null}, "notes": {"en": ["Apply directly on their website", "Registration fees are waived"], "fr": ["Candidature sur leur site web", "Exemption des frais d'inscription"]}, "site": "http://www.mines-stetienne.fr"}, {"name": "MinesParisTech & TélécomParisTech (PSL, IP)", "cats": ["m2"], "dept": {"en": null, "fr": null}, "notes": {"en": ["Apply directly on their own website", "No fee exemption for these two"], "fr": ["Candidature sur leur site web", "Pas d'exonération des frais d'inscription pour ces deux écoles"]}, "site": null}];
+let mobLang = "en";
+try{mobLang = localStorage.getItem("relMobLang") || "en"}catch(err){}
+let mobCat = "all", mobQ = "";
+const MOB_T = {
+ tabs: {en:["Overview","How to Apply","Program Types","Partner Universities","Eiffel Scholarship"], fr:["Vue d'ensemble","Comment postuler","Types de mobilité","Universités partenaires","Bourse Eiffel"]},
+ head: {en:["International Mobility","Study part of your engineering degree abroad, most often in France, and sometimes graduate with two diplomas instead of one."],
+        fr:["Mobilité internationale","Étudiez une partie de votre cursus d'ingénieur à l'étranger, le plus souvent en France, et repartez parfois avec deux diplômes au lieu d'un."]},
+ cats: {en:{all:"All",dd4:"Double degree, after 4th year",dd3:"Double degree, also open after 3rd year",m2:"Master 2 (4th year)"},
+        fr:{all:"Tous",dd4:"Double diplôme, après la 4ème année",dd3:"Double diplôme, ouvert aussi après la 3ème",m2:"Master 2 (4ème année)"}}
+};
+function mob_(en,fr){return mobLang==="fr"?fr:en}
+function setMobLang(l){mobLang=l;try{localStorage.setItem("relMobLang",l)}catch(err){}drawMobilite()}
+
+function mobOverview(){return `
+<div class="mob-hero"><h3>${mob_("What is international mobility?","Qu'est-ce que la mobilité internationale ?")}</h3>
+<p class="lead2">${mob_(
+ "International mobility lets ULFG engineering students spend part of their studies at a partner university abroad, usually in France, and sometimes come home with two engineering degrees instead of one. It is entirely optional, and every year some of our students take part.",
+ "La mobilité internationale permet aux étudiants ingénieurs de l'ULFG de passer une partie de leurs études dans une université partenaire à l'étranger, le plus souvent en France, et de repartir parfois avec deux diplômes d'ingénieur au lieu d'un. C'est entièrement optionnel, et chaque année des étudiants de notre faculté y participent."
+)}</p></div>
+<h4 class="idea-h">${mob_("The two paths","Les deux parcours")}</h4>
+<div class="pw-3">
+ <div class="pw-card"><b>${mob_("Double engineering degree","Double diplôme d'ingénieur")} <span class="tag">${mob_("2 years","2 ans")}</span></b><p>${mob_(
+  "You spend your last two years of engineering school at the partner institution and graduate with both your ULFG engineering degree and the partner's engineering degree.",
+  "Vous passez vos deux dernières années d'école d'ingénieur dans l'établissement partenaire et obtenez à la fois votre diplôme d'ingénieur ULFG et celui du partenaire."
+ )}</p></div>
+ <div class="pw-card"><b>Master 2 (M2) <span class="tag">${mob_("4th year","4ème année")}</span></b><p>${mob_(
+  "You replace one year of your studies with a year abroad, then finish with your ULFG engineering degree plus an M2 diploma from the partner institution.",
+  "Vous remplacez une année d'études par une année à l'étranger, puis terminez avec votre diplôme d'ingénieur ULFG et un diplôme de M2 de l'établissement partenaire."
+ )}</p></div>
+</div>
+<h4 class="idea-h">${mob_("Why do it?","Pourquoi le faire ?")}</h4>
+<ul class="mob-why">
+ <li>${mob_("Build an international network, in class and beyond.","Se constituer un réseau international, en classe et au-delà.")}</li>
+ <li>${mob_("Open doors to further study or work abroad.","Ouvrir des portes vers des études ou un emploi à l'étranger.")}</li>
+ <li>${mob_("Graduate with two diplomas instead of one.","Obtenir deux diplômes au lieu d'un seul.")}</li>
+ <li>${mob_("Many partner universities waive or reduce their tuition fees for ULFG students.","De nombreuses universités partenaires exonèrent ou réduisent leurs frais de scolarité pour les étudiants de l'ULFG.")}</li>
+</ul>
+<h4 class="idea-h">${mob_("The big picture","Vue d'ensemble du parcours")}</h4>
+<ol class="pw-steps mob-steps">
+ <li><b>${mob_("Prepare","Préparer")}</b><span>${mob_("Open your accounts, take your language test, gather your documents.","Ouvrir vos comptes, passer votre test de langue, réunir vos documents.")}</span></li>
+ <li><b>${mob_("Register","S'inscrire")}</b><span>${mob_("Submit your registration through the official form.","Vous inscrire via le formulaire officiel.")}</span></li>
+ <li><b>${mob_("Get selected","Être sélectionné")}</b><span>${mob_("ULFG shares the list of eligible students.","L'ULFG communique la liste des étudiants éligibles.")}</span></li>
+ <li><b>${mob_("Confirm & travel","Confirmer et partir")}</b><span>${mob_("Complete the final steps and prepare your visa.","Terminer les dernières démarches et préparer votre visa.")}</span></li>
+</ol>
+<div class="mob-note">${mob_(
+ "This page summarizes the official ULFG process for 2025–2026. Programs and requirements can change from one year to the next: always confirm with ULFG's International Relations office before you apply.",
+ "Cette page résume la démarche officielle de l'ULFG pour 2025-2026. Les programmes et les conditions peuvent changer d'une année à l'autre : confirmez toujours auprès du bureau des Relations Internationales de l'ULFG avant de postuler."
+)}</div>
+<div class="mob-note ok">${mob_(
+ "REL regularly invites past exchange students to share their experience. Look for our Mobilité guest speaker sessions on the ",
+ "REL invite régulièrement d'anciens étudiants partis en mobilité à venir partager leur expérience. Retrouvez nos séances Mobilité guest speaker dans le "
+)}<a href="#learn" data-mobgo="learn/speakers">${mob_("Speakers page","onglet Intervenants")}</a>.</div>`}
+
+function mobApply(){return `
+<h3>${mob_("Step by step","Étape par étape")}</h3>
+<ol class="pw-steps mob-steps mob-steps-v">
+ <li><b>${mob_("Open an account","Ouvrir un compte")}</b><span>${mob_("Open a CampusFrance account.","Ouvrir un compte CampusFrance.")}</span></li>
+ <li><b>${mob_("Take your language test","Passer le test de langue")}</b><span>${mob_("DELF or TOEFL (IELTS for Politecnico di Torino).","DELF ou TOEFL (IELTS pour Turin).")}</span></li>
+ <li><b>${mob_("Prepare your file","Préparer votre dossier")}</b><span>${mob_("CV, transcript, a cover letter written for the specific path you are choosing, and your language certificate.","CV, relevé de notes, lettre de motivation adaptée au parcours choisi, et attestation de langue.")}</span></li>
+ <li><b>${mob_("Register","S'inscrire")}</b><span>${mob_("Register on the official form, using an email address you will still be using in the years ahead.","Vous inscrire sur le formulaire officiel, avec une adresse mail valable pour les années à venir.")}</span></li>
+ <li><b>${mob_("Wait for the list","Attendre la liste")}</b><span>${mob_("ULFG shares the list of eligible students once registrations close.","L'ULFG communique la liste des étudiants éligibles une fois les inscriptions closes.")}</span></li>
+</ol>
+<h3 style="margin-top:36px">${mob_("Once you are admitted","Une fois admis")}</h3>
+<ol class="pw-steps mob-steps mob-steps-v">
+ <li><b>${mob_("Confirm your choice","Confirmer votre choix")}</b><span>${mob_("Email Dr. Lina Bouhaya at ","Envoyer un message au Dr Lina Bouhaya à ")}<a href="mailto:lina.bouhaya@gmail.com">lina.bouhaya@gmail.com</a>${mob_(", from an email address that will stay valid while you are abroad. Mention the scholarship you were offered, if any.",", depuis une adresse mail valable à l'étranger, en indiquant le cas échéant le type de bourse obtenue.")}</span></li>
+ <li><b>${mob_("Send your documents","Envoyer vos documents")}</b><span>${mob_("Send Dr. Lina Bouhaya a scan of your admission letter, your fall-semester transcript, and the language test result required by the host institution.","Envoyer au Dr Lina Bouhaya le scan de votre lettre d'admission, votre relevé de notes du semestre d'automne, ainsi que le résultat du test de langue requis par l'établissement d'accueil.")}</span></li>
+ <li><b>${mob_("Validate on CampusFrance","Valider sur CampusFrance")}</b><span>${mob_("Validate your file on CampusFrance and share your file number with Dr. Lina Bouhaya. Group appointments are organized for everyone who is admitted.","Valider votre dossier sur CampusFrance et communiquer votre numéro de dossier au Dr Lina Bouhaya. Des rendez-vous collectifs seront organisés pour tous les admis.")}</span></li>
+</ol>
+<div class="mob-note warn"><b>${mob_("Don't forget","À ne pas oublier")}</b><ul>
+ <li>${mob_("Tell us right away if you change your destination or decide to withdraw.","Nous informer immédiatement de tout changement de destination ou d'un éventuel désistement.")}</li>
+ <li>${mob_("Start researching your student visa requirements early — every country has its own rules.","Se renseigner assez tôt sur les documents demandés pour le visa étudiant — chaque pays a ses propres exigences.")}</li>
+</ul></div>`}
+
+function mobTypes(){return `
+<div class="pw-3">
+ <div class="pw-card"><b>${mob_("Double engineering degree","Double diplôme d'ingénieur")} <span class="tag">${mob_("2 years","2 ans")}</span></b>
+ <p>${mob_("A dual engineering degree between ULFG and the partner institution.","Un double diplôme d'ingénieur entre l'ULFG et l'établissement partenaire.")}</p>
+ <p class="mob-warnline">${mob_("Most academic partners for this path require parallel procedures — both an application to the school itself and, where relevant, CampusFrance.","La plupart des partenaires académiques pour ce parcours demandent des procédures parallèles — une candidature à l'école elle-même et, le cas échéant, sur CampusFrance.")}</p></div>
+ <div class="pw-card"><b>M2 <span class="tag">${mob_("4th year","4ème année")}</span></b>
+ <p>${mob_("One year abroad replaces one year at ULFG. You finish with your ULFG engineering degree plus the partner's M2 diploma.","Une année à l'étranger remplace une année à l'ULFG. Vous terminez avec votre diplôme d'ingénieur ULFG et le diplôme de M2 du partenaire.")}</p>
+ <p class="mob-warnline">${mob_("Most academic partners ask for either an online application or an application on CampusFrance. Always tell ULFG about your application — some institutions ask us for the list of candidates.","La plupart des partenaires académiques demandent soit une candidature en ligne, soit une candidature sur CampusFrance. Prévenez toujours l'ULFG de votre candidature — certains établissements nous demandent la liste des candidats.")}</p></div>
+</div>
+<div class="mob-note warn">${mob_("Once you are admitted to a school you have chosen, you no longer have the right to apply to another one.","Dès son admission à un établissement choisi, l'étudiant n'a plus le droit de candidater à un autre.")}</div>
+<h4 class="idea-h">${mob_("Official partner list","Liste officielle des partenaires")}</h4>
+<p>${mob_("This page is a helpful summary. For the definitive, up-to-date list of ULFG's partner institutions, always check the official page:","Cette page est un résumé pratique. Pour la liste officielle et à jour des établissements partenaires de l'ULFG, consultez toujours la page officielle :")}</p>
+<p><a class="btn sm" href="http://www.ulfg.ul.edu.lb/exchange/partners" target="_blank" rel="noopener noreferrer">ulfg.ul.edu.lb/exchange/partners</a></p>`}
+
+function mobEiffel(){return `
+<div class="mob-hero"><h3>${mob_("Eiffel Excellence Scholarship","Bourse d'excellence Eiffel")}</h3>
+<p class="lead2">${mob_("A competitive French government scholarship for outstanding international students. ULFG cannot apply on your behalf — only the French host institution can submit your candidacy.","Une bourse d'excellence du gouvernement français, compétitive, pour les étudiants internationaux les plus brillants. L'ULFG ne peut pas candidater à votre place — seul l'établissement français d'accueil peut déposer votre candidature.")}</p></div>
+<ul class="mob-why">
+ <li>${mob_("Open to foreign nationals only — French–Lebanese dual nationals are not eligible.","Réservée aux étudiants de nationalité étrangère — les binationaux français ne sont pas éligibles.")}</li>
+ <li>${mob_("You must be 25 or younger when your double-degree application is submitted.","Vous devez avoir 25 ans maximum lors du dépôt de la candidature pour le double diplôme.")}</li>
+ <li>${mob_("Only the French institution can submit your candidacy — you cannot apply directly.","Seul l'établissement français peut déposer votre candidature — vous ne pouvez pas postuler directement.")}</li>
+ <li>${mob_("It cannot be combined with another French government scholarship, an Erasmus+ grant, or a grant from the Agence Universitaire de la Francophonie.","Elle n'est pas cumulable avec une autre bourse du gouvernement français, une bourse Erasmus+, ou une bourse de l'Agence Universitaire de la Francophonie.")}</li>
+ <li>${mob_("Non-French-speaking students need a proven level of English and/or French.","Pour les étudiants non francophones, un niveau de langue en anglais et/ou en français est requis.")}</li>
+ <li>${mob_("It's a program for excellence, reserved for the top 3% of the class.","C'est un programme d'excellence, réservé au top 3 % de la promotion.")}</li>
+</ul>`}
+
+function mobUniCard(u){const d=u.dept[mobLang],notes=u.notes[mobLang];
+ return `<article class="mob-uni"><h3>${esc(u.name)}</h3>${d?`<p class="mob-dept">${esc(d)}</p>`:""}<ul>${notes.map(n=>`<li>${esc(n)}</li>`).join("")}</ul>${u.site?`<a class="btn sm" href="${esc(u.site)}" target="_blank" rel="noopener noreferrer">${mob_("Official website","Site officiel")}</a>`:""}</article>`}
+function mobDirectory(){const cats=["all","dd4","dd3","m2"],q=mobQ.toLowerCase();
+ const list=MOB_UNI.filter(u=>(mobCat==="all"||u.cats.includes(mobCat))&&(!q||u.name.toLowerCase().includes(q)));
+ return `<p class="muted" style="max-width:44em">${mob_("This list follows the 2025–2026 ULFG mobility guide. Programs, fees and requirements can change every year, and exact deadlines are not shown here for that reason — always confirm with ULFG's International Relations office and the official partner list before you apply.","Cette liste suit le guide mobilité 2025-2026 de l'ULFG. Les programmes, frais et conditions peuvent changer chaque année, et les dates précises ne sont pas indiquées ici pour cette raison — confirmez toujours auprès du bureau des Relations Internationales de l'ULFG et de la liste officielle des partenaires avant de postuler.")}</p>
+ <input id="mobQ" class="search" type="search" placeholder="${mob_("Search a university","Rechercher une université")}" value="${esc(mobQ)}" autocomplete="off">
+ <div class="chips" id="mobCats" style="margin:16px 0">${cats.map(c=>`<button type="button" class="chip" aria-pressed="${c===mobCat}" data-mobcat="${c}">${esc(MOB_T.cats[mobLang][c])}</button>`).join("")}</div>
+ <div class="mob-grid">${list.length?list.map(mobUniCard).join(""):`<div class="empty"><p>${mob_("No university matches yet. Try another search.","Aucune université ne correspond. Essayez une autre recherche.")}</p></div>`}</div>`}
+
+function drawMobilite(){const root=$('.pg[data-pg="mobilite"]');if(!root)return;
+ const targets=[["mobOverview",mobOverview],["mobApply",mobApply],["mobTypes",mobTypes],["mobUni",mobDirectory],["mobEiffel",mobEiffel]];
+ targets.forEach(t=>{const el=document.getElementById(t[0]);if(el)el.innerHTML=t[1]()});
+ const sw=document.getElementById("mobLangHead");
+ if(sw)sw.innerHTML=`<div class="mob-lang" role="group" aria-label="Language / Langue"><button type="button" class="chip" aria-pressed="${mobLang==="en"}" data-moblang="en">EN</button><button type="button" class="chip" aria-pressed="${mobLang==="fr"}" data-moblang="fr">FR</button></div>`;
+ $$('.pg[data-pg="mobilite"] .tabs.subtabs .tab').forEach((b,i)=>{if(MOB_T.tabs[mobLang][i])b.textContent=MOB_T.tabs[mobLang][i]});
+ const h1=root.querySelector(".pagehead h1"),p1=root.querySelector(".pagehead .mob-lead");
+ if(h1)h1.textContent=MOB_T.head[mobLang][0];if(p1)p1.textContent=MOB_T.head[mobLang][1]}
+document.addEventListener("click",e=>{const l=e.target.closest("[data-moblang]");if(l){setMobLang(l.dataset.moblang);return}
+ const c=e.target.closest("[data-mobcat]");if(c){mobCat=c.dataset.mobcat;drawMobilite();return}
+ const g=e.target.closest("[data-mobgo]");if(g){e.preventDefault();const [pg,sub]=g.dataset.mobgo.split("/");showPage(pg,sub)}});
+document.addEventListener("input",e=>{if(e.target.id==="mobQ"){mobQ=e.target.value;drawMobilite();const i=$("#mobQ");if(i){i.focus();i.selectionStart=i.selectionEnd=i.value.length}}});
+drawMobilite();
 
 </script>
 </body>
