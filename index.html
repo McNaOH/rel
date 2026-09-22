@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-MYam5th+BVXPa6IIAbhXl6lH6+7RwunjYZ1fGeeKhTY='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-htpkzWNtEy8Cuxg5Afrn9uF+ql4krxZHmDLNan/u7Lk='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -4447,19 +4447,22 @@ function updateChip(){const a=$("#heroChip"),t=$("#heroChipT");if(!a||!t)return;
  t.textContent="Next event: "+n.title+", "+fmt(n.date,{weekday:"long",day:"numeric",month:"long"});a.hidden=false}
 /* network map: same-size nodes, labels outside the lines, click to open */
 function drawMap(){const c={x:430,y:225},rh=54,rn=44,RX=205,RY=150;
- const amb=RECORDS.filter(r=>r.type==="Ambassador").length||AMBS.length,mem=RECORDS.filter(r=>r.db&&r.type==="Member").length;
- const nodes=[["Board",BOARD.length,"#board"],["Ambassadors",amb,"#ambs"],["Members",mem,"#memQ"],["Partners",PARTNERS.length,"#partner"],["Speakers",SPEAKERS.length,"#speakers"]];
+ const amb=RECORDS.filter(r=>r.type==="Ambassador").length||AMBS.length;
+ const ig=(CONFIG.socials.find(s=>s.n==="Instagram")||{}).u,wa=(CONFIG.socials.find(s=>s.n==="WhatsApp")||{}).u;
+ /* Members and Partners return here once those numbers are strong; for now two numbers we can already be proud of. */
+ const nodes=[["Board",BOARD.length,"#board"],["Ambassadors",amb,"#ambs"],["Reach","900+",ig],["Community","450+",wa],["Speakers",SPEAKERS.length,"#speakers"]];
  let lines="",gs="",list="";
  nodes.forEach((n,i)=>{const a=(-90+i*72)*Math.PI/180,x=c.x+RX*Math.cos(a),y=c.y+RY*Math.sin(a),dx=x-c.x,dy=y-c.y,len=Math.hypot(dx,dy),ux=dx/len,uy=dy/len;
   lines+=`<line class="ln" x1="${(c.x+ux*rh).toFixed(1)}" y1="${(c.y+uy*rh).toFixed(1)}" x2="${(x-ux*rn).toFixed(1)}" y2="${(y-uy*rn).toFixed(1)}"/>`;
-  const side=Math.abs(ux)>=.3,lx=side?x+Math.sign(ux)*(rn+16):x,ly=side?y+7:(uy<0?y-rn-16:y+rn+30),an=side?(ux>0?"start":"end"):"middle",val=n[1]>0?n[1]:"\u2013";
-  gs+=`<g class="nd-g" data-go="${n[2]}" role="link" tabindex="0" aria-label="${n[0]}: ${n[1]}" style="transition-delay:${(.15+i*.09).toFixed(2)}s"><circle class="nd" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${rn}"/><text class="nd-t${n[1]>0?"":" nd-e"}" x="${x.toFixed(1)}" y="${(y+11).toFixed(1)}">${val}</text><text class="lb" x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" style="text-anchor:${an}">${n[0]}</text></g>`;
-  list+=`<li><a href="${n[2]}"><b>${val}</b><span>${n[0]}</span></a></li>`});
+  const side=Math.abs(ux)>=.3,lx=side?x+Math.sign(ux)*(rn+16):x,ly=side?y+7:(uy<0?y-rn-16:y+rn+30),an=side?(ux>0?"start":"end"):"middle",strong=typeof n[1]==="string"||n[1]>0,val=strong?n[1]:"\u2013";
+  gs+=`<g class="nd-g" data-go="${esc(n[2])}" role="link" tabindex="0" aria-label="${n[0]}: ${val}" style="transition-delay:${(.15+i*.09).toFixed(2)}s"><circle class="nd" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${rn}"/><text class="nd-t${strong?"":" nd-e"}" x="${x.toFixed(1)}" y="${(y+11).toFixed(1)}">${val}</text><text class="lb" x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" style="text-anchor:${an}">${n[0]}</text></g>`;
+  const ext=/^https?:/.test(n[2]);list+=`<li><a href="${esc(n[2])}" ${ext?'target="_blank" rel="noopener noreferrer"':""}><b>${val}</b><span>${n[0]}</span></a></li>`});
  $("#map").innerHTML=lines+`<circle class="hub" cx="${c.x}" cy="${c.y}" r="${rh}"/><text class="hub-t" x="${c.x}" y="${c.y+14}">REL</text>`+gs;
  const ml=$("#mapList");if(ml)ml.innerHTML=list}
 drawMap();
-document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g)route(g.dataset.go)});
-document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.matches&&e.target.matches("[data-go]"))route(e.target.dataset.go)});
+function goTarget(h){if(/^https?:/.test(h))window.open(h,"_blank","noopener,noreferrer");else route(h)}
+document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g)goTarget(g.dataset.go)});
+document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.matches&&e.target.matches("[data-go]"))goTarget(e.target.dataset.go)});
 /* what we believe: three panels that play by themselves and answer to hover or tap */
 (function(){const tri=$(".tri");if(!tri)return;const ps=[...tri.querySelectorAll(".tp")],dots=[...document.querySelectorAll(".tri-dots button")];
  let i=0,timer=null,paused=false,visible=false,resumeT=null;const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
