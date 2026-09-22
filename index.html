@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-CwV/81C8vATUhMdr0OQB/EIRN3jrem9itR8jSPR5IBU='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-9yXHzW61mK9vafURL5ksqfsghaDIRWPJVFsuaMjTFL4='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -5009,8 +5009,8 @@ function mobOverview(){return `
  <li><b>${mob_("Confirm & travel","Confirmer et partir")}</b><span>${mob_("Complete the final steps and prepare your visa.","Terminer les dernières démarches et préparer votre visa.")}</span></li>
 </ol>
 <div class="mob-note">${mob_(
- "This page summarizes the official ULFG process for 2025–2026. Programs and requirements can change from one year to the next: always confirm with ULFG's International Relations office before you apply.",
- "Cette page résume la démarche officielle de l'ULFG pour 2025-2026. Les programmes et les conditions peuvent changer d'une année à l'autre : confirmez toujours auprès du bureau des Relations Internationales de l'ULFG avant de postuler."
+ "This page summarizes the official ULFG process for 2026–2027. Programs and requirements can change from one year to the next: always confirm with ULFG's International Relations office before you apply.",
+ "Cette page résume la démarche officielle de l'ULFG pour 2026-2027. Les programmes et les conditions peuvent changer d'une année à l'autre : confirmez toujours auprès du bureau des Relations Internationales de l'ULFG avant de postuler."
 )}</div>
 <div class="mob-note ok">${mob_(
  "REL regularly invites past exchange students to share their experience. Look for our Mobilité guest speaker sessions on the ",
@@ -5067,7 +5067,7 @@ function mobUniCard(u){const d=u.dept[mobLang],notes=u.notes[mobLang];
  return `<article class="mob-uni"><h3>${esc(u.name)}</h3>${d?`<p class="mob-dept">${esc(d)}</p>`:""}<ul>${notes.map(n=>`<li>${esc(n)}</li>`).join("")}</ul>${u.site?`<a class="btn sm" href="${esc(u.site)}" target="_blank" rel="noopener noreferrer">${mob_("Official website","Site officiel")}</a>`:""}</article>`}
 function mobDirectory(){const cats=["all","dd4","dd3","m2"],q=mobQ.toLowerCase();
  const list=MOB_UNI.filter(u=>(mobCat==="all"||u.cats.includes(mobCat))&&(!q||u.name.toLowerCase().includes(q)));
- return `<p class="muted" style="max-width:44em">${mob_("This list follows the 2025–2026 ULFG mobility guide. Programs, fees and requirements can change every year, and exact deadlines are not shown here for that reason — always confirm with ULFG's International Relations office and the official partner list before you apply.","Cette liste suit le guide mobilité 2025-2026 de l'ULFG. Les programmes, frais et conditions peuvent changer chaque année, et les dates précises ne sont pas indiquées ici pour cette raison — confirmez toujours auprès du bureau des Relations Internationales de l'ULFG et de la liste officielle des partenaires avant de postuler.")}</p>
+ return `<p class="muted" style="max-width:44em">${mob_("This list follows the 2026–2027 ULFG mobility guide. Programs, fees and requirements can change every year, and exact deadlines are not shown here for that reason — always confirm with ULFG's International Relations office and the official partner list before you apply.","Cette liste suit le guide mobilité 2026-2027 de l'ULFG. Les programmes, frais et conditions peuvent changer chaque année, et les dates précises ne sont pas indiquées ici pour cette raison — confirmez toujours auprès du bureau des Relations Internationales de l'ULFG et de la liste officielle des partenaires avant de postuler.")}</p>
  <input id="mobQ" class="search" type="search" placeholder="${mob_("Search a university","Rechercher une université")}" value="${esc(mobQ)}" autocomplete="off">
  <div class="chips" id="mobCats" style="margin:16px 0">${cats.map(c=>`<button type="button" class="chip" aria-pressed="${c===mobCat}" data-mobcat="${c}">${esc(MOB_T.cats[mobLang][c])}</button>`).join("")}</div>
  <div class="mob-grid">${list.length?list.map(mobUniCard).join(""):`<div class="empty"><p>${mob_("No university matches yet. Try another search.","Aucune université ne correspond. Essayez une autre recherche.")}</p></div>`}</div>`}
