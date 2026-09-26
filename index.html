@@ -896,6 +896,12 @@ a.ptn:hover{border-color:var(--fill)}
 /* Empowering Youth: its own mission tag above the What we believe panels */
 .mission-tag{font:700 .82rem var(--f-body);letter-spacing:.3em;text-transform:uppercase;color:var(--fill);margin:0 0 12px}
 
+/* Empowering Youth: its own full mission band between the hero and What we believe */
+.mission-band{background:var(--bg);padding:96px 0 92px;text-align:center;border-bottom:1px solid var(--line)}
+.mb-mark{height:44px;width:auto;margin:0 auto 26px;opacity:.9;display:block}
+.mb-text{font:500 clamp(2.6rem,7vw,5.2rem) var(--f-display);letter-spacing:-.02em;color:var(--brand-ink);margin:0}
+@media (max-width:720px){.mission-band{padding:64px 0 60px}.mb-mark{height:36px;margin-bottom:18px}}
+
 </style>
 </head>
 <body>
@@ -927,8 +933,9 @@ a.ptn:hover{border-color:var(--fill)}
 <p class="muted small" id="nxNote"></p>
 </aside></div></div></section>
 
+<section class="mission-band"><div class="wrap"><img class="mb-mark" data-logo="burg" alt="" aria-hidden="true"><p class="mb-text rv">Empowering Youth</p></div></section>
+
 <section class="tri-sec" aria-label="What we believe"><div class="wrap">
-<p class="mission-tag rv">Empowering Youth</p>
 <p class="story-k"><b>What we believe</b></p>
 <div class="tri">
 <div class="tp on" data-i="0" tabindex="0" role="button" aria-expanded="true"><span class="tp-l" aria-hidden="true">R</span><div class="tp-foot"><h3>Relations</h3><p>Great careers are built on great <em>relationships.</em></p></div></div>
