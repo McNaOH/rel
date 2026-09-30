@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-QgHea2inMOZ8/nTsT5M6L0RVgG6fy7QCR/9K/yZlX9E='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-+iDs9pop8if0pxcUQ+3xp6e2bKRrWnJYTqqFb06gdiE='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -927,6 +927,27 @@ a.ptn:hover{border-color:var(--fill)}
 @keyframes mcnaoh-stroll{0%{transform:translateY(0) rotate(0)}25%{transform:translateY(-3px) rotate(-8deg)}50%{transform:translateY(0) rotate(4deg)}75%{transform:translateY(-2px) rotate(-4deg)}100%{transform:translateY(0) rotate(0)}}
 .mcnaoh-mark.stroll{animation:mcnaoh-stroll .5s ease}
 
+/* the advisor spot, shown even before anyone has been added */
+.advisor-card.empty{padding:22px 30px}
+.advisor-card.empty .tag{margin-bottom:0}
+.advisor-card.empty p{color:var(--rose)}
+
+/* the logo is a lightbulb -- give it a little flicker on hover, just because */
+.brand img{transition:filter .12s}
+.brand:hover img,.brand:focus-visible img{animation:bulb-flicker .8s ease-in-out}
+@keyframes bulb-flicker{
+ 0%{filter:drop-shadow(0 0 0 transparent)}
+ 8%{filter:drop-shadow(0 0 7px #ffd666)}
+ 14%{filter:drop-shadow(0 0 0 transparent)}
+ 20%{filter:drop-shadow(0 0 7px #ffd666)}
+ 45%{filter:drop-shadow(0 0 9px #ffd666)}
+ 100%{filter:drop-shadow(0 0 0 transparent)}
+}
+
+/* a small burst of confetti when someone submits their membership application */
+.confetti-piece{position:fixed;top:0;left:0;width:8px;height:8px;pointer-events:none;z-index:9999;border-radius:1px}
+@keyframes confetti-fall{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:var(--cx) rotate(var(--cr));opacity:0}}
+
 </style>
 </head>
 <body>
@@ -1292,7 +1313,7 @@ $("#calNext").addEventListener("click",()=>{cm=new Date(cm.getFullYear(),cm.getM
 /* board, ambassadors */
 const ph=(n,p)=>`<div class="ph">${p?`<img src="${esc(p)}" alt="${esc(n)}">`:esc(initials(n))}</div>`;
 function drawBoard(){$("#board").innerHTML=BOARD.filter(b=>b.dbRole!=="advisor").map(b=>`<div class="person">${ph(b.name,b.photo)}<h3>${b.name?esc(b.name):'<span class="muted">Name coming soon</span>'}</h3><div class="role">${esc(b.role)}</div><p>${esc(b.bio)}</p>${b.id?`<button type="button" class="idlink" data-prof="${b.id}">#${b.id}, view profile</button>`:""}</div>`).join("")}
-function drawAdvisor(){const box=$("#advisorSpot");if(!box)return;const a=BOARD.find(b=>b.dbRole==="advisor");box.hidden=!a;if(!a)return;box.innerHTML=`<div class="advisor-card"><span class="tag">Faculty Advisor</span><div class="advisor-body">${ph(a.name,a.photo)}<div><h3>${a.name?esc(a.name):'<span class="muted">Name coming soon</span>'}</h3>${a.bio?`<p>${esc(a.bio)}</p>`:''}${a.id?`<button type="button" class="idlink" data-prof="${a.id}">#${a.id}, view profile</button>`:""}</div></div></div>`}
+function drawAdvisor(){const box=$("#advisorSpot");if(!box)return;box.hidden=false;const a=BOARD.find(b=>b.dbRole==="advisor");if(!a){const canAdd=ST.team&&ST.team.role==="president";box.innerHTML=`<div class="advisor-card empty"><span class="tag">Faculty Advisor</span><p class="muted" style="margin:12px 0 0">${canAdd?"Not added yet. Go to Team, then Access, to add one.":"Coming soon."}</p></div>`;return}box.innerHTML=`<div class="advisor-card"><span class="tag">Faculty Advisor</span><div class="advisor-body">${ph(a.name,a.photo)}<div><h3>${a.name?esc(a.name):'<span class="muted">Name coming soon</span>'}</h3>${a.bio?`<p>${esc(a.bio)}</p>`:''}${a.id?`<button type="button" class="idlink" data-prof="${a.id}">#${a.id}, view profile</button>`:""}</div></div></div>`}
 drawBoard();drawAdvisor();
 $("#ambs").innerHTML=AMBS.map(a=>`<div class="amb">${ph(a.name,a.photo)}<div><b>${a.name?esc(a.name):'<span class="muted">Name coming soon</span>'}</b><span class="muted small">${esc(a.info||"REL ambassador")}</span></div></div>`).join("");
 /* members */
@@ -3658,6 +3679,7 @@ let authMode="login",authNote="",authOk=false,teamTab="apps",teamEdit=null;const
 const fromEmailLink=/type=(signup|invite|recovery|magiclink|email_change)/.test(location.hash);
 const LEVEL=["1st year","2nd year","3rd year","4th year","5th year"];
 const DRAFT_FORMS=["authForm","applyForm","profForm","evForm","anForm","ptForm","hoForm","tmForm","ambForm","ideaForm","intForm"];let DRAFT={};
+let tmMode="new";
 try{DRAFT=JSON.parse(sessionStorage.getItem("relDraft")||"{}")}catch(err){DRAFT={}}
 const saveDraft=()=>{try{sessionStorage.setItem("relDraft",JSON.stringify(DRAFT))}catch(err){}};
 const draftKey=f=>f.id+(f.dataset&&f.dataset.id?":"+f.dataset.id:"");
@@ -3911,7 +3933,9 @@ document.addEventListener("submit",async e=>{const f=e.target;if(!f||!f.id)retur
   if(!$("#pTrue").checked){say(msg,"Please confirm that the information is true.");return}
   const btn=f.querySelector("button[type=submit]");btn.disabled=true;say(msg,"Sending...",true);
   const {error}=await SB.rpc("submit_application",{p_full_name:v("#pName"),p_uni_id:uni,p_faculty:v("#pFac"),p_year:$("#pYear").value,p_major:v("#pMajor"),p_phone:v("#pPhone"),p_why:v("#pWhy"),p_listed:$("#pList").checked});
-  if(error){say(msg,errText(error));btn.disabled=false;return}clearDraft(f);await loadUser();renderAccount();toast("Application sent");return}
+  if(error){say(msg,errText(error));btn.disabled=false;return}
+  const br=btn.getBoundingClientRect();if(typeof confettiBurst==="function")confettiBurst(br.left+br.width/2,br.top+br.height/2);
+  clearDraft(f);await loadUser();renderAccount();toast("Application sent");return}
  if(f.id==="pwForm"){e.preventDefault();const pw=$("#wPass").value,msg=$("#wMsg");if(pw.length<8){say(msg,"The password needs at least 8 characters.");return}
   const {error}=await SB.auth.updateUser({password:pw});if(error){say(msg,errText(error));return}$("#wPass").value="";say(msg,"Password changed.",true);return}
  if(f.id==="profForm"){e.preventDefault();const msg=$("#mMsg");const {error}=await SB.from("members").update({bio:$("#mBio").value.trim()||null,phone:$("#mPhone").value.trim()||null,listed:$("#mList").checked}).eq("user_id",ST.user.id);
@@ -4019,8 +4043,9 @@ document.addEventListener("click",async e=>{const d=e.target.closest("[data-adec
 
 /* ---- Access: who can do what (President only) ---- */
 const permBoxes=sel=>PERMS.map(p=>`<label class="fld ck"><input type="checkbox" data-perm="${p[0]}" ${sel.includes(p[0])?"checked":""}><span>${esc(p[1])}</span></label>`).join("");
-async function paneAccess(){loading();const [tr,mr]=await Promise.all([SB.from("team").select("*").order("rel_id",{ascending:true}),SB.from("members").select("rel_id,user_id").not("user_id","is",null)]);const {data,error}=tr;if(error)return paneErr(error);
+async function paneAccess(){loading();const [tr,mr]=await Promise.all([SB.from("team").select("*").order("rel_id",{ascending:true}),SB.from("members").select("rel_id,full_name,user_id").not("user_id","is",null)]);const {data,error}=tr;if(error)return paneErr(error);
  const claimedIds=new Set((mr.data||[]).map(m=>m.rel_id));
+ const teamIds=new Set(data.map(t=>t.rel_id));const eligible=(mr.data||[]).filter(m=>!teamIds.has(m.rel_id)).sort((x,y)=>x.full_name.localeCompare(y.full_name));
  const rank=t=>t.role==="president"?0:t.role==="vice_president"?1:2;data.sort((x,y)=>rank(x)-rank(y)||x.rel_id.localeCompare(y.rel_id));
  tpane().innerHTML=`<p class="muted">Choose who can do what in the Team area. The President always has full access. Changes apply right away, and nobody needs to log in again.</p>
  ${data.map(t=>t.role==="president"?`<div class="appc" data-teamp="${esc(t.email)}"><h3>${esc(t.full_name)}</h3><p class="muted small" style="margin:0">${esc(t.position)}. #${esc(t.rel_id)}. ${esc(t.email)}</p><div class="sigs"><span class="badge ok">&#10003; Full access</span></div>${upField("tp_"+t.rel_id,"Photo","team",800,true,"image/jpeg,image/png,image/webp",t.photo_path,"photo")}<div class="row"><button type="button" class="btn sm" data-savephoto="${esc(t.email)}">Save photo</button></div><p class="vres" data-teammsg role="status" aria-live="polite"></p></div>`
@@ -4033,16 +4058,20 @@ async function paneAccess(){loading();const [tr,mr]=await Promise.all([SB.from("
   <div class="row" style="margin-top:8px"><button type="button" class="btn primary sm" data-teamsave="${esc(t.email)}">Save</button><button type="button" class="btn sm" data-teamdel="${esc(t.email)}">Remove access</button></div><p class="vres" data-teammsg role="status" aria-live="polite"></p>
   ${claimedIds.has(t.rel_id)?"":`<div class="link-dup"><p class="muted small" style="margin:0 0 8px">Did they already make their own member account instead of using this seat? Link the two so they stop being two separate people on the site.</p><div class="row"><input data-linkid placeholder="Their REL ID, like 0008" style="max-width:180px"><button type="button" class="btn sm" data-linkacct="${esc(t.rel_id)}">Link account</button></div><p class="vres" data-linkmsg role="status" aria-live="polite"></p></div>`}
   </div>`).join("")}
- <div class="card" style="background:var(--bg);margin-top:28px"><h3 style="margin-bottom:12px">Add someone to the team</h3><form id="tmForm" novalidate>
-  <label class="fld">Their email *<input id="tmEmail" type="email" placeholder="name@st.ul.edu.lb"></label>
-  <label class="fld">Full name *<input id="tmName"></label>
+ <div class="card" style="background:var(--bg);margin-top:28px"><h3 style="margin-bottom:12px">Add someone to the team</h3>
+  <div class="tabs subtabs" role="tablist" style="margin-bottom:18px"><button type="button" class="tab" role="tab" aria-selected="${tmMode!=="existing"}" data-tmmode="new">New person</button><button type="button" class="tab" role="tab" aria-selected="${tmMode==="existing"}" data-tmmode="existing">Already has an account</button></div>
+  <form id="tmForm" novalidate>
+  ${tmMode==="existing"?`<label class="fld">Who *<select id="tmPick"><option value="">Choose a member...</option>${eligible.map(m=>`<option value="${esc(m.rel_id)}">${esc(m.full_name)} (#${esc(m.rel_id)})</option>`).join("")}</select></label>${!eligible.length?'<p class="muted small" style="margin:-8px 0 14px">Nobody is waiting to be added — everyone who already has an account is already on the team.</p>':""}`
+   :`<label class="fld">Their email *<input id="tmEmail" type="email" placeholder="name@st.ul.edu.lb"></label>
+  <label class="fld">Full name *<input id="tmName"></label>`}
   <label class="fld">Position, like Treasurer *<input id="tmPos"></label>
   <label class="fld">Role<select id="tmRole"><option value="board">Board member</option><option value="vice_president">Vice President</option><option value="advisor">Faculty Advisor</option></select></label>
   <p class="muted small" style="margin:6px 0 4px">What can they do?</p>${permBoxes([])}
   <div class="row"><button type="button" class="btn sm" data-preset="vice_president">Vice President preset</button><button type="button" class="btn sm" data-preset="board">View only</button></div>
   <div class="row" style="margin-top:16px"><button class="btn primary sm" type="submit">Add to the team</button></div><p class="vres" id="tmMsg" role="status" aria-live="polite"></p></form>
-  <p class="muted small" style="margin:14px 0 0">They can then create an account or log in with that email. Their board page card and their account share the same REL ID.</p></div>`;restoreDraft("tmForm")}
+  <p class="muted small" style="margin:14px 0 0">${tmMode==="existing"?"They keep their own REL ID, their photo and their bio — only their role and title change.":"They can then create an account or log in with that email. Their board page card and their account share the same REL ID."}</p></div>`;restoreDraft("tmForm")}
 document.addEventListener("click",async e=>{
+ const tmm=e.target.closest("[data-tmmode]");if(tmm){tmMode=tmm.dataset.tmmode;paneAccess();return}
  const ps=e.target.closest("[data-preset]");if(ps){const f=$("#tmForm");f.querySelectorAll("[data-perm]").forEach(c=>{c.checked=PRESETS[ps.dataset.preset].includes(c.dataset.perm)});$("#tmRole").value=ps.dataset.preset;return}
  const sv=e.target.closest("[data-teamsave]");if(sv){const card=sv.closest("[data-team]"),msg=card.querySelector("[data-teammsg]"),perms=[...card.querySelectorAll("[data-perm]:checked")].map(c=>c.dataset.perm);
   let mail=sv.dataset.teamsave;const typed=card.querySelector('[data-f="email"]').value.trim().toLowerCase();
@@ -4058,9 +4087,14 @@ document.addEventListener("click",async e=>{
   la.disabled=true;const {error}=await SB.rpc("merge_team_duplicate",{p_team_rel_id:la.dataset.linkacct,p_real_rel_id:realId});la.disabled=false;
   if(error){say(msg,errText(error));return}toast("Linked. #"+realId+" now holds this seat.");paneAccess();refreshPublic();return}
  const dl=e.target.closest("[data-teamdel]");if(dl){if(!confirm("Remove this person's team access? They stay a normal member."))return;const {error}=await SB.rpc("remove_team_member",{p_email:dl.dataset.teamdel});if(error){toast(errText(error));return}toast("Access removed");paneAccess();refreshPublic()}});
-document.addEventListener("submit",async e=>{const f=e.target;if(!f||f.id!=="tmForm")return;e.preventDefault();const msg=$("#tmMsg"),email=$("#tmEmail").value.trim(),name=$("#tmName").value.trim(),pos=$("#tmPos").value.trim();
- if(!/^\S+@\S+\.\S+$/.test(email)){say(msg,"Please enter a valid email.");return}if(name.length<3||pos.length<2){say(msg,"Please fill in the name and the position.");return}
+document.addEventListener("submit",async e=>{const f=e.target;if(!f||f.id!=="tmForm")return;e.preventDefault();const msg=$("#tmMsg"),pos=$("#tmPos").value.trim();
+ if(pos.length<2){say(msg,"Please fill in the position.");return}
  const perms=[...f.querySelectorAll("[data-perm]:checked")].map(c=>c.dataset.perm);
+ if(tmMode==="existing"){const relId=($("#tmPick")||{}).value;if(!relId){say(msg,"Please choose who to add.");return}
+  const {error}=await SB.rpc("promote_member_to_team",{p_rel_id:relId,p_role:$("#tmRole").value,p_position:pos,p_perms:perms});
+  if(error){say(msg,errText(error));return}clearDraft(f);toast("Added to the team");paneAccess();refreshPublic();return}
+ const email=$("#tmEmail").value.trim(),name=$("#tmName").value.trim();
+ if(!/^\S+@\S+\.\S+$/.test(email)){say(msg,"Please enter a valid email.");return}if(name.length<3){say(msg,"Please fill in the name.");return}
  const {data,error}=await SB.rpc("add_team_member",{p_email:email,p_name:name,p_position:pos,p_role:$("#tmRole").value,p_perms:perms});
  if(error){say(msg,errText(error));return}clearDraft(f);toast("Added with REL ID #"+data);paneAccess();refreshPublic()});
 
@@ -5148,6 +5182,15 @@ console.log("%cLooking around the code? We like that kind of curiosity here.\nCo
 (function(){const orig=document.title;let t=null;
  document.addEventListener("visibilitychange",()=>{if(document.hidden){clearTimeout(t);document.title="\ud83d\udc40 come back...";t=setTimeout(()=>{document.title="We'll be here \u2014 REL"},2200)}else{clearTimeout(t);document.title=orig}})})();
 document.addEventListener("click",e=>{const m=e.target.closest(".mcnaoh-mark");if(!m)return;m.classList.remove("stroll");void m.offsetWidth;m.classList.add("stroll")});
+
+/* a small, quick confetti burst -- used once, right after a membership application is sent */
+function confettiBurst(x,y){const colors=["#800020","#F0E3E4","#E8C9CC","#F8F6F1"];
+ for(let i=0;i<26;i++){const p=document.createElement("i");p.className="confetti-piece";
+  p.style.background=colors[i%colors.length];p.style.left=x+"px";p.style.top=y+"px";
+  const dx=(Math.random()-0.5)*260,dy=-(Math.random()*160+40),rot=Math.random()*520-260,dur=700+Math.random()*500;
+  p.style.setProperty("--cx",`translate(${dx}px, ${dy}px)`);p.style.setProperty("--cr",rot+"deg");
+  p.style.animation=`confetti-fall ${dur}ms ease-out forwards`;
+  document.body.appendChild(p);setTimeout(()=>p.remove(),dur+80)}}
 
 </script>
 </body>
