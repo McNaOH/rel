@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-+iDs9pop8if0pxcUQ+3xp6e2bKRrWnJYTqqFb06gdiE='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-uZ9IG08Tj5MU/h+FmXx+Mi2ybsoynux+Y082uRQqjmQ='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -639,7 +639,7 @@ footer .vres,footer .vres.ok,footer .vres.no{color:var(--rose)}
 .ann-x{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:36px;height:36px;border:0;background:transparent;font:400 1.6rem/1 var(--f-body);cursor:pointer;color:var(--muted);border-radius:50%}
 .ann-x:hover{background:rgba(29,19,21,.07)}
 /* brand seal */
-.seal{position:absolute;right:max(28px,6vw);top:150px;width:152px;height:152px;z-index:1;pointer-events:none}
+.seal{position:absolute;right:max(28px,6vw);top:150px;width:152px;height:152px;z-index:1;pointer-events:auto;cursor:pointer}
 .seal svg{width:100%;height:100%;overflow:visible}
 .seal text{fill:var(--on-band);font:600 14.5px var(--f-body);letter-spacing:.2em;text-transform:uppercase}
 .seal-rot{transform-origin:100px 100px;animation:spin 32s linear infinite}
@@ -932,21 +932,36 @@ a.ptn:hover{border-color:var(--fill)}
 .advisor-card.empty .tag{margin-bottom:0}
 .advisor-card.empty p{color:var(--rose)}
 
-/* the logo is a lightbulb -- give it a little flicker on hover, just because */
-.brand img{transition:filter .12s}
-.brand:hover img,.brand:focus-visible img{animation:bulb-flicker .8s ease-in-out}
+/* the logo is a lightbulb -- give it a proper flicker on hover, on the nav and the footer both */
+.brand img,footer .lg{transition:filter .12s;cursor:pointer}
+.brand:hover img,.brand:focus-visible img,footer .lg:hover,footer .lg:focus-visible{animation:bulb-flicker 1.3s ease-in-out}
 @keyframes bulb-flicker{
- 0%{filter:drop-shadow(0 0 0 transparent)}
- 8%{filter:drop-shadow(0 0 7px #ffd666)}
- 14%{filter:drop-shadow(0 0 0 transparent)}
- 20%{filter:drop-shadow(0 0 7px #ffd666)}
- 45%{filter:drop-shadow(0 0 9px #ffd666)}
- 100%{filter:drop-shadow(0 0 0 transparent)}
+ 0%{filter:drop-shadow(0 0 0 transparent) brightness(1)}
+ 4%{filter:drop-shadow(0 0 14px #ffd666) brightness(1.35)}
+ 8%{filter:drop-shadow(0 0 0 transparent) brightness(1)}
+ 12%{filter:drop-shadow(0 0 14px #ffd666) brightness(1.35)}
+ 16%{filter:drop-shadow(0 0 2px #ffd666) brightness(1.05)}
+ 20%{filter:drop-shadow(0 0 16px #ffd666) brightness(1.4)}
+ 30%{filter:drop-shadow(0 0 16px #ffd666) brightness(1.4)}
+ 34%{filter:drop-shadow(0 0 2px transparent) brightness(1)}
+ 38%{filter:drop-shadow(0 0 16px #ffd666) brightness(1.4)}
+ 70%{filter:drop-shadow(0 0 18px #ffd666) brightness(1.45)}
+ 100%{filter:drop-shadow(0 0 0 transparent) brightness(1)}
 }
 
 /* a small burst of confetti when someone submits their membership application */
 .confetti-piece{position:fixed;top:0;left:0;width:8px;height:8px;pointer-events:none;z-index:9999;border-radius:1px}
 @keyframes confetti-fall{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:var(--cx) rotate(var(--cr));opacity:0}}
+
+/* members-only gate on a few pages */
+.gate-block{border:1.5px dashed var(--line);border-radius:16px;padding:46px 36px;text-align:center;margin:20px 0 40px}
+.gate-inner{max-width:30em;margin:0 auto}
+.gate-inner .tag{margin-bottom:16px}
+.gate-inner h3{font-size:1.6rem;color:var(--brand-ink);margin-bottom:10px}
+.gate-inner p{color:var(--muted);margin:0 0 22px}
+.gate-inner .row{justify-content:center}
+
+.seal-rot.boost{animation-duration:1.6s}
 
 </style>
 </head>
@@ -3795,7 +3810,7 @@ function renderTeam(){const box=$("#teamBody");if(!box)return;
  box.innerHTML=accHead("Team area","You are logged in as "+ST.team.position+".")+`<div class="tabs" role="tablist">${tabs.map(t=>`<button type="button" class="tab" role="tab" aria-selected="${t[0]===teamTab}" data-tt="${t[0]}">${t[1]}</button>`).join("")}</div><div id="teamPane"></div>`;
  ({apps:paneApps,events:paneEvents,news:paneNews,members:paneMembers,amb:paneAmb,points:panePoints,honors:paneHonors,subs:paneSubs,access:paneAccess,content:paneContent})[teamTab]()}
 const tpane=()=>$("#teamPane");
-const loading=()=>{const p=tpane();if(p)p.innerHTML='<p class="muted">Loading...</p>'};
+const LOAD_MSGS=["Loading...", "Warming up the bulb...", "Herding the data...", "One moment, fetching things...", "Almost there..."];const loading=()=>{const p=tpane();if(p)p.innerHTML='<p class="muted">'+LOAD_MSGS[Math.floor(Math.random()*LOAD_MSGS.length)]+'</p>'};
 const paneErr=e=>{const p=tpane();if(p)p.innerHTML=`<div class="empty"><p>${esc(errText(e))}</p></div>`};
 const dshort=s=>s?fmt(String(s).slice(0,10),{day:"numeric",month:"short",year:"numeric"}):"";
 function appCard(a){const sig=[`<span class="badge ok">&#10003; LU student email</span>`,
@@ -3918,9 +3933,9 @@ document.addEventListener("submit",async e=>{const f=e.target;if(!f||!f.id)retur
   if(mode==="signup"&&pw.length<8){say(msg,"The password needs at least 8 characters.");return}
   if(mode==="login"&&!pw){say(msg,"Please enter your password.");return}
   btn.disabled=true;say(msg,"Please wait...",true);
-  try{if(mode==="login"){const {error}=await SB.auth.signInWithPassword({email,password:pw});if(error)throw error;await loadUser();renderAccount();renderTeam();refreshPublic();return}
+  try{if(mode==="login"){const {error}=await SB.auth.signInWithPassword({email,password:pw});if(error)throw error;await loadUser();renderAccount();renderTeam();refreshPublic();showPage(cur.pg,cur.sub[cur.pg],{keep:true});return}
    if(mode==="signup"){const {data,error}=await SB.auth.signUp({email,password:pw,options:{emailRedirectTo:location.origin+location.pathname}});if(error)throw error;
-    if(data&&data.session){await loadUser();renderAccount();renderTeam();return}say(msg,"Almost done. We sent a confirmation link to "+email+". Open it, then log in here.",true)}
+    if(data&&data.session){await loadUser();renderAccount();renderTeam();showPage(cur.pg,cur.sub[cur.pg],{keep:true});return}say(msg,"Almost done. We sent a confirmation link to "+email+". Open it, then log in here.",true)}
    else{const {error}=await SB.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname});if(error)throw error;say(msg,"If this email has an account, a reset link is on its way.",true)}
   }catch(err){say(msg,errText(err))}btn.disabled=false;return}
  if(f.id==="recForm"){e.preventDefault();const pw=$("#rPass").value,msg=$("#rMsg");if(pw.length<8){say(msg,"The password needs at least 8 characters.");return}
@@ -4297,7 +4312,7 @@ async function initAuth(){renderAccount();renderTeam();
  SB.auth.onAuthStateChange((ev)=>{setTimeout(async()=>{const bu=ST.user&&ST.user.id,bm=ST.member&&ST.member.rel_id,ba=ST.app&&ST.app.status;
   if(ev==="PASSWORD_RECOVERY")authMode="recovery";await loadUser();
   const changed=ev==="PASSWORD_RECOVERY"||ev==="SIGNED_OUT"||bu!==(ST.user&&ST.user.id)||bm!==(ST.member&&ST.member.rel_id)||ba!==(ST.app&&ST.app.status);
-  if(changed){renderAccount();renderTeam()}if(ev==="SIGNED_IN"||ev==="INITIAL_SESSION")refreshPublic()},0)});
+  if(changed){renderAccount();renderTeam()}if(ev==="SIGNED_IN"||ev==="INITIAL_SESSION")refreshPublic();if(typeof applyGate==="function")applyGate(cur.pg)},0)});
  await loadUser();renderAccount();renderTeam();refreshPublic();
  if(fromEmailLink)showPage("account")}
 
@@ -4561,7 +4576,7 @@ const QZ=[["What does MVP stand for in the startup world?",["Most Valuable Playe
   $("#qCount").textContent=qs.length+" / "+N}
  function click(r,c){if(done)return;if(t0===null){t0=Date.now();timer=setInterval(()=>{secs=Math.floor((Date.now()-t0)/1000);$("#qTime").textContent=mmss(secs)},500)}
   S[r][c]=(S[r][c]+1)%3;const{qs,bad}=analyze();draw();
-  if(qs.length===N&&bad.size===0){done=true;clearInterval(timer);secs=Math.floor((Date.now()-t0)/1000);$("#qTime").textContent=mmss(secs);$("#qMsg").textContent="Solved in "+mmss(secs)+". Come back tomorrow for a new board.";$("#qShare").hidden=false;draw();try{localStorage.setItem("rel-q-"+key,String(secs))}catch(e){}submitGame("puzzle",secs)}
+  if(qs.length===N&&bad.size===0){done=true;clearInterval(timer);secs=Math.floor((Date.now()-t0)/1000);$("#qTime").textContent=mmss(secs);$("#qMsg").textContent="Solved in "+mmss(secs)+". Come back tomorrow for a new board.";$("#qShare").hidden=false;draw();if(typeof confettiBurst==="function"){const gb=$("#qgrid");if(gb){const r=gb.getBoundingClientRect();confettiBurst(r.left+r.width/2,r.top+r.height/2)}}try{localStorage.setItem("rel-q-"+key,String(secs))}catch(e){}submitGame("puzzle",secs)}
   else $("#qMsg").textContent=bad.size?"Two crowns clash. Check rows, columns, colors and neighbors.":""}
  $("#qReset").addEventListener("click",()=>{S.forEach(r=>r.fill(0));clearInterval(timer);t0=null;done=false;secs=0;$("#qTime").textContent="0:00";$("#qMsg").textContent="";$("#qShare").hidden=true;draw()});
  $("#qShare").addEventListener("click",async()=>{const m="I solved today's REL puzzle in "+mmss(secs)+". Can you beat it?";try{await navigator.clipboard.writeText(m);toast("Result copied")}catch(e){toast(m)}});
@@ -5182,6 +5197,7 @@ console.log("%cLooking around the code? We like that kind of curiosity here.\nCo
 (function(){const orig=document.title;let t=null;
  document.addEventListener("visibilitychange",()=>{if(document.hidden){clearTimeout(t);document.title="\ud83d\udc40 come back...";t=setTimeout(()=>{document.title="We'll be here \u2014 REL"},2200)}else{clearTimeout(t);document.title=orig}})})();
 document.addEventListener("click",e=>{const m=e.target.closest(".mcnaoh-mark");if(!m)return;m.classList.remove("stroll");void m.offsetWidth;m.classList.add("stroll")});
+document.addEventListener("click",e=>{const sw=e.target.closest(".seal");if(!sw)return;const s=sw.querySelector(".seal-rot");if(!s)return;s.classList.remove("boost");void s.offsetWidth;s.classList.add("boost");setTimeout(()=>s.classList.remove("boost"),1650)});
 
 /* a small, quick confetti burst -- used once, right after a membership application is sent */
 function confettiBurst(x,y){const colors=["#800020","#F0E3E4","#E8C9CC","#F8F6F1"];
@@ -5191,6 +5207,19 @@ function confettiBurst(x,y){const colors=["#800020","#F0E3E4","#E8C9CC","#F8F6F1
   p.style.setProperty("--cx",`translate(${dx}px, ${dy}px)`);p.style.setProperty("--cr",rot+"deg");
   p.style.animation=`confetti-fall ${dur}ms ease-out forwards`;
   document.body.appendChild(p);setTimeout(()=>p.remove(),dur+80)}}
+/* ---------- members-only gate on a few pages, to give an account real value ---------- */
+const GATED_PAGES={mobilite:"Mobilit\u00e9",learn:"Learn",play:"Play",points:"the Leaderboard"};
+function gateHTML(label){return `<div class="gate-inner"><span class="tag">Members only</span><h3>Log in to see ${esc(label)}</h3><p>This is one of the things REL members get. It takes about a minute to join, and it is free.</p><div class="row"><a class="btn primary" href="#join" data-goto="member">Join REL</a><a class="btn" href="#join" data-goto="login-gate">Log in</a></div></div>`}
+function applyGate(pg){const label=GATED_PAGES[pg];const root=document.querySelector('.pg[data-pg="'+pg+'"]');if(!root)return;
+ let g=root.querySelector(".gate-block");
+ if(label&&!ST.user){
+  if(!g){g=document.createElement("div");g.className="gate-block";const w=root.querySelector(".wrap");if(w)w.appendChild(g)}
+  g.hidden=false;g.innerHTML=gateHTML(label);
+  root.querySelectorAll(".tabs.subtabs,.pane").forEach(x=>x.hidden=true);
+ } else if(g){g.hidden=true}
+}
+document.addEventListener("click",e=>{const lg=e.target.closest('[data-goto="login-gate"]');if(!lg)return;e.preventDefault();authMode="login";authNote="";showPage("account")});
+(function(){const _showPage=showPage;showPage=function(pg,sub,o){_showPage(pg,sub,o);applyGate(cur.pg)}})();
 
 </script>
 </body>
