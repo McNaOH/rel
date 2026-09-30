@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-YxQLTXJA9Egw48lzZ3mmfR15J56Mo5C4S1j8C4jN7Mc='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-QgHea2inMOZ8/nTsT5M6L0RVgG6fy7QCR/9K/yZlX9E='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>REL | Relations, Entrepreneurship &amp; Leadership</title>
+<title>REL: Roumieh's number one club | Lebanese University</title>
 <meta name="description" content="REL is the Relations, Entrepreneurship and Leadership club of the Faculty of Engineering, Branch 2, Lebanese University. Roumieh's number one club.">
-<meta property="og:title" content="REL | Relations, Entrepreneurship &amp; Leadership">
+<meta property="og:title" content="REL: Roumieh's number one club">
 <meta property="og:description" content="Build your network, start something of your own and learn to lead. The Relations, Entrepreneurship and Leadership club at the Lebanese University.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#800020">
@@ -646,6 +646,8 @@ footer .vres,footer .vres.ok,footer .vres.no{color:var(--rose)}
 @keyframes spin{to{transform:rotate(360deg)}}
 @media (max-width:1000px){.seal{width:104px;height:104px;top:112px;right:18px}}
 @media (max-width:520px){.seal{width:88px;height:88px;top:100px}}
+@media (max-width:1000px){.hero2 .kicker{max-width:calc(100% - 128px)}}
+@media (max-width:520px){.hero2 .kicker{max-width:calc(100% - 112px)}}
 @media (prefers-reduced-motion:reduce){.seal-rot{animation:none}}
 /* not a student */
 .notstudent{max-width:520px;margin-top:28px;padding:24px 26px;border:1.5px dashed var(--line);border-radius:14px}
@@ -905,6 +907,26 @@ a.ptn:hover{border-color:var(--fill)}
 /* a small mark next to the footer credit line */
 .mcnaoh-mark{height:1.5em;width:auto;margin-left:6px;vertical-align:-0.35em;opacity:.92}
 
+/* Faculty Advisor spotlight, above the regular board grid on the People page */
+#advisorSpot{margin-bottom:36px}
+.advisor-card{background:var(--band);color:var(--on-band);border-radius:16px;padding:30px}
+.advisor-card .tag{background:rgba(248,246,241,.16);color:var(--on-band);border-color:rgba(248,246,241,.4);margin-bottom:18px;display:inline-block}
+.advisor-body{display:flex;gap:22px;align-items:center}
+.advisor-body .ph{width:88px;height:88px;font-size:1.8rem;background:rgba(248,246,241,.16);color:var(--on-band);flex:none}
+.advisor-body h3{color:var(--on-band);font-size:1.5rem;margin-bottom:4px}
+.advisor-body p{color:var(--rose);margin:0 0 8px}
+.advisor-body .idlink{color:var(--on-band);opacity:.85}
+@media (max-width:560px){.advisor-body{flex-direction:column;align-items:flex-start;text-align:left}}
+
+/* linking a placeholder board seat to someone's real member account */
+.link-dup{margin-top:16px;padding-top:16px;border-top:1px dashed var(--line)}
+.link-dup input{min-height:40px}
+
+/* a little fun: the footer mascot takes a step when you click him */
+.mcnaoh-mark{cursor:pointer}
+@keyframes mcnaoh-stroll{0%{transform:translateY(0) rotate(0)}25%{transform:translateY(-3px) rotate(-8deg)}50%{transform:translateY(0) rotate(4deg)}75%{transform:translateY(-2px) rotate(-4deg)}100%{transform:translateY(0) rotate(0)}}
+.mcnaoh-mark.stroll{animation:mcnaoh-stroll .5s ease}
+
 </style>
 </head>
 <body>
@@ -1012,7 +1034,7 @@ a.ptn:hover{border-color:var(--fill)}
 </div>
 </div>
 </div></section></div>
-<div class="pg" data-pg="people" hidden><section id="people" class="sec"><div class="wrap"><div class="sec-head"><h2>The people of REL</h2><p>The board that runs the club, the ambassadors who spread it, and every member who joins. Already a member? <a href="#join" data-goto="card">Get your digital card</a>.</p></div><div class="pane" data-pane="board" data-label="The board"><div class="grid3" id="board"></div></div><div class="pane" data-pane="ambassadors" data-label="Ambassadors"><div class="grid2"><div id="ambs"></div><div><p class="muted">Ambassadors represent REL in their class and major, bring in new members and share our events. Want to be one?</p><div id="ambBtn"></div></div></div>
+<div class="pg" data-pg="people" hidden><section id="people" class="sec"><div class="wrap"><div class="sec-head"><h2>The people of REL</h2><p>The board that runs the club, the ambassadors who spread it, and every member who joins. Already a member? <a href="#join" data-goto="card">Get your digital card</a>.</p></div><div class="pane" data-pane="board" data-label="The board"><div id="advisorSpot" hidden></div><div class="grid3" id="board"></div></div><div class="pane" data-pane="ambassadors" data-label="Ambassadors"><div class="grid2"><div id="ambs"></div><div><p class="muted">Ambassadors represent REL in their class and major, bring in new members and share our events. Want to be one?</p><div id="ambBtn"></div></div></div>
 </div><div class="pane" data-pane="find" data-label="Find a member"><label for="memQ" class="muted small">Search by name or REL ID (like #0001). Only people who agreed to be listed appear here. Phone numbers and emails are never shown.</label>
 <input id="memQ" class="search" type="search" placeholder="Name or ID, like #0001" autocomplete="off">
 <div class="res" id="memRes" aria-live="polite"></div>
@@ -1269,8 +1291,9 @@ $("#calPrev").addEventListener("click",()=>{cm=new Date(cm.getFullYear(),cm.getM
 $("#calNext").addEventListener("click",()=>{cm=new Date(cm.getFullYear(),cm.getMonth()+1,1);drawCal()});drawCal();
 /* board, ambassadors */
 const ph=(n,p)=>`<div class="ph">${p?`<img src="${esc(p)}" alt="${esc(n)}">`:esc(initials(n))}</div>`;
-function drawBoard(){$("#board").innerHTML=BOARD.map(b=>`<div class="person">${ph(b.name,b.photo)}<h3>${b.name?esc(b.name):'<span class="muted">Name coming soon</span>'}</h3><div class="role">${esc(b.role)}</div><p>${esc(b.bio)}</p>${b.id?`<button type="button" class="idlink" data-prof="${b.id}">#${b.id}, view profile</button>`:""}</div>`).join("")}
-drawBoard();
+function drawBoard(){$("#board").innerHTML=BOARD.filter(b=>b.dbRole!=="advisor").map(b=>`<div class="person">${ph(b.name,b.photo)}<h3>${b.name?esc(b.name):'<span class="muted">Name coming soon</span>'}</h3><div class="role">${esc(b.role)}</div><p>${esc(b.bio)}</p>${b.id?`<button type="button" class="idlink" data-prof="${b.id}">#${b.id}, view profile</button>`:""}</div>`).join("")}
+function drawAdvisor(){const box=$("#advisorSpot");if(!box)return;const a=BOARD.find(b=>b.dbRole==="advisor");box.hidden=!a;if(!a)return;box.innerHTML=`<div class="advisor-card"><span class="tag">Faculty Advisor</span><div class="advisor-body">${ph(a.name,a.photo)}<div><h3>${a.name?esc(a.name):'<span class="muted">Name coming soon</span>'}</h3>${a.bio?`<p>${esc(a.bio)}</p>`:''}${a.id?`<button type="button" class="idlink" data-prof="${a.id}">#${a.id}, view profile</button>`:""}</div></div></div>`}
+drawBoard();drawAdvisor();
 $("#ambs").innerHTML=AMBS.map(a=>`<div class="amb">${ph(a.name,a.photo)}<div><b>${a.name?esc(a.name):'<span class="muted">Name coming soon</span>'}</b><span class="muted small">${esc(a.info||"REL ambassador")}</span></div></div>`).join("");
 /* members */
 const asId=q=>/^[#\s]*(rel-?)?\d{1,4}$/i.test(q.trim())?q.replace(/\D/g,"").padStart(4,"0"):null;
@@ -3649,7 +3672,7 @@ const PERMS=[["events","Add, edit and remove events"],["announcements","Post ann
 const PRESETS={vice_president:PERMS.map(p=>p[0]),board:[]};
 const can=p=>!!(ST.team&&(ST.team.role==="president"||(ST.team.perms||[]).includes(p)));
 function errText(e){const m=(e&&e.message)||String(e||"");
- if(/Database error saving new user|Sign-up is only open/i.test(m))return "Sign-up is only open to LU student emails (name@st.ul.edu.lb).";
+ if(/Database error saving new user|Sign-up is only open/i.test(m))return "We could not create that account. Please try again, or use a different email.";
  if(/Invalid login credentials/i.test(m))return "Wrong email or password.";
  if(/Email not confirmed/i.test(m))return "Please confirm your email first. Open the link we sent you.";
  if(/already registered/i.test(m))return "This email already has an account. Try logging in.";
@@ -3688,7 +3711,7 @@ function authView(box){const m=authMode==="signup"?"signup":authMode==="reset"?"
  box.innerHTML=accHead("Your account","Log in, or create an account with your LU student email to apply for membership.")+
  `<div class="tabs" role="tablist">${[["login","Log in"],["signup","Create account"]].map(t=>`<button type="button" class="tab" role="tab" aria-selected="${m===t[0]}" data-am="${t[0]}">${t[1]}</button>`).join("")}</div>
  <div class="card" style="max-width:520px;background:var(--bg)"><form id="authForm" data-mode="${m}" novalidate>
- <label class="fld">Email${m==="signup"?" (your LU student email, ending in @st.ul.edu.lb)":""} *<input type="email" id="aEmail" autocomplete="email" placeholder="name@st.ul.edu.lb"></label>
+ <label class="fld">Email${m==="signup"?" (your LU email if you have one, or any email that works for you)":""} *<input type="email" id="aEmail" autocomplete="email" placeholder="name@st.ul.edu.lb, or any email"></label>
  ${m==="reset"?"":`<label class="fld">Password *<input type="password" id="aPass" autocomplete="${m==="signup"?"new-password":"current-password"}"></label>`}
  ${m==="signup"?'<p class="muted small">At least 8 characters. We only use your details for REL membership.</p>':""}
  <div class="row"><button class="btn primary" type="submit">${m==="signup"?"Create account":m==="reset"?"Send reset link":"Log in"}</button></div>
@@ -3696,7 +3719,7 @@ function authView(box){const m=authMode==="signup"?"signup":authMode==="reset"?"
  ${m==="login"?'<p class="alt-links"><button type="button" class="idlink" data-am="reset">Forgot your password?</button></p>':""}
  ${m==="reset"?'<p class="alt-links"><button type="button" class="idlink" data-am="login">Back to log in</button></p>':""}
  </form></div>
- <div class="notstudent"><h3>Not an LU student?</h3><p>Accounts are for students of the Lebanese University, because the LU email is how we know you are one of us. You can still take part without an account:</p>
+ <div class="notstudent"><h3>Not an LU student?</h3><p>Accounts are meant for students of the Lebanese University. Your application still needs a real university ID, checked by the board, so this only works if you are actually one of our students. If you are not, you can still take part without an account:</p>
  <ul><li><a href="#join" data-goto="newsletter">Subscribe to the newsletter</a></li><li><a href="#join" data-goto="question">Ask the board a question</a></li><li><a href="#partner">Sponsor, partner or collaborate with REL</a></li><li>Doctor or faculty member? <a href="#join" data-goto="question">Ask the President</a> to set up your access.</li></ul></div>`;restoreDraft("authForm")}
 function recoveryView(box){box.innerHTML=accHead("Choose a new password")+`<div class="card" style="max-width:520px;background:var(--bg)"><form id="recForm" novalidate><label class="fld">New password *<input type="password" id="rPass" autocomplete="new-password"></label><div class="row"><button class="btn primary" type="submit">Save password</button></div><p class="vres" id="rMsg" role="status" aria-live="polite"></p></form></div>`}
 
@@ -3830,7 +3853,7 @@ const mapEv=e=>({poster:e.poster_path?mediaUrl(e.poster_path):"",photos:(e.photo
 const mapAn=a=>({image:a.image_path?mediaUrl(a.image_path):"",date:a.date,title:a.title,text:a.body||"",link:safeUrl(a.link),pinned:!!a.pinned});
 const mapRec=r=>({id:r.rel_id,type:r.role==="ambassador"?"Ambassador":r.role==="member"?"Member":"Board",name:r.full_name,role:r.position||"Member",year:r.year,major:r.major,faculty:r.faculty,joined:r.joined,bio:r.bio,photo:r.photo_path?photoUrl(r.photo_path):"",listed:true,db:true});
 const STATIC_RECORDS=RECORDS.slice(),STATIC_BOARD=BOARD.map(b=>({...b}));
-const mapBoard=r=>{const s=STATIC_BOARD.find(x=>x.id===r.rel_id)||{};return{id:r.rel_id,role:r.position,name:r.full_name,bio:r.bio||s.bio||"",photo:r.photo_path?photoUrl(r.photo_path):(s.photo||"")}};
+const mapBoard=r=>{const s=STATIC_BOARD.find(x=>x.id===r.rel_id)||{};return{id:r.rel_id,role:r.position,dbRole:r.role,name:r.full_name,bio:r.bio||s.bio||"",photo:r.photo_path?photoUrl(r.photo_path):(s.photo||"")}};
 const mapBoardRec=r=>({id:r.rel_id,type:"Board",name:r.full_name,role:r.position,year:r.year,major:r.major,faculty:r.faculty,bio:r.bio,photo:r.photo_path?photoUrl(r.photo_path):"",listed:true,db:true});
 function homeNews(){if(ANN.length){$("#latest").hidden=false;$("#annHome").innerHTML=ANN.slice(0,3).map(annItem).join("")}else $("#latest").hidden=true;if(typeof updateAnnBar==="function")updateAnnBar()}
 async function refreshPublic(){if(!SB)return;
@@ -3838,7 +3861,7 @@ async function refreshPublic(){if(!SB)return;
   if(!ev.error&&ev.data){EVENTS.length=0;PAST.length=0;EVENTS.push(...ev.data.map(mapEv))}
   if(!an.error&&an.data){ANNOUNCEMENTS.length=0;ANNOUNCEMENTS.push(...an.data.map(mapAn))}
   if(!pp.error&&pp.data){RECORDS.length=0;RECORDS.push(...STATIC_RECORDS,...pp.data.filter(r=>!STATIC_RECORDS.some(s=>s.id===r.rel_id)).map(mapRec))}
-  if(!pb.error&&pb.data&&pb.data.length){BOARD.length=0;BOARD.push(...pb.data.map(mapBoard));pb.data.forEach(r=>{if(!RECORDS.some(x=>x.id===r.rel_id))RECORDS.push(mapBoardRec(r))});if(typeof drawBoard==="function")drawBoard()}
+  if(!pb.error&&pb.data&&pb.data.length){BOARD.length=0;BOARD.push(...pb.data.map(mapBoard));pb.data.forEach(r=>{if(!RECORDS.some(x=>x.id===r.rel_id))RECORDS.push(mapBoardRec(r))});if(typeof drawBoard==="function")drawBoard();if(typeof drawAdvisor==="function")drawAdvisor()}
   if(!sp.error&&sp.data){SPEAKERS.length=0;SPEAKERS.push(...sp.data.map(mapSpk))}
   if(!rs.error&&rs.data){DBRES=rs.data.map(mapRes);if(typeof drawRes==="function")drawRes()}
   if(!dc.error&&dc.data&&dc.data.length){DOCS.length=0;DOCS.push(...dc.data.map(mapDoc))}
@@ -3870,7 +3893,6 @@ document.addEventListener("input",e=>{if(e.target.id==="tmQ")drawMembers()});
 document.addEventListener("submit",async e=>{const f=e.target;if(!f||!f.id)return;
  if(f.id==="authForm"){e.preventDefault();const mode=f.dataset.mode,email=$("#aEmail").value.trim().toLowerCase(),pw=$("#aPass")?$("#aPass").value:"",msg=$("#aMsg"),btn=f.querySelector("button[type=submit]");
   if(!/^\S+@\S+\.\S+$/.test(email)){say(msg,"Please enter a valid email.");return}
-  if(mode==="signup"&&!/^[^\s@]+@st\.ul\.edu\.lb$/i.test(email)){say(msg,"Please use your LU student email, the one that ends with @st.ul.edu.lb. Not a student? See the options below.");return}
   if(mode==="signup"&&pw.length<8){say(msg,"The password needs at least 8 characters.");return}
   if(mode==="login"&&!pw){say(msg,"Please enter your password.");return}
   btn.disabled=true;say(msg,"Please wait...",true);
@@ -3997,22 +4019,25 @@ document.addEventListener("click",async e=>{const d=e.target.closest("[data-adec
 
 /* ---- Access: who can do what (President only) ---- */
 const permBoxes=sel=>PERMS.map(p=>`<label class="fld ck"><input type="checkbox" data-perm="${p[0]}" ${sel.includes(p[0])?"checked":""}><span>${esc(p[1])}</span></label>`).join("");
-async function paneAccess(){loading();const {data,error}=await SB.from("team").select("*").order("rel_id",{ascending:true});if(error)return paneErr(error);
+async function paneAccess(){loading();const [tr,mr]=await Promise.all([SB.from("team").select("*").order("rel_id",{ascending:true}),SB.from("members").select("rel_id,user_id").not("user_id","is",null)]);const {data,error}=tr;if(error)return paneErr(error);
+ const claimedIds=new Set((mr.data||[]).map(m=>m.rel_id));
  const rank=t=>t.role==="president"?0:t.role==="vice_president"?1:2;data.sort((x,y)=>rank(x)-rank(y)||x.rel_id.localeCompare(y.rel_id));
  tpane().innerHTML=`<p class="muted">Choose who can do what in the Team area. The President always has full access. Changes apply right away, and nobody needs to log in again.</p>
  ${data.map(t=>t.role==="president"?`<div class="appc" data-teamp="${esc(t.email)}"><h3>${esc(t.full_name)}</h3><p class="muted small" style="margin:0">${esc(t.position)}. #${esc(t.rel_id)}. ${esc(t.email)}</p><div class="sigs"><span class="badge ok">&#10003; Full access</span></div>${upField("tp_"+t.rel_id,"Photo","team",800,true,"image/jpeg,image/png,image/webp",t.photo_path,"photo")}<div class="row"><button type="button" class="btn sm" data-savephoto="${esc(t.email)}">Save photo</button></div><p class="vres" data-teammsg role="status" aria-live="polite"></p></div>`
  :`<div class="appc" data-team="${esc(t.email)}"><h3>${esc(t.full_name)}</h3><p class="muted small" style="margin:0">#${esc(t.rel_id)}. ${/@pending\.rel$/.test(t.email)?"Email not set yet":esc(t.email)}</p>
   ${/@pending\.rel$/.test(t.email)?'<div class="sigs"><span class="badge warn">! Add their email so they can log in</span></div>':""}
   <label class="fld" style="margin:14px 0 0">Email<input data-f="email" type="email" value="${/@pending\.rel$/.test(t.email)?"":esc(t.email)}" placeholder="name@st.ul.edu.lb"></label>
-  <div class="row" style="gap:16px;margin:16px 0 8px"><label class="fld" style="flex:1 1 200px;margin:0">Position<input data-f="position" value="${esc(t.position)}"></label><label class="fld" style="flex:1 1 180px;margin:0">Role<select data-f="role"><option value="vice_president" ${t.role==="vice_president"?"selected":""}>Vice President</option><option value="board" ${t.role==="board"?"selected":""}>Board member</option></select></label></div>
+  <div class="row" style="gap:16px;margin:16px 0 8px"><label class="fld" style="flex:1 1 200px;margin:0">Position<input data-f="position" value="${esc(t.position)}"></label><label class="fld" style="flex:1 1 180px;margin:0">Role<select data-f="role"><option value="vice_president" ${t.role==="vice_president"?"selected":""}>Vice President</option><option value="board" ${t.role==="board"?"selected":""}>Board member</option><option value="advisor" ${t.role==="advisor"?"selected":""}>Faculty Advisor</option></select></label></div>
   ${upField("tp_"+t.rel_id,"Photo","team",800,true,"image/jpeg,image/png,image/webp",t.photo_path,"photo")}
   ${permBoxes(t.perms||[])}
-  <div class="row" style="margin-top:8px"><button type="button" class="btn primary sm" data-teamsave="${esc(t.email)}">Save</button><button type="button" class="btn sm" data-teamdel="${esc(t.email)}">Remove access</button></div><p class="vres" data-teammsg role="status" aria-live="polite"></p></div>`).join("")}
+  <div class="row" style="margin-top:8px"><button type="button" class="btn primary sm" data-teamsave="${esc(t.email)}">Save</button><button type="button" class="btn sm" data-teamdel="${esc(t.email)}">Remove access</button></div><p class="vres" data-teammsg role="status" aria-live="polite"></p>
+  ${claimedIds.has(t.rel_id)?"":`<div class="link-dup"><p class="muted small" style="margin:0 0 8px">Did they already make their own member account instead of using this seat? Link the two so they stop being two separate people on the site.</p><div class="row"><input data-linkid placeholder="Their REL ID, like 0008" style="max-width:180px"><button type="button" class="btn sm" data-linkacct="${esc(t.rel_id)}">Link account</button></div><p class="vres" data-linkmsg role="status" aria-live="polite"></p></div>`}
+  </div>`).join("")}
  <div class="card" style="background:var(--bg);margin-top:28px"><h3 style="margin-bottom:12px">Add someone to the team</h3><form id="tmForm" novalidate>
   <label class="fld">Their email *<input id="tmEmail" type="email" placeholder="name@st.ul.edu.lb"></label>
   <label class="fld">Full name *<input id="tmName"></label>
   <label class="fld">Position, like Treasurer *<input id="tmPos"></label>
-  <label class="fld">Role<select id="tmRole"><option value="board">Board member</option><option value="vice_president">Vice President</option></select></label>
+  <label class="fld">Role<select id="tmRole"><option value="board">Board member</option><option value="vice_president">Vice President</option><option value="advisor">Faculty Advisor</option></select></label>
   <p class="muted small" style="margin:6px 0 4px">What can they do?</p>${permBoxes([])}
   <div class="row"><button type="button" class="btn sm" data-preset="vice_president">Vice President preset</button><button type="button" class="btn sm" data-preset="board">View only</button></div>
   <div class="row" style="margin-top:16px"><button class="btn primary sm" type="submit">Add to the team</button></div><p class="vres" id="tmMsg" role="status" aria-live="polite"></p></form>
@@ -4027,6 +4052,11 @@ document.addEventListener("click",async e=>{
   const ph=card.querySelector('[data-cf="photo"]');if(ph){const r2=await SB.from("team").update({photo_path:ph.value||null}).eq("email",mail);if(r2.error){say(msg,errText(r2.error));return}}
   toast("Saved");paneAccess();refreshPublic();return}
  const sp=e.target.closest("[data-savephoto]");if(sp){const card=sp.closest("[data-teamp]"),ph=card.querySelector('[data-cf="photo"]'),msg=card.querySelector("[data-teammsg]");const {error}=await SB.from("team").update({photo_path:ph.value||null}).eq("email",sp.dataset.savephoto);if(error){say(msg,errText(error));return}say(msg,"Saved.",true);refreshPublic();return}
+ const la=e.target.closest("[data-linkacct]");if(la){const box=la.closest(".link-dup"),input=box.querySelector("[data-linkid]"),msg=box.querySelector("[data-linkmsg]"),realId=input.value.trim();
+  if(!realId){say(msg,"Enter their REL ID first.");return}
+  if(!confirm("Link seat #"+la.dataset.linkacct+" to member #"+realId+"? The seat will disappear and #"+realId+" will take on its role and title. This cannot be undone."))return;
+  la.disabled=true;const {error}=await SB.rpc("merge_team_duplicate",{p_team_rel_id:la.dataset.linkacct,p_real_rel_id:realId});la.disabled=false;
+  if(error){say(msg,errText(error));return}toast("Linked. #"+realId+" now holds this seat.");paneAccess();refreshPublic();return}
  const dl=e.target.closest("[data-teamdel]");if(dl){if(!confirm("Remove this person's team access? They stay a normal member."))return;const {error}=await SB.rpc("remove_team_member",{p_email:dl.dataset.teamdel});if(error){toast(errText(error));return}toast("Access removed");paneAccess();refreshPublic()}});
 document.addEventListener("submit",async e=>{const f=e.target;if(!f||f.id!=="tmForm")return;e.preventDefault();const msg=$("#tmMsg"),email=$("#tmEmail").value.trim(),name=$("#tmName").value.trim(),pos=$("#tmPos").value.trim();
  if(!/^\S+@\S+\.\S+$/.test(email)){say(msg,"Please enter a valid email.");return}if(name.length<3||pos.length<2){say(msg,"Please fill in the name and the position.");return}
@@ -4382,7 +4412,7 @@ const FAQ_ALL=[
  ["Are my phone number and email public?", "No. Phone numbers and emails are never shown on this site. Only the name, position, year, major and faculty of people who agreed to be listed appear."],
  ["What does an ambassador do?", "Ambassadors represent REL in their class or major, bring in new members and share our events. They get a certificate and a title they can add to LinkedIn."],
  ["How many students does REL reach?", "We reach over 900 students on social media and over 450 in our WhatsApp community, on top of everyone who comes to our events on campus."],
- ["I am not an LU student. Can I get an account?", "Accounts are for students of the Lebanese University, because the LU email is how we know you are one of us. Everyone else can follow REL, subscribe to the newsletter, ask questions and partner with us without an account. Doctors and faculty members can ask the President to set up their access."],
+ ["I am not an LU student. Can I get an account?", "Accounts are meant for students of the Lebanese University. Your application still needs a real university ID, checked by the board, so this only works if you are actually one of our students. Everyone else can follow REL, subscribe to the newsletter, ask questions and partner with us without an account. Doctors and faculty members can ask the President to set up their access."],
  ["Can my company sponsor REL?", "Yes, and we will act surprised. Sponsors get visibility at our events and in front of the most ambitious students in Roumieh, plus our eternal gratitude, which is worth more than it sounds. Open Work with REL, choose I want to sponsor and the board will reply before your coffee gets cold."],
  ["We are a company or an organization. Can we partner with REL?", "Please do. We are open to workshops, talks, site visits, internships and ideas we have not thought of yet. Open Work with REL, choose the company or organization option and tell us what you have in mind."],
  ["Can another club collaborate with us?", "Yes, we love a crossover episode. Joint events, workshops, competitions, anything. Just come with a plan and snacks. Open Work with REL and choose We are a club."],
@@ -5112,6 +5142,12 @@ document.addEventListener("click",e=>{const l=e.target.closest("[data-moblang]")
  const g=e.target.closest("[data-mobgo]");if(g){e.preventDefault();const [pg,sub]=g.dataset.mobgo.split("/");showPage(pg,sub)}});
 document.addEventListener("input",e=>{if(e.target.id==="mobQ"){mobQ=e.target.value;drawMobilite();const i=$("#mobQ");if(i){i.focus();i.selectionStart=i.selectionEnd=i.value.length}}});
 drawMobilite();
+/* ---------- a few small, hidden touches, just for fun ---------- */
+console.log("%c REL ", "background:#800020;color:#F8F6F1;font-weight:700;font-size:14px;padding:4px 10px;border-radius:4px 0 0 4px;", "%c Relations, Entrepreneurship, Leadership ", "background:#F0E3E4;color:#800020;font-weight:600;font-size:12px;padding:4px 10px;border-radius:0 4px 4px 0;");
+console.log("%cLooking around the code? We like that kind of curiosity here.\nCome build with us -> " + (typeof CONFIG!=="undefined"?CONFIG.email:"") + "  \ud83d\udc4b", "color:#800020;font-size:12px;line-height:1.5");
+(function(){const orig=document.title;let t=null;
+ document.addEventListener("visibilitychange",()=>{if(document.hidden){clearTimeout(t);document.title="\ud83d\udc40 come back...";t=setTimeout(()=>{document.title="We'll be here \u2014 REL"},2200)}else{clearTimeout(t);document.title=orig}})})();
+document.addEventListener("click",e=>{const m=e.target.closest(".mcnaoh-mark");if(!m)return;m.classList.remove("stroll");void m.offsetWidth;m.classList.add("stroll")});
 
 </script>
 </body>
