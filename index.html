@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-ZxMICJnAGFyN7VGYwV0OSwYOXTHt2AxildRgpZgTa0w='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-mZbf48mcTwI7rziD0HIO3YQECp39E4bon39u9SqJPK4='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>REL: Roumieh's number one club | Lebanese University</title>
+<title>REL club: Relations, Entrepreneurship and Leadership</title>
 <meta name="description" content="REL is the Relations, Entrepreneurship and Leadership club of the Faculty of Engineering, Branch 2, Lebanese University. Roumieh's number one club.">
-<meta property="og:title" content="REL: Roumieh's number one club">
+<meta property="og:title" content="REL club: Relations, Entrepreneurship and Leadership">
 <meta property="og:description" content="Build your network, start something of your own and learn to lead. The Relations, Entrepreneurship and Leadership club at the Lebanese University.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#800020">
@@ -922,10 +922,13 @@ a.ptn:hover{border-color:var(--fill)}
 .link-dup{margin-top:16px;padding-top:16px;border-top:1px dashed var(--line)}
 .link-dup input{min-height:40px}
 
-/* a little fun: the footer mascot takes a step when you click him */
+/* a little fun: the footer mascot goes for a short walk when you hover or tap him */
 .mcnaoh-mark{cursor:pointer}
 @keyframes mcnaoh-stroll{0%{transform:translateY(0) rotate(0)}25%{transform:translateY(-3px) rotate(-8deg)}50%{transform:translateY(0) rotate(4deg)}75%{transform:translateY(-2px) rotate(-4deg)}100%{transform:translateY(0) rotate(0)}}
-.mcnaoh-mark.stroll{animation:mcnaoh-stroll .5s ease}
+.mcnaoh-mark{transform-origin:50% 100%}
+@keyframes mcnaoh-walk{0%{transform:translateX(0) translateY(0) rotate(0)}10%{transform:translateX(4px) translateY(-3px) rotate(-6deg)}20%{transform:translateX(8px) translateY(0) rotate(5deg)}30%{transform:translateX(12px) translateY(-3px) rotate(-6deg)}40%{transform:translateX(16px) translateY(0) rotate(5deg)}49%{transform:translateX(18px) translateY(0) scaleX(1)}51%{transform:translateX(18px) translateY(0) scaleX(-1)}60%{transform:translateX(14px) translateY(-3px) scaleX(-1) rotate(6deg)}70%{transform:translateX(10px) translateY(0) scaleX(-1) rotate(-5deg)}80%{transform:translateX(6px) translateY(-3px) scaleX(-1) rotate(6deg)}90%{transform:translateX(2px) translateY(0) scaleX(-1) rotate(-5deg)}99%{transform:translateX(0) scaleX(-1)}100%{transform:none}}
+.mcnaoh-mark:hover,.mcnaoh-mark.stroll{animation:mcnaoh-walk 1.6s ease-in-out}
+@media (prefers-reduced-motion:reduce){.mcnaoh-mark:hover,.mcnaoh-mark.stroll{animation:none}}
 
 /* the advisor spot, shown even before anyone has been added */
 .advisor-card.empty{padding:22px 30px}
@@ -1066,13 +1069,38 @@ footer .vres.no:not(:empty),footer .vres.ok:not(:empty){background:rgba(248,246,
 .gchips span.done{background:var(--on-band);color:var(--deep);border-color:var(--on-band)}
 @media (prefers-reduced-motion:reduce){.wl,.wl-back,.totop,.pw-meter i{transition:none}}
 </style>
+<style id="rel-update-9">
+::selection{background:#800020;color:#F8F6F1}
+.btn:active{transform:scale(.97)}
+.scrollbar{position:fixed;top:0;left:0;right:0;height:3px;background:#800020;transform-origin:0 50%;transform:scaleX(0);z-index:400;pointer-events:none}
+body.lights::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:500;background:radial-gradient(circle at 50% 30%,rgba(255,214,102,.55),rgba(255,214,102,0) 70%);animation:lights 1.4s ease-out forwards}
+@keyframes lights{0%{opacity:0}15%{opacity:1}100%{opacity:0}}
+.h1big .ln>span{transition:color .25s}
+.h1big .ln:hover>span{color:#FFD666}
+.foot-extra{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:.88rem;opacity:.75;margin:10px auto 0;max-width:1240px;padding:0 28px}
+.foot-extra .clock{font-variant-numeric:tabular-nums;white-space:nowrap}
+.gb-sel{margin-bottom:18px}
+.polls{margin-bottom:28px}
+.polls-h{margin-bottom:12px}
+.poll,.poll-empty{border:1.5px solid var(--line);border-radius:16px;padding:22px 24px;background:var(--surface);margin-bottom:16px;max-width:720px}
+.poll-top{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.poll h4{font:500 1.4rem/1.2 var(--f-display);margin:0 0 14px;color:var(--brand-ink)}
+.poll-opts{display:grid;gap:8px}
+.poll-o{position:relative;overflow:hidden;display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:left;min-height:48px;padding:10px 16px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);font:500 1rem var(--f-body);color:var(--ink);cursor:pointer}
+.poll-o:disabled{cursor:default}
+.poll-o.on{border-color:var(--fill);font-weight:700}
+.poll-bar{position:absolute;left:0;top:0;bottom:0;background:var(--tint);z-index:0;transition:width .5s var(--ease)}
+.poll-l,.poll-n{position:relative;z-index:1}
+.poll-n{font-weight:700;color:var(--brand-ink)}
+@media (prefers-reduced-motion:reduce){.btn:active{transform:none}body.lights::after{animation:none}}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="annbar" id="annBar" hidden><a href="#events" data-annall><span class="nw">New</span><span id="annBarT"></span></a><button type="button" class="ann-x" aria-label="Close this announcement">&times;</button></div>
 <header class="nav"><div class="wrap nav-in">
 <a class="brand" href="#top" aria-label="REL home"><img class="lg-burg" data-logo="burg" alt=""><img class="lg-light" data-logo="light" alt=""><span>REL</span></a>
-<nav id="menu" aria-label="Main"><span class="pill" id="pill" aria-hidden="true"></span><a href="#about">About</a><a href="#events">Events</a><a href="#people">People</a><a href="#points">Leaderboard</a><a href="#learn">Learn</a><a href="#mobilite">Mobilité</a><a href="#startups">Startups</a><a href="#play">Play</a><a href="#community">Community</a><a href="#team" id="navTeam" hidden>Team</a><a href="#account" id="navAcct" class="nav-join">Become a member</a></nav>
+<nav id="menu" aria-label="Main"><span class="pill" id="pill" aria-hidden="true"></span><a href="#about">About</a><a href="#events">Events</a><a href="#people">People</a><a href="#points">Leaderboard</a><a href="#learn">Learn</a><a href="#mobilite">Mobilité</a><a href="#startups">Startups</a><a href="#play">Play</a><a href="#community">Community</a><a href="#team" id="navTeam" hidden>Team</a><a href="#account" id="navAcct">Log in</a></nav>
 <button class="sbtn" id="sBtn" type="button" aria-label="Search the site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span>Search</span></button>
 <button class="bell" id="bell" type="button" aria-label="Announcements" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.7 20a2 2 0 0 1-3.4 0"/></svg><span class="bdot" id="bdot" hidden></span></button>
 <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span class="mbar"></span><span class="mbar"></span><span class="mbar"></span></button>
@@ -1123,7 +1151,7 @@ footer .vres.no:not(:empty),footer .vres.ok:not(:empty){background:rgba(248,246,
 <section class="sec steps"><div class="wrap">
 <div class="sec-head"><h2>Join in three steps</h2><p>It takes about two minutes, and it is free.</p></div>
 <ol class="steps3">
-<li><span class="sn">1</span><h3>Fill in one form</h3><p>Your name, your LU email (it ends with ul.edu.lb), your 4-digit university ID and a password.</p></li>
+<li><span class="sn">1</span><h3>Fill in one form</h3><p>Your real name, your email and a password. With an LU email, that is all. With another email, add your 4-digit university ID.</p></li>
 <li><span class="sn">2</span><h3>Confirm your email</h3><p>Open the link we send you. Your membership request goes to the board right away.</p></li>
 <li><span class="sn">3</span><h3>Get your REL ID</h3><p>When the board accepts you, your profile and REL ID appear in your account.</p></li>
 </ol>
@@ -1178,16 +1206,19 @@ footer .vres.no:not(:empty),footer .vres.ok:not(:empty){background:rgba(248,246,
 <div class="res" id="memRes" aria-live="polite"></div>
 </div></div></section></div>
 <div class="pg" data-pg="points" hidden><section id="points" class="sec alt"><div class="wrap">
-<div class="sec-head"><h2>Leaderboard</h2><p>Members earn points by showing up and helping out. The games have their own board.</p></div>
-<div class="pane" data-pane="members" data-label="Members">
+<div class="sec-head"><h2>Leaderboard</h2><p>Two boards: club points for showing up and helping out, and the daily games.</p></div>
+<div class="pane" data-pane="members" data-label="Club points"><p class="muted" style="max-width:40em;margin-top:0">Points come from events, workshops and helping REL. They never reset. For the daily games, open the Games tab.</p>
 <div id="honors" class="honors"></div>
 <div class="tabs seg" role="tablist" aria-label="Period"><button type="button" class="tab" role="tab" aria-selected="true" data-lbr="all">All time</button><button type="button" class="tab" role="tab" aria-selected="false" data-lbr="month">This month</button></div>
 <table><thead><tr><th>#</th><th>Member</th><th class="p">Points</th></tr></thead><tbody id="lb"></tbody></table>
 </div>
 <div class="pane" data-pane="games" data-label="Games">
-<div class="grid2"><div><h3 style="margin-bottom:12px">Fastest puzzle today</h3><table><thead><tr><th>#</th><th>Member</th><th class="p">Time</th></tr></thead><tbody id="gToday"></tbody></table></div>
-<div><h3 style="margin-bottom:12px">Most active players</h3><table><thead><tr><th>#</th><th>Member</th><th class="p">Solved</th></tr></thead><tbody id="gTotals"></tbody></table></div></div>
-<p class="muted small" style="margin-top:20px">Log in as a member, then solve the daily puzzle or answer the daily question. One result per game per day.</p>
+<p class="muted" style="max-width:40em;margin-top:0">Pick a game to see today's fastest members. Every game resets at midnight, Beirut time.</p>
+<div class="tabs seg gb-sel" role="tablist" aria-label="Game"><button type="button" class="tab" role="tab" aria-selected="true" data-gb="crowns">Crowns</button><button type="button" class="tab" role="tab" aria-selected="false" data-gb="path">Path</button><button type="button" class="tab" role="tab" aria-selected="false" data-gb="sunmoon">Sun & Moon</button><button type="button" class="tab" role="tab" aria-selected="false" data-gb="sudoku">Mini Sudoku</button><button type="button" class="tab" role="tab" aria-selected="false" data-gb="clues">Five Clues</button><button type="button" class="tab" role="tab" aria-selected="false" data-gb="active">Most active</button></div>
+<div class="gb-p" data-gbp="crowns"><table><thead><tr><th>#</th><th>Member</th><th class="p">Result</th></tr></thead><tbody id="gToday"></tbody></table></div>
+<div class="gb-p" data-gbp="active" hidden><table><thead><tr><th>#</th><th>Member</th><th class="p">Solved</th></tr></thead><tbody id="gTotals"></tbody></table></div>
+<div class="gb-p" data-gbp="path" hidden><table><thead><tr><th>#</th><th>Member</th><th class="p">Result</th></tr></thead><tbody data-gboard="path"></tbody></table></div><div class="gb-p" data-gbp="sunmoon" hidden><table><thead><tr><th>#</th><th>Member</th><th class="p">Result</th></tr></thead><tbody data-gboard="sunmoon"></tbody></table></div><div class="gb-p" data-gbp="sudoku" hidden><table><thead><tr><th>#</th><th>Member</th><th class="p">Result</th></tr></thead><tbody data-gboard="sudoku"></tbody></table></div><div class="gb-p" data-gbp="clues" hidden><table><thead><tr><th>#</th><th>Member</th><th class="p">Result</th></tr></thead><tbody data-gboard="clues"></tbody></table></div>
+<p class="muted small" style="margin-top:20px">Only members appear here. One result per game per day.</p>
 </div>
 <div class="pane" data-pane="rules" data-label="How to earn points">
 <table><thead><tr><th>Action</th><th class="p">Points</th></tr></thead><tbody id="pts"></tbody></table>
@@ -1221,7 +1252,7 @@ footer .vres.no:not(:empty),footer .vres.ok:not(:empty){background:rgba(248,246,
 <div class="pane" data-pane="lab" data-label="Idea Lab"><div id="labBox"></div></div>
 <div class="pane" data-pane="ideas" data-label="Idea board"><div id="ideaBoard"></div></div>
 </div></section></div>
-<div class="pg" data-pg="play" hidden><section id="play" class="sec alt"><div class="wrap"><div class="sec-head"><h2>Play</h2><p>Five puzzles and a business question every day, the same for everyone. Keep your streak going.</p></div><div class="pane" data-pane="puzzle" data-label="Daily puzzle"><div class="qwrap">
+<div class="pg" data-pg="play" hidden><section id="play" class="sec alt"><div class="wrap"><div class="sec-head"><h2>Play</h2><p>Five puzzles and a business question every day, the same for everyone. Keep your streak going.</p></div><div class="pane" data-pane="puzzle" data-label="Crowns"><div class="qwrap">
 <div><div id="qgrid" aria-label="Puzzle board"></div></div>
 <div>
 <ul class="rules"><li>Put one crown in every row, every column and every colored region.</li><li>No two crowns can touch, not even diagonally.</li><li>Tap a square once for an ×, twice for a crown, three times to clear it.</li></ul>
@@ -1239,7 +1270,7 @@ footer .vres.no:not(:empty),footer .vres.ok:not(:empty){background:rgba(248,246,
 <div class="qstat"><div><span class="muted small">Time</span><br><b data-gtime="path">0:00</b></div><div><span class="muted small">Your streak</span><br><b data-gstreak="path">0 days</b></div><div><span class="muted small">Your best</span><br><b data-gbest="path">–</b></div></div>
 <p class="g2-msg" data-gmsg="path" role="status" aria-live="polite"></p>
 <div class="row"><button type="button" class="btn" data-greset="path">Start over</button><button type="button" class="btn" data-ghint="path">Hint</button><button type="button" class="btn primary" data-gshare="path" hidden>Copy my result</button></div>
-<div class="g2-top"><h3>Fastest today</h3><table class="lb"><tbody data-gboard="path"><tr><td class="muted">Loading...</td></tr></tbody></table></div>
+<p class="g2-top"><a class="btn sm" href="#points" data-gbgo="path">See today\'s leaderboard</a></p>
 </div>
 </div>
 </div><div class="pane" data-pane="sunmoon" data-label="Sun & Moon"><div class="qwrap g2">
@@ -1249,7 +1280,7 @@ footer .vres.no:not(:empty),footer .vres.ok:not(:empty){background:rgba(248,246,
 <div class="qstat"><div><span class="muted small">Time</span><br><b data-gtime="sunmoon">0:00</b></div><div><span class="muted small">Your streak</span><br><b data-gstreak="sunmoon">0 days</b></div><div><span class="muted small">Your best</span><br><b data-gbest="sunmoon">–</b></div></div>
 <p class="g2-msg" data-gmsg="sunmoon" role="status" aria-live="polite"></p>
 <div class="row"><button type="button" class="btn" data-greset="sunmoon">Start over</button><button type="button" class="btn" data-ghint="sunmoon">Hint</button><button type="button" class="btn primary" data-gshare="sunmoon" hidden>Copy my result</button></div>
-<div class="g2-top"><h3>Fastest today</h3><table class="lb"><tbody data-gboard="sunmoon"><tr><td class="muted">Loading...</td></tr></tbody></table></div>
+<p class="g2-top"><a class="btn sm" href="#points" data-gbgo="sunmoon">See today\'s leaderboard</a></p>
 </div>
 </div>
 </div><div class="pane" data-pane="sudoku" data-label="Mini Sudoku"><div class="qwrap g2">
@@ -1259,7 +1290,7 @@ footer .vres.no:not(:empty),footer .vres.ok:not(:empty){background:rgba(248,246,
 <div class="qstat"><div><span class="muted small">Time</span><br><b data-gtime="sudoku">0:00</b></div><div><span class="muted small">Your streak</span><br><b data-gstreak="sudoku">0 days</b></div><div><span class="muted small">Your best</span><br><b data-gbest="sudoku">–</b></div></div>
 <p class="g2-msg" data-gmsg="sudoku" role="status" aria-live="polite"></p>
 <div class="row"><button type="button" class="btn" data-greset="sudoku">Start over</button><button type="button" class="btn" data-ghint="sudoku">Hint</button><button type="button" class="btn primary" data-gshare="sudoku" hidden>Copy my result</button></div>
-<div class="g2-top"><h3>Fastest today</h3><table class="lb"><tbody data-gboard="sudoku"><tr><td class="muted">Loading...</td></tr></tbody></table></div>
+<p class="g2-top"><a class="btn sm" href="#points" data-gbgo="sudoku">See today\'s leaderboard</a></p>
 </div>
 </div>
 </div><div class="pane" data-pane="clues" data-label="Five Clues"><div class="qwrap g2">
@@ -1269,7 +1300,7 @@ footer .vres.no:not(:empty),footer .vres.ok:not(:empty){background:rgba(248,246,
 <div class="qstat"><div><span class="muted small">Clues used</span><br><b data-gtime="clues">1 / 5</b></div><div><span class="muted small">Your streak</span><br><b data-gstreak="clues">0 days</b></div><div><span class="muted small">Your best</span><br><b data-gbest="clues">–</b></div></div>
 <p class="g2-msg" data-gmsg="clues" role="status" aria-live="polite"></p>
 <div class="row"><button type="button" class="btn primary" data-gshare="clues" hidden>Copy my result</button></div>
-<div class="g2-top"><h3>Best today</h3><table class="lb"><tbody data-gboard="clues"><tr><td class="muted">Loading...</td></tr></tbody></table></div>
+<p class="g2-top"><a class="btn sm" href="#points" data-gbgo="clues">See today\'s leaderboard</a></p>
 </div>
 </div>
 </div><div class="pane" data-pane="talk" data-label="1-minute talk"><p class="muted" style="max-width:38em">A new topic every day. Speak about it for one minute, alone or with a friend. The timer is optional. Not your topic? Pick another one.</p>
@@ -1287,7 +1318,7 @@ footer .vres.no:not(:empty),footer .vres.ok:not(:empty){background:rgba(248,246,
 <div id="pitchBtn"></div>
 </div>
 </div>
-</div><div class="pane" data-pane="vote" data-label="Vote and feedback"><div class="grid3">
+</div><div class="pane" data-pane="vote" data-label="Vote and feedback"><div id="polls" class="polls"></div><div class="grid3">
 <div class="card"><h3 style="margin-bottom:8px">Member voting</h3><p class="muted">Members decide what REL does next, like workshop topics and event ideas.</p><div id="voteBtn"></div></div>
 <div class="card"><h3 style="margin-bottom:8px">Ask a question</h3><p class="muted">Anything about REL, joining or events. The board answers.</p><div id="askBtn"></div></div>
 <div class="card"><h3 style="margin-bottom:8px">Give a recommendation</h3><p class="muted">Suggest a speaker, a book, a workshop or a way to improve REL.</p><div id="recBtn"></div></div>
@@ -3875,7 +3906,7 @@ async function loadUser(){ST.team=ST.member=ST.app=ST.amb=null;
    const a=await SB.from("applications").select("*").eq("user_id",ST.user.id).maybeSingle();ST.app=a.data||null;const ab=await SB.from("ambassador_applications").select("*").eq("user_id",ST.user.id).maybeSingle();ST.amb=ab.data||null}
  }catch(err){}
  ST.ready=true;updateNav();if(typeof drawLab==="function"){const ae=document.activeElement;if(!(ae&&ae.matches&&ae.matches("[data-lab],#labScript")))drawLab()}}
-function updateNav(){const a=$("#navAcct"),t=$("#navTeam");if(a)a.textContent=ST.user?"Account":"Become a member";a.classList.toggle("nav-join",!ST.user);if(t)t.hidden=!ST.team;setNav(cur.pg)}
+function updateNav(){const a=$("#navAcct"),t=$("#navTeam");if(a)a.textContent=ST.user?"Account":"Log in";if(t)t.hidden=!ST.team;setNav(cur.pg)}
 
 function renderAccount(){const box=$("#acctBody");if(!box)return;
  if(!SB){box.innerHTML=accHead("Your account","Accounts are not available on this version of the site.");return}
@@ -4593,7 +4624,7 @@ async function showCard(r,box){box=box||$("#cardBox");box.innerHTML='<p class="m
 const FAQ_ALL=[
  ["What is REL?", "REL stands for Relations, Entrepreneurship and Leadership. We are the club of the Faculty of Engineering, Branch 2 (ULFG2) at the Lebanese University. We run events, workshops and a community that helps students build their network, start something of their own and learn to lead."],
  ["Is REL the best club in Roumieh?", "ABSOLUTELY yes. Next question. Okay, fine, we will explain: there is no room for competition. We checked. Twice."],
- ["Who can join, and does it cost anything?", "Membership is free for Lebanese University students. Use your LU email (it ends with ul.edu.lb) and fill in one short form. That is all."],
+ ["Who can join, and does it cost anything?", "Membership is free for Lebanese University students. Fill in one short form with your real name. Your LU email is best; with another email, add your university ID."],
  ["What happens after I join?", "The President or Vice President reviews your application. If it is accepted, your profile and REL ID are created automatically, and you can get your digital card from your account."],
  ["What is the card code, and who can see it?", "It is a private 10-character code that proves your REL card is real. Never share it. Anyone who has your ID and code could claim to be you."],
  ["How do I check someone's REL card?", "Search their ID under People, open their profile and enter the code printed on their card in Check a card. If it does not match, the card is fake."],
@@ -5337,7 +5368,7 @@ console.log("%c REL ", "background:#800020;color:#F8F6F1;font-weight:700;font-si
 console.log("%cLooking around the code? We like that kind of curiosity here.\nCome build with us -> " + (typeof CONFIG!=="undefined"?CONFIG.email:"") + "  \ud83d\udc4b", "color:#800020;font-size:12px;line-height:1.5");
 (function(){const orig=document.title;let t=null;
  document.addEventListener("visibilitychange",()=>{if(document.hidden){clearTimeout(t);document.title="\ud83d\udc40 come back...";t=setTimeout(()=>{document.title="We'll be here \u2014 REL"},2200)}else{clearTimeout(t);document.title=orig}})})();
-document.addEventListener("click",e=>{const m=e.target.closest(".mcnaoh-mark");if(!m)return;m.classList.remove("stroll");void m.offsetWidth;m.classList.add("stroll")});
+document.addEventListener("click",e=>{const m=e.target.closest(".mcnaoh-mark");if(!m)return;m.classList.remove("stroll");void m.offsetWidth;m.classList.add("stroll");setTimeout(()=>m.classList.remove("stroll"),1700)});
 document.addEventListener("click",e=>{const sw=e.target.closest(".seal");if(!sw)return;const s=sw.querySelector(".seal-rot");if(!s)return;s.classList.remove("boost");void s.offsetWidth;s.classList.add("boost");setTimeout(()=>s.classList.remove("boost"),1650)});
 
 /* a small, quick confetti burst -- used once, right after a membership application is sent */
@@ -5374,27 +5405,31 @@ const lget=(k,d)=>{try{const v=localStorage.getItem(k);return v==null?d:JSON.par
 const lset=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
 const titleCase=s=>s===s.toLowerCase()?s.replace(/(^|[\s'-])(\p{L})/gu,(m,a,b)=>a+b.toUpperCase()):s;
 
+const latin=x=>String(x||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z ]/g," ");
+function nameInEmail(name,email){const local=latin(String(email).split("@")[0]).replace(/ /g,"");const toks=latin(name).split(/\s+/).filter(t=>t.length>=3);
+ return toks.some(t=>local.includes(t)||(t.length>=5&&local.includes(t.slice(0,4))))}
+const suggestLocal=n=>latin(n).trim().split(/\s+/).slice(0,2).join(".")||"name";
 /* ---------- 1. one "Become a member" form instead of log in / sign up ---------- */
-const notStudent=`<div class="notstudent"><h3>Not an LU student?</h3><p>Membership is for Lebanese University students, so you need your LU email. You can still take part:</p><ul><li><a href="#join" data-goto="newsletter">Subscribe to the newsletter</a></li><li><a href="#join" data-goto="question">Ask the board a question</a></li><li><a href="#partner">Sponsor, partner or collaborate with REL</a></li></ul></div>`;
+const notStudent=`<div class="notstudent"><h3>Not an LU student?</h3><p>Membership is for Lebanese University students. You can still take part:</p><ul><li><a href="#join" data-goto="newsletter">Subscribe to the newsletter</a></li><li><a href="#join" data-goto="question">Ask the board a question</a></li><li><a href="#partner">Sponsor, partner or collaborate with REL</a></li></ul></div>`;
 let joinDone=null;
 function joinView(box){
  if(joinDone){box.innerHTML=accHead("Check your email")+`<div class="card done-card"><p class="big">One last step</p><p>We sent a link to <b>${esc(joinDone)}</b>. Open it, and you are in. Your membership request goes to the board on its own, nothing else to fill in.</p><p class="muted small">No email after 5 minutes? Look in your junk folder. Outlook and LU mail often put it there.</p><div class="row"><button type="button" class="btn" data-am="login">I confirmed it, log me in</button><button type="button" class="btn" data-jagain>Use another email</button></div></div>`;return}
- box.innerHTML=accHead("Become a member","One form, about two minutes. Free for Lebanese University students.")+
+ box.innerHTML=accHead("Join REL","One short form. Free for Lebanese University students.")+
  `<ul class="join-perks"><li>Startups, Learn, Mobilité and Play</li><li>Points and the leaderboard</li><li>Your digital REL card</li><li>A vote on events and speakers</li></ul>
  <div class="card" style="max-width:640px;background:var(--bg)"><form id="joinForm" class="jf" novalidate>
  <h4>You</h4>
- <label class="fld">Full name *<input id="jName" autocomplete="name" placeholder="First and last name"></label>
- <label class="fld">LU email *<input type="email" id="jEmail" autocomplete="email" placeholder="name@st.ul.edu.lb" inputmode="email"><span class="fhint" id="jEmailHint">It must end with ul.edu.lb</span></label>
+ <label class="fld">Your full real name *<input id="jName" autocomplete="name" placeholder="As it is on your university card"><span class="fhint">First and last name, no nicknames.</span></label>
+ <label class="fld">Email *<input type="email" id="jEmail" autocomplete="email" placeholder="name@st.ul.edu.lb" inputmode="email"><span class="fhint" id="jEmailHint">Your LU email is best. No LU email, or it doesn't work? Use another email with your name in it.</span></label>
  <label class="fld">Password *<input type="password" id="jPass" autocomplete="new-password" placeholder="At least 8 characters"><span class="pw-meter" aria-hidden="true"><i id="jMeter"></i></span><span class="fhint" id="jPassHint"></span></label>
  <h4>Your studies</h4>
- <div class="two"><label class="fld">University ID (4 digits) *<input id="jUni" inputmode="numeric" maxlength="4" autocomplete="off" placeholder="1234"></label>
- <label class="fld">Year *<select id="jYear">${LEVEL.map(l=>`<option>${l}</option>`).join("")}</select></label></div>
+ <label class="fld" id="jUniWrap" hidden>University ID (4 digits) *<input id="jUni" inputmode="numeric" maxlength="4" autocomplete="off" placeholder="1234"><span class="fhint">Needed because you are not using an LU email. It stays private.</span></label>
+ <label class="fld">Year *<select id="jYear">${LEVEL.map(l=>`<option>${l}</option>`).join("")}</select></label>
  <label class="fld">Faculty *<input id="jFac" list="jFacL" value="Faculty of Engineering, Branch 2 (ULFG2)"><datalist id="jFacL">${opt(FACULTIES)}</datalist></label>
  <label class="fld">Major *<input id="jMajor" list="jMajL" placeholder="Start typing, or pick one"><datalist id="jMajL">${opt(MAJORS)}</datalist></label>
  <label class="fld">Phone number (optional)<input id="jPhone" type="tel" autocomplete="tel" placeholder="+961 71 234 567"></label>
  <label class="fld ck"><input type="checkbox" id="jList" checked><span>Show my name, year and major on the REL members page. Phone, email and university ID stay private.</span></label>
  <label class="fld ck"><input type="checkbox" id="jTrue"><span>I confirm that the information is true. *</span></label>
- <div class="row"><button class="btn primary" type="submit">Become a member</button></div>
+ <div class="row"><button class="btn primary" type="submit">Join REL</button></div>
  <p class="vres" id="jMsg" role="status" aria-live="polite"></p>
  <div class="join-switch"><p>Already a member?</p><button type="button" class="btn sm" data-am="login">Log in</button></div>
  </form></div>`+notStudent;
@@ -5409,12 +5444,13 @@ function loginView(box,m){
  <div class="row"><button class="btn primary" type="submit">${m==="team"?"Create my team login":m==="reset"?"Send reset link":"Log in"}</button></div>
  <p class="vres ${authNote?(authOk?"ok":"no"):""}" id="aMsg" role="status" aria-live="polite">${esc(authNote)}</p>
  ${m==="login"?'<p class="alt-links"><button type="button" class="idlink" data-am="reset">Forgot your password?</button></p>':'<p class="alt-links"><button type="button" class="idlink" data-am="login">Back to log in</button></p>'}
- ${m==="login"?'<div class="join-switch"><p>New to REL?</p><button type="button" class="btn primary sm" data-am="signup">Become a member</button></div><p class="alt-links small" style="margin-top:14px"><button type="button" class="idlink" data-am="team">On the REL team or a faculty member? Set up your team login</button></p>':""}
+ ${m==="login"?'<div class="join-switch"><p>New to REL?</p><button type="button" class="btn primary sm" data-am="signup">Join REL</button></div><p class="alt-links small" style="margin-top:14px"><button type="button" class="idlink" data-am="team">On the REL team or a faculty member? Set up your team login</button></p>':""}
  </form></div>`}
 
 authView=function(box){const m=["login","reset","team"].includes(authMode)?authMode:"join";if(m==="join")return joinView(box);return loginView(box,m)};
 
-async function sendApp(a){return SB.rpc("submit_application",{p_full_name:a.full_name,p_uni_id:a.uni_id,p_faculty:a.faculty,p_year:a.year,p_major:a.major,p_phone:a.phone||"",p_why:WHY,p_listed:!!a.listed})}
+async function sendApp(a){const r=await SB.rpc("join_application",{p_full_name:a.full_name,p_uni_id:a.uni_id||"",p_faculty:a.faculty,p_year:a.year,p_major:a.major,p_phone:a.phone||"",p_listed:!!a.listed});
+ if(r.error&&(r.error.code==="PGRST202"||/could not find|does not exist/i.test(r.error.message||"")))return SB.rpc("submit_application",{p_full_name:a.full_name,p_uni_id:a.uni_id,p_faculty:a.faculty,p_year:a.year,p_major:a.major,p_phone:a.phone||"",p_why:WHY,p_listed:!!a.listed});return r}
 
 document.addEventListener("click",e=>{if(e.target.closest("[data-jagain]")){joinDone=null;authMode="signup";renderAccount()}});
 document.addEventListener("submit",e=>{const f=e.target;if(f&&f.id==="authForm"&&f.dataset.mode==="login"){const em=($("#aEmail")||{}).value;if(em)lset("rel-last-email",em.trim().toLowerCase())}},true);
@@ -5423,14 +5459,16 @@ document.addEventListener("submit",async e=>{const f=e.target;if(!f||f.id!=="joi
  const msg=$("#jMsg"),v=id=>($(id).value||"").trim(),bad=(id,t)=>{$(id).setAttribute("aria-invalid","true");$(id).focus();say(msg,t);msg.scrollIntoView({block:"nearest",behavior:"smooth"})};
  f.querySelectorAll("[aria-invalid]").forEach(x=>x.removeAttribute("aria-invalid"));
  const name=titleCase(v("#jName").replace(/\s+/g," ")),email=v("#jEmail").toLowerCase(),pw=$("#jPass").value,uni=v("#jUni");
- if(name.split(" ").length<2||name.length<5)return bad("#jName","Please write your first and last name.");
- if(!LU_RE.test(email))return bad("#jEmail","Please use your Lebanese University email. It ends with ul.edu.lb.");
+ const lu=LU_RE.test(email);
+ if(name.split(" ").length<2||name.length<5||/\d/.test(name))return bad("#jName","Please write your full real name: first and last name.");
+ if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return bad("#jEmail","Please enter a valid email.");
+ if(!nameInEmail(name,email))return bad("#jEmail","Your email should contain part of your name, like "+suggestLocal(name)+"@... Use an email with your name in it.");
  if(pw.length<8)return bad("#jPass","Your password needs at least 8 characters.");
- if(!/^[0-9]{4}$/.test(uni))return bad("#jUni","Your university ID must be exactly 4 digits.");
+ if(!lu&&!/^[0-9]{4}$/.test(uni))return bad("#jUni","Without an LU email we need your 4-digit university ID.");
  if(!v("#jFac"))return bad("#jFac","Please fill in your faculty.");
  if(!v("#jMajor"))return bad("#jMajor","Please fill in your major.");
  if(!$("#jTrue").checked){say(msg,"Please tick the box to confirm that the information is true.");return}
- const app={full_name:name,uni_id:uni,faculty:v("#jFac"),year:$("#jYear").value,major:v("#jMajor"),phone:v("#jPhone"),listed:$("#jList").checked};
+ const app={full_name:name,uni_id:lu?"":uni,faculty:v("#jFac"),year:$("#jYear").value,major:v("#jMajor"),phone:v("#jPhone"),listed:$("#jList").checked};
  const btn=f.querySelector("button[type=submit]");btn.disabled=true;say(msg,"Please wait...",true);
  try{lset(PEND,{email,app});
   const {data,error}=await SB.auth.signUp({email,password:pw,options:{emailRedirectTo:location.origin+location.pathname,data:{rel_app:app,full_name:name}}});if(error)throw error;
@@ -5446,15 +5484,18 @@ let sending=false;const _lu=loadUser;
 loadUser=async function(){await _lu.apply(this,arguments);
  try{if(!sending&&SB&&ST.user&&!ST.member&&!ST.app&&!ST.team){const em=(ST.user.email||"").toLowerCase(),ls=lget(PEND,null);
    const app=(ST.user.user_metadata||{}).rel_app||(ls&&ls.email===em?ls.app:null);
-   if(app&&LU_RE.test(em)){sending=true;const {error}=await sendApp(app);sending=false;
-    if(!error){try{localStorage.removeItem(PEND)}catch(e){}joinDone=null;toast("Welcome! Your membership request is with the board.");await _lu.apply(this,arguments)}}}}catch(e){sending=false}
+   if(app){sending=true;const {error}=await sendApp(app);sending=false;
+    if(!error){try{localStorage.removeItem(PEND)}catch(e){}joinDone=null;toast("Welcome! Your membership request is with the board.");await _lu.apply(this,arguments)}else{toast(errText(error))}}}}catch(e){sending=false}
  try{applyGate(cur.pg)}catch(e){}};
 
 /* live help on the form */
 document.addEventListener("input",e=>{const t=e.target;if(!t||!t.id)return;
  if(t.id==="jUni"||t.id==="pUni"){const c=t.value.replace(/\D/g,"").slice(0,4);if(c!==t.value)t.value=c}
- if(t.id==="jEmail"){const h=$("#jEmailHint"),v=t.value.trim();if(!v){h.className="fhint";h.textContent="It must end with ul.edu.lb";return}
-  if(LU_RE.test(v)){h.className="fhint ok";h.textContent="\u2713 LU email"}else if(/@/.test(v)&&/@(gmail|hotmail|outlook|yahoo|icloud|live)\./i.test(v)){h.className="fhint no";h.textContent="Use your LU email, not a personal one."}else{h.className="fhint";h.textContent="It must end with ul.edu.lb"}}
+ if(t.id==="jEmail"||t.id==="jName"){const e=$("#jEmail"),h=$("#jEmailHint"),w=$("#jUniWrap"),v=(e&&e.value||"").trim(),nm=($("#jName")||{}).value||"";if(!h)return;
+  const lu=LU_RE.test(v),full=/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v);if(w)w.hidden=lu||!full;
+  if(!v){h.className="fhint";h.textContent="Your LU email is best. No LU email, or it doesn't work? Use another email with your name in it.";return}
+  if(full&&nm.trim().split(/\s+/).length>=2&&!nameInEmail(nm,v)){h.className="fhint no";h.textContent="This email doesn't contain your name. Use one that does.";return}
+  if(lu){h.className="fhint ok";h.textContent="\u2713 LU email, no university ID needed"}else if(full){h.className="fhint";h.textContent="Not an LU email, so we'll also ask for your university ID."}else{h.className="fhint";h.textContent="Your LU email is best."}}
  if(t.id==="jPass"){const p=t.value;let sc=0;if(p.length>=8)sc++;if(p.length>=12)sc++;if(/[A-Z]/.test(p)&&/[a-z]/.test(p))sc++;if(/\d/.test(p))sc++;if(/[^A-Za-z0-9]/.test(p))sc++;
   const m=$("#jMeter"),h=$("#jPassHint"),lv=[["#B3261E","Too short"],["#B3261E","Weak"],["#C77700","Okay"],["#5E8C31","Good"],["#1E7D32","Strong"],["#1E7D32","Very strong"]][p.length<8?0:sc];
   m.style.width=(p?Math.max(12,sc*20):0)+"%";m.style.background=lv[0];h.textContent=p?lv[1]:"";}});
@@ -5477,7 +5518,7 @@ gateHTML=function(label,pg){const pend=ST.user&&ST.app&&ST.app.status==="pending
  const list=(PREVIEW[pg]||[]).map(x=>`<li>${esc(x)}</li>`).join("");
  if(pend)return `<div class="gate-inner"><span class="tag">Members only</span><h3>Almost there</h3><p>Your membership request is with the board. ${esc(label)} opens for you as soon as it is accepted.</p><ul class="gate-list">${list}</ul><div class="row"><a class="btn primary" href="#account">See my request</a></div></div>`;
  if(ST.user&&!rej)return `<div class="gate-inner"><span class="tag">Members only</span><h3>Finish your membership</h3><p>You have an account but you are not a member yet. Fill in the short form to open ${esc(label)}.</p><ul class="gate-list">${list}</ul><div class="row"><a class="btn primary" href="#account">Finish my membership</a></div></div>`;
- return `<div class="gate-inner"><span class="tag">Members only</span><h3>Become a member to open ${esc(label)}</h3><p>Free for Lebanese University students. It takes about two minutes.</p><ul class="gate-list">${list}</ul><div class="row"><a class="btn primary" href="#join" data-goto="member">Become a member</a><a class="btn" href="#join" data-goto="login-gate">Log in</a></div></div>`};
+ return `<div class="gate-inner"><span class="tag">Members only</span><h3>Join REL to open ${esc(label)}</h3><p>Free for Lebanese University students. It takes about two minutes.</p><ul class="gate-list">${list}</ul><div class="row"><a class="btn primary" href="#join" data-goto="member">Join REL</a><a class="btn" href="#join" data-goto="login-gate">Log in</a></div></div>`};
 applyGate=function(pg){Object.keys(GATED_PAGES).forEach(k=>{const root=document.querySelector('.pg[data-pg="'+k+'"]');if(!root)return;
   const locked=!(ST.member||ST.team);root.classList.toggle("gated",locked);
   const w=root.querySelector("section.sec>.wrap");if(!w)return;let g=w.querySelector(".gate-block");
@@ -5488,7 +5529,7 @@ applyGate=function(pg){Object.keys(GATED_PAGES).forEach(k=>{const root=document.
 function welcome(){let seen=false;try{seen=!!sessionStorage.getItem("rel-wl")}catch(e){}if(!SB||ST.user||seen)return;if(/type=(signup|recovery|invite|magiclink|email_change)|access_token|error_description/.test(location.hash))return;
  if(Date.now()-(lget("rel-welcome",0)||0)<3*864e5)return;if(cur.pg==="account"||document.querySelector(".wl-back"))return;
  try{sessionStorage.setItem("rel-wl","1")}catch(e){}lset("rel-welcome",Date.now());
- const back=document.createElement("div");back.className="wl-back";back.innerHTML=`<div class="wl" role="dialog" aria-modal="true" aria-labelledby="wlT"><h2 id="wlT">Be part of REL</h2><p>Roumieh's club for relations, entrepreneurship and leadership. Members get:</p><ul><li>Startups, Learn, Mobilité and the daily games</li><li>Points, the leaderboard and a digital REL card</li><li>A vote on our events and speakers</li></ul><div class="row"><a class="btn primary" href="#join" data-goto="member">Become a member</a><a class="btn" href="#join" data-goto="login-gate">I'm already a member</a></div><button type="button" class="later">Maybe later</button></div>`;
+ const back=document.createElement("div");back.className="wl-back";back.innerHTML=`<div class="wl" role="dialog" aria-modal="true" aria-labelledby="wlT"><h2 id="wlT">Be part of REL</h2><p>Roumieh's club for relations, entrepreneurship and leadership. Members get:</p><ul><li>Startups, Learn, Mobilité and the daily games</li><li>Points, the leaderboard and a digital REL card</li><li>A vote on our events and speakers</li></ul><div class="row"><a class="btn primary" href="#join" data-goto="member">Join REL</a><a class="btn" href="#join" data-goto="login-gate">I'm already a member</a></div><button type="button" class="later">Maybe later</button></div>`;
  document.body.appendChild(back);requestAnimationFrame(()=>back.classList.add("on"));const prev=document.activeElement;back.querySelector(".btn.primary").focus();
  const close=()=>{back.classList.remove("on");setTimeout(()=>back.remove(),250);document.removeEventListener("keydown",esc1);if(prev&&prev.focus)try{prev.focus()}catch(e){}};
  const esc1=e=>{if(e.key==="Escape")close()};document.addEventListener("keydown",esc1);
@@ -5496,7 +5537,7 @@ function welcome(){let seen=false;try{seen=!!sessionStorage.getItem("rel-wl")}ca
 (function waitReady(n){if(ST.ready){setTimeout(welcome,2200);return}if(n<40)setTimeout(()=>waitReady(n+1),250)})(0);
 
 /* ---------- 4. small comforts ---------- */
-document.addEventListener("click",e=>{if(e.target.closest("#navAcct")&&!ST.user){authMode="signup";authNote=""}},true);
+document.addEventListener("click",e=>{if(e.target.closest("#navAcct")&&!ST.user){authMode="login";authNote=""}},true);
 const top=document.createElement("button");top.className="totop";top.type="button";top.setAttribute("aria-label","Back to top");top.textContent="\u2191";document.body.appendChild(top);
 top.addEventListener("click",()=>window.scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"}));
 addEventListener("scroll",()=>top.classList.toggle("on",scrollY>900),{passive:true});
@@ -5518,7 +5559,7 @@ function drawStats(k){const s=gst(k),live=s.last===DAY||s.last===YEST;
  if(be)be.textContent=s.best==null?"\u2013":(k==="clues"?s.best+(s.best===1?" clue":" clues"):mm(s.best));drawChips()}
 function drawChips(){const head=document.querySelector('.pg[data-pg="play"] .pagehead .wrap');if(!head)return;let c=head.querySelector(".gchips");
  if(!c){c=document.createElement("div");c.className="gchips";head.appendChild(c)}
- c.innerHTML=Object.keys(NAMES).map(k=>{const d=gst(k).doneDay===DAY;return `<span class="${d?"done":""}">${d?"\u2713 ":""}${esc(NAMES[k])}</span>`}).join("")}
+ c.innerHTML=Object.keys(NAMES).map(k=>{const g=gst(k),d=g.doneDay===DAY,st=(g.last===DAY||g.last===YEST)?g.streak||0:0;return `<span class="${d?"done":""}">${d?"\u2713 ":""}${esc(NAMES[k])}${st>=2?" \ud83d\udd25"+st:""}</span>`}).join("")}
 const msgEl=k=>document.querySelector(`[data-gmsg="${k}"]`);
 async function boardFor(k){const tb=document.querySelector(`[data-gboard="${k}"]`);if(!tb)return;
  if(!SB){tb.innerHTML='<tr><td class="muted">Log in to see who is fastest today.</td></tr>';return}
@@ -5530,7 +5571,8 @@ async function finish(k,val,ok,shareText){const s=gst(k);
  drawStats(k);const sh=document.querySelector(`[data-gshare="${k}"]`);if(sh){sh.hidden=false;sh.dataset.text=shareText}
  if(ok){const b=document.querySelector(`[data-gboard="${k}"]`)||document.body,r=(document.querySelector("#"+({path:"gPath",sunmoon:"gSun",sudoku:"gSdk",clues:"gClues"})[k])||b).getBoundingClientRect();if(typeof confettiBurst==="function")confettiBurst(r.left+r.width/2,r.top+r.height/2)}
  if(ok&&SB&&ST.member){try{const {data,error}=await SB.rpc("submit_daily_game",{p_game:k,p_seconds:val});if(!error){toast(data==="saved"?"Saved to today's leaderboard.":"Already saved for today.");boardFor(k)}}catch(e){}}
- else if(ok&&!ST.member)toast("Members appear on the leaderboard. Become a member to save your time.")}
+ else if(ok&&!ST.member)toast("Members appear on the leaderboard. Join REL to save your time.");
+ if(ok&&navigator.vibrate)try{navigator.vibrate([40,60,40])}catch(e){}}
 document.addEventListener("click",async e=>{const b=e.target.closest("[data-gshare]");if(!b)return;const t=b.dataset.text+"\n"+location.origin+location.pathname+"#play";
  try{if(navigator.share&&matchMedia("(pointer:coarse)").matches){await navigator.share({text:t});return}await navigator.clipboard.writeText(t);toast("Copied. Paste it anywhere.")}catch(err){}});
 
@@ -5578,7 +5620,7 @@ const nbrs=i=>{const [r,c]=rc(i),o=[];if(r>0)o.push(i-N);if(r<N-1)o.push(i+N);if
  document.querySelector('[data-greset="path"]').addEventListener("click",()=>{if(done)return;path=[];T.reset();draw()});
  document.querySelector('[data-ghint="path"]').addEventListener("click",()=>{if(done)return;let k=0;while(k<path.length&&path[k]===SOL[k])k++;path=SOL.slice(0,k+1);T.penalty(15);toast("Hint used: +15 seconds");draw();check()});
  if(done){const sh=document.querySelector('[data-gshare="path"]');sh.hidden=false;sh.dataset.text="REL Path "+DAY+": solved in "+mm(s.doneVal||0)+" \u2705";const tm=document.querySelector('[data-gtime="path"]');if(tm)tm.textContent=mm(s.doneVal||0)}
- draw();drawStats("path");boardFor("path")})();
+ window.relBoardFor=boardFor;draw();drawStats("path");boardFor("path")})();
 
 /* ----- Sun & Moon: 3 suns and 3 moons per line, no three in a row ----- */
 (function(){const B=$("#gSun");if(!B)return;const R=rngFor("sunmoon");
@@ -5685,6 +5727,119 @@ drawChips();
 
 /* fix sub-tabs that the old gate may have hidden, then redraw the current page */
 $$(".pg .tabs.subtabs").forEach(x=>{x.hidden=false});try{showPage(cur.pg,cur.sub[cur.pg],{keep:true,noScroll:true})}catch(e){}
+})();
+
+
+/* ===================== update 9 ===================== */
+(function(){
+const lget=(k,d)=>{try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}};
+const lset=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+const today=beirutNow();
+
+/* ---------- applications: show what kind of email the person used ---------- */
+const _ac=appCard;appCard=function(a){let h=_ac(a);const lu=/@([a-z0-9-]+\.)*ul\.edu\.lb$/i.test(a.email||"");
+ const badge=lu?'<span class="badge ok">&#10003; LU email</span>':`<span class="badge warn">! Not an LU email${a.uni_id?", ID "+esc(a.uni_id)+" given":""}. Check the ID.</span>`;
+ h=h.replace('<span class="badge ok">&#10003; LU student email</span>',badge);
+ if(lu&&!a.uni_id)h=h.replace(/<span class="badge warn">! ID is not on the faculty list\. Check by hand\.<\/span>/,'<span class="badge ok">No ID needed (LU email)</span>');return h};
+
+/* ---------- one games leaderboard with a game picker ---------- */
+function pickBoard(k){$$("[data-gb]").forEach(b=>b.setAttribute("aria-selected",b.dataset.gb===k));$$("[data-gbp]").forEach(p=>p.hidden=p.dataset.gbp!==k);
+ const tb=document.querySelector(`[data-gboard="${k}"]`);if(tb&&!tb.dataset.loaded&&typeof window.relBoardFor==="function"){tb.dataset.loaded="1";window.relBoardFor(k)}}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-gb]");if(b){pickBoard(b.dataset.gb);return}
+ const g=e.target.closest("[data-gbgo]");if(g){e.preventDefault();e.stopPropagation();showPage("points","games");pickBoard(g.dataset.gbgo)}},true);
+
+/* ---------- member votes ---------- */
+PERMS.push(["votes","Create and manage member votes"]);
+const AUD={members:"All members",board:"Board only",ambassadors:"Ambassadors only",list:"Only the people I choose"};
+let POLLS=[];
+async function loadPolls(){const box=$("#polls");if(!box||!SB)return;
+ if(!ST.user){box.innerHTML='<div class="poll-empty"><h3>Member votes</h3><p class="muted">Log in to see the open votes and have your say.</p><div class="row"><a class="btn primary" href="#join" data-goto="login-gate">Log in</a><a class="btn" href="#join" data-goto="member">Join REL</a></div></div>';return}
+ const {data,error}=await SB.rpc("list_polls");if(error){box.innerHTML="";return}
+ POLLS=data||[];const mine=POLLS.filter(p=>p.can_vote||p.my_choice!=null);
+ box.innerHTML=mine.length?`<h3 class="polls-h">Member votes</h3>`+mine.map(pollCard).join(""):'<div class="poll-empty"><h3>Member votes</h3><p class="muted">No open vote for you right now. The board will post the next one here.</p></div>'}
+function pollCard(p){const opts=p.options||[],c=p.counts,tot=p.total||0,open=p.is_open;
+ const when=p.closes_at?(open?"Closes "+new Date(p.closes_at).toLocaleString("en-GB",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}):"Closed"):(open?"Open":"Closed");
+ return `<article class="poll"><div class="poll-top"><span class="tag">${esc(when)}</span>${p.my_choice!=null?'<span class="tag">You voted</span>':""}</div><h4>${esc(p.question)}</h4><div class="poll-opts">${opts.map((o,i)=>{const n=c?(c[i]||0):null,pc=c&&tot?Math.round(n*100/tot):0;
+  return `<button type="button" class="poll-o${p.my_choice===i?" on":""}" data-poll="${esc(p.id)}" data-ch="${i}" ${open&&p.can_vote?"":"disabled"}><span class="poll-bar" style="width:${c?pc:0}%"></span><span class="poll-l">${esc(o)}</span>${c?`<span class="poll-n">${pc}%</span>`:""}</button>`}).join("")}</div>
+  <p class="muted small">${c?tot+(tot===1?" vote":" votes"):(p.results==="after"?"Results appear when the vote closes.":"")}${open&&p.can_vote?" You can change your vote until it closes.":""}</p></article>`}
+document.addEventListener("click",async e=>{const b=e.target.closest("[data-poll]");if(!b||b.disabled)return;
+ const {error}=await SB.rpc("cast_poll_vote",{p_poll:b.dataset.poll,p_choice:+b.dataset.ch});if(error){toast(errText(error));return}
+ toast("Vote saved");const r=b.getBoundingClientRect();if(typeof confettiBurst==="function")confettiBurst(r.left+r.width/2,r.top+r.height/2);loadPolls()});
+const vb=$("#voteBtn");if(vb)vb.innerHTML='<a class="btn primary" href="#polls" data-topolls>See the open votes</a>';
+document.addEventListener("click",e=>{if(e.target.closest("[data-topolls]")){e.preventDefault();const p=$("#polls");if(p)p.scrollIntoView({behavior:"smooth",block:"start"})}});
+(function(){const _sp=showPage;showPage=function(pg,sub,o){_sp(pg,sub,o);if(pg==="community")loadPolls()}})();
+
+/* team area: a Votes tab */
+let pollEdit=null;
+const _rt=renderTeam;renderTeam=function(){const want=teamTab;_rt();if(!ST.team||!can("votes"))return;const bar=$("#teamBody .tabs");if(!bar)return;
+ bar.insertAdjacentHTML("beforeend",`<button type="button" class="tab" role="tab" aria-selected="false" data-tt="polls">Votes</button>`);
+ if(want==="polls"){teamTab="polls";bar.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.tt==="polls"));panePolls()}};
+async function panePolls(){loading();const {data,error}=await SB.rpc("list_polls");if(error)return paneErr(error);const L=data||[],p=pollEdit;
+ const dl=p&&p.closes_at?new Date(new Date(p.closes_at).getTime()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,16):"";
+ tpane().innerHTML=`<div class="card" style="max-width:640px;background:var(--bg)"><h3 style="margin-bottom:12px">${p?"Edit the vote":"New vote"}</h3><form id="pollForm" data-id="${p?esc(p.id):""}" novalidate>
+ <label class="fld">Question *<input id="poQ" value="${p?esc(p.question):""}" placeholder="Which workshop should we run next?"></label>
+ <label class="fld">Choices, one per line (2 to 8) *<textarea id="poO" rows="4" placeholder="Excel for engineers&#10;Public speaking&#10;How to pitch">${p?esc((p.options||[]).join("\n")):""}</textarea></label>
+ <label class="fld">Who can vote *<select id="poA">${Object.entries(AUD).map(([k,v])=>`<option value="${k}" ${p&&p.audience===k?"selected":""}>${v}</option>`).join("")}</select></label>
+ <label class="fld" id="poIdsW" ${p&&p.audience==="list"?"":"hidden"}>Their REL IDs, separated by commas *<input id="poIds" value="${p?esc((p.allowed_ids||[]).join(", ")):""}" placeholder="0001, 0004, 0012"><span class="fhint">You find each person's REL ID in the Members tab.</span></label>
+ <label class="fld">Closes on (optional)<input id="poC" type="datetime-local" value="${dl}"></label>
+ <label class="fld">Show the results<select id="poR"><option value="after" ${p&&p.results==="live"?"":"selected"}>Only after it closes</option><option value="live" ${p&&p.results==="live"?"selected":""}>Live, while people vote</option></select></label>
+ <label class="fld ck"><input type="checkbox" id="poOpen" ${!p||p.open?"checked":""}><span>Open now</span></label>
+ <div class="row"><button class="btn primary" type="submit">${p?"Save changes":"Publish the vote"}</button>${p?'<button type="button" class="btn" data-pocancel>Cancel</button>':""}</div><p class="vres" id="poMsg" role="status" aria-live="polite"></p></form></div>
+ <h3 style="margin:28px 0 12px">All votes (${L.length})</h3>${L.length?L.map(x=>`<div class="appc"><h3>${esc(x.question)}</h3><p class="muted small" style="margin:0 0 8px">${esc(AUD[x.audience]||x.audience)}${x.audience==="list"?": "+esc((x.allowed_ids||[]).join(", ")):""}. ${x.is_open?"Open":"Closed"}. ${x.total||0} ${x.total===1?"vote":"votes"}.</p>
+ <ul class="small" style="margin:0 0 12px;padding-left:1.2em">${(x.options||[]).map((o,i)=>`<li>${esc(o)}: <b>${(x.counts||[])[i]||0}</b></li>`).join("")}</ul>
+ <div class="row"><button type="button" class="btn sm" data-poedit="${esc(x.id)}">Edit</button><button type="button" class="btn sm" data-potoggle="${esc(x.id)}">${x.open?"Close it":"Reopen"}</button><button type="button" class="btn sm" data-podel="${esc(x.id)}">Delete</button></div></div>`).join(""):'<div class="empty"><p>No votes yet. Create the first one above.</p></div>'}`;
+ tpane()._polls=L}
+document.addEventListener("change",e=>{if(e.target.id==="poA"){const w=$("#poIdsW");if(w)w.hidden=e.target.value!=="list"}});
+async function savePoll(x,over){const o=Object.assign({p_id:x.id||null,p_question:x.question,p_options:x.options,p_audience:x.audience,p_ids:x.allowed_ids||[],p_closes:x.closes_at||null,p_results:x.results,p_open:x.open},over||{});return SB.rpc("save_poll",o)}
+document.addEventListener("submit",async e=>{if(!e.target||e.target.id!=="pollForm")return;e.preventDefault();const f=e.target,msg=$("#poMsg");
+ const q=$("#poQ").value.trim(),opts=$("#poO").value.split("\n").map(x=>x.trim()).filter(Boolean),aud=$("#poA").value,ids=$("#poIds").value.split(/[\s,;]+/).map(x=>x.replace(/\D/g,"")).filter(Boolean).map(x=>x.padStart(4,"0"));
+ if(q.length<5){say(msg,"Please write the question.");return}if(opts.length<2||opts.length>8){say(msg,"Please write 2 to 8 choices, one per line.");return}
+ if(aud==="list"&&!ids.length){say(msg,"Please add at least one REL ID.");return}
+ const c=$("#poC").value,{error}=await SB.rpc("save_poll",{p_id:f.dataset.id||null,p_question:q,p_options:opts,p_audience:aud,p_ids:aud==="list"?ids:[],p_closes:c?new Date(c).toISOString():null,p_results:$("#poR").value,p_open:$("#poOpen").checked});
+ if(error){say(msg,errText(error));return}toast(f.dataset.id?"Vote saved":"Vote published");pollEdit=null;panePolls()});
+document.addEventListener("click",async e=>{const L=(tpane()||{})._polls||[],find=id=>L.find(x=>x.id===id);
+ const ed=e.target.closest("[data-poedit]");if(ed){pollEdit=find(ed.dataset.poedit);panePolls();window.scrollTo(0,0);return}
+ if(e.target.closest("[data-pocancel]")){pollEdit=null;panePolls();return}
+ const tg=e.target.closest("[data-potoggle]");if(tg){const x=find(tg.dataset.potoggle);if(!x)return;const {error}=await savePoll(x,{p_open:!x.open});if(error){toast(errText(error));return}toast(x.open?"Vote closed":"Vote reopened");panePolls();return}
+ const dl=e.target.closest("[data-podel]");if(dl){if(!confirm("Delete this vote and all its answers?"))return;const {error}=await SB.rpc("delete_poll",{p_id:dl.dataset.podel});if(error){toast(errText(error));return}toast("Vote deleted");panePolls()}});
+
+/* ---------- small cool details ---------- */
+/* 1. a thin progress bar while you scroll */
+const bar=document.createElement("div");bar.className="scrollbar";document.body.appendChild(bar);
+addEventListener("scroll",()=>{const h=document.documentElement.scrollHeight-innerHeight;bar.style.transform=`scaleX(${h>0?Math.min(1,scrollY/h):0})`},{passive:true});
+/* 2. the tab title waves when you leave */
+let realTitle=document.title;document.addEventListener("visibilitychange",()=>{if(document.hidden){realTitle=document.title;document.title="Come back soon \ud83d\udc4b | REL"}else document.title=realTitle});
+/* 3. click the lightbulb logo 5 times: lights on */
+let bulbN=0,bulbT=0;document.addEventListener("click",e=>{if(!e.target.closest(".brand img,footer .lg"))return;const t=Date.now();bulbN=t-bulbT<700?bulbN+1:1;bulbT=t;
+ if(bulbN>=5){bulbN=0;document.body.classList.remove("lights");void document.body.offsetWidth;document.body.classList.add("lights");setTimeout(()=>document.body.classList.remove("lights"),1400);toast("\ud83d\udca1 You found the idea switch.")}});
+/* 4. type R E L anywhere (outside a text box) */
+let typed="";document.addEventListener("keydown",e=>{if(e.target.closest&&e.target.closest("input,textarea,select,[contenteditable]"))return;if(e.ctrlKey||e.metaKey||e.altKey)return;
+ typed=(typed+(e.key||"").toLowerCase()).slice(-3);if(typed==="rel"){typed="";if(typeof confettiBurst==="function")confettiBurst(innerWidth/2,innerHeight/2);toast("Relations. Entrepreneurship. Leadership. \ud83c\udf89")}
+ /* 5. keyboard shortcuts */
+ if(e.key==="/"){const s=$("#sBtn");if(s){e.preventDefault();s.click()}}
+ if(e.key==="?"){toast("Shortcuts: / search, g then h home, g then e events, g then p play, g then l leaderboard, R E L for a surprise")}
+ if(gWait&&"hepl".includes(e.key)){showPage({h:"home",e:"events",p:"play",l:"points"}[e.key]);gWait=false;return}gWait=e.key==="g";if(gWait)setTimeout(()=>gWait=false,900)});
+let gWait=false;
+/* 6. Beirut clock and 7. a tip of the day, in the footer */
+const TIPS=["Send the follow-up message. Most people never do.","Before a meeting, write down the one thing you want to leave with.","Say your idea in one sentence before you build anything.","Ask a senior student how they got their internship. People love to help.","Your first version only needs to work, not to be pretty.","Talk to five possible customers before you write a business plan.","On LinkedIn, a short personal note beats an empty connection request.","Lead by doing the boring job first.","When you don't know, say so, then find out.","Practice your pitch out loud. Reading it in your head doesn't count.","Write down every idea. Judge them next week.","A good question in a workshop is worth more than a good answer.","Arrive five minutes early. It's the cheapest way to stand out.","Learn Excel shortcuts. Future you will thank you.","Every expert you admire was once a beginner who kept going.","Volunteer for the task nobody wants. That's how people notice you.","Keep a list of what you achieved this semester. Your CV will thank you.","A team that argues well builds better things.","Read one article outside your major every week.","Thank the people who helped you, by name."];
+const fc=document.querySelector(".foot-copy");if(fc){const d=document.createElement("p");d.className="foot-extra";const day=Math.floor(Date.now()/864e5);
+ d.innerHTML=`<span class="tip">Tip of the day: ${esc(TIPS[day%TIPS.length])}</span><span class="clock" aria-label="Time in Beirut"></span>`;fc.after(d);
+ const ck=d.querySelector(".clock"),tick=()=>{ck.textContent="Beirut "+new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Beirut",hour:"2-digit",minute:"2-digit"}).format(new Date())};tick();setInterval(tick,30000)}
+/* 8. welcome back, once a day, and 9. a late-night nudge */
+(function wait(n){if(!ST.ready){if(n<40)setTimeout(()=>wait(n+1),250);return}
+ const hr=+new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Beirut",hour:"2-digit",hour12:false}).format(new Date());
+ if(ST.member&&lget("rel-wb","")!==today){lset("rel-wb",today);const first=(ST.member.full_name||"").split(" ")[0];
+  setTimeout(()=>toast((hr<12?"Good morning":hr<18?"Good afternoon":"Good evening")+", "+first+" \ud83d\udc4b"),1500)}
+ else if(hr<5&&lget("rel-night","")!==today){lset("rel-night",today);setTimeout(()=>toast("Studying late? Sleep is a productivity tool too \ud83c\udf19"),3000)}
+ /* 10. greetings on special days */
+ const md=today.slice(5),SPECIAL={"11-22":"Happy Independence Day \ud83c\uddf1\ud83c\udde7","12-25":"Merry Christmas from REL \ud83c\udf84","01-01":"Happy New Year from REL \ud83c\udf86","02-09":"Happy Saint Maroun's Day","05-01":"Happy Labour Day \ud83d\udee0\ufe0f","02-14":"Happy Valentine's Day \u2764\ufe0f"};
+ if(SPECIAL[md]&&lget("rel-sp","")!==today){lset("rel-sp",today);setTimeout(()=>toast(SPECIAL[md]),4500)}})(0);
+/* 11. click your REL ID to copy it */
+document.addEventListener("click",async e=>{const b=e.target.closest("#acctBody .prow b");if(!b||!/^#\d+$/.test(b.textContent.trim()))return;try{await navigator.clipboard.writeText(b.textContent.trim().slice(1));toast("REL ID copied")}catch(err){}});
+/* 12. the headline words light up one by one when you hover them, see the CSS */
+/* 13. a little hello in the console is already there; 14. the page says hi on a phone shake */
+let lastShake=0;addEventListener("devicemotion",e=>{const a=e.accelerationIncludingGravity;if(!a)return;const f=Math.abs(a.x||0)+Math.abs(a.y||0)+Math.abs(a.z||0);
+ if(f>45&&Date.now()-lastShake>5000){lastShake=Date.now();toast("Whoa, easy! \ud83d\ude04 Need an idea? Check Startups.")}},{passive:true});
 })();
 
 </script>
