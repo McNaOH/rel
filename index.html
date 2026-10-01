@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-M6vEJyNi7OVWfqlQ6dnAy8lcGldszGK4iCEZEZ+OpNk='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-LowU0ldyu2Ttmg61a9HWCx5VROYVhWnLB5bYnociFzE='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1210,8 +1210,7 @@ body.lights::after{content:"";position:fixed;inset:0;pointer-events:none;z-index
 <div class="sec-head"><h2>Leaderboard</h2><p>Earn points by showing up, helping out and solving the daily games.</p></div>
 <div class="pane" data-pane="members" data-label="Club points"><p class="muted" style="max-width:40em;margin-top:0">Points come from events, helping REL and the daily games. See How to earn points.</p>
 <div id="honors" class="honors"></div>
-<div class="tabs seg" role="tablist" aria-label="Period"><button type="button" class="tab" role="tab" aria-selected="true" data-lbr="all">All time</button><button type="button" class="tab" role="tab" aria-selected="false" data-lbr="month">This month</button></div>
-<table><thead><tr><th>#</th><th>Member</th><th class="p">Points</th></tr></thead><tbody id="lb"></tbody></table>
+<table id="lbTable" hidden><thead><tr><th>#</th><th>Member</th><th class="p">Points</th></tr></thead><tbody id="lb"></tbody></table>
 </div>
 <div class="pane" data-pane="gtotal" data-label="Games total">
 <p class="muted" style="max-width:40em;margin-top:0">Every daily game you finish counts here: Crowns, Path, Sun &amp; Moon, Mini Sudoku, Five Clues and the business question. Each one also gives you a club point.</p>
@@ -5813,6 +5812,15 @@ async function loadGamesTotal(){const tb=$("#gTotalAll");if(!tb||!SB)return;try{
  tb.innerHTML=(data&&data.length)?data.map((r,i)=>`<tr><td class="n">${i+1}</td><td><span class="lb-who">${avatar(r.full_name,r.photo_path,false,r.rel_id)}${esc(r.full_name)}</span></td><td class="p">${r.solved}</td></tr>`).join(""):'<tr><td colspan="3" class="muted">No games solved yet. Open Play and be the first.</td></tr>'}
  catch(e){tb.innerHTML='<tr><td colspan="3" class="muted">The games total opens soon.</td></tr>'}}
 loadGamesTotal();
+/* the club points table only shows once someone has points */
+const _db=drawBoards;drawBoards=function(){lbRange="all";_db.apply(this,arguments);const t=$("#lbTable"),b=$("#lb");if(t&&b)t.hidden=!b.rows.length||!!b.querySelector("td.muted")};
+try{drawBoards()}catch(e){}
+/* after logging in or sending a form, show the page from the top, not the bottom */
+let lastSubmit=0;document.addEventListener("submit",e=>{if(e.target.closest("#account,#acctBody,#teamBody,.pg[data-pg=account],.pg[data-pg=team]"))lastSubmit=Date.now()},true);
+const toTop=()=>{if(Date.now()-lastSubmit<5000)requestAnimationFrame(()=>window.scrollTo({top:0,behavior:"auto"}))};
+const _ra=renderAccount;renderAccount=function(){_ra.apply(this,arguments);toTop()};
+const _rt2=renderTeam;renderTeam=function(){_rt2.apply(this,arguments);toTop()};
+const _sp2=showPage;showPage=function(){_sp2.apply(this,arguments);toTop()};
 /* ---------- small cool details ---------- */
 /* 1. a thin progress bar while you scroll */
 const bar=document.createElement("div");bar.className="scrollbar";document.body.appendChild(bar);
@@ -5832,9 +5840,7 @@ let typed="";document.addEventListener("keydown",e=>{if(e.target.closest&&e.targ
 let gWait=false;
 /* 6. Beirut clock and 7. a tip of the day, in the footer */
 const TIPS=["Send the follow-up message. Most people never do.","Before a meeting, write down the one thing you want to leave with.","Say your idea in one sentence before you build anything.","Ask a senior student how they got their internship. People love to help.","Your first version only needs to work, not to be pretty.","Talk to five possible customers before you write a business plan.","On LinkedIn, a short personal note beats an empty connection request.","Lead by doing the boring job first.","When you don't know, say so, then find out.","Practice your pitch out loud. Reading it in your head doesn't count.","Write down every idea. Judge them next week.","A good question in a workshop is worth more than a good answer.","Arrive five minutes early. It's the cheapest way to stand out.","Learn Excel shortcuts. Future you will thank you.","Every expert you admire was once a beginner who kept going.","Volunteer for the task nobody wants. That's how people notice you.","Keep a list of what you achieved this semester. Your CV will thank you.","A team that argues well builds better things.","Read one article outside your major every week.","Thank the people who helped you, by name."];
-const fc=document.querySelector(".foot-copy");if(fc){const d=document.createElement("p");d.className="foot-extra";const day=Math.floor(Date.now()/864e5);
- d.innerHTML=`<span class="tip">Tip of the day: ${esc(TIPS[day%TIPS.length])}</span><span class="clock" aria-label="Time in Beirut"></span>`;fc.after(d);
- const ck=d.querySelector(".clock"),tick=()=>{ck.textContent="Beirut "+new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Beirut",hour:"2-digit",minute:"2-digit"}).format(new Date())};tick();setInterval(tick,30000)}
+
 /* 8. welcome back, once a day, and 9. a late-night nudge */
 (function wait(n){if(!ST.ready){if(n<40)setTimeout(()=>wait(n+1),250);return}
  const hr=+new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Beirut",hour:"2-digit",hour12:false}).format(new Date());
