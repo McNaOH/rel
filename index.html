@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-GpiBGh0Q+ORr6U8PYrLWDxYE8KjDqivU3cXXiJixsFo='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-pWF+/vS95ue6l1nhJl9XFcMSMyzMY3bHDdbVrgO4uUg='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -4085,8 +4085,9 @@ async function refreshPublic(){if(!SB)return;
  try{const [ev,an,pp,pb,sp,rs,dc,pt,ss]=await Promise.all([SB.from("events").select("*").order("date",{ascending:true}),SB.from("announcements").select("*"),SB.from("public_profiles").select("*"),SB.from("public_board").select("*"),SB.from("speakers").select("*"),SB.from("resources").select("*"),SB.from("documents").select("*").order("sort",{ascending:true}),SB.from("partners").select("*"),SB.from("startup_spotlight").select("*")]);
   if(!ev.error&&ev.data){EVENTS.length=0;PAST.length=0;EVENTS.push(...ev.data.map(mapEv))}
   if(!an.error&&an.data){ANNOUNCEMENTS.length=0;ANNOUNCEMENTS.push(...an.data.map(mapAn))}
-  if(!pp.error&&pp.data){RECORDS.length=0;RECORDS.push(...STATIC_RECORDS,...pp.data.filter(r=>!STATIC_RECORDS.some(s=>s.id===r.rel_id)).map(mapRec))}
-  if(!pb.error&&pb.data&&pb.data.length){BOARD.length=0;BOARD.push(...pb.data.map(mapBoard));pb.data.forEach(r=>{if(!RECORDS.some(x=>x.id===r.rel_id))RECORDS.push(mapBoardRec(r))});if(typeof drawBoard==="function")drawBoard();if(typeof drawAdvisor==="function")drawAdvisor()}
+  const fillIn=(a,b)=>{const keep=a.type==="Board";for(const k in b){if(b[k]!=null&&b[k]!==""&&k!=="salt"&&k!=="hash")a[k]=b[k]}if(keep){a.type="Board";a.listed=true}return a};
+  if(!pp.error&&pp.data){RECORDS.length=0;RECORDS.push(...STATIC_RECORDS.map(x=>({...x})));pp.data.map(mapRec).forEach(d=>{const ex=RECORDS.find(x=>x.id===d.id);if(ex)fillIn(ex,d);else RECORDS.push(d)})}
+  if(!pb.error&&pb.data&&pb.data.length){BOARD.length=0;BOARD.push(...pb.data.map(mapBoard));pb.data.forEach(r=>{const d=mapBoardRec(r),ex=RECORDS.find(x=>x.id===r.rel_id);if(ex)fillIn(ex,d);else RECORDS.push(d)});if(typeof drawBoard==="function")drawBoard();if(typeof drawAdvisor==="function")drawAdvisor()}
   if(!sp.error&&sp.data){SPEAKERS.length=0;SPEAKERS.push(...sp.data.map(mapSpk))}
   if(!rs.error&&rs.data){DBRES=rs.data.map(mapRes);if(typeof drawRes==="function")drawRes()}
   if(!dc.error&&dc.data&&dc.data.length){DOCS.length=0;DOCS.push(...dc.data.map(mapDoc))}
