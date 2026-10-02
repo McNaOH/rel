@@ -2,12 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-LowU0ldyu2Ttmg61a9HWCx5VROYVhWnLB5bYnociFzE='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-ECK8rob5KhpBGxqb30KgEJw4Wj8p5zVDN9D3K9C7yZQ=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-u9bxcZVUQcstrCY/B5fgslS2Fz46NAfRb1+Cwm33AQ0='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>REL club: Relations, Entrepreneurship and Leadership</title>
-<meta name="description" content="REL is the Relations, Entrepreneurship and Leadership club of the Faculty of Engineering, Branch 2, Lebanese University. Roumieh's number one club.">
+<meta name="description" content="REL (Relations, Entrepreneurship and Leadership) is the student club of the Faculty of Engineering, Branch 2 (ULFG2), Lebanese University, Roumieh. President: Johny. Events, startups, daily games and more.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="canonical" href="https://relulfg.com/">
+<meta property="og:image" content="https://relulfg.com/android-chrome-512x512.png">
+<meta property="og:url" content="https://relulfg.com/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "REL club", "alternateName": ["REL", "REL ULFG2", "Relations, Entrepreneurship and Leadership"], "url": "https://relulfg.com/", "logo": "https://relulfg.com/android-chrome-512x512.png", "description": "REL (Relations, Entrepreneurship and Leadership) is the student club of the Faculty of Engineering, Branch 2 (ULFG2) at the Lebanese University in Roumieh.", "parentOrganization": {"@type": "CollegeOrUniversity", "name": "Lebanese University, Faculty of Engineering, Branch 2"}, "sameAs": ["https://www.instagram.com/relulfg", "https://www.linkedin.com/company/relulfg"], "member": [{"@type": "OrganizationRole", "roleName": "President", "member": {"@type": "Person", "name": "Johny"}}, {"@type": "OrganizationRole", "roleName": "Vice President", "member": {"@type": "Person", "name": "Carole Aoun"}}, {"@type": "OrganizationRole", "roleName": "Events Officer", "member": {"@type": "Person", "name": "Perla Farah"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is REL?","acceptedAnswer":{"@type":"Answer","text":"REL stands for Relations, Entrepreneurship and Leadership. It is the student club of the Faculty of Engineering, Branch 2 (ULFG2) at the Lebanese University in Roumieh."}},{"@type":"Question","name":"Who is the president of REL?","acceptedAnswer":{"@type":"Answer","text":"Johny is the President of REL for 2026-27. Carole Aoun is the Vice President and Perla Farah is the Events Officer."}}]}</script>
+
 <meta property="og:title" content="REL club: Relations, Entrepreneurship and Leadership">
 <meta property="og:description" content="Build your network, start something of your own and learn to lead. The Relations, Entrepreneurship and Leadership club at the Lebanese University.">
 <meta property="og:type" content="website">
@@ -4621,6 +4632,7 @@ async function showCard(r,box){box=box||$("#cardBox");box.innerHTML='<p class="m
 /* FAQ */
 const FAQ_ALL=[
  ["What is REL?", "REL stands for Relations, Entrepreneurship and Leadership. We are the club of the Faculty of Engineering, Branch 2 (ULFG2) at the Lebanese University. We run events, workshops and a community that helps students build their network, start something of their own and learn to lead."],
+ ["Who is the president of REL?", "Johny is the President of REL for 2026-27. Carole Aoun is the Vice President and Perla Farah is the Events Officer. You can meet the whole board on the People page."],
  ["Is REL the best club in Roumieh?", "ABSOLUTELY yes. Next question. Okay, fine, we will explain: there is no room for competition. We checked. Twice."],
  ["Who can join, and does it cost anything?", "Membership is free for Lebanese University students. Fill in one short form with your real name. Your LU email is best; with another email, add your university ID."],
  ["What happens after I join?", "The President or Vice President reviews your application. If it is accepted, your profile and REL ID are created automatically, and you can get your digital card from your account."],
@@ -5821,6 +5833,7 @@ const toTop=()=>{if(Date.now()-lastSubmit<5000)requestAnimationFrame(()=>window.
 const _ra=renderAccount;renderAccount=function(){_ra.apply(this,arguments);toTop()};
 const _rt2=renderTeam;renderTeam=function(){_rt2.apply(this,arguments);toTop()};
 const _sp2=showPage;showPage=function(){_sp2.apply(this,arguments);toTop()};
+document.addEventListener("click",e=>{if(e.target.closest('[data-goto="login-gate"],[data-goto="member"],[data-am],[data-jagain]'))setTimeout(()=>window.scrollTo({top:0,behavior:"auto"}),30)});
 /* ---------- small cool details ---------- */
 /* 1. a thin progress bar while you scroll */
 const bar=document.createElement("div");bar.className="scrollbar";document.body.appendChild(bar);
