@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-8WgLmXUystQKriAdUK7+8FYSNnFqslzOgi6Jy8fnDyc='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-GpiBGh0Q+ORr6U8PYrLWDxYE8KjDqivU3cXXiJixsFo='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1105,6 +1105,13 @@ body.lights::after{content:"";position:fixed;inset:0;pointer-events:none;z-index
 .poll-l,.poll-n{position:relative;z-index:1}
 .poll-n{font-weight:700;color:var(--brand-ink)}
 @media (prefers-reduced-motion:reduce){.btn:active{transform:none}body.lights::after{animation:none}}
+</style>
+<style id="rel-update-11">
+.ms-btn{width:100%;max-width:420px;display:flex;align-items:center;justify-content:center;gap:12px;background:#fff;color:#2F2F2F;border:1.5px solid #8C8C8C;font-weight:600}
+.ms-btn:hover{background:#F3F3F3}
+.ms-note{margin:8px 0 0}
+.or{display:flex;align-items:center;gap:12px;max-width:420px;margin:18px 0;color:var(--muted);font-size:.9rem}
+.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
 </style>
 </head>
 <body>
@@ -4242,6 +4249,7 @@ const permBoxes=sel=>PERMS.map(p=>`<label class="fld ck"><input type="checkbox" 
 async function paneAccess(){loading();const [tr,mr]=await Promise.all([SB.from("team").select("*").order("rel_id",{ascending:true}),SB.from("members").select("rel_id,full_name,user_id").not("user_id","is",null)]);const {data,error}=tr;if(error)return paneErr(error);
  const claimedIds=new Set((mr.data||[]).map(m=>m.rel_id));
  const teamIds=new Set(data.map(t=>t.rel_id));const eligible=(mr.data||[]).filter(m=>!teamIds.has(m.rel_id)).sort((x,y)=>x.full_name.localeCompare(y.full_name));
+ const FREE=["0002","0003","0004","0005","0006"].filter(n=>!teamIds.has(n)&&!claimedIds.has(n));
  const rank=t=>t.role==="president"?0:t.role==="vice_president"?1:2;data.sort((x,y)=>rank(x)-rank(y)||x.rel_id.localeCompare(y.rel_id));
  tpane().innerHTML=`<p class="muted">Everyone listed here appears on the People page as the board (the Faculty Advisor appears as advisor). Add people from their real accounts at the bottom, and use Remove to take them off. The President always has full access.</p>
  ${data.map(t=>t.role==="president"?`<div class="appc" data-teamp="${esc(t.email)}"><h3>${esc(t.full_name)}</h3><p class="muted small" style="margin:0">${esc(t.position)}. #${esc(t.rel_id)}. ${esc(t.email)}</p><div class="sigs"><span class="badge ok">&#10003; Full access</span></div>${upField("tp_"+t.rel_id,"Photo","team",800,true,"image/jpeg,image/png,image/webp",t.photo_path,"photo")}<div class="row"><button type="button" class="btn sm" data-savephoto="${esc(t.email)}">Save photo</button></div><p class="vres" data-teammsg role="status" aria-live="polite"></p></div>`
@@ -4251,6 +4259,7 @@ async function paneAccess(){loading();const [tr,mr]=await Promise.all([SB.from("
   <div class="row" style="gap:16px;margin:16px 0 8px"><label class="fld" style="flex:1 1 200px;margin:0">Position<input data-f="position" value="${esc(t.position)}"></label><label class="fld" style="flex:1 1 180px;margin:0">Role<select data-f="role"><option value="vice_president" ${t.role==="vice_president"?"selected":""}>Vice President</option><option value="board" ${t.role==="board"?"selected":""}>Board member</option><option value="advisor" ${t.role==="advisor"?"selected":""}>Faculty Advisor</option></select></label></div>
   ${upField("tp_"+t.rel_id,"Photo","team",800,true,"image/jpeg,image/png,image/webp",t.photo_path,"photo")}
   ${permBoxes(t.perms||[])}
+  ${t.rel_id>"0006"&&FREE.length&&claimedIds.has(t.rel_id)?`<div class="link-dup"><p class="muted small" style="margin:0 0 8px"><b>Give a board number.</b> Board members use 0002 to 0006. Their points, games and photo move with them.</p><div class="row"><select data-seatnum style="max-width:200px">${FREE.map(n=>`<option value="${n}">#${n}</option>`).join("")}</select><button type="button" class="btn sm" data-moveseat="${esc(t.rel_id)}">Give this number</button></div><p class="vres" data-linkmsg role="status" aria-live="polite"></p></div>`:""}
   <div class="row" style="margin-top:8px"><button type="button" class="btn primary sm" data-teamsave="${esc(t.email)}">Save</button><button type="button" class="btn sm" data-teamdel="${esc(t.email)}">Remove from the board</button></div><p class="vres" data-teammsg role="status" aria-live="polite"></p>
   ${claimedIds.has(t.rel_id)?"":`<div class="link-dup"><p class="muted small" style="margin:0 0 8px"><b>Replace with their real account.</b> Pick ${esc(t.full_name)}'s own account. It takes this seat, position and title, and the placeholder disappears.</p><div class="row"><select data-linkid style="max-width:320px"><option value="">Choose their account...</option>${eligible.map(m=>`<option value="${esc(m.rel_id)}" ${m.full_name.trim().toLowerCase()===String(t.full_name).trim().toLowerCase()?"selected":""}>${esc(m.full_name)} (#${esc(m.rel_id)})</option>`).join("")}</select><button type="button" class="btn sm" data-linkacct="${esc(t.rel_id)}">Replace</button></div><p class="muted small" style="margin:8px 0 0">Not in the list? Their account must be an accepted member first. Accept them in the Applications tab, then come back here.</p><p class="vres" data-linkmsg role="status" aria-live="polite"></p></div>`}
   </div>`).join("")}
@@ -4279,9 +4288,14 @@ document.addEventListener("click",async e=>{
  const sp=e.target.closest("[data-savephoto]");if(sp){const card=sp.closest("[data-teamp]"),ph=card.querySelector('[data-cf="photo"]'),msg=card.querySelector("[data-teammsg]");const {error}=await SB.from("team").update({photo_path:ph.value||null}).eq("email",sp.dataset.savephoto);if(error){say(msg,errText(error));return}say(msg,"Saved.",true);refreshPublic();return}
  const la=e.target.closest("[data-linkacct]");if(la){const box=la.closest(".link-dup"),input=box.querySelector("[data-linkid]"),msg=box.querySelector("[data-linkmsg]"),realId=input.value.trim();
   if(!realId){say(msg,"Choose their account first.");return}
-  if(!confirm("Replace placeholder #"+la.dataset.linkacct+" with the real account #"+realId+"? The real account takes the seat, role and title. The placeholder is removed. This cannot be undone."))return;
-  la.disabled=true;const {error}=await SB.rpc("merge_team_duplicate",{p_team_rel_id:la.dataset.linkacct,p_real_rel_id:realId});la.disabled=false;
-  if(error){say(msg,errText(error));return}toast("Done. #"+realId+" now holds this seat on the People page.");paneAccess();refreshPublic();return}
+  if(!confirm("Replace placeholder #"+la.dataset.linkacct+" with the real account #"+realId+"? The real account becomes #"+la.dataset.linkacct+" and takes the seat, role and title. The placeholder is removed. This cannot be undone."))return;
+  la.disabled=true;let {error}=await SB.rpc("rel_move_to_seat",{p_real:realId,p_seat:la.dataset.linkacct});
+  if(error&&/could not find|does not exist/i.test(error.message||""))({error}=await SB.rpc("merge_team_duplicate",{p_team_rel_id:la.dataset.linkacct,p_real_rel_id:realId}));la.disabled=false;
+  if(error){say(msg,errText(error));return}toast("Done. They are now #"+la.dataset.linkacct+" on the People page.");paneAccess();refreshPublic();return}
+ const mv=e.target.closest("[data-moveseat]");if(mv){const box=mv.closest(".link-dup"),seat=box.querySelector("[data-seatnum]").value,msg=box.querySelector("[data-linkmsg]");
+  if(!confirm("Give #"+mv.dataset.moveseat+" the board number #"+seat+"? Their points, games and photo move with them."))return;
+  mv.disabled=true;const {error}=await SB.rpc("rel_move_to_seat",{p_real:mv.dataset.moveseat,p_seat:seat});mv.disabled=false;
+  if(error){say(msg,errText(error));return}toast("Done. They are now #"+seat);paneAccess();refreshPublic();return}
  const dl=e.target.closest("[data-teamdel]");if(dl){if(!confirm("Remove this person from the board and the People page? They stay a normal member."))return;const {error}=await SB.rpc("remove_team_member",{p_email:dl.dataset.teamdel});if(error){toast(errText(error));return}toast("Access removed");paneAccess();refreshPublic()}});
 document.addEventListener("submit",async e=>{const f=e.target;if(!f||f.id!=="tmForm")return;e.preventDefault();const msg=$("#tmMsg"),pos=$("#tmPos").value.trim();
  if(pos.length<2){say(msg,"Please fill in the position.");return}
@@ -5868,6 +5882,52 @@ document.addEventListener("click",async e=>{const b=e.target.closest("#acctBody 
 /* 13. a little hello in the console is already there; 14. the page says hi on a phone shake */
 let lastShake=0;addEventListener("devicemotion",e=>{const a=e.accelerationIncludingGravity;if(!a)return;const f=Math.abs(a.x||0)+Math.abs(a.y||0)+Math.abs(a.z||0);
  if(f>45&&Date.now()-lastShake>5000){lastShake=Date.now();toast("Whoa, easy! \ud83d\ude04 Need an idea? Check Startups.")}},{passive:true});
+})();
+
+
+/* ===================== update 11: Continue with Microsoft ===================== */
+(function(){
+const MS_LOGIN=true; /* set to false to hide the Microsoft button */
+const LU=/^[^\s@]+@([a-z0-9-]+\.)*ul\.edu\.lb$/i;
+const MS_ICON='<svg viewBox="0 0 21 21" width="18" height="18" aria-hidden="true"><rect x="1" y="1" width="9" height="9" fill="#F25022"/><rect x="11" y="1" width="9" height="9" fill="#7FBA00"/><rect x="1" y="11" width="9" height="9" fill="#00A4EF"/><rect x="11" y="11" width="9" height="9" fill="#FFB900"/></svg>';
+const msBlock=label=>MS_LOGIN?`<button type="button" class="btn ms-btn" data-ms>${MS_ICON}<span>${label}</span></button><p class="muted small ms-note">Use your LU Microsoft account, the one you use for Teams. No password to remember.</p><div class="or"><span>or</span></div>`:"";
+/* add the button on top of the join form and the log in form */
+const _av=authView;authView=function(box){_av(box);const m=["login","reset","team"].includes(authMode)?authMode:"join";if(m==="reset"||m==="team")return;
+ const f=box.querySelector(m==="join"?"#joinForm":"#authForm");if(f&&!box.querySelector("[data-ms]"))f.insertAdjacentHTML("afterbegin",msBlock(m==="join"?"Join with Microsoft":"Log in with Microsoft"))};
+document.addEventListener("click",async e=>{const b=e.target.closest("[data-ms]");if(!b||!SB)return;b.disabled=true;
+ try{sessionStorage.setItem("rel-oauth","1")}catch(err){}
+ const {error}=await SB.auth.signInWithOAuth({provider:"azure",options:{scopes:"email openid profile",redirectTo:location.origin+location.pathname}});
+ if(error){b.disabled=false;toast(errText(error))}});
+/* coming back from Microsoft: open the account page */
+(function wait(n){if(!ST.ready){if(n<60)setTimeout(()=>wait(n+1),250);return}let f=null;try{f=sessionStorage.getItem("rel-oauth");sessionStorage.removeItem("rel-oauth")}catch(e){}
+ if(f&&ST.user){showPage("account");window.scrollTo(0,0)}})(0);
+
+/* logged in but not a member yet (for example after Microsoft): one short form, no email or password */
+const latin=x=>String(x||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z ]/g," ");
+const nameOk=(n,e)=>{const l=latin(String(e).split("@")[0]).replace(/ /g,"");return latin(n).split(/\s+/).filter(t=>t.length>=3).some(t=>l.includes(t)||(t.length>=5&&l.includes(t.slice(0,4))))};
+applyView=function(box){const u=ST.user||{},md=u.user_metadata||{},em=(u.email||"").toLowerCase(),lu=LU.test(em),nm=md.full_name||md.name||"";
+ box.innerHTML=accHead("Finish joining REL","Almost done. A few details and your request goes to the board.")+`<div class="card" style="max-width:640px;background:var(--bg)"><form id="finishForm" novalidate>
+ <p class="muted small" style="margin-top:0">Signed in as <b>${esc(em)}</b></p>
+ <label class="fld">Your full real name *<input id="fName" autocomplete="name" value="${esc(nm)}"></label>
+ ${lu?"":`<label class="fld">University ID (4 digits) *<input id="fUni" inputmode="numeric" maxlength="4" placeholder="1234"><span class="fhint">Needed because this is not an LU email. It stays private.</span></label>`}
+ <label class="fld">Year *<select id="fYear">${LEVEL.map(l=>`<option>${l}</option>`).join("")}</select></label>
+ <label class="fld">Faculty *<input id="fFac" list="jFacL2" value="Faculty of Engineering, Branch 2 (ULFG2)"><datalist id="jFacL2"><option value="Faculty of Engineering, Branch 2 (ULFG2)"><option value="Faculty of Sciences"><option value="Faculty of Economics and Business Administration"><option value="Other"></datalist></label>
+ <label class="fld">Major *<input id="fMajor" list="jMajL2" placeholder="Start typing, or pick one"><datalist id="jMajL2"><option value="Mechanical Engineering"><option value="Electrical Engineering"><option value="Civil Engineering"><option value="Computer and Communication Engineering"><option value="Common Core (Tronc commun)"><option value="Other"></datalist></label>
+ <label class="fld">Phone number (optional)<input id="fPhone" type="tel" placeholder="+961 71 234 567"></label>
+ <label class="fld ck"><input type="checkbox" id="fList" checked><span>Show my name, year and major on the REL members page.</span></label>
+ <label class="fld ck"><input type="checkbox" id="fTrue"><span>I confirm that the information is true. *</span></label>
+ <div class="row"><button class="btn primary" type="submit">Send my request</button></div><p class="vres" id="fMsg" role="status" aria-live="polite"></p></form></div>`};
+document.addEventListener("input",e=>{if(e.target&&e.target.id==="fUni")e.target.value=e.target.value.replace(/\D/g,"").slice(0,4)});
+document.addEventListener("submit",async e=>{const f=e.target;if(!f||f.id!=="finishForm")return;e.preventDefault();const msg=$("#fMsg"),v=id=>(($(id)||{}).value||"").trim();
+ const em=(ST.user.email||"").toLowerCase(),lu=LU.test(em),name=v("#fName").replace(/\s+/g," "),uni=v("#fUni");
+ if(name.split(" ").length<2||/\d/.test(name)){say(msg,"Please write your full real name: first and last name.");return}
+ if(!nameOk(name,em)){say(msg,"Your email should contain part of your name. Log out and use an email with your name in it.");return}
+ if(!lu&&!/^\d{4}$/.test(uni)){say(msg,"Please add your 4-digit university ID.");return}
+ if(!v("#fMajor")){say(msg,"Please fill in your major.");return}
+ if(!$("#fTrue").checked){say(msg,"Please tick the box to confirm that the information is true.");return}
+ const btn=f.querySelector("button[type=submit]");btn.disabled=true;
+ const {error}=await SB.rpc("join_application",{p_full_name:name,p_uni_id:lu?"":uni,p_faculty:v("#fFac"),p_year:$("#fYear").value,p_major:v("#fMajor"),p_phone:v("#fPhone"),p_listed:$("#fList").checked});
+ btn.disabled=false;if(error){say(msg,errText(error));return}toast("Your membership request is with the board.");await loadUser();renderAccount();window.scrollTo(0,0)});
 })();
 
 </script>
