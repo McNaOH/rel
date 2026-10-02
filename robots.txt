@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://relulfg.com/sitemap.xml
