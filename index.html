@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-pWF+/vS95ue6l1nhJl9XFcMSMyzMY3bHDdbVrgO4uUg='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-APAFNd0oDd+366xNciSQQNjvpLpnwpGf+cZKon3QYfw='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -5886,23 +5886,9 @@ let lastShake=0;addEventListener("devicemotion",e=>{const a=e.accelerationInclud
 })();
 
 
-/* ===================== update 11: Continue with Microsoft ===================== */
+/* ===================== update 11: finish joining ===================== */
 (function(){
-const MS_LOGIN=true; /* set to false to hide the Microsoft button */
 const LU=/^[^\s@]+@([a-z0-9-]+\.)*ul\.edu\.lb$/i;
-const MS_ICON='<svg viewBox="0 0 21 21" width="18" height="18" aria-hidden="true"><rect x="1" y="1" width="9" height="9" fill="#F25022"/><rect x="11" y="1" width="9" height="9" fill="#7FBA00"/><rect x="1" y="11" width="9" height="9" fill="#00A4EF"/><rect x="11" y="11" width="9" height="9" fill="#FFB900"/></svg>';
-const msBlock=label=>MS_LOGIN?`<button type="button" class="btn ms-btn" data-ms>${MS_ICON}<span>${label}</span></button><p class="muted small ms-note">Use your LU Microsoft account, the one you use for Teams. No password to remember.</p><div class="or"><span>or</span></div>`:"";
-/* add the button on top of the join form and the log in form */
-const _av=authView;authView=function(box){_av(box);const m=["login","reset","team"].includes(authMode)?authMode:"join";if(m==="reset"||m==="team")return;
- const f=box.querySelector(m==="join"?"#joinForm":"#authForm");if(f&&!box.querySelector("[data-ms]"))f.insertAdjacentHTML("afterbegin",msBlock(m==="join"?"Join with Microsoft":"Log in with Microsoft"))};
-document.addEventListener("click",async e=>{const b=e.target.closest("[data-ms]");if(!b||!SB)return;b.disabled=true;
- try{sessionStorage.setItem("rel-oauth","1")}catch(err){}
- const {error}=await SB.auth.signInWithOAuth({provider:"azure",options:{scopes:"email openid profile",redirectTo:location.origin+location.pathname}});
- if(error){b.disabled=false;toast(errText(error))}});
-/* coming back from Microsoft: open the account page */
-(function wait(n){if(!ST.ready){if(n<60)setTimeout(()=>wait(n+1),250);return}let f=null;try{f=sessionStorage.getItem("rel-oauth");sessionStorage.removeItem("rel-oauth")}catch(e){}
- if(f&&ST.user){showPage("account");window.scrollTo(0,0)}})(0);
-
 /* logged in but not a member yet (for example after Microsoft): one short form, no email or password */
 const latin=x=>String(x||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z ]/g," ");
 const nameOk=(n,e)=>{const l=latin(String(e).split("@")[0]).replace(/ /g,"");return latin(n).split(/\s+/).filter(t=>t.length>=3).some(t=>l.includes(t)||(t.length>=5&&l.includes(t.slice(0,4))))};
