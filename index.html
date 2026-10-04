@@ -5448,8 +5448,9 @@ function joinView(box){
  <label class="fld">Email *<input type="email" id="jEmail" autocomplete="email" placeholder="name@st.ul.edu.lb" inputmode="email"><span class="fhint" id="jEmailHint">Your LU email is best. No LU email, or it doesn't work? Use another email with your name in it.</span></label>
  <label class="fld">Password *<input type="password" id="jPass" autocomplete="new-password" placeholder="At least 8 characters"><span class="pw-meter" aria-hidden="true"><i id="jMeter"></i></span><span class="fhint" id="jPassHint"></span></label>
  <h4>Your studies</h4>
+ <label class="fld ck"><input type="checkbox" id="jStaff"><span>I'm a doctor or staff member, not a student</span></label>
  <label class="fld" id="jUniWrap" hidden>University ID (4 digits) *<input id="jUni" inputmode="numeric" maxlength="4" autocomplete="off" placeholder="1234"><span class="fhint">Needed because you are not using an LU email. It stays private.</span></label>
- <label class="fld">Year *<select id="jYear">${LEVEL.map(l=>`<option>${l}</option>`).join("")}</select></label>
+ <label class="fld" id="jYearWrap">Year *<select id="jYear">${LEVEL.map(l=>`<option>${l}</option>`).join("")}</select></label>
  <label class="fld">Faculty *<input id="jFac" list="jFacL" value="Faculty of Engineering, Branch 2 (ULFG2)"><datalist id="jFacL">${opt(FACULTIES)}</datalist></label>
  <label class="fld">Major *<input id="jMajor" list="jMajL" placeholder="Start typing, or pick one"><datalist id="jMajL">${opt(MAJORS)}</datalist></label>
  <label class="fld">Phone number (optional)<input id="jPhone" type="tel" autocomplete="tel" placeholder="+961 71 234 567"></label>
@@ -5459,7 +5460,9 @@ function joinView(box){
  <p class="vres" id="jMsg" role="status" aria-live="polite"></p>
  <div class="join-switch"><p>Already a member?</p><button type="button" class="btn sm" data-am="login">Log in</button></div>
  </form></div>`+notStudent;
- restoreDraft&&restoreDraft("joinForm")}
+ restoreDraft&&restoreDraft("joinForm");syncStaff()}
+function syncStaff(){const c=$("#jStaff"),on=!!(c&&c.checked);if(!c)return;$("#jYearWrap").hidden=on;if(on)$("#jUniWrap").hidden=true;else{const e=$("#jEmail");if(e)e.dispatchEvent(new Event("input",{bubbles:true}))}}
+document.addEventListener("change",e=>{if(e.target&&e.target.id==="jStaff")syncStaff()});
 
 function loginView(box,m){
  const last=lget("rel-last-email","");
@@ -5485,16 +5488,16 @@ document.addEventListener("submit",async e=>{const f=e.target;if(!f||f.id!=="joi
  const msg=$("#jMsg"),v=id=>($(id).value||"").trim(),bad=(id,t)=>{$(id).setAttribute("aria-invalid","true");$(id).focus();say(msg,t);msg.scrollIntoView({block:"nearest",behavior:"smooth"})};
  f.querySelectorAll("[aria-invalid]").forEach(x=>x.removeAttribute("aria-invalid"));
  const name=titleCase(v("#jName").replace(/\s+/g," ")),email=v("#jEmail").toLowerCase(),pw=$("#jPass").value,uni=v("#jUni");
- const lu=LU_RE.test(email);
+ const lu=LU_RE.test(email),staff=!!($("#jStaff")||{}).checked;
  if(name.split(" ").length<2||name.length<5||/\d/.test(name))return bad("#jName","Please write your full real name: first and last name.");
  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return bad("#jEmail","Please enter a valid email.");
  if(!nameInEmail(name,email))return bad("#jEmail","Your email should contain part of your name, like "+suggestLocal(name)+"@... Use an email with your name in it.");
  if(pw.length<8)return bad("#jPass","Your password needs at least 8 characters.");
- if(!lu&&!/^[0-9]{4}$/.test(uni))return bad("#jUni","Without an LU email we need your 4-digit university ID.");
+ if(!lu&&!staff&&!/^[0-9]{4}$/.test(uni))return bad("#jUni","Without an LU email we need your 4-digit university ID.");
  if(!v("#jFac"))return bad("#jFac","Please fill in your faculty.");
  if(!v("#jMajor"))return bad("#jMajor","Please fill in your major.");
  if(!$("#jTrue").checked){say(msg,"Please tick the box to confirm that the information is true.");return}
- const app={full_name:name,uni_id:lu?"":uni,faculty:v("#jFac"),year:$("#jYear").value,major:v("#jMajor"),phone:v("#jPhone"),listed:$("#jList").checked};
+ const app={full_name:name,uni_id:lu||staff?"":uni,faculty:v("#jFac"),year:staff?"Faculty / Staff":$("#jYear").value,major:v("#jMajor"),phone:v("#jPhone"),listed:$("#jList").checked};
  const btn=f.querySelector("button[type=submit]");btn.disabled=true;say(msg,"Please wait...",true);
  try{lset(PEND,{email,app});
   const {data,error}=await SB.auth.signUp({email,password:pw,options:{emailRedirectTo:location.origin+location.pathname,data:{rel_app:app,full_name:name}}});if(error)throw error;
@@ -5518,7 +5521,7 @@ loadUser=async function(){await _lu.apply(this,arguments);
 document.addEventListener("input",e=>{const t=e.target;if(!t||!t.id)return;
  if(t.id==="jUni"||t.id==="pUni"){const c=t.value.replace(/\D/g,"").slice(0,4);if(c!==t.value)t.value=c}
  if(t.id==="jEmail"||t.id==="jName"){const e=$("#jEmail"),h=$("#jEmailHint"),w=$("#jUniWrap"),v=(e&&e.value||"").trim(),nm=($("#jName")||{}).value||"";if(!h)return;
-  const lu=LU_RE.test(v),full=/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v);if(w)w.hidden=lu||!full;
+  const lu=LU_RE.test(v),full=/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v);if(w)w.hidden=lu||!full||!!($("#jStaff")||{}).checked;
   if(!v){h.className="fhint";h.textContent="Your LU email is best. No LU email, or it doesn't work? Use another email with your name in it.";return}
   if(full&&nm.trim().split(/\s+/).length>=2&&!nameInEmail(nm,v)){h.className="fhint no";h.textContent="This email doesn't contain your name. Use one that does.";return}
   if(lu){h.className="fhint ok";h.textContent="\u2713 LU email, no university ID needed"}else if(full){h.className="fhint";h.textContent="Not an LU email, so we'll also ask for your university ID."}else{h.className="fhint";h.textContent="Your LU email is best."}}
