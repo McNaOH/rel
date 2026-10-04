@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-o2AuberhW1c+3W69Wu1gpxMFS0zID4SdAFuBYVKlDKw='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-HLsubXZmaN3dy4dqJhGHGnVcwZACpup98q8bxuxsE2E='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -5452,7 +5452,7 @@ function joinView(box){
  <label class="fld" id="jUniWrap" hidden>University ID (4 digits) *<input id="jUni" inputmode="numeric" maxlength="4" autocomplete="off" placeholder="1234"><span class="fhint">Needed because you are not using an LU email. It stays private.</span></label>
  <label class="fld" id="jYearWrap">Year *<select id="jYear">${LEVEL.map(l=>`<option>${l}</option>`).join("")}</select></label>
  <label class="fld">Faculty *<input id="jFac" list="jFacL" value="Faculty of Engineering, Branch 2 (ULFG2)"><datalist id="jFacL">${opt(FACULTIES)}</datalist></label>
- <label class="fld">Major *<input id="jMajor" list="jMajL" placeholder="Start typing, or pick one"><datalist id="jMajL">${opt(MAJORS)}</datalist></label>
+ <label class="fld"><span id="jMajTxt">Major *</span><input id="jMajor" list="jMajL" placeholder="Start typing, or pick one"><datalist id="jMajL">${opt(MAJORS)}</datalist></label>
  <label class="fld">Phone number (optional)<input id="jPhone" type="tel" autocomplete="tel" placeholder="+961 71 234 567"></label>
  <label class="fld ck"><input type="checkbox" id="jList" checked><span>Show my name, year and major on the REL members page. Phone, email and university ID stay private.</span></label>
  <label class="fld ck"><input type="checkbox" id="jTrue"><span>I confirm that the information is true. *</span></label>
@@ -5461,7 +5461,7 @@ function joinView(box){
  <div class="join-switch"><p>Already a member?</p><button type="button" class="btn sm" data-am="login">Log in</button></div>
  </form></div>`+notStudent;
  restoreDraft&&restoreDraft("joinForm");syncStaff()}
-function syncStaff(){const c=$("#jStaff"),on=!!(c&&c.checked);if(!c)return;$("#jYearWrap").hidden=on;if(on)$("#jUniWrap").hidden=true;else{const e=$("#jEmail");if(e)e.dispatchEvent(new Event("input",{bubbles:true}))}}
+function syncStaff(){const c=$("#jStaff"),on=!!(c&&c.checked);if(!c)return;$("#jYearWrap").hidden=on;$("#jMajTxt").textContent=on?"Position *":"Major *";const mj=$("#jMajor");if(on){mj.removeAttribute("list");mj.placeholder="e.g. Professor, Lab engineer, Coordinator"}else{mj.setAttribute("list","jMajL");mj.placeholder="Start typing, or pick one"}if(on)$("#jUniWrap").hidden=true;else{const e=$("#jEmail");if(e)e.dispatchEvent(new Event("input",{bubbles:true}))}}
 document.addEventListener("change",e=>{if(e.target&&e.target.id==="jStaff")syncStaff()});
 
 function loginView(box,m){
@@ -5495,7 +5495,7 @@ document.addEventListener("submit",async e=>{const f=e.target;if(!f||f.id!=="joi
  if(pw.length<8)return bad("#jPass","Your password needs at least 8 characters.");
  if(!lu&&!staff&&!/^[0-9]{4}$/.test(uni))return bad("#jUni","Without an LU email we need your 4-digit university ID.");
  if(!v("#jFac"))return bad("#jFac","Please fill in your faculty.");
- if(!v("#jMajor"))return bad("#jMajor","Please fill in your major.");
+ if(!v("#jMajor"))return bad("#jMajor",staff?"Please fill in your position.":"Please fill in your major.");
  if(!$("#jTrue").checked){say(msg,"Please tick the box to confirm that the information is true.");return}
  const app={full_name:name,uni_id:lu||staff?"":uni,faculty:v("#jFac"),year:staff?"Faculty / Staff":$("#jYear").value,major:v("#jMajor"),phone:v("#jPhone"),listed:$("#jList").checked};
  const btn=f.querySelector("button[type=submit]");btn.disabled=true;say(msg,"Please wait...",true);
