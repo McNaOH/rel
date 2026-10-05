@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-HLsubXZmaN3dy4dqJhGHGnVcwZACpup98q8bxuxsE2E='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-3Md8VP0T8pG6lp+PTeuVK8blH5Ep3YdmNIgvbnTKXkg='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1113,6 +1113,31 @@ body.lights::after{content:"";position:fixed;inset:0;pointer-events:none;z-index
 .or{display:flex;align-items:center;gap:12px;max-width:420px;margin:18px 0;color:var(--muted);font-size:.9rem}
 .or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
 </style>
+<style id="rel-update-15">
+[data-greset],#qReset{display:none!important}
+.gate-wrap{position:relative;max-width:440px}
+.veiled{filter:blur(14px) saturate(.4);pointer-events:none;user-select:none}
+.gate-ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;background:rgba(248,246,241,.55);z-index:5;padding:16px}
+.gate-ov p{margin:0;font-weight:600;color:var(--ink)}
+.gate-go{font-size:1.15rem;padding:14px 30px}
+/* Unicorn 2048 */
+.u2048{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:8px;background:#E4DBCF;border-radius:14px;max-width:440px;aspect-ratio:1;touch-action:none;user-select:none}
+.u-t{background:#F1ECE3;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.05;text-align:center;padding:2px}
+.u-t b{font:700 clamp(1rem,4.5vw,1.6rem) var(--f-body)}
+.u-t span{font-size:clamp(.6rem,2.3vw,.8rem);font-weight:600;opacity:.85}
+.u-t.v2{background:#FBF8F3}.u-t.v4{background:#F6ECEE}.u-t.v8{background:#E8C9CC}.u-t.v16{background:#D9A3AB}
+.u-t.v32{background:#C47A86;color:#fff}.u-t.v64{background:#A84D5E;color:#fff}.u-t.v128{background:#93283F;color:#fff}.u-t.v256{background:#800020;color:#fff}
+.u-t.v512{background:#57101F;color:#fff}.u-t.v1024{background:#D9921A;color:#fff}.u-t.v2048,.u-t.v4096{background:#1D1315;color:#FFD666}
+/* hidden extras */
+body.founder{--fill:#B8860B;--brand-ink:#8A6508;--band:#57101F}
+.egg-rain{position:fixed;top:-50px;z-index:600;pointer-events:none;animation:egg-fall 2.4s linear forwards}
+@keyframes egg-fall{to{transform:translateY(110vh) rotate(360deg)}}
+.egg-spin{animation:egg-spin 1s ease-in-out}
+@keyframes egg-spin{to{transform:rotate(720deg)}}
+@keyframes mcnaoh-moon{0%{transform:none}50%{transform:translateX(-18px) scaleX(-1)}100%{transform:none}}
+.mcnaoh-mark.moon{animation:mcnaoh-moon 1.6s linear}
+@media (prefers-reduced-motion:reduce){.egg-spin,.mcnaoh-mark.moon{animation:none}}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -1273,7 +1298,7 @@ body.lights::after{content:"";position:fixed;inset:0;pointer-events:none;z-index
 <ul class="rules"><li>Put one crown in every row, every column and every colored region.</li><li>No two crowns can touch, not even diagonally.</li><li>Tap a square once for an ×, twice for a crown, three times to clear it.</li></ul>
 <div class="qstat"><div><span class="muted small">Time</span><br><b id="qTime">0:00</b></div><div><span class="muted small">Crowns</span><br><b id="qCount">0 / 7</b></div></div>
 <p id="qMsg" role="status" aria-live="polite" style="min-height:1.6em;font-weight:600;color:var(--brand-ink)"></p>
-<div class="row"><button class="btn" id="qReset">Start over</button><button class="btn primary" id="qShare" hidden>Copy my result</button></div>
+<div class="row"><button class="btn" id="qReset" hidden>Start over</button><button class="btn primary" id="qShare" hidden>Copy my result</button></div>
 <div class="g2-top" data-gafter="crowns" hidden><h3>Today&#39;s ranking</h3><table class="lb"><tbody data-gboard="crowns"></tbody></table></div>
 </div>
 </div>
@@ -1285,7 +1310,7 @@ body.lights::after{content:"";position:fixed;inset:0;pointer-events:none;z-index
 <ul class="rules"><li>Draw one line from 1 to the last number, in order.</li><li>The line must pass through every square exactly once.</li><li>Drag your finger, or tap the next square. Tap an earlier square to go back.</li></ul>
 <div class="qstat"><div><span class="muted small">Time</span><br><b data-gtime="path">0:00</b></div><div><span class="muted small">Your streak</span><br><b data-gstreak="path">0 days</b></div><div><span class="muted small">Your best</span><br><b data-gbest="path">–</b></div></div>
 <p class="g2-msg" data-gmsg="path" role="status" aria-live="polite"></p>
-<div class="row"><button type="button" class="btn" data-greset="path">Start over</button><button type="button" class="btn" data-ghint="path">Hint</button><button type="button" class="btn primary" data-gshare="path" hidden>Copy my result</button></div>
+<div class="row"><button type="button" class="btn" hidden data-greset="path">Start over</button><button type="button" class="btn" hidden data-ghint="path">Hint</button><button type="button" class="btn primary" data-gshare="path" hidden>Copy my result</button></div>
 <div class="g2-top" data-gafter="path" hidden><h3>Today&#39;s ranking</h3><table class="lb"><tbody data-gboard="path"></tbody></table></div>
 </div>
 </div>
@@ -1295,7 +1320,7 @@ body.lights::after{content:"";position:fixed;inset:0;pointer-events:none;z-index
 <ul class="rules"><li>Fill every square with a sun or a moon.</li><li>Each row and column has 3 suns and 3 moons.</li><li>No more than 2 of the same side by side.</li><li>= means the two squares match. × means they are different.</li><li>Tap once for a sun, twice for a moon, three times to clear.</li></ul>
 <div class="qstat"><div><span class="muted small">Time</span><br><b data-gtime="sunmoon">0:00</b></div><div><span class="muted small">Your streak</span><br><b data-gstreak="sunmoon">0 days</b></div><div><span class="muted small">Your best</span><br><b data-gbest="sunmoon">–</b></div></div>
 <p class="g2-msg" data-gmsg="sunmoon" role="status" aria-live="polite"></p>
-<div class="row"><button type="button" class="btn" data-greset="sunmoon">Start over</button><button type="button" class="btn" data-ghint="sunmoon">Hint</button><button type="button" class="btn primary" data-gshare="sunmoon" hidden>Copy my result</button></div>
+<div class="row"><button type="button" class="btn" hidden data-greset="sunmoon">Start over</button><button type="button" class="btn" hidden data-ghint="sunmoon">Hint</button><button type="button" class="btn primary" data-gshare="sunmoon" hidden>Copy my result</button></div>
 <div class="g2-top" data-gafter="sunmoon" hidden><h3>Today&#39;s ranking</h3><table class="lb"><tbody data-gboard="sunmoon"></tbody></table></div>
 </div>
 </div>
@@ -1305,7 +1330,7 @@ body.lights::after{content:"";position:fixed;inset:0;pointer-events:none;z-index
 <ul class="rules"><li>Fill the grid with the numbers 1 to 6.</li><li>Each row, column and 2×3 box has every number once.</li><li>Tap a square, then tap a number. On a computer you can type.</li></ul>
 <div class="qstat"><div><span class="muted small">Time</span><br><b data-gtime="sudoku">0:00</b></div><div><span class="muted small">Your streak</span><br><b data-gstreak="sudoku">0 days</b></div><div><span class="muted small">Your best</span><br><b data-gbest="sudoku">–</b></div></div>
 <p class="g2-msg" data-gmsg="sudoku" role="status" aria-live="polite"></p>
-<div class="row"><button type="button" class="btn" data-greset="sudoku">Start over</button><button type="button" class="btn" data-ghint="sudoku">Hint</button><button type="button" class="btn primary" data-gshare="sudoku" hidden>Copy my result</button></div>
+<div class="row"><button type="button" class="btn" hidden data-greset="sudoku">Start over</button><button type="button" class="btn" hidden data-ghint="sudoku">Hint</button><button type="button" class="btn primary" data-gshare="sudoku" hidden>Copy my result</button></div>
 <div class="g2-top" data-gafter="sudoku" hidden><h3>Today&#39;s ranking</h3><table class="lb"><tbody data-gboard="sudoku"></tbody></table></div>
 </div>
 </div>
@@ -1317,6 +1342,16 @@ body.lights::after{content:"";position:fixed;inset:0;pointer-events:none;z-index
 <p class="g2-msg" data-gmsg="clues" role="status" aria-live="polite"></p>
 <div class="row"><button type="button" class="btn primary" data-gshare="clues" hidden>Copy my result</button></div>
 <div class="g2-top" data-gafter="clues" hidden><h3>Today&#39;s ranking</h3><table class="lb"><tbody data-gboard="clues"></tbody></table></div>
+</div>
+</div>
+</div><div class="pane" data-pane="unicorn" data-label="Unicorn 2048"><div class="qwrap g2">
+<div><div class="u2048" id="u2048" aria-label="Unicorn 2048 board" tabindex="0"></div></div>
+<div>
+<ul class="rules"><li>Play as many times as you want, any time.</li><li>Swipe, or use the arrow keys, to slide all tiles.</li><li>Two equal tiles merge: Idea + Idea = Plan, then MVP, Users, Seed, Series A... all the way to Unicorn &#129412;.</li><li>The game ends when the board is full and nothing can merge.</li></ul>
+<div class="qstat"><div><span class="muted small">Score</span><br><b id="u2048Score">0</b></div><div><span class="muted small">Your best</span><br><b id="u2048Best">0</b></div></div>
+<p class="g2-msg" id="u2048Msg" role="status" aria-live="polite"></p>
+<div class="row"><button type="button" class="btn primary" id="u2048New">New game</button></div>
+<div class="g2-top"><h3>All-time high scores</h3><table class="lb"><tbody id="u2048Top"><tr><td class="muted">Loading...</td></tr></tbody></table></div>
 </div>
 </div>
 </div><div class="pane" data-pane="talk" data-label="1-minute talk"><p class="muted" style="max-width:38em">A new topic every day. Speak about it for one minute, alone or with a friend. The timer is optional. Not your topic? Pick another one.</p>
@@ -1401,7 +1436,7 @@ const CONFIG={
  socials:[{n:"Instagram",u:"https://www.instagram.com/relulfg"},{n:"LinkedIn",u:"https://www.linkedin.com/company/relulfg"},{n:"WhatsApp",u:"https://chat.whatsapp.com/Kph5TBt947mDEe8bfAvUQM"}],
  forms:{event:"",member:"",ambassador:"",question:"",recommendation:"",pitch:"",newsletter:"",vote:"",journal:""},
  nextEvent:null, /* filled automatically from the first upcoming dated event */
- membersWhatsapp:"https://chat.whatsapp.com/Fzv5C27rpuE8HFLZn5cQ6n" /* private members/ambassadors/board WhatsApp group invite link, filled in once created */
+ membersWhatsapp:"https://chat.whatsapp.com/Kph5TBt947mDEe8bfAvUQM" /* private members/ambassadors/board WhatsApp group invite link, filled in once created */
 };
 const FORMS={ /* [key,label,type,required,options] . If a Google Form link is set in CONFIG.forms, that tab shows an "Open the form" button instead. */
  member:{custom:"account",tab:"Become a member",title:"Become a member",blurb:"Get access to events and workshops, earn points on the leaderboard and vote on what REL does next.",note:"The President or Vice President reviews your application. If it is accepted, your profile and REL ID are created automatically.",subject:"Membership request",fields:[["name","Full name","text",1],["yearMajor","Year and major","text",1],["phone","Phone number","tel",0],["invited","Who invited you? (an ambassador or a friend)","text",0],["listed","I agree to be listed on the REL website","check",0]]},
@@ -3866,13 +3901,13 @@ var qrcode = function() {
 }));
 
 /* ---------- QR codes and the members-only community ---------- */
-function qrSvg(text,px,logo){const q=qrcode(0,"H");q.addData(text);q.make();const n=q.getModuleCount(),cell=px/(n+2),r=Math.max(1,cell*0.22);let cells="";
- for(let row=0;row<n;row++)for(let col=0;col<n;col++)if(q.isDark(row,col))cells+=`<rect x="${((col+1)*cell).toFixed(2)}" y="${((row+1)*cell).toFixed(2)}" width="${cell.toFixed(2)}" height="${cell.toFixed(2)}" rx="${r.toFixed(2)}"/>`;
- const lg=Math.round(px*0.26),lx=(px-lg)/2,pad=lg*0.14;
+function qrSvg(text,px,logo){const q=qrcode(0,"H");q.addData(text);q.make();const n=q.getModuleCount(),cell=px/(n+4),r=Math.max(1,cell*0.22);let cells="";
+ const lg=Math.round(px*0.22),lx=(px-lg)/2,pad=lg*0.16,c0=Math.floor((lx-pad)/cell)-2,c1=Math.ceil((lx+lg+pad)/cell)-2;
+ for(let row=0;row<n;row++)for(let col=0;col<n;col++){if(logo&&row>=c0&&row<c1&&col>=c0&&col<c1)continue;if(q.isDark(row,col))cells+=`<rect x="${((col+2)*cell).toFixed(2)}" y="${((row+2)*cell).toFixed(2)}" width="${cell.toFixed(2)}" height="${cell.toFixed(2)}" rx="${r.toFixed(2)}"/>`}
  return `<svg viewBox="0 0 ${px} ${px}" width="${px}" height="${px}" role="img" aria-label="QR code">
  <rect width="${px}" height="${px}" fill="#F8F6F1" rx="18"/>
  <g fill="#800020">${cells}</g>
- ${logo?`<rect x="${(lx-pad).toFixed(2)}" y="${(lx-pad).toFixed(2)}" width="${(lg+pad*2).toFixed(2)}" height="${(lg+pad*2).toFixed(2)}" rx="12" fill="#F8F6F1"/><image href="${esc(logo)}" x="${lx.toFixed(2)}" y="${lx.toFixed(2)}" width="${lg}" height="${lg}"/>`:""}
+ ${logo?`<rect x="${(lx-pad).toFixed(2)}" y="${(lx-pad).toFixed(2)}" width="${(lg+pad*2).toFixed(2)}" height="${(lg+pad*2).toFixed(2)}" rx="12" fill="#F8F6F1"/><image href="${esc(logo)}" x="${lx.toFixed(2)}" y="${lx.toFixed(2)}" width="${lg}" height="${lg}" preserveAspectRatio="xMidYMid meet"/>`:""}
  </svg>`}
 function communityCard(){const link=CONFIG.membersWhatsapp;if(!link)return"";
  return `<div class="card" style="margin-top:20px"><h3 style="margin-bottom:8px">REL community</h3><p class="muted">A private WhatsApp group for members, ambassadors and the board. This is different from the public announcements group, so please do not share this link outside REL.</p>
@@ -4770,14 +4805,15 @@ const QZ=[["What does MVP stand for in the startup world?",["Most Valuable Playe
    if(v===2){b.innerHTML=CROWN;if(bad.has([r,c].join()))b.classList.add("bad")}else if(v===1)b.textContent="×";
    b.disabled=done;b.addEventListener("click",()=>click(r,c));g.appendChild(b)}
   $("#qCount").textContent=qs.length+" / "+N}
- function click(r,c){if(done)return;if(t0===null){t0=Date.now();timer=setInterval(()=>{secs=Math.floor((Date.now()-t0)/1000);$("#qTime").textContent=mmss(secs)},500)}
+ const startClock=()=>{if(t0===null){t0=Date.now();timer=setInterval(()=>{secs=Math.floor((Date.now()-t0)/1000);$("#qTime").textContent=mmss(secs)},500)}};
+ function click(r,c){if(done||t0===null)return;
   S[r][c]=(S[r][c]+1)%3;const{qs,bad}=analyze();draw();
   if(qs.length===N&&bad.size===0){done=true;clearInterval(timer);secs=Math.floor((Date.now()-t0)/1000);$("#qTime").textContent=mmss(secs);$("#qMsg").textContent="Solved in "+mmss(secs)+". Come back tomorrow for a new board.";$("#qShare").hidden=false;draw();if(typeof confettiBurst==="function"){const gb=$("#qgrid");if(gb){const r=gb.getBoundingClientRect();confettiBurst(r.left+r.width/2,r.top+r.height/2)}}try{localStorage.setItem("rel-q-"+key,String(secs))}catch(e){}submitGame("puzzle",secs)}
   else $("#qMsg").textContent=bad.size?"Two crowns clash. Check rows, columns, colors and neighbors.":""}
  $("#qReset").addEventListener("click",()=>{S.forEach(r=>r.fill(0));clearInterval(timer);t0=null;done=false;secs=0;$("#qTime").textContent="0:00";$("#qMsg").textContent="";$("#qShare").hidden=true;draw()});
  $("#qShare").addEventListener("click",async()=>{const m="I solved today's REL puzzle in "+mmss(secs)+". Can you beat it?";try{await navigator.clipboard.writeText(m);toast("Result copied")}catch(e){toast(m)}});
- try{const p=localStorage.getItem("rel-q-"+key);if(p)$("#qMsg").textContent="Your best time today: "+mmss(+p)+"."}catch(e){}
- draw()})();
+ let solvedToday=null;try{const p=localStorage.getItem("rel-q-"+key);if(p){solvedToday=+p;$("#qMsg").textContent="You solved today's Crowns in "+mmss(+p)+".";$("#qTime").textContent=mmss(+p)}}catch(e){}
+ draw();relGate($("#qgrid"),solvedToday==null?startClock:null)})();
 /* ---------- update 3: panels, hero chip, map, newsletter places ---------- */
 function updateChip(){const a=$("#heroChip"),t=$("#heroChipT");if(!a||!t)return;const n=EVENTS.find(e=>e.date);if(!n){a.hidden=true;return}
  t.textContent="Next event: "+n.title+", "+fmt(n.date,{weekday:"long",day:"numeric",month:"long"});a.hidden=false}
@@ -5650,7 +5686,7 @@ const nbrs=i=>{const [r,c]=rc(i),o=[];if(r>0)o.push(i-N);if(r<N-1)o.push(i+N);if
  document.querySelector('[data-greset="path"]').addEventListener("click",()=>{if(done)return;path=[];T.reset();draw()});
  document.querySelector('[data-ghint="path"]').addEventListener("click",()=>{if(done)return;let k=0;while(k<path.length&&path[k]===SOL[k])k++;path=SOL.slice(0,k+1);T.penalty(15);toast("Hint used: +15 seconds");draw();check()});
  if(done){const sh=document.querySelector('[data-gshare="path"]');sh.hidden=false;sh.dataset.text="REL Path "+DAY+": solved in "+mm(s.doneVal||0)+" \u2705";const tm=document.querySelector('[data-gtime="path"]');if(tm)tm.textContent=mm(s.doneVal||0)}
- window.relBoardFor=boardFor;boardFor("crowns");draw();drawStats("path");boardFor("path")})();
+ window.relBoardFor=boardFor;boardFor("crowns");draw();drawStats("path");relGate($("#gPath"),done?null:()=>{T.start();const h=document.querySelector('[data-ghint="path"]');if(h)h.hidden=false});boardFor("path")})();
 
 /* ----- Sun & Moon: 3 suns and 3 moons per line, no three in a row ----- */
 (function(){const B=$("#gSun");if(!B)return;const R=rngFor("sunmoon");
@@ -5683,7 +5719,7 @@ const nbrs=i=>{const [r,c]=rc(i),o=[];if(r>0)o.push(i-N);if(r<N-1)o.push(i+N);if
  document.querySelector('[data-greset="sunmoon"]').addEventListener("click",()=>{if(done)return;g=Array(N*N).fill(0);GIV.forEach(i=>g[i]=SOL[i]);T.reset();draw()});
  document.querySelector('[data-ghint="sunmoon"]').addEventListener("click",()=>{if(done)return;const w=[...Array(N*N).keys()].filter(i=>g[i]!==SOL[i]);if(!w.length)return;const i=w[Math.floor(Math.random()*w.length)];g[i]=SOL[i];T.penalty(15);toast("Hint used: +15 seconds");draw();check()});
  if(done){msgEl("sunmoon").textContent="Solved in "+mm(s.doneVal||0)+". A new board tomorrow.";const sh=document.querySelector('[data-gshare="sunmoon"]');sh.hidden=false;sh.dataset.text="REL Sun & Moon "+DAY+": solved in "+mm(s.doneVal||0);const tm=document.querySelector('[data-gtime="sunmoon"]');if(tm)tm.textContent=mm(s.doneVal||0)}
- draw();drawStats("sunmoon");boardFor("sunmoon")})();
+ draw();drawStats("sunmoon");relGate($("#gSun"),done?null:()=>{T.start();const h=document.querySelector('[data-ghint="sunmoon"]');if(h)h.hidden=false});boardFor("sunmoon")})();
 
 /* ----- Mini Sudoku 6x6 with 2x3 boxes ----- */
 (function(){const B=$("#gSdk"),P=$("#gSdkPad");if(!B)return;const R=rngFor("sudoku");
@@ -5707,7 +5743,7 @@ const nbrs=i=>{const [r,c]=rc(i),o=[];if(r>0)o.push(i-N);if(r<N-1)o.push(i+N);if
  document.querySelector('[data-greset="sudoku"]').addEventListener("click",()=>{if(done)return;g=puz.slice();sel=-1;T.reset();draw()});
  document.querySelector('[data-ghint="sudoku"]').addEventListener("click",()=>{if(done)return;const w=[...Array(N*N).keys()].filter(i=>g[i]!==SOL[i]);if(!w.length)return;sel=w[Math.floor(Math.random()*w.length)];T.penalty(15);toast("Hint used: +15 seconds");put(SOL[sel])});
  if(done){msgEl("sudoku").textContent="Solved in "+mm(s.doneVal||0)+". A new grid tomorrow.";const sh=document.querySelector('[data-gshare="sudoku"]');sh.hidden=false;sh.dataset.text="REL Mini Sudoku "+DAY+": solved in "+mm(s.doneVal||0);const tm=document.querySelector('[data-gtime="sudoku"]');if(tm)tm.textContent=mm(s.doneVal||0)}
- draw();drawStats("sudoku");boardFor("sudoku")})();
+ draw();drawStats("sudoku");relGate($("#gSdk"),done?null:()=>{T.start();const h=document.querySelector('[data-ghint="sudoku"]');if(h)h.hidden=false});boardFor("sudoku")})();
 
 /* ----- Five Clues: guess what the clues have in common ----- */
 (function(){const box=$("#gClues"),form=$("#gCluesForm");if(!box)return;
@@ -5918,6 +5954,67 @@ document.addEventListener("submit",async e=>{const f=e.target;if(!f||f.id!=="fin
  const btn=f.querySelector("button[type=submit]");btn.disabled=true;
  const {error}=await SB.rpc("join_application",{p_full_name:name,p_uni_id:lu?"":uni,p_faculty:v("#fFac"),p_year:$("#fYear").value,p_major:v("#fMajor"),p_phone:v("#fPhone"),p_listed:$("#fList").checked});
  btn.disabled=false;if(error){say(msg,errText(error));return}toast("Your membership request is with the board.");await loadUser();renderAccount();window.scrollTo(0,0)});
+})();
+
+
+/* ===================== update 15: fair timers, Unicorn 2048, hidden extras ===================== */
+/* every timed game stays hidden behind a Start button: no looking before the clock runs */
+function relGate(board,onStart,msg){if(!board||!onStart)return;if(board.parentNode&&board.parentNode.classList&&board.parentNode.classList.contains("gate-wrap"))return;
+ const w=document.createElement("div");w.className="gate-wrap";board.parentNode.insertBefore(w,board);w.appendChild(board);board.classList.add("veiled");board.setAttribute("aria-hidden","true");
+ const ov=document.createElement("div");ov.className="gate-ov";ov.innerHTML='<button type="button" class="btn primary gate-go">\u25B6 Start</button><p>The timer starts when you press Start.</p>';w.appendChild(ov);
+ ov.querySelector("button").addEventListener("click",()=>{board.classList.remove("veiled");board.removeAttribute("aria-hidden");ov.remove();onStart();try{board.focus({preventScroll:true})}catch(e){}})}
+
+(function(){
+/* ---------- Unicorn 2048: play as much as you want ---------- */
+const box=$("#u2048");if(box){
+ const LBL={2:"Idea",4:"Plan",8:"MVP",16:"Users",32:"Seed",64:"Series A",128:"Series B",256:"Scale",512:"IPO",1024:"Unicorn \ud83e\udd84",2048:"Decacorn",4096:"Legend"};
+ let g,score,best=+(localStorage.getItem("rel-u2048-best")||0),over=false,won=false;
+ const sc=$("#u2048Score"),bs=$("#u2048Best"),msg=$("#u2048Msg");
+ const empty=()=>g.map((v,i)=>v?-1:i).filter(i=>i>=0);
+ const add=()=>{const e=empty();if(!e.length)return;g[e[Math.floor(Math.random()*e.length)]]=Math.random()<.9?2:4};
+ function reset(){g=Array(16).fill(0);score=0;over=false;won=false;add();add();draw();msg.textContent="Swipe or use the arrow keys. Merge ideas into a unicorn."}
+ function draw(){box.innerHTML=g.map(v=>`<div class="u-t${v?" v"+Math.min(v,4096):""}">${v?`<b>${v}</b><span>${LBL[v]||""}</span>`:""}</div>`).join("");sc.textContent=score;bs.textContent=best}
+ function line(a){const f=a.filter(Boolean);let gain=0;for(let i=0;i<f.length-1;i++)if(f[i]===f[i+1]){f[i]*=2;gain+=f[i];f.splice(i+1,1)}while(f.length<4)f.push(0);return[f,gain]}
+ function move(d){if(over)return;let moved=false;
+  for(let k=0;k<4;k++){const idx=[0,1,2,3].map(j=>d==="L"?k*4+j:d==="R"?k*4+3-j:d==="U"?j*4+k:(3-j)*4+k);
+   const [nl,gain]=line(idx.map(i=>g[i]));idx.forEach((i,j)=>{if(g[i]!==nl[j])moved=true;g[i]=nl[j]});score+=gain}
+  if(!moved)return;add();if(score>best){best=score;try{localStorage.setItem("rel-u2048-best",best)}catch(e){}}draw();
+  if(!won&&g.includes(1024)){won=true;msg.textContent="\ud83e\udd84 Unicorn! Keep going for a Decacorn.";const r=box.getBoundingClientRect();if(typeof confettiBurst==="function")confettiBurst(r.left+r.width/2,r.top+r.height/2)}
+  const stuck=!empty().length&&![0,1,2,3].some(r=>[0,1,2].some(c=>g[r*4+c]===g[r*4+c+1]||g[c*4+r]===g[(c+1)*4+r]));
+  if(stuck){over=true;msg.textContent="Game over. Score: "+score+". Press New game to try again.";saveScore()}}
+ async function saveScore(){if(!SB||!ST.member||score<1)return;try{const {error}=await SB.rpc("submit_arcade_score",{p_game:"u2048",p_score:score});if(!error)loadTop()}catch(e){}}
+ async function loadTop(){const tb=$("#u2048Top");if(!tb||!SB)return;try{const {data,error}=await SB.rpc("arcade_board",{p_game:"u2048"});if(error)throw error;
+  tb.innerHTML=(data&&data.length)?data.map((r,i)=>`<tr><td class="n">${i+1}</td><td><span class="lb-who">${avatar(r.full_name,r.photo_path,false,r.rel_id)}${esc(r.full_name)}</span></td><td class="p">${r.best}</td></tr>`).join(""):'<tr><td colspan="3" class="muted">No scores yet. Be the first.</td></tr>'}catch(e){tb.innerHTML='<tr><td colspan="3" class="muted">The high scores open soon.</td></tr>'}}
+ document.addEventListener("keydown",e=>{const pane=box.closest(".pane");if(!pane||pane.hidden||pane.offsetParent===null)return;if(e.target.closest("input,textarea,select"))return;
+  const d={ArrowLeft:"L",ArrowRight:"R",ArrowUp:"U",ArrowDown:"D"}[e.key];if(d){e.preventDefault();move(d)}});
+ let sx=0,sy=0;box.addEventListener("touchstart",e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+ box.addEventListener("touchend",e=>{const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.max(Math.abs(dx),Math.abs(dy))<25)return;move(Math.abs(dx)>Math.abs(dy)?(dx>0?"R":"L"):(dy>0?"D":"U"))});
+ $("#u2048New").addEventListener("click",()=>{if(!over&&score>0)saveScore();reset()});
+ reset();loadTop()}
+
+/* ---------- hidden extras ---------- */
+const toastOnce=(k,t)=>{const d=beirutNow();try{if(localStorage.getItem("rel-egg-"+k)===d)return;localStorage.setItem("rel-egg-"+k,d)}catch(e){}toast(t)};
+/* 1. Konami code: founder mode (gold accents for this visit) */
+const KON=["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"];let kp=0;
+/* 2-6. secret words */
+const WORDS={unicorn:()=>rain("\ud83e\udd84"),coffee:()=>{rain("\u2615");toast("\u2615 Brewing ideas...")},johny:()=>toast("\ud83d\udc51 The President approves."),pitch:()=>toast("\ud83c\udfa4 You have 60 seconds. Go!"),leader:()=>toast("\ud83e\udded A leader is one who knows the way, goes the way and shows the way.")};
+let buf="";
+document.addEventListener("keydown",e=>{if(e.target.closest&&e.target.closest("input,textarea,select,[contenteditable]"))return;
+ kp=(e.key===KON[kp]||e.key.toLowerCase()===KON[kp])?kp+1:(e.key===KON[0]?1:0);
+ if(kp===KON.length){kp=0;document.body.classList.toggle("founder");toast(document.body.classList.contains("founder")?"\ud83d\ude80 Founder mode ON":"Founder mode off")}
+ if(e.key.length===1){buf=(buf+e.key.toLowerCase()).slice(-10);for(const w in WORDS)if(buf.endsWith(w)){buf="";WORDS[w]()}}});
+function rain(ch){if(matchMedia("(prefers-reduced-motion: reduce)").matches){toast(ch);return}for(let i=0;i<24;i++){const s=document.createElement("span");s.className="egg-rain";s.textContent=ch;s.style.left=Math.random()*100+"vw";s.style.animationDelay=Math.random()*1.2+"s";s.style.fontSize=(18+Math.random()*22)+"px";document.body.appendChild(s);setTimeout(()=>s.remove(),3600)}}
+/* 7. Shift + hover the mascot: he moonwalks */
+document.addEventListener("mouseover",e=>{const m=e.target.closest&&e.target.closest(".mcnaoh-mark");if(m&&e.shiftKey&&!m.classList.contains("moon")){m.classList.add("moon");setTimeout(()=>m.classList.remove("moon"),1700)}});
+/* 8. click the round "number one club" badge: it spins */
+document.addEventListener("click",e=>{const b=e.target.closest(".seal");if(!b)return;b.classList.remove("egg-spin");void b.offsetWidth;b.classList.add("egg-spin")});
+/* 9. 12:34 make a wish, 10. Friday evening weekend mode */
+setTimeout(()=>{const t=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Beirut",hour:"2-digit",minute:"2-digit",weekday:"short",hour12:false}).formatToParts(new Date()),h=t.find(x=>x.type==="hour").value,mi=t.find(x=>x.type==="minute").value,wd=t.find(x=>x.type==="weekday").value;
+ if(h==="12"&&mi==="34")toastOnce("1234","\u2728 12:34. Make a wish.");else if(wd==="Fri"&&+h>=17)toastOnce("fri","\ud83c\udf89 Weekend mode: ON")},6000);
+/* 11. triple-click the footer year: a secret thank-you */
+let yc=0,yt=0;document.addEventListener("click",e=>{if(!e.target.closest("#yr"))return;const t=Date.now();yc=t-yt<600?yc+1:1;yt=t;if(yc>=3){yc=0;rain("\ud83d\udca1");toast("Thank you for being part of REL \u2764\ufe0f")}});
+/* 12. leave the page open for 10 minutes on Play: a nudge */
+setTimeout(()=>{if(cur.pg==="play")toast("Still here? Your brain deserves a 5-minute break \ud83e\udde0")},600000);
 })();
 
 </script>
