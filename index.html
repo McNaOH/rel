@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-NpBr+QkCtYSsvy6w3wrVAIRxDX+yZd0aqr0UF/Oaxlo='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-SUQvjpA+PbhaUgHt0O3cZxfta96I212MZu2ZjEFMNCw='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1200,7 +1200,7 @@ body.founder{--fill:#B8860B;--brand-ink:#8A6508;--band:#57101F}
 .fz-pill[hidden]{display:none}
 .fz-dark .fz-score{color:#fff}.fz-dark .fz-pill{background:rgba(255,255,255,.16);color:#fff}
 .fz-fire .fz-pill.fire{background:linear-gradient(90deg,#ff7a00,#ff2d55);color:#fff}
-.fz-flash{position:absolute;left:0;right:0;top:30%;text-align:center;font:700 clamp(24px,8vw,36px) var(--f-display);color:#800020;opacity:0;pointer-events:none;z-index:4;transition:opacity .15s,transform .45s;text-shadow:0 2px 0 rgba(255,255,255,.6)}
+.fz-flash{position:absolute;left:0;right:0;top:30%;text-align:center;font:700 36px var(--f-display);color:#800020;opacity:0;pointer-events:none;z-index:4;transition:opacity .15s,transform .45s;text-shadow:0 2px 0 rgba(255,255,255,.6)}
 .fz-dark .fz-flash{color:#FFD666;text-shadow:0 0 18px rgba(255,214,102,.7)}
 .fz-flash.on{opacity:1;transform:translateY(-14px) scale(1.04)}
 .fz-flash.gold{color:#E0A526}
@@ -1254,7 +1254,7 @@ body.founder{--fill:#B8860B;--brand-ink:#8A6508;--band:#57101F}
 .emp-ev{display:grid;gap:4px;border:1.5px dashed rgba(255,255,255,.35);border-radius:16px;padding:12px 14px;margin-bottom:12px}
 .emp-ev.on{border:2px solid #7CE3A1;background:rgba(124,227,161,.12)}
 .emp-ev span{font-size:14px;opacity:.9}
-.emp-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:4px 0 12px}
+.emp-tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:4px 0 12px}
 .emp-tabs.small{grid-template-columns:1fr 1fr}
 .emp-tabs button{border:0;border-radius:12px;padding:11px 4px;background:rgba(255,255,255,.1);color:#fff;font-weight:700;font-size:13px}
 .emp-tabs button[aria-selected="true"]{background:#fff;color:#122b52}
@@ -1277,6 +1277,24 @@ body.founder{--fill:#B8860B;--brand-ink:#8A6508;--band:#57101F}
 .emp-pitch[hidden]{display:none}
 .emp-pitch p{font:700 24px var(--f-display);margin:0}.emp-pitch b{font:700 56px var(--f-display)}
 .emp-pitch button{width:200px;height:200px;border-radius:50%;border:0;background:radial-gradient(circle at 35% 30%,#FFE38A,#E0A526);font:700 34px var(--f-body);color:#1D1315;box-shadow:0 14px 40px rgba(224,165,38,.5);touch-action:manipulation;transition:transform .05s}
+.emp-tabs button{font-size:12px;padding:10px 2px}
+.emp-sec{background:rgba(255,255,255,.06);border-radius:18px;padding:14px;margin-bottom:12px}
+.emp-sec h3{font:700 19px var(--f-display);margin:0 0 6px}
+.emp-sec.stand{border:2px solid #FFD666;background:rgba(255,214,102,.1)}
+.emp-muted.small{font-size:12px;margin-top:8px}
+.emp-tk{display:flex;align-items:center;gap:10px;background:#F8F6F1;color:#1D1315;border-radius:14px;padding:10px 12px;margin:8px 0}
+.emp-tk.used{opacity:.5}.emp-tk .emp-bi span{opacity:.75}
+.emp-code{font:700 20px ui-monospace,Menlo,Consolas,monospace;letter-spacing:.08em;background:#122b52;color:#FFD666;border-radius:10px;padding:6px 10px}
+.emp-code-in{display:flex;gap:8px;margin-top:6px}
+.emp-code-in input{flex:1;min-width:0;border:2px solid #E4DBCF;border-radius:12px;padding:12px;font:700 22px ui-monospace,Menlo,Consolas,monospace;letter-spacing:.2em;text-align:center;text-transform:uppercase;background:#fff;color:#1D1315}
+.emp-lvl{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.emp-bar.sm{height:8px;margin:6px 0 0;background:rgba(255,255,255,.18)}
+.emp-btn.gold2{background:#FFD666;color:#1D1315}
+.emp-bad{color:#ff8a9a;font-weight:700}
+.emp-card .emp-bad{color:#B3261E}
+.sm-code{display:block;font:700 76px/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.12em;color:#122b52;margin:8px 0}
+.sm-t{width:100%;border-collapse:collapse;font-size:14px}.sm-t td,.sm-t th{padding:6px 4px;border-bottom:1px solid #E4DBCF;text-align:left}
+.sm-tk{display:grid;gap:4px;margin-top:12px}
 </style>
 </head>
 <body>
@@ -6236,7 +6254,7 @@ const scr=id=>["fzHub","fzGame","fzOver","fzShare"].forEach(s=>$f("#"+s).hidden=
 let tt;const ftoast=t=>{const b=$f("#fzToast");b.textContent=t;b.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>b.classList.remove("on"),1800)};
 root.addEventListener("click",e=>{if(e.target.closest("[data-fzclose]"))closeFiesta()});
 
-async function loadState(){try{const {data,error}=await SB.rpc("fiesta_state");if(error)throw error;FS=data;offset=T(data.now)-Date.now();await resendPending();return data}catch(e){return null}}
+async function loadState(){try{const {data,error}=await SB.rpc("fiesta_state");if(error)throw error;FS=data;offset=T(data.now)-Date.now();window.__fzTeam=!!data.is_team;await resendPending();return data}catch(e){return null}}
 function visible(){if(!FS)return false;const n=now();return(n>=T(FS.show_from)&&n<T(FS.show_until))||FS.is_team}
 function syncEntry(){const v=visible();strip.hidden=!v;fab.hidden=!v||!root.hidden;if(v&&FS.is_team&&now()<T(FS.show_from)){fab.innerHTML="<i></i>Tower Cup (team preview)"}}
 function curRound(){if(!FS)return null;const n=now(),R=FS.rounds;const open=R.find(r=>n>=T(r.starts_at)&&n<T(r.ends_at));if(open)return{r:open,state:"open"};
@@ -6450,7 +6468,6 @@ document.addEventListener("click",async e=>{const b=e.target.closest("[data-fzps
  const {error}=await SB.rpc("fiesta_admin_prize",{p_user:id,p_prize:v});if(error){toast(errText(error));return}toast(v.trim()?"Prize saved":"Prize removed")});
 })();
 
-
 /* ===================== Fiesta Day: Startup Empire ===================== */
 (function(){
 const root=document.getElementById("fz");if(!root||typeof SB==="undefined")return;
@@ -6459,7 +6476,7 @@ const fmt=n=>{n=Math.floor(n||0);if(n>=1e9)return"€"+(n/1e9).toFixed(2)+"B";if
 const num=n=>Math.floor(n||0).toLocaleString("en-US");
 const dur=ms=>{ms=Math.max(0,ms);const h=Math.floor(ms/36e5),m=Math.floor(ms/6e4)%60,s=Math.floor(ms/1e3)%60;return(h?h+":"+String(m).padStart(2,"0"):m)+":"+String(s).padStart(2,"0")};
 const EV=[{e:"💸",n:"Investor visit",d:"Income ×2 for everyone"},{e:"⚡",n:"Hackathon",d:"Products build 2× faster"},{e:"🎤",n:"Pitch battle",d:"Tap fast for a cash bonus"}];
-let E=null,off=0,got=0,tab="build",rankTab="players",poll=null,busy=false;
+let E=null,PZ=null,off=0,got=0,tab="build",rankTab="players",poll=null,busy=false;
 const now=()=>Date.now()+off;
 
 /* entry: game chooser on the Fiesta page */
@@ -6479,7 +6496,7 @@ const toastE=t=>{const b=q("#fzToast");b.textContent=t;b.classList.add("on");cle
 const showOnly=id=>["fzHub","fzGame","fzOver","fzShare","fzEmp"].forEach(s=>{const el=q("#"+s);if(el)el.hidden=s!==id});
 scr.addEventListener("click",e=>{if(e.target.closest("[data-empback]")){clearInterval(poll);showOnly("fzHub")}});
 
-async function load(){try{const {data,error}=await SB.rpc("empire_state");if(error)throw error;E=data;off=new Date(data.now).getTime()-Date.now();got=Date.now();return data}catch(e){return null}}
+async function load(){try{const [r1,r2]=await Promise.all([SB.rpc("empire_state"),SB.rpc("empire_prizes")]);if(r1.error)throw r1.error;E=r1.data;PZ=r2.error?null:r2.data;off=new Date(E.now).getTime()-Date.now();got=Date.now();return E}catch(e){return null}}
 async function openEmpire(){showOnly("fzEmp");scr.scrollTop=0;q("#empBody").innerHTML='<p class="emp-muted">Loading...</p>';await load();render();clearInterval(poll);poll=setInterval(async()=>{if(!scr.hidden&&!busy){await load();render()}},15000)}
 const evActive=()=>E&&E.event&&E.event.active&&now()<new Date(E.event.ends).getTime();
 function live(){const m=E.me;const s=(Date.now()-got)/1000;const mult=evActive()&&E.event.kind===0?2:1;const run=E.status==="open"||(m&&m.is_test);
@@ -6498,10 +6515,12 @@ function render(){const b=q("#empBody");if(!E){b.innerHTML='<p class="emp-muted"
    <div class="emp-res"><div><span>💰 Cash</span><b id="empCash">${fmt(L.cash)}</b></div><div><span>👥 Clients</span><b id="empCl">${num(L.clients)}</b></div><div><span>📈 Income</span><b>${fmt(m.rate*(evActive()&&E.event.kind===0?2:1))}/s</b></div></div>
    <p class="emp-muted" style="margin:8px 0 0">Playing for <b>${esc(m.faculty)}</b>${m.value>=1e9?" · 🦄 Unicorn!":""}</p></div>`;
   h+=eventBox();
-  h+=`<div class="emp-tabs" role="tablist">${[["build","🏗️ Build"],["launch","🚀 Launch"],["raid","⚔️ Raid"],["ranks","🏆 Ranks"]].map(([k,l])=>`<button type="button" role="tab" aria-selected="${tab===k}" data-emptab="${k}">${l}</button>`).join("")}</div>`;
-  h+=`<div class="emp-panel">${tab==="build"?build():tab==="launch"?launch():tab==="raid"?raid():ranks()}</div>`}
+  h+=`<div class="emp-tabs" role="tablist">${[["build","🏗️ Build"],["launch","🚀 Launch"],["raid","⚔️ Raid"],["prizes","🎁 Prizes"],["ranks","🏆 Ranks"]].map(([k,l])=>`<button type="button" role="tab" aria-selected="${tab===k}" data-emptab="${k}">${l}</button>`).join("")}</div>`;
+  h+=`<div class="emp-panel">${tab==="build"?build():tab==="launch"?launch():tab==="raid"?raid():tab==="prizes"?prizes():ranks()}</div>`}
  else if(st==="over"||E.board.length){h+=`<div class="emp-panel">${ranks()}</div>`}
+ if(E.is_team_hint)h+="";
  if(st==="over")h=`<div class="emp-card"><h3>🏁 The game is over</h3><p>Congratulations to the winners! Prizes are given at the REL stand.</p></div>`+h;
+ if(window.__fzTeam)h+=`<button type="button" class="fz-ghost light" data-empstaff style="margin-top:18px">🧑‍💼 Stand mode (board only)</button>`;
  b.innerHTML=h}
 function eventBox(){if(E.status!=="open")return E.me&&E.me.is_test?`<div class="emp-ev"><b>👀 Team preview</b><span>Events start when the game opens at ${new Date(E.starts_at).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit",timeZone:"Asia/Beirut"})}. You can try a pitch battle now.</span>${E.me.pitched?"":'<button type="button" class="emp-btn gold" data-emppitch>🎤 Try a pitch</button>'}</div>`:"";
  const ev=E.event,k=EV[ev.kind];if(evActive())return`<div class="emp-ev on"><b>${k.e} ${k.n}!</b><span>${k.d}. Ends in <span data-cd="${new Date(ev.ends).getTime()}">${dur(new Date(ev.ends).getTime()-now())}</span></span>${ev.kind===2&&!E.me.pitched?'<button type="button" class="emp-btn gold" data-emppitch>🎤 Pitch now</button>':""}</div>`;
@@ -6523,6 +6542,18 @@ function raid(){const m=E.me,ready=new Date(m.attack_at).getTime(),sh=m.shield_u
  if(now()<ready)h+=`<div class="emp-card"><h3>Your team is recovering</h3><p class="emp-big" data-cd="${ready}">${dur(ready-now())}</p></div>`;
  h+=(E.targets.length?E.targets.map(t=>`<div class="emp-b"><span class="emp-ic">🏢</span><div class="emp-bi"><b>${esc(t.name)}</b><span>${esc(t.faculty)} · ${fmt(t.value)}${t.security?` · 🛡️ Lv ${t.security}`:""}</span></div><button type="button" class="emp-btn red" data-empraid="${esc(t.id)}" ${now()<ready||t.shield?"disabled":""}>${t.shield?"Protected":"Raid ⚔️"}</button></div>`).join(""):`<p class="emp-muted">No rivals yet. Tell your friends to play!</p>`);
  if(m.attacks)h+=`<p class="emp-muted">You raided ${m.attacks} ${m.attacks===1?"time":"times"} and stole ${fmt(m.stolen)} in total.</p>`;return h}
+function prizes(){if(!PZ)return'<p class="emp-muted">Loading the prizes...</p>';const m=E.me,L=live(),tk=PZ.tickets||[],nv=tk.filter(t=>t.kind==="voucher"&&!t.test).length,ns=tk.filter(t=>t.kind==="spin"&&!t.test).length,end=new Date(E.ends_at).getTime();
+ let h=`<div class="emp-sec"><h3>🔒 Your vault</h3><p class="emp-muted">Prizes in your vault are 100% yours: nobody can raid them.</p>`;
+ h+=tk.length?tk.map(t=>`<div class="emp-tk${t.given?" used":""}"><span class="emp-ic">${t.emoji}</span><div class="emp-bi"><b>${esc(t.name)}${t.test?" (test)":""}</b><span>${t.given?"Collected ✓":t.kind==="spin"?"Spin now at the REL stand":now()<end?"Cash out at the REL stand from "+new Date(E.ends_at).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit",timeZone:"Asia/Beirut"}):"Cash out now at the REL stand"}</span></div><b class="emp-code">${esc(t.code)}</b></div>`).join(""):'<p class="emp-muted">Empty for now. Win levels or buy from the shop below.</p>';
+ h+=`<p class="emp-muted small">Vouchers: ${nv}/3 · Roulette spins: ${ns}/3 (limit per person). Bring your university card.</p></div>`;
+ h+=`<div class="emp-sec stand"><h3>📍 REL stand bonus</h3><p class="emp-muted">Come to the REL stand and ask for the <b>secret code</b>. It changes every 20 minutes and gives you 20 minutes of income instantly.</p>`+(PZ.stand_used?`<p class="emp-ok">✓ Used. Next code in <b data-cd="${new Date(PZ.stand_next).getTime()}">${dur(new Date(PZ.stand_next).getTime()-now())}</b></p>`:`<div class="emp-code-in"><input id="empStandIn" inputmode="numeric" maxlength="4" placeholder="0000" aria-label="Secret code"><button type="button" class="emp-btn" data-empstand>Claim</button></div>`)+`</div>`;
+ h+=`<div class="emp-sec"><h3>🏅 Levels</h3>`+PZ.levels.map(l=>{const done=PZ.claimed.includes(l.level),pc=Math.min(100,L.value/l.value*100),it=PZ.stock.find(s=>s.item===l.item);
+  return`<div class="emp-lvl"><div class="emp-bi"><b>${esc(l.name)}: ${fmt(l.value)}</b><span>Wins: ${it?it.emoji+" "+esc(it.name):""}${it&&!done?` · ${it.stock} left`:""}</span><div class="emp-bar sm"><i style="width:${pc}%"></i></div></div>${done?'<span class="emp-ok">✓</span>':`<button type="button" class="emp-btn" data-empclaim="${l.level}" ${pc<100?"disabled":""}>Claim</button>`}</div>`}).join("")+`</div>`;
+ h+=`<div class="emp-sec"><h3>🛒 Prize shop</h3><p class="emp-muted">Buy real prizes with your startup's cash. Careful: what you spend leaves your valuation, so you drop on the leaderboard.</p>`+PZ.stock.map(s=>`<div class="emp-b"><span class="emp-ic">${s.emoji}</span><div class="emp-bi"><b>${esc(s.name)}</b><span>${s.stock>0?s.stock+" left":"Sold out"}${s.item==="spin"?" · price doubles each time":""}</span></div><button type="button" class="emp-btn gold2" data-empbuy="${s.item}" ${s.stock<=0||L.cash<s.price?"disabled":""}>Buy<small>${fmt(s.price)}</small></button></div>`).join("")+`</div>`;
+ h+=`<div class="emp-sec"><h3>🎲 Power-ups</h3><div class="emp-b"><span class="emp-ic">🎁</span><div class="emp-bi"><b>Mystery box</b><span>Cash, clients, a bodyguard, a jackpot... or a free roulette spin!</span></div><button type="button" class="emp-btn" data-empbox ${L.cash<PZ.box_price?"disabled":""}>Open<small>${fmt(PZ.box_price)}</small></button></div>
+  <div class="emp-b"><span class="emp-ic">🕶️</span><div class="emp-bi"><b>Bodyguard</b><span>Nobody can raid you for 20 minutes.</span></div><button type="button" class="emp-btn" data-empguard ${L.cash<PZ.guard_price?"disabled":""}>Hire<small>${fmt(PZ.guard_price)}</small></button></div></div>`;
+ h+=`<div class="emp-sec"><h3>🏆 At ${new Date(E.ends_at).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit",timeZone:"Asia/Beirut"})}</h3><p class="emp-muted">The 3 most valuable startups and the best player of the winning faculty win bonus prizes from the REL board, announced at the stand.</p></div>`;
+ return h}
 function ranks(){const f=E.feed||[];let h=`<div class="emp-tabs small">${[["players","Players"],["faculties","Faculties"]].map(([k,l])=>`<button type="button" aria-selected="${rankTab===k}" data-emprank="${k}">${l}</button>`).join("")}</div>`;
  h+=rankTab==="players"?(E.board.length?`<ol class="fz-lb emp-lb">${E.board.map((x,i)=>`<li class="${x.me?"mine":""}"><span class="n">${i===0?"👑":i+1}</span><span>${esc(x.name)}<small>${esc(x.faculty)}</small></span><span class="s">${fmt(x.value)}</span></li>`).join("")}</ol>`:'<p class="emp-muted">No startups yet.</p>')
   :(E.faculties.length?`<ol class="fz-lb emp-lb">${E.faculties.map((x,i)=>`<li><span class="n">${i===0?"🏆":i+1}</span><span>${esc(x.faculty)}<small>${x.players} ${x.players===1?"player":"players"}</small></span><span class="s">${fmt(x.value)}</span></li>`).join("")}</ol>`:'<p class="emp-muted">No faculties yet.</p>');
@@ -6547,11 +6578,36 @@ scr.addEventListener("click",e=>{const t=e.target.closest("button");if(!t||t.dis
  if(t.dataset.empcollect!==undefined){act("empire_collect",{},d=>"Sales: +"+fmt(d)+" 💰","💰");return}
  if(t.dataset.empraid){act("empire_attack",{p_target:t.dataset.empraid},d=>`You raided ${d.name}: +${fmt(d.cash)} and ${d.clients} clients ⚔️`,"💰");return}
  if(t.dataset.emppitch!==undefined){pitch();return}
+ if(t.dataset.empbuy){const s=PZ.stock.find(x=>x.item===t.dataset.empbuy);if(!confirm(`Buy a ${s.name} for ${fmt(s.price)}? Your valuation drops by ${fmt(s.price)}.`))return;act("empire_buy",{p_item:s.item},d=>`${s.emoji} It's in your vault! Code ${d.code}`,s.emoji);return}
+ if(t.dataset.empclaim){act("empire_claim",{p_level:+t.dataset.empclaim},d=>`🎉 Level reached! Prize code ${d.code}`,"🎉");return}
+ if(t.dataset.empbox!==undefined){act("empire_box",{},d=>"🎁 "+d.msg,"🎁");return}
+ if(t.dataset.empguard!==undefined){act("empire_guard",{},"🕶️ Bodyguard hired: safe for 20 minutes");return}
+ if(t.dataset.empstand!==undefined){const v=(q("#empStandIn")||{}).value||"";if(!/^\d{4}$/.test(v)){toastE("Type the 4-digit code from the REL stand.");return}act("empire_stand",{p_code:v},d=>`📍 Stand bonus: +${fmt(d.reward)}!`,"💰");return}
+ if(t.dataset.empstaff!==undefined){staff();return}
  if(t.dataset.fzgo){root.querySelector("[data-fzclose]").click();if(t.dataset.fzgo==="member"){authMode="signup"}else if(t.dataset.fzgo==="login"){authMode="login"}showPage("account");try{renderAccount()}catch(err){}return}});
 function pitch(){const box=q("#empPitch"),btn=q("#empTap"),tm=q("#empPT"),pc=q("#empPC");let taps=0,end=0,on=false;box.hidden=false;tm.textContent="Ready?";pc.textContent="Tap as fast as you can for 10 seconds!";btn.textContent="START";
  const tap=e=>{e.preventDefault();if(!on&&!end){on=true;end=Date.now()+10000;btn.textContent="TAP!";const iv=setInterval(()=>{const ms=end-Date.now();tm.textContent=(Math.max(0,ms)/1000).toFixed(1);if(ms<=0){clearInterval(iv);on=false;btn.removeEventListener("pointerdown",tap);box.hidden=true;act("empire_pitch",{p_taps:taps},d=>`The investor loved it! ${taps} taps: +${fmt(d)} 💰`,"💰")}},50);return}
   if(on){taps++;pc.textContent=taps+" taps";btn.style.transform=`scale(${1+Math.min(taps,60)/300})`;try{navigator.vibrate&&navigator.vibrate(8)}catch(err){}}};
  btn.style.transform="";btn.addEventListener("pointerdown",tap)}
+/* ---------- stand mode: for the board at the REL stand ---------- */
+const sm=document.createElement("section");sm.className="fz-scr";sm.id="fzStaff";sm.hidden=true;sm.style.background="#0b1530";root.appendChild(sm);
+let smT=null;
+async function staff(){["fzHub","fzGame","fzOver","fzShare","fzEmp"].forEach(s=>{const el=q("#"+s);if(el)el.hidden=true});sm.hidden=false;
+ sm.innerHTML=`<div class="emp"><div class="fz-top"><button class="fz-x" type="button" data-smback>&larr; Back</button><span class="fz-me">Stand mode</span></div>
+ <div class="emp-card" style="text-align:center;margin-top:16px"><p class="emp-label">Secret code for players</p><b class="sm-code" id="smCode">····</b><p class="emp-muted">Changes in <b id="smLeft"></b>. Say it out loud or show this screen.</p></div>
+ <div class="emp-card"><h3>Check a ticket</h3><div class="emp-code-in"><input id="smTk" maxlength="6" placeholder="ABC123" autocapitalize="characters" aria-label="Ticket code"><button type="button" class="emp-btn" data-smcheck>Check</button></div><div id="smRes"></div></div>
+ <div class="emp-card"><h3>Prize stock</h3><div id="smStock"><p class="emp-muted">Loading...</p></div></div></div>`;
+ await smCode();smStock();clearInterval(smT);smT=setInterval(()=>{if(sm.hidden){clearInterval(smT);return}const u=+sm.dataset.until;const ms=u-now();const el=q("#smLeft");if(el)el.textContent=dur(ms);if(ms<=0)smCode()},500)}
+async function smCode(){const {data,error}=await SB.rpc("empire_staff_code");if(error){q("#smCode").textContent="----";toastE(errText(error));return}q("#smCode").textContent=data.code;sm.dataset.until=new Date(data.until).getTime()}
+async function smStock(){const {data,error}=await SB.rpc("empire_admin_stocklist");const box=q("#smStock");if(error){box.textContent=errText(error);return}
+ const pres=!!(ST.team&&ST.team.role==="president");
+ box.innerHTML=`<table class="sm-t"><thead><tr><th></th><th>Left</th><th>Won</th><th>Given</th>${pres?"<th>Price (€)</th><th></th>":""}</tr></thead><tbody>${data.map(s=>`<tr><td>${s.emoji} ${esc(s.name)}</td><td>${pres?`<input type="number" min="0" value="${s.stock}" data-smst="${s.item}" style="width:64px">`:s.stock}</td><td>${s.claimed}</td><td>${s.given}</td>${pres?`<td><input type="number" min="1" value="${s.price}" data-smpr="${s.item}" style="width:110px"></td><td><button type="button" class="emp-btn" data-smsave="${s.item}">Save</button></td>`:""}</tr>`).join("")}</tbody></table>`}
+sm.addEventListener("click",async e=>{const t=e.target.closest("button");if(!t)return;
+ if(t.dataset.smback!==undefined){sm.hidden=true;clearInterval(smT);openEmpire();return}
+ if(t.dataset.smcheck!==undefined){const c=q("#smTk").value.trim();const r=q("#smRes");const {data,error}=await SB.rpc("empire_staff_ticket",{p_code:c});if(error){r.innerHTML=`<p class="emp-bad">${esc(errText(error))}</p>`;return}
+  r.innerHTML=`<div class="sm-tk"><b>${data.emoji} ${esc(data.name)}</b><span>${esc(data.who)}${data.rel_id?" · #"+esc(data.rel_id):""} · from ${esc(data.source)}</span>${data.is_test?'<p class="emp-bad">TEST ticket from the team preview. Do not give a prize.</p>':data.given_at?`<p class="emp-bad">Already given (${new Date(data.given_at).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"})}).</p>`:`<p class="emp-muted">Check their university card, then:</p><button type="button" class="fz-primary" data-smgive="${esc(data.code)}">Give the prize ✓</button>`}</div>`;return}
+ if(t.dataset.smgive){const {error}=await SB.rpc("empire_staff_give",{p_code:t.dataset.smgive});if(error){toastE(errText(error));return}toastE("Given ✓");q("#smRes").innerHTML='<p class="emp-ok">✓ Marked as given.</p>';q("#smTk").value="";smStock();return}
+ if(t.dataset.smsave){const it=t.dataset.smsave;const {error}=await SB.rpc("empire_admin_stock",{p_item:it,p_stock:+q(`[data-smst="${it}"]`).value,p_price:+q(`[data-smpr="${it}"]`).value});if(error){toastE(errText(error));return}toastE("Saved");smStock()}});
 window.relEmpire={open:openEmpire};
 })();
 
