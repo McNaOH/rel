@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-3Md8VP0T8pG6lp+PTeuVK8blH5Ep3YdmNIgvbnTKXkg='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-qd5vHB/af7zGBp+Kq0Uh/7Uoin24nQG/fPoG79lKPlY='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1137,6 +1137,95 @@ body.founder{--fill:#B8860B;--brand-ink:#8A6508;--band:#57101F}
 @keyframes mcnaoh-moon{0%{transform:none}50%{transform:translateX(-18px) scaleX(-1)}100%{transform:none}}
 .mcnaoh-mark.moon{animation:mcnaoh-moon 1.6s linear}
 @media (prefers-reduced-motion:reduce){.egg-spin,.mcnaoh-mark.moon{animation:none}}
+</style>
+<style id="rel-fiesta">
+.fz-strip{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;background:linear-gradient(90deg,#FFD666,#E0A526,#FFD666);color:#1D1315;font:700 15px var(--f-body);padding:12px 16px;text-align:center;cursor:pointer;border:0;width:100%}
+.fz-strip .live{display:inline-flex;align-items:center;gap:6px;background:#1D1315;color:#fff;border-radius:999px;padding:4px 10px;font-size:12px}
+.fz-strip .live i,.fz-fab i{width:8px;height:8px;border-radius:50%;background:#ff4d6d;animation:fzBlink 1s infinite}
+@keyframes fzBlink{50%{opacity:.25}}
+.fz-fab{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:160;display:flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:12px 16px;background:linear-gradient(135deg,#FFD666,#E0A526);color:#1D1315;font:700 15px var(--f-body);box-shadow:0 10px 30px rgba(128,0,32,.35);cursor:pointer;animation:fzPulse 2.4s ease-in-out infinite}
+@keyframes fzPulse{50%{transform:scale(1.05)}}
+#fz{position:fixed;inset:0;z-index:900;background:#57101F;color:#F8F6F1;font-family:var(--f-body);overflow:hidden;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+#fz[hidden]{display:none}
+#fz button{font:inherit;cursor:pointer}
+#fz button:focus-visible{outline:3px solid #FFD666;outline-offset:3px}
+.fz-scr{position:absolute;inset:0;overflow-y:auto;padding:calc(14px + env(safe-area-inset-top,0px)) 18px calc(24px + env(safe-area-inset-bottom,0px));max-width:520px;margin:0 auto}
+.fz-scr[hidden]{display:none}
+#fzHub{background:radial-gradient(120% 55% at 50% 0%,#a3163f 0%,#800020 45%,#4a0d1b 100%);max-width:none}
+#fzHub>div{max-width:520px;margin:0 auto}
+.fz-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.fz-x{border:0;background:rgba(255,255,255,.14);color:#fff;border-radius:999px;padding:9px 14px;font-weight:700}
+.fz-me{font-size:13px;font-weight:700;background:rgba(255,255,255,.12);border-radius:999px;padding:6px 12px}
+.fz-title{font:700 54px/.86 var(--f-display);letter-spacing:-.04em;margin:16px 0 6px}
+.fz-sub{margin:0 0 16px;opacity:.85}
+.fz-now{background:#F8F6F1;color:#1D1315;border-radius:22px;padding:18px}
+.fz-now-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.fz-now-h b{font:700 22px var(--f-display);color:#800020}
+.fz-clock{font-weight:700;font-variant-numeric:tabular-nums;font-size:14px;color:#6B5F62;text-align:right}
+.fz-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.fz-stats div{background:#F1ECE3;border-radius:14px;padding:10px 6px;text-align:center}
+.fz-stats span{display:block;font-size:12px;color:#6B5F62;font-weight:600}
+.fz-stats b{font:700 24px var(--f-display)}
+.fz-msg{margin:0 0 12px;font-weight:700;line-height:1.4}
+.fz-msg.ok{color:#1E7D32}.fz-msg.no{color:#800020}
+.fz-primary{display:block;width:100%;border:0;border-radius:999px;padding:17px;font-weight:700;font-size:18px;background:#800020;color:#F8F6F1}
+.fz-primary[disabled]{opacity:.45}
+.fz-ghost{display:block;width:100%;border:2px solid #E4DBCF;background:transparent;border-radius:999px;padding:13px;font-weight:700;font-size:16px;color:#1D1315;margin-top:10px}
+.fz-ghost.light{color:#fff;border-color:rgba(255,255,255,.35)}
+.fz-feed{margin:14px 0 0;min-height:22px;font-size:14px;font-weight:600;opacity:.9}
+.fz-tl{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:8px}
+.fz-tl li{display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12)}
+.fz-tl li.cur{background:rgba(255,214,102,.14);border-color:#E0A526}
+.fz-tl li.done{opacity:.55}
+.fz-tl .ic{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);flex:none}
+.fz-tl b{display:block}.fz-tl span{font-size:13px;opacity:.8}
+.fz-tl .tag{margin-left:auto;font-size:12px;font-weight:700;padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.14);white-space:nowrap}
+.fz-tl li.cur .tag{background:#E0A526;color:#1D1315}
+.fz-board{margin-top:20px}
+.fz-board h3{font:700 20px var(--f-display);margin:0 0 8px}
+.fz-lb{list-style:none;margin:0;padding:0}
+.fz-lb li{display:flex;gap:10px;align-items:center;padding:9px 6px;border-bottom:1px solid rgba(255,255,255,.12);font-size:15px}
+.fz-lb .n{width:26px;font-weight:700;opacity:.7}.fz-lb .s{margin-left:auto;font-weight:700}
+.fz-lb li.cut{border-bottom:2px dashed #E0A526}.fz-lb li.mine{background:rgba(255,214,102,.2);border-radius:10px}
+.fz-prize{margin-top:18px;font-size:14px;line-height:1.6;opacity:.9}
+.fz-podium{display:grid;gap:8px;margin-top:10px}
+.fz-podium div{display:flex;gap:12px;align-items:center;background:rgba(255,255,255,.1);border-radius:14px;padding:12px 14px;font-weight:700}
+#fzGame{padding:0;max-width:none;overflow:hidden;background:#000}
+#fzCv{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
+.fz-hud{position:absolute;left:0;right:0;top:0;padding:calc(12px + env(safe-area-inset-top,0px)) 14px 0;display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none;z-index:3}
+.fz-score{font:700 62px/.9 var(--f-display);letter-spacing:-.03em;color:#1D1315}
+.fz-score small{display:block;font:600 13px var(--f-body);opacity:.75;margin-top:6px}
+.fz-hr{text-align:right;font-weight:700;font-size:13px;display:grid;gap:6px;justify-items:end}
+.fz-pill{background:rgba(255,255,255,.8);border-radius:999px;padding:6px 11px;color:#1D1315}
+.fz-pill[hidden]{display:none}
+.fz-dark .fz-score{color:#fff}.fz-dark .fz-pill{background:rgba(255,255,255,.16);color:#fff}
+.fz-fire .fz-pill.fire{background:linear-gradient(90deg,#ff7a00,#ff2d55);color:#fff}
+.fz-flash{position:absolute;left:0;right:0;top:30%;text-align:center;font:700 clamp(24px,8vw,36px) var(--f-display);color:#800020;opacity:0;pointer-events:none;z-index:4;transition:opacity .15s,transform .45s;text-shadow:0 2px 0 rgba(255,255,255,.6)}
+.fz-dark .fz-flash{color:#FFD666;text-shadow:0 0 18px rgba(255,214,102,.7)}
+.fz-flash.on{opacity:1;transform:translateY(-14px) scale(1.04)}
+.fz-flash.gold{color:#E0A526}
+.fz-hint{position:absolute;left:0;right:0;bottom:calc(46px + env(safe-area-inset-bottom,0px));text-align:center;font-weight:700;color:#1D1315;z-index:3;pointer-events:none;animation:fzHint 1.4s ease-in-out infinite}
+.fz-dark .fz-hint{color:#fff}
+@keyframes fzHint{50%{opacity:.35}}
+.fz-edge{position:absolute;inset:0;pointer-events:none;z-index:2;box-shadow:inset 0 0 0 0 rgba(255,90,0,0);transition:box-shadow .3s}
+.fz-fire .fz-edge{box-shadow:inset 0 0 60px 10px rgba(255,90,0,.55)}
+.fz-ctrl{position:absolute;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:5;display:flex;gap:8px}
+.fz-ctrl button{width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.75);font-size:18px}
+.fz-count{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:6;font:700 120px var(--f-display);color:#fff;text-shadow:0 6px 30px rgba(0,0,0,.4);pointer-events:none}
+.fz-count[hidden]{display:none}
+.fz-toast{position:absolute;left:50%;bottom:calc(70px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#1D1315;color:#fff;padding:10px 16px;border-radius:999px;font-weight:600;font-size:14px;white-space:nowrap;opacity:0;transition:opacity .2s;z-index:20;pointer-events:none;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
+.fz-toast.on{opacity:1}
+#fzOver{background:rgba(29,19,21,.86);backdrop-filter:blur(8px);display:flex;flex-direction:column;justify-content:flex-end;max-width:none}
+#fzOver .card{max-width:520px;width:100%;margin:0 auto;background:#F8F6F1;color:#1D1315;border-radius:24px;padding:22px 20px 18px}
+.fz-big{font:700 76px/.9 var(--f-display);letter-spacing:-.04em;color:#800020}
+.fz-big small{font:600 16px var(--f-body);color:#6B5F62;letter-spacing:0;margin-left:6px}
+.fz-rank{font:700 22px var(--f-display);margin:12px 0 4px}
+.fz-near{color:#6B5F62;margin:0;font-size:15px;line-height:1.4}
+.fz-saving{font-size:13px;color:#6B5F62;margin:8px 0 0}
+#fzShare{background:rgba(29,19,21,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;max-width:none}
+#fzShare img{width:min(74vw,290px);border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+#fzShare p{margin:0;font-size:14px;opacity:.85}
+@media (prefers-reduced-motion:reduce){.fz-fab,.fz-hint,.fz-strip .live i,.fz-fab i{animation:none}.fz-flash{transition:none}}
 </style>
 </head>
 <body>
@@ -6015,6 +6104,299 @@ setTimeout(()=>{const t=new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Beirut",
 let yc=0,yt=0;document.addEventListener("click",e=>{if(!e.target.closest("#yr"))return;const t=Date.now();yc=t-yt<600?yc+1:1;yt=t;if(yc>=3){yc=0;rain("\ud83d\udca1");toast("Thank you for being part of REL \u2764\ufe0f")}});
 /* 12. leave the page open for 10 minutes on Play: a nudge */
 setTimeout(()=>{if(cur.pg==="play")toast("Still here? Your brain deserves a 5-minute break \ud83e\udde0")},600000);
+})();
+
+
+/* ===================== Fiesta Day: REL Tower Cup ===================== */
+(function(){
+if(typeof SB==="undefined")return;
+/* REL Tower Cup: the one shared game rule set (the database runs the same rules) */
+const SIM={W:1000,BASEW:620,DT:1/120,TOL:12};
+function frnd(seed,k,i){let r=(seed*7919+k*104729+i*1299709+12345)%2147483647;r=(r*48271)%2147483647;r=(r*48271)%2147483647;return r/2147483647}
+function simNew(seed,speed,twist){return{seed,speed,twist,topX:(SIM.W-SIM.BASEW)/2,topW:SIM.BASEW,streak:0,score:0,floors:0,k:0,over:false,blk:null}}
+function simSpawn(g){g.k++;const w=g.topW,fromLeft=g.k%2===0;g.blk={w,x:fromLeft?-w*0.6:SIM.W-w*0.4,dir:fromLeft?1:-1,i:0,
+ v0:620*g.speed*(1+Math.floor(g.floors/10)*0.12),gs:0.8+1.7*frnd(g.seed,g.k,1),nf:0.9+1.8*frnd(g.seed,g.k,10),j:0,gold:frnd(g.seed,g.k,99)<0.12}}
+function simStep(g){const b=g.blk,t=b.i*SIM.DT;let mult=1;
+ if(g.twist==="wind"&&t>=b.gs&&t<b.gs+0.7)mult=1.9;
+ if(g.twist==="switch"&&g.floors>0&&t>=b.nf){b.dir=-b.dir;b.j++;b.nf=b.nf+(0.9+1.8*frnd(g.seed,g.k,10+b.j))}
+ b.x=b.x+((b.dir*b.v0)*mult)*SIM.DT;const lo=-b.w*0.65,hi=SIM.W-b.w*0.35;
+ if(b.x<lo){b.x=lo;b.dir=1}if(b.x>hi){b.x=hi;b.dir=-1}b.i++}
+/* returns {miss,perfect,gold,pts,cut:{x,w}|null,nx,nw} */
+function simDrop(g){const b=g.blk,l=Math.max(b.x,g.topX),r=Math.min(b.x+b.w,g.topX+g.topW),ov=r-l;
+ if(ov<=0){g.over=true;return{miss:true,x:b.x,w:b.w}}
+ let nx,nw,perfect=false,cut=null,pts=1,gold=false;
+ if(Math.abs(b.x-g.topX)<=SIM.TOL){perfect=true;g.streak++;nx=g.topX;nw=g.topW;if(g.streak>=3){const gr=Math.min(SIM.BASEW-nw,50);nw=nw+gr;nx=nx-gr/2}if(b.gold){gold=true;pts+=3}}
+ else{g.streak=0;nx=l;nw=ov;cut={x:b.x<g.topX?b.x:r,w:b.w-ov}}
+ if(g.streak>=5)pts+=1;
+ g.floors++;g.score+=pts;g.topX=nx;g.topW=nw;return{miss:false,perfect,gold,pts,cut,nx,nw}}
+function simReplay(seed,speed,twist,steps){const g=simNew(seed,speed,twist);for(const n of steps){if(g.over)break;simSpawn(g);for(let i=0;i<n;i++)simStep(g);simDrop(g)}return{score:g.score,floors:g.floors}}
+
+const $f=s=>document.querySelector(s);
+const reduceM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let FS=null,offset=0,poll=null,openR=0;
+const now=()=>Date.now()+offset;
+const T=s=>new Date(s).getTime();
+const hm=s=>new Date(s).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit",timeZone:"Asia/Beirut"});
+const dur=ms=>{ms=Math.max(0,ms);const h=Math.floor(ms/36e5),m=Math.floor(ms/6e4)%60,s=Math.floor(ms/1e3)%60;return(h?h+":"+String(m).padStart(2,"0"):m)+":"+String(s).padStart(2,"0")};
+const PRIZES={1:"Best score of the round wins a Jungle Juice voucher. The top 16 go to Round 2.",2:"Best score of the round wins a Jungle Juice voucher. The top 4 go to the Final.",3:"1st and 2nd: padel vouchers. 3rd and 4th: VOX Cinemas tickets."};
+const ICON={1:"🟢",2:"🌬️",3:"⚡"};
+
+/* ---------- entry points: gold strip on Home + floating button ---------- */
+const strip=document.createElement("button");strip.type="button";strip.className="fz-strip";strip.hidden=true;
+strip.innerHTML='<span class="live"><i></i>Live today</span><span>🎉 Fiesta Day: the REL Tower Cup is on. Tap to play!</span>';
+const home=document.querySelector('.pg[data-pg="home"]');if(home)home.prepend(strip);
+const fab=document.createElement("button");fab.type="button";fab.className="fz-fab";fab.hidden=true;fab.innerHTML="<i></i>Tower Cup";document.body.appendChild(fab);
+strip.addEventListener("click",()=>openFiesta());fab.addEventListener("click",()=>openFiesta());
+
+/* ---------- the full-screen tournament ---------- */
+const root=document.createElement("div");root.id="fz";root.hidden=true;root.setAttribute("role","dialog");root.setAttribute("aria-label","REL Tower Cup");
+root.innerHTML=`
+<section class="fz-scr" id="fzHub"><div>
+ <div class="fz-top"><button class="fz-x" type="button" data-fzclose>&larr; Website</button><span class="fz-me" id="fzMe"></span></div>
+ <h1 class="fz-title">REL<br>Tower Cup</h1>
+ <p class="fz-sub">Fiesta Day. Stack the highest tower, climb the leaderboard, win prizes.</p>
+ <div class="fz-now"><div class="fz-now-h"><b id="fzRName"></b><span class="fz-clock" id="fzClock"></span></div>
+  <div class="fz-stats" id="fzStats"><div><span>Your best</span><b id="fzBest">-</b></div><div><span>Your rank</span><b id="fzRank">-</b></div><div><span>Tries left</span><b id="fzTries">-</b></div></div>
+  <p class="fz-msg" id="fzMsg"></p>
+  <div id="fzActs"></div></div>
+ <p class="fz-feed" id="fzFeed" aria-live="polite"></p>
+ <ol class="fz-tl" id="fzTl"></ol>
+ <div class="fz-board"><h3 id="fzBH"></h3><ol class="fz-lb" id="fzLb"></ol></div>
+ <div class="fz-prize" id="fzPrize"></div>
+ <div class="fz-prize"><b>How to play:</b> a block slides above your tower. Tap anywhere to drop it. The part hanging over the edge is cut off. A perfect drop scores, 3 in a row make your block grow, 5 in a row put you ON FIRE (double points), and a perfect drop on a gold block gives +3.</div>
+</div></section>
+<section class="fz-scr" id="fzGame" hidden>
+ <canvas id="fzCv" aria-label="REL Tower. Tap to drop the block."></canvas><div class="fz-edge"></div>
+ <div class="fz-hud"><div class="fz-score"><span id="fzSc">0</span><small id="fzFl">0 floors</small></div>
+  <div class="fz-hr"><span class="fz-pill" id="fzRp"></span><span class="fz-pill fire" id="fzSt" hidden></span><span class="fz-pill" id="fzRival" hidden></span></div></div>
+ <div class="fz-flash" id="fzFlash"></div><div class="fz-hint" id="fzHint">Tap anywhere to drop</div><div class="fz-count" id="fzCount" hidden></div>
+ <div class="fz-ctrl"><button type="button" id="fzMus" aria-label="Music on">🎵</button><button type="button" id="fzSnd" aria-label="Sound off">🔊</button></div>
+</section>
+<section class="fz-scr" id="fzOver" hidden aria-live="polite"><div class="card">
+ <div class="fz-big"><span id="fzOS">0</span><small>points</small></div>
+ <div class="fz-rank" id="fzOR"></div><p class="fz-near" id="fzON"></p><p class="fz-saving" id="fzOV"></p>
+ <button class="fz-primary" type="button" id="fzAgain" style="margin-top:16px">Play again</button>
+ <button class="fz-ghost" type="button" id="fzShareB">Share my score</button>
+ <button class="fz-ghost" type="button" id="fzBack">Back to the tournament</button></div></section>
+<section class="fz-scr" id="fzShare" hidden><img id="fzShareImg" alt="Your REL Tower Cup score card"><p>Press and hold the picture to save it, then post it on your story.</p><button class="fz-ghost light" type="button" id="fzShareX" style="max-width:290px">Close</button></section>
+<div class="fz-toast" id="fzToast"></div>`;
+document.body.appendChild(root);
+const scr=id=>["fzHub","fzGame","fzOver","fzShare"].forEach(s=>$f("#"+s).hidden=s!==id);
+let tt;const ftoast=t=>{const b=$f("#fzToast");b.textContent=t;b.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>b.classList.remove("on"),1800)};
+root.addEventListener("click",e=>{if(e.target.closest("[data-fzclose]"))closeFiesta()});
+
+async function loadState(){try{const {data,error}=await SB.rpc("fiesta_state");if(error)throw error;FS=data;offset=T(data.now)-Date.now();await resendPending();return data}catch(e){return null}}
+function visible(){if(!FS)return false;const n=now();return(n>=T(FS.show_from)&&n<T(FS.show_until))||FS.is_team}
+function syncEntry(){const v=visible();strip.hidden=!v;fab.hidden=!v||!root.hidden;if(v&&FS.is_team&&now()<T(FS.show_from)){fab.innerHTML="<i></i>Tower Cup (team preview)"}}
+function curRound(){if(!FS)return null;const n=now(),R=FS.rounds;const open=R.find(r=>n>=T(r.starts_at)&&n<T(r.ends_at));if(open)return{r:open,state:"open"};
+ const next=R.find(r=>n<T(r.starts_at));if(next)return{r:next,state:"soon"};return{r:R[R.length-1],state:"done"}}
+
+async function openFiesta(){root.hidden=false;document.documentElement.style.overflow="hidden";fab.hidden=true;scr("fzHub");if(location.hash!=="#fiesta")history.replaceState(null,"","#fiesta");
+ await loadState();renderHub();clearInterval(poll);poll=setInterval(async()=>{if(!$f("#fzHub").hidden){await loadState();renderHub()}},15000)}
+function closeFiesta(){root.hidden=true;document.documentElement.style.overflow="";clearInterval(poll);stopGame();if(location.hash==="#fiesta")history.replaceState(null,"","#home");syncEntry()}
+window.relFiesta={open:openFiesta,replay:simReplay};
+
+function renderHub(){
+ if(!FS){$f("#fzRName").textContent="Can't reach the tournament";$f("#fzMsg").textContent="Check your internet connection, then reopen this page.";$f("#fzActs").innerHTML="";return}
+ const c=curRound(),r=c.r;openR=c.state==="open"?r.round:0;
+ $f("#fzMe").textContent=ST.member?("#"+ST.member.rel_id+" "+(ST.member.full_name||"").split(" ")[0]):(ST.user?"Signed in":"Not signed in");
+ $f("#fzRName").textContent=c.state==="done"?"The Cup is over":r.name;
+ tick();
+ const left=Math.max(0,r.tries-r.used);
+ $f("#fzBest").textContent=r.my_best??"-";$f("#fzRank").textContent=r.my_rank?"#"+r.my_rank:"-";$f("#fzTries").textContent=c.state==="done"?"-":left;
+ const msg=$f("#fzMsg"),acts=$f("#fzActs");msg.className="fz-msg";let html="";
+ const practice='<button class="fz-ghost" type="button" data-fzplay="practice">Practice (not counted)</button>';
+ if(!FS.logged_in){msg.textContent="Join REL to enter the Cup. It takes 2 minutes, then come back here.";html='<button class="fz-primary" type="button" data-fzgo="member">Join REL</button><button class="fz-ghost" type="button" data-fzgo="login">I\'m already a member</button>'+practice}
+ else if(!FS.can_join){msg.textContent="Finish joining REL first, then come back to play.";html='<button class="fz-primary" type="button" data-fzgo="account">Finish joining</button>'+practice}
+ else if(c.state==="done"){msg.textContent="Thanks for playing! Winners collect their prizes at the REL stand with their university card.";html=practice}
+ else if(c.state==="soon"){const team=FS.is_team;msg.textContent=r.round===1?`The Cup opens at ${hm(r.starts_at)}. Warm up with a practice game!`:`${r.name} opens at ${hm(r.starts_at)}.`+(r.qualified?" You qualified! 🔥":"");
+  html=(team?`<button class="fz-primary" type="button" data-fzplay="test">Test it (team only, not counted)</button>`:"")+practice}
+ else if(!r.qualified){msg.className="fz-msg no";msg.textContent="You didn't qualify for this round. Practice is open for you all day.";html=practice}
+ else if(left<=0){msg.textContent=r.my_rank&&r.round<3?(r.my_rank<=r.keep?`No tries left, and you're in the top ${r.keep}. Hold on! 🤞`:`No tries left. You're #${r.my_rank}; the top ${r.keep} go through.`):"No tries left in this round.";if(r.my_rank&&r.my_rank<=r.keep)msg.className="fz-msg ok";html=practice}
+ else{const rk=r.my_rank;if(r.round===3){msg.className="fz-msg ok";msg.textContent="You're in the Final 4! One try. Play it at the REL stand so everyone can watch."}
+  else if(rk){const ok=rk<=r.keep;msg.className="fz-msg "+(ok?"ok":"no");msg.textContent=ok?`You're in the top ${r.keep}. Stay there until ${hm(r.ends_at)}!`:`You're #${rk}. The top ${r.keep} go through. Keep trying!`}
+  else msg.textContent=`${left} ${left===1?"try":"tries"} in this round. Only your best score counts. Your try starts when the countdown ends.`;
+  html=`<button class="fz-primary" type="button" data-fzplay="ranked">Play (${left} ${left===1?"try":"tries"} left)</button>`+practice}
+ acts.innerHTML=html;
+ $f("#fzTl").innerHTML=FS.rounds.map(x=>{const st=now()>=T(x.ends_at)?"done":(x===r&&c.state==="open")?"cur":"";return`<li class="${st}"><span class="ic">${st==="done"?"✓":ICON[x.round]}</span><div><b>${esc(x.name)}</b><span>${hm(x.starts_at)} to ${hm(x.ends_at)}. ${x.round===1?"Everyone":x.round===2?"Top 16 only":"Top 4, at the REL stand"}${x.qualified&&x.round>1?". You're in! 🔥":""}</span></div><span class="tag">${st==="done"?"Done":st==="cur"?"Now":"Soon"}</span></li>`}).join("");
+ const br=c.state==="done"?FS.rounds[2]:r;$f("#fzBH").textContent=(c.state==="done"?"Final results":br.name+" leaderboard")+(br.players?" ("+br.players+" players)":"");
+ $f("#fzLb").innerHTML=br.board.length?br.board.map((x,i)=>`<li class="${x.me?"mine":""} ${i===br.keep-1&&br.round<3?"cut":""}"><span class="n">${i===0?"👑":i+1}</span>${esc(x.name)}<span class="s">${x.score}</span></li>`).join("")+(br.round<3?`<li style="border:0;font-size:13px;opacity:.75">The dashed line: the top ${br.keep} go through.</li>`:""):`<li style="border:0;opacity:.8">No scores yet. Be the first!</li>`;
+ $f("#fzPrize").innerHTML="<b>Prizes:</b> "+esc(PRIZES[br.round])+" One prize per person. Collect it at the REL stand with your university card.";
+ const f=FS.feed||[];$f("#fzFeed").textContent=f.length?`🔥 ${f[0].name} just scored ${f[0].score}`+(f[1]?`, ${f[1].name} scored ${f[1].score}`:""):"";
+}
+function tick(){if(!FS||root.hidden)return;const c=curRound();if(!c)return;const r=c.r,el=$f("#fzClock");
+ if(c.state==="open"){const ms=T(r.ends_at)-now();el.textContent="Closes in "+dur(ms);if(ms<=0){loadState().then(renderHub)}}
+ else if(c.state==="soon"){const ms=T(r.starts_at)-now();el.textContent="Opens in "+dur(ms);if(ms<=0){loadState().then(renderHub)}}
+ else el.textContent=""}
+setInterval(tick,1000);
+root.addEventListener("click",e=>{const g=e.target.closest("[data-fzgo]");if(!g)return;closeFiesta();
+ if(g.dataset.fzgo==="member"){authMode="signup";showPage("account")}else if(g.dataset.fzgo==="login"){authMode="login";showPage("account")}else showPage("account");
+ try{renderAccount()}catch(err){}toast("When you're done, tap the gold Tower Cup button to come back.")});
+
+/* ---------- the game ---------- */
+const cv=$f("#fzCv"),ctx=cv.getContext("2d");
+let W,H,BH,SC,G=null,mode="practice",attempt=null,steps=[],acc=0,lastT=0,raf=0,running=false,cam=0,camT=0,fx=[],falls=[],shake=0,fires=0,rivals=[],record=null,ended=false;
+let muted=false,music=false,ac=null,beatT=null;
+function sizeCv(){const d=Math.min(2,devicePixelRatio||1);W=root.clientWidth;H=root.clientHeight;cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);BH=Math.round(Math.max(22,Math.min(34,H*.042)));SC=W/1000}
+addEventListener("resize",()=>{if(!root.hidden)sizeCv()});
+const X=x=>x*SC;
+function beep(f,d=.08,type="triangle",v=.07){if(muted)return;try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.type=type;o.frequency.value=f;o.connect(g);g.connect(ac.destination);const t=ac.currentTime;g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.start(t);o.stop(t+d)}catch(e){}}
+const buzz=p=>{try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}};
+function beat(){clearInterval(beatT);if(!music)return;let n=0;beatT=setInterval(()=>{if(muted||!running)return;const fire=G&&G.streak>=5;beep(n%4===0?70:n%2?2400:140,n%2?.03:.12,n%2?"square":"sine",n%2?.015:.09);if(fire&&n%2)beep(660+(n%8)*55,.06,"triangle",.03);n++},fire2tempo())}
+const fire2tempo=()=>230;
+$f("#fzSnd").addEventListener("click",e=>{muted=!muted;e.currentTarget.textContent=muted?"🔇":"🔊"});
+$f("#fzMus").addEventListener("click",e=>{music=!music;e.currentTarget.style.opacity=music?1:.5;beat();try{localStorage.setItem("rel-fz-music",music?"1":"0")}catch(err){}});
+try{music=localStorage.getItem("rel-fz-music")!=="0"}catch(e){music=true}$f("#fzMus").style.opacity=music?1:.5;
+
+root.addEventListener("click",async e=>{const p=e.target.closest("[data-fzplay]");if(!p)return;const kind=p.dataset.fzplay;p.disabled=true;
+ try{if(kind==="practice"){const c=curRound();const rr=(c&&c.state!=="done")?c.r:FS?FS.rounds[0]:{round:1,speed:1,twist:null};begin("practice",{seed:1+Math.floor(Math.random()*999999),speed:rr.speed||1,twist:rr.twist||null,round:rr.round||1})}
+  else{const r=kind==="test"?curRound().r:FS.rounds.find(x=>x.round===openR);if(!r)throw new Error("This round is not open right now.");const {data,error}=await SB.rpc("fiesta_start",{p_round:r.round});if(error)throw error;
+   begin(kind==="test"||data.test?"test":"ranked",{seed:data.seed,speed:data.speed,twist:data.twist,round:r.round,id:data.id})}}
+ catch(err){ftoast(errText(err));await loadState();renderHub()}finally{p.disabled=false}});
+
+function begin(m,a){mode=m;attempt=a;sizeCv();G=simNew(a.seed,a.speed,a.twist);simSpawn(G);steps=[];acc=0;cam=0;camT=0;fx=[];falls=[];shake=0;ended=false;fires=0;
+ const br=FS&&FS.rounds.find(x=>x.round===a.round);const board=br?br.board.filter(x=>!x.me):[];rivals=board.slice().reverse();record=board[0]||null;
+ root.classList.toggle("fz-dark",a.round>1);root.classList.remove("fz-fire");
+ $f("#fzRp").textContent=(m==="ranked"?"":m==="test"?"TEST · ":"Practice · ")+["","Qualifiers","Round 2: Wind","Final 4: Switch"][a.round];
+ $f("#fzSc").textContent="0";$f("#fzFl").textContent="0 floors";$f("#fzSt").hidden=true;updRival();
+ scr("fzGame");$f("#fzHint").hidden=false;draw();
+ const cd=$f("#fzCount");cd.hidden=false;let n=3;cd.textContent=n;beep(440,.1,"sine");
+ const iv=setInterval(()=>{n--;if(n>0){cd.textContent=n;beep(440,.1,"sine")}else{clearInterval(iv);cd.textContent="GO!";beep(880,.18,"sine",.09);setTimeout(()=>{cd.hidden=true},400);running=true;lastT=performance.now();beat();raf=requestAnimationFrame(loop)}},650)}
+function stopGame(){running=false;cancelAnimationFrame(raf);clearInterval(beatT)}
+function loop(t){if(!running&&!ended)return;let dt=(t-lastT)/1000;lastT=t;if(dt>.05)dt=.05;
+ if(running){acc+=dt;while(acc>=SIM.DT){simStep(G);acc-=SIM.DT}}
+ cam+=(camT-cam)*Math.min(1,dt*6);
+ falls.forEach(f=>{f.vy+=1400*dt;f.y+=f.vy*dt;f.x+=f.vx*dt;f.r+=f.vx*dt*.004});falls=falls.filter(f=>f.y-cam<H+200);
+ fx.forEach(p=>{p.vy+=(p.g??600)*dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.l-=dt*(p.d||1)});fx=fx.filter(p=>p.l>0);
+ if(shake>0)shake=Math.max(0,shake-dt*30);
+ draw();raf=requestAnimationFrame(loop)}
+const yOf=i=>H*.80-i*BH;
+function drop(){if(!running||!G||G.over)return;$f("#fzHint").hidden=true;
+ const b=G.blk;steps.push(b.i);const res=simDrop(G),k=G.floors;
+ if(res.miss){falls.push({x:X(res.x),y:yOf(k+1),w:X(res.w),c:color(k+1),vy:0,vx:(b.dir||1)*40,r:0});beep(110,.4,"sawtooth",.06);buzz([60,40,140]);shake=reduceM?0:14;finish();return}
+ const fire=G.streak>=5;
+ if(res.perfect){const big=G.streak>=3;flash(res.gold?"+3 GOLD ⭐":fire?"ON FIRE 🔥":big?"PERFECT +size":"PERFECT!",res.gold);beep(500+Math.min(G.streak,12)*60,.12,"sine",.09);buzz(res.gold?[30,30,30]:25);
+  burst(X(res.nx+res.nw/2),yOf(k),res.gold?"#FFD666":fire?"#ff7a00":"#FFD666",res.gold?36:16);if(attempt.round===2&&!reduceM)firework(X(res.nx+res.nw/2),yOf(k)-140)}
+ else{falls.push({x:X(res.cut.x),y:yOf(k),w:X(res.cut.w),c:color(k),vy:0,vx:res.cut.x<res.nx?-60:60,r:0});beep(300+Math.min(k,30)*8,.07);buzz(10)}
+ if(fire&&!root.classList.contains("fz-fire")){root.classList.add("fz-fire");beep(990,.2,"square",.04)}if(!fire)root.classList.remove("fz-fire");
+ $f("#fzSc").textContent=G.score;$f("#fzFl").textContent=k+(k===1?" floor":" floors");
+ const st=$f("#fzSt");st.hidden=G.streak<2;st.textContent=fire?"🔥 ON FIRE x2":"🔥 "+G.streak+" perfect";
+ if(k%10===0){const S={10:"Floor 10! Sponsored by Jungle Juice 🥤",20:"Floor 20! Sponsored by VOX Cinemas 🎬",30:"Floor 30! Sponsored by Almaza 🍺"};ftoast(S[k]||"Floor "+k+"! 🚀");confetti()}
+ updRival();camT=Math.max(0,(k-5)*BH);simSpawn(G)}
+function updRival(){const el=$f("#fzRival");while(rivals.length&&G&&rivals[0].score<G.score){const p=rivals.shift();if(G.score>0&&mode!=="practice")ftoast("You just passed "+p.name.split(" ")[0]+"! 🔥")}
+ if(rivals.length&&mode!=="practice"){el.hidden=false;el.textContent="Next: "+rivals[0].name.split(" ")[0]+" "+rivals[0].score}else el.hidden=true}
+function flash(t,gold){const f=$f("#fzFlash");f.textContent=t;f.classList.toggle("gold",!!gold);f.classList.add("on");clearTimeout(flash.t);flash.t=setTimeout(()=>f.classList.remove("on"),520)}
+function burst(x,y,c,n){for(let i=0;i<n;i++)fx.push({x:x+(Math.random()-.5)*60,y,vx:(Math.random()-.5)*200,vy:-Math.random()*260,l:.8,c})}
+function firework(x,y){const h=Math.random()*360;for(let i=0;i<28;i++){const a=i/28*Math.PI*2;fx.push({x,y,vx:Math.cos(a)*130,vy:Math.sin(a)*130,l:1,c:`hsl(${h},95%,65%)`,g:90,d:.9})}}
+function confetti(){if(reduceM)return;for(let i=0;i<60;i++)fx.push({x:Math.random()*W,y:-cam-20-Math.random()*60,vx:(Math.random()-.5)*80,vy:Math.random()*120,l:2.2,c:`hsl(${Math.random()*360},90%,60%)`,g:160,d:1})}
+function color(k){const r=attempt?attempt.round:1;return r===1?`hsl(${345-(k*3)%20},${55+(k%3)*8}%,${30+((k*7)%20)}%)`:r===2?`hsl(${(20+k*11)%60+330},75%,${48+((k*5)%16)}%)`:`hsl(${(300+k*23)%360},95%,62%)`}
+
+/* backgrounds */
+function rnd(i){const x=Math.sin(i*127.1)*43758.5453;return x-Math.floor(x)}
+function mix(a,b,t){const p=s=>[1,3,5].map(i=>parseInt(s.slice(i,i+2),16));const A=p(a),B=p(b);return`rgb(${A.map((v,i)=>Math.round(v+(B[i]-v)*t)).join(",")})`}
+function sky(a,b){const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,a);g.addColorStop(1,b);ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}
+function cloud(x,y,s){ctx.fillStyle="rgba(255,255,255,.85)";ctx.beginPath();ctx.arc(x,y,16*s,0,7);ctx.arc(x+18*s,y-8*s,20*s,0,7);ctx.arc(x+40*s,y,16*s,0,7);ctx.rect(x,y,40*s,14*s);ctx.fill()}
+function stars(n,a){ctx.fillStyle="#fff";for(let i=0;i<n;i++){ctx.globalAlpha=a*(.3+rnd(i+400)*.7);ctx.fillRect(rnd(i)*W,(rnd(i+200)*H*1.6+cam*.25)%(H*1.2)-H*.1,1.6,1.6)}ctx.globalAlpha=1}
+function bgRoumieh(c){const t=Math.min(1,c/(BH*45));sky(mix("#BFE0F5","#1B2C6B",t),mix("#F3EFE6","#7FB2E5",t));if(t>.6)stars(70,(t-.6)*2.5);
+ const base=H*.80+BH+c;ctx.fillStyle="rgba(255,236,170,.9)";ctx.beginPath();ctx.arc(W*.82,H*.16+c*.15,26,0,7);ctx.fill();
+ for(let i=0;i<7;i++){const yy=H*.1+i*H*.16+c*.35,y=yy-H*1.1*Math.floor(yy/(H*1.1));cloud((rnd(i)*W*1.3+performance.now()*.006*(i%2?1:-1))%(W+120)-60,y,.7+rnd(i+9)*.6)}
+ ctx.fillStyle="#9DB58A";ctx.beginPath();ctx.moveTo(0,base-120);for(let x=0;x<=W;x+=20)ctx.lineTo(x,base-120-Math.sin(x*.012+1)*28-Math.sin(x*.031)*12);ctx.lineTo(W,base);ctx.lineTo(0,base);ctx.fill();
+ ctx.fillStyle="#7E9C6B";ctx.beginPath();ctx.moveTo(0,base-80);for(let x=0;x<=W;x+=20)ctx.lineTo(x,base-80-Math.sin(x*.02+3)*18);ctx.lineTo(W,base);ctx.lineTo(0,base);ctx.fill();
+ [[.02,.30,70],[.30,.24,95],[.56,.42,62],[.70,.26,80]].forEach(([x,w,h],k)=>{const L=x*W,Wd=w*W;ctx.fillStyle=k===1?"#EDE3D2":"#E2D6C2";ctx.fillRect(L,base-h,Wd,h);ctx.fillStyle="#B9A98F";ctx.fillRect(L,base-h,Wd,5);ctx.fillStyle="rgba(70,90,110,.55)";for(let wy=base-h+14;wy<base-12;wy+=16)for(let wx=L+8;wx<L+Wd-12;wx+=16)ctx.fillRect(wx,wy,8,9)});
+ for(let i=0;i<7;i++){const x=rnd(i+3)*W,h=26+rnd(i+5)*20;ctx.fillStyle="#3F6B3A";ctx.beginPath();ctx.moveTo(x,base-h-18);ctx.lineTo(x-12,base-6);ctx.lineTo(x+12,base-6);ctx.fill()}
+ ctx.fillStyle="#C9B79A";ctx.fillRect(0,base,W,H)}
+function bgBeirut(c){const t=Math.min(1,c/(BH*35));sky(mix("#F6A15A","#1E0F33",t),mix("#FFD3A0","#7A2E5A",t));if(t>.5)stars(60,(t-.5)*2);
+ const base=H*.80+BH+c;ctx.fillStyle="rgba(255,235,190,.95)";ctx.beginPath();ctx.arc(W*.5,base-70,38,0,7);ctx.fill();
+ const sg=ctx.createLinearGradient(0,base-60,0,base);sg.addColorStop(0,"#E07A5F");sg.addColorStop(1,"#5B2A4A");ctx.fillStyle=sg;ctx.fillRect(0,base-60,W,60);
+ ctx.fillStyle="#3A1830";ctx.beginPath();ctx.moveTo(W*.08,base-20);ctx.lineTo(W*.12,base-62);ctx.lineTo(W*.17,base-58);ctx.lineTo(W*.2,base-20);ctx.fill();ctx.beginPath();ctx.moveTo(W*.2,base-20);ctx.lineTo(W*.23,base-44);ctx.lineTo(W*.27,base-20);ctx.fill();
+ let x=W*.3,i=0;while(x<W+20){const w=18+rnd(i)*30,h=40+rnd(i+40)*130;ctx.fillStyle="#2A1230";ctx.fillRect(x,base-60-h,w,h);ctx.fillStyle="rgba(255,200,120,.75)";for(let wy=base-60-h+8;wy<base-66;wy+=10)for(let wx=x+4;wx<x+w-5;wx+=8)if(rnd(wx*wy)>.62)ctx.fillRect(wx,wy,3,4);x+=w+3;i++}
+ ctx.fillStyle="#2A1230";ctx.fillRect(0,base,W,H)}
+function bgSpace(c){sky("#04051A","#1B0B33");stars(130,1);const g=ctx.createRadialGradient(W*.25,H*.3+c*.2,10,W*.25,H*.3+c*.2,180);g.addColorStop(0,"rgba(224,69,123,.35)");g.addColorStop(1,"rgba(224,69,123,0)");ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+ const base=H*.80+BH+c;ctx.save();ctx.beginPath();ctx.arc(W/2,base+W*1.1,W*1.25,0,7);const e=ctx.createLinearGradient(0,base-40,0,base+80);e.addColorStop(0,"#3BA3FF");e.addColorStop(1,"#0B2E66");ctx.fillStyle=e;ctx.shadowColor="#5FC8FF";ctx.shadowBlur=30;ctx.fill();ctx.restore()}
+function blk(x,y,w,c,glow,gold,fire){if(gold){const g=ctx.createLinearGradient(x,y,x+w,y);g.addColorStop(0,"#FFE38A");g.addColorStop(.5,"#E0A526");g.addColorStop(1,"#FFE38A");ctx.fillStyle=g;ctx.shadowColor="#FFD666";ctx.shadowBlur=18}
+ else{ctx.fillStyle=c;if(glow||fire){ctx.shadowColor=fire?"#ff7a00":c;ctx.shadowBlur=fire?22:16}}
+ ctx.fillRect(x,y,w,BH-2);ctx.shadowBlur=0;ctx.fillStyle="rgba(255,255,255,.22)";ctx.fillRect(x,y,w,3);
+ if(gold){ctx.fillStyle="#7a4b00";ctx.font=`700 ${Math.round(BH*.6)}px system-ui`;ctx.textAlign="center";ctx.fillText("★",x+w/2,y+BH*.72);ctx.textAlign="left"}}
+let tower=[];
+function draw(){if(!G)return;ctx.save();if(shake)ctx.translate((Math.random()-.5)*shake,(Math.random()-.5)*shake);
+ const c=cam,r=attempt.round;[bgRoumieh,bgBeirut,bgSpace][r-1](c);
+ if(record&&mode!=="practice"&&record.floors){const ry=yOf(record.floors)+c;if(ry>-20&&ry<H){ctx.setLineDash([8,6]);ctx.strokeStyle="#E0A526";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,ry);ctx.lineTo(W,ry);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle="#E0A526";ctx.font="700 12px system-ui";ctx.textAlign="right";ctx.fillText("👑 "+record.name.split(" ")[0]+": "+record.floors+" floors",W-10,ry-6);ctx.textAlign="left"}}
+ const neon=r===3,fire=G.streak>=5;
+ /* the tower: rebuilt from the game's own state */
+ if(tower.length!==G.floors+1){tower=tower.slice(0,G.floors+1)}
+ tower.forEach((b,i)=>blk(X(b.x),yOf(i)+c,X(b.w),b.c,neon,false,fire&&i>G.floors-5));
+ if(running&&G.blk&&!G.over)blk(X(G.blk.x),yOf(G.floors+1)+c,X(G.blk.w),color(G.floors+1),neon,G.blk.gold,fire);
+ falls.forEach(f=>{ctx.save();ctx.translate(f.x+f.w/2,f.y+c+BH/2);ctx.rotate(f.r);ctx.globalAlpha=.85;blk(-f.w/2,-BH/2,f.w,f.c,false);ctx.restore()});
+ fx.forEach(p=>{ctx.globalAlpha=Math.max(0,Math.min(1,p.l));ctx.fillStyle=p.c;ctx.fillRect(p.x,p.y+c,4,4)});ctx.globalAlpha=1;ctx.restore()}
+/* keep a visual copy of the tower as the game builds it */
+const _drop=drop;
+function trackTower(){tower=[{x:(SIM.W-SIM.BASEW)/2,w:SIM.BASEW,c:color(0)}]}
+cv.addEventListener("pointerdown",e=>{if(!running)return;e.preventDefault();const before=G.floors;_drop();if(G.floors>before)tower.push({x:G.topX,w:G.topW,c:color(G.floors)})});
+addEventListener("keydown",e=>{if(root.hidden||!running)return;if(e.code==="Space"||e.key==="Enter"){e.preventDefault();const before=G.floors;_drop();if(G.floors>before)tower.push({x:G.topX,w:G.topW,c:color(G.floors)})}});
+const _begin=begin;begin=function(m,a){_begin(m,a);trackTower();draw()};
+
+async function finish(){running=false;ended=true;clearInterval(beatT);root.classList.remove("fz-fire");
+ /* zoom out to show the whole tower */
+ setTimeout(()=>{camT=0;},300);
+ const local={score:G.score,floors:G.floors};
+ setTimeout(async()=>{ended=false;cancelAnimationFrame(raf);
+  $f("#fzOS").textContent=local.score;$f("#fzOR").textContent="";$f("#fzON").textContent="";$f("#fzOV").textContent="";
+  $f("#fzAgain").hidden=true;scr("fzOver");root.classList.remove("fz-dark");
+  if(mode==="practice"){$f("#fzOR").textContent="Practice game";$f("#fzON").textContent=`${local.floors} floors. Practice games are not counted.`;$f("#fzAgain").hidden=false;$f("#fzAgain").textContent="Practice again";return}
+  $f("#fzOV").textContent="Saving your score...";
+  const res=await sendResult(attempt.id,steps);
+  await loadState();
+  if(res&&!res.error){const d=res.data;$f("#fzOS").textContent=d.score;const r=FS.rounds.find(x=>x.round===attempt.round);
+   $f("#fzOV").textContent=d.test?"Test game (team only): not counted.":"Score saved ✓";
+   if(d.rank&&!d.test){$f("#fzOR").textContent=d.rank===1?"You're #1! 👑":"You're #"+d.rank+" of "+r.players;
+    $f("#fzON").textContent=r.round===3?"Final 4: wait for the others to play.":(d.rank<=r.keep?`You're in the top ${r.keep}. Stay there until ${hm(r.ends_at)}!`:`${Math.max(1,(r.board[r.keep-1]?r.board[r.keep-1].score:0)-(r.my_best||0)+1)} more points to reach the top ${r.keep}.`)}
+   const left=r?Math.max(0,r.tries-r.used):0;if(left>0&&!d.test){$f("#fzAgain").hidden=false;$f("#fzAgain").textContent=`Play again (${left} left)`}
+   if(d.test){$f("#fzAgain").hidden=false;$f("#fzAgain").textContent="Test again"}}
+  else $f("#fzOV").textContent="We couldn't save your score yet (no signal?). It will be sent automatically when you're back online. Don't close this page.";
+ },1100)}
+async function sendResult(id,st){try{localStorage.setItem("rel-fiesta-pending",JSON.stringify({id,steps:st}))}catch(e){}
+ for(let i=0;i<4;i++){try{const r=await SB.rpc("fiesta_finish",{p_attempt:id,p_steps:st});if(!r.error||/already saved|not found/i.test(r.error.message||"")){try{localStorage.removeItem("rel-fiesta-pending")}catch(e){}return r}if(/Invalid|closed/i.test(r.error.message||"")){try{localStorage.removeItem("rel-fiesta-pending")}catch(e){}return r}}catch(e){}await new Promise(r=>setTimeout(r,1500*(i+1)))}return null}
+async function resendPending(){let p=null;try{p=JSON.parse(localStorage.getItem("rel-fiesta-pending")||"null")}catch(e){}if(!p||!ST.user)return;try{const r=await SB.rpc("fiesta_finish",{p_attempt:p.id,p_steps:p.steps});if(!r.error||!/network|fetch/i.test(r.error.message||""))localStorage.removeItem("rel-fiesta-pending")}catch(e){}}
+$f("#fzAgain").addEventListener("click",async()=>{if(mode==="practice"){begin("practice",{seed:1+Math.floor(Math.random()*999999),speed:attempt.speed,twist:attempt.twist,round:attempt.round});return}
+ const kind=mode==="test"?"test":"ranked";const fake=document.createElement("button");fake.dataset.fzplay=kind;root.appendChild(fake);fake.click();fake.remove()});
+$f("#fzBack").addEventListener("click",()=>{scr("fzHub");renderHub()});
+$f("#fzShareB").addEventListener("click",()=>{$f("#fzShareImg").src=card();scr("fzShare")});
+$f("#fzShareX").addEventListener("click",()=>scr("fzOver"));
+function card(){const c=document.createElement("canvas");c.width=1080;c.height=1920;const x=c.getContext("2d");x.fillStyle="#800020";x.fillRect(0,0,1080,1920);
+ for(let i=0;i<14;i++){x.fillStyle=`hsl(${345-i%3*6},55%,${28+i%4*7}%)`;const w=520-i*14;x.fillRect((1080-w)/2+(i%2?18:-18),1500-i*70,w,64)}
+ x.fillStyle="#F8F6F1";x.font="700 60px 'Hanken Grotesk',system-ui";x.fillText("REL club, Fiesta Day",90,170);
+ x.font="700 120px Fraunces,Georgia,serif";x.fillText("I scored",90,420);x.font="700 340px Fraunces,Georgia,serif";x.fillText($f("#fzOS").textContent,80,740);
+ x.font="700 120px Fraunces,Georgia,serif";x.fillText("points",90,880);x.font="600 54px 'Hanken Grotesk',system-ui";x.fillText("at the REL Tower Cup 🏆",90,980);x.fillText("Can you beat me?",90,1060);
+ x.fillStyle="#E0A526";x.font="700 50px 'Hanken Grotesk',system-ui";x.fillText("relulfg.com/#fiesta",90,1800);return c.toDataURL("image/png")}
+
+/* ---------- start ---------- */
+(function waitReady(n){if(typeof ST!=="undefined"&&ST.ready){loadState().then(()=>{syncEntry();if(location.hash==="#fiesta"&&visible())openFiesta()});return}if(n<60)setTimeout(()=>waitReady(n+1),250)})(0);
+setInterval(async()=>{if(root.hidden){await loadState();syncEntry()}},60000);
+addEventListener("hashchange",()=>{if(location.hash==="#fiesta"&&visible()&&root.hidden)openFiesta()});
+})();
+
+/* ---------- Team area: Fiesta tab (President) ---------- */
+(function(){
+const isPres=()=>!!(ST.team&&ST.team.role==="president");
+const loc=s=>{const d=new Date(s);return new Date(d.getTime()-d.getTimezoneOffset()*6e4).toISOString().slice(0,16)};
+const _rt=renderTeam;renderTeam=function(){const want=teamTab;_rt();if(!isPres())return;const bar=$("#teamBody .tabs");if(!bar||bar.querySelector('[data-tt="fiesta"]'))return;
+ bar.insertAdjacentHTML("afterbegin",`<button type="button" class="tab" role="tab" aria-selected="false" data-tt="fiesta">🎉 Fiesta</button>`);
+ if(want==="fiesta"){teamTab="fiesta";bar.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.tt==="fiesta"));paneFiesta()}};
+async function paneFiesta(){loading();const {data:st,error}=await SB.rpc("fiesta_state");if(error)return paneErr(error);
+ const boards=await Promise.all(st.rounds.map(r=>SB.rpc("fiesta_admin_board",{p_round:r.round})));
+ tpane().innerHTML=`<div class="card" style="max-width:700px;background:var(--bg)"><h3 style="margin:0 0 6px">Round times</h3>
+ <p class="muted small" style="margin:0 0 12px">The Tower Cup appears on the website from ${new Date(st.show_from).toLocaleString("en-GB",{weekday:"short",hour:"2-digit",minute:"2-digit"})} to ${new Date(st.show_until).toLocaleString("en-GB",{weekday:"short",hour:"2-digit",minute:"2-digit"})}. Board members can test it before a round opens (tests are not counted).</p>
+ <form id="fzRoundsForm">${st.rounds.map(r=>`<fieldset style="border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:0 0 10px"><legend style="font-weight:700;padding:0 6px">${esc(r.name)}</legend>
+  <div class="two" style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><label class="fld">Starts<input type="datetime-local" data-fzs="${r.round}" value="${loc(r.starts_at)}"></label><label class="fld">Ends<input type="datetime-local" data-fze="${r.round}" value="${loc(r.ends_at)}"></label></div>
+  <p class="muted small" style="margin:4px 0 0">${r.players} players. ${r.round<3?"The top "+r.keep+" go through.":"The final."}</p></fieldset>`).join("")}
+ <div class="row"><button class="btn primary" type="submit">Save the times</button></div><p class="vres" id="fzRMsg" role="status" aria-live="polite"></p></form></div>
+ ${st.rounds.map((r,i)=>{const b=boards[i].data||[];return`<h3 style="margin:26px 0 8px">${esc(r.name)}: leaderboard</h3>${b.length?`<table><thead><tr><th>#</th><th>Player</th><th class="p">Score</th><th>Prize given</th></tr></thead><tbody>${b.map(x=>`<tr><td>${x.rnk}</td><td>${esc(x.full_name)}${x.rel_id?` <span class="muted small">#${esc(x.rel_id)}</span>`:' <span class="muted small">(not accepted yet)</span>'}</td><td class="p">${x.best}</td><td><div style="display:flex;gap:6px"><input data-fzprize="${esc(x.user_id)}" value="${esc(x.prize||"")}" placeholder="e.g. Jungle Juice" style="min-width:120px"><button type="button" class="btn sm" data-fzpsave="${esc(x.user_id)}">Save</button></div></td></tr>`).join("")}</tbody></table>`:'<p class="muted">No scores yet.</p>'}`}).join("")}
+ <p class="muted small" style="margin-top:18px">One prize per person: if someone already has a prize written, give the next prize to the next player.</p>`}
+document.addEventListener("submit",async e=>{if(!e.target||e.target.id!=="fzRoundsForm")return;e.preventDefault();
+ const rows=[1,2,3].map(n=>({round:n,starts_at:new Date($(`[data-fzs="${n}"]`).value).toISOString(),ends_at:new Date($(`[data-fze="${n}"]`).value).toISOString()}));
+ const {error}=await SB.rpc("fiesta_admin_rounds",{p_rounds:rows});if(error){say($("#fzRMsg"),errText(error));return}toast("Round times saved");paneFiesta()});
+document.addEventListener("click",async e=>{const b=e.target.closest("[data-fzpsave]");if(!b)return;const id=b.dataset.fzpsave,v=document.querySelector(`[data-fzprize="${id}"]`).value;
+ const {error}=await SB.rpc("fiesta_admin_prize",{p_user:id,p_prize:v});if(error){toast(errText(error));return}toast(v.trim()?"Prize saved":"Prize removed")});
 })();
 
 </script>
