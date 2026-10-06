@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-qd5vHB/af7zGBp+Kq0Uh/7Uoin24nQG/fPoG79lKPlY='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-NpBr+QkCtYSsvy6w3wrVAIRxDX+yZd0aqr0UF/Oaxlo='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1226,6 +1226,57 @@ body.founder{--fill:#B8860B;--brand-ink:#8A6508;--band:#57101F}
 #fzShare img{width:min(74vw,290px);border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
 #fzShare p{margin:0;font-size:14px;opacity:.85}
 @media (prefers-reduced-motion:reduce){.fz-fab,.fz-hint,.fz-strip .live i,.fz-fab i{animation:none}.fz-flash{transition:none}}
+</style>
+<style id="rel-empire">
+.emp-pick{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0 0}
+.emp-pick button{border:2px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#fff;border-radius:16px;padding:12px;text-align:left}
+.emp-pick button.on{border-color:#E0A526;background:rgba(255,214,102,.14)}
+.emp-pick b{display:block;font-size:16px}.emp-pick span{font-size:12px;opacity:.8}
+#fzEmp{background:radial-gradient(120% 50% at 50% 0%,#1d4f7a 0%,#122b52 45%,#0b1530 100%);max-width:none}
+.emp{max-width:520px;margin:0 auto}
+.emp-title{font:700 48px/.88 var(--f-display);letter-spacing:-.04em;margin:14px 0 14px}
+.emp-card{background:#F8F6F1;color:#1D1315;border-radius:20px;padding:18px;margin-bottom:14px}
+.emp-card h3{font:700 22px var(--f-display);margin:0 0 6px;color:#122b52}
+.emp-card p{margin:0 0 10px;line-height:1.45}
+.emp-big{font:700 44px var(--f-display);color:#122b52;margin:6px 0 0!important}
+.emp-muted{opacity:.8;font-size:14px;line-height:1.45}
+.emp-card .emp-muted{color:#6B5F62}
+.emp-ok{color:#7CE3A1;font-weight:700}
+.emp-label{display:block;font-size:12px;font-weight:700;opacity:.75}
+.emp-fac{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.emp-fac button{border:2px solid #E4DBCF;background:#fff;border-radius:12px;padding:12px 8px;font-weight:700;color:#1D1315}
+.emp-hero{background:linear-gradient(135deg,#FFD666,#E0A526);color:#1D1315;border-radius:22px;padding:16px 18px;margin-bottom:12px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.emp-val{display:block;font:700 46px/1 var(--f-display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.emp-res{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.emp-res div{background:rgba(255,255,255,.45);border-radius:12px;padding:8px}
+.emp-res span{display:block;font-size:11px;font-weight:700;opacity:.75}
+.emp-res b{font-size:16px;font-variant-numeric:tabular-nums}
+.emp-ev{display:grid;gap:4px;border:1.5px dashed rgba(255,255,255,.35);border-radius:16px;padding:12px 14px;margin-bottom:12px}
+.emp-ev.on{border:2px solid #7CE3A1;background:rgba(124,227,161,.12)}
+.emp-ev span{font-size:14px;opacity:.9}
+.emp-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:4px 0 12px}
+.emp-tabs.small{grid-template-columns:1fr 1fr}
+.emp-tabs button{border:0;border-radius:12px;padding:11px 4px;background:rgba(255,255,255,.1);color:#fff;font-weight:700;font-size:13px}
+.emp-tabs button[aria-selected="true"]{background:#fff;color:#122b52}
+.emp-b{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.08);border-radius:16px;padding:12px;margin-bottom:8px}
+.emp-b.locked{opacity:.55}
+.emp-ic{font-size:30px;width:44px;text-align:center;flex:none}
+.emp-bi{flex:1;min-width:0}.emp-bi b{display:block}.emp-bi span{font-size:13px;opacity:.8}
+.emp-lv{font-size:12px;background:rgba(255,255,255,.18);border-radius:999px;padding:2px 8px;margin-left:4px}
+.emp-btn{border:0;border-radius:12px;padding:10px 12px;min-width:86px;background:#7CE3A1;color:#0b1530;font-weight:700;display:grid;justify-items:center;line-height:1.15}
+.emp-btn small{font-size:11px;font-weight:700;opacity:.8}
+.emp-btn[disabled]{background:rgba(255,255,255,.18);color:rgba(255,255,255,.65)}
+.emp-btn.red{background:#ff5d73;color:#fff}.emp-btn.gold{background:#FFD666;color:#1D1315;margin-top:6px;justify-self:start}
+.emp-bar{height:12px;border-radius:999px;background:#E4DBCF;overflow:hidden;margin:10px 0 12px}.emp-bar i{display:block;height:100%;background:linear-gradient(90deg,#7CE3A1,#2fbf71)}
+.emp-lb li span small{display:block;font-size:12px;opacity:.7}
+.emp-h{font:700 18px var(--f-display);margin:18px 0 6px}
+.emp-feed{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.emp-feed li{background:rgba(255,255,255,.07);border-radius:10px;padding:8px 10px;font-size:14px}
+.emp-feed li.mine{background:rgba(255,93,115,.25)}
+.emp-pitch{position:fixed;inset:0;z-index:960;background:rgba(11,21,48,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#fff;text-align:center;padding:20px}
+.emp-pitch[hidden]{display:none}
+.emp-pitch p{font:700 24px var(--f-display);margin:0}.emp-pitch b{font:700 56px var(--f-display)}
+.emp-pitch button{width:200px;height:200px;border-radius:50%;border:0;background:radial-gradient(circle at 35% 30%,#FFE38A,#E0A526);font:700 34px var(--f-body);color:#1D1315;box-shadow:0 14px 40px rgba(224,165,38,.5);touch-action:manipulation;transition:transform .05s}
 </style>
 </head>
 <body>
@@ -6397,6 +6448,111 @@ document.addEventListener("submit",async e=>{if(!e.target||e.target.id!=="fzRoun
  const {error}=await SB.rpc("fiesta_admin_rounds",{p_rounds:rows});if(error){say($("#fzRMsg"),errText(error));return}toast("Round times saved");paneFiesta()});
 document.addEventListener("click",async e=>{const b=e.target.closest("[data-fzpsave]");if(!b)return;const id=b.dataset.fzpsave,v=document.querySelector(`[data-fzprize="${id}"]`).value;
  const {error}=await SB.rpc("fiesta_admin_prize",{p_user:id,p_prize:v});if(error){toast(errText(error));return}toast(v.trim()?"Prize saved":"Prize removed")});
+})();
+
+
+/* ===================== Fiesta Day: Startup Empire ===================== */
+(function(){
+const root=document.getElementById("fz");if(!root||typeof SB==="undefined")return;
+const q=s=>root.querySelector(s);
+const fmt=n=>{n=Math.floor(n||0);if(n>=1e9)return"€"+(n/1e9).toFixed(2)+"B";if(n>=1e6)return"€"+(n/1e6).toFixed(2)+"M";if(n>=1e4)return"€"+(n/1e3).toFixed(1)+"K";return"€"+n.toLocaleString("en-US")};
+const num=n=>Math.floor(n||0).toLocaleString("en-US");
+const dur=ms=>{ms=Math.max(0,ms);const h=Math.floor(ms/36e5),m=Math.floor(ms/6e4)%60,s=Math.floor(ms/1e3)%60;return(h?h+":"+String(m).padStart(2,"0"):m)+":"+String(s).padStart(2,"0")};
+const EV=[{e:"💸",n:"Investor visit",d:"Income ×2 for everyone"},{e:"⚡",n:"Hackathon",d:"Products build 2× faster"},{e:"🎤",n:"Pitch battle",d:"Tap fast for a cash bonus"}];
+let E=null,off=0,got=0,tab="build",rankTab="players",poll=null,busy=false;
+const now=()=>Date.now()+off;
+
+/* entry: game chooser on the Fiesta page */
+const hub=q("#fzHub>div");const pick=document.createElement("div");pick.className="emp-pick";
+pick.innerHTML='<button type="button" class="on" data-pick="tower"><b>🏗️ Tower Cup</b><span>The tournament</span></button><button type="button" data-pick="empire"><b>🚀 Startup Empire</b><span>Build all afternoon</span></button>';
+hub.insertBefore(pick,q(".fz-title"));
+pick.addEventListener("click",e=>{const b=e.target.closest("[data-pick]");if(!b)return;if(b.dataset.pick==="empire")openEmpire()});
+
+const scr=document.createElement("section");scr.className="fz-scr";scr.id="fzEmp";scr.hidden=true;
+scr.innerHTML=`<div class="emp">
+ <div class="fz-top"><button class="fz-x" type="button" data-empback>&larr; Fiesta games</button><span class="fz-me" id="empRank"></span></div>
+ <h1 class="emp-title">Startup<br>Empire</h1>
+ <div id="empBody"></div></div>
+ <div class="emp-pitch" id="empPitch" hidden><p>Pitch to the investor!</p><b id="empPT">10.0</b><button type="button" id="empTap">TAP!</button><span id="empPC">0 taps</span></div>`;
+root.appendChild(scr);
+const toastE=t=>{const b=q("#fzToast");b.textContent=t;b.classList.add("on");clearTimeout(toastE.t);toastE.t=setTimeout(()=>b.classList.remove("on"),2200)};
+const showOnly=id=>["fzHub","fzGame","fzOver","fzShare","fzEmp"].forEach(s=>{const el=q("#"+s);if(el)el.hidden=s!==id});
+scr.addEventListener("click",e=>{if(e.target.closest("[data-empback]")){clearInterval(poll);showOnly("fzHub")}});
+
+async function load(){try{const {data,error}=await SB.rpc("empire_state");if(error)throw error;E=data;off=new Date(data.now).getTime()-Date.now();got=Date.now();return data}catch(e){return null}}
+async function openEmpire(){showOnly("fzEmp");scr.scrollTop=0;q("#empBody").innerHTML='<p class="emp-muted">Loading...</p>';await load();render();clearInterval(poll);poll=setInterval(async()=>{if(!scr.hidden&&!busy){await load();render()}},15000)}
+const evActive=()=>E&&E.event&&E.event.active&&now()<new Date(E.event.ends).getTime();
+function live(){const m=E.me;const s=(Date.now()-got)/1000;const mult=evActive()&&E.event.kind===0?2:1;const run=E.status==="open"||(m&&m.is_test);
+ return{cash:m.cash+(run?m.rate*s*mult:0),clients:m.clients+(run?m.client_rate*s:0),value:m.value+(run?m.rate*s*mult:0)}}
+
+function render(){const b=q("#empBody");if(!E){b.innerHTML='<p class="emp-muted">Can\'t reach the game. Check your connection.</p>';return}
+ const m=E.me,st=E.status,start=new Date(E.starts_at).getTime(),end=new Date(E.ends_at).getTime();
+ q("#empRank").textContent=m&&!m.is_test?"#"+m.rank+" of "+E.players:m&&m.is_test?"Team preview":"";
+ let h="";
+ if(st==="soon"&&!m){h=`<div class="emp-card"><h3>Opens at ${new Date(E.starts_at).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit",timeZone:"Asia/Beirut"})}</h3><p>Found your startup, build it all afternoon, raid your rivals and win for your faculty. The richest startup at the end wins.</p><p class="emp-big" data-cd="${start}">${dur(start-now())}</p></div>`}
+ else if(!E.logged_in){h=`<div class="emp-card"><h3>Join REL to play</h3><p>Startup Empire is for REL members. It takes 2 minutes.</p><button class="fz-primary" type="button" data-fzgo="member">Join REL</button><button class="fz-ghost" type="button" data-fzgo="login">I'm already a member</button></div>`}
+ else if(!E.can_join){h=`<div class="emp-card"><h3>Finish joining REL first</h3><button class="fz-primary" type="button" data-fzgo="account">Finish joining</button></div>`}
+ else if(!m&&st!=="over"){h=`<div class="emp-card"><h3>Found your startup</h3><p>You start with a garage, €1,000 and a coffee machine. Your money grows by itself, even when your phone is in your pocket. Come back often to collect, upgrade and defend.${st==="preview"?" <b>Team preview: your progress resets when the game opens.</b>":""}</p><p class="emp-label">Which faculty do you play for?</p><div class="emp-fac">${E.rules.faculties.map(f=>`<button type="button" data-empjoin="${esc(f)}">${esc(f)}</button>`).join("")}</div></div>`}
+ if(m){const L=live();
+  h+=`<div class="emp-hero"><span class="emp-label">Valuation</span><b class="emp-val" id="empVal">${fmt(L.value)}</b>
+   <div class="emp-res"><div><span>💰 Cash</span><b id="empCash">${fmt(L.cash)}</b></div><div><span>👥 Clients</span><b id="empCl">${num(L.clients)}</b></div><div><span>📈 Income</span><b>${fmt(m.rate*(evActive()&&E.event.kind===0?2:1))}/s</b></div></div>
+   <p class="emp-muted" style="margin:8px 0 0">Playing for <b>${esc(m.faculty)}</b>${m.value>=1e9?" · 🦄 Unicorn!":""}</p></div>`;
+  h+=eventBox();
+  h+=`<div class="emp-tabs" role="tablist">${[["build","🏗️ Build"],["launch","🚀 Launch"],["raid","⚔️ Raid"],["ranks","🏆 Ranks"]].map(([k,l])=>`<button type="button" role="tab" aria-selected="${tab===k}" data-emptab="${k}">${l}</button>`).join("")}</div>`;
+  h+=`<div class="emp-panel">${tab==="build"?build():tab==="launch"?launch():tab==="raid"?raid():ranks()}</div>`}
+ else if(st==="over"||E.board.length){h+=`<div class="emp-panel">${ranks()}</div>`}
+ if(st==="over")h=`<div class="emp-card"><h3>🏁 The game is over</h3><p>Congratulations to the winners! Prizes are given at the REL stand.</p></div>`+h;
+ b.innerHTML=h}
+function eventBox(){if(E.status!=="open")return E.me&&E.me.is_test?`<div class="emp-ev"><b>👀 Team preview</b><span>Events start when the game opens at ${new Date(E.starts_at).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit",timeZone:"Asia/Beirut"})}. You can try a pitch battle now.</span>${E.me.pitched?"":'<button type="button" class="emp-btn gold" data-emppitch>🎤 Try a pitch</button>'}</div>`:"";
+ const ev=E.event,k=EV[ev.kind];if(evActive())return`<div class="emp-ev on"><b>${k.e} ${k.n}!</b><span>${k.d}. Ends in <span data-cd="${new Date(ev.ends).getTime()}">${dur(new Date(ev.ends).getTime()-now())}</span></span>${ev.kind===2&&!E.me.pitched?'<button type="button" class="emp-btn gold" data-emppitch>🎤 Pitch now</button>':""}</div>`;
+ const nk=EV[(ev.slot+1)%3];return`<div class="emp-ev"><b>Next event: ${nk.e} ${nk.n}</b><span>${nk.d}. Starts in <span data-cd="${new Date(ev.next_at).getTime()}">${dur(new Date(ev.next_at).getTime()-now())}</span></span></div>`}
+const DESC={coffee:l=>`+€3/s per level`,dev:l=>`+€10/s per level`,marketing:l=>`+2 clients per minute per level. Each client earns €0.50/s`,sales:l=>`+12% on all income per level`,security:l=>`Raiders steal less from you`,office:l=>`+€45/s per level`};
+function build(){const m=E.me,L=live();return Object.entries(E.rules.buildings).map(([k,d])=>{const lv=m.lv[k]||0,cost=m.costs[k],need=d.needs,locked=need&&(m.lv[need[0]]||0)<need[1],max=lv>=10;
+ return`<div class="emp-b${locked?" locked":""}"><span class="emp-ic">${d.emoji}</span><div class="emp-bi"><b>${esc(d.name)} <span class="emp-lv">Lv ${lv}</span></b><span>${locked?`Needs ${esc(E.rules.buildings[need[0]].name)} level ${need[1]}`:DESC[k](lv)}</span></div>
+  <button type="button" class="emp-btn" data-empup="${k}" ${locked||max||L.cash<cost?"disabled":""}>${max?"Max":lv?"Upgrade":"Build"}<small>${max?"":fmt(cost)}</small></button></div>`}).join("")}
+function launch(){const m=E.me,L=live(),p=m.product;
+ if(p){const ready=new Date(p.ready_at).getTime(),startT=new Date(p.started).getTime(),pc=Math.min(100,(now()-startT)/(ready-startT)*100),d=E.rules.products[p.kind];
+  const pay=d.pay+d.per_client*Math.min(L.clients,400);
+  return`<div class="emp-card"><h3>${d.emoji} ${esc(d.name.replace("Launch","Launching"))}</h3><div class="emp-bar"><i style="width:${pc}%"></i></div>
+   ${now()>=ready?`<button type="button" class="fz-primary" data-empcollect>Collect ${fmt(pay)} 💰</button>`:`<p class="emp-muted">Ready in <b data-cd="${ready}">${dur(ready-now())}</b>. Expected sales: ${fmt(pay)}</p>`}</div>`}
+ return`<p class="emp-muted">Launch one product at a time. The more clients you have, the more it sells.</p>`+Object.entries(E.rules.products).map(([k,d])=>{const pay=d.pay+d.per_client*Math.min(L.clients,400),half=evActive()&&E.event.kind===1;
+  return`<div class="emp-b"><span class="emp-ic">${d.emoji}</span><div class="emp-bi"><b>${esc(d.name)}</b><span>Costs ${fmt(d.cost)} · ready in ${half?d.mins/2+" min ⚡":d.mins+" min"} · sells ${fmt(pay)}</span></div><button type="button" class="emp-btn" data-empprod="${k}" ${L.cash<d.cost?"disabled":""}>Launch</button></div>`}).join("")}
+function raid(){const m=E.me,ready=new Date(m.attack_at).getTime(),sh=m.shield_until&&new Date(m.shield_until).getTime()>now();
+ let h=`<p class="emp-muted">Raid a rival startup and steal part of its cash and clients. Every 15 minutes. Raided startups are protected for 10 minutes. Upgrade 🛡️ Security so raiders take less from you.</p>`;
+ if(sh)h+=`<p class="emp-ok">🛡️ You're protected for <b data-cd="${new Date(m.shield_until).getTime()}">${dur(new Date(m.shield_until).getTime()-now())}</b></p>`;
+ if(now()<ready)h+=`<div class="emp-card"><h3>Your team is recovering</h3><p class="emp-big" data-cd="${ready}">${dur(ready-now())}</p></div>`;
+ h+=(E.targets.length?E.targets.map(t=>`<div class="emp-b"><span class="emp-ic">🏢</span><div class="emp-bi"><b>${esc(t.name)}</b><span>${esc(t.faculty)} · ${fmt(t.value)}${t.security?` · 🛡️ Lv ${t.security}`:""}</span></div><button type="button" class="emp-btn red" data-empraid="${esc(t.id)}" ${now()<ready||t.shield?"disabled":""}>${t.shield?"Protected":"Raid ⚔️"}</button></div>`).join(""):`<p class="emp-muted">No rivals yet. Tell your friends to play!</p>`);
+ if(m.attacks)h+=`<p class="emp-muted">You raided ${m.attacks} ${m.attacks===1?"time":"times"} and stole ${fmt(m.stolen)} in total.</p>`;return h}
+function ranks(){const f=E.feed||[];let h=`<div class="emp-tabs small">${[["players","Players"],["faculties","Faculties"]].map(([k,l])=>`<button type="button" aria-selected="${rankTab===k}" data-emprank="${k}">${l}</button>`).join("")}</div>`;
+ h+=rankTab==="players"?(E.board.length?`<ol class="fz-lb emp-lb">${E.board.map((x,i)=>`<li class="${x.me?"mine":""}"><span class="n">${i===0?"👑":i+1}</span><span>${esc(x.name)}<small>${esc(x.faculty)}</small></span><span class="s">${fmt(x.value)}</span></li>`).join("")}</ol>`:'<p class="emp-muted">No startups yet.</p>')
+  :(E.faculties.length?`<ol class="fz-lb emp-lb">${E.faculties.map((x,i)=>`<li><span class="n">${i===0?"🏆":i+1}</span><span>${esc(x.faculty)}<small>${x.players} ${x.players===1?"player":"players"}</small></span><span class="s">${fmt(x.value)}</span></li>`).join("")}</ol>`:'<p class="emp-muted">No faculties yet.</p>');
+ if(f.length)h+=`<h3 class="emp-h">Live</h3><ul class="emp-feed">${f.map(x=>`<li class="${x.mine?"mine":""}">${esc(x.msg)}</li>`).join("")}</ul>`;
+ h+=`<p class="emp-muted" style="margin-top:14px">Prizes: the most valuable startup at the end wins, plus the best player of the winning faculty. Collect at the REL stand.</p>`;return h}
+
+/* live counters + countdowns */
+setInterval(()=>{if(scr.hidden||!E)return;if(E.me){const L=live(),v=q("#empVal"),c=q("#empCash"),cl=q("#empCl");if(v)v.textContent=fmt(L.value);if(c)c.textContent=fmt(L.cash);if(cl)cl.textContent=num(L.clients);
+  scr.querySelectorAll("[data-empup],[data-empprod]").forEach(b=>{const cost=b.dataset.empup?E.me.costs[b.dataset.empup]:E.rules.products[b.dataset.empprod].cost;const row=b.closest(".emp-b");if(row&&!row.classList.contains("locked")&&!/Max/.test(b.textContent))b.disabled=L.cash<cost})}
+ let redo=false;scr.querySelectorAll("[data-cd]").forEach(el=>{const ms=+el.dataset.cd-now();el.textContent=dur(ms);if(ms<=0)redo=true});
+ if(redo&&!busy){busy=true;load().then(()=>{busy=false;render()})}},250);
+
+/* actions */
+async function act(fn,args,okMsg,coins){if(busy)return;busy=true;try{const {data,error}=await SB.rpc(fn,args||{});if(error)throw error;if(okMsg)toastE(typeof okMsg==="function"?okMsg(data):okMsg);if(coins)rain(coins);try{navigator.vibrate&&navigator.vibrate(30)}catch(e){}await load();render()}catch(e){toastE(errText(e));await load();render()}finally{busy=false}}
+function rain(ch){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;for(let i=0;i<18;i++){const s=document.createElement("span");s.className="egg-rain";s.textContent=ch;s.style.left=Math.random()*100+"vw";s.style.animationDelay=Math.random()*.6+"s";s.style.fontSize=(18+Math.random()*16)+"px";s.style.zIndex=950;document.body.appendChild(s);setTimeout(()=>s.remove(),3200)}}
+scr.addEventListener("click",e=>{const t=e.target.closest("button");if(!t||t.disabled)return;
+ if(t.dataset.emptab){tab=t.dataset.emptab;render();return}
+ if(t.dataset.emprank){rankTab=t.dataset.emprank;render();return}
+ if(t.dataset.empjoin){act("empire_join",{p_faculty:t.dataset.empjoin},"Your startup is open! 🚀","🚀");return}
+ if(t.dataset.empup){const d=E.rules.buildings[t.dataset.empup];act("empire_upgrade",{p_b:t.dataset.empup},d.emoji+" "+d.name+" upgraded!");return}
+ if(t.dataset.empprod){act("empire_product",{p_kind:t.dataset.empprod},"Product in progress ⏳");return}
+ if(t.dataset.empcollect!==undefined){act("empire_collect",{},d=>"Sales: +"+fmt(d)+" 💰","💰");return}
+ if(t.dataset.empraid){act("empire_attack",{p_target:t.dataset.empraid},d=>`You raided ${d.name}: +${fmt(d.cash)} and ${d.clients} clients ⚔️`,"💰");return}
+ if(t.dataset.emppitch!==undefined){pitch();return}
+ if(t.dataset.fzgo){root.querySelector("[data-fzclose]").click();if(t.dataset.fzgo==="member"){authMode="signup"}else if(t.dataset.fzgo==="login"){authMode="login"}showPage("account");try{renderAccount()}catch(err){}return}});
+function pitch(){const box=q("#empPitch"),btn=q("#empTap"),tm=q("#empPT"),pc=q("#empPC");let taps=0,end=0,on=false;box.hidden=false;tm.textContent="Ready?";pc.textContent="Tap as fast as you can for 10 seconds!";btn.textContent="START";
+ const tap=e=>{e.preventDefault();if(!on&&!end){on=true;end=Date.now()+10000;btn.textContent="TAP!";const iv=setInterval(()=>{const ms=end-Date.now();tm.textContent=(Math.max(0,ms)/1000).toFixed(1);if(ms<=0){clearInterval(iv);on=false;btn.removeEventListener("pointerdown",tap);box.hidden=true;act("empire_pitch",{p_taps:taps},d=>`The investor loved it! ${taps} taps: +${fmt(d)} 💰`,"💰")}},50);return}
+  if(on){taps++;pc.textContent=taps+" taps";btn.style.transform=`scale(${1+Math.min(taps,60)/300})`;try{navigator.vibrate&&navigator.vibrate(8)}catch(err){}}};
+ btn.style.transform="";btn.addEventListener("pointerdown",tap)}
+window.relEmpire={open:openEmpire};
 })();
 
 </script>
