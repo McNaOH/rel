@@ -1314,6 +1314,103 @@ body.founder{--fill:#B8860B;--brand-ink:#8A6508;--band:#57101F}
 .sm-grid input,.sm-grid select{border:1.5px solid #E4DBCF;border-radius:10px;padding:8px;font:600 15px var(--f-body);background:#fff;color:#1D1315;min-width:0}
 .sm-grid label.ck{display:flex;align-items:center;gap:6px;grid-column:span 2}
 .sm-foot{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+#fzStaff{background:radial-gradient(130% 45% at 50% 0%,#1d4f7a 0%,#122b52 50%,#0b1530 100%);padding-top:0;max-width:none}
+.sm{max-width:480px;margin:0 auto;padding-bottom:20px}
+.sm-head{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:12px;padding:calc(12px + env(safe-area-inset-top,0px)) 0 10px;background:linear-gradient(#122b52 75%,rgba(18,43,82,0))}
+.sm-ttl{display:grid;line-height:1.1}.sm-ttl b{font:700 22px var(--f-display);color:#fff}.sm-ttl span{font-size:12px;font-weight:700;color:#FFD666}
+.sm-tabs{position:sticky;top:calc(58px + env(safe-area-inset-top,0px));z-index:5;display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;margin:0 0 14px;background:rgba(11,21,48,.85);border:1px solid rgba(255,255,255,.12);border-radius:18px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.sm-tabs button{border:0;border-radius:14px;min-height:52px;background:transparent;color:rgba(255,255,255,.75);font-weight:700;font-size:13px;display:grid;justify-items:center;gap:1px;line-height:1.1;transition:background .2s,color .2s}
+.sm-tabs button span{font-size:20px}
+.sm-tabs button[aria-selected="true"]{background:#fff;color:#122b52;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.sm-pane[hidden]{display:none}
+.sm-hint{font-size:13px;color:rgba(255,255,255,.7);margin:0 0 12px;line-height:1.45}.sm-hint.c{text-align:center;margin-top:12px}
+/* code */
+.sm-codecard{position:relative;text-align:center;border-radius:28px;padding:22px 18px 18px;background:#F8F6F1;color:#1D1315;box-shadow:0 18px 50px rgba(0,0,0,.35);overflow:hidden}
+.sm-codecard::before{content:"";position:absolute;inset:0 0 auto;height:6px;background:linear-gradient(90deg,#7CE3A1,#2fbf71)}
+.sm-codecard[data-st="off"]::before{background:#9aa3b5}.sm-codecard[data-st="skip"]::before{background:#ff5d73}
+.sm-pill{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:6px 12px;background:#DDF7E7;color:#14713c}
+[data-st="live"] .sm-pill{animation:smPulse 1.6s ease-in-out infinite}
+[data-st="off"] .sm-pill{background:#E7E9EE;color:#4a5263}[data-st="skip"] .sm-pill{background:#FFE1E6;color:#B3261E}
+@keyframes smPulse{50%{opacity:.55}}
+.sm-lab{margin:14px 0 0;font-size:13px;font-weight:700;color:#6B5F62}
+.sm-code{display:block;font:800 clamp(64px,24vw,96px)/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.1em;padding-left:.1em;color:#122b52;margin:6px 0 14px;font-variant-numeric:tabular-nums}
+[data-st="off"] .sm-code{color:#9aa3b5}[data-st="skip"] .sm-code{color:#B3261E;text-decoration:line-through;text-decoration-thickness:4px}
+.sm-prog{height:10px;border-radius:999px;background:#E4DBCF;overflow:hidden}.sm-prog i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#2fbf71,#7CE3A1);border-radius:999px;transition:width .5s linear}
+[data-st="off"] .sm-prog i{background:#9aa3b5}[data-st="skip"] .sm-prog i{background:#ff5d73}
+.sm-left{margin:8px 0 14px;font-size:14px;color:#6B5F62}.sm-left b{color:#122b52;font-variant-numeric:tabular-nums}
+.sm-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.sm-stats div{background:#fff;border:1.5px solid #E4DBCF;border-radius:16px;padding:10px 6px;display:grid}
+.sm-stats b{font:700 28px var(--f-display);color:#122b52}.sm-stats span{font-size:12px;color:#6B5F62;font-weight:600}
+.sm-big{width:100%;min-height:52px;border:0;border-radius:16px;background:#122b52;color:#fff;font-weight:700;font-size:16px}
+.sm-acts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.sm-act{border:1.5px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#fff;border-radius:20px;padding:14px 10px;min-height:104px;display:grid;justify-items:center;align-content:center;gap:2px;text-align:center}
+.sm-act span{font-size:26px;line-height:1.1}.sm-act b{font-size:15px}.sm-act small{font-size:12px;opacity:.75}
+.sm-act.red{background:#ff5d73;border-color:#ff5d73}.sm-act.go{background:#7CE3A1;border-color:#7CE3A1;color:#0b1530;grid-column:span 2}.sm-act.ghost{opacity:.7}
+.sm-act:active,.sm-big:active,.sm-cta:active,.sm-tabs button:active{transform:scale(.97)}
+.sm-full{position:fixed;inset:0;z-index:980;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:#0b1530;color:#fff;text-align:center;padding:20px}
+.sm-full[hidden]{display:none}
+.sm-full span{font-size:18px;font-weight:700;color:#FFD666;text-transform:uppercase;letter-spacing:.1em}
+.sm-full b{font:800 min(30vw,34vh)/1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.06em;color:#fff;font-variant-numeric:tabular-nums}
+.sm-full[data-st="skip"] b{color:#ff5d73}.sm-full[data-st="off"] b{color:#9aa3b5}
+.sm-full em{font-style:normal;font-size:20px;font-weight:700;opacity:.85}.sm-full small{position:absolute;bottom:calc(20px + env(safe-area-inset-bottom,0px));opacity:.5}
+/* tickets */
+.sm-box{background:#F8F6F1;color:#1D1315;border-radius:24px;padding:18px}
+.sm-box h3{font:700 22px var(--f-display);margin:0 0 4px;color:#122b52}.sm-box .sm-hint{color:#6B5F62}
+.sm-tkin{display:block;width:100%;border:2px solid #E4DBCF;border-radius:16px;padding:14px;font:800 30px ui-monospace,Menlo,Consolas,monospace;letter-spacing:.25em;text-align:center;text-transform:uppercase;background:#fff;color:#122b52;margin-bottom:10px}
+.sm-tkin:focus{outline:0;border-color:#122b52;box-shadow:0 0 0 4px rgba(18,43,82,.15)}
+.sm-cta{display:block;width:100%;min-height:54px;border:0;border-radius:16px;background:#800020;color:#F8F6F1;font-weight:700;font-size:17px}
+.sm-cta.green{background:#2fbf71;color:#fff;margin-top:6px}.sm-cta.gold{background:#FFD666;color:#1D1315}.sm-cta[disabled]{opacity:.6}
+.sm-res{display:grid;justify-items:center;text-align:center;gap:4px;margin-top:14px;border-radius:20px;padding:16px;border:2px solid}
+.sm-res.ok{background:#E9F9EF;border-color:#2fbf71}.sm-res.warn{background:#FFF4D6;border-color:#E0A526}.sm-res.bad{background:#FFE9EC;border-color:#ff5d73}
+.sm-res .sm-resi{font-size:44px;line-height:1.1;color:inherit}.sm-resn{font:700 21px var(--f-display);color:#122b52}.sm-res span{font-size:14px;color:#6B5F62}
+.sm-src{font-size:12px!important;text-transform:capitalize}.sm-res p{margin:8px 0 0;font-size:14px;line-height:1.4}
+.sm-res.done{animation:smPop .35s ease}@keyframes smPop{0%{transform:scale(.9)}60%{transform:scale(1.03)}}
+/* prizes */
+.sm-sum{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.sm-sum div{background:rgba(255,255,255,.08);border-radius:16px;padding:10px;display:grid;text-align:center}
+.sm-sum b{font:700 24px var(--f-display);color:#fff}.sm-sum span{font-size:12px;color:rgba(255,255,255,.7);font-weight:600}
+.sm-pz{background:#F8F6F1;color:#1D1315;border-radius:20px;padding:14px;margin-bottom:10px;transition:opacity .2s}
+.sm-pz.off{opacity:.62}.sm-pz.open{opacity:1;box-shadow:0 0 0 3px #FFD666}
+.sm-pzt{display:flex;align-items:center;gap:12px}
+.sm-pzi{font-size:28px;width:50px;height:50px;border-radius:14px;background:#fff;display:grid;place-items:center;flex:none;box-shadow:inset 0 0 0 1.5px #E4DBCF}
+.sm-pzn{flex:1;min-width:0;display:grid}.sm-pzn b{font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sm-pzn span{font-size:13px;color:#6B5F62;font-weight:600}
+.sm-tag{font-size:12px;font-weight:700;border-radius:999px;padding:4px 10px;background:#E4DBCF}
+.sm-sw{position:relative;width:56px;height:34px;flex:none;cursor:pointer}
+.sm-sw input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer;z-index:1}
+.sm-sw i{position:absolute;inset:0;border-radius:999px;background:#C9C1B6;transition:background .2s}
+.sm-sw i::after{content:"";position:absolute;top:3px;left:3px;width:28px;height:28px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.25);transition:transform .2s}
+.sm-sw input:checked+i{background:#2fbf71}.sm-sw input:checked+i::after{transform:translateX(22px)}
+.sm-sw input:focus-visible+i{outline:3px solid #122b52;outline-offset:2px}
+.sm-meter{height:8px;border-radius:999px;background:#E4DBCF;overflow:hidden;margin:12px 0 8px}.sm-meter i{display:block;height:100%;background:#2fbf71;border-radius:999px}
+.sm-meter.low i{background:#ff5d73}
+.sm-pzs{display:flex;align-items:center;gap:12px;font-size:13px;color:#6B5F62}.sm-pzs b{color:#1D1315;font-size:15px}
+.sm-edit{margin-left:auto;border:0;border-radius:12px;min-height:40px;padding:0 14px;background:#122b52;color:#fff;font-weight:700;font-size:14px}
+.sm-form{display:grid;gap:12px;margin-top:14px;padding-top:14px;border-top:1.5px dashed #E4DBCF}
+.sm-f2{display:grid;grid-template-columns:72px 1fr;gap:10px}
+.sm-fl{display:grid;gap:6px;font-size:12px;font-weight:700;color:#6B5F62;text-transform:uppercase;letter-spacing:.03em}
+.sm-form input[type=text],.sm-form input:not([type]),.sm-form input[type=number]{width:100%;min-width:0;min-height:48px;border:1.5px solid #E4DBCF;border-radius:12px;padding:10px 12px;font:600 16px var(--f-body);background:#fff;color:#1D1315;text-transform:none;letter-spacing:0}
+.sm-form input:focus{outline:0;border-color:#122b52}
+.sm-emo{text-align:center;font-size:24px!important;padding:6px!important}
+.sm-money{display:flex;align-items:center;border:1.5px solid #E4DBCF;border-radius:12px;background:#fff;overflow:hidden}
+.sm-money span{padding:0 12px;font:700 15px var(--f-body);color:#6B5F62;text-transform:none;letter-spacing:0}
+.sm-money input{border:0!important;border-radius:0!important;text-align:center;font-weight:800!important;font-size:18px!important}
+.sm-step{display:grid;grid-template-columns:56px 1fr 56px;gap:8px}
+.sm-step button{border:0;border-radius:12px;background:#122b52;color:#fff;font-size:24px;font-weight:700;min-height:48px}
+.sm-step input{text-align:center;font-weight:800!important;font-size:20px!important}
+.sm-seg{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.sm-seg label{position:relative}.sm-seg input{position:absolute;opacity:0}
+.sm-seg span{display:grid;place-items:center;min-height:46px;border:1.5px solid #E4DBCF;border-radius:12px;background:#fff;font-size:14px;font-weight:700;color:#1D1315;text-transform:none;letter-spacing:0}
+.sm-seg input:checked+span{background:#122b52;border-color:#122b52;color:#fff}.sm-seg input:focus-visible+span{outline:3px solid #FFD666}
+.sm-ck{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;min-height:40px}.sm-ck input{width:22px;height:22px;accent-color:#2fbf71}
+.sm-fb{display:grid;grid-template-columns:1fr 2fr;gap:8px}.sm-fb .sm-cta{min-height:50px}
+.sm-ghost{border:1.5px solid #E4DBCF;background:#fff;border-radius:16px;font-weight:700;color:#1D1315;min-height:50px}
+.sm-add{display:block;width:100%;min-height:58px;border:2px dashed rgba(255,255,255,.35);background:transparent;color:#fff;border-radius:20px;font-weight:700;font-size:16px;margin:4px 0 14px}
+.sm-pod{background:linear-gradient(135deg,#FFD666,#E0A526);color:#1D1315;border-radius:22px;padding:16px}
+.sm-pod h3{font:700 20px var(--f-display);margin:0 0 4px}.sm-pod p{margin:0 0 12px;font-size:14px}.sm-pod .sm-cta{background:#122b52;color:#fff}
+#smPod p{margin:8px 0 0}
+.sm-entry{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:2px solid #FFD666;background:rgba(255,214,102,.12);color:#fff;border-radius:18px;padding:12px 14px;margin:0 0 14px}
+.sm-entry>span{font-size:28px}.sm-entry b{display:block;font-size:16px}.sm-entry small{font-size:12px;opacity:.8}.sm-entry i{margin-left:auto;font-style:normal;font-size:20px;color:#FFD666}
+@media (prefers-reduced-motion:reduce){[data-st="live"] .sm-pill,.sm-res.done{animation:none}.sm-prog i{transition:none}}
 body.fiesta-day .site-header,body.fiesta-day header{box-shadow:0 3px 0 0 #E0A526}
 body.fiesta-day::before{content:"";position:fixed;top:0;left:0;right:0;height:4px;z-index:401;background:linear-gradient(90deg,#800020,#E0A526,#FFD666,#E0A526,#800020);background-size:200% 100%;animation:fzBar 3s linear infinite;pointer-events:none}
 @keyframes fzBar{to{background-position:200% 0}}
@@ -6571,7 +6668,7 @@ function render(){const b=q("#empBody");if(!E){b.innerHTML='<p class="emp-muted"
  else if(st==="over"||E.board.length){h+=`<div class="emp-panel">${ranks()}</div>`}
  if(E.is_team_hint)h+="";
  if(st==="over")h=`<div class="emp-card"><h3>🏁 The game is over</h3><p>Congratulations to the winners! Prizes are given at the REL stand.</p></div>`+h;
- if(window.__fzTeam)h+=`<button type="button" class="fz-ghost light" data-empstaff style="margin-top:18px">🧑‍💼 Stand mode (board only)</button>`;
+ if(window.__fzTeam)h=`<button type="button" class="sm-entry" data-empstaff><span>🧑‍💼</span><div><b>Stand mode</b><small>Secret code · Check tickets · Prizes</small></div><i>›</i></button>`+h;
  b.innerHTML=h}
 function eventBox(){if(E.status!=="open")return E.me&&E.me.is_test?`<div class="emp-ev"><b>👀 Team preview</b><span>Events start when the game opens at ${new Date(E.starts_at).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit",timeZone:"Asia/Beirut"})}. You can try a pitch battle now.</span>${E.me.pitched?"":'<button type="button" class="emp-btn gold" data-emppitch>🎤 Try a pitch</button>'}</div>`:"";
  const ev=E.event,k=EV[ev.kind];if(evActive())return`<div class="emp-ev on"><b>${k.e} ${k.n}!</b><span>${k.d}. Ends in <span data-cd="${new Date(ev.ends).getTime()}">${dur(new Date(ev.ends).getTime()-now())}</span></span>${ev.kind===2&&!E.me.pitched?'<button type="button" class="emp-btn gold" data-emppitch>🎤 Pitch now</button>':""}</div>`;
@@ -6609,7 +6706,7 @@ function prizes(){if(!PZ)return'<p class="emp-muted">Loading the prizes...</p>';
  let h=quests()+`<div class="emp-sec"><h3>🔒 Your vault</h3><p class="emp-muted">Prizes in your vault are 100% yours: nobody can raid them.</p>`;
  h+=tk.length?tk.map(t=>`<div class="emp-tk${t.given?" used":""}"><span class="emp-ic">${t.emoji}</span><div class="emp-bi"><b>${esc(t.name)}${t.test?" (test)":""}</b><span>${t.given?"Collected ✓":t.kind==="spin"?"Spin now at the REL stand":now()<end?"Cash out at the REL stand from "+new Date(E.ends_at).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit",timeZone:"Asia/Beirut"}):"Cash out now at the REL stand"}</span></div><b class="emp-code">${esc(t.code)}</b></div>`).join(""):'<p class="emp-muted">Empty for now. Win levels or buy from the shop below.</p>';
  h+=`<p class="emp-muted small">Vouchers: ${nv}/3 · Roulette spins: ${ns}/3 (limit per person). Bring your university card.</p></div>`;
- h+=`<div class="emp-sec stand"><h3>📍 REL stand bonus</h3><p class="emp-muted">Come to the REL stand and ask for the <b>secret code</b>. It changes every 20 minutes and gives you 10 to 30 minutes of income instantly. Every code is different!</p>`+(PZ.stand_on===false?'<p class="emp-muted"><b>Paused right now.</b> Come back soon!</p>':PZ.stand_used?`<p class="emp-ok">✓ Used. Next code in <b data-cd="${new Date(PZ.stand_next).getTime()}">${dur(new Date(PZ.stand_next).getTime()-now())}</b></p>`:`<div class="emp-code-in"><input id="empStandIn" inputmode="numeric" maxlength="4" placeholder="0000" aria-label="Secret code"><button type="button" class="emp-btn" data-empstand>Claim</button></div>`)+`</div>`;
+ h+=`<div class="emp-sec stand"><h3>📍 REL stand bonus</h3><p class="emp-muted">Come to the REL stand and ask for the <b>secret code</b>. It changes every 20 minutes and gives you 3 to 8 minutes of income instantly. Every code is different!</p>`+(PZ.stand_on===false?'<p class="emp-muted"><b>Paused right now.</b> Come back soon!</p>':PZ.stand_used?`<p class="emp-ok">✓ Used. Next code in <b data-cd="${new Date(PZ.stand_next).getTime()}">${dur(new Date(PZ.stand_next).getTime()-now())}</b></p>`:`<div class="emp-code-in"><input id="empStandIn" inputmode="numeric" maxlength="4" placeholder="0000" aria-label="Secret code"><button type="button" class="emp-btn" data-empstand>Claim</button></div>`)+`</div>`;
  h+=`<div class="emp-sec"><h3>🏅 Levels</h3>`+PZ.levels.map(l=>{const done=PZ.claimed.includes(l.level),pc=Math.min(100,L.value/l.value*100),it=PZ.stock.find(s=>s.item===l.item);
   return`<div class="emp-lvl"><div class="emp-bi"><b>${esc(l.name)}: ${fmt(l.value)}</b><span>Wins: ${it?it.emoji+" "+esc(it.name):""}${it&&!done?` · ${it.stock} left`:""}</span><div class="emp-bar sm"><i style="width:${pc}%"></i></div></div>${done?'<span class="emp-ok">✓</span>':`<button type="button" class="emp-btn" data-empclaim="${l.level}" ${pc<100?"disabled":""}>Claim</button>`}</div>`}).join("")+`</div>`;
  h+=`<div class="emp-sec"><h3>🛒 Prize shop</h3><p class="emp-muted">Buy real prizes with your startup's cash. Careful: what you spend leaves your valuation, so you drop on the leaderboard.</p>`+PZ.stock.map(s=>`<div class="emp-b"><span class="emp-ic">${s.emoji}</span><div class="emp-bi"><b>${esc(s.name)}</b><span>${s.stock>0?s.stock+" left":"Sold out"}${s.item==="spin"?" · price doubles each time":""}</span></div><button type="button" class="emp-btn gold2" data-empbuy="${s.item}" ${s.stock<=0||L.cash<s.price?"disabled":""}>Buy<small>${fmt(s.price)}</small></button></div>`).join("")+`</div>`;
@@ -6655,37 +6752,89 @@ function pitch(){const box=q("#empPitch"),btn=q("#empTap"),tm=q("#empPT"),pc=q("
  const tap=e=>{e.preventDefault();if(!on&&!end){on=true;end=Date.now()+10000;btn.textContent="TAP!";const iv=setInterval(()=>{const ms=end-Date.now();tm.textContent=(Math.max(0,ms)/1000).toFixed(1);if(ms<=0){clearInterval(iv);on=false;btn.removeEventListener("pointerdown",tap);box.hidden=true;act("empire_pitch",{p_taps:taps},d=>`The investor loved it! ${taps} taps: +${fmt(d)} 💰`,"💰")}},50);return}
   if(on){taps++;pc.textContent=taps+" taps";btn.style.transform=`scale(${1+Math.min(taps,60)/300})`;try{navigator.vibrate&&navigator.vibrate(8)}catch(err){}}};
  btn.style.transform="";btn.addEventListener("pointerdown",tap)}
-/* ---------- stand mode: for the board at the REL stand ---------- */
-const sm=document.createElement("section");sm.className="fz-scr";sm.id="fzStaff";sm.hidden=true;sm.style.background="#0b1530";root.appendChild(sm);
-let smT=null;
-async function staff(){["fzHub","fzGame","fzOver","fzShare","fzEmp"].forEach(s=>{const el=q("#"+s);if(el)el.hidden=true});sm.hidden=false;
- sm.innerHTML=`<div class="emp"><div class="fz-top"><button class="fz-x" type="button" data-smback>&larr; Back</button><span class="fz-me">Stand mode</span></div>
- <div class="emp-card" style="text-align:center;margin-top:16px"><p class="emp-label">Secret code for players</p><b class="sm-code" id="smCode">····</b><p class="emp-muted">Changes in <b id="smLeft"></b>. Say it out loud or show this screen.</p><p class="emp-muted" id="smInfo"></p><div id="smCtl"></div></div>
- <div class="emp-card"><h3>Check a ticket</h3><div class="emp-code-in"><input id="smTk" maxlength="6" placeholder="ABC123" autocapitalize="characters" aria-label="Ticket code"><button type="button" class="emp-btn" data-smcheck>Check</button></div><div id="smRes"></div></div>
- <div class="emp-card"><h3>Prize stock</h3><div id="smStock"><p class="emp-muted">Loading...</p></div></div></div>`;
- await smCode();smStock();clearInterval(smT);smT=setInterval(()=>{if(sm.hidden){clearInterval(smT);return}const u=+sm.dataset.until;const ms=u-now();const el=q("#smLeft");if(el)el.textContent=dur(ms);if(ms<=0)smCode()},500)}
-async function smCode(){const {data,error}=await SB.rpc("empire_staff_code");if(error){q("#smCode").textContent="----";toastE(errText(error));return}q("#smCode").textContent=data.on?(data.skipped?"SKIP":data.code):"OFF";sm.dataset.until=new Date(data.until).getTime();
- q("#smInfo").textContent=data.on?(data.skipped?"This code is cancelled. The next one starts when the timer ends.":`This code gives ${data.mins} minutes of income. Used by ${data.used} ${data.used===1?"player":"players"} so far.`):"The stand bonus is paused. Nobody can use a code.";
- const pres=!!(ST.team&&ST.team.role==="president");q("#smCtl").innerHTML=pres?`<div class="row" style="justify-content:center;gap:8px;margin-top:8px"><button type="button" class="emp-btn" data-smon="${data.on?0:1}">${data.on?"⏸ Pause the bonus":"▶ Turn the bonus on"}</button>${data.on&&!data.skipped?'<button type="button" class="emp-btn red" data-smskip>✖ Say no to this code</button>':""}</div>`:""}
-async function smStock(){const {data,error}=await SB.rpc("empire_admin_stocklist");const box=q("#smStock");if(error){box.textContent=errText(error);return}
- const pres=!!(ST.team&&ST.team.role==="president");
- if(!pres){box.innerHTML=`<table class="sm-t"><thead><tr><th></th><th>Left</th><th>Won</th><th>Given</th></tr></thead><tbody>${data.map(s=>`<tr><td>${s.emoji} ${esc(s.name)}${s.active?"":" (off)"}</td><td>${s.stock}</td><td>${s.claimed}</td><td>${s.given}</td></tr>`).join("")}</tbody></table>`;return}
- const row=s=>`<div class="sm-item" data-smrow="${esc(s.item||"")}"><div class="sm-grid"><label>Icon<input data-f="emoji" value="${esc(s.emoji||"🎁")}" maxlength="4"></label><label class="w">Prize<input data-f="name" value="${esc(s.name||"")}" placeholder="e.g. Almaza bucket"></label>
-  <label>Price (€)<input data-f="price" type="number" min="1" value="${s.price||1000000}"></label><label>Left<input data-f="stock" type="number" min="0" value="${s.stock??5}"></label>
-  <label>Type<select data-f="kind"><option value="voucher" ${s.kind!=="spin"?"selected":""}>Voucher</option><option value="spin" ${s.kind==="spin"?"selected":""}>Roulette spin</option></select></label>
-  <label class="ck"><input data-f="active" type="checkbox" ${s.active!==false?"checked":""}> In the shop</label></div>
-  <div class="sm-foot"><span class="emp-muted">${s.item?`Won ${s.claimed} · given ${s.given}`:"New prize"}</span><button type="button" class="emp-btn" data-smitem>${s.item?"Save":"Add"}</button></div></div>`;
- box.innerHTML=data.map(row).join("")+`<h3 style="margin:16px 0 6px">Add a new prize</h3>`+row({})+`<div class="emp-card" style="background:#F1ECE3;margin-top:14px"><h3>🏆 At the end</h3><p class="emp-muted">Gives the top 3 startups a free roulette spin (once).</p><button type="button" class="emp-btn gold2" data-smpodium>Give the top 3 a spin</button><div id="smPod"></div></div>`}
-sm.addEventListener("click",async e=>{const t=e.target.closest("button");if(!t)return;
+/* ---------- stand mode: for the board at the REL stand (phone-first) ---------- */
+const sm=document.createElement("section");sm.className="fz-scr";sm.id="fzStaff";sm.hidden=true;root.appendChild(sm);
+let smT=null,smTab="code",smEdit=null,smList=[];
+const smPres=()=>!!(ST.team&&ST.team.role==="president");
+const eur=v=>{v=+v||0;return"€"+(v>=1e6?String(+(v/1e6).toFixed(1))+"M":v>=1e3?Math.round(v/1e3)+"k":Math.round(v))};
+async function staff(){["fzHub","fzGame","fzOver","fzShare","fzEmp"].forEach(s=>{const el=q("#"+s);if(el)el.hidden=true});clearInterval(poll);sm.hidden=false;sm.scrollTop=0;
+ sm.innerHTML=`<div class="sm">
+ <div class="sm-head"><button class="fz-x" type="button" data-smback>&larr; Game</button><div class="sm-ttl"><b>Stand mode</b><span>${smPres()?"👑 President":"🧑‍💼 Board"}</span></div></div>
+ <div class="sm-tabs" role="tablist">${[["code","🔑","Code"],["ticket","🎟️","Tickets"],["shop","🛒","Prizes"]].map(([k,i,l])=>`<button type="button" role="tab" data-smtab="${k}" aria-selected="${smTab===k}"><span>${i}</span>${l}</button>`).join("")}</div>
+ <div class="sm-pane" data-pane="code"${smTab!=="code"?" hidden":""}>
+  <div class="sm-codecard" id="smCard" data-st="live"><span class="sm-pill" id="smPill">…</span>
+   <p class="sm-lab">Secret code for players</p><b class="sm-code" id="smCode">····</b>
+   <div class="sm-prog"><i id="smBar"></i></div>
+   <p class="sm-left">New code in <b id="smLeft">--:--</b></p>
+   <div class="sm-stats"><div><b id="smMins">–</b><span>minutes of income</span></div><div><b id="smUsed">–</b><span>players used it</span></div></div>
+   <button type="button" class="sm-big" data-smfull>⛶ Show it big to players</button></div>
+  <div id="smCtl"></div></div>
+ <div class="sm-pane" data-pane="ticket"${smTab!=="ticket"?" hidden":""}>
+  <div class="sm-box"><h3>Check a prize ticket</h3><p class="sm-hint">Ask the player for the 6-digit code in their 🔒 vault.</p>
+  <input id="smTk" class="sm-tkin" maxlength="6" placeholder="000000" inputmode="numeric" pattern="[0-9]*" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="go" aria-label="Ticket code">
+  <button type="button" class="sm-cta" data-smcheck>Check ticket</button><div id="smRes"></div></div></div>
+ <div class="sm-pane" data-pane="shop"${smTab!=="shop"?" hidden":""}><div id="smStock"><p class="sm-hint">Loading…</p></div></div>
+ <div class="sm-full" id="smFull" hidden data-st="live"><span>Secret code</span><b id="smFullCode"></b><em id="smFullLeft"></em><small>Tap anywhere to close</small></div></div>`;
+ await smCode();smStock();clearInterval(smT);smT=setInterval(smTick,500)}
+function smTick(){if(sm.hidden){clearInterval(smT);return}const ms=+sm.dataset.until-now();if(!isFinite(ms))return;const t=dur(Math.max(0,ms)),l=q("#smLeft"),bar=q("#smBar"),fl=q("#smFullLeft");
+ if(l)l.textContent=t;if(fl)fl.textContent="New code in "+t;if(bar)bar.style.width=Math.max(0,Math.min(100,ms/12e3))+"%";
+ if(ms<=0&&!smTick.b){smTick.b=1;setTimeout(()=>smCode().finally(()=>{smTick.b=0}),1200)}}
+async function smCode(){const {data,error}=await SB.rpc("empire_staff_code");if(!q("#smCode"))return;if(error){q("#smCode").textContent="----";toastE(errText(error));return}
+ const st=!data.on?"off":data.skipped?"skip":"live",code=st==="live"?data.code:st==="skip"?"SKIP":"OFF";
+ sm.dataset.until=new Date(data.until).getTime();
+ q("#smCode").textContent=code;q("#smFullCode").textContent=code;q("#smCard").dataset.st=st;q("#smFull").dataset.st=st;
+ q("#smPill").textContent=st==="live"?"● LIVE":st==="skip"?"✖ Cancelled":"⏸ Paused";
+ q("#smMins").textContent=st==="live"?data.mins:"–";q("#smUsed").textContent=st==="off"?"–":data.used;
+ q("#smCtl").innerHTML=!smPres()?`<p class="sm-hint c">Only the President can pause or cancel codes.</p>`:
+  `<div class="sm-acts">${data.on?`<button type="button" class="sm-act" data-smon="0"><span>⏸</span><b>Pause the bonus</b><small>Stops all codes</small></button>${!data.skipped?`<button type="button" class="sm-act red" data-smskip><span>✖</span><b>Say no to this code</b><small>Cancels it now</small></button>`:`<div class="sm-act ghost"><span>⏳</span><b>Next code soon</b><small>Starts by itself</small></div>`}`:`<button type="button" class="sm-act go" data-smon="1"><span>▶</span><b>Turn the bonus on</b><small>Codes work again</small></button>`}</div>`;
+ smTick()}
+function smForm(s){const id=esc(s.item||"new");return`<div class="sm-form" data-smform="${esc(s.item||"")}">
+ <div class="sm-f2"><label class="sm-fl">Icon<input class="sm-emo" data-f="emoji" value="${esc(s.emoji||"🎁")}" maxlength="4"></label><label class="sm-fl">Prize name<input data-f="name" value="${esc(s.name||"")}" placeholder="e.g. Almaza bucket"></label></div>
+ <label class="sm-fl">Price in the game<span class="sm-money"><span>€</span><input data-f="price" type="number" inputmode="decimal" min="0.1" step="0.5" value="${(s.price||30e6)/1e6}"><span>million</span></span></label>
+ <div class="sm-fl">How many left<div class="sm-step"><button type="button" data-smstep="-1" aria-label="One less">−</button><input data-f="stock" type="number" inputmode="numeric" min="0" value="${s.stock??5}" aria-label="How many left"><button type="button" data-smstep="1" aria-label="One more">+</button></div></div>
+ <div class="sm-fl">Type<div class="sm-seg"><label><input type="radio" name="k-${id}" data-f="kind" value="voucher" ${s.kind!=="spin"?"checked":""}><span>🎟️ Voucher</span></label><label><input type="radio" name="k-${id}" data-f="kind" value="spin" ${s.kind==="spin"?"checked":""}><span>🎰 Roulette spin</span></label></div></div>
+ <label class="sm-ck"><input data-f="active" type="checkbox" ${s.active!==false?"checked":""}> Show it in the shop</label>
+ <div class="sm-fb"><button type="button" class="sm-ghost" data-smcancel>Cancel</button><button type="button" class="sm-cta" data-smsave>${s.item?"Save changes":"Add prize"}</button></div></div>`}
+async function smStock(){const box=q("#smStock");if(!box)return;const {data,error}=await SB.rpc("empire_admin_stocklist");if(error){box.innerHTML=`<p class="emp-bad">${esc(errText(error))}</p>`;return}
+ const pres=smPres();smList=data||[];
+ const card=s=>{const tot=Math.max(s.stock+s.claimed,1),pc=s.stock/tot*100,low=pc<=25;
+  return`<div class="sm-pz${s.active?"":" off"}${smEdit===s.item?" open":""}" data-smrow="${esc(s.item)}">
+  <div class="sm-pzt"><span class="sm-pzi">${esc(s.emoji)}</span><div class="sm-pzn"><b>${esc(s.name)}</b><span>${eur(s.price)}${s.kind==="spin"?" · doubles each buy":""}</span></div>
+  ${pres?`<label class="sm-sw"><input type="checkbox" data-smact ${s.active?"checked":""} aria-label="${esc(s.name)} in the shop"><i></i></label>`:`<span class="sm-tag">${s.active?"In shop":"Off"}</span>`}</div>
+  <div class="sm-meter${low?" low":""}"><i style="width:${pc}%"></i></div>
+  <div class="sm-pzs"><span><b>${s.stock}</b> left</span><span><b>${s.claimed}</b> won</span><span><b>${s.given}</b> given</span>${pres?`<button type="button" class="sm-edit" data-smedit="${esc(s.item)}">${smEdit===s.item?"Close":"✏️ Edit"}</button>`:""}</div>
+  ${pres&&smEdit===s.item?smForm(s):""}</div>`};
+ let h=`<div class="sm-sum"><div><b>${smList.reduce((a,s)=>a+s.stock,0)}</b><span>left</span></div><div><b>${smList.reduce((a,s)=>a+s.claimed,0)}</b><span>won</span></div><div><b>${smList.reduce((a,s)=>a+s.given,0)}</b><span>given</span></div></div>`;
+ h+=pres?`<p class="sm-hint">Switch = in or out of the shop. ✏️ Edit = name, price, stock.</p>`:`<p class="sm-hint">Read only. Only the President can change prizes.</p>`;
+ h+=smList.map(card).join("");
+ if(pres)h+=smEdit==="__new"?`<div class="sm-pz open new"><div class="sm-pzt"><span class="sm-pzi">✨</span><div class="sm-pzn"><b>New prize</b><span>Fill it in, then Add</span></div></div>${smForm({})}</div>`:`<button type="button" class="sm-add" data-smedit="__new">＋ Add a new prize</button>`;
+ if(pres)h+=`<div class="sm-pod"><h3>🏆 At the end of the game</h3><p>Gives the top 3 startups a free roulette spin. Works only once.</p><button type="button" class="sm-cta gold" data-smpodium>Give the top 3 a spin</button><div id="smPod"></div></div>`;
+ box.innerHTML=h}
+async function smCheck(){const i=q("#smTk"),r=q("#smRes"),c=i.value.trim().toUpperCase();if(c.length<4){toastE("Type the ticket code.");i.focus();return}i.blur();r.innerHTML='<p class="sm-hint">Checking…</p>';
+ const {data,error}=await SB.rpc("empire_staff_ticket",{p_code:c});if(error){r.innerHTML=`<div class="sm-res bad"><span class="sm-resi">✖</span><b class="sm-resn">${esc(errText(error))}</b></div>`;return}
+ const st=data.is_test?"bad":data.given_at?"warn":"ok";
+ r.innerHTML=`<div class="sm-res ${st}"><span class="sm-resi">${data.emoji}</span><b class="sm-resn">${esc(data.name)}</b><span>${esc(data.who)}${data.rel_id?" · #"+esc(data.rel_id):""}</span><span class="sm-src">From: ${esc(data.source)}</span>${data.is_test?'<p><b>TEST ticket</b> from the team preview. Do not give a prize.</p>':data.given_at?`<p><b>Already given</b> at ${new Date(data.given_at).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"})}. Don't give it twice.</p>`:`<p>✅ Valid ticket. Check their university card, then:</p><button type="button" class="sm-cta green" data-smgive="${esc(data.code)}">Give the prize ✓</button>`}</div>`}
+sm.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.id==="smTk"){e.preventDefault();smCheck()}});
+sm.addEventListener("change",async e=>{const c=e.target.closest("[data-smact]");if(!c)return;const s=smList.find(x=>x.item===c.closest("[data-smrow]").dataset.smrow);if(!s)return;c.disabled=true;
+ const {error}=await SB.rpc("empire_admin_item",{p_item:s.item,p_name:s.name,p_emoji:s.emoji,p_price:s.price,p_stock:s.stock,p_kind:s.kind,p_active:c.checked});c.disabled=false;
+ if(error){c.checked=!c.checked;toastE(errText(error));return}toastE(c.checked?s.emoji+" Back in the shop":s.emoji+" Hidden from the shop");smStock()});
+sm.addEventListener("click",async e=>{if(e.target.closest("#smFull")){q("#smFull").hidden=true;return}
+ const t=e.target.closest("button");if(!t||t.disabled)return;
  if(t.dataset.smback!==undefined){sm.hidden=true;clearInterval(smT);openEmpire();return}
- if(t.dataset.smcheck!==undefined){const c=q("#smTk").value.trim();const r=q("#smRes");const {data,error}=await SB.rpc("empire_staff_ticket",{p_code:c});if(error){r.innerHTML=`<p class="emp-bad">${esc(errText(error))}</p>`;return}
-  r.innerHTML=`<div class="sm-tk"><b>${data.emoji} ${esc(data.name)}</b><span>${esc(data.who)}${data.rel_id?" · #"+esc(data.rel_id):""} · from ${esc(data.source)}</span>${data.is_test?'<p class="emp-bad">TEST ticket from the team preview. Do not give a prize.</p>':data.given_at?`<p class="emp-bad">Already given (${new Date(data.given_at).toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"})}).</p>`:`<p class="emp-muted">Check their university card, then:</p><button type="button" class="fz-primary" data-smgive="${esc(data.code)}">Give the prize ✓</button>`}</div>`;return}
- if(t.dataset.smgive){const {error}=await SB.rpc("empire_staff_give",{p_code:t.dataset.smgive});if(error){toastE(errText(error));return}toastE("Given ✓");q("#smRes").innerHTML='<p class="emp-ok">✓ Marked as given.</p>';q("#smTk").value="";smStock();return}
- if(t.dataset.smitem!==undefined){const r=t.closest("[data-smrow]"),f=k=>r.querySelector(`[data-f="${k}"]`);t.disabled=true;
-  const {error}=await SB.rpc("empire_admin_item",{p_item:r.dataset.smrow,p_name:f("name").value,p_emoji:f("emoji").value,p_price:+f("price").value,p_stock:+f("stock").value,p_kind:f("kind").value,p_active:f("active").checked});
-  t.disabled=false;if(error){toastE(errText(error));return}toastE("Saved ✓");smStock();return}
- if(t.dataset.smon!==undefined){const {error}=await SB.rpc("empire_admin_stand",{p_on:t.dataset.smon==="1",p_skip:false});if(error){toastE(errText(error));return}smCode();return}
- if(t.dataset.smskip!==undefined){if(!confirm("Cancel this code? Players who didn't use it yet won't be able to. The next code starts automatically."))return;const {error}=await SB.rpc("empire_admin_stand",{p_on:null,p_skip:true});if(error){toastE(errText(error));return}smCode();return}
+ if(t.dataset.smtab){smTab=t.dataset.smtab;sm.querySelectorAll("[data-smtab]").forEach(b=>b.setAttribute("aria-selected",String(b===t)));sm.querySelectorAll("[data-pane]").forEach(p=>p.hidden=p.dataset.pane!==smTab);sm.scrollTop=0;if(smTab==="shop")smStock();if(smTab==="ticket")setTimeout(()=>{const i=q("#smTk");if(i&&!i.value)i.focus()},60);return}
+ if(t.dataset.smfull!==undefined){q("#smFull").hidden=false;return}
+ if(t.dataset.smcheck!==undefined){smCheck();return}
+ if(t.dataset.smgive){t.disabled=true;const {error}=await SB.rpc("empire_staff_give",{p_code:t.dataset.smgive});if(error){t.disabled=false;toastE(errText(error));return}try{navigator.vibrate&&navigator.vibrate([30,40,30])}catch(err){}
+  q("#smRes").innerHTML='<div class="sm-res ok done"><span class="sm-resi">🎉</span><b class="sm-resn">Given ✓</b><span>Hand over the prize.</span></div>';q("#smTk").value="";return}
+ if(t.dataset.smedit){smEdit=smEdit===t.dataset.smedit?null:t.dataset.smedit;await smStock();const f=sm.querySelector("[data-smform]");if(f){f.scrollIntoView({block:"center",behavior:"smooth"})}return}
+ if(t.dataset.smcancel!==undefined){smEdit=null;smStock();return}
+ if(t.dataset.smstep){const i=t.parentNode.querySelector("input");i.value=Math.max(0,(parseInt(i.value)||0)+ +t.dataset.smstep);return}
+ if(t.dataset.smsave!==undefined){const r=t.closest("[data-smform]"),f=k=>r.querySelector(`[data-f="${k}"]`),price=Math.round(parseFloat(f("price").value)*1e6);
+  if(!f("name").value.trim()){toastE("Give the prize a name.");f("name").focus();return}if(!(price>0)){toastE("Type a price: 30 means €30 million.");return}t.disabled=true;
+  const {error}=await SB.rpc("empire_admin_item",{p_item:r.dataset.smform,p_name:f("name").value,p_emoji:f("emoji").value,p_price:price,p_stock:Math.max(0,parseInt(f("stock").value)||0),p_kind:r.querySelector('[data-f="kind"]:checked').value,p_active:f("active").checked});
+  t.disabled=false;if(error){toastE(errText(error));return}toastE("Saved ✓");smEdit=null;smStock();return}
+ if(t.dataset.smon!==undefined){t.disabled=true;const {error}=await SB.rpc("empire_admin_stand",{p_on:t.dataset.smon==="1",p_skip:false});if(error){t.disabled=false;toastE(errText(error));return}toastE(t.dataset.smon==="1"?"▶ Bonus is on":"⏸ Bonus paused");smCode();return}
+ if(t.dataset.smskip!==undefined){if(!confirm("Cancel this code? Players who haven't used it yet won't be able to. The next code starts by itself."))return;const {error}=await SB.rpc("empire_admin_stand",{p_on:null,p_skip:true});if(error){toastE(errText(error));return}toastE("✖ Code cancelled");smCode();return}
  if(t.dataset.smpodium!==undefined){if(!confirm("Give the current top 3 a free roulette spin? Do this at the end of the game."))return;const {data,error}=await SB.rpc("empire_admin_podium");if(error){toastE(errText(error));return}
   await smStock();q("#smPod").innerHTML=data.length?data.map(x=>`<p>${esc(x.name)}: ${x.code?"<b>"+esc(x.code)+"</b>":esc(x.why||"")}</p>`).join(""):"<p>Already done.</p>";toastE("Top 3 spins: done ✓")}});
 window.relEmpire={open:openEmpire};
