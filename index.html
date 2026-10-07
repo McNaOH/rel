@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-tgn1Z/iwaP8wbxX1BwYZAM1c2lyb9kMn4zzQKrd29ZA='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-+KcUDm6WSSO4SUFh72fUK1UYZ+JePsniV5XI/o0AMEg='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -6392,7 +6392,7 @@ let tt;const ftoast=t=>{const b=$f("#fzToast");b.textContent=t;b.classList.add("
 root.addEventListener("click",e=>{if(e.target.closest("[data-fzclose]"))closeFiesta();if(e.target.closest("[data-fzhow]"))howTo(HOW_T,"How to play REL Tower")});
 
 async function loadState(){try{const {data,error}=await SB.rpc("fiesta_state");if(error)throw error;FS=data;offset=T(data.now)-Date.now();window.__fzTeam=!!data.is_team;await resendPending();return data}catch(e){return null}}
-function visible(){if(!FS)return false;const n=now();return(n>=T(FS.teaser_from||FS.show_from)&&n<T(FS.show_until))||FS.is_team}
+function visible(){return false;/* Fiesta Day is over (7 Oct 2026): entry points switched off */if(!FS)return false;const n=now();return(n>=T(FS.teaser_from||FS.show_from)&&n<T(FS.show_until))||FS.is_team}
 const isLive=()=>FS&&now()>=T(FS.show_from)&&now()<T(FS.show_until);
 let wasLive=null;
 function syncEntry(){const v=visible();strip.hidden=!v;fab.hidden=!v||!root.hidden;document.body.classList.toggle("fiesta-day",!!v&&!(FS.is_team&&now()<T(FS.teaser_from||FS.show_from)));
