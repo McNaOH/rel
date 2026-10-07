@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-+KcUDm6WSSO4SUFh72fUK1UYZ+JePsniV5XI/o0AMEg='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-RpKIcAhmuprqtD3v3gymXVHOWru99zFkDrdz1nsJyZA='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1116,8 +1116,11 @@ body.lights::after{content:"";position:fixed;inset:0;pointer-events:none;z-index
 <style id="rel-update-15">
 [data-greset],#qReset{display:none!important}
 .gate-wrap{position:relative;max-width:440px}
-.veiled{filter:blur(14px) saturate(.4);pointer-events:none;user-select:none}
-.gate-ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;background:rgba(248,246,241,.55);z-index:5;padding:16px}
+.veiled{visibility:hidden!important;pointer-events:none;user-select:none}
+.veiled *{visibility:hidden!important}
+.gate-ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;z-index:5;padding:16px;border-radius:14px;background:repeating-linear-gradient(45deg,var(--alt,#F0E3E4) 0 14px,var(--bg,#F8F6F1) 14px 28px);border:2px dashed var(--line,#E4DBCF);min-height:260px}
+.gate-q{font:700 64px/1 var(--f-display);color:var(--brand-ink,#800020);opacity:.35}
+.gate-ov p{font-size:.9rem;max-width:300px;line-height:1.4}
 .gate-ov p{margin:0;font-weight:600;color:var(--ink)}
 .gate-go{font-size:1.15rem;padding:14px 30px}
 /* Unicorn 2048 */
@@ -5097,15 +5100,15 @@ const QZ=[["What does MVP stand for in the startup world?",["Most Valuable Playe
    if(v===2){b.innerHTML=CROWN;if(bad.has([r,c].join()))b.classList.add("bad")}else if(v===1)b.textContent="×";
    b.disabled=done;b.addEventListener("click",()=>click(r,c));g.appendChild(b)}
   $("#qCount").textContent=qs.length+" / "+N}
- const startClock=()=>{if(t0===null){t0=Date.now();timer=setInterval(()=>{secs=Math.floor((Date.now()-t0)/1000);$("#qTime").textContent=mmss(secs)},500)}};
+ const startClock=t=>{if(t0===null){t0=t||Date.now();secs=Math.floor((Date.now()-t0)/1000);$("#qTime").textContent=mmss(secs);timer=setInterval(()=>{secs=Math.floor((Date.now()-t0)/1000);$("#qTime").textContent=mmss(secs)},500)}};
  function click(r,c){if(done||t0===null)return;
   S[r][c]=(S[r][c]+1)%3;const{qs,bad}=analyze();draw();
   if(qs.length===N&&bad.size===0){done=true;clearInterval(timer);secs=Math.floor((Date.now()-t0)/1000);$("#qTime").textContent=mmss(secs);$("#qMsg").textContent="Solved in "+mmss(secs)+". Come back tomorrow for a new board.";$("#qShare").hidden=false;draw();if(typeof confettiBurst==="function"){const gb=$("#qgrid");if(gb){const r=gb.getBoundingClientRect();confettiBurst(r.left+r.width/2,r.top+r.height/2)}}try{localStorage.setItem("rel-q-"+key,String(secs))}catch(e){}submitGame("puzzle",secs)}
   else $("#qMsg").textContent=bad.size?"Two crowns clash. Check rows, columns, colors and neighbors.":""}
- $("#qReset").addEventListener("click",()=>{S.forEach(r=>r.fill(0));clearInterval(timer);t0=null;done=false;secs=0;$("#qTime").textContent="0:00";$("#qMsg").textContent="";$("#qShare").hidden=true;draw()});
+ $("#qReset").addEventListener("click",()=>{if(done)return;S.forEach(r=>r.fill(0));$("#qMsg").textContent="Board cleared. The timer keeps running.";draw()});
  $("#qShare").addEventListener("click",async()=>{const m="I solved today's REL puzzle in "+mmss(secs)+". Can you beat it?";try{await navigator.clipboard.writeText(m);toast("Result copied")}catch(e){toast(m)}});
  let solvedToday=null;try{const p=localStorage.getItem("rel-q-"+key);if(p){solvedToday=+p;$("#qMsg").textContent="You solved today's Crowns in "+mmss(+p)+".";$("#qTime").textContent=mmss(+p)}}catch(e){}
- draw();relGate($("#qgrid"),solvedToday==null?startClock:null)})();
+ draw();relGate($("#qgrid"),solvedToday==null?startClock:null,"crowns")})();
 /* ---------- update 3: panels, hero chip, map, newsletter places ---------- */
 function updateChip(){const a=$("#heroChip"),t=$("#heroChipT");if(!a||!t)return;const n=EVENTS.find(e=>e.date);if(!n){a.hidden=true;return}
  t.textContent="Next event: "+n.title+", "+fmt(n.date,{weekday:"long",day:"numeric",month:"long"});a.hidden=false}
@@ -5936,7 +5939,7 @@ document.addEventListener("click",async e=>{const b=e.target.closest("[data-gsha
 
 /* a timer that starts on the first move */
 function Timer(k){let t0=0,iv=null,pen=0;const el=()=>document.querySelector(`[data-gtime="${k}"]`);
- return{start(){if(iv||t0)return;t0=Date.now();iv=setInterval(()=>{const x=el();if(x)x.textContent=mm(this.secs())},1000)},secs(){return t0?Math.floor((Date.now()-t0)/1000)+pen:0},
+ return{start(){this.startAt(Date.now())},startAt(t){if(iv||t0)return;t0=t||Date.now();iv=setInterval(()=>{const x=el();if(x)x.textContent=mm(this.secs())},1000);const x=el();if(x)x.textContent=mm(this.secs())},secs(){return t0?Math.floor((Date.now()-t0)/1000)+pen:0},
   stop(){clearInterval(iv);iv=null;const x=el();if(x)x.textContent=mm(this.secs())},penalty(s){this.start();pen+=s;const x=el();if(x)x.textContent=mm(this.secs())},reset(){clearInterval(iv);iv=null;t0=0;pen=0;const x=el();if(x)x.textContent="0:00"}}}
 const N=6,idx=(r,c)=>r*N+c,rc=i=>[Math.floor(i/N),i%N];
 const nbrs=i=>{const [r,c]=rc(i),o=[];if(r>0)o.push(i-N);if(r<N-1)o.push(i+N);if(c>0)o.push(i-1);if(c<N-1)o.push(i+1);return o};
@@ -5975,10 +5978,10 @@ const nbrs=i=>{const [r,c]=rc(i),o=[];if(r>0)o.push(i-N);if(r<N-1)o.push(i+N);if
   if(!path.length){const st=+Object.keys(NUM).find(k=>NUM[k]===1);path=[st];T.start();draw();return}
   const l=path[path.length-1],[r,c]=rc(l),nx=l+mv;if((mv===1&&c===N-1)||(mv===-1&&c===0)||nx<0||nx>=N*N)return;
   if(path.length>1&&nx===path[path.length-2]){path.pop();draw();return}touch(nx,false)});
- document.querySelector('[data-greset="path"]').addEventListener("click",()=>{if(done)return;path=[];T.reset();draw()});
+ document.querySelector('[data-greset="path"]').addEventListener("click",()=>{if(done)return;path=[];draw()});
  document.querySelector('[data-ghint="path"]').addEventListener("click",()=>{if(done)return;let k=0;while(k<path.length&&path[k]===SOL[k])k++;path=SOL.slice(0,k+1);T.penalty(15);toast("Hint used: +15 seconds");draw();check()});
  if(done){const sh=document.querySelector('[data-gshare="path"]');sh.hidden=false;sh.dataset.text="REL Path "+DAY+": solved in "+mm(s.doneVal||0)+" \u2705";const tm=document.querySelector('[data-gtime="path"]');if(tm)tm.textContent=mm(s.doneVal||0)}
- window.relBoardFor=boardFor;boardFor("crowns");draw();drawStats("path");relGate($("#gPath"),done?null:()=>{T.start();const h=document.querySelector('[data-ghint="path"]');if(h)h.hidden=false});boardFor("path")})();
+ window.relBoardFor=boardFor;boardFor("crowns");draw();drawStats("path");relGate($("#gPath"),done?null:t0=>{T.startAt(t0);const h=document.querySelector('[data-ghint="path"]');if(h)h.hidden=false},"path");boardFor("path")})();
 
 /* ----- Sun & Moon: 3 suns and 3 moons per line, no three in a row ----- */
 (function(){const B=$("#gSun");if(!B)return;const R=rngFor("sunmoon");
@@ -6008,10 +6011,10 @@ const nbrs=i=>{const [r,c]=rc(i),o=[];if(r>0)o.push(i-N);if(r<N-1)o.push(i+N);if
   B.classList.toggle("won",done)}
  function check(){if(g.every(v=>v)&&bads()[0].size===0){done=true;T.stop();const sec=T.secs();draw();msgEl("sunmoon").textContent="Solved in "+mm(sec)+". A new board tomorrow.";finish("sunmoon",Math.max(1,sec),true,"REL Sun & Moon "+DAY+": solved in "+mm(sec)+" \u2600\ufe0f\ud83c\udf19")}}
  B.addEventListener("click",e=>{const c=e.target.closest(".c");if(!c||done)return;const i=+c.dataset.i;if(GIV.has(i))return;T.start();g[i]=(g[i]+1)%3;draw();check()});
- document.querySelector('[data-greset="sunmoon"]').addEventListener("click",()=>{if(done)return;g=Array(N*N).fill(0);GIV.forEach(i=>g[i]=SOL[i]);T.reset();draw()});
+ document.querySelector('[data-greset="sunmoon"]').addEventListener("click",()=>{if(done)return;g=Array(N*N).fill(0);GIV.forEach(i=>g[i]=SOL[i]);draw()});
  document.querySelector('[data-ghint="sunmoon"]').addEventListener("click",()=>{if(done)return;const w=[...Array(N*N).keys()].filter(i=>g[i]!==SOL[i]);if(!w.length)return;const i=w[Math.floor(Math.random()*w.length)];g[i]=SOL[i];T.penalty(15);toast("Hint used: +15 seconds");draw();check()});
  if(done){msgEl("sunmoon").textContent="Solved in "+mm(s.doneVal||0)+". A new board tomorrow.";const sh=document.querySelector('[data-gshare="sunmoon"]');sh.hidden=false;sh.dataset.text="REL Sun & Moon "+DAY+": solved in "+mm(s.doneVal||0);const tm=document.querySelector('[data-gtime="sunmoon"]');if(tm)tm.textContent=mm(s.doneVal||0)}
- draw();drawStats("sunmoon");relGate($("#gSun"),done?null:()=>{T.start();const h=document.querySelector('[data-ghint="sunmoon"]');if(h)h.hidden=false});boardFor("sunmoon")})();
+ draw();drawStats("sunmoon");relGate($("#gSun"),done?null:t0=>{T.startAt(t0);const h=document.querySelector('[data-ghint="sunmoon"]');if(h)h.hidden=false},"sunmoon");boardFor("sunmoon")})();
 
 /* ----- Mini Sudoku 6x6 with 2x3 boxes ----- */
 (function(){const B=$("#gSdk"),P=$("#gSdkPad");if(!B)return;const R=rngFor("sudoku");
@@ -6032,10 +6035,10 @@ const nbrs=i=>{const [r,c]=rc(i),o=[];if(r>0)o.push(i-N);if(r<N-1)o.push(i+N);if
  B.addEventListener("click",e=>{const c=e.target.closest(".c");if(!c||done)return;sel=+c.dataset.i;draw()});
  B.tabIndex=0;B.addEventListener("keydown",e=>{if(done)return;if(/^[1-6]$/.test(e.key)){put(+e.key);return}if(e.key==="Backspace"||e.key==="Delete"||e.key==="0"){e.preventDefault();put(0);return}
   const mv={ArrowUp:-N,ArrowDown:N,ArrowLeft:-1,ArrowRight:1}[e.key];if(mv==null)return;e.preventDefault();if(sel<0){sel=0}else{const n=sel+mv;if(n>=0&&n<N*N&&!((mv===1&&sel%N===N-1)||(mv===-1&&sel%N===0)))sel=n}draw()});
- document.querySelector('[data-greset="sudoku"]').addEventListener("click",()=>{if(done)return;g=puz.slice();sel=-1;T.reset();draw()});
+ document.querySelector('[data-greset="sudoku"]').addEventListener("click",()=>{if(done)return;g=puz.slice();sel=-1;draw()});
  document.querySelector('[data-ghint="sudoku"]').addEventListener("click",()=>{if(done)return;const w=[...Array(N*N).keys()].filter(i=>g[i]!==SOL[i]);if(!w.length)return;sel=w[Math.floor(Math.random()*w.length)];T.penalty(15);toast("Hint used: +15 seconds");put(SOL[sel])});
  if(done){msgEl("sudoku").textContent="Solved in "+mm(s.doneVal||0)+". A new grid tomorrow.";const sh=document.querySelector('[data-gshare="sudoku"]');sh.hidden=false;sh.dataset.text="REL Mini Sudoku "+DAY+": solved in "+mm(s.doneVal||0);const tm=document.querySelector('[data-gtime="sudoku"]');if(tm)tm.textContent=mm(s.doneVal||0)}
- draw();drawStats("sudoku");relGate($("#gSdk"),done?null:()=>{T.start();const h=document.querySelector('[data-ghint="sudoku"]');if(h)h.hidden=false});boardFor("sudoku")})();
+ draw();drawStats("sudoku");relGate($("#gSdk"),done?null:t0=>{T.startAt(t0);const h=document.querySelector('[data-ghint="sudoku"]');if(h)h.hidden=false},"sudoku");boardFor("sudoku")})();
 
 /* ----- Five Clues: guess what the clues have in common ----- */
 (function(){const box=$("#gClues"),form=$("#gCluesForm");if(!box)return;
@@ -6251,10 +6254,23 @@ document.addEventListener("submit",async e=>{const f=e.target;if(!f||f.id!=="fin
 
 /* ===================== update 15: fair timers, Unicorn 2048, hidden extras ===================== */
 /* every timed game stays hidden behind a Start button: no looking before the clock runs */
-function relGate(board,onStart,msg){if(!board||!onStart)return;if(board.parentNode&&board.parentNode.classList&&board.parentNode.classList.contains("gate-wrap"))return;
+function relGate(board,onStart,game){if(!board||!onStart)return;if(board.parentNode&&board.parentNode.classList&&board.parentNode.classList.contains("gate-wrap"))return;
+ const day=new Date().toLocaleDateString("en-CA",{timeZone:"Asia/Beirut"}),lk="rel-st-"+game+"-"+day;
  const w=document.createElement("div");w.className="gate-wrap";board.parentNode.insertBefore(w,board);w.appendChild(board);board.classList.add("veiled");board.setAttribute("aria-hidden","true");
- const ov=document.createElement("div");ov.className="gate-ov";ov.innerHTML='<button type="button" class="btn primary gate-go">\u25B6 Start</button><p>The timer starts when you press Start.</p>';w.appendChild(ov);
- ov.querySelector("button").addEventListener("click",()=>{board.classList.remove("veiled");board.removeAttribute("aria-hidden");ov.remove();onStart();try{board.focus({preventScroll:true})}catch(e){}})}
+ const ov=document.createElement("div");ov.className="gate-ov";ov.innerHTML='<div class="gate-q" aria-hidden="true">?</div><button type="button" class="btn primary gate-go">▶ Start</button><p>The puzzle appears when you press Start.<br>The timer starts at once and keeps running, even if you reload or reset.</p>';w.appendChild(ov);
+ let opened=false;
+ const open=t0=>{if(opened)return;opened=true;board.classList.remove("veiled");board.removeAttribute("aria-hidden");ov.remove();onStart(t0);try{board.focus({preventScroll:true})}catch(e){}};
+ const fromServer=d=>d&&d.started_at?Date.now()-(new Date(d.now).getTime()-new Date(d.started_at).getTime()):null;
+ /* already started today on this phone: no second look, the clock just continues */
+ let saved=null;try{saved=+localStorage.getItem(lk)||null}catch(e){}if(saved){open(saved)}
+ /* already started today on another phone or browser (members): same thing */
+ const check=async(n)=>{if(!(typeof SB!=="undefined"&&SB&&ST.user)){if(n<10)setTimeout(()=>check(n+1),1500);return}
+  try{const {data}=await SB.rpc("daily_game_started",{p_game:game});const t=fromServer(data);if(t&&!opened){try{localStorage.setItem(lk,String(t))}catch(e){}open(t);if(typeof toast==="function")toast("You already started this puzzle today. Your timer kept running.")}
+   else if(!t&&opened){await SB.rpc("daily_game_start",{p_game:game})}}catch(e){}};
+ check(0);
+ ov.querySelector("button").addEventListener("click",async e=>{e.currentTarget.disabled=true;let t0=Date.now();
+  if(typeof SB!=="undefined"&&SB&&ST.user){try{const {data}=await SB.rpc("daily_game_start",{p_game:game});t0=fromServer(data)||t0}catch(err){}}
+  try{localStorage.setItem(lk,String(t0))}catch(err){}open(t0)})}
 
 (function(){
 /* ---------- Unicorn 2048: play as much as you want ---------- */
