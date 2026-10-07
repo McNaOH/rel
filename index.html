@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-Tgf5p5McM8hSOzfNR2crvknOdAmGDRbB5apR1Z6cxb8='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-tgn1Z/iwaP8wbxX1BwYZAM1c2lyb9kMn4zzQKrd29ZA='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1411,6 +1411,20 @@ body.founder{--fill:#B8860B;--brand-ink:#8A6508;--band:#57101F}
 .sm-entry{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:2px solid #FFD666;background:rgba(255,214,102,.12);color:#fff;border-radius:18px;padding:12px 14px;margin:0 0 14px}
 .sm-entry>span{font-size:28px}.sm-entry b{display:block;font-size:16px}.sm-entry small{font-size:12px;opacity:.8}.sm-entry i{margin-left:auto;font-style:normal;font-size:20px;color:#FFD666}
 @media (prefers-reduced-motion:reduce){[data-st="live"] .sm-pill,.sm-res.done{animation:none}.sm-prog i{transition:none}}
+/* Fiesta strip: compact card under the header (never under the logo) */
+.pg[data-pg="home"]{position:relative}
+.fz-strip{position:absolute;z-index:6;top:calc(76px + 6px);left:50%;transform:translateX(-50%);width:min(calc(100% - 32px),560px);display:flex;align-items:center;gap:10px;flex-wrap:nowrap;justify-content:flex-start;padding:8px 8px 8px 12px;border-radius:18px;background:linear-gradient(135deg,#FFE38A,#E0A526);box-shadow:0 8px 24px rgba(0,0,0,.25);text-align:left;font:700 14px var(--f-body)}
+.fz-strip[hidden]{display:none}
+.fzs-ic{font-size:24px;flex:none}
+.fzs-t{flex:1;min-width:0;display:grid;line-height:1.2}
+.fzs-t b{display:flex;align-items:center;gap:6px;font-size:15px;white-space:nowrap}
+.fzs-t small{font-size:13px;font-weight:600;opacity:.8;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fz-strip .live{padding:2px 8px;font-size:10px}
+.fzs-go{flex:none;background:#1D1315;color:#FFD666;border-radius:12px;padding:10px 12px;font-size:13px;white-space:nowrap}
+@media (max-width:720px){.fz-strip{top:calc(66px + 4px)}}
+.fz-strip:not([hidden])+.hero2{border-top:66px solid transparent}
+body.fz-strip-on .fz-fab{opacity:0;pointer-events:none;transform:translateY(20px)}
+.fz-fab{transition:opacity .25s,transform .25s}
 body.fiesta-day .site-header,body.fiesta-day header{box-shadow:0 3px 0 0 #E0A526}
 body.fiesta-day::before{content:"";position:fixed;top:0;left:0;right:0;height:4px;z-index:401;background:linear-gradient(90deg,#800020,#E0A526,#FFD666,#E0A526,#800020);background-size:200% 100%;animation:fzBar 3s linear infinite;pointer-events:none}
 @keyframes fzBar{to{background-position:200% 0}}
@@ -6333,10 +6347,11 @@ const ICON={1:"🟢",2:"🌬️",3:"⚡"};
 
 /* ---------- entry points: gold strip on Home + floating button ---------- */
 const strip=document.createElement("button");strip.type="button";strip.className="fz-strip";strip.hidden=true;
-strip.innerHTML='<span class="live"><i></i>LIVE</span><span data-st>🎉 Fiesta Day</span>';
+strip.innerHTML='<span class="fzs-ic">🎉</span><span class="fzs-t"><b><span class="live"><i></i>LIVE</span>Fiesta Day</b><small data-st></small></span><span class="fzs-go" data-sgo>Play ›</span>';
 const home=document.querySelector('.pg[data-pg="home"]');if(home)home.prepend(strip);
 const fab=document.createElement("button");fab.type="button";fab.className="fz-fab";fab.hidden=true;fab.innerHTML="<i></i>Tower Cup";document.body.appendChild(fab);
 strip.addEventListener("click",()=>openFiesta());fab.addEventListener("click",()=>openFiesta());
+try{new IntersectionObserver(es=>es.forEach(x=>document.body.classList.toggle("fz-strip-on",x.isIntersecting&&!strip.hidden))).observe(strip)}catch(e){}
 
 /* ---------- the full-screen tournament ---------- */
 const root=document.createElement("div");root.id="fz";root.hidden=true;root.setAttribute("role","dialog");root.setAttribute("aria-label","REL Tower Cup");
@@ -6387,8 +6402,8 @@ function syncEntry(){const v=visible();strip.hidden=!v;fab.hidden=!v||!root.hidd
  stripText();
  if(wasLive===false&&live)fiestaStart();wasLive=live}
 function stripText(){if(!FS)return;const first=FS.rounds[0],ms=T(first.starts_at)-now(),sp=strip.querySelector("[data-st]");if(!sp)return;
- sp.textContent=ms>0?`🎉 It's Fiesta Day! The games open in ${dur(ms)}. Tap to learn how to play.`:"🎉 Fiesta Day is LIVE: Tower Cup + Startup Empire. Tap to play!";
- strip.querySelector(".live").style.display=ms>0?"none":""}
+ sp.textContent=ms>0?`Games open in ${dur(ms)}`:"Tower Cup + Startup Empire";
+ strip.querySelector(".live").style.display=ms>0?"none":"";const g=strip.querySelector("[data-sgo]");if(g)g.textContent=ms>0?"How to play ›":"Play now ›"}
 setInterval(()=>{if(FS&&!strip.hidden)stripText()},1000);
 function fiestaStart(){toast("🎉 The Fiesta has started! The games are open.");partyRain(40)}
 function partyRain(n){if(reduceM)return;const em=["🎉","🎈","✨","🎊","💡"];for(let i=0;i<n;i++){const s=document.createElement("span");s.className="egg-rain";s.textContent=em[i%em.length];s.style.left=Math.random()*100+"vw";s.style.animationDelay=Math.random()*1.5+"s";s.style.fontSize=(18+Math.random()*20)+"px";document.body.appendChild(s);setTimeout(()=>s.remove(),4200)}}
@@ -6446,8 +6461,23 @@ addEventListener("resize",()=>{if(!root.hidden)sizeCv()});
 const X=x=>x*SC;
 function beep(f,d=.08,type="triangle",v=.07){if(muted)return;try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.type=type;o.frequency.value=f;o.connect(g);g.connect(ac.destination);const t=ac.currentTime;g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.start(t);o.stop(t+d)}catch(e){}}
 const buzz=p=>{try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}};
-function beat(){clearInterval(beatT);if(!music)return;let n=0;beatT=setInterval(()=>{if(muted||!running)return;const fire=G&&G.streak>=5;beep(n%4===0?70:n%2?2400:140,n%2?.03:.12,n%2?"square":"sine",n%2?.015:.09);if(fire&&n%2)beep(660+(n%8)*55,.06,"triangle",.03);n++},fire2tempo())}
-const fire2tempo=()=>230;
+/* funny circus "oom-pah" tune: bouncy bass, kazoo melody, slide-whistle "boing" */
+const MF=m=>440*Math.pow(2,(m-69)/12);
+function kz(f,d,v,slide){if(muted)return;try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),lfo=ac.createOscillator(),lg=ac.createGain(),fl=ac.createBiquadFilter(),g=ac.createGain(),t=ac.currentTime;
+ o.type="sawtooth";o.frequency.setValueAtTime(f,t);if(slide)o.frequency.exponentialRampToValueAtTime(slide,t+d);
+ lfo.frequency.value=7;lg.gain.value=f*.025;lfo.connect(lg);lg.connect(o.frequency);fl.type="bandpass";fl.frequency.value=1400;fl.Q.value=1.2;
+ o.connect(fl);fl.connect(g);g.connect(ac.destination);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(v,t+.015);g.gain.exponentialRampToValueAtTime(.0001,t+d);
+ o.start(t);lfo.start(t);o.stop(t+d+.02);lfo.stop(t+d+.02)}catch(e){}}
+const TUNE=[72,0,76,79,81,79,76,0,74,0,77,81,79,0,0,0,72,0,76,79,84,83,81,79,77,76,74,71,72,0,0,0];
+const BASS=[48,43,48,43,53,48,43,48];
+function beat(){clearInterval(beatT);if(!music)return;let n=0;beatT=setInterval(()=>{if(muted||!running)return;const fire=G&&G.streak>=5,i=n%32,bar=Math.floor(n/4)%8;
+ if(n%4===0)beep(MF(BASS[bar]-12),.16,"triangle",.13);
+ if(n%4===2){const r=BASS[bar];[r+4,r+7,r+12].forEach(m=>beep(MF(m),.07,"square",.012))}
+ const m=TUNE[i];if(m)kz(MF(m+(fire?12:0)),.13,fire?.045:.06);
+ if(i===15)kz(MF(67),.28,.05,MF(91));
+ if(i===31)kz(MF(84),.3,.05,MF(60));
+ n++},fire2tempo())}
+const fire2tempo=()=>165;
 $f("#fzSnd").addEventListener("click",e=>{muted=!muted;e.currentTarget.textContent=muted?"🔇":"🔊"});
 $f("#fzMus").addEventListener("click",e=>{music=!music;e.currentTarget.style.opacity=music?1:.5;beat();try{localStorage.setItem("rel-fz-music",music?"1":"0")}catch(err){}});
 try{music=localStorage.getItem("rel-fz-music")!=="0"}catch(e){music=true}$f("#fzMus").style.opacity=music?1:.5;
