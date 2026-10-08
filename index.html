@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-RpKIcAhmuprqtD3v3gymXVHOWru99zFkDrdz1nsJyZA='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-dpTsQN94HolIWv8g/h+xmTi2YTR2GnHjwmiN9NVXIzE='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -239,8 +239,8 @@ td.p,th.p{text-align:right;font-weight:600}
 .doc{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
 /* puzzle */
 .qwrap{display:grid;grid-template-columns:minmax(0,440px) 1fr;gap:48px;align-items:start}
-#qgrid{display:grid;grid-template-columns:repeat(7,1fr);width:100%;max-width:440px;border:3px solid var(--grid);background:var(--grid)}
-#qgrid button{aspect-ratio:1;padding:0;border:0 solid var(--grid);color:#2A1518;font:600 1.3rem var(--f-body),sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;position:relative}
+#qgrid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));grid-auto-rows:auto;width:100%;max-width:440px;border:3px solid var(--grid);background:var(--grid)}
+#qgrid button{aspect-ratio:1;min-width:0;min-height:0;width:100%;height:auto;overflow:hidden;padding:0;border:0 solid var(--grid);color:#2A1518;font:600 1.3rem var(--f-body),sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;position:relative}
 #qgrid button svg{width:62%;height:62%;fill:#800020}
 #qgrid button.bad svg{fill:#B3261E}
 #qgrid button.bad{box-shadow:inset 0 0 0 3px #B3261E}
@@ -1038,8 +1038,8 @@ footer .vres.no:not(:empty),footer .vres.ok:not(:empty){background:rgba(248,246,
 .totop{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));width:46px;height:46px;border-radius:50%;border:0;background:var(--fill);color:var(--on-fill);font-size:1.3rem;cursor:pointer;box-shadow:0 8px 24px rgba(128,0,32,.3);opacity:0;pointer-events:none;transition:opacity .2s;z-index:150}
 .totop.on{opacity:1;pointer-events:auto}
 /* new games */
-.g2-board{position:relative;width:100%;max-width:440px;aspect-ratio:1;display:grid;grid-template-columns:repeat(6,1fr);border:3px solid var(--grid);background:var(--grid);gap:2px;touch-action:none;user-select:none;-webkit-user-select:none}
-.g2-board .c{background:#FBF8F3;display:flex;align-items:center;justify-content:center;font:600 1.35rem var(--f-body);color:#2A1518;cursor:pointer;position:relative}
+.g2-board{position:relative;width:100%;max-width:440px;aspect-ratio:1;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(6,minmax(0,1fr));border:3px solid var(--grid);background:var(--grid);gap:2px;touch-action:none;user-select:none;-webkit-user-select:none}
+.g2-board .c{min-width:0;min-height:0;overflow:hidden;background:#FBF8F3;display:flex;align-items:center;justify-content:center;font:600 1.35rem var(--f-body);color:#2A1518;cursor:pointer;position:relative}
 .g2-board .c.given{background:#EFE7DC;cursor:default}
 .g2-board .c.sel{box-shadow:inset 0 0 0 3px var(--fill)}
 .g2-board .c.same{background:#F6ECEE}
@@ -1115,7 +1115,7 @@ body.lights::after{content:"";position:fixed;inset:0;pointer-events:none;z-index
 </style>
 <style id="rel-update-15">
 [data-greset],#qReset{display:none!important}
-.gate-wrap{position:relative;max-width:440px}
+.gate-wrap{position:relative;max-width:440px;width:100%}
 .veiled{visibility:hidden!important;pointer-events:none;user-select:none}
 .veiled *{visibility:hidden!important}
 .gate-ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;z-index:5;padding:16px;border-radius:14px;background:repeating-linear-gradient(45deg,var(--alt,#F0E3E4) 0 14px,var(--bg,#F8F6F1) 14px 28px);border:2px dashed var(--line,#E4DBCF);min-height:260px}
@@ -1428,6 +1428,17 @@ body.founder{--fill:#B8860B;--brand-ink:#8A6508;--band:#57101F}
 .fz-strip:not([hidden])+.hero2{border-top:66px solid transparent}
 body.fz-strip-on .fz-fab{opacity:0;pointer-events:none;transform:translateY(20px)}
 .fz-fab{transition:opacity .25s,transform .25s}
+.arc{border:1px solid var(--line);border-radius:18px;padding:18px;background:var(--bg);margin-bottom:20px}
+.arc header h3{margin:2px 0 6px}.arc-date{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted,#6B5F62)}
+.arc h4{margin:20px 0 8px;font-size:1.05rem}
+.arc-pod{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 4px}
+.arc-p{border-radius:14px;padding:12px 8px;text-align:center;display:grid;gap:2px;background:#F1ECE3}.arc-p.p1{background:linear-gradient(135deg,#FFE38A,#E0A526)}
+.arc-p span{font-size:1.6rem}.arc-p b{font-size:.95rem;line-height:1.2}.arc-p small{font-size:.75rem;opacity:.75}
+.arc-d{border:1px solid var(--line);border-radius:12px;margin:0 0 8px;background:#fff}
+.arc-d summary{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px 14px;cursor:pointer;list-style:none}.arc-d summary::-webkit-details-marker{display:none}
+.arc-d summary span{font-size:.85rem;color:var(--muted,#6B5F62);white-space:nowrap}.arc-d[open] summary{border-bottom:1px solid var(--line)}
+.arc-t{overflow-x:auto;padding:4px 10px 10px}.arc-t table{width:100%;font-size:.9rem}.arc-t td,.arc-t th{padding:6px 6px;white-space:nowrap}.arc-t code{font-size:.85rem}
+@media (max-width:480px){.arc{padding:14px}.arc-p b{font-size:.8rem}}
 body.fiesta-day .site-header,body.fiesta-day header{box-shadow:0 3px 0 0 #E0A526}
 body.fiesta-day::before{content:"";position:fixed;top:0;left:0;right:0;height:4px;z-index:401;background:linear-gradient(90deg,#800020,#E0A526,#FFD666,#E0A526,#800020);background-size:200% 100%;animation:fzBar 3s linear infinite;pointer-events:none}
 @keyframes fzBar{to{background-position:200% 0}}
@@ -6636,28 +6647,24 @@ setInterval(async()=>{if(root.hidden){await loadState();syncEntry()}},60000);
 addEventListener("hashchange",()=>{if(location.hash==="#fiesta"&&visible()&&root.hidden)openFiesta()});
 })();
 
-/* ---------- Team area: Fiesta tab (President) ---------- */
+/* ---------- Team area: Archive tab (past events and who won) ---------- */
 (function(){
-const isPres=()=>!!(ST.team&&ST.team.role==="president");
-const loc=s=>{const d=new Date(s);return new Date(d.getTime()-d.getTimezoneOffset()*6e4).toISOString().slice(0,16)};
-const _rt=renderTeam;renderTeam=function(){const want=teamTab;_rt();if(!isPres())return;const bar=$("#teamBody .tabs");if(!bar||bar.querySelector('[data-tt="fiesta"]'))return;
- bar.insertAdjacentHTML("afterbegin",`<button type="button" class="tab" role="tab" aria-selected="false" data-tt="fiesta">🎉 Fiesta</button>`);
- if(want==="fiesta"){teamTab="fiesta";bar.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.tt==="fiesta"));paneFiesta()}};
-async function paneFiesta(){loading();const {data:st,error}=await SB.rpc("fiesta_state");if(error)return paneErr(error);
- const boards=await Promise.all(st.rounds.map(r=>SB.rpc("fiesta_admin_board",{p_round:r.round})));
- tpane().innerHTML=`<div class="card" style="max-width:700px;background:var(--bg)"><h3 style="margin:0 0 6px">Round times</h3>
- <p class="muted small" style="margin:0 0 12px">The Tower Cup appears on the website from ${new Date(st.show_from).toLocaleString("en-GB",{weekday:"short",hour:"2-digit",minute:"2-digit"})} to ${new Date(st.show_until).toLocaleString("en-GB",{weekday:"short",hour:"2-digit",minute:"2-digit"})}. Board members can test it before a round opens (tests are not counted).</p>
- <form id="fzRoundsForm">${st.rounds.map(r=>`<fieldset style="border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:0 0 10px"><legend style="font-weight:700;padding:0 6px">${esc(r.name)}</legend>
-  <div class="two" style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><label class="fld">Starts<input type="datetime-local" data-fzs="${r.round}" value="${loc(r.starts_at)}"></label><label class="fld">Ends<input type="datetime-local" data-fze="${r.round}" value="${loc(r.ends_at)}"></label></div>
-  <p class="muted small" style="margin:4px 0 0">${r.players} players. ${r.round<3?"The top "+r.keep+" go through.":"The final."}</p></fieldset>`).join("")}
- <div class="row"><button class="btn primary" type="submit">Save the times</button></div><p class="vres" id="fzRMsg" role="status" aria-live="polite"></p></form></div>
- ${st.rounds.map((r,i)=>{const b=boards[i].data||[];return`<h3 style="margin:26px 0 8px">${esc(r.name)}: leaderboard</h3>${b.length?`<table><thead><tr><th>#</th><th>Player</th><th class="p">Score</th><th>Prize given</th></tr></thead><tbody>${b.map(x=>`<tr><td>${x.rnk}</td><td>${esc(x.full_name)}${x.rel_id?` <span class="muted small">#${esc(x.rel_id)}</span>`:' <span class="muted small">(not accepted yet)</span>'}</td><td class="p">${x.best}</td><td><div style="display:flex;gap:6px"><input data-fzprize="${esc(x.user_id)}" value="${esc(x.prize||"")}" placeholder="e.g. Jungle Juice" style="min-width:120px"><button type="button" class="btn sm" data-fzpsave="${esc(x.user_id)}">Save</button></div></td></tr>`).join("")}</tbody></table>`:'<p class="muted">No scores yet.</p>'}`}).join("")}
- <p class="muted small" style="margin-top:18px">One prize per person: if someone already has a prize written, give the next prize to the next player.</p>`}
-document.addEventListener("submit",async e=>{if(!e.target||e.target.id!=="fzRoundsForm")return;e.preventDefault();
- const rows=[1,2,3].map(n=>({round:n,starts_at:new Date($(`[data-fzs="${n}"]`).value).toISOString(),ends_at:new Date($(`[data-fze="${n}"]`).value).toISOString()}));
- const {error}=await SB.rpc("fiesta_admin_rounds",{p_rounds:rows});if(error){say($("#fzRMsg"),errText(error));return}toast("Round times saved");paneFiesta()});
-document.addEventListener("click",async e=>{const b=e.target.closest("[data-fzpsave]");if(!b)return;const id=b.dataset.fzpsave,v=document.querySelector(`[data-fzprize="${id}"]`).value;
- const {error}=await SB.rpc("fiesta_admin_prize",{p_user:id,p_prize:v});if(error){toast(errText(error));return}toast(v.trim()?"Prize saved":"Prize removed")});
+const money=n=>{n=+n||0;return n>=1e6?"€"+(n/1e6).toFixed(1)+"M":n>=1e3?"€"+Math.round(n/1e3)+"K":"€"+Math.round(n)};
+const medal=i=>i===0?"🥇":i===1?"🥈":i===2?"🥉":String(i+1);
+const _rt=renderTeam;renderTeam=function(){const want=teamTab;_rt();if(!ST.team)return;const bar=$("#teamBody .tabs");if(!bar||bar.querySelector('[data-tt="archive"]'))return;
+ bar.insertAdjacentHTML("beforeend",`<button type="button" class="tab" role="tab" aria-selected="false" data-tt="archive">📁 Archive</button>`);
+ if(want==="archive"){teamTab="archive";bar.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.tt==="archive"));paneArchive()}};
+const tbl=(head,rows)=>`<div class="arc-t"><table><thead><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.join("")}</tbody></table></div>`;
+function fiestaHTML(d){const T=d.tower||[],E=d.empire||[],F=d.faculties||[],K=d.tickets||[];const fin=T.find(r=>r.round===3)||T[T.length-1];
+ let h="";
+ if(fin&&fin.board&&fin.board.length)h+=`<div class="arc-pod">${fin.board.slice(0,3).map((x,i)=>`<div class="arc-p p${i+1}"><span>${medal(i)}</span><b>${esc(x.who)}</b><small>${x.best} pts</small></div>`).join("")}</div>`;
+ h+=`<h4>🏗️ Tower Cup</h4>`+T.map(r=>`<details class="arc-d"${r.round===3?" open":""}><summary><b>${esc(r.name)}</b><span>${r.players} ${r.players===1?"player":"players"}</span></summary>${tbl(["#","Player","Best"],(r.board||[]).map((x,i)=>`<tr><td>${medal(i)}</td><td>${esc(x.who)}</td><td class="p">${x.best}</td></tr>`))}</details>`).join("");
+ h+=`<h4>🚀 Startup Empire</h4><details class="arc-d" open><summary><b>Final ranking</b><span>${E.length} players</span></summary>${tbl(["#","Player","Faculty","Valuation"],E.map((x,i)=>`<tr><td>${medal(i)}</td><td>${esc(x.who)}</td><td>${esc(x.faculty)}</td><td class="p">${money(x.value)}</td></tr>`))}</details>`;
+ if(F.length)h+=`<details class="arc-d"><summary><b>Faculty war</b><span>🏆 ${esc(F[0].faculty)}</span></summary>${tbl(["#","Faculty","Players","Total"],F.map((x,i)=>`<tr><td>${medal(i)}</td><td>${esc(x.faculty)}</td><td>${x.players}</td><td class="p">${money(x.value)}</td></tr>`))}</details>`;
+ if(K.length)h+=`<details class="arc-d"><summary><b>Prizes won in the game</b><span>${K.length} tickets</span></summary>${tbl(["Player","Prize","How","Code"],K.map(x=>`<tr><td>${esc(x.who)}</td><td>${esc(x.emoji||"")} ${esc(x.prize)}</td><td>${esc(x.from)}</td><td><code>${esc(x.code)}</code>${x.given?" ✓":""}</td></tr>`))}<p class="muted small" style="margin:8px 0 0">✓ = marked as given at the stand.</p></details>`;
+ return h}
+async function paneArchive(){loading();const {data,error}=await SB.rpc("team_archive_list");if(error)return paneErr(error);
+ tpane().innerHTML=`<p class="muted" style="margin:0 0 16px">A record of past REL events and who won. Only the board can see it.</p>`+(data.length?data.map(a=>`<article class="arc"><header><span class="arc-date">${new Date(a.happened_on+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"})}</span><h3>${esc(a.title)}</h3>${a.summary?`<p class="muted">${esc(a.summary)}</p>`:""}</header>${a.data&&(a.data.tower||a.data.empire)?fiestaHTML(a.data):""}</article>`).join(""):'<div class="empty"><p>Nothing archived yet.</p></div>')}
 })();
 
 /* ===================== Fiesta Day: Startup Empire ===================== */
