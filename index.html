@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-IjXjlzl9t4x8EgFXRUfNYrcT8RU24CDH7/OyFKo/piI='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-3uALB3jSzdsb76RVQbj1Gui82m64sH5NrxoxaLX2PwY='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1673,7 +1673,7 @@ body.fiesta-day::before{content:"";position:fixed;top:0;left:0;right:0;height:4p
 <div class="row"><button type="button" class="btn primary" id="gDiveGo">Start today&#39;s dive</button></div>
 </div></div>
 <div>
-<ul class="rules"><li>7 questions, one typed answer each, 20 seconds per question.</li><li>Any correct answer counts. The rarer it is, the deeper you go: &#129723; 10, &#128031; 25, &#128025; 50, &#128011; 100 points.</li><li>Each question appears only when you reach it. Leaving in the middle of a question counts as a miss.</li></ul>
+<ul class="rules"><li>7 questions, one typed answer each, 20 seconds per question.</li><li>Any correct answer counts. The rarer it is, the deeper you go: &#128167; 10, &#128031; 25, &#128025; 50, &#128011; 100 points.</li><li>Each question appears only when you reach it. Leaving in the middle of a question counts as a miss.</li></ul>
 <div class="qstat"><div><span class="muted small">Depth</span><br><b data-gtime="dive">0 m</b></div><div><span class="muted small">Your streak</span><br><b data-gstreak="dive">0 days</b></div><div><span class="muted small">Your best</span><br><b data-gbest="dive">&ndash;</b></div></div>
 <p class="g2-msg" data-gmsg="dive" role="status" aria-live="polite"></p>
 <div class="row"><button type="button" class="btn primary" data-gshare="dive" hidden>Copy my result</button></div>
@@ -6252,7 +6252,7 @@ const nbrs=i=>{const [r,c]=rc(i),o=[];if(r>0)o.push(i-N);if(r<N-1)o.push(i+N);if
   [100,"Kibbeh Nayyeh","kebbeh nayyeh"],[100,"Halawet el Jibn"],[100,"Sfouf"],[100,"Maamoul"],[100,"Makanek"],
   [100,"Sujuk","soujouk"],[100,"Batata Harra"],[100,"Loubieh","loubieh bi zeit"],[100,"Rakakat"]]}
 ];
- const PER=7,SECS=20,TIERS={0:["⚪","Missed"],10:["🫧","Shallow"],25:["🐟","Reef"],50:["🐙","Deep"],100:["🐋","Abyss"]};
+ const PER=7,SECS=20,TIERS={0:["⚪","Missed"],10:["💧","Shallow"],25:["🐟","Reef"],50:["🐙","Deep"],100:["🐋","Abyss"]};
  const TXT={10:"A common answer.",25:"Less common. Nice.",50:"Rare find!",100:"One of the rarest answers!"};
  const nm=x=>String(x).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/['’.]/g,"").replace(/&/g," and ").replace(/[^a-z0-9+# ]+/g," ").replace(/\s+/g," ").trim().replace(/^(the|a|an) /,"");
  BANK.forEach(q=>q.a=q.a.map(e=>({p:e[0],show:e[1],al:e.slice(1).map(nm)})));
