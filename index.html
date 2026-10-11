@@ -794,6 +794,10 @@ a.ptn:hover{border-color:var(--fill)}
 .fact-in{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end}
 .fact-k{font:600 .8rem var(--f-body);letter-spacing:.22em;text-transform:uppercase;color:var(--brand-ink);margin:0 0 12px}
 .fact-t{font:500 clamp(1.5rem,3vw,2.3rem)/1.2 var(--f-display);letter-spacing:-.015em;margin:0;max-width:26em}
+.talk-why{max-width:720px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin:4px 0 18px}
+.talk-why h3{margin:0 0 8px;font:700 1.25rem var(--f-display),sans-serif}
+.talk-why p{margin:0 0 10px;line-height:1.55}
+.talk-why ul{margin:0;padding-left:20px;display:grid;gap:6px;line-height:1.5}
 .talk-card{background:var(--band);color:var(--on-band);border-radius:16px;padding:32px;margin:22px 0;max-width:720px}
 .talk-kind{display:inline-block;font:600 .78rem var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin-bottom:12px}
 .talk-text{font:500 clamp(1.5rem,3vw,2.2rem)/1.2 var(--f-display);letter-spacing:-.015em;margin:0}
@@ -1651,7 +1655,7 @@ body.fiesta-day::before{content:"";position:fixed;top:0;left:0;right:0;height:4p
 <div class="qz-o" id="qzO" role="group" aria-label="Answers"></div>
 <div class="bq-res" id="qzR" hidden><p class="bq-v" id="qzV"></p><p class="bq-e" id="qzE" role="status" aria-live="polite"></p><p class="muted small bq-next" id="qzNext"></p></div>
 </div></div>
-<div class="pane" data-pane="talk" data-label="1-minute talk"><p class="muted" style="max-width:38em">A new topic every day. Speak about it for one minute, alone or with a friend. The timer is optional. Not your topic? Pick another one.</p>
+<div class="pane" data-pane="talk" data-label="1-minute talk"><div class="talk-why"><h3>Why one minute a day?</h3><p>Speaking for one minute without stopping is one of the best exercises for public speaking. It trains you to think on your feet, organize your ideas fast and sound confident, the same skills you need for a pitch, an interview, a presentation or a case competition.</p><ul><li><b>Do it daily.</b> A few minutes a day builds confidence faster than one long session a month.</li><li><b>Keep a simple shape.</b> Your point, one reason or example, then a short conclusion.</li><li><b>Don&#39;t stop.</b> No &ldquo;umm&rdquo;, no restarting. Keep talking until the timer ends.</li><li><b>Record yourself or practice with a friend</b>, then try the same topic again and notice how much better it gets.</li></ul></div><p class="muted" style="max-width:38em">A new topic every day. The timer is optional. Not your topic? Pick another one.</p>
 <div class="talk-card"><span class="talk-kind" id="talkKind"></span><p class="talk-text" id="talkText"></p></div>
 <div class="row"><button type="button" class="btn primary" id="talkStart">Start 1-minute timer</button><button type="button" class="btn" id="talkNew">Another topic</button><button type="button" class="btn" id="talkToday">Today's topic</button></div>
 <div class="talk-timer" id="talkTimer" aria-live="polite">1:00</div>
