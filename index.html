@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-rks904Pidr1QZ+ljlixmM4OsDoiFEL2ssiB+i9X8Nnw='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-je4TS/ubHBCFuXx3mY4fSZlytp4AbzHPxutwt3/BXw0='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1176,6 +1176,11 @@ body.lights::after{content:"";position:fixed;inset:0;pointer-events:none;z-index
 .gate-ov p{margin:0;font-weight:600;color:var(--ink)}
 .gate-go{font-size:1.15rem;padding:14px 30px}
 /* Unicorn 2048 */
+.gom{max-width:720px;margin:0 0 20px;padding:18px 22px;border-radius:16px;background:var(--band);color:var(--on-band);display:grid;gap:4px}
+.gom-tag{font:600 .75rem var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:var(--rose)}
+.gom-name{margin:0;font:700 clamp(1.4rem,3.2vw,1.9rem)/1.15 var(--f-display),sans-serif;color:var(--on-band)}
+.gom-sub{margin:0;opacity:.85;line-height:1.5}
+.tab[data-sub="unicorn"]{color:var(--brand-ink)}
 .u2048{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:8px;background:#E4DBCF;border-radius:14px;max-width:440px;aspect-ratio:1;touch-action:none;user-select:none}
 .u-t{background:#F1ECE3;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.05;text-align:center;padding:2px}
 .u-t b{font:700 clamp(1rem,4.5vw,1.6rem) var(--f-body)}
@@ -1661,7 +1666,7 @@ body.fiesta-day::before{content:"";position:fixed;top:0;left:0;right:0;height:4p
 <div class="talk-timer" id="talkTimer" aria-live="polite">1:00</div>
 <p class="muted" id="talkTips" style="max-width:38em"></p></div>
 </div></section></div>
-<div class="pg" data-pg="play" hidden><section id="play" class="sec alt"><div class="wrap"><div class="sec-head"><h2>Play</h2><p>Six puzzles every day, the same for everyone. Keep your streak going.</p></div><div class="pane" data-pane="puzzle" data-label="Crowns"><div class="qwrap">
+<div class="pg" data-pg="play" hidden><section id="play" class="sec alt"><div class="wrap"><div class="sec-head"><h2>Play</h2><p>Six puzzles every day, the same for everyone, plus a new game of the month. Keep your streak going.</p></div><div class="pane" data-pane="puzzle" data-label="Crowns"><div class="qwrap">
 <div><div id="qgrid" aria-label="Puzzle board"></div></div>
 <div>
 <ul class="rules"><li>Put one crown in every row, every column and every colored region.</li><li>No two crowns can touch, not even diagonally.</li><li>Tap a square once for an ×, twice for a crown, three times to clear it.</li></ul>
@@ -1729,14 +1734,14 @@ body.fiesta-day::before{content:"";position:fixed;top:0;left:0;right:0;height:4p
 <div class="g2-top" data-gafter="dive" hidden><h3>Today&#39;s ranking</h3><table class="lb"><tbody data-gboard="dive"></tbody></table></div>
 </div>
 </div>
-</div><div class="pane" data-pane="unicorn" data-label="Unicorn 2048"><div class="qwrap g2">
+</div><div class="pane" data-pane="unicorn" data-label="&#9733; Game of the month"><div class="gom" id="gomBanner"><span class="gom-tag">Game of the month</span><h3 class="gom-name" id="gomName">Unicorn 2048</h3><p class="gom-sub" id="gomSub">A new game takes this spot every month. The ranking starts again on the 1st.</p></div><div class="qwrap g2">
 <div><div class="u2048" id="u2048" aria-label="Unicorn 2048 board" tabindex="0"></div></div>
 <div>
 <ul class="rules"><li>Play as many times as you want, any time.</li><li>Swipe, or use the arrow keys, to slide all tiles.</li><li>Two equal tiles merge: Idea + Idea = Plan, then MVP, Users, Seed, Series A... all the way to Unicorn &#129412;.</li><li>The game ends when the board is full and nothing can merge.</li></ul>
 <div class="qstat"><div><span class="muted small">Score</span><br><b id="u2048Score">0</b></div><div><span class="muted small">Your best</span><br><b id="u2048Best">0</b></div></div>
 <p class="g2-msg" id="u2048Msg" role="status" aria-live="polite"></p>
 <div class="row"><button type="button" class="btn primary" id="u2048New">New game</button></div>
-<div class="g2-top"><h3>All-time high scores</h3><table class="lb"><tbody id="u2048Top"><tr><td class="muted">Loading...</td></tr></tbody></table></div>
+<div class="g2-top"><h3 id="u2048TopH">This month&#39;s high scores</h3><table class="lb"><tbody id="u2048Top"><tr><td class="muted">Loading...</td></tr></tbody></table></div>
 </div>
 </div>
 </div></div></section></div>
@@ -6462,6 +6467,15 @@ function relGate(board,onStart,game){if(!board||!onStart)return;if(board.parentN
 
 (function(){
 /* ---------- Unicorn 2048: play as much as you want ---------- */
+/* ===== GAME OF THE MONTH =====
+   Fixed games stay forever. One game changes every month.
+   To change it: build the new game in the "unicorn" pane, then update GOM below (key = short id, letters/numbers only). */
+const GOM={key:"u2048",name:"Unicorn 2048",month:"2026-10",blurb:"Slide the tiles and merge equal ones: Idea + Idea = Plan, all the way to Unicorn."};
+const GOM_MONTH=(()=>{try{return new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Beirut",year:"numeric",month:"2-digit"}).format(new Date()).slice(0,7)}catch(e){return new Date().toISOString().slice(0,7)}})();
+const GOM_BOARD=GOM.key+"-"+GOM_MONTH;
+(function(){const n=$("#gomName"),sb=$("#gomSub");if(!n)return;const mName=new Date(GOM_MONTH+"-15T12:00:00Z").toLocaleString("en-US",{month:"long",timeZone:"UTC"});
+ const [y,m]=GOM_MONTH.split("-").map(Number),end=Date.UTC(y,m,1)-3*3600e3,days=Math.max(1,Math.ceil((end-Date.now())/864e5));
+ n.textContent=mName+": "+GOM.name;sb.textContent=GOM.blurb+" "+days+(days===1?" day":" days")+" left this month. A new game takes this spot on the 1st, and the ranking starts again."})();
 const box=$("#u2048");if(box){
  const LBL={2:"Idea",4:"Plan",8:"MVP",16:"Users",32:"Seed",64:"Series A",128:"Series B",256:"Scale",512:"IPO",1024:"Unicorn \ud83e\udd84",2048:"Decacorn",4096:"Legend"};
  let g,score,best=+(localStorage.getItem("rel-u2048-best")||0),over=false,won=false;
@@ -6478,9 +6492,9 @@ const box=$("#u2048");if(box){
   if(!won&&g.includes(1024)){won=true;msg.textContent="\ud83e\udd84 Unicorn! Keep going for a Decacorn.";const r=box.getBoundingClientRect();if(typeof confettiBurst==="function")confettiBurst(r.left+r.width/2,r.top+r.height/2)}
   const stuck=!empty().length&&![0,1,2,3].some(r=>[0,1,2].some(c=>g[r*4+c]===g[r*4+c+1]||g[c*4+r]===g[(c+1)*4+r]));
   if(stuck){over=true;msg.textContent="Game over. Score: "+score+". Press New game to try again.";saveScore()}}
- async function saveScore(){if(!SB||!ST.member||score<1)return;try{const {error}=await SB.rpc("submit_arcade_score",{p_game:"u2048",p_score:score});if(!error)loadTop()}catch(e){}}
- async function loadTop(){const tb=$("#u2048Top");if(!tb||!SB)return;try{const {data,error}=await SB.rpc("arcade_board",{p_game:"u2048"});if(error)throw error;
-  tb.innerHTML=(data&&data.length)?data.map((r,i)=>`<tr><td class="n">${i+1}</td><td><span class="lb-who">${avatar(r.full_name,r.photo_path,false,r.rel_id)}${esc(r.full_name)}</span></td><td class="p">${r.best}</td></tr>`).join(""):'<tr><td colspan="3" class="muted">No scores yet. Be the first.</td></tr>'}catch(e){tb.innerHTML='<tr><td colspan="3" class="muted">The high scores open soon.</td></tr>'}}
+ async function saveScore(){if(!SB||!ST.member||score<1)return;try{const {error}=await SB.rpc("submit_arcade_score",{p_game:GOM_BOARD,p_score:score});SB.rpc("submit_arcade_score",{p_game:"u2048",p_score:score}).then(()=>{},()=>{});if(!error)loadTop()}catch(e){}}
+ async function loadTop(){const tb=$("#u2048Top");if(!tb||!SB)return;try{const {data,error}=await SB.rpc("arcade_board",{p_game:GOM_BOARD});if(error)throw error;
+  tb.innerHTML=(data&&data.length)?data.map((r,i)=>`<tr><td class="n">${i+1}</td><td><span class="lb-who">${avatar(r.full_name,r.photo_path,false,r.rel_id)}${esc(r.full_name)}</span></td><td class="p">${r.best}</td></tr>`).join(""):'<tr><td colspan="3" class="muted">No scores yet this month. Be the first.</td></tr>'}catch(e){tb.innerHTML='<tr><td colspan="3" class="muted">The high scores open soon.</td></tr>'}}
  document.addEventListener("keydown",e=>{const pane=box.closest(".pane");if(!pane||pane.hidden||pane.offsetParent===null)return;if(e.target.closest("input,textarea,select"))return;
   const d={ArrowLeft:"L",ArrowRight:"R",ArrowUp:"U",ArrowDown:"D"}[e.key];if(d){e.preventDefault();move(d)}});
  let sx=0,sy=0;box.addEventListener("touchstart",e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
