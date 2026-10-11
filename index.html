@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-oOaVLwC9dVrYj6hOyE9wTsM7rOtYbC7o8gbNO/MOhcE='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-TMmcWYRBBjeMIKbPnBNj9cL6beW+vD+xS4GIQNBbJG8='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1579,6 +1579,29 @@ a,button,.tab,.chip,.btn,[role=button],label{-webkit-tap-highlight-color:transpa
 @media (prefers-reduced-motion:reduce){.tabbar,.sheet-card,.sheet-scrim,.pg .tabs.subtabs{transition:none}}
 @media (max-width:720px){.pg[data-pg="play"] .gchips{display:none}}
 .pg .tabs.subtabs .tab.gdone::before{content:"\2713\00a0";font-weight:800}
+
+/* REL so far + sponsors (home) */
+.wins{padding:56px 0;background:var(--bg)}
+.wins-k{font:600 .75rem var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:var(--brand-ink);margin:0 0 16px}
+.wins-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.win{display:flex;flex-direction:column;gap:6px;padding:20px;border:1px solid var(--line);border-radius:16px;background:var(--surface);color:var(--ink);text-decoration:none}
+a.win:active{transform:scale(.98)}
+.win b{font:500 clamp(2.2rem,5vw,3.2rem)/1 var(--f-display);letter-spacing:-.03em;color:var(--brand-ink)}
+.win span{color:var(--muted);font-size:.95rem;line-height:1.35}
+.win-hl{background:var(--band);border-color:var(--band)}.win-hl b{color:var(--on-band)}.win-hl span{color:var(--rose)}
+.spons{margin-top:34px;display:grid;gap:14px;justify-items:start}
+.spons .wins-k{margin:0}
+.spons-track{width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.spons-row{display:flex;gap:12px;width:max-content;animation:sponsMove 28s linear infinite}
+.spons-row span{flex:none;padding:12px 22px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font:600 1rem var(--f-body),sans-serif;color:var(--ink);white-space:nowrap}
+@keyframes sponsMove{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.spons-row{animation:none;flex-wrap:wrap;width:auto}}
+@media (max-width:720px){.wins{padding:36px 0}.wins-grid{grid-template-columns:1fr 1fr;gap:10px}.win{padding:16px}.win span{font-size:.88rem}}
+/* footer social buttons: roomy, with icons */
+.soc{display:grid!important;grid-template-columns:repeat(3,max-content);gap:10px}
+@media (max-width:560px){.wrap.foot>div{flex:1 1 100%;min-width:0}.soc{grid-template-columns:1fr;max-width:none}.soc a,.soc button{justify-content:flex-start;padding:10px 18px!important}}
+.soc a,.soc button{display:inline-flex!important;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:10px 16px!important;font-size:15px!important;line-height:1.2;white-space:nowrap}
+.soc svg{width:18px;height:18px;flex:none;fill:currentColor}
 </style>
 </head>
 <body>
@@ -1630,6 +1653,18 @@ a,button,.tab,.chip,.btn,[role=button],label{-webkit-tap-highlight-color:transpa
 <div class="num" aria-label="6 board members"><b data-count="6">0</b><span>board members running the year</span></div>
 </div></div></section>
 
+<section class="wins" aria-label="REL so far"><div class="wrap">
+<p class="wins-k">REL so far, 2026&ndash;27</p>
+<div class="wins-grid">
+<a class="win" href="https://www.instagram.com/relulfg" target="_blank" rel="noopener noreferrer" data-soclink="Instagram"><b>1,000+</b><span>followers on Instagram</span></a>
+<a class="win" href="#community" data-soclink="WhatsApp"><b>450+</b><span>students in our WhatsApp community</span></a>
+<div class="win"><b>32</b><span>players in the Fiesta Day ping pong tournament</span></div>
+<div class="win win-hl"><b>#1</b><span>best and most active club at Fiesta Day</span></div>
+</div>
+<div class="spons"><p class="wins-k">Thank you to our Fiesta Day sponsors</p>
+<div class="spons-track" id="sponsTrack"><div class="spons-row"><span>Almaza</span><span>VOX Cinemas</span><span>Jungle Juice</span><span>The Laser Clinic</span><span>Fix It</span><span>Padel Club</span></div></div>
+<a class="btn sm" href="#partner">Become a partner</a></div>
+</div></section>
 <section class="fact" aria-label="Fact of the day"><div class="wrap fact-in"><div><p class="fact-k">Fact of the day</p><p class="fact-t" id="factText"></p></div><p class="muted small" id="factNext"></p></div></section>
 
 <section class="spot-home" aria-label="Startup of the week" hidden><div class="wrap spot-in"><div><p class="fact-k">Startup of the week</p><h3 id="spotHomeName"></h3><p id="spotHomeOne" class="lead2" style="margin:0"></p></div><div class="row"><a class="btn primary" href="#startups">Open the Startup Hub</a><a class="btn" href="#startups" data-openlab>Try the Idea Lab</a></div></div></section>
@@ -1972,7 +2007,10 @@ function gbtn(key,label,cls){return `<a class="btn ${cls||"primary"}" href="#joi
 document.addEventListener("click",e=>{if(e.target.closest("[data-pending]"))toast("This form is not connected yet. The board will add the link soon.")});
 const gb=(sel,key,label,cls)=>{const el=$(sel);if(el)el.innerHTML=gbtn(key,label,cls)};
 gb("#ambBtn","ambassador","Become an ambassador");gb("#nlBtn","newsletter","Subscribe to the newsletter");$("#pitchBtn").innerHTML='<a class="btn primary" href="#partner">Work with REL</a>';gb("#voteBtn","vote","See the current vote");gb("#askBtn","question","Ask a question");gb("#recBtn","recommendation","Give a recommendation");
-$("#soc").innerHTML=CONFIG.socials.map(s=>s.u?`<a href="${esc(s.u)}" target="_blank" rel="noopener noreferrer">${esc(s.n)}</a>`:`<button data-pending="1">${esc(s.n)}</button>`).join("");
+const SOC_I={Instagram:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.2.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 4 4 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zm0 4.8a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.2-9.6a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg>',LinkedIn:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6v11.5z"/></svg>',WhatsApp:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.8.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zM12 0a12 12 0 0 0-10.3 18L0 24l6.2-1.6A12 12 0 1 0 12 0z"/></svg>'};
+$("#soc").innerHTML=CONFIG.socials.map(s=>s.u?`<a href="${esc(s.u)}" target="_blank" rel="noopener noreferrer">${SOC_I[s.n]||""}<span>${esc(s.n)}</span></a>`:`<button data-pending="1">${SOC_I[s.n]||""}<span>${esc(s.n)}</span></button>`).join("");
+(function(){const ig=(CONFIG.socials.find(x=>x.n==="Instagram")||{}).u,wa=(CONFIG.socials.find(x=>x.n==="WhatsApp")||{}).u;document.querySelectorAll("[data-soclink]").forEach(a=>{const u=a.dataset.soclink==="Instagram"?ig:wa;if(u){a.href=u;a.target="_blank";a.rel="noopener noreferrer"}})})();
+(function(){const r=document.querySelector("#sponsTrack .spons-row");if(r&&!matchMedia("(prefers-reduced-motion: reduce)").matches)r.innerHTML+=r.innerHTML.replace(/<span>/g,'<span aria-hidden="true">')})();
 $("#yr").textContent=new Date().getFullYear();
 $("#menuBtn").addEventListener("click",()=>{const o=$("#menu").classList.toggle("open");$("#menuBtn").setAttribute("aria-expanded",o)});
 $$("#menu a").forEach(a=>a.addEventListener("click",()=>{$("#menu").classList.remove("open");$("#menuBtn").setAttribute("aria-expanded","false")}));
@@ -5310,7 +5348,7 @@ function drawMap(){const c={x:430,y:225},rh=54,rn=44,RX=205,RY=150;
  const amb=RECORDS.filter(r=>r.type==="Ambassador").length||AMBS.length;
  const ig=(CONFIG.socials.find(s=>s.n==="Instagram")||{}).u,wa=(CONFIG.socials.find(s=>s.n==="WhatsApp")||{}).u;
  /* Members and Partners return here once those numbers are strong; for now two numbers we can already be proud of. */
- const nodes=[["Board",BOARD.length,"#board"],["Ambassadors",amb,"#ambs"],["Reach","900+",ig],["Community","450+",wa],["Speakers",SPEAKERS.length,"#speakers"]];
+ const nodes=[["Board",BOARD.length,"#board"],["Ambassadors",amb,"#ambs"],["Reach","1,000+",ig],["Community","450+",wa],["Speakers",SPEAKERS.length,"#speakers"]];
  let lines="",gs="",list="";
  nodes.forEach((n,i)=>{const a=(-90+i*72)*Math.PI/180,x=c.x+RX*Math.cos(a),y=c.y+RY*Math.sin(a),dx=x-c.x,dy=y-c.y,len=Math.hypot(dx,dy),ux=dx/len,uy=dy/len;
   lines+=`<line class="ln" x1="${(c.x+ux*rh).toFixed(1)}" y1="${(c.y+uy*rh).toFixed(1)}" x2="${(x-ux*rn).toFixed(1)}" y2="${(y-uy*rn).toFixed(1)}"/>`;
