@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-TMmcWYRBBjeMIKbPnBNj9cL6beW+vD+xS4GIQNBbJG8='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-8sPHCvk9Nkx0lD/iB8Cwy9H4lf7TE5IHfiSvlm+vcGk='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1602,6 +1602,14 @@ a.win:active{transform:scale(.98)}
 @media (max-width:560px){.wrap.foot>div{flex:1 1 100%;min-width:0}.soc{grid-template-columns:1fr;max-width:none}.soc a,.soc button{justify-content:flex-start;padding:10px 18px!important}}
 .soc a,.soc button{display:inline-flex!important;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:10px 16px!important;font-size:15px!important;line-height:1.2;white-space:nowrap}
 .soc svg{width:18px;height:18px;flex:none;fill:currentColor}
+
+.spons-row .lg-tile{flex:none;display:flex;align-items:center;justify-content:center;width:150px;height:84px;padding:10px 14px;border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}
+.spons-row .lg-tile img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.lg-fixit,.ptn img[src$="/fixit.png"]{background:#E7D6FA!important}
+.lg-jungle-juice,.ptn img[src$="/jungle-juice.png"]{background:#000!important}
+.lg-padel-club,.ptn img[src$="/padel-club.png"]{background:#E52122!important}
+.ptn img{width:100%;height:84px;max-height:none!important;object-fit:contain;background:#fff;border-radius:10px;padding:10px;border:1px solid var(--line)}
+@media (max-width:720px){.spons-row .lg-tile{width:124px;height:72px;padding:8px 10px}.ptn-list{grid-template-columns:1fr 1fr!important;gap:10px}.ptn{padding:12px}.ptn img{height:70px}.ptn .muted{font-size:.8rem}}
 </style>
 </head>
 <body>
@@ -1653,16 +1661,16 @@ a.win:active{transform:scale(.98)}
 <div class="num" aria-label="6 board members"><b data-count="6">0</b><span>board members running the year</span></div>
 </div></div></section>
 
-<section class="wins" aria-label="REL so far"><div class="wrap">
-<p class="wins-k">REL so far, 2026&ndash;27</p>
+<section class="wins" aria-label="REL in numbers"><div class="wrap">
+<p class="wins-k">REL in numbers</p>
 <div class="wins-grid">
+<a class="win win-hl" href="#join" data-goto="member"><b id="winMembers">90+</b><span>registered members</span></a>
 <a class="win" href="https://www.instagram.com/relulfg" target="_blank" rel="noopener noreferrer" data-soclink="Instagram"><b>1,000+</b><span>followers on Instagram</span></a>
-<a class="win" href="#community" data-soclink="WhatsApp"><b>450+</b><span>students in our WhatsApp community</span></a>
-<div class="win"><b>32</b><span>players in the Fiesta Day ping pong tournament</span></div>
-<div class="win win-hl"><b>#1</b><span>best and most active club at Fiesta Day</span></div>
+<a class="win" href="https://chat.whatsapp.com/Kph5TBt947mDEe8bfAvUQM" target="_blank" rel="noopener noreferrer" data-soclink="WhatsApp"><b>450+</b><span>students in our WhatsApp community</span></a>
+<a class="win" href="#community"><b id="winPartners">8</b><span>partners and sponsors</span></a>
 </div>
-<div class="spons"><p class="wins-k">Thank you to our Fiesta Day sponsors</p>
-<div class="spons-track" id="sponsTrack"><div class="spons-row"><span>Almaza</span><span>VOX Cinemas</span><span>Jungle Juice</span><span>The Laser Clinic</span><span>Fix It</span><span>Padel Club</span></div></div>
+<div class="spons"><p class="wins-k">Thank you to our partners and sponsors</p>
+<div class="spons-track" id="sponsTrack"><div class="spons-row"><span class="lg-tile lg-almaza"><img src="/partners/almaza.png" alt="Almaza" loading="lazy" decoding="async"></span><span class="lg-tile lg-vox"><img src="/partners/vox.png" alt="VOX Cinemas" loading="lazy" decoding="async"></span><span class="lg-tile lg-jungle-juice"><img src="/partners/jungle-juice.png" alt="Jungle Juice" loading="lazy" decoding="async"></span><span class="lg-tile lg-tonino"><img src="/partners/tonino.png" alt="Tonino Crepes &amp; Waffles" loading="lazy" decoding="async"></span><span class="lg-tile lg-ayat"><img src="/partners/ayat.png" alt="AYAT" loading="lazy" decoding="async"></span><span class="lg-tile lg-laser-clinic"><img src="/partners/laser-clinic.png" alt="The Laser Clinic" loading="lazy" decoding="async"></span><span class="lg-tile lg-fixit"><img src="/partners/fixit.png" alt="Fix It" loading="lazy" decoding="async"></span><span class="lg-tile lg-padel-club"><img src="/partners/padel-club.png" alt="Padel Club" loading="lazy" decoding="async"></span></div></div>
 <a class="btn sm" href="#partner">Become a partner</a></div>
 </div></section>
 <section class="fact" aria-label="Fact of the day"><div class="wrap fact-in"><div><p class="fact-k">Fact of the day</p><p class="fact-t" id="factText"></p></div><p class="muted small" id="factNext"></p></div></section>
@@ -2010,7 +2018,7 @@ gb("#ambBtn","ambassador","Become an ambassador");gb("#nlBtn","newsletter","Subs
 const SOC_I={Instagram:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.2.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 4 4 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zm0 4.8a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm5.2-9.6a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg>',LinkedIn:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6c.5-.9 1.6-1.8 3.4-1.8 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.5H3.5V9h3.6v11.5z"/></svg>',WhatsApp:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.8.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zM12 0a12 12 0 0 0-10.3 18L0 24l6.2-1.6A12 12 0 1 0 12 0z"/></svg>'};
 $("#soc").innerHTML=CONFIG.socials.map(s=>s.u?`<a href="${esc(s.u)}" target="_blank" rel="noopener noreferrer">${SOC_I[s.n]||""}<span>${esc(s.n)}</span></a>`:`<button data-pending="1">${SOC_I[s.n]||""}<span>${esc(s.n)}</span></button>`).join("");
 (function(){const ig=(CONFIG.socials.find(x=>x.n==="Instagram")||{}).u,wa=(CONFIG.socials.find(x=>x.n==="WhatsApp")||{}).u;document.querySelectorAll("[data-soclink]").forEach(a=>{const u=a.dataset.soclink==="Instagram"?ig:wa;if(u){a.href=u;a.target="_blank";a.rel="noopener noreferrer"}})})();
-(function(){const r=document.querySelector("#sponsTrack .spons-row");if(r&&!matchMedia("(prefers-reduced-motion: reduce)").matches)r.innerHTML+=r.innerHTML.replace(/<span>/g,'<span aria-hidden="true">')})();
+(function(){const r=document.querySelector("#sponsTrack .spons-row");if(r&&!matchMedia("(prefers-reduced-motion: reduce)").matches)r.innerHTML+=r.innerHTML.replace(/<span class=/g,'<span aria-hidden="true" class=').replace(/alt="[^"]*"/g,'alt=""')})();
 $("#yr").textContent=new Date().getFullYear();
 $("#menuBtn").addEventListener("click",()=>{const o=$("#menu").classList.toggle("open");$("#menuBtn").setAttribute("aria-expanded",o)});
 $$("#menu a").forEach(a=>a.addEventListener("click",()=>{$("#menu").classList.remove("open");$("#menuBtn").setAttribute("aria-expanded","false")}));
@@ -4630,7 +4638,7 @@ async function refreshPublic(){if(!SB)return;
   if(!rs.error&&rs.data){DBRES=rs.data.map(mapRes);if(typeof drawRes==="function")drawRes()}
   if(!dc.error&&dc.data&&dc.data.length){DOCS.length=0;DOCS.push(...dc.data.map(mapDoc))}
   if(!pt.error&&pt.data){PARTNERS.length=0;PARTNERS.push(...pt.data.map(mapPartner))}
-  drawSpeakers();drawDocs();drawPartners();if(typeof refreshWorkData==="function")refreshWorkData();
+  drawSpeakers();drawDocs();drawPartners();try{const wp=document.getElementById("winPartners");if(wp&&PARTNERS.length)wp.textContent=PARTNERS.length}catch(e){}if(typeof refreshWorkData==="function")refreshWorkData();
   if(!ss.error&&ss.data)SPOT=ss.data.map(mapSpot);drawSpot();drawStartupEvents();loadIdeas();
   prepEvents();const k=($("[data-ev][aria-selected=true]")||{dataset:{ev:"up"}}).dataset.ev;showEv(k);drawCal();homeNews();tick();drawMem();loadBoards();drawMap();updateChip()}catch(err){}}
 
@@ -4940,7 +4948,8 @@ document.addEventListener("submit",async e=>{const f=e.target;if(!f||f.id!=="ctF
 const safeUrl=u=>{u=String(u||"").trim();return /^(https?:\/\/|mailto:|tel:|embedded:)/i.test(u)?u:""};
 const mapSpk=r=>({name:r.name,title:r.title||"",topic:r.topic||"",bio:r.bio||"",date:r.talk_date||"",photo:r.photo_path?mediaUrl(r.photo_path):""});
 const mapDoc=r=>({t:r.title,k:r.kind||"",u:safeUrl(fileHref(r.url,r.file_path))});
-const mapPartner=r=>({name:r.name,url:safeUrl(r.url),note:r.note||"",logo:r.logo_path?mediaUrl(r.logo_path):""});
+const PARTNER_LOGOS={"almaza":"almaza","vox cinemas":"vox","jungle juice":"jungle-juice","tonino crepes & waffles":"tonino","tonino":"tonino","ayat":"ayat","the laser clinic":"laser-clinic","fix it":"fixit","fixit":"fixit","padel club":"padel-club"};
+const mapPartner=r=>{const lp=r.logo_path||"",k=PARTNER_LOGOS[String(r.name||"").trim().toLowerCase()];return {name:r.name,url:safeUrl(r.url),note:r.note||"",logo:lp?(lp.charAt(0)==="/"?lp:mediaUrl(lp)):(k?"/partners/"+k+".png":"")}};
 const mapRes=r=>({topic:r.topic,kind:r.kind,title:r.title,author:r.author||"",source:r.source||"",href:safeUrl(fileHref(r.url,r.file_path))});
 function drawSpeakers(){const el=$("#speakers");if(!el||!SPEAKERS.length)return;const list=[...SPEAKERS].sort((a,b)=>String(b.date).localeCompare(String(a.date)));
  el.innerHTML=`<p class="muted" style="margin:0 0 22px">Guests who have spoken at REL, most recent first.</p><div class="spk-grid">${list.map(s=>`<article class="spk">${s.photo?`<img class="spk-ph" src="${esc(s.photo)}" alt="${esc(s.name)}" loading="lazy">`:`<span class="spk-ph spk-in">${esc(initials(s.name))}</span>`}<h3>${esc(s.name)}</h3>${s.title?`<p class="spk-t">${esc(s.title)}</p>`:""}${s.topic?`<p class="spk-topic">${esc(s.topic)}</p>`:""}${s.date?`<p class="muted small" style="margin:10px 0 0">${esc(fmt(s.date,{day:"numeric",month:"long",year:"numeric"}))}</p>`:""}</article>`).join("")}</div>`}
@@ -7247,6 +7256,10 @@ window.relEmpire={open:openEmpire};
   requestAnimationFrame(()=>{centerTab(true);const b=t.closest(".subtabs"),pane=document.querySelector('.pg:not([hidden]) .pane:not([hidden])');if(!b||!pane)return;
    const stuck=b.getBoundingClientRect().top<=(parseInt(getComputedStyle(b).top)||0)+2;if(stuck){const y=pane.getBoundingClientRect().top+scrollY-b.offsetHeight-(parseInt(getComputedStyle(b).top)||0)-6;scrollTo({top:Math.max(0,y)})}})});
 })();
+
+/* home: live numbers (members, partners) */
+(async function(){if(!SB)return;try{const {data,error}=await SB.rpc("public_stats");if(error||!data)return;const m=document.getElementById("winMembers"),p=document.getElementById("winPartners");
+ if(m&&data.members>0)m.textContent=Number(data.members).toLocaleString("en-US");if(p&&data.partners>0)p.textContent=data.partners}catch(e){}})();
 </script>
 </body>
 </html>
