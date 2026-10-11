@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-TY963Mu4HPtT8LTAdsG4J3Bmhc02rLR/6PAemMGppJM='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-P1ve2JhjQ7WDk/Ocw6sZBBbA1BZADMnSgr/7AT+yjEg='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -6094,41 +6094,51 @@ const nbrs=i=>{const [r,c]=rc(i),o=[];if(r>0)o.push(i-N);if(r<N-1)o.push(i+N);if
 /* ----- Five Clues: guess what the clues have in common ----- */
 (function(){const box=$("#gClues"),form=$("#gCluesForm");if(!box)return;
  const SETS=[
-  ["Startup funding rounds",["fund","round","raise","raising","investment stage","investor"],["Angel","Pre-seed","Seed","Series A","IPO"]],
-  ["Social media apps",["social"],["Threads","Snapchat","TikTok","Instagram","LinkedIn"]],
-  ["Car brands",["car","auto","vehicle"],["Kia","Renault","Toyota","BMW","Tesla"]],
-  ["Coffee drinks",["coffee","espresso drink"],["Cortado","Americano","Mocha","Cappuccino","Latte"]],
-  ["Currencies",["currenc","money"],["Yen","Pound","Lira","Euro","Dollar"]],
-  ["Things on a balance sheet",["balance sheet","balance"],["Inventory","Retained earnings","Liabilities","Assets","Equity"]],
-  ["Planets",["planet"],["Neptune","Mercury","Venus","Jupiter","Mars"]],
-  ["Programming languages",["programming","coding","code"],["Rust","Swift","Ruby","Java","Python"]],
-  ["Football clubs",["football","soccer","club","team"],["Ajax","Juventus","Bayern","Arsenal","Barcelona"]],
-  ["Chess pieces",["chess"],["Rook","Bishop","Knight","Pawn","Queen"]],
-  ["Stock market words",["stock","market","invest","trading","finance"],["Bear","Bull","Index","Dividend","Share"]],
-  ["Cities in Lebanon",["lebanon","lebanese","city","cities"],["Zahle","Sidon","Byblos","Tripoli","Jounieh"]],
-  ["Google products",["google"],["Chrome","Drive","Maps","Gmail","YouTube"]],
-  ["Microsoft Office apps",["microsoft","office"],["Outlook","Teams","PowerPoint","Excel","Word"]],
-  ["Things with keys",["key"],["Map","Piano","Lock","Keyboard","Car"]],
-  ["Things with shells",["shell"],["Nut","Snail","Crab","Egg","Turtle"]],
-  ["Board games",["board game","boardgame","game"],["Catan","Risk","Cluedo","Scrabble","Monopoly"]],
-  ["SI units",["unit","measure"],["Pascal","Joule","Newton","Watt","Meter"]],
-  ["Tech founders",["founder","ceo","entrepreneur","billionaire","tech"],["Page","Zuckerberg","Bezos","Gates","Jobs"]],
-  ["The marketing mix",["marketing","mix","4p","7p"],["People","Place","Promotion","Price","Product"]],
-  ["Parts of a CV",["cv","resume","r\u00e9sum\u00e9"],["References","Languages","Skills","Experience","Education"]],
-  ["Colors of the rainbow",["rainbow","color","colour"],["Indigo","Violet","Orange","Green","Red"]],
-  ["Musical instruments",["instrument","music"],["Oud","Darbouka","Flute","Violin","Guitar"]],
-  ["Ways to say hello",["hello","greeting","hi"],["Ciao","Hola","Bonjour","Marhaba","Hello"]],
-  ["Metals",["metal"],["Zinc","Copper","Iron","Silver","Gold"]],
-  ["Types of bridges",["bridge"],["Truss","Cantilever","Beam","Arch","Suspension"]],
-  ["Energy sources",["energy","power","electric"],["Geothermal","Hydro","Nuclear","Wind","Solar"]],
-  ["Leadership styles",["leader"],["Laissez-faire","Servant","Autocratic","Democratic","Transformational"]],
-  ["Desserts",["dessert","sweet","pastr"],["Tiramisu","Brownie","Cheesecake","Baklava","Knefe"]],
-  ["Airlines",["airline","airway","flight","plane","aviation"],["Lufthansa","Qatar Airways","Air France","Emirates","MEA"]]];
+  ["Startup funding rounds",["fund","round","raise","raising","investment stage","investor","funding","financing","capital","venture","vc","stage","series","fundraising","startup stage","startup","seed","rounds"],["Angel","Pre-seed","Seed","Series A","IPO"]],
+  ["Social media apps",["social","social media","social network","platform","social app","media"],["Threads","Snapchat","TikTok","Instagram","LinkedIn"]],
+  ["Car brands",["car","auto","vehicle","cars","car brand","car company","car maker","carmaker","automaker","automobile","brand","manufacturer"],["Kia","Renault","Toyota","BMW","Tesla"]],
+  ["Coffee drinks",["coffee","espresso drink","coffee drinks","cafe","caffe","drinks","beverage","hot drink","coffees","barista"],["Cortado","Americano","Mocha","Cappuccino","Latte"]],
+  ["Currencies",["currenc","money","currency","cash","forex","fx","denomination"],["Yen","Pound","Lira","Euro","Dollar"]],
+  ["Things on a balance sheet",["balance sheet","balance","accounting","financial statement","financial statements","assets","finance","bilan"],["Inventory","Retained earnings","Liabilities","Assets","Equity"]],
+  ["Planets",["planet","planets","solar system","space","astronomy","celestial"],["Neptune","Mercury","Venus","Jupiter","Mars"]],
+  ["Programming languages",["programming","coding","code","programming language","languages","software","computer language"],["Rust","Swift","Ruby","Java","Python"]],
+  ["Football clubs",["football","soccer","club","team","football clubs","soccer team","football team","clubs","teams"],["Ajax","Juventus","Bayern","Arsenal","Barcelona"]],
+  ["Chess pieces",["chess","chess pieces","echecs"],["Rook","Bishop","Knight","Pawn","Queen"]],
+  ["Stock market words",["stock","market","invest","trading","finance","stock market","stocks","stock exchange","investing","investment","wall street","bourse"],["Bear","Bull","Index","Dividend","Share"]],
+  ["Cities in Lebanon",["lebanon","lebanese","city","cities","lebanese cities","towns","lebanese towns","places in lebanon","lebanese places"],["Zahle","Sidon","Byblos","Tripoli","Jounieh"]],
+  ["Google products",["google","google apps","google services","alphabet"],["Chrome","Drive","Maps","Gmail","YouTube"]],
+  ["Microsoft Office apps",["microsoft","office","ms office","office 365","microsoft 365","microsoft apps"],["Outlook","Teams","PowerPoint","Excel","Word"]],
+  ["Things with keys",["key","keys","things with a key","have keys"],["Map","Piano","Lock","Keyboard","Car"]],
+  ["Things with shells",["shell","shells","have shells","things with a shell"],["Nut","Snail","Crab","Egg","Turtle"]],
+  ["Board games",["board game","boardgame","game","board games","tabletop","table games"],["Catan","Risk","Cluedo","Scrabble","Monopoly"]],
+  ["SI units",["unit","measure","units","si","measurement","units of measure","physics units"],["Pascal","Joule","Newton","Watt","Meter"]],
+  ["Tech founders",["founder","ceo","entrepreneur","billionaire","tech","founders","tech ceos","ceos","billionaires","entrepreneurs","silicon valley"],["Page","Zuckerberg","Bezos","Gates","Jobs"]],
+  ["The marketing mix",["marketing","mix","4p","7p","marketing mix","4ps","4 ps","four ps","7ps","marketing ps"],["People","Place","Promotion","Price","Product"]],
+  ["Parts of a CV",["cv","resume","résumé","curriculum vitae","cv sections","resume sections","job application"],["References","Languages","Skills","Experience","Education"]],
+  ["Colors of the rainbow",["rainbow","color","colour","colors","colours","rainbow colors","spectrum"],["Indigo","Violet","Orange","Green","Red"]],
+  ["Musical instruments",["instrument","music","instruments","musical instruments"],["Oud","Darbouka","Flute","Violin","Guitar"]],
+  ["Ways to say hello",["hello","greeting","hi","greetings","salutations","languages hello"],["Ciao","Hola","Bonjour","Marhaba","Hello"]],
+  ["Metals",["metal","metals","elements","chemical elements"],["Zinc","Copper","Iron","Silver","Gold"]],
+  ["Types of bridges",["bridge","bridges","bridge types","structures"],["Truss","Cantilever","Beam","Arch","Suspension"]],
+  ["Energy sources",["energy","power","electric","power sources","electricity","renewable","energy types"],["Geothermal","Hydro","Nuclear","Wind","Solar"]],
+  ["Leadership styles",["leader","leadership","leadership styles","leader styles","management styles","management"],["Laissez-faire","Servant","Autocratic","Democratic","Transformational"]],
+  ["Desserts",["dessert","sweet","pastr","desserts","sweets","pastries","cakes"],["Tiramisu","Brownie","Cheesecake","Baklava","Knefe"]],
+  ["Airlines",["airline","airway","flight","plane","aviation","airlines","airline companies","air companies","airways","carriers"],["Lufthansa","Qatar Airways","Air France","Emirates","MEA"]]];
  const order=shuffle([...SETS.keys()],mul(fnv("rel-clues-order"))),dayN=Math.floor(new Date(DAY+"T12:00:00Z").getTime()/864e5),[ANS,KEYS,CL]=SETS[order[dayN%SETS.length]];
  const norm=x=>x.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9 ]/g," ").replace(/\s+/g," ").trim();
- const hit=gu=>{const g=norm(gu);if(g.length<2)return false;if(norm(ANS)===g)return true;return KEYS.some(k=>{const n=norm(k);return g.includes(n)||(g.length>=4&&n.includes(g))})};
+ const lev=(a,b)=>{const d=[];for(let i=0;i<=a.length;i++)d[i]=[i];for(let j=1;j<=b.length;j++)d[0][j]=j;for(let i=1;i<=a.length;i++)for(let j=1;j<=b.length;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[a.length][b.length]};
+ const sim=(a,b)=>1-lev(a,b)/Math.max(a.length,b.length);
+ const stem=w=>w.replace(/(ies)$/,"y").replace(/(es|s)$/,"");
+ const STOP=new Set(["the","a","an","of","in","on","and","or","types","type","kinds","kind","things","thing","with","some","famous","popular","common","de","des","les","la","le"]);
+ const words=x=>norm(x).split(" ").filter(w=>w&&!STOP.has(w)).map(stem);
+ const VAGUE=new Set(["brand","app","word","game","item","name","object","stuff","category","list","group","product"]);
+ const POOL=[...new Set([ANS,...KEYS].flatMap(words))];
+ const near=(w,t)=>w===t||(w.length>=4&&t.length>=4&&(sim(w,t)>=0.7||(w.length>=5&&t.startsWith(w))||(t.length>=5&&w.startsWith(t))));
+ const hit=gu=>{const g=norm(gu);if(g.length<2)return false;if(norm(ANS)===g||KEYS.some(k=>norm(k)===g))return true;
+  const gw=words(gu);if(!gw.length||(gw.length===1&&VAGUE.has(gw[0])))return false;
+  return gw.every(w=>POOL.some(t=>near(w,t)))};
  const s=gst("clues");let shown=1,done=false,won=false,tries=[];if(s.doneDay===DAY){done=true;won=!!s.ok;shown=5}
- function draw(){box.innerHTML=CL.map((c,i)=>i<shown?`<div class="cl">${esc(c)}</div>`:`<div class="cl hid">Clue ${i+1}</div>`).join("")+(done?`<div class="cl ans">${esc(ANS)}</div>`:"");
+ function draw(){box.innerHTML=CL.map((c,i)=>(i<shown||done)?`<div class="cl">${esc(c)}</div>`:`<div class="cl hid">Clue ${i+1}</div>`).join("")+(done?`<div class="cl ans">${esc(ANS)}</div>`:"");
   const t=document.querySelector('[data-gtime="clues"]');if(t)t.textContent=(done&&won?(s.doneVal||shown):shown)+" / 5";form.hidden=done}
  form.addEventListener("submit",e=>{e.preventDefault();if(done)return;const inp=$("#gCluesIn"),g=inp.value.trim();if(!g)return;inp.value="";const m=msgEl("clues");
   if(hit(g)){done=true;won=true;draw();m.textContent=`Yes! ${ANS}, found with ${shown} ${shown===1?"clue":"clues"}.`;finish("clues",shown,true,"REL Five Clues "+DAY+": "+"\ud83d\udfe5".repeat(shown-1)+"\ud83d\udfe9"+"\u2b1c".repeat(5-shown));return}
