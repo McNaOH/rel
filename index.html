@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-kgWY8jUUkRMo++/nauLrDRjuOJW0KZSiwAxezFMF1eg='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-RUXqNeFjYnp1rPY29pA7ktm0gI1ewmjD3pI7yESMeK0='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1609,6 +1609,42 @@ a.win:active{transform:scale(.98)}
 .lg-padel-club,.ptn img[src$="/padel-club.png"]{background:#E52122!important}
 .ptn img{width:100%;height:84px;max-height:none!important;object-fit:contain;background:#fff;border-radius:10px;padding:10px;border:1px solid var(--line)}
 @media (max-width:720px){.spons-row .lg-tile{width:124px;height:72px;padding:8px 10px}.ptn-list{grid-template-columns:1fr 1fr!important;gap:10px}.ptn{padding:12px}.ptn img{height:70px}.ptn .muted{font-size:.8rem}}
+
+/* Faculty league */
+.fl{display:grid;gap:10px;max-width:720px;margin:14px 0}
+.fl-row{display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.fl-row.lead{border-color:var(--fill);background:var(--tint)}
+.fl-n{font:700 1.2rem var(--f-display),sans-serif;color:var(--brand-ink);text-align:center}
+.fl-name{font-weight:700;margin:0 0 6px}
+.fl-bar{height:8px;border-radius:4px;background:var(--line);overflow:hidden}
+.fl-bar i{display:block;height:100%;background:var(--fill);border-radius:4px}
+.fl-sub{margin:6px 0 0;font-size:.82rem;color:var(--muted)}
+.fl-v{text-align:right;font:700 1.25rem var(--f-display),sans-serif;color:var(--brand-ink);font-variant-numeric:tabular-nums}
+.fl-v small{display:block;font:500 .72rem var(--f-body);color:var(--muted)}
+.fl-teaser{display:inline-flex;margin-top:10px;font-weight:600;color:var(--on-band);text-decoration:underline;text-underline-offset:3px}
+/* Weekly Challenge */
+.wc{display:grid;gap:16px;max-width:720px}
+.wc-card{background:var(--band);color:var(--on-band);border-radius:20px;padding:clamp(20px,4vw,30px);display:grid;gap:8px}
+.wc-tag{font:600 .75rem var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:var(--rose)}
+.wc-q{margin:0;font:500 clamp(1.35rem,3.6vw,1.9rem)/1.25 var(--f-display),serif;text-wrap:balance}
+.wc-meta{margin:4px 0 0;color:var(--rose);font-size:.9rem}
+.wc-win{border:1.5px solid var(--fill);background:var(--tint);border-radius:16px;padding:16px 18px;display:grid;gap:6px}
+.wc-win .k{font:600 .72rem var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--brand-ink);margin:0}
+.wc-win p{margin:0}
+.wc-form{display:grid;gap:10px}
+.wc-form textarea{width:100%;min-height:120px;resize:vertical;border:1.5px solid var(--line);border-radius:14px;padding:14px;font:400 16px/1.5 var(--f-body),sans-serif;background:var(--surface);color:var(--ink)}
+.wc-form textarea:focus{outline:none;border-color:var(--fill)}
+.wc-row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.wc-h{display:grid;gap:4px;margin-top:6px}.wc-h h3{margin:0}
+.wc-list{display:grid;gap:10px}
+.wc-a{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.wc-a.me{border-color:var(--fill)}
+.wc-who{display:flex;align-items:center;font-weight:600;margin-bottom:6px;font-size:.95rem}
+.wc-a p{margin:0;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
+.wc-like{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;min-width:52px;min-height:52px;border:1.5px solid var(--line);border-radius:14px;background:var(--bg);color:var(--muted);font:700 .95rem var(--f-body);cursor:pointer}
+.wc-like b{font-size:1.15rem;line-height:1}
+.wc-like.on{border-color:var(--fill);background:var(--fill);color:var(--on-fill)}
+.wc-like:disabled{opacity:.6;cursor:default}
 </style>
 </head>
 <body>
@@ -1744,6 +1780,11 @@ a.win:active{transform:scale(.98)}
 <table><thead><tr><th>#</th><th>Member</th><th class="p">Solved</th></tr></thead><tbody id="gTotalAll"><tr><td colspan="3" class="muted">Loading...</td></tr></tbody></table>
 <div hidden><table><tbody id="gToday"></tbody></table><table><tbody id="gTotals"></tbody></table></div>
 </div>
+<div class="pane" data-pane="league" data-label="Faculty league">
+<p class="muted" style="max-width:40em;margin-top:0">Which major plays the most? Every daily puzzle a member solves counts for their major. To keep it fair, the ranking uses puzzles solved <b>per member</b>, so a small major can beat a big one. It starts again on the 1st of every month.</p>
+<div class="fl" id="facLeague"><p class="muted">Loading...</p></div>
+<p class="muted small" style="max-width:40em">Majors with fewer than 5 members play together as Other majors. Your major is the one in your profile.</p>
+</div>
 <div class="pane" data-pane="rules" data-label="How to earn points">
 <table><thead><tr><th>Action</th><th class="p">Points</th></tr></thead><tbody id="pts"></tbody></table>
 </div>
@@ -1866,7 +1907,14 @@ a.win:active{transform:scale(.98)}
 </div>
 </div>
 </div></div></section></div>
-<div class="pg" data-pg="community" hidden><section id="community" class="sec"><div class="wrap"><div class="sec-head"><h2>Community</h2><p>REL grows through the people around it. Here is how the network looks and how you can take part.</p></div><div class="pane" data-pane="network" data-label="Network"><div class="grid2">
+<div class="pg" data-pg="community" hidden><section id="community" class="sec"><div class="wrap"><div class="sec-head"><h2>Community</h2><p>REL grows through the people around it. Here is how the network looks and how you can take part.</p></div><div class="pane" data-pane="challenge" data-label="Weekly challenge"><div class="wc" id="wcBox">
+<div class="wc-card"><span class="wc-tag" id="wcTag">This week</span><p class="wc-q" id="wcQ"></p><p class="wc-meta" id="wcMeta"></p></div>
+<div id="wcWinner"></div>
+<div class="wc-form" id="wcForm"></div>
+<div class="wc-h"><h3>Answers</h3><span class="muted small">Tap &#9829; on the answers you like. The most liked answer on Sunday at midnight wins 15 points.</span></div>
+<div class="wc-list" id="wcList"><p class="muted">Loading...</p></div>
+</div></div>
+<div class="pane" data-pane="network" data-label="Network"><div class="grid2">
 <div><svg class="map" id="map" viewBox="0 0 860 430" role="img" aria-label="REL network map: the board, ambassadors, members, partners and speakers connected to REL"></svg><ul class="map-list" id="mapList"></ul></div>
 <div>
 <h3 style="margin-bottom:10px">Partners</h3>
@@ -7259,6 +7307,52 @@ window.relEmpire={open:openEmpire};
 /* home: live numbers (members, partners) */
 (async function(){if(!SB)return;try{const {data,error}=await SB.rpc("public_stats");if(error||!data)return;const m=document.getElementById("winMembers"),p=document.getElementById("winPartners");
  if(m&&data.members>0)m.textContent=Number(data.members).toLocaleString("en-US");if(p&&data.partners>0)p.textContent=data.partners}catch(e){}})();
+
+/* ---------- Faculty league ---------- */
+async function loadLeague(){const box=document.getElementById("facLeague");if(!box)return;if(!SB){box.innerHTML='<p class="muted">The league opens soon.</p>';return}
+ try{const {data,error}=await SB.rpc("faculty_league");if(error)throw error;
+  const g={};let other={faculty:"Other majors",members:0,players:0,solved:0};(data||[]).forEach(r=>{if(r.members<5){other.members+=r.members;other.players+=r.players;other.solved+=r.solved}else g[r.faculty]=r});
+  if(other.members)g[other.faculty]=other;
+  const rows=Object.values(g).map(r=>({...r,avg:r.members?r.solved/r.members:0})).sort((a,b)=>b.avg-a.avg||b.solved-a.solved);
+  const max=Math.max(.1,...rows.map(r=>r.avg));
+  box.innerHTML=rows.length?rows.map((r,i)=>`<div class="fl-row${i===0&&r.avg>0?" lead":""}"><span class="fl-n">${i===0&&r.avg>0?"🏆":i+1}</span><div><p class="fl-name">${esc(r.faculty)}</p><div class="fl-bar"><i style="width:${Math.max(2,Math.round(r.avg/max*100))}%"></i></div><p class="fl-sub">${r.solved} puzzles solved · ${r.players} of ${r.members} members played</p></div><span class="fl-v">${r.avg.toFixed(1)}<small>per member</small></span></div>`).join(""):'<p class="muted">No puzzles solved yet this month.</p>';
+  const lead=rows[0],t=document.getElementById("flTeaser");if(lead&&lead.avg>0){const head=document.querySelector('.pg[data-pg="play"] .pagehead .wrap');if(head){let a=t;if(!a){a=document.createElement("a");a.id="flTeaser";a.className="fl-teaser";a.href="#/points/league";head.appendChild(a)}a.textContent="🏆 Faculty league: "+lead.faculty+" leads this month"}}
+ }catch(e){box.innerHTML='<p class="muted">The league opens soon.</p>'}}
+loadLeague();setInterval(loadLeague,120000);
+/* ---------- REL Weekly Challenge ---------- */
+(function(){const box=document.getElementById("wcBox");if(!box)return;
+ const BANK={
+  e:["You have $300 and two weeks on campus. What business do you start, and how do you get your first 10 customers?","Pick a problem you face every day at the faculty. What would you build to fix it, and who would pay for it?","A friend has a great idea but no money. Name three ways to test it this week for free.","You run a coffee stand at ULFG2 and sales dropped 30%. What are the first three things you change?","Name a Lebanese brand you admire. What is one thing it does better than its competitors?","You can launch one app for LU students. What does it do, and how does it make money?","You have one day and 50 flyers to promote a new product on campus. What is your plan?","What is a business that could only succeed in Lebanon, and why?","You found a supplier who sells phone cases at $1. How do you turn this into a real business, not just a side hustle?","Your startup gets its first $5,000. Where does every dollar go?","Which problem in Lebanon deserves a startup the most, and what would yours do?","You can interview any founder for 10 minutes. Who, and what is your first question?"],
+  l:["Your teammate keeps missing deadlines and the event is in 5 days. What do you do?","Two board members disagree in front of everyone in a meeting. How do you handle it?","You made a mistake that cost your team. What do you say at the next meeting?","Your team is tired and motivation is low mid-semester. How do you bring the energy back?","You have to choose between a friend and a more skilled person for a role. How do you decide?","A new member has great ideas but never speaks in meetings. How do you get them involved?","Your event is tomorrow and the main speaker cancels. What are your next three moves?","What is one habit that makes someone a leader before they have the title?","You disagree with a decision your president made. How do you raise it?","How do you say no to a task when you are already overloaded, without letting the team down?","Describe the best leader you have worked with in one sentence. What did they do differently?","You lead a team of 5 for a competition. How do you split the work on day one?"],
+  r:["You have 30 seconds in an elevator with the CEO of Almaza. What do you say?","Write the first message you would send on LinkedIn to someone you admire but have never met.","You meet a recruiter at an event. How do you make sure they remember you a week later?","How would you ask a company to sponsor a student event? Write your opening lines.","A professor you need a recommendation from barely knows you. What is your plan?","You walk into a networking event and know nobody. What do you do in the first 5 minutes?","What is the best way to follow up after an interview without being annoying?","Introduce yourself in three sentences, as you would to an investor.","How do you keep in touch with people you meet, months after the event?","You want to work at a company that has no open positions. How do you get in?","A classmate from another faculty could be a great cofounder. How do you start the conversation?","Write a thank-you message to a speaker who came to a REL event."]};
+ const PIL={e:["Entrepreneurship week","🚀"],l:["Leadership week","🧭"],r:["Relations week","🤝"]};
+ const bDate=()=>{try{return new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Beirut",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date())}catch(e){return new Date().toISOString().slice(0,10)}};
+ const monday=d=>{const x=new Date(d+"T12:00:00Z"),wd=(x.getUTCDay()+6)%7;x.setUTCDate(x.getUTCDate()-wd);return x.toISOString().slice(0,10)};
+ const WEEK=monday(bDate()),PREV=(()=>{const x=new Date(WEEK+"T12:00:00Z");x.setUTCDate(x.getUTCDate()-7);return x.toISOString().slice(0,10)})();
+ const idxOf=w=>Math.round((new Date(w+"T12:00:00Z")-new Date("2026-10-05T12:00:00Z"))/(7*864e5));
+ const promptOf=w=>{const n=idxOf(w),k=["e","l","r"][((n%3)+3)%3],arr=BANK[k];return {k,q:arr[Math.floor(((n<0?0:n))/3)%arr.length]}};
+ const cur=promptOf(WEEK),prev=promptOf(PREV);
+ document.getElementById("wcTag").textContent=PIL[cur.k][1]+" "+PIL[cur.k][0];document.getElementById("wcQ").textContent=cur.q;
+ const daysLeft=()=>{const end=new Date(WEEK+"T00:00:00+03:00");end.setUTCDate(end.getUTCDate()+7);const ms=end-Date.now(),d=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5);return d>0?d+(d===1?" day":" days")+" left":h+(h===1?" hour":" hours")+" left"};
+ document.getElementById("wcMeta").textContent="A new challenge every Monday. "+daysLeft()+".";
+ let rows=[];
+ function drawForm(){const f=document.getElementById("wcForm"),mine=rows.find(r=>r.mine);
+  if(!SB){f.innerHTML="";return}
+  if(!ST.member){f.innerHTML=`<div class="wc-row"><span class="muted">Members answer and vote. It takes two minutes to join.</span><a class="btn primary sm" href="#join" data-goto="member">Join REL</a></div>`;return}
+  f.innerHTML=`<label class="sr-only" for="wcIn">Your answer</label><textarea id="wcIn" maxlength="600" placeholder="Your answer, in a few sentences...">${mine?esc(mine.body):""}</textarea><div class="wc-row"><span class="muted small" id="wcCount">${mine?mine.body.length:0} / 600</span><button type="button" class="btn primary" id="wcSend">${mine?"Update my answer":"Post my answer"}</button></div>`}
+ function drawList(){const l=document.getElementById("wcList");if(!SB){l.innerHTML='<p class="muted">Answers appear here.</p>';return}
+  l.innerHTML=rows.length?rows.map(r=>`<article class="wc-a${r.mine?" me":""}"><div><div class="wc-who">${avatar(r.full_name,r.photo_path,false,r.rel_id)}${esc(r.full_name)}${r.mine?' <span class="muted small" style="margin-left:6px">(you)</span>':""}</div><p>${esc(r.body)}</p></div><button type="button" class="wc-like${r.voted?" on":""}" data-wclike="${r.id}" ${r.mine?"disabled":""} aria-pressed="${r.voted}" aria-label="Like this answer, ${r.votes} likes"><b>${r.voted?"♥":"♡"}</b>${r.votes}</button></article>`).join(""):'<p class="muted">No answers yet. Be the first.</p>'}
+ async function load(){if(!SB){drawForm();drawList();return}try{const {data,error}=await SB.rpc("challenge_board",{p_week:WEEK});if(error)throw error;rows=data||[]}catch(e){rows=[]}drawForm();drawList()}
+ async function loadWinner(){const w=document.getElementById("wcWinner");if(!SB)return;try{const {data,error}=await SB.rpc("challenge_winner",{p_week:PREV});if(error||!data||!data.length){w.innerHTML="";return}const r=data[0];
+  w.innerHTML=`<div class="wc-win"><p class="k">🏆 Last week's winner, +15 points</p><p class="muted small">${esc(prev.q)}</p><div class="wc-who" style="margin:4px 0 0">${avatar(r.full_name,r.photo_path,false,r.rel_id)}${esc(r.full_name)}</div><p>${esc(r.body)}</p></div>`}catch(e){}}
+ document.addEventListener("input",e=>{if(e.target.id==="wcIn"){const c=document.getElementById("wcCount");if(c)c.textContent=e.target.value.length+" / 600"}});
+ document.addEventListener("click",async e=>{
+  if(e.target.closest("#wcSend")){const t=(document.getElementById("wcIn").value||"").trim();if(t.length<10){toast("Write at least a full sentence.");return}const b=e.target.closest("#wcSend");b.disabled=true;
+   try{const {error}=await SB.rpc("submit_challenge_answer",{p_body:t});if(error)throw error;toast("Your answer is posted.");await load()}catch(err){toast(errText(err))}finally{b.disabled=false}return}
+  const lk=e.target.closest("[data-wclike]");if(lk){if(!needMember("vote"))return;lk.disabled=true;try{const {data,error}=await SB.rpc("vote_challenge",{p_answer:lk.dataset.wclike});if(error)throw error;const r=rows.find(x=>x.id===lk.dataset.wclike);if(r){r.voted=!!data;r.votes+=data?1:-1}drawList()}catch(err){toast(errText(err));lk.disabled=false}}});
+ load();loadWinner();
+ let was=null;setInterval(()=>{const m=!!(window.ST&&ST.member);if(m!==was){was=m;load()}},3000);
+})();
 </script>
 </body>
 </html>
