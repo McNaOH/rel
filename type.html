@@ -3,31 +3,36 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-h2q6xr3/+MNr2h1BKUU/r0rAlKc5NmUb3lMydQ5YsEk='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-CoCMSpOGYIAX3w0lvldZ99PegG7NC58B2ngR6EUjTkU='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://ygvodjbocaakzzggphxd.supabase.co; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'">
 <title>What's your REL type? · REL club</title>
 <meta name="description" content="Six quick questions to find your REL type: Connector, Builder or Leader. Then see what REL has for you this year.">
 <meta name="theme-color" content="#800020">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
 <style>
-:root{--bg:#F8F6F1;--card:#FFFFFF;--ink:#1F1416;--muted:#665A5D;--fill:#800020;--on:#FFFFFF;--line:#EBDFE1;--tint:#F6ECEE;--deep:#3A0A14;
+:root{--bg:#F8F6F1;--card:#FFFFFF;--ink:#1F1416;--muted:#665A5D;--fill:#800020;--on:#FFFFFF;--line:#EBDFE1;--tint:#F6ECEE;--deep:#3A0A14;--pink:#E8C9CC;--good:#1F7A4D;
 --fd:'Fraunces',Georgia,serif;--fb:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.5 var(--fb);-webkit-text-size-adjust:100%}
 .app{max-width:520px;margin:0 auto;min-height:100vh;padding:calc(18px + env(safe-area-inset-top,0px)) 18px calc(28px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column}
 .top{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--fill)}
 .top a{color:var(--muted);text-decoration:none;letter-spacing:0;text-transform:none;font-weight:600}
 h1,h2{font-family:var(--fd);font-weight:600;line-height:1.08;margin:0;text-wrap:balance}
-h1{font-size:clamp(2.3rem,10vw,3.1rem);margin:26px 0 12px}
-.lead{color:var(--muted);font-size:18px;margin:0 0 22px}
-.trio{display:grid;gap:10px;margin:0 0 26px}
+h1{font-size:clamp(2.3rem,10vw,3.1rem);margin:22px 0 12px}
+.lead{color:var(--muted);font-size:18px;margin:0 0 18px}
+.social{display:inline-flex;align-items:center;gap:8px;background:var(--tint);color:var(--fill);font-weight:700;font-size:14.5px;border-radius:999px;padding:7px 14px;margin:0 0 18px}
+.social i{width:8px;height:8px;border-radius:50%;background:var(--fill);animation:pulse 1.4s infinite}
+@keyframes pulse{50%{opacity:.25}}
+.trio{display:grid;gap:10px;margin:0 0 24px}
 .trio div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
 .trio b{display:block;color:var(--fill);font-size:17px}
 .trio span{color:var(--muted);font-size:15px}
 .btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:56px;border-radius:999px;border:2px solid var(--fill);background:var(--fill);color:var(--on);font:700 18px var(--fb);cursor:pointer;text-decoration:none;padding:0 20px}
 .btn.ghost{background:transparent;color:var(--fill)}
+.btn:disabled{opacity:.5}
 .btn:active{transform:scale(.98)}
 :focus-visible{outline:3px solid var(--fill);outline-offset:3px}
 .prog{display:flex;gap:6px;margin:22px 0 26px}
@@ -40,31 +45,83 @@ h1{font-size:clamp(2.3rem,10vw,3.1rem);margin:26px 0 12px}
 .opt .l{flex-shrink:0;width:34px;height:34px;border-radius:50%;background:var(--tint);color:var(--fill);display:grid;place-items:center;font-weight:700}
 .opt:hover{border-color:var(--fill)}
 .opt.pick{border-color:var(--fill);background:var(--tint)}
-.res{background:var(--fill);color:var(--on);border-radius:24px;padding:24px 20px;margin:22px 0 18px}
-.res .k{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#E8C9CC}
-.res h2{font-size:clamp(2.4rem,11vw,3.2rem);margin:6px 0 10px;color:#fff}
+.calc{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:22px;padding:40px 0}
+.letters{display:flex;gap:12px}
+.letters span{width:64px;height:64px;border-radius:18px;background:var(--fill);color:#fff;display:grid;place-items:center;font:700 30px var(--fd);animation:bob .9s ease-in-out infinite}
+.letters span:nth-child(2){animation-delay:.15s}.letters span:nth-child(3){animation-delay:.3s}
+@keyframes bob{50%{transform:translateY(-14px)}}
+.calc p{font-weight:700;color:var(--muted);margin:0}
+.res{background:var(--fill);color:var(--on);border-radius:24px;padding:24px 20px;margin:20px 0 10px;position:relative;overflow:hidden}
+.res .k{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+.res h2{font-size:clamp(2.6rem,12vw,3.4rem);margin:6px 0 10px;color:#fff}
 .res p{margin:0;color:#F6E4E7;font-size:17px}
-.bars{display:grid;gap:8px;margin-top:18px}
-.bar{display:grid;grid-template-columns:120px 1fr 32px;gap:10px;align-items:center;font-size:14px;color:#F6E4E7}
+.res .tag{margin-top:16px;font-weight:700;font-size:14px;color:var(--pink)}
+.bars{display:grid;gap:8px;margin-top:16px}
+.bar{display:grid;grid-template-columns:120px 1fr 40px;gap:10px;align-items:center;font-size:14px;color:#F6E4E7}
 .bar s{display:block;height:8px;border-radius:8px;background:rgba(255,255,255,.2);overflow:hidden;text-decoration:none}
-.bar s u{display:block;height:100%;background:#fff;border-radius:8px}
+.bar s u{display:block;height:100%;background:#fff;border-radius:8px;width:0;transition:width .9s ease}
 .bar em{font-style:normal;font-weight:700;text-align:right}
-h3{font:700 19px var(--fb);margin:6px 0 10px}
-.recs{display:grid;gap:10px;margin-bottom:22px}
+.shot{text-align:center;font-size:14.5px;color:var(--muted);margin:0 0 22px}
+.shot b{color:var(--fill)}
+.rank{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 16px;margin:0 0 22px;font-size:15.5px;text-align:center}
+.rank b{color:var(--fill);font-size:18px}
+h3{font:700 19px var(--fb);margin:8px 0 10px}
+.sub3{color:var(--muted);font-size:15px;margin:-4px 0 12px}
+.recs{display:grid;gap:10px;margin-bottom:24px}
 .rec{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
 .rec b{display:block}
 .rec span{color:var(--muted);font-size:15px}
-.all{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:22px;color:var(--muted);font-size:15.5px}
-.all b{color:var(--ink)}
+.box{background:var(--card);border:2px solid var(--fill);border-radius:20px;padding:18px 16px;margin-bottom:24px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.chip{border:2px solid var(--line);background:var(--bg);border-radius:999px;padding:9px 13px;font:600 15px var(--fb);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--fill);border-color:var(--fill);color:#fff}
+textarea,input[type=text]{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:12px;font:400 16px var(--fb);color:var(--ink);margin-bottom:10px}
+textarea{min-height:84px;resize:vertical}
+.thanks{text-align:center;padding:8px 0}
+.thanks b{display:block;font-size:20px;color:var(--fill);margin-bottom:4px}
+.intro{background:var(--deep);color:#fff;border-radius:20px;padding:20px 18px;margin-bottom:24px}
+.intro .k{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+.intro h3{font-family:var(--fd);font-weight:600;font-size:26px;margin:6px 0 6px;color:#fff}
+.intro p{margin:0 0 14px;color:#EBD5D9;font-size:15.5px}
+.intro .btn{background:#fff;color:var(--deep);border-color:#fff}
 .steps{display:grid;gap:10px;margin-bottom:16px}
 .step{display:flex;align-items:center;gap:14px;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:14px 16px;text-decoration:none;color:var(--ink);font-weight:600}
 .step .n{flex-shrink:0;width:34px;height:34px;border-radius:50%;background:var(--fill);color:#fff;display:grid;place-items:center;font-weight:700}
 .step small{display:block;font-weight:500;color:var(--muted);font-size:14px}
-.step.done{border-color:#1F7A4D}
-.step.done .n{background:#1F7A4D}
-.again{margin-top:6px;background:none;border:0;color:var(--muted);font:600 15px var(--fb);text-decoration:underline;cursor:pointer;padding:10px;align-self:center}
+.step.done{border-color:var(--good)}
+.step.done .n{background:var(--good)}
+.allset{background:#E1F2E8;color:var(--good);border-radius:16px;padding:14px 16px;font-weight:700;text-align:center;margin-bottom:16px}
+.again{margin-top:4px;background:none;border:0;color:var(--muted);font:600 15px var(--fb);text-decoration:underline;cursor:pointer;padding:10px;align-self:center}
 .foot{margin-top:auto;padding-top:24px;text-align:center;color:var(--muted);font-size:14px}
 @media (prefers-reduced-motion:no-preference){.view{animation:in .25s ease}@keyframes in{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}}
+@media (prefers-reduced-motion:reduce){.letters span,.social i{animation:none}}
+/* live big screen */
+body.live{background:var(--fill);color:#fff;overflow:hidden}
+.lv{min-height:100vh;padding:3.5vh 4vw;display:grid;grid-template-columns:1.25fr 1fr;gap:4vw;align-items:center}
+.lv h1{font-size:4.8vw;color:#fff;margin:0 0 1.5vh}
+.lv .eb{font-size:1.4vw;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--pink)}
+.lv .tg{font-size:1.7vw;color:#F6E4E7;margin:0 0 2.5vh}
+.cnt{display:grid;gap:1.8vh}
+.cn{display:grid;grid-template-columns:15vw 1fr 6vw;align-items:center;gap:1.5vw;font-size:1.9vw;font-weight:700}
+.cn s{display:block;height:2.2vh;border-radius:2vh;background:rgba(255,255,255,.18);overflow:hidden;text-decoration:none}
+.cn s u{display:block;height:100%;background:#fff;border-radius:2vh;transition:width 1s ease}
+.cn em{font:700 3.2vw var(--fd);font-style:normal;text-align:right}
+.tot{margin-top:2.2vh;font-size:1.8vw;color:var(--pink)}
+.tot b{color:#fff;font-size:2.4vw}
+.wants{margin-top:2.5vh}
+.wants h4{margin:0 0 1.2vh;font-size:1.5vw;letter-spacing:.12em;text-transform:uppercase;color:var(--pink)}
+.wl{display:grid;gap:.9vh}
+.w{display:grid;grid-template-columns:18vw 1fr 4vw;gap:1vw;align-items:center;font-size:1.4vw}
+.w s{display:block;height:1.2vh;border-radius:1vh;background:rgba(255,255,255,.18);overflow:hidden;text-decoration:none}
+.w s u{display:block;height:100%;background:var(--pink);transition:width 1s ease}
+.w em{font-style:normal;font-weight:700;text-align:right}
+.qrside{display:flex;flex-direction:column;align-items:center;gap:2vh;text-align:center}
+.qrbig{background:#fff;border-radius:2vw;padding:2vw}
+.qrbig img{width:26vw;height:26vw;display:block;image-rendering:pixelated}
+.qrside .u{font-size:2.2vw;font-weight:700}
+.qrside .s{font-size:1.6vw;color:var(--pink)}
+.ticker{font:600 2vw var(--fd);min-height:3vw;color:#fff}
+@media (max-aspect-ratio:1/1){.lv{grid-template-columns:1fr}.lv h1{font-size:9vw}.qrbig img{width:50vw;height:50vw}}
 </style>
 </head>
 <body>
@@ -72,7 +129,7 @@ h3{font:700 19px var(--fb);margin:6px 0 10px}
   <div class="top"><span>REL club · ULFG2</span><a href="/">relulfg.com</a></div>
   <section class="view">
     <h1>What's your REL type?</h1>
-    <p class="lead">Six quick questions. Find out if you're a Connector, a Builder or a Leader, and what REL has for you this year.</p>
+    <p class="lead">Six quick questions. Are you a Connector, a Builder or a Leader? Find out, and see what REL has for you this year.</p>
     <div class="trio">
       <div><b>Relations</b><span>People, networks, opportunities</span></div>
       <div><b>Entrepreneurship</b><span>Ideas, projects, startups</span></div>
@@ -84,6 +141,9 @@ h3{font:700 19px var(--fb);margin:6px 0 10px}
 </main>
 <script>
 (function(){
+var SB="https://ygvodjbocaakzzggphxd.supabase.co/rest/v1/rpc/",KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlndm9kamJvY2Fha3p6Z2dwaHhkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk4ODMyODYsImV4cCI6MjEwNTQ1OTI4Nn0.tjs2RLptzkPTsPxbBWF9jaZBzFn6mLp1QAEf8EpeFTsM";
+function rpc(fn,body){return fetch(SB+fn,{method:"POST",headers:{"apikey":KEY,"Authorization":"Bearer "+KEY,"Content-Type":"application/json"},body:JSON.stringify(body||{})}).then(function(r){if(!r.ok)throw r;return r.status===204?null:r.json()})}
+var QR_TYPE="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAIAAAD3027yAAAEwUlEQVR4nO3dQY7jNhBA0XQwVwiyzf1PlW0wh1BuIP8Bh12U/d62YVtW+4OLkqiv67r+AF75c/oA4BmkAolUIJEKJFKBRCqQSAUSqUAiFUh+3P/5n7/+/p7j+Db//vxv5HP3ncmVb3R/VPfv/Gm/DasKJFKBRCqQSAUSqUAiFUikAolUIJEKJC+m9femJt/3njhFXpmLn/l93++3YVWBRCqQSAUSqUAiFUikAolUIJEKJFKBZGlaf+/Mu8nvrRzz/VGtzOP3vXbKE38bVhVIpAKJVCCRCiRSgUQqkEgFEqlAIhVINk7rP82+Sf/KOz9xln8mqwokUoFEKpBIBRKpQCIVSKQCiVQgkQokpvW/zdTke+q59Z/GqgKJVCCRCiRSgUQqkEgFEqlAIhVIpALJxmn9p816902+9915/8QrDKZYVSCRCiRSgUQqkEgFEqlAIhVIpAKJVCBZmtbve/r4mZ64X/3UM+/f77dhVYFEKpBIBRKpQCIVSKQCiVQgkQokUoHkxbT+ifdAn+n9ptef9tuwqkAiFUikAolUIJEKJFKBRCqQSAUSqUDydV3XzZ9X7r0+cz499ZT3qdfu837/33tWFUikAolUIJEKJFKBRCqQSAUSqUAiFUg27oQ/Ncs3vf4eZ15hsO9zrSqQSAUSqUAiFUikAolUIJEKJFKBRCqQvLi3fsXK9HrfpH/qDvh7T9yl4N4Tz9X9O1tVIJEKJFKBRCqQSAUSqUAiFUikAolUIFma1j9x5jo1+T5zn/z32+Hg3sq5sqpAIhVIpAKJVCCRCiRSgUQqkEgFEqlAsnFaf+aO9O/33PoV73dlw77PtapAIhVIpAKJVCCRCiRSgUQqkEgFEqlA8uK59WfuwT41NV/xxHvr3+/KBs+th+2kAolUIJEKJFKBRCqQSAUSqUAiFUheTOvvnTkXn7rCYOX7Tp2NM2f5+9gJH7aTCiRSgUQqkEgFEqlAIhVIpAKJVCBZmtbfm3oy/T77vtHUpP+J+/OvvHblmK0qkEgFEqlAIhVIpAKJVCCRCiRSgUQqkGyc1t+bmnzfm7oO4N6Zd6JPmbqywaoCiVQgkQokUoFEKpBIBRKpQCIVSKQCydd1XdPHcJCp3fvvTU3Nz3xawdR/waoCiVQgkQokUoFEKpBIBRKpQCIVSKQCyYt768+8u3rF1K7yK86cmu+7suHMHfitKpBIBRKpQCIVSKQCiVQgkQokUoFEKpAs7YT/fvvG79tlfd9se2o/gKlrCKauqLCqQCIVSKQCiVQgkQokUoFEKpBIBRKpQLLxufVPvNd8yr5zte/ahX32XffgufWwnVQgkQokUoFEKpBIBRKpQCIVSKQCycZp/fvZ97T1lQn01FHte+epKwzshA+/gVQgkQokUoFEKpBIBRKpQCIVSKQCiWn9LzhzV/mpneHPfDL9vne2qkAiFUikAolUIJEKJFKBRCqQSAUSqUCycVr/xP3qp6bI+5y5x/6KqTNpVYFEKpBIBRKpQCIVSKQCiVQgkQokUoFkaVo/Na/dZ2VH+n2fu2Lqzvt9po7KqgKJVCCRCiRSgUQqkEgFEqlAIhVIpALJ13Vd08cAD2BVgUQqkEgFEqlAIhVIpAKJVCCRCiRSgeR/iuePvKQDRb8AAAAASUVORK5CYII=",QR_IDEAS="data:image/png;base64,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";
 var Q=[
  ["It's Friday night. You're probably…",[["Out meeting new people","R"],["Working on a side project or idea","E"],["The one who planned the whole night","L"]]],
  ["A group project starts. You…",[["Already know someone who can help","R"],["Pitch a bold new idea","E"],["Split the tasks and set the deadline","L"]]],
@@ -93,34 +153,81 @@ var Q=[
  ["In 10 years, you are…",[["The person everyone knows","R"],["The founder of your own company","E"],["The CEO leading a big team","L"]]]
 ];
 var T={
- R:{name:"The Connector",word:"Relations",line:"Your network is your superpower. You open doors for yourself and for others.",recs:[["Networking sessions","Sit at a table with professionals and alumni, then connect on LinkedIn."],["Talks with big names","Founders and leaders from Lebanon, and a panel discussion."],["Studying abroad talks","Students from LU's partner universities share how they got there."]]},
- E:{name:"The Builder",word:"Entrepreneurship",line:"You see ideas everywhere, and you want to make them real.",recs:[["A startup program","In semester 2: build your startup with mentors and pitch it at a Demo Day."],["Competitions on campus","Business challenges and games with prizes."],["Online workshops","From a business model to a pitch, step by step."]]},
- L:{name:"The Leader",word:"Leadership",line:"People follow you. You make plans happen and bring a team with you.",recs:[["Public speaking and leadership workshops","Speak, pitch and lead with confidence."],["Become a REL ambassador","Represent REL, organize events, and earn a certificate and a LinkedIn title."],["Competitions on campus","Lead your team to the win."]]}
+ R:{name:"The Connector",word:"Connectors",line:"Your network is your superpower. You open doors for yourself and for others.",recs:[["Networking sessions","Sit at a table with professionals and alumni, then connect on LinkedIn."],["Talks with big names","Founders and leaders from Lebanon, and a panel discussion."],["Studying abroad talks","Students from LU's partner universities share how they got there."]]},
+ E:{name:"The Builder",word:"Builders",line:"You see ideas everywhere, and you want to make them real.",recs:[["A startup program","In semester 2: build your startup with mentors and pitch it at a Demo Day."],["Competitions on campus","Business challenges and games with prizes."],["Online workshops","From a business model to a pitch, step by step."]]},
+ L:{name:"The Leader",word:"Leaders",line:"People follow you. You make plans happen and bring a team with you.",recs:[["Public speaking and leadership workshops","Speak, pitch and lead with confidence."],["Become a REL ambassador","Represent REL, organize events, and earn a certificate and a LinkedIn title."],["Competitions on campus","Lead your team to the win."]]}
 };
+var WANTS=[["talks","Talks with big names"],["networking","Networking sessions"],["startup","Startup program"],["competitions","Competitions"],["workshops","Skill workshops"],["abroad","Studying abroad"],["games","Games and fun events"],["social","Outings and socials"]];
 var LINKS=[["https://chat.whatsapp.com/Kph5TBt947mDEe8bfAvUQM","Join the WhatsApp community","Events and opportunities first"],["https://www.instagram.com/relulfg","Follow us on Instagram","@relulfg"],["https://www.linkedin.com/company/relulfg","Follow us on LinkedIn","Great for your profile"],["/#account","Create your REL account","Become an official member, free"]];
-var app=document.getElementById("app"),i=0,ans=[];
-function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+var app=document.getElementById("app"),i=0,ans=[],myType=null;
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
 var head='<div class="top"><span>REL club · ULFG2</span><a href="/">relulfg.com</a></div>';
+
+/* ---------- intro ---------- */
+function intro(){rpc("rel_quiz_live").then(function(d){if(!d||!d.total||!document.getElementById("start"))return;var s=document.createElement("div");s.className="social";s.innerHTML='<i></i>'+d.total+' student'+(d.total===1?"":"s")+' found their REL type';var l=app.querySelector(".lead");if(l)l.after(s)}).catch(function(){})}
+
+/* ---------- quiz ---------- */
 function q(){var it=Q[i],L="ABC";
  app.innerHTML=head+'<section class="view"><div class="prog">'+Q.map(function(_,k){return '<i class="'+(k<=i?"on":"")+'"></i>'}).join("")+'</div><div class="qn">Question '+(i+1)+' of '+Q.length+'</div><h2 class="q">'+esc(it[0])+'</h2><div class="opts">'+it[1].map(function(o,k){return '<button type="button" class="opt" data-t="'+o[1]+'"><span class="l">'+L[k]+'</span><span>'+esc(o[0])+'</span></button>'}).join("")+'</div></section>';
- var b=app.querySelector(".opt");if(b)b.focus({preventScroll:true});window.scrollTo(0,0)}
-function result(){var c={R:0,E:0,L:0};ans.forEach(function(a){c[a]++});
- var best=["R","E","L"].sort(function(a,b){return c[b]-c[a]||(ans.lastIndexOf(b)-ans.lastIndexOf(a))})[0],t=T[best];
- try{localStorage.setItem("rel-type",best)}catch(e){}
- var done={};try{done=JSON.parse(localStorage.getItem("rel-type-steps")||"{}")}catch(e){}
- app.innerHTML=head+'<section class="view"><div class="res"><div class="k">Your REL type</div><h2>'+t.name+'</h2><p>'+esc(t.line)+'</p><div class="bars">'+[["R","Relations"],["E","Entrepreneurship"],["L","Leadership"]].map(function(x){var p=Math.round(c[x[0]]/Q.length*100);return '<div class="bar"><span>'+x[1]+'</span><s><u style="width:'+p+'%"></u></s><em>'+p+'%</em></div>'}).join("")+'</div></div>'+
- '<h3>Start with these at REL</h3><div class="recs">'+t.recs.map(function(r){return '<div class="rec"><b>'+esc(r[0])+'</b><span>'+esc(r[1])+'</span></div>'}).join("")+'</div>'+
- '<div class="all"><b>REL is all three.</b> Whatever your type, this year brings talks, workshops, competitions, networking and a startup program, free for every LU student.</div>'+
- '<h3>Join REL in 4 taps</h3><div class="steps">'+LINKS.map(function(l,k){return '<a class="step'+(done[k]?" done":"")+'" data-k="'+k+'" href="'+l[0]+'" target="_blank" rel="noopener"><span class="n">'+(done[k]?"✓":k+1)+'</span><span>'+esc(l[1])+'<small>'+esc(l[2])+'</small></span></a>'}).join("")+'</div>'+
- '<button type="button" class="again" id="again">Take the quiz again</button></section>';
  window.scrollTo(0,0)}
-app.addEventListener("click",function(e){
- if(e.target.closest("#start")){i=0;ans=[];q();return}
- if(e.target.closest("#again")){i=0;ans=[];q();return}
- var o=e.target.closest(".opt");if(o){o.classList.add("pick");ans.push(o.getAttribute("data-t"));i++;setTimeout(function(){i<Q.length?q():result()},180);return}
- var s=e.target.closest(".step");if(s){var k=s.getAttribute("data-k"),d={};try{d=JSON.parse(localStorage.getItem("rel-type-steps")||"{}")}catch(err){}d[k]=1;try{localStorage.setItem("rel-type-steps",JSON.stringify(d))}catch(err){}
-  setTimeout(function(){s.classList.add("done");s.querySelector(".n").textContent="✓"},300)}
+function calc(){app.innerHTML=head+'<section class="view calc"><div class="letters"><span>R</span><span>E</span><span>L</span></div><p id="cm">Reading your answers…</p></section>';
+ var m=["Reading your answers…","Asking the board…","Almost there…"],k=0,iv=setInterval(function(){k++;var e=document.getElementById("cm");if(e&&m[k])e.textContent=m[k]},600);
+ setTimeout(function(){clearInterval(iv);result()},1900)}
+function score(){var c={R:0,E:0,L:0};ans.forEach(function(a){c[a]++});
+ var best=["R","E","L"].sort(function(a,b){return c[b]-c[a]||(ans.lastIndexOf(b)-ans.lastIndexOf(a))})[0];return{c:c,best:best}}
+function result(){var s=score(),c=s.c,t=T[s.best];myType=s.best;ls("rel-type",s.best);
+ var done={};try{done=JSON.parse(ls("rel-type-steps")||"{}")}catch(e){}
+ var pct=function(n){return Math.round(n/Q.length*100)};
+ app.innerHTML=head+'<section class="view">'+
+ '<div class="res"><div class="k">My REL type</div><h2>'+t.name+'</h2><p>'+esc(t.line)+'</p><div class="bars">'+[["R","Relations"],["E","Entrepreneurship"],["L","Leadership"]].map(function(x){return '<div class="bar"><span>'+x[1]+'</span><s><u data-w="'+pct(c[x[0]])+'"></u></s><em>'+pct(c[x[0]])+'%</em></div>'}).join("")+'</div><div class="tag">relulfg.com/type · @relulfg</div></div>'+
+ '<p class="shot">Screenshot this and post it on your story. Tag <b>@relulfg</b></p>'+
+ '<div class="rank" id="rank" hidden></div>'+
+ '<h3>Start with these at REL</h3><div class="recs">'+t.recs.map(function(r){return '<div class="rec"><b>'+esc(r[0])+'</b><span>'+esc(r[1])+'</span></div>'}).join("")+'</div>'+
+ ideasBox()+
+ '<div class="intro"><div class="k">Coming up</div><h3>The REL intro session</h3><p>Meet the board, see the full plan for the year, and find your place in REL. The date is announced first in our WhatsApp community. Don\'t miss it.</p><a class="btn" href="'+LINKS[0][0]+'" target="_blank" rel="noopener">Get the date on WhatsApp</a></div>'+
+ '<h3>Join REL in 4 taps</h3><div class="steps">'+LINKS.map(function(l,k){return '<a class="step'+(done[k]?" done":"")+'" data-k="'+k+'" href="'+l[0]+'" target="_blank" rel="noopener"><span class="n">'+(done[k]?"✓":k+1)+'</span><span>'+esc(l[1])+'<small>'+esc(l[2])+'</small></span></a>'}).join("")+'</div>'+
+ '<div class="allset" id="allset"'+(Object.keys(done).length>=4?"":" hidden")+'>You\'re all set. Welcome to REL! Show this to the board at the stand.</div>'+
+ '<button type="button" class="again" id="again">Take the quiz again</button></section>';
+ window.scrollTo(0,0);
+ setTimeout(function(){app.querySelectorAll(".bar u").forEach(function(u){u.style.width=u.getAttribute("data-w")+"%"})},60);
+ rpc("rel_quiz_result",{p_type:s.best}).then(function(){return rpc("rel_quiz_live")}).then(function(d){if(!d||!d.today)return;var n=d.today[s.best]||0,r=document.getElementById("rank");if(!r||!n)return;
+  r.innerHTML='You\'re <b>'+t.word.slice(0,-1)+' #'+n+'</b> today · '+((d.today.R||0)+(d.today.E||0)+(d.today.L||0))+' students played today';r.hidden=false}).catch(function(){})}
+function ideasBox(){return '<div class="box" id="ideas"><h3 style="margin-top:0">Help shape REL</h3><p class="sub3">What do you want REL to bring this year? Pick as many as you like.</p><div class="chips">'+WANTS.map(function(w){return '<button type="button" class="chip" aria-pressed="false" data-w="'+w[0]+'">'+w[1]+'</button>'}).join("")+'</div><textarea id="idea" maxlength="600" placeholder="Your idea or recommendation for REL (optional)"></textarea><input type="text" id="iname" maxlength="80" placeholder="Your name (optional)" autocomplete="name"><button type="button" class="btn" id="send">Send to the board</button></div>'}
+
+/* ---------- feedback only (#ideas) ---------- */
+function ideasPage(){app.innerHTML=head+'<section class="view"><h1>Help shape REL</h1><p class="lead">Your ideas go straight to the REL board. Tell us what you want this year.</p>'+ideasBox()+'<a class="btn ghost" href="/type">Find your REL type · 1 minute</a></section><p class="foot">REL · Relations, Entrepreneurship &amp; Leadership</p>'}
+
+/* ---------- live big screen (#live) ---------- */
+function live(){document.body.className="live";
+ app.outerHTML='<div class="lv"><div><div class="eb">REL club · recruitment day</div><h1>What\'s your<br>REL type?</h1><p class="tg">Scan, answer 6 questions, find out if you\'re a Connector, a Builder or a Leader.</p>'+
+ '<div class="cnt">'+[["R","Connectors"],["E","Builders"],["L","Leaders"]].map(function(x){return '<div class="cn"><span>'+x[1]+'</span><s><u id="b'+x[0]+'" style="width:0"></u></s><em id="n'+x[0]+'">0</em></div>'}).join("")+'</div>'+
+ '<div class="tot"><b id="ntot">0</b> students played today · <span id="nall">0</span> in total</div>'+
+ '<div class="wants"><h4>What students want from REL</h4><div class="wl" id="wl"></div></div></div>'+
+ '<div class="qrside"><div class="qrbig"><img alt="QR code to relulfg.com/type" src="'+QR_TYPE+'"></div><div class="u">relulfg.com/type</div><div class="ticker" id="tk"></div><div class="s">Follow @relulfg · Intro session coming soon</div></div></div>';
+ var tips=["Connector, Builder or Leader?","It takes one minute.","Which type wins today?","Who's the Leader in your group?","Find your REL type now."],ti=0;
+ function tick(){var e=document.getElementById("tk");if(e){e.textContent=tips[ti%tips.length];ti++}}
+ function pull(){rpc("rel_quiz_live").then(function(d){if(!d)return;var t=d.today||{},m=Math.max(1,t.R||0,t.E||0,t.L||0);
+   ["R","E","L"].forEach(function(k){document.getElementById("n"+k).textContent=t[k]||0;document.getElementById("b"+k).style.width=((t[k]||0)/m*100)+"%"});
+   document.getElementById("ntot").textContent=(t.R||0)+(t.E||0)+(t.L||0);document.getElementById("nall").textContent=d.total||0;
+   var w=d.wants||{},mx=Math.max(1,Math.max.apply(null,WANTS.map(function(x){return w[x[0]]||0})));
+   document.getElementById("wl").innerHTML=WANTS.slice().sort(function(a,b){return (w[b[0]]||0)-(w[a[0]]||0)}).slice(0,4).map(function(x){return '<div class="w"><span>'+x[1]+'</span><s><u style="width:'+((w[x[0]]||0)/mx*100)+'%"></u></s><em>'+(w[x[0]]||0)+'</em></div>'}).join("")}).catch(function(){})}
+ tick();pull();setInterval(pull,8000);setInterval(tick,3500)}
+
+/* ---------- events ---------- */
+document.addEventListener("click",function(e){
+ if(e.target.closest("#start")||e.target.closest("#again")){i=0;ans=[];q();return}
+ var o=e.target.closest(".opt");if(o){if(o.classList.contains("pick"))return;o.classList.add("pick");ans.push(o.getAttribute("data-t"));i++;setTimeout(function(){i<Q.length?q():calc()},200);return}
+ var ch=e.target.closest(".chip");if(ch){ch.setAttribute("aria-pressed",ch.getAttribute("aria-pressed")!=="true");return}
+ if(e.target.closest("#send")){var b=document.getElementById("send"),w=[].map.call(document.querySelectorAll('.chip[aria-pressed="true"]'),function(x){return x.getAttribute("data-w")}),idea=(document.getElementById("idea").value||"").trim(),nm=(document.getElementById("iname").value||"").trim();
+  if(!w.length&&!idea){b.textContent="Pick at least one, or write an idea";setTimeout(function(){b.textContent="Send to the board"},1800);return}
+  b.disabled=true;b.textContent="Sending…";
+  rpc("rel_send_idea",{p_wants:w,p_idea:idea,p_name:nm,p_type:myType||ls("rel-type")}).then(function(){document.getElementById("ideas").innerHTML='<div class="thanks"><b>Thank you!</b>Your ideas just reached the REL board.</div>'}).catch(function(){b.disabled=false;b.textContent="Couldn't send. Tap to try again"});return}
+ var s=e.target.closest(".step");if(s){var k=s.getAttribute("data-k"),d={};try{d=JSON.parse(ls("rel-type-steps")||"{}")}catch(err){}d[k]=1;ls("rel-type-steps",JSON.stringify(d));
+  setTimeout(function(){s.classList.add("done");s.querySelector(".n").textContent="✓";if(Object.keys(d).length>=4){var a=document.getElementById("allset");if(a)a.hidden=false}},300)}
 });
+var h=(location.hash||"").slice(1);
+if(h==="live")live();else if(h==="ideas")ideasPage();else intro();
 })();
 </script>
 </body>
