@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-je4TS/ubHBCFuXx3mY4fSZlytp4AbzHPxutwt3/BXw0='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-oOaVLwC9dVrYj6hOyE9wTsM7rOtYbC7o8gbNO/MOhcE='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +22,7 @@
 <meta property="og:title" content="REL club: Relations, Entrepreneurship and Leadership">
 <meta property="og:description" content="Build your network, start something of your own and learn to lead. The Relations, Entrepreneurship and Leadership club at the Lebanese University.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#800020">
+<meta name="theme-color" content="#800020"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="REL"><meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1500,6 +1500,85 @@ body.fiesta-day .site-header,body.fiesta-day header{box-shadow:0 3px 0 0 #E0A526
 body.fiesta-day::before{content:"";position:fixed;top:0;left:0;right:0;height:4px;z-index:401;background:linear-gradient(90deg,#800020,#E0A526,#FFD666,#E0A526,#800020);background-size:200% 100%;animation:fzBar 3s linear infinite;pointer-events:none}
 @keyframes fzBar{to{background-position:200% 0}}
 @media (prefers-reduced-motion:reduce){body.fiesta-day::before{animation:none}}
+</style>
+<style id="phone-first">
+/* ===== Phone-first layer (most visitors use a phone) ===== */
+:root{--tbh:62px;--navh:66px}
+html{-webkit-text-size-adjust:100%}
+a,button,.tab,.chip,.btn,[role=button],label{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.btn:active,.tab:active,.chip:active,.qz-o button:active,.sdk-pad button:active{transform:scale(.97)}
+/* bottom tab bar + "More" sheet (hidden on desktop) */
+.tabbar,.sheet{display:none}
+@media (max-width:860px){
+ body{padding-bottom:calc(var(--tbh) + env(safe-area-inset-bottom,0px))}
+ .menu-btn{display:none!important}
+ .tabbar{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:70;height:calc(var(--tbh) + env(safe-area-inset-bottom,0px));padding:0 4px env(safe-area-inset-bottom,0px);background:rgba(248,246,241,.96);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--line);transition:transform .25s ease}
+ body.typing .tabbar{transform:translateY(110%)}
+ .tabbar a,.tabbar button{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:0;background:none;color:var(--muted);font:600 11px var(--f-body),sans-serif;letter-spacing:.01em;text-decoration:none;cursor:pointer;padding:6px 0;min-width:0}
+ .tabbar svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+ .tabbar .on{color:var(--brand-ink)}
+ .tabbar .on svg{stroke-width:2.3}
+ .tabbar .on::before{content:"";position:absolute;top:0;left:28%;right:28%;height:3px;border-radius:0 0 3px 3px;background:var(--fill)}
+ .tabbar .dot{position:absolute;top:8px;left:calc(50% + 8px);min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:var(--fill);color:var(--on-fill);font:700 10px/16px var(--f-body),sans-serif;text-align:center}
+ .sheet{display:block;position:fixed;inset:0;z-index:90}
+ .sheet[hidden]{display:none}
+ .sheet-scrim{position:absolute;inset:0;background:rgba(29,19,21,.45);opacity:0;transition:opacity .25s ease}
+ .sheet-card{position:absolute;left:0;right:0;bottom:0;max-height:82vh;overflow:auto;background:var(--bg);border-radius:22px 22px 0 0;padding:10px 16px calc(var(--tbh) + 18px + env(safe-area-inset-bottom,0px));transform:translateY(100%);transition:transform .28s cubic-bezier(.2,.8,.2,1)}
+ .sheet.on .sheet-scrim{opacity:1}.sheet.on .sheet-card{transform:none}
+ .sheet-grab{width:40px;height:5px;border-radius:3px;background:var(--line);margin:4px auto 14px}
+ .sheet-h{font:600 .75rem var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 4px 10px}
+ .sheet-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+ .sheet-grid a{display:flex;align-items:center;gap:10px;min-height:56px;padding:12px 14px;border-radius:14px;background:var(--surface);border:1px solid var(--line);color:var(--ink);font:600 1rem var(--f-body),sans-serif;text-decoration:none}
+ .sheet-grid a.on{border-color:var(--fill);color:var(--brand-ink);background:var(--tint)}
+ .sheet-grid a i{font-style:normal;font-size:1.2rem;width:24px;text-align:center}
+ .toast{bottom:calc(var(--tbh) + 16px + env(safe-area-inset-bottom,0px))}
+ .totop{bottom:calc(var(--tbh) + 14px + env(safe-area-inset-bottom,0px));width:42px;height:42px}
+ body.sheet-open{overflow:hidden}
+}
+/* compact page headers, so content shows on the first screen */
+@media (max-width:720px){
+ .pagehead{padding:96px 0 26px}
+ .pagehead .pnum{margin:0 0 8px;font-size:.72rem}
+ .pagehead h1{font-size:2.4rem;margin:0 0 8px}
+ .pagehead p{font-size:1rem;line-height:1.5}
+ .pagehead .ph-mark{opacity:.06}
+ .gchips{gap:6px;margin-top:8px}.gchips span{font-size:.8rem;padding:3px 10px}
+ #nextGame{margin-top:6px!important}
+ .sec{padding:28px 0 48px}
+ .sec-head{margin-bottom:14px}
+ .sec-head h2{font-size:1.9rem}
+}
+/* sub-tabs: one swipeable row that sticks under the header */
+@media (max-width:860px){
+ .pg .tabs.subtabs{position:sticky;top:var(--navh);z-index:40;flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;gap:8px;margin:0 -20px 18px;padding:10px 20px;border-bottom:1px solid var(--line);background:var(--bg);transition:top .3s ease;scroll-snap-type:x proximity}
+ html.navhid .pg .tabs.subtabs{top:0}
+ .sec.alt .tabs.subtabs{background:var(--alt)}
+ .pg .tabs.subtabs::-webkit-scrollbar{display:none}
+ .pg .tabs.subtabs .tab{flex:none;scroll-snap-align:center;min-height:40px;padding:0 16px;border:1.5px solid var(--line);border-radius:999px;margin:0;color:var(--ink);background:var(--surface);font-size:14.5px;white-space:nowrap}
+ .pg .tabs.subtabs .tab[aria-selected="true"]{background:var(--fill);border-color:var(--fill);color:var(--on-fill)}
+}
+/* nothing wider than the screen */
+.qwrap>*,.qwrap.g2>*{min-width:0}
+.clue-form input,#gDiveForm input{min-width:0}
+/* comfortable tap targets */
+@media (max-width:860px){
+ .idlink{min-height:44px;display:inline-flex!important;align-items:center}
+ .mob-lang .chip{min-height:42px}
+ input,select,textarea{font-size:16px}
+ .chip{min-height:38px}
+ .foot a,.footer a{display:inline-block;padding:4px 0}
+ /* board: compact cards with the photo beside the name */
+ .person{display:grid;grid-template-columns:72px 1fr;column-gap:16px;align-items:start;padding:18px!important}
+ .person .ph{width:72px!important;height:72px!important;margin:0!important;font-size:1.5rem!important;grid-row:1/span 3}
+ .person h3{font-size:1.2rem;margin:4px 0 0}
+ .person .role{margin-bottom:6px}
+ .person p{grid-column:1/-1;margin-top:10px;font-size:.95rem;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+ .person .idlink{grid-column:1/-1;margin:6px 0 0!important}
+ .person:hover{transform:none}
+}
+@media (prefers-reduced-motion:reduce){.tabbar,.sheet-card,.sheet-scrim,.pg .tabs.subtabs{transition:none}}
+@media (max-width:720px){.pg[data-pg="play"] .gchips{display:none}}
+.pg .tabs.subtabs .tab.gdone::before{content:"\2713\00a0";font-weight:800}
 </style>
 </head>
 <body>
@@ -5160,7 +5239,7 @@ function secsToBeirutMidnight(){const p=new Intl.DateTimeFormat("en-GB",{timeZon
 const GAME_START=beirutDay();
 const gameStale=()=>beirutDay()!==GAME_START;
 (function(){const head=document.querySelector('.pg[data-pg="play"] .pagehead .wrap');if(!head)return;const el=document.createElement("p");el.className="muted small";el.id="nextGame";el.style.marginTop="10px";head.appendChild(el);
- const pad=n=>String(n).padStart(2,"0"),tick=()=>{const s=secsToBeirutMidnight();el.textContent="New puzzle and question in "+pad(Math.floor(s/3600))+":"+pad(Math.floor(s%3600/60))+":"+pad(s%60)+" (midnight, Beirut time).";if(gameStale()&&(cur.pg==="play"||cur.pg==="startups"))location.reload()};tick();setInterval(tick,1000)})();
+ const pad=n=>String(n).padStart(2,"0"),tick=()=>{const s=secsToBeirutMidnight();el.textContent="New puzzles in "+pad(Math.floor(s/3600))+":"+pad(Math.floor(s%3600/60))+":"+pad(s%60)+" (midnight, Beirut time).";if(gameStale()&&(cur.pg==="play"||cur.pg==="startups"))location.reload()};tick();setInterval(tick,1000)})();
 /* daily business question */
 const QZ=[["What does MVP stand for in the startup world?",["Most Valuable Player","Minimum Viable Product","Maximum Value Proposition","Main Venture Plan"],1,"An MVP is the simplest version of a product that real users can test."],["What is a unicorn in business?",["A company with 1,000 employees","A private startup valued at over $1 billion","A company listed on two stock markets","A startup with no competitors"],1,"Such startups are rare, which is where the name comes from."],["What does ROI stand for?",["Rate of Inflation","Return on Investment","Revenue of Industry","Risk of Innovation"],1,"ROI compares what you gained to what you spent."],["What does B2B mean?",["Back to business","Business to business","Brand to brand","Buyer to buyer"],1,"A B2B company sells to other companies, not to individuals."],["Revenue minus costs equals what?",["Equity","Profit","Cash flow","Market share"],1,"Profit is what remains after all costs are paid."],["What is inflation?",["A fall in unemployment","A general rise in prices over time","A rise in interest rates","Growth in company profits"],1,"When prices rise, the same money buys less."],["In a startup, what does equity mean?",["A loan from a bank","Ownership in the company","A monthly salary","The company's debt"],1,"Equity is a share of ownership, often held by founders and investors."],["What is a pivot?",["A product launch party","A major change in strategy","A new office","A price discount"],1,"Startups pivot when the first idea is not working."],["What does IPO stand for?",["Initial Public Offering","Internal Profit Option","International Price Order","Investment Planning Office"],0,"An IPO is when a company first sells its shares to the public."],["What does a SWOT analysis cover?",["Sales, Wages, Orders, Taxes","Strengths, Weaknesses, Opportunities, Threats","Suppliers, Workers, Offers, Trends","Savings, Wealth, Options, Time"],1,"It looks at a company or idea from four simple angles."],["What is bootstrapping?",["Raising money from venture capital","Building a company with your own money and sales","Selling a company","Buying a competitor"],1,"Bootstrapped founders keep control but grow with limited cash."],["What is a stock?",["A loan to a company","A share of ownership in a company","A type of bank account","A tax on profits"],1,"Owning a stock means owning a small piece of the company."],["What does diversification mean in investing?",["Putting all your money in one asset","Spreading money across different assets","Selling everything","Only buying gold"],1,"It reduces the risk that one bad investment hurts everything."],["What is compound interest?",["Interest only on the original amount","Interest on the original amount and on past interest","A fee charged by banks","A tax-free bonus"],1,"Compounding is why starting early matters so much."],["What does KPI stand for?",["Key Performance Indicator","Known Profit Index","Keep Progress Improving","Kinetic Product Idea"],0,"KPIs are the numbers a team tracks to know if it is succeeding."],["The Pareto principle says roughly what?",["50% of work gives 50% of results","80% of results come from 20% of causes","Every task takes twice as long","Profit doubles each year"],1,"It is a rule of thumb: focus on the few things that matter most."],["What does CEO stand for?",["Chief Executive Officer","Central Economic Office","Chief Engineering Owner","Company Equity Officer"],0,"The CEO is the top executive responsible for the whole company."],["What is cash flow?",["The total value of a company","Money moving in and out of a business","Yearly profit","The price of a share"],1,"A profitable company can still fail if it runs out of cash."],["What does GDP measure?",["A country's total debt","The value of goods and services a country produces","The average salary","The number of companies"],1,"GDP is the main measure of the size of an economy."],["What is venture capital?",["A bank loan for homes","Funding for early-stage, high-growth companies in exchange for equity","A government grant","A tax refund"],1,"VCs invest in many startups hoping a few become very large."],["Which of these is a fixed cost?",["Raw materials per unit","Monthly office rent","Sales commissions","Shipping per order"],1,"Fixed costs stay the same however much you sell."],["What does SaaS stand for?",["Software as a Service","Sales as a Strategy","Startup and Scale Systems","Secure and Safe Software"],0,"SaaS is software you pay for by subscription instead of buying once."],["What is market share?",["A company's portion of total sales in its market","The price of one share","The size of a store","A company's yearly profit"],0,"With 20% market share, a company sells one in every five units in its market."],["What is a stakeholder?",["Only the owner","Anyone affected by or interested in a business","Only the employees","A type of investor"],1,"Customers, employees, investors and communities are all stakeholders."],["What is an elevator pitch?",["A pitch made only in buildings","A 30 to 60 second explanation of your idea","A written business plan","A sales discount"],1,"It is short enough to deliver during an elevator ride."],["What is due diligence?",["A tax form","Careful checking of a deal or company before committing","A company holiday","A type of loan"],1,"Investors do it before putting money in."],["What is a recession?",["A period of strong growth","A significant decline in economic activity","A fall in stock prices for one day","A rise in inflation only"],1,"Recessions usually bring lower spending, weaker hiring and falling output."],["What is a business model?",["The company logo","How a company creates value and earns money","The office layout","A list of employees"],1,"Two companies can sell the same product with very different business models."],["What does scalable mean for a business?",["It is very small","It can grow without costs growing at the same rate","It has no employees","It sells only online"],1,"Scalable businesses can serve many more customers without proportionally more effort."],["What is a value proposition?",["The price of a share","The reason customers should choose you","A yearly report","An investor's offer"],1,"A good one is clear, specific and about the customer, not about you."]];
 (function(){const key=GAME_START,[yy,mm,dd]=key.split("-").map(Number),day=Math.floor(Date.UTC(yy,mm-1,dd)/864e5),it=QZ[day%QZ.length],box=$("#qzO");
@@ -5987,7 +6066,7 @@ const _asv=appStatusView;appStatusView=function(box){_asv(box);const a=ST.app;if
  c.insertAdjacentHTML("beforebegin",'<ol class="track"><li class="done">Form sent</li><li class="now">Board review</li><li>Member</li></ol>')};
 
 /* ---------- 2. members-only pages, Startups included ---------- */
-const PREVIEW={mobilite:["Exchange and double-degree programs","Partner universities abroad","Scholarships and how to apply"],learn:["Books, articles and templates by topic","Business words explained simply","Presentations from REL sessions"],play:["Five new puzzles every day","A daily business question","The games leaderboard and your streak"],points:["Monthly and all-time rankings","Member of the month","How to earn points"],startups:["The Idea Lab, step by step","The Idea Board with members' ideas","Startup of the week"]};
+const PREVIEW={mobilite:["Exchange and double-degree programs","Partner universities abroad","Scholarships and how to apply"],learn:["Books, articles and templates by topic","Business words explained simply","Presentations from REL sessions"],play:["Six new puzzles every day","A new game of the month","The games leaderboard and your streak"],points:["Monthly and all-time rankings","Member of the month","How to earn points"],startups:["The Idea Lab, step by step","The Idea Board with members' ideas","Startup of the week"]};
 gateHTML=function(label,pg){const pend=ST.user&&ST.app&&ST.app.status==="pending",rej=ST.user&&ST.app&&ST.app.status==="rejected";
  const list=(PREVIEW[pg]||[]).map(x=>`<li>${esc(x)}</li>`).join("");
  if(pend)return `<div class="gate-inner"><span class="tag">Members only</span><h3>Almost there</h3><p>Your membership request is with the board. ${esc(label)} opens for you as soon as it is accepted.</p><ul class="gate-list">${list}</ul><div class="row"><a class="btn primary" href="#account">See my request</a></div></div>`;
@@ -7084,6 +7163,52 @@ sm.addEventListener("click",async e=>{if(e.target.closest("#smFull")){q("#smFull
 window.relEmpire={open:openEmpire};
 })();
 
+
+/* ---------- phone: bottom tab bar, "More" sheet, swipeable sub-tabs ---------- */
+(function(){
+ const I={home:'<svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>',
+  play:'<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5"/><path d="M17.25 13.5v7.5M13.5 17.25H21"/></svg>',
+  startups:'<svg viewBox="0 0 24 24"><path d="M12 15c-1.5 0-3-1.5-3-3 0-4 3-8.5 8.5-9.5C16.5 8 12 11 12 15z"/><path d="M9 12H5.5l2.5-4h4M12 15v3.5l4-2.5v-4"/><path d="M7 17c-1.5.5-2.5 2-2.5 3.5C6 20.5 7.5 19.5 8 18"/></svg>',
+  points:'<svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4v1.5A3.5 3.5 0 0 0 7.5 11M17 6h3v1.5A3.5 3.5 0 0 1 16.5 11"/></svg>',
+  more:'<svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>'};
+ const TABS=[["home","Home"],["play","Play"],["startups","Startups"],["points","Ranking"]];
+ const EMO={about:"ℹ️",events:"📅",people:"👥",points:"🏆",learn:"📚",mobilite:"✈️",startups:"🚀",play:"🧩",community:"🤝",team:"🔑",account:"👤",home:"🏠"};
+ const bar=document.createElement("nav");bar.className="tabbar";bar.setAttribute("aria-label","Quick links");
+ bar.innerHTML=TABS.map(([pg,l])=>`<a href="#${pg==="home"?"top":pg}" data-tb="${pg}">${I[pg]}<span>${l}</span></a>`).join("")+`<button type="button" id="tbMore" aria-expanded="false" aria-controls="sheet">${I.more}<span>More</span></button>`;
+ document.body.appendChild(bar);
+ const sheet=document.createElement("div");sheet.className="sheet";sheet.id="sheet";sheet.hidden=true;
+ sheet.innerHTML='<div class="sheet-scrim" data-sheetx></div><div class="sheet-card" role="dialog" aria-modal="true" aria-label="All pages"><div class="sheet-grab"></div><p class="sheet-h">All pages</p><div class="sheet-grid" id="sheetGrid"></div></div>';
+ document.body.appendChild(sheet);
+ const fill=()=>{const links=[...document.querySelectorAll("#menu a")].filter(a=>!a.hidden);
+  document.getElementById("sheetGrid").innerHTML=[['#top','Home'],...links.map(a=>[a.getAttribute("href"),a.textContent.trim()])].map(([h,t])=>{const k0=h.replace(/^#\/?/,"").split("/")[0],k=k0==="top"?"home":k0;return `<a href="${h}" class="${k===cur.pg?"on":""}"><i aria-hidden="true">${EMO[k]||"•"}</i>${esc(t)}</a>`}).join("")};
+ const more=document.getElementById("tbMore");
+ const open=()=>{fill();sheet.hidden=false;requestAnimationFrame(()=>requestAnimationFrame(()=>sheet.classList.add("on")));more.setAttribute("aria-expanded","true");document.body.classList.add("sheet-open")};
+ const close=()=>{sheet.classList.remove("on");more.setAttribute("aria-expanded","false");document.body.classList.remove("sheet-open");setTimeout(()=>{if(!sheet.classList.contains("on"))sheet.hidden=true},300)};
+ more.addEventListener("click",()=>sheet.classList.contains("on")?close():open());
+ sheet.addEventListener("click",e=>{if(e.target.closest("[data-sheetx]")||e.target.closest("a"))close()});
+ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&sheet.classList.contains("on"))close()});
+ let ty=0;sheet.addEventListener("touchstart",e=>{ty=e.touches[0].clientY},{passive:true});sheet.addEventListener("touchend",e=>{if(e.changedTouches[0].clientY-ty>70&&sheet.querySelector(".sheet-card").scrollTop<=0)close()},{passive:true});
+ function centerTab(smooth){const t=document.querySelector('.pg:not([hidden]) .tabs.subtabs [aria-selected="true"]');if(!t)return;const b=t.parentElement;if(b.scrollWidth<=b.clientWidth)return;
+  const x=t.offsetLeft-b.clientWidth/2+t.offsetWidth/2;try{b.scrollTo({left:x,behavior:smooth?"smooth":"auto"})}catch(e){b.scrollLeft=x}}
+ function mark(){const p=cur.pg;bar.querySelectorAll("[data-tb]").forEach(a=>{const on=a.dataset.tb===p;a.classList.toggle("on",on);if(on)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});more.classList.toggle("on",!TABS.some(x=>x[0]===p));centerTab(false)}
+ const _sn=setNav;setNav=function(pg){_sn(pg);try{mark()}catch(e){}};mark();
+ /* games left today, as a number on the Play tab */
+ const bDay=()=>{try{return new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Beirut",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date())}catch(e){return new Date().toISOString().slice(0,10)}};
+ const GK=["path","sunmoon","sudoku","clues","dive"];
+ function doneMap(){const d=bDay(),m={};GK.forEach(k=>{let v=null;try{v=JSON.parse(localStorage.getItem("rel-g2-"+k)||"null")}catch(e){}m[k]=!!(v&&v.doneDay===d)});let c=false;try{c=localStorage.getItem("rel-q-"+d)!=null}catch(e){}m.puzzle=c;return m}
+ function playDot(){const m=doneMap(),left=Object.values(m).filter(x=>!x).length;
+  document.querySelectorAll('.pg[data-pg="play"] .subtabs [data-sub]').forEach(t=>t.classList.toggle("gdone",!!m[t.dataset.sub]));
+  const a=bar.querySelector('[data-tb="play"]');let d=a.querySelector(".dot");if(!left){if(d)d.remove();return}if(!d){d=document.createElement("span");d.className="dot";a.appendChild(d)}d.textContent=left;d.setAttribute("aria-label",left+" games left today")}
+ playDot();setInterval(playDot,4000);
+ /* hide the bar while typing, so the keyboard has room */
+ document.addEventListener("focusin",e=>{if(e.target.matches("input:not([type=checkbox]):not([type=radio]),textarea,select"))document.body.classList.add("typing")});
+ document.addEventListener("focusout",()=>setTimeout(()=>{const a=document.activeElement;if(!a||!a.matches("input,textarea,select"))document.body.classList.remove("typing")},50));
+ /* sub-tabs: stick under the header, follow it when it hides */
+ const nav=document.querySelector(".nav");if(nav){const sync=()=>{document.documentElement.classList.toggle("navhid",nav.classList.contains("hide"));const h=nav.getBoundingClientRect().height;if(h)document.documentElement.style.setProperty("--navh",Math.round(h)+"px")};new MutationObserver(sync).observe(nav,{attributes:true,attributeFilter:["class"]});sync();addEventListener("resize",sync)}
+ document.addEventListener("click",e=>{const t=e.target.closest(".subtabs [data-sub]");if(!t||innerWidth>860)return;
+  requestAnimationFrame(()=>{centerTab(true);const b=t.closest(".subtabs"),pane=document.querySelector('.pg:not([hidden]) .pane:not([hidden])');if(!b||!pane)return;
+   const stuck=b.getBoundingClientRect().top<=(parseInt(getComputedStyle(b).top)||0)+2;if(stuck){const y=pane.getBoundingClientRect().top+scrollY-b.offsetHeight-(parseInt(getComputedStyle(b).top)||0)-6;scrollTo({top:Math.max(0,y)})}})});
+})();
 </script>
 </body>
 </html>
