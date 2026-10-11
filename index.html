@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-RUXqNeFjYnp1rPY29pA7ktm0gI1ewmjD3pI7yESMeK0='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-ExDvTB8dhdT/NKjcBtyXlxnY11uIBiqCZ+tA8OrP2FM='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1197,6 +1197,58 @@ body.founder{--fill:#B8860B;--brand-ink:#8A6508;--band:#57101F}
 @keyframes mcnaoh-moon{0%{transform:none}50%{transform:translateX(-18px) scaleX(-1)}100%{transform:none}}
 .mcnaoh-mark.moon{animation:mcnaoh-moon 1.6s linear}
 @media (prefers-reduced-motion:reduce){.egg-spin,.mcnaoh-mark.moon{animation:none}}
+</style>
+<style id="rel-update-forge">
+.fg{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+.fg-top{display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+.fg-eye{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-ink)}
+.fg-name{font-size:1.9rem;margin-top:2px}
+.fg-tabs{display:flex;gap:4px;background:var(--alt);border-radius:999px;padding:4px;overflow-x:auto}
+.fg-tabs button{flex:1;border:0;background:none;padding:9px 10px;border-radius:999px;font:600 15px var(--f-body),sans-serif;color:var(--muted);cursor:pointer;white-space:nowrap}
+.fg-tabs button[aria-selected="true"]{background:var(--fill);color:var(--on-fill)}
+.fg-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column}
+.fg-hero{background:var(--fill);color:var(--on-fill);border-radius:16px;padding:18px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;font-size:15px}
+.fg-big{font:800 3.4rem/0.9 var(--f-display),sans-serif}
+.fg-lbl{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+.fg-h{margin:0;display:flex;justify-content:space-between;align-items:center;gap:8px;font:700 1.05rem var(--f-body),sans-serif;color:var(--ink)}
+.fg-h span{font-size:.82rem;font-weight:500;color:var(--muted)}
+.fg-h.cur{color:var(--brand-ink)}
+.fg-meters{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.fg-meter{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.fg-k{font-size:.82rem;color:var(--muted);font-weight:600}
+.fg-v{font:800 1.7rem/1 var(--f-display),sans-serif;color:var(--ink);font-variant-numeric:tabular-nums}
+.fg-v small{font:500 .82rem var(--f-body),sans-serif;color:var(--muted)}
+.fg-bar{display:block;height:6px;border-radius:6px;background:var(--alt);overflow:hidden;margin-top:6px}
+.fg-bar i{display:block;height:100%;background:var(--fill);border-radius:6px}.fg-bar i.ok{background:#1F7A4D}
+.fg-row{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);padding:12px 0;font:inherit;color:inherit;cursor:pointer;min-width:0}
+.fg-card>.fg-row:first-of-type,.fg-card>.fg-h+.fg-row{border-top:0}
+.fg-main{flex:1;display:flex;flex-direction:column;min-width:0}
+.fg-t{font-weight:600;font-size:15.5px;line-height:1.35;overflow-wrap:anywhere}
+.fg-m{font-size:13.5px;color:var(--muted);line-height:1.4;overflow-wrap:anywhere}
+.fg-proof{color:#1F7A4D}
+.fg-role{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-ink)}
+.fg-side{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0}
+.fg-pill{display:inline-flex;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap;background:var(--alt);color:var(--muted);flex-shrink:0}
+.fg-pill.asked{background:#E1EBF5;color:#2F5D8A}.fg-pill.talking{background:#FBEBD3;color:#A35A00}.fg-pill.yes{background:#E1F2E8;color:#1F7A4D}.fg-pill.no{background:#F9E1DF;color:#B3261E}
+.fg-chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px}
+.fg-chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 12px;font:600 14px var(--f-body),sans-serif;color:var(--muted);white-space:nowrap;cursor:pointer}
+.fg-chip span{opacity:.7}
+.fg-chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.fg-trow{display:flex;gap:10px;align-items:flex-start;border-top:1px solid var(--line)}
+.fg-h+.fg-trow{border-top:0}
+.fg-trow .fg-row{border-top:0}
+.fg-ck{width:26px;height:26px;margin-top:11px;border-radius:7px;border:2px solid var(--line);background:var(--surface);flex-shrink:0;display:grid;place-items:center;padding:0;cursor:pointer}
+.fg-ck svg{width:14px;height:14px;opacity:0}
+.fg-ck[aria-checked="true"]{background:#1F7A4D;border-color:#1F7A4D}.fg-ck[aria-checked="true"] svg{opacity:1}
+.fg-trow.done .fg-t{text-decoration:line-through;color:var(--muted)}
+.fg-team{text-align:left;gap:4px;font:inherit;color:inherit;cursor:pointer}
+.fg-tt{font:700 1.15rem var(--f-body),sans-serif}
+.fg-seg{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.fg-seg button{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:7px 12px;font:600 14px var(--f-body),sans-serif;color:var(--ink);cursor:pointer}
+.fg-seg button[aria-pressed="true"]{background:var(--fill);color:var(--on-fill);border-color:var(--fill)}
+.fg .fld>span{font-weight:600}
+.fg-del{border-color:#B3261E;color:#B3261E}
+#fgForm{margin-top:12px}
 </style>
 
 
@@ -4586,13 +4638,119 @@ function memberView(box){const m=ST.member,first=(m.full_name||"").split(" ")[0]
 function renderTeam(){const box=$("#teamBody");if(!box)return;
  if(!SB||!ST.team){box.innerHTML=accHead("Team area","This area is only for the REL team.");return}
  const tabs=[];[["applications","apps","Applications"],["events","events","Events"],["announcements","news","Announcements"],["points","points","Points"],["honors","honors","Member of the month"],["newsletter","subs","Newsletter"],["content","content","Content"]].forEach(x=>{if(can(x[0]))tabs.push([x[1],x[2]])});
- tabs.push(["members","Members"]);if(can("ambassadors"))tabs.push(["amb","Ambassadors"]);if(ST.team.role==="president")tabs.push(["access","Access"]);
+ tabs.push(["members","Members"]);if(can("ambassadors"))tabs.push(["amb","Ambassadors"]);if(ST.team.role==="president"){tabs.push(["access","Access"]);tabs.push(["forge","The Forge"])}
  if(!tabs.some(t=>t[0]===teamTab))teamTab=tabs[0][0];
  box.innerHTML=accHead("Team area","You are logged in as "+ST.team.position+".")+`<div class="tabs" role="tablist">${tabs.map(t=>`<button type="button" class="tab" role="tab" aria-selected="${t[0]===teamTab}" data-tt="${t[0]}">${t[1]}</button>`).join("")}</div><div id="teamPane"></div>`;
- ({apps:paneApps,events:paneEvents,news:paneNews,members:paneMembers,amb:paneAmb,points:panePoints,honors:paneHonors,subs:paneSubs,access:paneAccess,content:paneContent})[teamTab]()}
+ ({apps:paneApps,events:paneEvents,news:paneNews,members:paneMembers,amb:paneAmb,points:panePoints,honors:paneHonors,subs:paneSubs,access:paneAccess,content:paneContent,forge:paneForge})[teamTab]()}
 const tpane=()=>$("#teamPane");
 const LOAD_MSGS=["Loading...", "Warming up the bulb...", "Herding the data...", "One moment, fetching things...", "Almost there..."];const loading=()=>{const p=tpane();if(p)p.innerHTML='<p class="muted">'+LOAD_MSGS[Math.floor(Math.random()*LOAD_MSGS.length)]+'</p>'};
 const paneErr=e=>{const p=tpane();if(p)p.innerHTML=`<div class="empty"><p>${esc(errText(e))}</p></div>`};
+/* ---- The Forge HQ: president only (data protected by RLS: is_president) ---- */
+const FG={tab:"home",pf:"all",loaded:false,data:{settings:{},people:[],tasks:[],teams:[],goals:[]}};
+try{FG.tab=localStorage.getItem("rel-fg-tab")||"home";FG.pf=localStorage.getItem("rel-fg-pf")||"all"}catch(e){}
+const FG_ROLES=[["mentor","Mentor"],["speaker","Speaker"],["judge","Judge"],["panel","Panel"],["partner","Partner"],["sponsor","Sponsor"]];
+const FG_STATUS=[["toask","To ask"],["asked","Asked"],["talking","Talking"],["yes","Yes"],["no","No"]];
+const FG_STAGES=[["applied","Applied"],["interview","Interview"],["selected","Selected"],["building","Building"],["demo","Demo Day"],["next","Next step"],["dropped","Dropped"]];
+const FG_MONTHS=["2026-10","2026-11","2026-12","2027-01","2027-02","2027-03","2027-04","2027-05","2027-06"];
+const FG_MN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],FG_MNL=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const fgLab=(a,k)=>(a.find(x=>x[0]===k)||[k,k])[1];
+const fgToday=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
+const fgDays=s=>Math.round((Date.parse(s+"T00:00:00")-Date.parse(fgToday()+"T00:00:00"))/864e5);
+const fgD=s=>s?(+s.slice(8,10))+" "+FG_MN[+s.slice(5,7)-1]:"";
+const fgMoney=n=>"$"+Math.round(n||0).toLocaleString("en-US");
+const fgMonth=()=>fgToday().slice(0,7);
+const FG_CK='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+
+async function paneForge(){const p=tpane();if(!p)return;
+ if(!ST.team||ST.team.role!=="president"){p.innerHTML='<div class="empty"><p>Only the President can open this.</p></div>';return}
+ if(!FG.loaded){loading();const {data,error}=await SB.from("forge_items").select("coll,id,data");if(error)return paneErr(error);
+  const d={settings:{},people:[],tasks:[],teams:[],goals:[]};(data||[]).forEach(r=>{if(r.coll==="settings")d.settings=r.data||{};else if(d[r.coll])d[r.coll].push(Object.assign({},r.data,{id:r.id}))});
+  FG.data=d;FG.loaded=true}
+ fgDraw()}
+async function fgSave(coll,id,body){const clean=Object.assign({},body);delete clean.id;clean.updated=fgToday();
+ const rid=id||(coll==="settings"?"main":(coll[0]+Date.now().toString(36)+Math.random().toString(36).slice(2,6)));
+ const {error}=await SB.from("forge_items").upsert({coll,id:rid,data:clean,updated_at:new Date().toISOString()});
+ if(error){toast(errText(error));return false}
+ if(coll==="settings")FG.data.settings=clean;else{const L=FG.data[coll],i=L.findIndex(x=>x.id===rid),row=Object.assign({},clean,{id:rid});if(i<0)L.push(row);else L[i]=row}
+ return true}
+async function fgDel(coll,id){const {error}=await SB.from("forge_items").delete().eq("coll",coll).eq("id",id);if(error){toast(errText(error));return false}
+ FG.data[coll]=FG.data[coll].filter(x=>x.id!==id);return true}
+
+function fgStats(){const P=FG.data.people,yes=r=>P.filter(p=>p.role===r&&p.status==="yes").length;
+ return{mentor:yes("mentor"),speaker:yes("speaker"),judge:yes("judge"),partner:P.filter(p=>p.role==="partner"&&p.letter).length,
+  spv:P.filter(p=>p.role==="sponsor"&&p.status==="yes").reduce((a,p)=>a+(+p.value||0),0),sp:yes("sponsor"),
+  teams:FG.data.teams.filter(t=>["selected","building","demo","next"].includes(t.stage)).length,apps:FG.data.teams.length,
+  gd:FG.data.goals.filter(g=>g.done).length,g:FG.data.goals.length}}
+function fgUrgent(){const soon=d=>d&&fgDays(d)<=3,cm=fgMonth();
+ const t=FG.data.tasks.filter(x=>!x.done&&((x.due&&soon(x.due))||(!x.due&&x.month&&x.month<cm))).map(x=>({k:"tasks",r:x,d:x.due||x.month+"-28",t:x.title,m:[x.owner,x.due&&fgD(x.due)].filter(Boolean).join(" · ")}));
+ const p=FG.data.people.filter(x=>x.nextDate&&soon(x.nextDate)&&x.status!=="no").map(x=>({k:"people",r:x,d:x.nextDate,t:x.next||("Follow up: "+x.name),m:x.name+(x.org?" · "+x.org:"")+" · "+fgD(x.nextDate)}));
+ return t.concat(p).sort((a,b)=>a.d<b.d?-1:1)}
+const fgMeter=(k,v,t,ex)=>`<div class="fg-meter"><span class="fg-k">${k}</span><span class="fg-v">${v}${t?`<small> / ${t}</small>`:""}${ex||""}</span>${t?`<span class="fg-bar"><i class="${(+v)>=t?"ok":""}" style="width:${Math.min(100,(+v)/t*100)}%"></i></span>`:""}</div>`;
+
+function fgDraw(){const p=tpane();if(!p)return;const S=FG.data,name=S.settings.name||"The Forge";
+ const tabs=[["home","Home"],["people","People"],["tasks","Tasks"],["teams","Teams"],["goals","Goals"]];
+ let body="";
+ if(FG.tab==="home"){const x=fgStats(),dd=S.settings.demoDay||"2027-04-17",n=fgDays(dd),cm=fgMonth(),mt=S.tasks.filter(t=>t.month===cm),md=mt.filter(t=>t.done).length,u=fgUrgent().slice(0,7);FG.u=u;
+  body=`<div class="fg-hero"><div><div class="fg-big">${Math.max(0,n)}</div><div class="fg-lbl">days to Demo Day</div></div><div><b>Demo Day · ${fgD(dd)} ${dd.slice(0,4)}</b><div>${FG_MNL[+cm.slice(5)-1]}: ${mt.length?`${md} of ${mt.length} tasks done`:"no tasks this month"}</div></div></div>
+  <h4 class="fg-h">Targets <span>count only confirmed yeses</span></h4>
+  <div class="fg-meters">${fgMeter("Mentors",x.mentor,8)}${fgMeter("Workshop speakers",x.speaker,6)}${fgMeter("Judges",x.judge,4)}${fgMeter("Partners in writing",x.partner,2)}${fgMeter("Teams selected",x.teams,6)}${fgMeter("Sponsor value",fgMoney(x.spv),0,`<small> · ${x.sp} sponsor${x.sp===1?"":"s"}</small>`)}</div>
+  <div class="fg-card"><h4 class="fg-h">Needs you now <span>due in 3 days or late</span></h4>${u.length?u.map((it,i)=>`<button type="button" class="fg-row" data-fg-u="${i}"><span class="fg-main"><span class="fg-t">${esc(it.t)}</span><span class="fg-m">${esc(it.m)}</span></span>${fgDays(it.d)<0?'<span class="fg-pill no">Late</span>':`<span class="fg-pill talking">${fgDays(it.d)===0?"Today":"In "+fgDays(it.d)+"d"}</span>`}</button>`).join(""):'<p class="muted small" style="margin:8px 0 0">Nothing urgent. Give people a next step with a date and tasks a due date, and they show up here.</p>'}</div>
+  <div class="fg-card"><h4 class="fg-h">CV goals <span>${x.gd} of ${x.g} done</span></h4><span class="fg-bar"><i class="${x.g&&x.gd===x.g?"ok":""}" style="width:${x.g?x.gd/x.g*100:0}%"></i></span></div>
+  <div class="fg-card"><h4 class="fg-h">Settings <button type="button" class="btn sm" data-fg-set>Edit</button></h4><p class="muted small" style="margin:6px 0 0">Name: <b>${esc(name)}</b> · Demo Day ${fgD(dd)} ${dd.slice(0,4)} · Backup ${S.settings.backup?fgD(S.settings.backup):"not set"} · Applications: ${x.apps}${S.settings.audience?" · Audience: "+S.settings.audience:""}</p></div>`}
+ else if(FG.tab==="people"){const cnt=r=>S.people.filter(q=>r==="all"||q.role===r).length,o=["talking","asked","toask","yes","no"];
+  const L=S.people.filter(q=>FG.pf==="all"||q.role===FG.pf).sort((a,b)=>o.indexOf(a.status||"toask")-o.indexOf(b.status||"toask")||(a.name||"").localeCompare(b.name||""));
+  body=`<div class="fg-chips">${[["all","All"]].concat(FG_ROLES).map(([k,l])=>`<button type="button" class="fg-chip" aria-pressed="${FG.pf===k}" data-fg-pf="${k}">${l} <span>${cnt(k)}</span></button>`).join("")}</div>
+  <div class="fg-card">${L.length?L.map(q=>`<button type="button" class="fg-row" data-fg-e="people:${esc(q.id)}"><span class="fg-main"><span class="fg-role">${fgLab(FG_ROLES,q.role)}${q.letter?" · in writing":""}</span><span class="fg-t">${esc(q.name)}</span><span class="fg-m">${esc([q.org,q.next&&("Next: "+q.next+(q.nextDate?" · "+fgD(q.nextDate):""))].filter(Boolean).join(" · "))}</span></span><span class="fg-side"><span class="fg-pill ${q.status||"toask"}">${fgLab(FG_STATUS,q.status||"toask")}</span>${q.role==="sponsor"&&+q.value?`<span class="fg-m">${fgMoney(q.value)}</span>`:""}</span></button>`).join(""):'<p class="muted" style="margin:0">No one here yet. Tap “+ Add” to add someone.</p>'}</div>`}
+ else if(FG.tab==="tasks"){const cm=fgMonth(),ms=[...new Set(FG_MONTHS.concat(S.tasks.map(t=>t.month).filter(Boolean)))].sort();
+  body=ms.filter(m=>S.tasks.some(t=>t.month===m)).map(m=>{const ts=S.tasks.filter(t=>t.month===m).sort((a,b)=>(!!a.done-!!b.done)||((a.due||"9")<(b.due||"9")?-1:1)),d=ts.filter(t=>t.done).length;
+   return `<div class="fg-card"><h4 class="fg-h${m===cm?" cur":""}">${FG_MNL[+m.slice(5)-1]} ${m.slice(0,4)}${m===cm?" · now":""} <span>${d}/${ts.length}</span></h4>${ts.map(t=>`<div class="fg-trow${t.done?" done":""}"><button type="button" class="fg-ck" role="checkbox" aria-checked="${!!t.done}" aria-label="Done" data-fg-tk="${esc(t.id)}">${FG_CK}</button><button type="button" class="fg-row" data-fg-e="tasks:${esc(t.id)}"><span class="fg-main"><span class="fg-t">${esc(t.title)}</span><span class="fg-m">${esc([t.owner,t.due&&("due "+fgD(t.due))].filter(Boolean).join(" · "))}</span></span>${!t.done&&t.due&&fgDays(t.due)<0?'<span class="fg-pill no">Late</span>':""}</button></div>`).join("")}</div>`}).join("")||'<div class="fg-card"><p class="muted" style="margin:0">No tasks yet.</p></div>'}
+ else if(FG.tab==="teams"){body=S.teams.length?S.teams.slice().sort((a,b)=>FG_STAGES.findIndex(s=>s[0]===a.stage)-FG_STAGES.findIndex(s=>s[0]===b.stage)).map(t=>{const m=S.people.find(q=>q.id===t.mentor);
+   return `<button type="button" class="fg-card fg-team" data-fg-e="teams:${esc(t.id)}"><span class="fg-role">${fgLab(FG_STAGES,t.stage||"applied")}</span><span class="fg-tt">${esc(t.name)}${t.score?` <b>${esc(t.score)}/20</b>`:""}</span>${t.problem?`<span class="fg-m">${esc(t.problem)}</span>`:""}<span class="fg-m">${esc([t.members,m&&("Mentor: "+m.name)].filter(Boolean).join(" · "))}</span></button>`}).join(""):'<div class="fg-card"><p class="muted" style="margin:0">No teams yet. Applications open in January: add each team as it applies, then move it through interview, selection and Demo Day.</p></div>'}
+ else{const g=S.goals.slice().sort((a,b)=>(a.order||0)-(b.order||0));
+  body=`<div class="fg-card"><h4 class="fg-h">What this year must prove <span>${g.filter(x=>x.done).length}/${g.length}</span></h4>${g.map(x=>`<div class="fg-trow${x.done?" done":""}"><button type="button" class="fg-ck" role="checkbox" aria-checked="${!!x.done}" aria-label="Achieved" data-fg-gk="${esc(x.id)}">${FG_CK}</button><button type="button" class="fg-row" data-fg-e="goals:${esc(x.id)}"><span class="fg-main"><span class="fg-t">${esc(x.title)}</span>${x.note?`<span class="fg-m">${esc(x.note)}</span>`:""}${x.evidence?`<span class="fg-m fg-proof">Proof: ${esc(x.evidence)}</span>`:""}</span></button></div>`).join("")}</div><p class="muted small">When a goal is done, write the proof (a letter, a number, a link). That proof becomes your CV line.</p>`}
+ p.innerHTML=`<div class="fg"><div class="fg-top"><div><span class="fg-eye">Only you can see this</span><h3 class="fg-name">${esc(name)} HQ</h3></div>${FG.tab!=="home"?`<button type="button" class="btn primary sm" data-fg-add>+ Add</button>`:""}</div>
+ <div class="fg-tabs" role="tablist">${tabs.map(t=>`<button type="button" role="tab" aria-selected="${FG.tab===t[0]}" data-fg-tab="${t[0]}">${t[1]}</button>`).join("")}</div>${body}</div>`}
+
+function fgField(f,v){const id="fgf-"+f.k;v=v??f.def??"";
+ if(f.type==="seg")return `<div class="fld"><span>${f.l}</span><div class="fg-seg" data-fg-seg="${f.k}">${f.opts.map(([k,l])=>`<button type="button" aria-pressed="${v===k}" data-v="${k}">${l}</button>`).join("")}</div></div>`;
+ if(f.type==="select")return `<label class="fld">${f.l}<select id="${id}">${f.opts.map(([k,l])=>`<option value="${esc(k)}"${v===k?" selected":""}>${esc(l)}</option>`).join("")}</select></label>`;
+ if(f.type==="area")return `<label class="fld">${f.l}<textarea id="${id}">${esc(v)}</textarea></label>`;
+ if(f.type==="bool")return `<label class="fld ck"><input type="checkbox" id="${id}"${v?" checked":""}><span>${f.l}</span></label>`;
+ return `<label class="fld">${f.l}<input id="${id}" type="${f.type||"text"}" value="${esc(v)}"${f.type==="number"?' inputmode="decimal"':""}></label>`}
+function fgFields(coll){const mentors=[["","No mentor yet"]].concat(FG.data.people.filter(q=>q.role==="mentor").map(q=>[q.id,q.name]));
+ return{people:[{k:"name",l:"Name *"},{k:"org",l:"Organization or role"},{k:"role",l:"Role in the program",type:"seg",opts:FG_ROLES,def:FG.pf!=="all"?FG.pf:"mentor"},{k:"status",l:"Status",type:"seg",opts:FG_STATUS,def:"toask"},{k:"next",l:"Next step"},{k:"nextDate",l:"Next step date",type:"date"},{k:"contact",l:"Contact (phone, email, LinkedIn)"},{k:"via",l:"Introduced by"},{k:"ask",l:"What we ask them for"},{k:"value",l:"Value in $ (sponsors, in kind counts)",type:"number"},{k:"letter",l:"Agreement in writing (letter or email)",type:"bool"},{k:"notes",l:"Notes",type:"area"}],
+ tasks:[{k:"title",l:"Task *"},{k:"month",l:"Month",type:"select",opts:FG_MONTHS.map(m=>[m,FG_MNL[+m.slice(5)-1]+" "+m.slice(0,4)]),def:FG_MONTHS.includes(fgMonth())?fgMonth():FG_MONTHS[0]},{k:"owner",l:"Owner"},{k:"due",l:"Due date",type:"date"},{k:"done",l:"Done",type:"bool"},{k:"notes",l:"Notes",type:"area"}],
+ teams:[{k:"name",l:"Team or startup name *"},{k:"members",l:"Members"},{k:"problem",l:"Problem they solve",type:"area"},{k:"stage",l:"Stage",type:"seg",opts:FG_STAGES,def:"applied"},{k:"mentor",l:"Mentor",type:"select",opts:mentors},{k:"score",l:"Score /20",type:"number"},{k:"contact",l:"Team lead contact"},{k:"notes",l:"Notes and progress",type:"area"}],
+ goals:[{k:"title",l:"Goal *"},{k:"note",l:"How to get there",type:"area"},{k:"evidence",l:"Proof once done"},{k:"done",l:"Achieved",type:"bool"},{k:"order",l:"Order",type:"number",def:FG.data.goals.length+1}],
+ settings:[{k:"name",l:"Program name *",def:"The Forge"},{k:"demoDay",l:"Demo Day",type:"date",def:"2027-04-17"},{k:"backup",l:"Backup date",type:"date"},{k:"audience",l:"Demo Day audience (after the event)",type:"number"}]}[coll]}
+function fgEdit(coll,item){const fs=fgFields(coll),it=item||{},p=tpane();FG.edit={coll,id:item&&item.id};
+ const title={people:"person",tasks:"task",teams:"team",goals:"goal",settings:"settings"}[coll];
+ p.innerHTML=`<div class="fg"><div class="fg-card"><h4 class="fg-h">${coll==="settings"?"Program settings":(item?"Edit ":"New ")+title}</h4><form id="fgForm" novalidate>${fs.map(f=>fgField(f,it[f.k])).join("")}
+ <div class="row" style="gap:8px;flex-wrap:wrap">${canSave()?'<button class="btn primary sm" type="submit">Save</button>':""}<button type="button" class="btn sm" data-fg-cancel>Cancel</button>${item&&item.id&&coll!=="settings"?'<button type="button" class="btn sm fg-del" data-fg-del>Delete</button>':""}</div></form></div></div>`;
+ window.scrollTo(0,Math.max(0,p.getBoundingClientRect().top+window.scrollY-90))}
+const canSave=()=>!!(ST.team&&ST.team.role==="president");
+function fgCollect(){const fs=fgFields(FG.edit.coll),out={};
+ fs.forEach(f=>{if(f.type==="seg"){const b=document.querySelector(`[data-fg-seg="${f.k}"] [aria-pressed="true"]`);out[f.k]=b?b.dataset.v:(f.def||"")}
+  else{const el=document.getElementById("fgf-"+f.k);if(!el)return;if(f.type==="bool")out[f.k]=el.checked;else if(f.type==="number")out[f.k]=el.value===""?null:+el.value;else out[f.k]=el.value.trim()}});
+ return out}
+document.addEventListener("click",async e=>{const fg=e.target.closest&&e.target.closest(".fg");if(!fg)return;
+ const tb=e.target.closest("[data-fg-tab]");if(tb){FG.tab=tb.dataset.fgTab;try{localStorage.setItem("rel-fg-tab",FG.tab)}catch(err){}fgDraw();return}
+ const pf=e.target.closest("[data-fg-pf]");if(pf){FG.pf=pf.dataset.fgPf;try{localStorage.setItem("rel-fg-pf",FG.pf)}catch(err){}fgDraw();return}
+ if(e.target.closest("[data-fg-add]")){fgEdit(FG.tab);return}
+ if(e.target.closest("[data-fg-set]")){fgEdit("settings",FG.data.settings);return}
+ const u=e.target.closest("[data-fg-u]");if(u){const it=FG.u[+u.dataset.fgU];fgEdit(it.k,it.r);return}
+ const ed=e.target.closest("[data-fg-e]");if(ed){const [c,id]=ed.dataset.fgE.split(":");fgEdit(c,FG.data[c].find(x=>x.id===id));return}
+ const ck=e.target.closest("[data-fg-tk],[data-fg-gk]");if(ck){const c=ck.dataset.fgTk?"tasks":"goals",id=ck.dataset.fgTk||ck.dataset.fgGk,it=FG.data[c].find(x=>x.id===id);if(!it)return;
+  const v=!it.done;ck.setAttribute("aria-checked",v);if(await fgSave(c,id,Object.assign({},it,{done:v}))){if(v)toast(c==="goals"?"Goal achieved":"Done");fgDraw()}return}
+ const sg=e.target.closest("[data-fg-seg] button");if(sg){sg.parentElement.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===sg));return}
+ if(e.target.closest("[data-fg-cancel]")){FG.edit=null;fgDraw();return}
+ const dl=e.target.closest("[data-fg-del]");if(dl){if(dl.dataset.armed!=="1"){dl.dataset.armed="1";dl.textContent="Tap again to delete";return}
+  if(await fgDel(FG.edit.coll,FG.edit.id)){toast("Deleted");FG.edit=null;fgDraw()}return}
+});
+document.addEventListener("submit",async e=>{if(!e.target||e.target.id!=="fgForm")return;e.preventDefault();const out=fgCollect(),f0=fgFields(FG.edit.coll)[0];
+ if(!out[f0.k]){toast(f0.l.replace(" *","")+" is needed");return}
+ const prev=FG.edit.id&&FG.edit.coll!=="settings"?FG.data[FG.edit.coll].find(x=>x.id===FG.edit.id):FG.edit.coll==="settings"?FG.data.settings:null;
+ if(await fgSave(FG.edit.coll,FG.edit.id,Object.assign({},prev||{},out))){toast("Saved");FG.edit=null;fgDraw()}});
 const dshort=s=>s?fmt(String(s).slice(0,10),{day:"numeric",month:"short",year:"numeric"}):"";
 function appCard(a){const sig=[`<span class="badge ok">&#10003; LU student email</span>`,
   a.list_match?`<span class="badge ok">&#10003; ID is on the faculty list${a.list_name?": "+esc(a.list_name):""}</span>`:`<span class="badge warn">! ID is not on the faculty list. Check by hand.</span>`];
