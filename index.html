@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-P1ve2JhjQ7WDk/Ocw6sZBBbA1BZADMnSgr/7AT+yjEg='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-rks904Pidr1QZ+ljlixmM4OsDoiFEL2ssiB+i9X8Nnw='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -88,6 +88,36 @@ p{margin:0 0 1em}
 .st .lt{font:800 6.5rem/.8 var(--f-display),sans-serif;color:var(--band-muted)}
 .st p{font:700 clamp(1.7rem,2.6vw,2.2rem)/1.1 var(--f-display),sans-serif;margin:auto 0 0}
 .qz-o{display:grid;gap:10px;margin:16px 0}
+:root{--ok:#1E7B34;--ok-bg:#E6F4EA;--no:#B3261E;--no-bg:#FCEBEA}
+.bq{max-width:720px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:clamp(20px,4vw,32px);display:grid;gap:4px}
+.bq-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px}
+.bq-tag{font:600 .78rem var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--brand-ink)}
+.bq-streak{font:700 .9rem var(--f-body);padding:4px 12px;border-radius:999px;background:var(--tint);color:var(--brand-ink)}
+.bq-q{font:700 clamp(1.4rem,3.4vw,1.9rem)/1.2 var(--f-display),sans-serif;margin:10px 0 4px;text-wrap:balance}
+.bq .qz-o button{display:flex;align-items:center;gap:14px;min-height:56px;transition:transform .15s ease,background .2s ease,border-color .2s ease}
+.bq .qz-o button:not(:disabled):hover{border-color:var(--brand-ink);transform:translateY(-2px)}
+.bq .qz-o button:focus-visible{outline:3px solid var(--brand-ink);outline-offset:2px}
+.bq .qz-o .L{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:700 .95rem var(--f-body);background:var(--tint);color:var(--brand-ink)}
+.bq .qz-o .T{flex:1;min-width:0}
+.bq .qz-o .I{flex:none;font-weight:800;font-size:1.2rem}
+.bq .qz-o button.ok{background:var(--ok-bg);border-color:var(--ok);color:var(--ink)}
+.bq .qz-o button.ok .L{background:var(--ok);color:#fff}
+.bq .qz-o button.ok .I{color:var(--ok)}
+.bq .qz-o button.no{background:var(--no-bg);border-color:var(--no)}
+.bq .qz-o button.no .L{background:var(--no);color:#fff}
+.bq .qz-o button.no .I{color:var(--no)}
+.bq .qz-o button.dim{opacity:.55}
+.bq .qz-o button.pop{animation:bqPop .45s ease}
+.bq .qz-o button.shake{animation:bqShake .4s ease}
+@keyframes bqPop{0%{transform:scale(1)}40%{transform:scale(1.04)}100%{transform:scale(1)}}
+@keyframes bqShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(7px)}60%{transform:translateX(-5px)}80%{transform:translateX(3px)}}
+.bq-res{border-radius:14px;padding:16px 18px;display:grid;gap:6px;background:var(--bg)}
+.bq-res.ok{background:var(--ok-bg)}.bq-res.no{background:var(--no-bg)}
+.bq-v{margin:0;font:800 1.3rem var(--f-body)}
+.bq-res.ok .bq-v{color:var(--ok)}.bq-res.no .bq-v{color:var(--no)}
+.bq-e{margin:0;line-height:1.5}
+.bq-next{margin:0}
+@media (prefers-reduced-motion:reduce){.bq .qz-o button.pop,.bq .qz-o button.shake{animation:none}}
 .qz-o button{text-align:left;min-height:48px;border:2px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);padding:10px 16px;font:500 17px var(--f-body),sans-serif;cursor:pointer}
 .qz-o button:disabled{cursor:default}
 .qz-o button.ok{border-color:#2E7D32;font-weight:600}
@@ -1611,12 +1641,23 @@ body.fiesta-day::before{content:"";position:fixed;top:0;left:0;right:0;height:4p
 <section class="pw-sec"><h4>Startup of the week</h4><div id="spotBox"></div></section>
 <section class="pw-sec"><h4>Coming up</h4><div id="suEvents"></div></section>
 <section class="pw-sec"><h4>The REL Startup Track</h4><p class="muted" style="margin:-8px 0 20px;max-width:44em">From a spark to a demo day. Every stage is open to every member.</p><ol class="pipe" id="suPipe"></ol><h5 class="pipe-h">Always on</h5><div class="pw-ways" id="suTrack"></div></section>
-<section class="pw-sec"><h4>Keep learning</h4><div class="pw-3"><div class="pw-card"><b>Startup glossary</b><p>46 words you will hear about startups, funding and the stock market.</p><a class="btn sm" href="#learn" data-glossary>Open the glossary</a></div><div class="pw-card"><b>Practice your pitch</b><p>Get a topic and speak about it for one minute, alone or with a friend.</p><a class="btn sm" href="#play" data-talk>Open 1-minute talk</a></div><div class="pw-card"><b>Read and watch</b><p>Books, articles and templates on entrepreneurship, picked by the board.</p><a class="btn sm" href="#learn">Open Learn</a></div></div></section>
+<section class="pw-sec"><h4>Keep learning</h4><div class="pw-3"><div class="pw-card"><b>Startup glossary</b><p>46 words you will hear about startups, funding and the stock market.</p><a class="btn sm" href="#learn" data-glossary>Open the glossary</a></div><div class="pw-card"><b>Practice your pitch</b><p>Get a topic and speak about it for one minute, alone or with a friend.</p><a class="btn sm" href="#startups" data-talk>Open 1-minute talk</a></div><div class="pw-card"><b>Read and watch</b><p>Books, articles and templates on entrepreneurship, picked by the board.</p><a class="btn sm" href="#learn">Open Learn</a></div></div></section>
 </div>
+<div class="pane" data-pane="quiz" data-label="Daily question"><div class="bq" id="bq">
+<div class="bq-top"><span class="bq-tag">Business question of the day</span><span class="bq-streak" id="qzStreak" hidden></span></div>
+<p class="bq-q" id="qzQ"></p>
+<div class="qz-o" id="qzO" role="group" aria-label="Answers"></div>
+<div class="bq-res" id="qzR" hidden><p class="bq-v" id="qzV"></p><p class="bq-e" id="qzE" role="status" aria-live="polite"></p><p class="muted small bq-next" id="qzNext"></p></div>
+</div></div>
 <div class="pane" data-pane="lab" data-label="Idea Lab"><div id="labBox"></div></div>
 <div class="pane" data-pane="ideas" data-label="Idea board"><div id="ideaBoard"></div></div>
+<div class="pane" data-pane="talk" data-label="1-minute talk"><p class="muted" style="max-width:38em">A new topic every day. Speak about it for one minute, alone or with a friend. The timer is optional. Not your topic? Pick another one.</p>
+<div class="talk-card"><span class="talk-kind" id="talkKind"></span><p class="talk-text" id="talkText"></p></div>
+<div class="row"><button type="button" class="btn primary" id="talkStart">Start 1-minute timer</button><button type="button" class="btn" id="talkNew">Another topic</button><button type="button" class="btn" id="talkToday">Today's topic</button></div>
+<div class="talk-timer" id="talkTimer" aria-live="polite">1:00</div>
+<p class="muted" id="talkTips" style="max-width:38em"></p></div>
 </div></section></div>
-<div class="pg" data-pg="play" hidden><section id="play" class="sec alt"><div class="wrap"><div class="sec-head"><h2>Play</h2><p>Six puzzles and a business question every day, the same for everyone. Keep your streak going.</p></div><div class="pane" data-pane="puzzle" data-label="Crowns"><div class="qwrap">
+<div class="pg" data-pg="play" hidden><section id="play" class="sec alt"><div class="wrap"><div class="sec-head"><h2>Play</h2><p>Six puzzles every day, the same for everyone. Keep your streak going.</p></div><div class="pane" data-pane="puzzle" data-label="Crowns"><div class="qwrap">
 <div><div id="qgrid" aria-label="Puzzle board"></div></div>
 <div>
 <ul class="rules"><li>Put one crown in every row, every column and every colored region.</li><li>No two crowns can touch, not even diagonally.</li><li>Tap a square once for an ×, twice for a crown, three times to clear it.</li></ul>
@@ -1626,8 +1667,6 @@ body.fiesta-day::before{content:"";position:fixed;top:0;left:0;right:0;height:4p
 <div class="g2-top" data-gafter="crowns" hidden><h3>Today&#39;s ranking</h3><table class="lb"><tbody data-gboard="crowns"></tbody></table></div>
 </div>
 </div>
-</div><div class="pane" data-pane="quiz" data-label="Business question">
-<div class="card" style="background:var(--bg);max-width:720px"><p id="qzQ" style="font:700 1.7rem/1.15 var(--f-display),sans-serif;margin:0"></p><div class="qz-o" id="qzO"></div><p id="qzE" role="status" aria-live="polite" style="margin:0;min-height:1.6em;font-weight:600;color:var(--brand-ink)"></p></div>
 </div><div class="pane" data-pane="path" data-label="Path"><div class="qwrap g2">
 <div><div class="g2-board" id="gPath" aria-label="Path board"></div></div>
 <div>
@@ -1696,11 +1735,7 @@ body.fiesta-day::before{content:"";position:fixed;top:0;left:0;right:0;height:4p
 <div class="g2-top"><h3>All-time high scores</h3><table class="lb"><tbody id="u2048Top"><tr><td class="muted">Loading...</td></tr></tbody></table></div>
 </div>
 </div>
-</div><div class="pane" data-pane="talk" data-label="1-minute talk"><p class="muted" style="max-width:38em">A new topic every day. Speak about it for one minute, alone or with a friend. The timer is optional. Not your topic? Pick another one.</p>
-<div class="talk-card"><span class="talk-kind" id="talkKind"></span><p class="talk-text" id="talkText"></p></div>
-<div class="row"><button type="button" class="btn primary" id="talkStart">Start 1-minute timer</button><button type="button" class="btn" id="talkNew">Another topic</button><button type="button" class="btn" id="talkToday">Today's topic</button></div>
-<div class="talk-timer" id="talkTimer" aria-live="polite">1:00</div>
-<p class="muted" id="talkTips" style="max-width:38em"></p></div></div></section></div>
+</div></div></section></div>
 <div class="pg" data-pg="community" hidden><section id="community" class="sec"><div class="wrap"><div class="sec-head"><h2>Community</h2><p>REL grows through the people around it. Here is how the network looks and how you can take part.</p></div><div class="pane" data-pane="network" data-label="Network"><div class="grid2">
 <div><svg class="map" id="map" viewBox="0 0 860 430" role="img" aria-label="REL network map: the board, ambassadors, members, partners and speakers connected to REL"></svg><ul class="map-list" id="mapList"></ul></div>
 <div>
@@ -5082,7 +5117,7 @@ drawWork();
 (function(){const ov=$("#sov"),q=$("#sq"),box=$("#sres"),btn=$("#sBtn");let list=[];
  const go=h=>()=>route(h);
  function index(){const L=[];
-  [["#mobilite","Mobilité","Study abroad, double-degree and M2 programs, partner universities, Eiffel scholarship","mobilite mobility exchange abroad double diplome degree erasmus campusfrance eiffel scholarship france university partner"],["#startups","Startups","Startup Hub, startup of the week and the idea board","startup startups founder idea lab brainstorm cofounder co-founder pitch ipo silicon valley unicorn entrepreneurship"],["#about","About REL","What REL is, what we do and our history","club history pr club rebrand mission"],["#events","Events and workshops","Upcoming, past and the calendar","calendar schedule"],["#people","People","Board, ambassadors and member search","team"],["#points","Leaderboard","Points and how to earn them","ranking score"],["#learn","Learn","Books, journal, speakers, documents","resources articles templates presentations"],["#play","Play","Daily puzzle and business question","game quiz crown"],["#community","Community","Network map, partners, pitch, voting","network"],["#partner","Work with REL","Sponsors, companies, organizations and clubs","sponsor sponsorship partner partnership collaborate collaboration company organization club"],["#faq","FAQ","Quick answers about joining, IDs, events and points","help questions answers"],["#join","Join REL","Become a member, ambassador and more","sign up register"]].forEach(s=>L.push({t:s[1],k:"Section",sub:s[2],s:s[1]+" "+s[2]+" "+s[3],a:go(s[0])}));
+  [["#mobilite","Mobilité","Study abroad, double-degree and M2 programs, partner universities, Eiffel scholarship","mobilite mobility exchange abroad double diplome degree erasmus campusfrance eiffel scholarship france university partner"],["#startups","Startups","Startup Hub, startup of the week and the idea board","startup startups founder idea lab brainstorm cofounder co-founder pitch ipo silicon valley unicorn entrepreneurship"],["#about","About REL","What REL is, what we do and our history","club history pr club rebrand mission"],["#events","Events and workshops","Upcoming, past and the calendar","calendar schedule"],["#people","People","Board, ambassadors and member search","team"],["#points","Leaderboard","Points and how to earn them","ranking score"],["#learn","Learn","Books, journal, speakers, documents","resources articles templates presentations"],["#play","Play","Six daily puzzles","game crown sudoku clues dive"],["#startups","Daily question","Business question of the day and 1-minute talk","quiz question business talk pitch"],["#community","Community","Network map, partners, pitch, voting","network"],["#partner","Work with REL","Sponsors, companies, organizations and clubs","sponsor sponsorship partner partnership collaborate collaboration company organization club"],["#faq","FAQ","Quick answers about joining, IDs, events and points","help questions answers"],["#join","Join REL","Become a member, ambassador and more","sign up register"]].forEach(s=>L.push({t:s[1],k:"Section",sub:s[2],s:s[1]+" "+s[2]+" "+s[3],a:go(s[0])}));
   [...EVENTS.map(e=>[e,"up"]),...PAST.map(e=>[e,"past"])].forEach(([e,w])=>L.push({t:e.title,k:"Event",sub:e.date?fmt(e.date,{day:"numeric",month:"long"}):"Date to be announced",s:[e.title,e.type,e.blurb,e.place].join(" "),a:()=>{showEv(w);go("#events")()}}));
   BOARD.filter(b=>!b.name).forEach(b=>L.push({t:b.role,k:"Board",sub:"Name coming soon",s:b.role+" "+b.bio,a:go("#board")}));
   AMBS.filter(a=>a.name).forEach(a=>L.push({t:a.name,k:"Ambassador",sub:a.info||"",s:[a.name,a.info].join(" "),a:go("#ambs")}));
@@ -5116,7 +5151,7 @@ function secsToBeirutMidnight(){const p=new Intl.DateTimeFormat("en-GB",{timeZon
 const GAME_START=beirutDay();
 const gameStale=()=>beirutDay()!==GAME_START;
 (function(){const head=document.querySelector('.pg[data-pg="play"] .pagehead .wrap');if(!head)return;const el=document.createElement("p");el.className="muted small";el.id="nextGame";el.style.marginTop="10px";head.appendChild(el);
- const pad=n=>String(n).padStart(2,"0"),tick=()=>{const s=secsToBeirutMidnight();el.textContent="New puzzle and question in "+pad(Math.floor(s/3600))+":"+pad(Math.floor(s%3600/60))+":"+pad(s%60)+" (midnight, Beirut time).";if(gameStale()&&cur.pg==="play")location.reload()};tick();setInterval(tick,1000)})();
+ const pad=n=>String(n).padStart(2,"0"),tick=()=>{const s=secsToBeirutMidnight();el.textContent="New puzzle and question in "+pad(Math.floor(s/3600))+":"+pad(Math.floor(s%3600/60))+":"+pad(s%60)+" (midnight, Beirut time).";if(gameStale()&&(cur.pg==="play"||cur.pg==="startups"))location.reload()};tick();setInterval(tick,1000)})();
 /* daily business question */
 const QZ=[["What does MVP stand for in the startup world?",["Most Valuable Player","Minimum Viable Product","Maximum Value Proposition","Main Venture Plan"],1,"An MVP is the simplest version of a product that real users can test."],["What is a unicorn in business?",["A company with 1,000 employees","A private startup valued at over $1 billion","A company listed on two stock markets","A startup with no competitors"],1,"Such startups are rare, which is where the name comes from."],["What does ROI stand for?",["Rate of Inflation","Return on Investment","Revenue of Industry","Risk of Innovation"],1,"ROI compares what you gained to what you spent."],["What does B2B mean?",["Back to business","Business to business","Brand to brand","Buyer to buyer"],1,"A B2B company sells to other companies, not to individuals."],["Revenue minus costs equals what?",["Equity","Profit","Cash flow","Market share"],1,"Profit is what remains after all costs are paid."],["What is inflation?",["A fall in unemployment","A general rise in prices over time","A rise in interest rates","Growth in company profits"],1,"When prices rise, the same money buys less."],["In a startup, what does equity mean?",["A loan from a bank","Ownership in the company","A monthly salary","The company's debt"],1,"Equity is a share of ownership, often held by founders and investors."],["What is a pivot?",["A product launch party","A major change in strategy","A new office","A price discount"],1,"Startups pivot when the first idea is not working."],["What does IPO stand for?",["Initial Public Offering","Internal Profit Option","International Price Order","Investment Planning Office"],0,"An IPO is when a company first sells its shares to the public."],["What does a SWOT analysis cover?",["Sales, Wages, Orders, Taxes","Strengths, Weaknesses, Opportunities, Threats","Suppliers, Workers, Offers, Trends","Savings, Wealth, Options, Time"],1,"It looks at a company or idea from four simple angles."],["What is bootstrapping?",["Raising money from venture capital","Building a company with your own money and sales","Selling a company","Buying a competitor"],1,"Bootstrapped founders keep control but grow with limited cash."],["What is a stock?",["A loan to a company","A share of ownership in a company","A type of bank account","A tax on profits"],1,"Owning a stock means owning a small piece of the company."],["What does diversification mean in investing?",["Putting all your money in one asset","Spreading money across different assets","Selling everything","Only buying gold"],1,"It reduces the risk that one bad investment hurts everything."],["What is compound interest?",["Interest only on the original amount","Interest on the original amount and on past interest","A fee charged by banks","A tax-free bonus"],1,"Compounding is why starting early matters so much."],["What does KPI stand for?",["Key Performance Indicator","Known Profit Index","Keep Progress Improving","Kinetic Product Idea"],0,"KPIs are the numbers a team tracks to know if it is succeeding."],["The Pareto principle says roughly what?",["50% of work gives 50% of results","80% of results come from 20% of causes","Every task takes twice as long","Profit doubles each year"],1,"It is a rule of thumb: focus on the few things that matter most."],["What does CEO stand for?",["Chief Executive Officer","Central Economic Office","Chief Engineering Owner","Company Equity Officer"],0,"The CEO is the top executive responsible for the whole company."],["What is cash flow?",["The total value of a company","Money moving in and out of a business","Yearly profit","The price of a share"],1,"A profitable company can still fail if it runs out of cash."],["What does GDP measure?",["A country's total debt","The value of goods and services a country produces","The average salary","The number of companies"],1,"GDP is the main measure of the size of an economy."],["What is venture capital?",["A bank loan for homes","Funding for early-stage, high-growth companies in exchange for equity","A government grant","A tax refund"],1,"VCs invest in many startups hoping a few become very large."],["Which of these is a fixed cost?",["Raw materials per unit","Monthly office rent","Sales commissions","Shipping per order"],1,"Fixed costs stay the same however much you sell."],["What does SaaS stand for?",["Software as a Service","Sales as a Strategy","Startup and Scale Systems","Secure and Safe Software"],0,"SaaS is software you pay for by subscription instead of buying once."],["What is market share?",["A company's portion of total sales in its market","The price of one share","The size of a store","A company's yearly profit"],0,"With 20% market share, a company sells one in every five units in its market."],["What is a stakeholder?",["Only the owner","Anyone affected by or interested in a business","Only the employees","A type of investor"],1,"Customers, employees, investors and communities are all stakeholders."],["What is an elevator pitch?",["A pitch made only in buildings","A 30 to 60 second explanation of your idea","A written business plan","A sales discount"],1,"It is short enough to deliver during an elevator ride."],["What is due diligence?",["A tax form","Careful checking of a deal or company before committing","A company holiday","A type of loan"],1,"Investors do it before putting money in."],["What is a recession?",["A period of strong growth","A significant decline in economic activity","A fall in stock prices for one day","A rise in inflation only"],1,"Recessions usually bring lower spending, weaker hiring and falling output."],["What is a business model?",["The company logo","How a company creates value and earns money","The office layout","A list of employees"],1,"Two companies can sell the same product with very different business models."],["What does scalable mean for a business?",["It is very small","It can grow without costs growing at the same rate","It has no employees","It sells only online"],1,"Scalable businesses can serve many more customers without proportionally more effort."],["What is a value proposition?",["The price of a share","The reason customers should choose you","A yearly report","An investor's offer"],1,"A good one is clear, specific and about the customer, not about you."]];
 (function(){const key=GAME_START,[yy,mm,dd]=key.split("-").map(Number),day=Math.floor(Date.UTC(yy,mm-1,dd)/864e5),it=QZ[day%QZ.length],box=$("#qzO");
@@ -5124,9 +5159,29 @@ const QZ=[["What does MVP stand for in the startup world?",["Most Valuable Playe
  /* mix the answers in a different order every day (same order for everyone that day), so the right one is not always in the same place */
  let h=2166136261;for(const c of "rel-qz-order-"+key){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}let a=h>>>0;const r=()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
  const order=it[1].map((_,i)=>i);for(let i=order.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[order[i],order[j]]=[order[j],order[i]]}
- function show(pick){[...box.children].forEach(b=>{const i=+b.dataset.o;b.disabled=true;if(i===it[2]){b.classList.add("ok");b.append(" (correct)")}else if(i===pick){b.classList.add("no");b.append(" (your answer)")}});$("#qzE").textContent=(pick===it[2]?"Correct. ":"Not quite. ")+it[3]+" A new question comes tomorrow."}
- order.forEach(i=>{const txt=it[1][i],b=document.createElement("button");b.type="button";b.dataset.o=i;b.textContent=txt;b.addEventListener("click",()=>{try{localStorage.setItem("rel-qz-"+key,String(i))}catch(err){}show(i);submitGame("quiz",null,i===it[2])});box.appendChild(b)});
- try{const s=localStorage.getItem("rel-qz-"+key);if(s!==null)show(+s)}catch(err){}})();
+ const WIN=["Nailed it!","Spot on!","Boss move!","Investors would love you.","Big brain energy.","Straight to the top."],LOSE=["Not quite.","Close, but no.","Plot twist!","Good guess, wrong answer.","Pivot time."];
+ const pickOf=(arr)=>arr[Math.floor(r()*arr.length)],WV=pickOf(WIN),LV=pickOf(LOSE);
+ const YD=(()=>{const d=new Date(key+"T12:00:00Z");d.setUTCDate(d.getUTCDate()-1);return d.toISOString().slice(0,10)})();
+ const stk=()=>{try{return JSON.parse(localStorage.getItem("rel-qz-streak")||"{}")}catch(e){return {}}};
+ function drawStreak(){const k=stk(),n=(k.last===key||k.last===YD)?k.n||0:0,el=$("#qzStreak");if(!el)return;el.hidden=n<2;el.textContent="\ud83d\udd25 "+n+"-day streak"}
+ function secsLeft(){try{return secsToBeirutMidnight()}catch(e){return 0}}
+ function nextTxt(){const s=secsLeft(),h=Math.floor(s/3600),m=Math.floor(s%3600/60);return "Next question in "+(h?h+"h ":"")+m+"m."}
+ function show(pick,fresh){const good=pick===it[2];
+  [...box.children].forEach(b=>{const i=+b.dataset.o,ic=b.querySelector(".I");b.disabled=true;b.setAttribute("aria-disabled","true");
+   if(i===it[2]){b.classList.add("ok");ic.textContent="\u2713";if(fresh&&good)b.classList.add("pop")}
+   else if(i===pick){b.classList.add("no");ic.textContent="\u2717";if(fresh)b.classList.add("shake")}
+   else b.classList.add("dim")});
+  const R=$("#qzR");R.hidden=false;R.className="bq-res "+(good?"ok":"no");$("#qzV").textContent=good?WV:LV;
+  $("#qzE").textContent=(good?"":"The answer is \u201c"+it[1][it[2]]+"\u201d. ")+it[3];$("#qzNext").textContent=nextTxt();
+  if(fresh&&good){const b=box.querySelector("button.ok");if(b&&typeof confettiBurst==="function"){const rc=b.getBoundingClientRect();confettiBurst(rc.left+rc.width/2,rc.top+rc.height/2)}if(navigator.vibrate)try{navigator.vibrate(40)}catch(e){}}
+  else if(fresh&&navigator.vibrate)try{navigator.vibrate([30,40,30])}catch(e){}
+  drawStreak()}
+ order.forEach((i,k)=>{const b=document.createElement("button");b.type="button";b.dataset.o=i;
+  b.innerHTML='<span class="L">'+"ABCD"[k]+'</span><span class="T"></span><span class="I" aria-hidden="true"></span>';b.querySelector(".T").textContent=it[1][i];
+  b.addEventListener("click",()=>{if(b.disabled)return;const good=i===it[2];try{localStorage.setItem("rel-qz-"+key,String(i));const k2=stk();if(k2.last!==key){k2.n=good?((k2.last===YD?k2.n||0:0)+1):0;k2.last=key;localStorage.setItem("rel-qz-streak",JSON.stringify(k2))}}catch(err){}
+   show(i,true);submitGame("quiz",null,good)});box.appendChild(b)});
+ drawStreak();
+ try{const s=localStorage.getItem("rel-qz-"+key);if(s!==null)show(+s,false)}catch(err){}})();
 /* daily puzzle */
 (function(){const N=7,COL=["#F4C9CF","#F6DFA4","#BEDCC6","#B9D3EA","#D8C6EC","#F5BFA0","#D5D1CC"],key=GAME_START;
  function seedOf(s){let h=2166136261;for(const c of s){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0}
@@ -5460,7 +5515,7 @@ drawGlossary();
 
 /* Startup Hub */
 document.addEventListener("click",e=>{const g=e.target.closest("[data-glossary]");if(g){e.preventDefault();showPage("learn","glossary");return}
- const t=e.target.closest("[data-talk]");if(t){e.preventDefault();showPage("play","talk")}});
+ const t=e.target.closest("[data-talk]");if(t){e.preventDefault();showPage("startups","talk")}});
 drawSpot();drawStartupEvents();drawTrack();drawIdeas();
 
 /* ---------- Idea Lab: from "I have no idea" to a one-page startup idea ---------- */
@@ -5625,7 +5680,7 @@ document.addEventListener("click",async e=>{const t=e.target;if(!t.closest)retur
  if(t.closest("[data-labback]")){LAB.script="";labGo(LAB.step-1===1&&LAB.path!=="find"?0:LAB.step-1);return}
  if(t.closest("[data-labcopy]")){try{await navigator.clipboard.writeText(labSummary()+"\n\nMy pitch:\n"+(($("#labScript")||{}).value||labPitch()));say($("#labMsg"),"Copied.",true)}catch(err){say($("#labMsg"),"Could not copy. Select the text by hand.")}return}
  if(t.closest("[data-labpng]")){const m=$("#labMsg");say(m,"Creating your card...",true);try{const u=await labCardUrl();await saveFile(u,"REL-idea-card.png");say(m,"Your idea card is saved.",true)}catch(err){say(m,"Could not create the card.")}return}
- if(t.closest("[data-labpractice]")){const s=($("#labScript")||{}).value||LAB.script||labPitch();showPage("play","talk");showTalk(["Pitch",s]);return}
+ if(t.closest("[data-labpractice]")){const s=($("#labScript")||{}).value||LAB.script||labPitch();showPage("startups","talk");showTalk(["Pitch",s]);return}
  if(t.closest("[data-labshare]")){const m=$("#labMsg");if(!needMember("share an idea"))return;const a=LAB.a,ti=(a.title||"").trim()||"My startup idea",mod=(LAB_MODELS.find(x=>x[0]===a.model)||[])[1],te=(LAB_TESTS.find(x=>x[0]===a.test)||[])[1]||a.testText;
   const problem=(cap(a.who)+": "+a.problem+(a.work?" Today: "+a.work:"")).slice(0,500),idea=(a.solution+(mod?" Money: "+mod+".":"")+(te?" Test: "+te+".":"")).slice(0,800);
   const {error}=await SB.rpc("post_idea",{p_title:ti.length<4?ti+" idea":ti,p_problem:problem,p_idea:idea,p_stage:a.stage||"idea",p_looking:a.looking||[]});
