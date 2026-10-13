@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-2cC+Nu8EhDYwSvMKd0CnJxDffoCDfZ6JSPioOhCnM+A='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://ygvodjbocaakzzggphxd.supabase.co; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-G/I8d80lEG3a07OCsL8y4oFJOvqkjwEau8d1KKUuSVQ='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://ygvodjbocaakzzggphxd.supabase.co; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'">
 <title>Welcome to REL · REL club</title>
 <meta name="description" content="Meet REL, the Relations, Entrepreneurship and Leadership club of the Lebanese University Faculty of Engineering. A 2-minute tour.">
 <meta name="theme-color" content="#800020">
@@ -99,6 +99,19 @@ textarea{min-height:96px;resize:vertical}
 .role p{margin:10px 0 0;color:var(--muted);font-size:14.5px;font-weight:600}
 .wsh{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fill);margin:4px 0 8px}
 .wsg .chips{margin-bottom:14px}
+.crown{position:relative;background:linear-gradient(160deg,#4A0D1B,#2A060E);color:#fff;border-radius:24px;padding:24px 18px 20px;margin-bottom:16px;overflow:hidden;border:1px solid #C9A24A}
+.crown:before{content:"";position:absolute;inset:6px;border:1px solid rgba(201,162,74,.45);border-radius:19px;pointer-events:none}
+.crest{width:58px;height:58px;border-radius:50%;border:2px solid #C9A24A;color:#E7C978;display:grid;place-items:center;font:700 22px var(--fd);margin-bottom:12px;background:rgba(201,162,74,.08)}
+.crown .ck{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#E7C978}
+.crown h2{color:#fff;font-size:clamp(2rem,9vw,2.5rem);margin:8px 0 8px}
+.crown p{margin:0;color:#EBD5D9;font-size:15.5px}
+.seats{display:flex;gap:8px;margin-top:16px}
+.seats i{width:28px;height:28px;border-radius:50%;border:2px solid #C9A24A;background:rgba(201,162,74,.15)}
+@media (prefers-reduced-motion:no-preference){.seats i{animation:glow 2.4s ease-in-out infinite}.seats i:nth-child(2){animation-delay:.2s}.seats i:nth-child(3){animation-delay:.4s}.seats i:nth-child(4){animation-delay:.6s}.seats i:nth-child(5){animation-delay:.8s}.seats i:nth-child(6){animation-delay:1s}@keyframes glow{50%{background:rgba(231,201,120,.6)}}}
+.sl{margin-top:8px;font-size:13px;color:#E7C978;font-weight:600}
+.role ol{margin:0;padding-left:1.2em}
+.perks2 div.gold{border:2px solid #C9A24A;background:#FBF5E6}
+.btn.gold{background:linear-gradient(135deg,#B8892F,#E2C06A);border-color:#C9A24A;color:#2A060E}
 .amb{background:var(--deep);color:#fff;border-radius:22px;padding:18px}
 .amb h3{font:700 22px var(--fd);margin:0 0 6px}
 .amb p{margin:0 0 12px;color:#EBD5D9;font-size:15.5px}
@@ -225,19 +238,27 @@ var V={
   '<div class="wsg">'+[["E","Entrepreneurship"],["L","Leadership"],["R","Relations"]].map(function(g){return '<div class="wsh">'+g[1]+'</div><div class="chips">'+WORK.filter(function(x){return x[1]===g[0]}).map(function(x){return '<button type="button" class="chip" aria-pressed="'+(w.indexOf(x[0])>=0)+'" data-ws="'+x[0]+'">'+esc(x[2])+'</button>'}).join("")+'</div>'}).join("")+'</div>'+
   '<input type="text" id="wsOther" maxlength="120" placeholder="Another topic you want? (optional)" value="'+esc(S.data.wsOther||"")+'">'+
   '<div class="foot"><button type="button" class="btn" data-act="wsnext">Next: ambassadors</button></div>')},
- amb:function(){var d=S.data;return shell('<div class="k">REL ambassadors · now open</div><h2>Become a REL ambassador.</h2><p class="lead">Ambassadors are the face of REL in their class. Only 6 spots this year.</p>'+
-  '<div class="role"><div class="q" style="margin-top:0">What an ambassador does</div><ul><li><b>Shares REL</b> in your class group: events, opportunities, the intro session.</li><li><b>Brings friends</b> to our events and talks.</li><li><b>Is our ear:</b> tells the board what students want.</li><li><b>Helps at 1 or 2 events</b> a semester, side by side with the board.</li></ul><p>About 1 hour a week. Flexible around exams.</p></div>'+
+ amb:function(){var d=S.data;return shell(
+  '<div class="crown"><div class="crest">VI</div><div class="ck">REL ambassadors · founding class 2026–27</div><h2>Join The First Six.</h2><p>Six students will be the first ambassadors in REL\'s history. They represent REL in their class, work side by side with the board, and are first in line to lead the club next year.</p><div class="seats">'+[1,2,3,4,5,6].map(function(){return '<i></i>'}).join("")+'</div><div class="sl">6 seats · chosen after a short chat with the President</div></div>'+
+  '<div class="role"><div class="q" style="margin-top:0">Your mission as an ambassador</div><ol>'+
+  '<li><b>Be REL\'s voice in your class.</b> Share each REL event in your class group within 24 hours.</li>'+
+  '<li><b>Bring your people.</b> Come to our big events with at least 3 friends.</li>'+
+  '<li><b>Grow the club.</b> Help 5 classmates become official members each semester.</li>'+
+  '<li><b>Run the front line.</b> Hold the REL stand or welcome desk at 1 or 2 events a semester.</li>'+
+  '<li><b>Be our ear.</b> Once a month, tell the board 3 things students want.</li>'+
+  '<li><b>Capture it.</b> One photo or story from every REL event you attend.</li>'+
+  '</ol><p>About 1 to 2 hours a week. Flexible around exams.</p></div>'+
   '<div class="q">What you get</div>'+
-  '<div class="perks2">'+[["🎓","A signed certificate","Proof of leadership for your CV"],["💼","A LinkedIn title","REL Ambassador, for everyone to see"],["🤝","Meet the big names first","Speakers, founders and partners"],["⭐","Priority at every event","And bonus points on the leaderboard"],["🧭","Real leadership experience","Lead, organize and grow with the board"]].map(function(x){return '<div><span class="e">'+x[0]+'</span><span><b>'+x[1]+'</b><small>'+x[2]+'</small></span></div>'}).join("")+'</div>'+
-  '<div class="amb"><h3>Apply in 30 seconds</h3><p>No commitment yet. The board will contact you.</p>'+
-  '<input type="text" id="aName" maxlength="80" placeholder="Your name" autocomplete="name" value="'+esc(d.ambName||"")+'"><input type="text" id="aContact" maxlength="80" placeholder="WhatsApp number or Instagram" value="'+esc(d.ambContact||"")+'"><input type="text" id="aYear" maxlength="60" placeholder="Year and major" value="'+esc(d.ambYear||"")+'"><input type="text" id="aWhy" maxlength="160" placeholder="Why you, in one line (optional)" value="'+esc(d.ambWhy||"")+'"></div>'+
-  '<div class="foot"><button type="button" class="btn" data-act="ambnext">'+(d.ambName?"Update and continue":"Apply and continue")+'</button><button type="button" class="skip" data-act="ambskip">Not now, next</button></div>')},
+  '<div class="perks2">'+[["🏛️","First in line for next year\'s board","Ambassadors get priority for the 2027–28 REL board",1],["🎓","A signed certificate","Proof of leadership for your CV"],["💼","A LinkedIn title","REL Ambassador, for everyone to see"],["🤝","Meet the big names first","Speakers, founders and partners"],["⭐","Priority at every event","And bonus points on the leaderboard"],["🧭","Real leadership experience","Lead, organize and grow with the board"]].map(function(x){return '<div'+(x[3]?' class="gold"':'')+'><span class="e">'+x[0]+'</span><span><b>'+x[1]+'</b><small>'+x[2]+'</small></span></div>'}).join("")+'</div>'+
+  '<div class="amb"><h3>Claim your seat</h3><p>Takes 30 seconds. No commitment yet: the President will contact you for a short chat.</p>'+
+  '<input type="text" id="aName" maxlength="80" placeholder="Your name" autocomplete="name" value="'+esc(d.ambName||"")+'"><input type="text" id="aContact" maxlength="80" placeholder="WhatsApp number or Instagram" value="'+esc(d.ambContact||"")+'"><input type="text" id="aYear" maxlength="60" placeholder="Year and major" value="'+esc(d.ambYear||"")+'"><input type="text" id="aWhy" maxlength="160" placeholder="Why you, in one line" value="'+esc(d.ambWhy||"")+'"></div>'+
+  '<div class="foot"><button type="button" class="btn gold" data-act="ambnext">'+(d.ambName?"Update my application":"Claim my seat")+'</button><button type="button" class="skip" data-act="ambskip">Not now, next</button></div>')},
  feedback:function(){var c=S.data.clarity;return shell('<div class="k">Last step</div><h2>How clear is REL to you now?</h2>'+
   '<div class="stars">'+[1,2,3,4,5].map(function(n){return '<button type="button" aria-pressed="'+(c===n)+'" data-clar="'+n+'">'+n+'</button>'}).join("")+'</div><div class="stars-l"><span>Still confused</span><span>Crystal clear</span></div>'+
   '<div class="q">One idea, wish or feedback for REL</div><textarea id="fb" maxlength="600" placeholder="Anything: an event you want, a speaker, what we should do better…">'+esc(S.data.feedback||"")+'</textarea>'+
   '<div class="foot"><button type="button" class="btn" data-act="finish">Finish the tour</button></div>')},
  done:function(){var n=0;for(var k=0;k<4;k++)if(done[k])n++;return shell('<div class="k">Tour complete</div><h1>You\'re in the loop.</h1>'+
-  (S.data.ambName?'<div class="ok">Thanks '+esc(S.data.ambName.split(" ")[0])+'! Your ambassador application is in. The board will contact you.</div>':'')+
+  (S.data.ambName?'<div class="ok">Thanks '+esc(S.data.ambName.split(" ")[0])+'! Your seat request for The First Six is in. The President will contact you.</div>':'')+
   '<div class="intro"><div class="kk">Coming soon</div><h3>The REL intro session</h3><p>Meet the board, see the full plan for the year and find your place in REL. The date is announced first on WhatsApp.</p><a class="btn light" href="'+WA+'" target="_blank" rel="noopener" data-k="0">'+(done[0]?"Open the WhatsApp community":"Join WhatsApp to get the date")+'</a></div>'+
   (n<4?'<button type="button" class="btn ghost" data-act="tojoin" style="margin-bottom:14px">Finish joining ('+n+' of 4 done)</button>':'')+
   '<a class="btn" href="/type" style="margin-bottom:16px">Bonus: what\'s your REL type?</a>'+
