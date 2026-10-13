@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-GNgBFDnxK2vgI9e84X/rsO9tEOh8tE45nCsKaF2a4MU='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://ygvodjbocaakzzggphxd.supabase.co; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-2cC+Nu8EhDYwSvMKd0CnJxDffoCDfZ6JSPioOhCnM+A='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://ygvodjbocaakzzggphxd.supabase.co; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'">
 <title>Welcome to REL · REL club</title>
 <meta name="description" content="Meet REL, the Relations, Entrepreneurship and Leadership club of the Lebanese University Faculty of Engineering. A 2-minute tour.">
 <meta name="theme-color" content="#800020">
@@ -93,6 +93,12 @@ textarea{min-height:96px;resize:vertical}
 .perks2 .e{font-size:26px;line-height:1}
 .perks2 b{display:block}
 .perks2 small{display:block;color:var(--muted);font-size:14px}
+.role{background:var(--card);border:2px solid var(--fill);border-radius:18px;padding:16px;margin-bottom:16px}
+.role ul{margin:0;padding-left:1.1em}
+.role li{margin:6px 0}
+.role p{margin:10px 0 0;color:var(--muted);font-size:14.5px;font-weight:600}
+.wsh{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fill);margin:4px 0 8px}
+.wsg .chips{margin-bottom:14px}
 .amb{background:var(--deep);color:#fff;border-radius:22px;padding:18px}
 .amb h3{font:700 22px var(--fd);margin:0 0 6px}
 .amb p{margin:0 0 12px;color:#EBD5D9;font-size:15.5px}
@@ -158,7 +164,22 @@ var IDEAS=[
  ["visit","🏭","Behind the scenes","Visit companies and projects and see how things really work."],
  ["abroad","✈️","Study abroad","How LU students make it to universities abroad, from people who did it."]
 ];
-var WORK=[["internship","How to land your first internship"],["linkedin","A LinkedIn that gets you hired"],["cv","A CV that passes the 6-second test"],["speaking","Public speaking without fear"],["ai","AI tools every engineer should use"],["money","Personal finance and investing 101"],["startup","How to start a startup as a student"],["excel","Excel like a consultant"],["interview","Ace any interview"],["negotiation","Negotiate like a pro"]];
+var WORK=[
+ ["startup","E","Build a startup from zero"],
+ ["tools","E","AI and no-code tools to launch a startup"],
+ ["pitch","E","How to pitch your idea in 60 seconds"],
+ ["business","E","How businesses really make money"],
+ ["customer","E","From idea to your first customer"],
+ ["funding","E","Startup money: costs, pricing and funding"],
+ ["leadteam","L","Lead a team without being the boss"],
+ ["speaking","L","Public speaking people remember"],
+ ["decide","L","Making decisions under pressure"],
+ ["connect","R","How to build real connections"],
+ ["linkedin","R","A LinkedIn that opens doors"],
+ ["networking","R","Networking without the awkwardness"],
+ ["internship","R","How to land your first internship"],
+ ["money","L","Personal finance and investing 101"]
+];
 var PERKS=[["cert","A signed certificate"],["linkedin","A LinkedIn title"],["meet","Meeting speakers and founders"],["priority","Priority at events"],["points","Points and prizes"],["lead","Real leadership experience"],["team","Being part of the team"]];
 var STEPS=["start","guess","what","join","ideas","workshops","amb","feedback","done"];
 var app=document.getElementById("app");
@@ -201,10 +222,12 @@ var V={
   return shell('<div class="k">A taste of this year · would you come?</div><div class="cnt">'+idx+' of '+IDEAS.length+'</div><div class="idea"><div class="ic">'+x[1]+'</div><h3>'+esc(x[2])+'</h3><p>'+esc(x[3])+'</p></div>'+
   '<div class="react"><button type="button" data-rate="fire"><span>🔥</span>I\'m there</button><button type="button" data-rate="ok"><span>👍</span>Maybe</button><button type="button" data-rate="skip"><span>👎</span>Not for me</button></div>')},
  workshops:function(){var w=S.data.workshops;return shell('<div class="k">Workshops</div><h2>Which workshops would you never miss?</h2><p class="lead">Pick up to 3.</p>'+
-  '<div class="chips">'+WORK.map(function(x){return '<button type="button" class="chip" aria-pressed="'+(w.indexOf(x[0])>=0)+'" data-ws="'+x[0]+'">'+esc(x[1])+'</button>'}).join("")+'</div>'+
+  '<div class="wsg">'+[["E","Entrepreneurship"],["L","Leadership"],["R","Relations"]].map(function(g){return '<div class="wsh">'+g[1]+'</div><div class="chips">'+WORK.filter(function(x){return x[1]===g[0]}).map(function(x){return '<button type="button" class="chip" aria-pressed="'+(w.indexOf(x[0])>=0)+'" data-ws="'+x[0]+'">'+esc(x[2])+'</button>'}).join("")+'</div>'}).join("")+'</div>'+
   '<input type="text" id="wsOther" maxlength="120" placeholder="Another topic you want? (optional)" value="'+esc(S.data.wsOther||"")+'">'+
   '<div class="foot"><button type="button" class="btn" data-act="wsnext">Next: ambassadors</button></div>')},
  amb:function(){var d=S.data;return shell('<div class="k">REL ambassadors · now open</div><h2>Become a REL ambassador.</h2><p class="lead">Ambassadors are the face of REL in their class. Only 6 spots this year.</p>'+
+  '<div class="role"><div class="q" style="margin-top:0">What an ambassador does</div><ul><li><b>Shares REL</b> in your class group: events, opportunities, the intro session.</li><li><b>Brings friends</b> to our events and talks.</li><li><b>Is our ear:</b> tells the board what students want.</li><li><b>Helps at 1 or 2 events</b> a semester, side by side with the board.</li></ul><p>About 1 hour a week. Flexible around exams.</p></div>'+
+  '<div class="q">What you get</div>'+
   '<div class="perks2">'+[["🎓","A signed certificate","Proof of leadership for your CV"],["💼","A LinkedIn title","REL Ambassador, for everyone to see"],["🤝","Meet the big names first","Speakers, founders and partners"],["⭐","Priority at every event","And bonus points on the leaderboard"],["🧭","Real leadership experience","Lead, organize and grow with the board"]].map(function(x){return '<div><span class="e">'+x[0]+'</span><span><b>'+x[1]+'</b><small>'+x[2]+'</small></span></div>'}).join("")+'</div>'+
   '<div class="amb"><h3>Apply in 30 seconds</h3><p>No commitment yet. The board will contact you.</p>'+
   '<input type="text" id="aName" maxlength="80" placeholder="Your name" autocomplete="name" value="'+esc(d.ambName||"")+'"><input type="text" id="aContact" maxlength="80" placeholder="WhatsApp number or Instagram" value="'+esc(d.ambContact||"")+'"><input type="text" id="aYear" maxlength="60" placeholder="Year and major" value="'+esc(d.ambYear||"")+'"><input type="text" id="aWhy" maxlength="160" placeholder="Why you, in one line (optional)" value="'+esc(d.ambWhy||"")+'"></div>'+
@@ -248,7 +271,7 @@ document.addEventListener("click",function(e){var t=e.target.closest("[data-act]
 
 /* live big screen: relulfg.com/welcome#live */
 function live(){document.body.className="live";
- var names={};IDEAS.forEach(function(x){names[x[0]]=x[1]+" "+x[2]});var wn={};WORK.forEach(function(x){wn[x[0]]=x[1]});
+ var names={};IDEAS.forEach(function(x){names[x[0]]=x[1]+" "+x[2]});var wn={};WORK.forEach(function(x){wn[x[0]]=x[2]});
  app.outerHTML='<div class="lv"><div><div class="eb">REL club · live from the stand</div><h1>What students want from REL</h1>'+
   '<div class="kp"><div><b id="lt">0</b><span>students took the tour</span></div><div><b id="lk">0%</b><span>didn\'t know REL before today</span></div><div><b id="la">0</b><span>applied to be ambassadors</span></div></div>'+
   '<h4>Most loved ideas 🔥</h4><div id="li"></div><h4>Top workshops</h4><div id="lw"></div></div>'+
