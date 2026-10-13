@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-iHAKPvoRODM+c+eUSumWinYUc7g4Omt42J2KI3ONP4M='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://ygvodjbocaakzzggphxd.supabase.co; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'">
+<title>Welcome to REL · REL club</title>
+<meta name="description" content="REL is the Relations, Entrepreneurship and Leadership club of the Lebanese University Faculty of Engineering. Join in 4 taps.">
+<meta name="theme-color" content="#800020">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+:root{--bg:#F8F6F1;--card:#FFFFFF;--ink:#1F1416;--muted:#665A5D;--fill:#800020;--line:#EBDFE1;--tint:#F6ECEE;--deep:#3A0A14;--pink:#E8C9CC;--good:#1F7A4D;--goodbg:#E1F2E8;
+--fd:'Fraunces',Georgia,serif;--fb:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.5 var(--fb);-webkit-text-size-adjust:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--fill);outline-offset:3px}
+.hero{background:var(--fill);color:#fff;padding:calc(20px + env(safe-area-inset-top,0px)) 20px 30px;border-radius:0 0 28px 28px}
+.in{max-width:540px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:13.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+.top a{color:#fff;text-decoration:none;letter-spacing:0;text-transform:none;font-weight:600;opacity:.9}
+h1,h2{font-family:var(--fd);font-weight:600;line-height:1.06;margin:0;text-wrap:balance}
+.hero h1{font-size:clamp(2.6rem,12vw,3.4rem);margin:26px 0 12px}
+.hero p{margin:0;color:#F6E4E7;font-size:18px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:22px}
+.stats div{background:rgba(255,255,255,.12);border-radius:14px;padding:10px 10px 9px}
+.stats b{display:block;font:700 22px var(--fd)}
+.stats span{font-size:12.5px;color:var(--pink);line-height:1.25;display:block}
+main{max-width:540px;margin:0 auto;padding:22px 18px calc(110px + env(safe-area-inset-bottom,0px));display:grid;gap:26px}
+.sh{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:12px}
+h2{font-size:1.75rem}
+.sh span{font-size:14px;color:var(--muted);font-weight:600}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px}
+.join{border:2px solid var(--fill)}
+.pbar{height:8px;border-radius:8px;background:var(--tint);overflow:hidden;margin:2px 0 14px}
+.pbar i{display:block;height:100%;background:var(--fill);border-radius:8px;transition:width .5s ease}
+.pbar i.ok{background:var(--good)}
+.steps{display:grid;gap:10px}
+.step{display:flex;align-items:center;gap:14px;background:var(--bg);border:2px solid var(--line);border-radius:16px;padding:13px 14px;text-decoration:none;font-weight:600}
+.step .n{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--fill);color:#fff;display:grid;place-items:center;font-weight:700}
+.step small{display:block;font-weight:500;color:var(--muted);font-size:14px}
+.step .go{margin-left:auto;color:var(--fill);font-weight:700;font-size:20px}
+.step.done{border-color:var(--good);background:var(--goodbg)}
+.step.done .n{background:var(--good)}
+.step.done .go{color:var(--good)}
+.allset{margin-top:12px;background:var(--goodbg);color:var(--good);border-radius:14px;padding:12px 14px;font-weight:700;text-align:center}
+.intro{background:var(--deep);color:#fff;border-radius:22px;padding:22px 18px}
+.intro .k{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--pink)}
+.intro h2{font-size:2rem;margin:6px 0 8px;color:#fff}
+.intro p{margin:0 0 16px;color:#EBD5D9}
+.intro ul{margin:0 0 16px;padding-left:1.1em;color:#EBD5D9}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:54px;border-radius:999px;border:2px solid var(--fill);background:var(--fill);color:#fff;font:700 17px var(--fb);text-decoration:none;padding:0 18px;cursor:pointer}
+.btn.light{background:#fff;color:var(--deep);border-color:#fff}
+.btn.ghost{background:transparent;color:var(--fill)}
+.pil{display:grid;gap:10px}
+.pil .card b{display:block;color:var(--fill);font-size:18px}
+.pil .card span{color:var(--muted);font-size:15.5px}
+.list{display:grid;gap:0}
+.it{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.it:first-child{border-top:0;padding-top:2px}
+.it .dot{flex-shrink:0;width:10px;height:10px;border-radius:50%;background:var(--fill);margin-top:8px}
+.it b{display:block}
+.it span{color:var(--muted);font-size:15px}
+.ev{display:flex;gap:14px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}
+.ev:first-child{border-top:0;padding-top:2px}
+.ev .d{flex-shrink:0;width:56px;text-align:center;background:var(--tint);border-radius:14px;padding:6px 0;color:var(--fill)}
+.ev .d b{display:block;font:700 22px/1 var(--fd)}
+.ev .d small{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.ev .t b{display:block}
+.ev .t span{color:var(--muted);font-size:14.5px}
+.tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--tint);color:var(--fill);border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:2px}
+.quiz{background:var(--tint);border:2px dashed var(--fill);border-radius:22px;padding:20px 18px;text-align:center}
+.quiz h2{font-size:1.9rem;margin-bottom:6px}
+.quiz p{margin:0 0 14px;color:var(--muted)}
+.perks{margin:0;padding-left:1.1em;color:var(--muted)}
+.perks li{margin:4px 0}
+.perks b{color:var(--ink)}
+.explore{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.explore a{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;text-decoration:none}
+.explore b{display:block;color:var(--fill)}
+.explore span{font-size:14px;color:var(--muted)}
+.foot{text-align:center;color:var(--muted);font-size:14px}
+.dock{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(248,246,241,.96);border-top:1px solid var(--line);z-index:10}
+.dock .in{display:flex;gap:10px;align-items:center}
+.dock .p{flex:1;font-size:14px;font-weight:700;color:var(--muted)}
+.dock .p b{color:var(--fill)}
+.dock .btn{width:auto;min-height:46px;font-size:15.5px}
+</style>
+</head>
+<body>
+<header class="hero"><div class="in">
+  <div class="top"><span>REL club · ULFG2</span><a href="/">relulfg.com</a></div>
+  <h1>Hey, welcome to REL.</h1>
+  <p>The club for <b>Relations</b>, <b>Entrepreneurship</b> and <b>Leadership</b> at the Lebanese University, Faculty of Engineering. We teach what classes don't.</p>
+  <div class="stats"><div><b>1,000+</b><span>Instagram followers</span></div><div><b>450+</b><span>students on WhatsApp</span></div><div><b>Free</b><span>for every LU student</span></div></div>
+</div></header>
+
+<main>
+  <section class="card join" id="join">
+    <div class="sh"><h2>Join REL in 4 taps</h2><span id="cnt">0 / 4</span></div>
+    <div class="pbar"><i id="pb" style="width:0"></i></div>
+    <div class="steps" id="steps"></div>
+    <div class="allset" id="allset" hidden>You're in. Welcome to REL! See you at the intro session.</div>
+  </section>
+
+  <section class="intro">
+    <div class="k">Coming soon</div>
+    <h2>The REL intro session</h2>
+    <p>Our first session of the year. Come and:</p>
+    <ul><li>meet the board,</li><li>see everything we're planning this year,</li><li>find your place in REL.</li></ul>
+    <a class="btn light" href="https://chat.whatsapp.com/Kph5TBt947mDEe8bfAvUQM" target="_blank" rel="noopener" data-k="0">Get the date first on WhatsApp</a>
+  </section>
+
+  <section>
+    <div class="sh"><h2>Who we are</h2></div>
+    <div class="pil">
+      <div class="card"><b>Relations</b><span>Meet professionals, alumni and companies. Build your network before you graduate.</span></div>
+      <div class="card"><b>Entrepreneurship</b><span>Turn ideas into projects, and projects into startups.</span></div>
+      <div class="card"><b>Leadership</b><span>Speak, lead a team, organize and compete. The skills every employer looks for.</span></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="sh"><h2>This year at REL</h2></div>
+    <div class="list">
+      <div class="it"><i class="dot"></i><div><b>Talks with big names</b><span>Founders, professionals and a panel with leaders from Lebanon.</span></div></div>
+      <div class="it"><i class="dot"></i><div><b>Online workshops</b><span>CVs, LinkedIn, interviews, public speaking, Excel and more.</span></div></div>
+      <div class="it"><i class="dot"></i><div><b>Competitions on campus</b><span>Business challenges, games and prizes.</span></div></div>
+      <div class="it"><i class="dot"></i><div><b>Networking sessions</b><span>Sit with professionals and alumni, then connect on LinkedIn.</span></div></div>
+      <div class="it"><i class="dot"></i><div><b>Studying abroad talks</b><span>Students from LU's partner universities share how they got there.</span></div></div>
+      <div class="it"><i class="dot"></i><div><b>A startup program</b><span>In semester 2: build your own startup with mentors and pitch it at a Demo Day.</span></div></div>
+      <div class="it"><i class="dot"></i><div><b>Daily games on relulfg.com</b><span>Play every day, climb the faculty league, win points.</span></div></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="sh"><h2>Upcoming events</h2><a href="/#events" style="font-size:14px;font-weight:700;color:var(--fill)">All events</a></div>
+    <div id="events"><div class="ev"><div class="d"><b>?</b><small>Soon</small></div><div class="t"><b>REL intro session</b><span>Date announced soon on WhatsApp and Instagram</span></div></div></div>
+  </section>
+
+  <section class="quiz">
+    <h2>What's your REL type?</h2>
+    <p>Connector, Builder or Leader? Six quick questions, one minute.</p>
+    <a class="btn" href="/type">Take the quiz</a>
+  </section>
+
+  <section class="card">
+    <div class="sh"><h2>Why become a member</h2></div>
+    <ul class="perks">
+      <li><b>A member card</b> and a certificate at the end of the year</li>
+      <li><b>"REL Member"</b> for your CV and LinkedIn</li>
+      <li><b>A vote</b> on our speakers and events</li>
+      <li><b>First access</b> to workshops, talks and opportunities</li>
+      <li><b>Points</b> for events and games, with a leaderboard</li>
+    </ul>
+    <a class="btn" href="/#account" style="margin-top:14px" data-k="3">Create my free account</a>
+  </section>
+
+  <section>
+    <div class="sh"><h2>Explore the website</h2></div>
+    <div class="explore">
+      <a href="/#play"><b>Play</b><span>Daily puzzles and the game of the month</span></a>
+      <a href="/#events"><b>Events</b><span>Calendar, upcoming and past</span></a>
+      <a href="/#startups"><b>Startups</b><span>Idea lab and the daily question</span></a>
+      <a href="/#mobilite"><b>Study abroad</b><span>Partner universities and scholarships</span></a>
+    </div>
+  </section>
+
+  <p class="foot">REL · Relations, Entrepreneurship &amp; Leadership<br>Lebanese University, Faculty of Engineering, Branch 2 · @relulfg</p>
+</main>
+
+<div class="dock" id="dock"><div class="in"><span class="p" id="dockp"><b>0 / 4</b> steps done</span><a class="btn" href="#join" id="dockb">Join REL</a></div></div>
+
+<script>
+(function(){
+var KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlndm9kamJvY2Fha3p6Z2dwaHhkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk4ODMyODYsImV4cCI6MjEwNTQ1OTI4Nn0.tjs2RLptzkPTsPxbBWF9jaZBzFn6mLp1QAEf8EpeFTsM",URL="https://ygvodjbocaakzzggphxd.supabase.co/rest/v1/";
+var LINKS=[["https://chat.whatsapp.com/Kph5TBt947mDEe8bfAvUQM","Join the WhatsApp community","Events, the intro session date, opportunities"],["https://www.instagram.com/relulfg","Follow us on Instagram","@relulfg"],["https://www.linkedin.com/company/relulfg","Follow us on LinkedIn","Great for your profile"],["/#account","Create your REL account","Become an official member, free"]];
+var MN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function load(){try{return JSON.parse(localStorage.getItem("rel-type-steps")||"{}")}catch(e){return{}}}
+function save(d){try{localStorage.setItem("rel-type-steps",JSON.stringify(d))}catch(e){}}
+var done=load();
+function draw(){var n=0;for(var k=0;k<4;k++)if(done[k])n++;
+ document.getElementById("steps").innerHTML=LINKS.map(function(l,k){return '<a class="step'+(done[k]?" done":"")+'" data-k="'+k+'" href="'+l[0]+'"'+(l[0].charAt(0)==="/"?"":' target="_blank" rel="noopener"')+'><span class="n">'+(done[k]?"✓":k+1)+'</span><span>'+esc(l[1])+'<small>'+esc(l[2])+'</small></span><span class="go" aria-hidden="true">'+(done[k]?"✓":"›")+'</span></a>'}).join("");
+ document.getElementById("cnt").textContent=n+" / 4";var pb=document.getElementById("pb");pb.style.width=(n/4*100)+"%";pb.className=n===4?"ok":"";
+ document.getElementById("allset").hidden=n<4;
+ document.getElementById("dockp").innerHTML=n===4?"<b>All set.</b> Welcome to REL!":"<b>"+n+" / 4</b> steps done";
+ var db=document.getElementById("dockb");if(n===4){db.textContent="Take the quiz";db.setAttribute("href","/type")}else{db.textContent="Join REL";db.setAttribute("href","#join")}}
+document.addEventListener("click",function(e){var a=e.target.closest("[data-k]");if(!a)return;var k=a.getAttribute("data-k");done[k]=1;save(done);setTimeout(draw,400)});
+draw();
+/* upcoming events from the REL calendar */
+var today=new Date(Date.now()+3*36e5).toISOString().slice(0,10);
+fetch(URL+"events?select=title,type,date,time,place,tentative&date=gte."+today+"&order=date.asc&limit=4",{headers:{apikey:KEY,Authorization:"Bearer "+KEY}}).then(function(r){return r.ok?r.json():[]}).then(function(rows){
+ var intro='<div class="ev"><div class="d"><b>?</b><small>Soon</small></div><div class="t"><b>REL intro session</b><span>Date announced soon on WhatsApp and Instagram</span></div></div>';
+ var hasIntro=(rows||[]).some(function(r){return /intro/i.test(r.title||"")});
+ var html=(rows||[]).map(function(r){var m=+String(r.date).slice(5,7),d=+String(r.date).slice(8,10),isToday=r.date===today;
+  return '<div class="ev"><div class="d"><b>'+d+'</b><small>'+MN[m-1]+'</small></div><div class="t"><b>'+esc(r.title)+(isToday?'<span class="tag">Today</span>':'')+(r.tentative?'<span class="tag">To confirm</span>':'')+'</b><span>'+esc([r.time?String(r.time).slice(0,5):"",r.place,r.type].filter(Boolean).join(" · "))+'</span></div></div>'}).join("");
+ document.getElementById("events").innerHTML=html+(hasIntro?"":intro)}).catch(function(){});
+})();
+</script>
+</body>
+</html>
