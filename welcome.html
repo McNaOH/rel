@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-EyKPMsMgnT6RSc9V9VvA9Dag1VTGi/USwcJKIvFdoUA='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://ygvodjbocaakzzggphxd.supabase.co; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-CYa6WFyymhD9zZWBys+BZWH0UzLLKeTfTwJKRC6Bxaw='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://ygvodjbocaakzzggphxd.supabase.co; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'">
 <title>Welcome to REL · REL club</title>
 <meta name="description" content="Meet REL, the Relations, Entrepreneurship and Leadership club of the Lebanese University Faculty of Engineering. A 2-minute tour.">
 <meta name="theme-color" content="#800020">
@@ -126,8 +126,16 @@ body.live{background:var(--fill);color:#fff;overflow:hidden}
 </style>
 </head>
 <body>
-<main class="app" id="app"><div class="bar"><span class="brand">REL club · ULFG2</span></div><section class="view"><h1>Welcome to REL.</h1><p class="lead">Loading your 2-minute tour…</p></section></main>
+<main class="app" id="app"><div class="bar"><span class="brand">REL club · ULFG2</span></div><section class="view">
+<div class="k">Welcome</div><h1>Hey, welcome to REL.</h1>
+<div class="reveal"><div class="big">REL = <u>R</u>elations, <u>E</u>ntrepreneurship and <u>L</u>eadership.</div><p>The three skills engineering classes don't teach, and every employer looks for.</p></div>
+<div class="stack"><div class="card"><b>Learn</b><span>Workshops and talks on CVs, LinkedIn, public speaking, money and startups.</span></div><div class="card"><b>Compete</b><span>Business competitions, campus games and daily puzzles with points.</span></div><div class="card"><b>Connect</b><span>Networking nights, big-name speakers, company visits and 450+ students.</span></div></div>
+<div class="steps"><a class="step" href="https://chat.whatsapp.com/Kph5TBt947mDEe8bfAvUQM"><span class="n">1</span><span>Join the WhatsApp community<small>The intro session date, events</small></span></a><a class="step" href="https://www.instagram.com/relulfg"><span class="n">2</span><span>Follow us on Instagram<small>@relulfg</small></span></a><a class="step" href="https://www.linkedin.com/company/relulfg"><span class="n">3</span><span>Follow us on LinkedIn<small>REL ULFG</small></span></a><a class="step" href="/#account"><span class="n">4</span><span>Create your REL account<small>Free</small></span></a></div>
+<div class="intro"><div class="kk">Coming soon</div><h3>The REL intro session</h3><p>Meet the board and see the full plan for the year. The date is announced first on WhatsApp.</p></div>
+<p id="jsnote" style="color:var(--muted);font-size:14px;text-align:center">Loading the interactive tour…</p>
+</section></main>
 <script>
+window.addEventListener("error",function(ev){var n=document.getElementById("jsnote");if(n)n.textContent="Tour error: "+(ev&&ev.message)});
 (function(){
 var KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlndm9kamJvY2Fha3p6Z2dwaHhkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk4ODMyODYsImV4cCI6MjEwNTQ1OTI4Nn0.tjs2RLptzkPTsPxbBWF9jaZBzFn6mLp1QAEf8EpeFTsM",API="https://ygvodjbocaakzzggphxd.supabase.co/rest/v1/",QR="data:image/png;base64,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";
 var WA="https://chat.whatsapp.com/Kph5TBt947mDEe8bfAvUQM";
@@ -151,7 +159,7 @@ function lsg(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}cat
 function lss(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 function uuid(){if(window.crypto&&crypto.randomUUID)return crypto.randomUUID();var h="0123456789abcdef",s="";for(var i=0;i<32;i++)s+=h[Math.floor(Math.random()*16)];return s.slice(0,8)+"-"+s.slice(8,12)+"-4"+s.slice(13,16)+"-a"+s.slice(17,20)+"-"+s.slice(20)}
 function rpc(fn,body){return fetch(API+"rpc/"+fn,{method:"POST",headers:{apikey:KEY,Authorization:"Bearer "+KEY,"Content-Type":"application/json"},body:JSON.stringify(body||{})}).then(function(r){if(!r.ok)throw r;return r.status===204?null:r.json()})}
-var S=lsg("rel-welcome",null)||{sid:uuid(),step:0,data:{ideas:{},workshops:[],perks:[]}};
+var S=lsg("rel-welcome",null);if(!S||!S.data||typeof S.step!=="number"||!S.data.ideas||!S.data.workshops||!S.data.perks)S={sid:uuid(),step:0,data:{ideas:{},workshops:[],perks:[]}};
 var done=lsg("rel-type-steps",{});
 function persist(){lss("rel-welcome",S)}
 function sync(){var d=JSON.parse(JSON.stringify(S.data));d.joined=Object.keys(done).length;rpc("rel_welcome_save",{p_sid:S.sid,p_data:d}).catch(function(){})}
@@ -202,7 +210,7 @@ var V={
   '<div class="explore"><a href="/#events"><b>Events</b><span>Calendar and what\'s next</span></a><a href="/#play"><b>Play</b><span>Daily puzzles and points</span></a><a href="/#startups"><b>Startups</b><span>Idea lab and daily question</span></a><a href="/#mobilite"><b>Study abroad</b><span>Partner universities</span></a></div>'+
   '<div class="foot"><button type="button" class="skip" data-act="restart">Start the tour again</button></div>',{noBack:true})}
 };
-function draw(){app.innerHTML=V[STEPS[S.step]]()}
+function draw(){try{app.innerHTML=V[STEPS[S.step]]()}catch(err){S.step=0;try{app.innerHTML=V.start()}catch(e2){var n=document.getElementById("jsnote");if(n)n.textContent="The interactive tour could not start ("+(e2&&e2.message)+"). Use the links above."}}}
 
 document.addEventListener("click",function(e){var t=e.target.closest("[data-act],[data-knew],[data-guess],[data-rate],[data-ws],[data-perk],[data-amb],[data-clar],[data-k]");if(!t)return;var d=S.data;
  if(t.hasAttribute("data-k")){var k=t.getAttribute("data-k");done[k]=1;lss("rel-type-steps",done);if(STEPS[S.step]==="join"||STEPS[S.step]==="done")setTimeout(function(){draw();sync()},400);return}
