@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-sEmsd+k/jHalfZ+FCxzCYfdbtOtg3aCZLrLTKJVTmDw='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://ygvodjbocaakzzggphxd.supabase.co; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-GNgBFDnxK2vgI9e84X/rsO9tEOh8tE45nCsKaF2a4MU='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://ygvodjbocaakzzggphxd.supabase.co; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'">
 <title>Welcome to REL · REL club</title>
 <meta name="description" content="Meet REL, the Relations, Entrepreneurship and Leadership club of the Lebanese University Faculty of Engineering. A 2-minute tour.">
 <meta name="theme-color" content="#800020">
@@ -168,6 +168,7 @@ function lss(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 function uuid(){if(window.crypto&&crypto.randomUUID)return crypto.randomUUID();var h="0123456789abcdef",s="";for(var i=0;i<32;i++)s+=h[Math.floor(Math.random()*16)];return s.slice(0,8)+"-"+s.slice(8,12)+"-4"+s.slice(13,16)+"-a"+s.slice(17,20)+"-"+s.slice(20)}
 function rpc(fn,body){return fetch(API+"rpc/"+fn,{method:"POST",headers:{apikey:KEY,Authorization:"Bearer "+KEY,"Content-Type":"application/json"},body:JSON.stringify(body||{})}).then(function(r){if(!r.ok)throw r;return r.status===204?null:r.json()})}
 var S=lsg("rel-welcome",null);if(!S||!S.data||typeof S.step!=="number"||!S.data.ideas||!S.data.workshops||!S.data.perks)S={sid:uuid(),step:0,data:{ideas:{},workshops:[],perks:[]}};
+if(/[?&]new\b/.test(location.search)||location.hash==="#new"){S={sid:uuid(),step:0,data:{ideas:{},workshops:[],perks:[]}};try{localStorage.removeItem("rel-welcome")}catch(e){}}
 var done=lsg("rel-type-steps",{});
 function persist(){lss("rel-welcome",S)}
 function sync(){var d=JSON.parse(JSON.stringify(S.data));d.joined=Object.keys(done).length;rpc("rel_welcome_save",{p_sid:S.sid,p_data:d}).catch(function(){})}
