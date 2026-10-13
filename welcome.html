@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-CYa6WFyymhD9zZWBys+BZWH0UzLLKeTfTwJKRC6Bxaw='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://ygvodjbocaakzzggphxd.supabase.co; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-sEmsd+k/jHalfZ+FCxzCYfdbtOtg3aCZLrLTKJVTmDw='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://ygvodjbocaakzzggphxd.supabase.co; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'">
 <title>Welcome to REL · REL club</title>
 <meta name="description" content="Meet REL, the Relations, Entrepreneurship and Leadership club of the Lebanese University Faculty of Engineering. A 2-minute tour.">
 <meta name="theme-color" content="#800020">
@@ -86,6 +86,13 @@ h2{font-size:clamp(1.8rem,8vw,2.3rem);margin:8px 0 10px}
 .seg button[aria-pressed="true"]{background:var(--fill);border-color:var(--fill);color:#fff}
 input[type=text],input[type=tel],textarea{width:100%;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:13px;font:400 16px var(--fb);color:var(--ink);margin-bottom:10px}
 textarea{min-height:96px;resize:vertical}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tags i{font-style:normal;font-size:13px;font-weight:700;background:var(--tint);color:var(--fill);border-radius:999px;padding:4px 10px}
+.perks2{display:grid;gap:8px;margin-bottom:16px}
+.perks2 div{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 14px}
+.perks2 .e{font-size:26px;line-height:1}
+.perks2 b{display:block}
+.perks2 small{display:block;color:var(--muted);font-size:14px}
 .amb{background:var(--deep);color:#fff;border-radius:22px;padding:18px}
 .amb h3{font:700 22px var(--fd);margin:0 0 6px}
 .amb p{margin:0 0 12px;color:#EBD5D9;font-size:15.5px}
@@ -141,14 +148,15 @@ var KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6In
 var WA="https://chat.whatsapp.com/Kph5TBt947mDEe8bfAvUQM";
 var LINKS=[[WA,"Join the WhatsApp community","The intro session date, events, opportunities"],["https://www.instagram.com/relulfg","Follow us on Instagram","@relulfg"],["https://www.linkedin.com/company/relulfg","Follow us on LinkedIn","Great for your profile"],["/#account","Create your REL account","Become an official member, free"]];
 var IDEAS=[
- ["bitcoin","🍕","Bitcoin Pizza Day","On May 22, 2010, someone paid 10,000 bitcoin for two pizzas. Today that's worth hundreds of millions of dollars. We celebrate with pizza and a talk on money, crypto and investing."],
- ["networking","🤝","Networking night","Sit at a table with professionals and alumni, rotate every 12 minutes, then connect on LinkedIn."],
- ["bignames","🎤","Talks with big names","Founders and leaders from Lebanon on stage, plus a panel where you ask the questions."],
- ["forge","🚀","A startup program","In semester 2: build your own startup with a mentor, then pitch it at a Demo Day in front of investors."],
- ["hangout","🎮","REL hangout","Games, a ping pong tournament, music and snacks. Meet people outside of class."],
- ["competition","🏆","Business competitions","Solve real business cases in teams, against the clock, for prizes."],
- ["visit","🏭","Company and site visits","See how real companies, factories and energy projects work from the inside."],
- ["abroad","✈️","Studying abroad talks","Students from LU's partner universities in France and beyond tell you how they got there."]
+ ["bignames","🎤","Meet big names","Sit down with founders and leaders from Lebanon, and ask them anything."],
+ ["networking","🤝","Networking nights","Meet professionals and alumni in a relaxed setting. Leave with real contacts."],
+ ["pitch","💡","Pitch your idea","Got an idea? Say it out loud in front of people who can help it grow."],
+ ["forge","🚀","Build a startup","Turn an idea into a real project, with people who have done it before."],
+ ["bitcoin","🍕","Pizza and money night","A slice of pizza and the story of the most expensive pizza ever bought."],
+ ["competition","🏆","Competitions","Team challenges, a clock, and prizes for the best."],
+ ["hangout","🎮","REL hangouts","Games, ping pong, music. Meet people outside of class."],
+ ["visit","🏭","Behind the scenes","Visit companies and projects and see how things really work."],
+ ["abroad","✈️","Study abroad","How LU students make it to universities abroad, from people who did it."]
 ];
 var WORK=[["internship","How to land your first internship"],["linkedin","A LinkedIn that gets you hired"],["cv","A CV that passes the 6-second test"],["speaking","Public speaking without fear"],["ai","AI tools every engineer should use"],["money","Personal finance and investing 101"],["startup","How to start a startup as a student"],["excel","Excel like a consultant"],["interview","Ace any interview"],["negotiation","Negotiate like a pro"]];
 var PERKS=[["cert","A signed certificate"],["linkedin","A LinkedIn title"],["meet","Meeting speakers and founders"],["priority","Priority at events"],["points","Points and prizes"],["lead","Real leadership experience"],["team","Being part of the team"]];
@@ -175,8 +183,11 @@ var V={
  guess:function(){var g=S.data.guess;return shell('<div class="k">Quick guess</div><h2>What does REL stand for?</h2>'+
   '<div class="opts">'+[["a","Robotics, Electronics & Logic"],["b","Relations, Entrepreneurship & Leadership"],["c","Really Excellent Lunches"]].map(function(o,n){var cls=g?(o[0]==="b"?" right":(g===o[0]?" wrong":"")):"";return '<button type="button" class="opt'+cls+'" data-guess="'+o[0]+'"'+(g?" disabled":"")+'><span class="l">'+"ABC"[n]+'</span><span>'+o[1]+'</span></button>'}).join("")+'</div>'+
   (g?'<div class="reveal"><div class="big">'+(g==="b"?"Correct! ":"Not quite. ")+'REL = <u>R</u>elations, <u>E</u>ntrepreneurship and <u>L</u>eadership.</div><p>The three skills engineering classes don\'t teach, and every employer looks for. That\'s our whole mission.</p></div><div class="foot"><button type="button" class="btn" data-act="next">Next: what we do</button></div>':''))},
- what:function(){return shell('<div class="k">What we do</div><h2>Learn. Compete. Connect.</h2><p class="lead">Everything REL does fits in one of these three.</p>'+
-  '<div class="stack"><div class="card"><b>Learn</b><span>Workshops and talks on CVs, LinkedIn, public speaking, money and startups.</span></div><div class="card"><b>Compete</b><span>Business competitions, campus games and daily puzzles on our website, with points and prizes.</span></div><div class="card"><b>Connect</b><span>Networking nights, big-name speakers, company visits and a community of 450+ students.</span></div></div>'+
+ what:function(){function P(t,d,tags){return '<div class="card"><b>'+t+'</b><span>'+d+'</span><div class="tags">'+tags.map(function(x){return '<i>'+x+'</i>'}).join("")+'</div></div>'}
+  return shell('<div class="k">Who we are</div><h2>Three skills. One club.</h2><p class="lead">REL is where LU engineers grow beyond the classroom.</p>'+
+  '<div class="stack">'+P("Relations","Know the right people before you graduate.",["Networking events","Meeting big names","Alumni and companies","Study abroad"])+
+  P("Entrepreneurship","Ideas are cheap. We help you build them.",["Startup projects","Pitching your ideas","Idea lab","Business challenges"])+
+  P("Leadership","Lead, speak and make things happen.",["Leading a team","Public speaking","Organizing events","Competitions"])+'</div>'+
   '<div class="stats"><div><b>1,000+</b><span>Instagram followers</span></div><div><b>450+</b><span>students on WhatsApp</span></div><div><b>#1</b><span>most active club at the Oct 7 fiesta</span></div></div>'+
   '<div class="foot"><button type="button" class="btn" data-act="next">Next: join REL</button></div>')},
  join:function(){var n=0;for(var k=0;k<4;k++)if(done[k])n++;
@@ -184,26 +195,25 @@ var V={
   '<div class="steps">'+LINKS.map(function(l,k){return '<a class="step'+(done[k]?" done":"")+'" data-k="'+k+'" href="'+l[0]+'" target="_blank" rel="noopener"><span class="n">'+(done[k]?"✓":k+1)+'</span><span>'+esc(l[1])+'<small>'+esc(l[2])+'</small></span><span class="go" aria-hidden="true">'+(done[k]?"✓":"›")+'</span></a>'}).join("")+'</div>'+
   '<div class="foot"><button type="button" class="btn" data-act="next">'+(n===4?"Done! Next":"Next: this year at REL")+'</button>'+(n<4?'<p style="margin:0;text-align:center;color:var(--muted);font-size:14px">'+n+' of 4 done. You can come back to this.</p>':'')+'</div>')},
  ideas:function(){var r=S.data.ideas,left=IDEAS.filter(function(x){return !r[x[0]]});
-  if(!left.length){var fire=IDEAS.filter(function(x){return r[x[0]]==="fire"});return shell('<div class="k">This year at REL</div><h2>Thanks! Your votes are in.</h2><p class="lead">'+(fire.length?"You loved: "+fire.map(function(x){return x[2]}).join(", ")+".":"Noted. Tell us what you'd prefer at the end.")+'</p><div class="foot"><button type="button" class="btn" data-act="next">Next: pick your workshops</button><button type="button" class="skip" data-act="reideas">Change my votes</button></div>')}
+  if(!left.length){var fire=IDEAS.filter(function(x){return r[x[0]]==="fire"});return shell('<div class="k">This year at REL</div><h2>Noted! And that\'s just a taste.</h2><p class="lead">'+(fire.length?"You're in for: "+fire.map(function(x){return x[2]}).join(", ")+". The full plan is revealed at the intro session.":"The full plan is revealed at the intro session. Tell us what you'd love to see at the end.")+'</p><div class="foot"><button type="button" class="btn" data-act="next">Next: pick your workshops</button><button type="button" class="skip" data-act="reideas">Change my votes</button></div>')}
   var x=left[0],idx=IDEAS.length-left.length+1;
-  return shell('<div class="k">This year at REL · rate our ideas</div><div class="cnt">'+idx+' of '+IDEAS.length+'</div><div class="idea"><div class="ic">'+x[1]+'</div><h3>'+esc(x[2])+'</h3><p>'+esc(x[3])+'</p></div>'+
-  '<div class="react"><button type="button" data-rate="fire"><span>🔥</span>Love it</button><button type="button" data-rate="ok"><span>👍</span>Maybe</button><button type="button" data-rate="skip"><span>👎</span>Not for me</button></div>')},
+  return shell('<div class="k">A taste of this year · would you come?</div><div class="cnt">'+idx+' of '+IDEAS.length+'</div><div class="idea"><div class="ic">'+x[1]+'</div><h3>'+esc(x[2])+'</h3><p>'+esc(x[3])+'</p></div>'+
+  '<div class="react"><button type="button" data-rate="fire"><span>🔥</span>I\'m there</button><button type="button" data-rate="ok"><span>👍</span>Maybe</button><button type="button" data-rate="skip"><span>👎</span>Not for me</button></div>')},
  workshops:function(){var w=S.data.workshops;return shell('<div class="k">Workshops</div><h2>Which workshops would you never miss?</h2><p class="lead">Pick up to 3.</p>'+
   '<div class="chips">'+WORK.map(function(x){return '<button type="button" class="chip" aria-pressed="'+(w.indexOf(x[0])>=0)+'" data-ws="'+x[0]+'">'+esc(x[1])+'</button>'}).join("")+'</div>'+
   '<input type="text" id="wsOther" maxlength="120" placeholder="Another topic you want? (optional)" value="'+esc(S.data.wsOther||"")+'">'+
   '<div class="foot"><button type="button" class="btn" data-act="wsnext">Next: ambassadors</button></div>')},
- amb:function(){var d=S.data,p=d.perks;return shell('<div class="k">Ambassadors</div><h2>Should we open REL ambassadors?</h2><p class="lead">Ambassadors represent REL in their class: they share our events, bring friends, and help organize.</p>'+
-  '<div class="seg">'+[["yes","Yes"],["maybe","Maybe"],["no","No"]].map(function(o){return '<button type="button" aria-pressed="'+(d.ambOpen===o[0])+'" data-amb="'+o[0]+'">'+o[1]+'</button>'}).join("")+'</div>'+
-  '<div class="q">What would make it worth it for you?</div><div class="chips">'+PERKS.map(function(x){return '<button type="button" class="chip" aria-pressed="'+(p.indexOf(x[0])>=0)+'" data-perk="'+x[0]+'">'+esc(x[1])+'</button>'}).join("")+'</div>'+
-  '<div class="amb"><h3>Be one of our first 6 ambassadors?</h3><p>Only 6 spots this year. Leave your name and the board will contact you. No commitment yet.</p>'+
-  '<input type="text" id="aName" maxlength="80" placeholder="Your name" autocomplete="name" value="'+esc(d.ambName||"")+'"><input type="text" id="aContact" maxlength="80" placeholder="WhatsApp number or Instagram" value="'+esc(d.ambContact||"")+'"><input type="text" id="aYear" maxlength="60" placeholder="Year and major (optional)" value="'+esc(d.ambYear||"")+'"></div>'+
-  '<div class="foot"><button type="button" class="btn" data-act="ambnext">Next: your feedback</button></div>')},
+ amb:function(){var d=S.data;return shell('<div class="k">REL ambassadors · now open</div><h2>Become a REL ambassador.</h2><p class="lead">Ambassadors are the face of REL in their class. Only 6 spots this year.</p>'+
+  '<div class="perks2">'+[["🎓","A signed certificate","Proof of leadership for your CV"],["💼","A LinkedIn title","REL Ambassador, for everyone to see"],["🤝","Meet the big names first","Speakers, founders and partners"],["⭐","Priority at every event","And bonus points on the leaderboard"],["🧭","Real leadership experience","Lead, organize and grow with the board"]].map(function(x){return '<div><span class="e">'+x[0]+'</span><span><b>'+x[1]+'</b><small>'+x[2]+'</small></span></div>'}).join("")+'</div>'+
+  '<div class="amb"><h3>Apply in 30 seconds</h3><p>No commitment yet. The board will contact you.</p>'+
+  '<input type="text" id="aName" maxlength="80" placeholder="Your name" autocomplete="name" value="'+esc(d.ambName||"")+'"><input type="text" id="aContact" maxlength="80" placeholder="WhatsApp number or Instagram" value="'+esc(d.ambContact||"")+'"><input type="text" id="aYear" maxlength="60" placeholder="Year and major" value="'+esc(d.ambYear||"")+'"><input type="text" id="aWhy" maxlength="160" placeholder="Why you, in one line (optional)" value="'+esc(d.ambWhy||"")+'"></div>'+
+  '<div class="foot"><button type="button" class="btn" data-act="ambnext">'+(d.ambName?"Update and continue":"Apply and continue")+'</button><button type="button" class="skip" data-act="ambskip">Not now, next</button></div>')},
  feedback:function(){var c=S.data.clarity;return shell('<div class="k">Last step</div><h2>How clear is REL to you now?</h2>'+
   '<div class="stars">'+[1,2,3,4,5].map(function(n){return '<button type="button" aria-pressed="'+(c===n)+'" data-clar="'+n+'">'+n+'</button>'}).join("")+'</div><div class="stars-l"><span>Still confused</span><span>Crystal clear</span></div>'+
   '<div class="q">One idea, wish or feedback for REL</div><textarea id="fb" maxlength="600" placeholder="Anything: an event you want, a speaker, what we should do better…">'+esc(S.data.feedback||"")+'</textarea>'+
   '<div class="foot"><button type="button" class="btn" data-act="finish">Finish the tour</button></div>')},
  done:function(){var n=0;for(var k=0;k<4;k++)if(done[k])n++;return shell('<div class="k">Tour complete</div><h1>You\'re in the loop.</h1>'+
-  (S.data.ambName?'<div class="ok">Thanks '+esc(S.data.ambName.split(" ")[0])+'! The board will contact you about the ambassador program.</div>':'')+
+  (S.data.ambName?'<div class="ok">Thanks '+esc(S.data.ambName.split(" ")[0])+'! Your ambassador application is in. The board will contact you.</div>':'')+
   '<div class="intro"><div class="kk">Coming soon</div><h3>The REL intro session</h3><p>Meet the board, see the full plan for the year and find your place in REL. The date is announced first on WhatsApp.</p><a class="btn light" href="'+WA+'" target="_blank" rel="noopener" data-k="0">'+(done[0]?"Open the WhatsApp community":"Join WhatsApp to get the date")+'</a></div>'+
   (n<4?'<button type="button" class="btn ghost" data-act="tojoin" style="margin-bottom:14px">Finish joining ('+n+' of 4 done)</button>':'')+
   '<a class="btn" href="/type" style="margin-bottom:16px">Bonus: what\'s your REL type?</a>'+
@@ -227,8 +237,9 @@ document.addEventListener("click",function(e){var t=e.target.closest("[data-act]
  if(a==="next"){next();return}
  if(a==="reideas"){d.ideas={};persist();draw();return}
  if(a==="wsnext"){d.wsOther=(document.getElementById("wsOther").value||"").trim();next();return}
- if(a==="ambnext"){d.ambName=(document.getElementById("aName").value||"").trim();d.ambContact=(document.getElementById("aContact").value||"").trim();d.ambYear=(document.getElementById("aYear").value||"").trim();
+ if(a==="ambnext"){d.ambName=(document.getElementById("aName").value||"").trim();d.ambContact=(document.getElementById("aContact").value||"").trim();d.ambYear=(document.getElementById("aYear").value||"").trim();d.ambWhy=(document.getElementById("aWhy").value||"").trim();
   if(d.ambName&&!d.ambContact){var c=document.getElementById("aContact");c.focus();c.placeholder="Add your WhatsApp or Instagram so we can reach you";return}next();return}
+ if(a==="ambskip"){next();return}
  if(a==="finish"){d.feedback=(document.getElementById("fb").value||"").trim();next();return}
  if(a==="tojoin"){go(STEPS.indexOf("join"));return}
  if(a==="restart"){S={sid:uuid(),step:0,data:{ideas:{},workshops:[],perks:[]}};persist();draw();return}
@@ -238,10 +249,10 @@ document.addEventListener("click",function(e){var t=e.target.closest("[data-act]
 function live(){document.body.className="live";
  var names={};IDEAS.forEach(function(x){names[x[0]]=x[1]+" "+x[2]});var wn={};WORK.forEach(function(x){wn[x[0]]=x[1]});
  app.outerHTML='<div class="lv"><div><div class="eb">REL club · live from the stand</div><h1>What students want from REL</h1>'+
-  '<div class="kp"><div><b id="lt">0</b><span>students took the tour</span></div><div><b id="lk">0%</b><span>didn\'t know REL before today</span></div><div><b id="la">0</b><span>want to be ambassadors</span></div></div>'+
+  '<div class="kp"><div><b id="lt">0</b><span>students took the tour</span></div><div><b id="lk">0%</b><span>didn\'t know REL before today</span></div><div><b id="la">0</b><span>applied to be ambassadors</span></div></div>'+
   '<h4>Most loved ideas 🔥</h4><div id="li"></div><h4>Top workshops</h4><div id="lw"></div></div>'+
   '<div class="qs"><div class="qr"><img alt="QR code to relulfg.com/welcome" src="'+QR+'"></div><div class="u">relulfg.com/welcome</div><div class="t" id="tk"></div><div class="s">2-minute tour · Intro session coming soon · @relulfg</div></div></div>';
- var tips=["Vote for this year's events","Bitcoin Pizza Day or networking night?","Only 6 ambassador spots","What should REL do this year?","Scan. Meet REL."],ti=0;
+ var tips=["Would you come?","Big names or networking night?","Ambassadors: only 6 spots","What should REL do this year?","Scan. Meet REL."],ti=0;
  function tick(){var e=document.getElementById("tk");if(e)e.textContent=tips[ti++%tips.length]}
  function row(label,v,max){return '<div class="lr"><span>'+esc(label)+'</span><s><u style="width:'+(max?v/max*100:0)+'%"></u></s><em>'+v+'</em></div>'}
  function pull(){rpc("rel_welcome_live").then(function(d){if(!d)return;
