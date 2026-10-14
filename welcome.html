@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-DVkVcqHgYH21RrlIs8soOj9lBveaHjpfZvOVs1L/IuM='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://ygvodjbocaakzzggphxd.supabase.co; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-SHDLlJ/OQwxoPdGtACvAOjQwtFU7a8t8FVI7NubEDiw='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://ygvodjbocaakzzggphxd.supabase.co; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'">
 <title>Welcome to REL · REL club</title>
 <meta name="description" content="Meet REL, the Relations, Entrepreneurship and Leadership club of the Lebanese University Faculty of Engineering. A 2-minute tour.">
 <meta name="theme-color" content="#800020">
@@ -310,6 +310,12 @@ function live(){document.body.className="live";
  tick();pull();setInterval(pull,8000);setInterval(tick,3500)}
 
 if((location.hash||"")==="#live")live();else draw();
+/* recover welcome-tour answers saved on this phone (e.g. when an earlier send failed) */
+(function(){try{var raw=localStorage.getItem("rel-welcome");if(!raw)return;var S=JSON.parse(raw);if(!S||!S.sid||!S.data)return;
+ var d=JSON.parse(JSON.stringify(S.data));try{d.joined=Object.keys(JSON.parse(localStorage.getItem("rel-type-steps")||"{}")).length}catch(e){}
+ var body=JSON.stringify({p_sid:S.sid,p_data:d});if(localStorage.getItem("rel-welcome-synced")===body)return;
+ var K="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlndm9kamJvY2Fha3p6Z2dwaHhkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk4ODMyODYsImV4cCI6MjEwNTQ1OTI4Nn0.tjs2RLptzkPTsPxbBWF9jaZBzFLp6mZ1QAf8EpeFTsM";fetch("https://ygvodjbocaakzzggphxd.supabase.co/rest/v1/rpc/rel_welcome_save",{method:"POST",headers:{apikey:K,Authorization:"Bearer "+K,"Content-Type":"application/json"},body:body}).then(function(r){if(r.ok)localStorage.setItem("rel-welcome-synced",body)}).catch(function(){})}catch(e){}})();
+
 })();
 </script>
 </body>
