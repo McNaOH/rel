@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-/JdsJPsICLX4rwvYw1Xv79MKQ0cucbNseOETI7TfhKk='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-aQYUbcw7aTHDwEj8tujc/0sZ6gm7u8CU6k0d0YYauu4='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -4637,13 +4637,40 @@ function memberView(box){const m=ST.member,first=(m.full_name||"").split(" ")[0]
 function renderTeam(){const box=$("#teamBody");if(!box)return;
  if(!SB||!ST.team){box.innerHTML=accHead("Team area","This area is only for the REL team.");return}
  const tabs=[];[["applications","apps","Applications"],["events","events","Events"],["announcements","news","Announcements"],["points","points","Points"],["honors","honors","Member of the month"],["newsletter","subs","Newsletter"],["content","content","Content"]].forEach(x=>{if(can(x[0]))tabs.push([x[1],x[2]])});
- tabs.push(["members","Members"]);if(can("ambassadors"))tabs.push(["amb","Ambassadors"]);if(ST.team.role==="president"){tabs.push(["access","Access"]);tabs.push(["forge","The Forge"])}
+ tabs.push(["members","Members"]);if(can("ambassadors"))tabs.push(["amb","Ambassadors"]);if(isAdmin())tabs.push(["recruit","Recruitment"]);if(ST.team.role==="president"){tabs.push(["access","Access"]);tabs.push(["forge","The Forge"])}
  if(!tabs.some(t=>t[0]===teamTab))teamTab=tabs[0][0];
  box.innerHTML=accHead("Team area","You are logged in as "+ST.team.position+".")+`<div class="tabs" role="tablist">${tabs.map(t=>`<button type="button" class="tab" role="tab" aria-selected="${t[0]===teamTab}" data-tt="${t[0]}">${t[1]}</button>`).join("")}</div><div id="teamPane"></div>`;
- ({apps:paneApps,events:paneEvents,news:paneNews,members:paneMembers,amb:paneAmb,points:panePoints,honors:paneHonors,subs:paneSubs,access:paneAccess,content:paneContent,forge:paneForge})[teamTab]()}
+ ({apps:paneApps,events:paneEvents,news:paneNews,members:paneMembers,amb:paneAmb,points:panePoints,honors:paneHonors,subs:paneSubs,access:paneAccess,content:paneContent,forge:paneForge,recruit:paneRecruit})[teamTab]()}
 const tpane=()=>$("#teamPane");
 const LOAD_MSGS=["Loading...", "Warming up the bulb...", "Herding the data...", "One moment, fetching things...", "Almost there..."];const loading=()=>{const p=tpane();if(p)p.innerHTML='<p class="muted">'+LOAD_MSGS[Math.floor(Math.random()*LOAD_MSGS.length)]+'</p>'};
 const paneErr=e=>{const p=tpane();if(p)p.innerHTML=`<div class="empty"><p>${esc(errText(e))}</p></div>`};
+
+/* ---- Recruitment results (welcome tour + quiz ideas), President and VP ---- */
+const RC_IDEAS={bignames:"Meet big names",networking:"Networking nights",pitch:"Pitch your idea",forge:"Build a startup",bitcoin:"Pizza and money night",competition:"Competitions",hangout:"REL hangouts",visit:"Behind the scenes",abroad:"Study abroad"};
+const RC_WS={startup:"Build a startup from zero",tools:"AI and no-code tools",pitch:"Pitch in 60 seconds",business:"How businesses make money",customer:"Idea to first customer",funding:"Startup money",leadteam:"Lead a team",speaking:"Public speaking",decide:"Decisions under pressure",connect:"Real connections",linkedin:"LinkedIn",networking:"Networking",internship:"First internship",money:"Personal finance"};
+async function paneRecruit(){loading();const p=tpane();
+ const [w,q]=await Promise.all([SB.from("rel_welcome").select("data,created_at").order("created_at",{ascending:false}),SB.from("rel_ideas").select("*").order("created_at",{ascending:false})]);
+ if(w.error)return paneErr(w.error);const rows=(w.data||[]).map(r=>Object.assign({at:r.created_at},r.data||{}));
+ const amb=rows.filter(r=>(r.ambName||"").trim());
+ const kn={yes:0,heard:0,no:0};rows.forEach(r=>{if(kn[r.knew]!=null)kn[r.knew]++});
+ const fire={};rows.forEach(r=>Object.entries(r.ideas||{}).forEach(([k,v])=>{fire[k]=fire[k]||{fire:0,ok:0,skip:0};if(fire[k][v]!=null)fire[k][v]++}));
+ const ws={};rows.forEach(r=>(r.workshops||[]).forEach(k=>ws[k]=(ws[k]||0)+1));
+ const cl=rows.map(r=>+r.clarity).filter(x=>x>=1&&x<=5);
+ const fb=rows.filter(r=>(r.feedback||"").trim()||(r.wsOther||"").trim());
+ const ideas=(q.data||[]).filter(r=>(r.idea||"").trim());
+ const bar=(l,v,m)=>`<div style="display:grid;grid-template-columns:minmax(0,1fr) 90px 34px;gap:10px;align-items:center;margin:6px 0"><span>${esc(l)}</span><span style="height:8px;border-radius:8px;background:var(--tint);overflow:hidden"><i style="display:block;height:100%;width:${m?v/m*100:0}%;background:var(--fill)"></i></span><b style="text-align:right">${v}</b></div>`;
+ const fl=Object.entries(fire).sort((a,b)=>b[1].fire-a[1].fire),mf=Math.max(1,...fl.map(x=>x[1].fire));
+ const wl=Object.entries(ws).sort((a,b)=>b[1]-a[1]),mw=Math.max(1,...wl.map(x=>x[1]));
+ const d=t=>t?new Date(t).toLocaleString("en-GB",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}):"";
+ p.innerHTML=`<div class="grid3" style="margin-bottom:20px">
+  <div class="card"><p class="muted small" style="margin:0">Students who took the tour</p><h3 style="font-size:2.2rem">${rows.length}</h3></div>
+  <div class="card"><p class="muted small" style="margin:0">Didn't know REL before</p><h3 style="font-size:2.2rem">${rows.length?Math.round(kn.no/Math.max(1,kn.yes+kn.heard+kn.no)*100):0}%</h3></div>
+  <div class="card"><p class="muted small" style="margin:0">Ambassador applications</p><h3 style="font-size:2.2rem">${amb.length}</h3></div></div>
+ <div class="card" style="margin-bottom:20px"><h3 style="margin-bottom:10px">The First Six: ambassador applications</h3>${amb.length?amb.map(r=>`<div style="border-top:1px solid var(--line);padding:10px 0"><b>${esc(r.ambName)}</b> <span class="muted small">· ${esc(d(r.at))}</span><div>${esc(r.ambContact||"")}${r.ambYear?" · "+esc(r.ambYear):""}</div>${r.ambWhy?`<div class="muted small">“${esc(r.ambWhy)}”</div>`:""}</div>`).join(""):'<p class="muted" style="margin:0">No applications yet.</p>'}</div>
+ <div class="grid2" style="margin-bottom:20px"><div class="card"><h3 style="margin-bottom:6px">Would they come? 🔥</h3>${fl.length?fl.map(([k,v])=>bar(RC_IDEAS[k]||k,v.fire,mf)).join(""):'<p class="muted">No votes yet.</p>'}</div>
+ <div class="card"><h3 style="margin-bottom:6px">Workshops they want</h3>${wl.length?wl.map(([k,v])=>bar(RC_WS[k]||k,v,mw)).join(""):'<p class="muted">No picks yet.</p>'}</div></div>
+ <div class="card" style="margin-bottom:20px"><h3 style="margin-bottom:6px">Feedback</h3><p class="muted small">Clarity after the tour: <b>${cl.length?(cl.reduce((a,b)=>a+b,0)/cl.length).toFixed(1):"–"} / 5</b> · Knew REL: yes ${kn.yes}, heard ${kn.heard}, no ${kn.no}</p>${fb.length?fb.map(r=>`<div style="border-top:1px solid var(--line);padding:8px 0">${r.feedback?esc(r.feedback):""}${r.wsOther?`<div class="muted small">Workshop idea: ${esc(r.wsOther)}</div>`:""}</div>`).join(""):'<p class="muted" style="margin:0">No written feedback yet.</p>'}</div>
+ <div class="card"><h3 style="margin-bottom:6px">Ideas from the REL type quiz</h3>${ideas.length?ideas.map(r=>`<div style="border-top:1px solid var(--line);padding:8px 0">${esc(r.idea)}${r.name?` <span class="muted small">· ${esc(r.name)}</span>`:""}</div>`).join(""):'<p class="muted" style="margin:0">No ideas yet.</p>'}</div>`}
 /* ---- The Forge HQ: president only (data protected by RLS: is_president) ---- */
 const FG={tab:"home",pf:"all",loaded:false,data:{settings:{},people:[],tasks:[],teams:[],goals:[]}};
 try{FG.tab=localStorage.getItem("rel-fg-tab")||"home";FG.pf=localStorage.getItem("rel-fg-pf")||"all"}catch(e){}
