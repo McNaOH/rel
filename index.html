@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-sB3LAKkk0dGixjQ8zsFXNeQzmJQlx/tCIkUgaFghXb0='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-rWhVD9AAxWRvg1he4ZGME0NajHIhH0kVzxmCmzP+ud0='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -6257,7 +6257,7 @@ function confettiBurst(x,y){const colors=["#800020","#F0E3E4","#E8C9CC","#F8F6F1
   p.style.animation=`confetti-fall ${dur}ms ease-out forwards`;
   document.body.appendChild(p);setTimeout(()=>p.remove(),dur+80)}}
 /* ---------- members-only gate on a few pages, to give an account real value ---------- */
-const GATED_PAGES={mobilite:"Mobilit\u00e9",learn:"Learn",play:"Play",points:"the Leaderboard",startups:"Startups"};
+const GATED_PAGES={learn:"Learn",play:"Play",points:"the Leaderboard",startups:"Startups"};
 function gateHTML(label){return `<div class="gate-inner"><span class="tag">Members only</span><h3>Log in to see ${esc(label)}</h3><p>This is one of the things REL members get. It takes about a minute to join, and it is free.</p><div class="row"><a class="btn primary" href="#join" data-goto="member">Join REL</a><a class="btn" href="#join" data-goto="login-gate">Log in</a></div></div>`}
 function applyGate(pg){const label=GATED_PAGES[pg];const root=document.querySelector('.pg[data-pg="'+pg+'"]');if(!root)return;
  let g=root.querySelector(".gate-block");
