@@ -1204,19 +1204,13 @@ body.lights::after{content:"";position:fixed;inset:0;pointer-events:none;z-index
 .gate-ov p{font-size:.9rem;max-width:300px;line-height:1.4}
 .gate-ov p{margin:0;font-weight:600;color:var(--ink)}
 .gate-go{font-size:1.15rem;padding:14px 30px}
-/* Unicorn 2048 */
+/* Game of the month */
 .gom{max-width:720px;margin:0 0 20px;padding:18px 22px;border-radius:16px;background:var(--band);color:var(--on-band);display:grid;gap:4px}
 .gom-tag{font:600 .75rem var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:var(--rose)}
 .gom-name{margin:0;font:700 clamp(1.4rem,3.2vw,1.9rem)/1.15 var(--f-display),sans-serif;color:var(--on-band)}
 .gom-sub{margin:0;opacity:.85;line-height:1.5}
 .tab[data-sub="unicorn"]{color:var(--brand-ink)}
-.u2048{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr));width:100%;gap:8px;padding:8px;background:#E4DBCF;border-radius:14px;max-width:440px;aspect-ratio:1;touch-action:none;user-select:none}
-.u-t{min-width:0;min-height:0;aspect-ratio:1;overflow:hidden;background:#F1ECE3;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.05;text-align:center;padding:2px}
-.u-t b{font:700 clamp(1rem,4.5vw,1.6rem) var(--f-body)}
-.u-t span{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:clamp(.5rem,2vw,.78rem);font-weight:600;opacity:.85}
-.u-t.v2{background:#FBF8F3}.u-t.v4{background:#F6ECEE}.u-t.v8{background:#E8C9CC}.u-t.v16{background:#D9A3AB}
-.u-t.v32{background:#C47A86;color:#fff}.u-t.v64{background:#A84D5E;color:#fff}.u-t.v128{background:#93283F;color:#fff}.u-t.v256{background:#800020;color:#fff}
-.u-t.v512{background:#57101F;color:#fff}.u-t.v1024{background:#D9921A;color:#fff}.u-t.v2048,.u-t.v4096{background:#1D1315;color:#FFD666}
+.flap{display:block;width:100%;max-width:360px;aspect-ratio:3/4;height:auto;border-radius:14px;background:#BFE3F2;touch-action:manipulation;user-select:none;cursor:pointer}
 /* hidden extras */
 body.founder{--fill:#B8860B;--brand-ink:#8A6508;--band:#57101F}
 .egg-rain{position:fixed;top:-50px;z-index:600;pointer-events:none;animation:egg-fall 2.4s linear forwards}
@@ -1981,14 +1975,14 @@ a.win:active{transform:scale(.98)}
 <div class="g2-top" id="gDiveEBoard" hidden><h3>Endless Dive records</h3><table class="lb"><tbody></tbody></table></div>
 </div>
 </div>
-</div><div class="pane" data-pane="unicorn" data-label="&#9733; Game of the month"><div class="gom" id="gomBanner"><span class="gom-tag">Game of the month</span><h3 class="gom-name" id="gomName">Unicorn 2048</h3><p class="gom-sub" id="gomSub">A new game takes this spot every month. The ranking starts again on the 1st.</p></div><div class="qwrap g2">
-<div><div class="u2048" id="u2048" aria-label="Unicorn 2048 board" tabindex="0"></div></div>
+</div><div class="pane" data-pane="unicorn" data-label="&#9733; Game of the month"><div class="gom" id="gomBanner"><span class="gom-tag">Game of the month</span><h3 class="gom-name" id="gomName">Flappy Founder</h3><p class="gom-sub" id="gomSub">A new game takes this spot every month. The ranking starts again on the 1st.</p></div><div class="qwrap g2">
+<div><canvas class="flap" id="flap" width="360" height="480" aria-label="Flappy Founder game: tap to fly" tabindex="0"></canvas></div>
 <div>
-<ul class="rules"><li>Play as many times as you want, any time.</li><li>Swipe, or use the arrow keys, to slide all tiles.</li><li>Two equal tiles merge: Idea + Idea = Plan, then MVP, Users, Seed, Series A... all the way to Unicorn &#129412;.</li><li>The game ends when the board is full and nothing can merge.</li></ul>
-<div class="qstat"><div><span class="muted small">Score</span><br><b id="u2048Score">0</b></div><div><span class="muted small">Your best</span><br><b id="u2048Best">0</b></div></div>
-<p class="g2-msg" id="u2048Msg" role="status" aria-live="polite"></p>
-<div class="row"><button type="button" class="btn primary" id="u2048New">New game</button></div>
-<div class="g2-top"><h3 id="u2048TopH">This month&#39;s high scores</h3><table class="lb"><tbody id="u2048Top"><tr><td class="muted">Loading...</td></tr></tbody></table></div>
+<ul class="rules"><li>Play as many times as you want, any time.</li><li>Tap, click or press Space to flap.</li><li>Fly through the gaps. Each gap you pass is 1 point.</li><li>Touch a pipe or the ground and it is game over.</li></ul>
+<div class="qstat"><div><span class="muted small">Score</span><br><b id="flapScore">0</b></div><div><span class="muted small">Your best</span><br><b id="flapBest">0</b></div></div>
+<p class="g2-msg" id="flapMsg" role="status" aria-live="polite"></p>
+<div class="row"><button type="button" class="btn primary" id="flapNew">New game</button></div>
+<div class="g2-top"><h3 id="flapTopH">This month&#39;s high scores</h3><table class="lb"><tbody id="flapTop"><tr><td class="muted">Loading...</td></tr></tbody></table></div>
 </div>
 </div>
 </div></div></section></div>
@@ -6886,45 +6880,50 @@ function relGate(board,game,onData){if(!board||!onData)return;if(board.parentNod
    catch(err){b.disabled=false;b.textContent="▶ Start";toast(typeof errText==="function"?errText(err):"Could not start. Try again.")}})};
  run(0)}
 (function(){
-/* ---------- Unicorn 2048: play as much as you want ---------- */
+/* ---------- Game of the month: Flappy Founder ---------- */
 /* ===== GAME OF THE MONTH =====
    Fixed games stay forever. One game changes every month.
    To change it: build the new game in the "unicorn" pane, then update GOM below (key = short id, letters/numbers only). */
-const GOM={key:"u2048",name:"Unicorn 2048",month:"2026-10",blurb:"Slide the tiles and merge equal ones: Idea + Idea = Plan, all the way to Unicorn."};
+const GOM={key:"flappy",name:"Flappy Founder",month:"2026-11",blurb:"Tap to flap your startup through the gaps. Every gap passed is one point."};
 const GOM_MONTH=(()=>{try{return new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Beirut",year:"numeric",month:"2-digit"}).format(new Date()).slice(0,7)}catch(e){return new Date().toISOString().slice(0,7)}})();
 const GOM_BOARD=GOM.key+"-"+GOM_MONTH;
 (function(){const n=$("#gomName"),sb=$("#gomSub");if(!n)return;const mName=new Date(GOM_MONTH+"-15T12:00:00Z").toLocaleString("en-US",{month:"long",timeZone:"UTC"});
  const [y,m]=GOM_MONTH.split("-").map(Number),end=Date.UTC(y,m,1)-3*3600e3,days=Math.max(1,Math.ceil((end-Date.now())/864e5));
  n.textContent=mName+": "+GOM.name;sb.textContent=GOM.blurb+" "+days+(days===1?" day":" days")+" left this month. A new game takes this spot on the 1st, and the ranking starts again."})();
-const box=$("#u2048");if(box){
- const LBL={2:"Idea",4:"Plan",8:"MVP",16:"Users",32:"Seed",64:"Series A",128:"Series B",256:"Scale",512:"IPO",1024:"Unicorn \ud83e\udd84",2048:"Decacorn",4096:"Legend"};
- let g,score,best=+(localStorage.getItem("rel-u2048-best")||0),over=false,won=false;
- const sc=$("#u2048Score"),bs=$("#u2048Best"),msg=$("#u2048Msg");
- const empty=()=>g.map((v,i)=>v?-1:i).filter(i=>i>=0);
- let run=null,rs=0,moves="",starting=false;const lcg=()=>{rs=(rs*48271)%2147483647;return rs};
- const add=()=>{const e=empty();if(!e.length)return;if(run){const m=e[lcg()%e.length];g[m]=lcg()%10===0?4:2}else g[e[Math.floor(Math.random()*e.length)]]=Math.random()<.9?2:4};
- async function reset(){g=Array(16).fill(0);score=0;over=true;won=false;run=null;moves="";draw();
-  if(SB&&ST.member){starting=true;msg.textContent="Starting a new game...";try{const {data,error}=await SB.rpc("u2048_start");if(!error&&data&&data.run){run=data.run;rs=+data.seed}}catch(e){}starting=false}
-  over=false;add();add();draw();msg.textContent=run?"Swipe or use the arrow keys. Merge ideas into a unicorn.":(ST.member?"Could not reach the server, so this game will not be saved.":"Practice game. Members' scores go on the leaderboard.")}
- function draw(){box.innerHTML=g.map(v=>`<div class="u-t${v?" v"+Math.min(v,4096):""}">${v?`<b>${v}</b><span>${LBL[v]||""}</span>`:""}</div>`).join("");sc.textContent=score;bs.textContent=best}
- function line(a){const f=a.filter(Boolean);let gain=0;for(let i=0;i<f.length-1;i++)if(f[i]===f[i+1]){f[i]*=2;gain+=f[i];f.splice(i+1,1)}while(f.length<4)f.push(0);return[f,gain]}
- function move(d){if(over)return;let moved=false;
-  for(let k=0;k<4;k++){const idx=[0,1,2,3].map(j=>d==="L"?k*4+j:d==="R"?k*4+3-j:d==="U"?j*4+k:(3-j)*4+k);
-   const [nl,gain]=line(idx.map(i=>g[i]));idx.forEach((i,j)=>{if(g[i]!==nl[j])moved=true;g[i]=nl[j]});score+=gain}
-  if(!moved)return;moves+=d;add();if(score>best){best=score;try{localStorage.setItem("rel-u2048-best",best)}catch(e){}}draw();
-  if(!won&&g.includes(1024)){won=true;msg.textContent="\ud83e\udd84 Unicorn! Keep going for a Decacorn.";const r=box.getBoundingClientRect();if(typeof confettiBurst==="function")confettiBurst(r.left+r.width/2,r.top+r.height/2)}
-  const stuck=!empty().length&&![0,1,2,3].some(r=>[0,1,2].some(c=>g[r*4+c]===g[r*4+c+1]||g[c*4+r]===g[(c+1)*4+r]));
-  if(stuck){over=true;msg.textContent="Game over. Score: "+score+". Press New game to try again.";saveScore()}}
- async function saveScore(){const r=run;run=null;if(!SB||!r||score<1)return;try{const {data,error}=await SB.rpc("u2048_submit",{p_run:r,p_moves:moves});if(error)throw error;
-  if(data.status==="rejected")msg.textContent="That game was played faster than a human can, so it was not saved.";else if(data.status==="saved")toast("Score saved: "+data.score.toLocaleString("en-US"));loadTop()}catch(e){toast(errText(e))}}
- async function loadTop(){const tb=$("#u2048Top");if(!tb||!SB)return;try{const {data,error}=await SB.rpc("arcade_board",{p_game:GOM_BOARD});if(error)throw error;
+const cv=$("#flap");if(cv){
+ const cx=cv.getContext("2d"),W=360,H=480,GROUND=440,GAP=140,PW=56,SPEED=2.2,SPACE=200;
+ let best=+(localStorage.getItem("rel-flappy-best")||0),st="ready",bird,pipes,score,run=null,starting=false,last=0,acc=0;
+ const sc=$("#flapScore"),bs=$("#flapBest"),msg=$("#flapMsg");bs.textContent=best;
+ function init(){bird={x:90,y:220,v:0};pipes=[];score=0;sc.textContent=0;st="ready";draw();msg.textContent="Tap or press Space to start."}
+ async function begin(){if(starting)return;st="play";run=null;
+  if(SB&&typeof ST!=="undefined"&&ST.member){starting=true;try{const {data,error}=await SB.rpc("flappy_start");if(!error&&data&&data.run)run=data.run}catch(e){}starting=false}
+  msg.textContent=run?"Fly! Your score will be saved.":(typeof ST!=="undefined"&&ST.member?"Could not reach the server, so this game will not be saved.":"Practice game. Members' scores go on the leaderboard.")}
+ function flap(){if(st==="over")return;if(st==="ready"){begin();last=performance.now();acc=0;requestAnimationFrame(loop)}bird.v=-6.6}
+ function step(){bird.v+=0.38;bird.y+=bird.v;
+  if(!pipes.length||pipes[pipes.length-1].x<W-SPACE)pipes.push({x:W,top:60+Math.random()*(GROUND-GAP-120),done:false});
+  for(const p of pipes){p.x-=SPEED;if(!p.done&&p.x+PW<bird.x){p.done=true;score++;sc.textContent=score;if(score>best){best=score;bs.textContent=best;try{localStorage.setItem("rel-flappy-best",best)}catch(e){}}}}
+  if(pipes[0].x<-PW)pipes.shift();
+  if(bird.y+14>GROUND||bird.y<-40)return end();
+  for(const p of pipes)if(bird.x+13>p.x&&bird.x-13<p.x+PW&&(bird.y-13<p.top||bird.y+13>p.top+GAP))return end()}
+ function loop(t){if(st!=="play")return;acc+=Math.min(100,t-last);last=t;while(acc>=16.67&&st==="play"){step();acc-=16.67}draw();if(st==="play")requestAnimationFrame(loop)}
+ function end(){st="over";draw();msg.textContent="Game over. Score: "+score+". Press New game to try again.";if(score>=10&&typeof confettiBurst==="function"){const r=cv.getBoundingClientRect();confettiBurst(r.left+r.width/2,r.top+r.height/3)}save()}
+ async function save(){const r=run;run=null;if(!SB||!r)return;try{const {data,error}=await SB.rpc("flappy_submit",{p_run:r,p_score:score});if(error)throw error;
+  if(data.status==="rejected")msg.textContent="That score came faster than the game allows, so it was not saved.";else if(data.status==="saved"&&score>0)toast("Score saved: "+score);loadTop()}catch(e){toast(errText(e))}}
+ function draw(){cx.fillStyle="#BFE3F2";cx.fillRect(0,0,W,H);
+  for(const p of pipes){cx.fillStyle="#800020";cx.fillRect(p.x,0,PW,p.top);cx.fillRect(p.x,p.top+GAP,PW,GROUND-p.top-GAP);cx.fillStyle="#57101F";cx.fillRect(p.x-4,p.top-16,PW+8,16);cx.fillRect(p.x-4,p.top+GAP,PW+8,16)}
+  cx.fillStyle="#E4DBCF";cx.fillRect(0,GROUND,W,H-GROUND);cx.fillStyle="#C9BBA8";cx.fillRect(0,GROUND,W,4);
+  cx.save();cx.translate(bird.x,bird.y);cx.rotate(Math.max(-.5,Math.min(1.2,bird.v/10)));
+  cx.fillStyle="#D9921A";cx.beginPath();cx.arc(0,0,14,0,7);cx.fill();cx.fillStyle="#fff";cx.beginPath();cx.arc(5,-4,5,0,7);cx.fill();
+  cx.fillStyle="#1D1315";cx.beginPath();cx.arc(6,-4,2.2,0,7);cx.fill();cx.fillStyle="#E8673C";cx.beginPath();cx.moveTo(12,0);cx.lineTo(20,3);cx.lineTo(12,6);cx.fill();cx.restore();
+  cx.fillStyle="#fff";cx.strokeStyle="#1D1315";cx.lineWidth=4;cx.font="700 40px sans-serif";cx.textAlign="center";
+  if(st!=="ready"){cx.strokeText(score,W/2,70);cx.fillText(score,W/2,70)}else{cx.font="700 22px sans-serif";cx.strokeText("Tap to fly",W/2,150);cx.fillText("Tap to fly",W/2,150)}}
+ async function loadTop(){const tb=$("#flapTop");if(!tb||!SB)return;try{const {data,error}=await SB.rpc("arcade_board",{p_game:GOM_BOARD});if(error)throw error;
   if(data&&data.length)fillBoard(tb,data,r=>r.best.toLocaleString("en-US"));else tb.innerHTML='<tr><td colspan="3" class="muted">No scores yet this month. Be the first.</td></tr>'}catch(e){tb.innerHTML='<tr><td colspan="3" class="muted">The high scores open soon.</td></tr>'}}
- document.addEventListener("keydown",e=>{const pane=box.closest(".pane");if(!pane||pane.hidden||pane.offsetParent===null)return;if(e.target.closest("input,textarea,select"))return;
-  const d={ArrowLeft:"L",ArrowRight:"R",ArrowUp:"U",ArrowDown:"D"}[e.key];if(d){e.preventDefault();move(d)}});
- let sx=0,sy=0;box.addEventListener("touchstart",e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
- box.addEventListener("touchend",e=>{const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.max(Math.abs(dx),Math.abs(dy))<25)return;move(Math.abs(dx)>Math.abs(dy)?(dx>0?"R":"L"):(dy>0?"D":"U"))});
- $("#u2048New").addEventListener("click",()=>{if(starting)return;if(!over&&score>0)saveScore();reset()});
- const first=n=>{if(typeof ST!=="undefined"&&ST.ready||n>40)reset();else setTimeout(()=>first(n+1),250)};first(0);loadTop()}
+ cv.addEventListener("pointerdown",e=>{e.preventDefault();flap()});
+ document.addEventListener("keydown",e=>{const pane=cv.closest(".pane");if(!pane||pane.hidden||pane.offsetParent===null)return;if(e.target.closest("input,textarea,select,button"))return;
+  if(e.code==="Space"||e.key==="ArrowUp"){e.preventDefault();flap()}});
+ $("#flapNew").addEventListener("click",()=>{if(st==="play"){st="over";save()}init()});
+ init();loadTop()}
 
 /* ---------- hidden extras ---------- */
 const toastOnce=(k,t)=>{const d=beirutNow();try{if(localStorage.getItem("rel-egg-"+k)===d)return;localStorage.setItem("rel-egg-"+k,d)}catch(e){}toast(t)};
