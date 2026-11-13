@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-IiLkrOCsYgtsDh8fxeCwF9n1HAApBjfQytC9hRY1xUc='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-/qXo5VS7aJE22YoM4gATNcvSvP1H8fpeOWfk/p1197Y='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1204,13 +1204,22 @@ body.lights::after{content:"";position:fixed;inset:0;pointer-events:none;z-index
 .gate-ov p{font-size:.9rem;max-width:300px;line-height:1.4}
 .gate-ov p{margin:0;font-weight:600;color:var(--ink)}
 .gate-go{font-size:1.15rem;padding:14px 30px}
+.lb-mh{margin:18px 0 2px;font-size:1.15rem}.lb-mn{margin:0 0 10px}
+.vip{display:inline-flex;align-items:center;gap:4px;margin-left:6px;padding:2px 8px 2px 6px;border-radius:999px;background:linear-gradient(90deg,#FFD666,#FFB3C7,#B9E6FF,#FFD666);background-size:300% 100%;color:#57101F;font:700 .62rem/1.5 var(--f-body),sans-serif;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;vertical-align:middle;box-shadow:0 1px 0 rgba(0,0,0,.08);animation:vip-shine 4s linear infinite;cursor:help}
+.vip i{font-style:normal;display:inline-block;animation:vip-wob 1.6s ease-in-out infinite;transform-origin:50% 90%}
+table .vip{margin-left:4px;padding:1px 6px 1px 4px;font-size:.55rem;letter-spacing:.03em;white-space:normal;max-width:96px;line-height:1.25;text-align:left}
+.lb-who{min-width:0}
+@keyframes vip-shine{to{background-position:300% 0}}@keyframes vip-wob{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(12deg)}}
+@media (prefers-reduced-motion:reduce){.vip,.vip i{animation:none}}
 /* Game of the month */
 .gom{max-width:720px;margin:0 0 20px;padding:18px 22px;border-radius:16px;background:var(--band);color:var(--on-band);display:grid;gap:4px}
 .gom-tag{font:600 .75rem var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:var(--rose)}
 .gom-name{margin:0;font:700 clamp(1.4rem,3.2vw,1.9rem)/1.15 var(--f-display),sans-serif;color:var(--on-band)}
 .gom-sub{margin:0;opacity:.85;line-height:1.5}
 .tab[data-sub="unicorn"]{color:var(--brand-ink)}
-.flap{display:block;width:100%;max-width:360px;aspect-ratio:3/4;height:auto;border-radius:14px;background:#BFE3F2;touch-action:manipulation;user-select:none;cursor:pointer}
+.flap{display:block;width:100%;max-width:360px;aspect-ratio:3/4;height:auto;border-radius:14px;background:#BFE3F2;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;outline:none;cursor:pointer}
+.flap:focus,.flap:focus-visible{outline:none;box-shadow:none}
+[data-pane="unicorn"] .qwrap{-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
 /* hidden extras */
 body.founder{--fill:#B8860B;--brand-ink:#8A6508;--band:#57101F}
 .egg-rain{position:fixed;top:-50px;z-index:600;pointer-events:none;animation:egg-fall 2.4s linear forwards}
@@ -1848,10 +1857,10 @@ a.win:active{transform:scale(.98)}
 <div class="sec-head"><h2>Leaderboard</h2><p>Earn points by showing up, helping out and solving the daily games.</p></div>
 <div class="pane" data-pane="members" data-label="Club points"><p class="muted" style="max-width:40em;margin-top:0">Points come from events, helping REL and the daily games. See How to earn points.</p>
 <div id="honors" class="honors"></div>
-<table id="lbTable" hidden><thead><tr><th>#</th><th>Member</th><th class="p">Points</th></tr></thead><tbody id="lb"></tbody></table>
+<h3 class="lb-mh" data-month-h="ranking">This month&#39;s ranking</h3><p class="muted small lb-mn">Starts again from zero on the 1st of every month.</p><table id="lbTable" hidden><thead><tr><th>#</th><th>Member</th><th class="p">Points</th></tr></thead><tbody id="lb"></tbody></table>
 </div>
 <div class="pane" data-pane="gtotal" data-label="Games total">
-<p class="muted" style="max-width:40em;margin-top:0">Every daily game you finish counts here: Crowns, Path, Sun &amp; Moon, Mini Sudoku, Five Clues, REL Dive and the business question. Each one also gives you a club point.</p>
+<p class="muted" style="max-width:40em;margin-top:0">Every daily game you finish this month counts here: Crowns, Path, Sun &amp; Moon, Mini Sudoku, Five Clues, REL Dive and the business question. Each one also gives you a club point.</p><h3 class="lb-mh" data-month-h="games">This month&#39;s players</h3><p class="muted small lb-mn">Starts again from zero on the 1st of every month.</p>
 <table><thead><tr><th>#</th><th>Member</th><th class="p">Solved</th></tr></thead><tbody id="gTotalAll"><tr><td colspan="3" class="muted">Loading...</td></tr></tbody></table>
 <div hidden><table><tbody id="gToday"></tbody></table><table><tbody id="gTotals"></tbody></table></div>
 </div>
@@ -1978,11 +1987,11 @@ a.win:active{transform:scale(.98)}
 </div><div class="pane" data-pane="unicorn" data-label="&#9733; Game of the month"><div class="gom" id="gomBanner"><span class="gom-tag">Game of the month</span><h3 class="gom-name" id="gomName">Flappy Founder</h3><p class="gom-sub" id="gomSub">A new game takes this spot every month. The ranking starts again on the 1st.</p></div><div class="qwrap g2">
 <div><canvas class="flap" id="flap" width="360" height="480" aria-label="Flappy Founder game: tap to fly" tabindex="0"></canvas></div>
 <div>
-<ul class="rules"><li>Play as many times as you want, any time.</li><li>Tap, click or press Space to flap.</li><li>Fly through the gaps. Each gap you pass is 1 point.</li><li>Touch a pipe or the ground and it is game over.</li></ul>
 <div class="qstat"><div><span class="muted small">Score</span><br><b id="flapScore">0</b></div><div><span class="muted small">Your best</span><br><b id="flapBest">0</b></div></div>
 <p class="g2-msg" id="flapMsg" role="status" aria-live="polite"></p>
 <div class="row"><button type="button" class="btn primary" id="flapNew">New game</button></div>
 <div class="g2-top"><h3 id="flapTopH">This month&#39;s high scores</h3><table class="lb"><tbody id="flapTop"><tr><td class="muted">Loading...</td></tr></tbody></table></div>
+<ul class="rules"><li>Play as many times as you want. Your best score counts.</li><li>Tap, click or press Space to flap.</li><li>Fly through the gaps. Each gap you pass is 1 point.</li><li>Touch a pipe or the ground and it is game over.</li></ul>
 </div>
 </div>
 </div></div></section></div>
@@ -6774,12 +6783,12 @@ document.addEventListener("click",async e=>{const L=(tpane()||{})._polls||[],fin
 
 /* ---------- every finished game counts: Crowns and the business question too ---------- */
 window.relGamesChanged=()=>{try{loadBoards()}catch(e){}try{loadGamesTotal()}catch(e){}};
-async function loadGamesTotal(){const tb=$("#gTotalAll");if(!tb||!SB)return;try{const {data,error}=await SB.rpc("games_total_board");if(error)throw error;
- tb.innerHTML=(data&&data.length)?data.map((r,i)=>`<tr><td class="n">${i+1}</td><td><span class="lb-who">${avatar(r.full_name,r.photo_path,false,r.rel_id)}${esc(r.full_name)}</span></td><td class="p">${r.solved}</td></tr>`).join(""):'<tr><td colspan="3" class="muted">No games solved yet. Open Play and be the first.</td></tr>'}
+async function loadGamesTotal(){const tb=$("#gTotalAll");if(!tb||!SB)return;try{let {data,error}=await SB.rpc("games_month_board");if(error){({data,error}=await SB.rpc("games_total_board"))}if(error)throw error;
+ tb.innerHTML=(data&&data.length)?data.map((r,i)=>`<tr><td class="n">${i+1}</td><td><span class="lb-who">${avatar(r.full_name,r.photo_path,false,r.rel_id)}${esc(r.full_name)}</span></td><td class="p">${r.solved}</td></tr>`).join(""):'<tr><td colspan="3" class="muted">No games solved yet this month. Open Play and be the first.</td></tr>'}
  catch(e){tb.innerHTML='<tr><td colspan="3" class="muted">The games total opens soon.</td></tr>'}}
 loadGamesTotal();
 /* the club points table only shows once someone has points */
-const _db=drawBoards;drawBoards=function(){lbRange="all";_db.apply(this,arguments);const t=$("#lbTable"),b=$("#lb");if(t&&b)t.hidden=!b.rows.length||!!b.querySelector("td.muted")};
+const _db=drawBoards;drawBoards=function(){lbRange="month";_db.apply(this,arguments);const t=$("#lbTable");if(t)t.hidden=false};
 try{drawBoards()}catch(e){}
 /* after logging in or sending a form, show the page from the top, not the bottom */
 let lastSubmit=0;document.addEventListener("submit",e=>{if(e.target.closest("#account,#acctBody,#teamBody,.pg[data-pg=account],.pg[data-pg=team]"))lastSubmit=Date.now()},true);
@@ -6889,16 +6898,17 @@ const GOM_NOW=(()=>{try{return new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/B
 const GOM_BOARD=GOM.key+"-"+GOM_MONTH;
 (function(){const n=$("#gomName"),sb=$("#gomSub");if(!n)return;const mName=new Date(GOM_MONTH+"-15T12:00:00Z").toLocaleString("en-US",{month:"long",timeZone:"UTC"});
  const [y,m]=GOM_MONTH.split("-").map(Number),end=Date.UTC(y,m,1)-3*3600e3,days=Math.max(1,Math.ceil((end-Date.now())/864e5));
- n.textContent=mName+": "+GOM.name;sb.textContent=GOM.blurb+" "+days+(days===1?" day":" days")+" left this month. A new game takes this spot on the 1st, and the ranking starts again."})();
+ n.textContent=mName+": "+GOM.name;const th=$("#flapTopH");if(th)th.textContent=mName+" high scores";sb.textContent=GOM.blurb+" "+days+(days===1?" day":" days")+" left this month. A new game takes this spot on the 1st, and the ranking starts again."})();
 const cv=$("#flap");if(cv){
  const cx=cv.getContext("2d"),W=360,H=480,GROUND=440,GAP=140,PW=56,SPEED=2.2,SPACE=200;
  let best=+(localStorage.getItem("rel-flappy-best")||0),st="ready",bird,pipes,score,run=null,starting=false,last=0,acc=0;
  const sc=$("#flapScore"),bs=$("#flapBest"),msg=$("#flapMsg");bs.textContent=best;
  function init(){bird={x:90,y:220,v:0};pipes=[];score=0;sc.textContent=0;st="ready";draw();msg.textContent="Tap or press Space to start."}
- async function begin(){if(starting)return;st="play";run=null;
-  if(SB&&typeof ST!=="undefined"&&ST.member){starting=true;try{const {data,error}=await SB.rpc("flappy_start");if(!error&&data&&data.run)run=data.run}catch(e){}starting=false}
+ let startP=null;
+ async function begin(){if(starting)return;st="play";run=null;startP=null;
+  if(SB&&typeof ST!=="undefined"&&ST.member){starting=true;startP=SB.rpc("flappy_start").then(({data,error})=>(!error&&data&&data.run)?data.run:null).catch(()=>null);run=await startP;starting=false}
   msg.textContent=run?"Fly! Your score will be saved.":(typeof ST!=="undefined"&&ST.member?"Could not reach the server, so this game will not be saved.":"Practice game. Members' scores go on the leaderboard.")}
- function flap(){if(st==="over")return;if(st==="ready"){begin();last=performance.now();acc=0;requestAnimationFrame(loop)}bird.v=-6.6}
+ function flap(){if(st==="over"){if(starting||saving)return;init()}if(st==="ready"){begin();last=performance.now();acc=0;requestAnimationFrame(loop)}bird.v=-6.6}
  function step(){bird.v+=0.38;bird.y+=bird.v;
   if(!pipes.length||pipes[pipes.length-1].x<W-SPACE)pipes.push({x:W,top:60+Math.random()*(GROUND-GAP-120),done:false});
   for(const p of pipes){p.x-=SPEED;if(!p.done&&p.x+PW<bird.x){p.done=true;score++;sc.textContent=score;if(score>best){best=score;bs.textContent=best;try{localStorage.setItem("rel-flappy-best",best)}catch(e){}}}}
@@ -6906,8 +6916,9 @@ const cv=$("#flap");if(cv){
   if(bird.y+14>GROUND||bird.y<-40)return end();
   for(const p of pipes)if(bird.x+13>p.x&&bird.x-13<p.x+PW&&(bird.y-13<p.top||bird.y+13>p.top+GAP))return end()}
  function loop(t){if(st!=="play")return;acc+=Math.min(100,t-last);last=t;while(acc>=16.67&&st==="play"){step();acc-=16.67}draw();if(st==="play")requestAnimationFrame(loop)}
- function end(){st="over";draw();msg.textContent="Game over. Score: "+score+". Press New game to try again.";if(score>=10&&typeof confettiBurst==="function"){const r=cv.getBoundingClientRect();confettiBurst(r.left+r.width/2,r.top+r.height/3)}save()}
- async function save(){const r=run;run=null;if(!SB||!r)return;try{const {data,error}=await SB.rpc("flappy_submit",{p_run:r,p_score:score});if(error)throw error;
+ function end(){st="over";overAt=performance.now();draw();msg.textContent="Game over. Score: "+score+". Tap the game to play again.";if(score>=10&&typeof confettiBurst==="function"){const r=cv.getBoundingClientRect();confettiBurst(r.left+r.width/2,r.top+r.height/3)}save()}
+ let saving=false,overAt=0;
+ async function save(){let r=run;if(!r&&startP){saving=true;r=await startP;saving=false}run=null;startP=null;if(!SB||!r)return;try{const {data,error}=await SB.rpc("flappy_submit",{p_run:r,p_score:score});if(error)throw error;
   if(data.status==="rejected")msg.textContent="That score came faster than the game allows, so it was not saved.";else if(data.status==="saved"&&score>0)toast("Score saved: "+score);loadTop()}catch(e){toast(errText(e))}}
  function draw(){cx.fillStyle="#BFE3F2";cx.fillRect(0,0,W,H);
   for(const p of pipes){cx.fillStyle="#800020";cx.fillRect(p.x,0,PW,p.top);cx.fillRect(p.x,p.top+GAP,PW,GROUND-p.top-GAP);cx.fillStyle="#57101F";cx.fillRect(p.x-4,p.top-16,PW+8,16);cx.fillRect(p.x-4,p.top+GAP,PW+8,16)}
@@ -6916,10 +6927,11 @@ const cv=$("#flap");if(cv){
   cx.fillStyle="#D9921A";cx.beginPath();cx.arc(0,0,14,0,7);cx.fill();cx.fillStyle="#fff";cx.beginPath();cx.arc(5,-4,5,0,7);cx.fill();
   cx.fillStyle="#1D1315";cx.beginPath();cx.arc(6,-4,2.2,0,7);cx.fill();cx.fillStyle="#E8673C";cx.beginPath();cx.moveTo(12,0);cx.lineTo(20,3);cx.lineTo(12,6);cx.fill();cx.restore();
   cx.fillStyle="#fff";cx.strokeStyle="#1D1315";cx.lineWidth=4;cx.font="700 40px sans-serif";cx.textAlign="center";
-  if(st!=="ready"){cx.strokeText(score,W/2,70);cx.fillText(score,W/2,70)}else{cx.font="700 22px sans-serif";cx.strokeText("Tap to fly",W/2,150);cx.fillText("Tap to fly",W/2,150)}}
+  if(st!=="ready"){cx.strokeText(score,W/2,70);cx.fillText(score,W/2,70)}if(st==="over"){cx.font="700 22px sans-serif";cx.strokeText("Tap to play again",W/2,170);cx.fillText("Tap to play again",W/2,170)}else{cx.font="700 22px sans-serif";cx.strokeText("Tap to fly",W/2,150);cx.fillText("Tap to fly",W/2,150)}}
  async function loadTop(){const tb=$("#flapTop");if(!tb||!SB)return;try{const {data,error}=await SB.rpc("arcade_board",{p_game:GOM_BOARD});if(error)throw error;
-  if(data&&data.length)fillBoard(tb,data,r=>r.best.toLocaleString("en-US"));else tb.innerHTML='<tr><td colspan="3" class="muted">No scores yet this month. Be the first.</td></tr>'}catch(e){tb.innerHTML='<tr><td colspan="3" class="muted">The high scores open soon.</td></tr>'}}
- cv.addEventListener("pointerdown",e=>{e.preventDefault();flap()});
+  if(data&&data.length){const M=["\ud83e\udd47","\ud83e\udd48","\ud83e\udd49"],myN=(typeof ST!=="undefined"&&ST.member)?ST.member.rel_id:null;tb.innerHTML=data.map((r,i)=>`<tr${r.rel_id&&r.rel_id===myN?' class="lb-me"':""}><td class="n">${i<3?M[i]:i+1}</td><td><span class="lb-who">${avatar(r.full_name,r.photo_path,false,r.rel_id)}${esc(r.full_name)}${r.rel_id&&r.rel_id===myN?" (you)":""}</span></td><td class="p">${Number(r.best).toLocaleString("en-US")}</td></tr>`).join("")}else tb.innerHTML='<tr><td colspan="3" class="muted">No scores yet this month. Be the first.</td></tr>'}catch(e){tb.innerHTML='<tr><td colspan="3" class="muted">The high scores open soon.</td></tr>'}}
+ const tapIt=e=>{e.preventDefault();if(st==="over"&&performance.now()-overAt<400)return;flap()};
+ cv.addEventListener("touchstart",tapIt,{passive:false});cv.addEventListener("pointerdown",e=>{if(e.pointerType==="touch")return;tapIt(e)});cv.addEventListener("contextmenu",e=>e.preventDefault());
  document.addEventListener("keydown",e=>{const pane=cv.closest(".pane");if(!pane||pane.hidden||pane.offsetParent===null)return;if(e.target.closest("input,textarea,select,button"))return;
   if(e.code==="Space"||e.key==="ArrowUp"){e.preventDefault();flap()}});
  $("#flapNew").addEventListener("click",()=>{if(st==="play"){st="over";save()}init()});
@@ -7609,6 +7621,23 @@ loadLeague();setInterval(loadLeague,120000);
  var d=JSON.parse(JSON.stringify(S.data));try{d.joined=Object.keys(JSON.parse(localStorage.getItem("rel-type-steps")||"{}")).length}catch(e){}d.recovered=1;
  var body=JSON.stringify({p_sid:S.sid,p_data:d});if(localStorage.getItem("rel-welcome-synced")===body)return;
  var K="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlndm9kamJvY2Fha3p6Z2dwaHhkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk4ODMyODYsImV4cCI6MjEwNTQ1OTI4Nn0.tjs2RLptzkPTsPxbBWF9jaZBzFLp6mZ1QAf8EpeFTsM";fetch("https://ygvodjbocaakzzggphxd.supabase.co/rest/v1/rpc/rel_welcome_save",{method:"POST",headers:{apikey:K,Authorization:"Bearer "+K,"Content-Type":"application/json"},body:body}).then(function(r){if(r.ok)localStorage.setItem("rel-welcome-synced",body)}).catch(function(){})}catch(e){}})();
+
+/* ---------- monthly ranking headings ---------- */
+(function(){try{const n=new Intl.DateTimeFormat("en-US",{timeZone:"Asia/Beirut",month:"long"}).format(new Date());
+ document.querySelectorAll("[data-month-h]").forEach(h=>{h.textContent=n+(h.dataset.monthH==="games"?" players":" ranking")})}catch(e){}})();
+/* ---------- George Hajj: officially a Special Member ---------- */
+(function(){const RX=/George\s+Hajj/i,QUIPS=["Officially special. Scientifically unexplained.","Special Member: nobody knows what he does, everybody knows he's essential.","Rank: above President, below his mom.","Certified rare. Do not feed after midnight.","The board voted. He won. There was no vote."];
+ const badge=()=>{const b=document.createElement("span");b.className="vip";b.dataset.vip="1";b.title=QUIPS[Math.floor(Math.random()*QUIPS.length)];b.innerHTML="<i>\ud83e\udd86</i>\ud83d\udc51 Special member";
+  b.addEventListener("click",e=>{e.preventDefault();e.stopPropagation();if(typeof toast==="function")toast("\ud83e\udd86 "+b.title)});return b};
+ const SKIP="SCRIPT,STYLE,TEXTAREA,INPUT,OPTION,SELECT,TITLE,SVG,CANVAS";
+ function scan(root){if(!root||!document.body)return;const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:t=>{if(!RX.test(t.nodeValue))return 2;let p=t.parentElement;
+   if(!p||p.closest(".vip,[contenteditable],#teamBody,form,.toast")||SKIP.includes(p.tagName))return 2;return 1}});
+  const L=[];while(w.nextNode())L.push(w.currentNode);
+  L.forEach(t=>{const nx=t.nextSibling;if(nx&&nx.nodeType===1&&nx.dataset&&nx.dataset.vip)return;const m=RX.exec(t.nodeValue);if(!m)return;
+   const after=t.splitText(m.index+m[0].length);after.parentNode.insertBefore(badge(),after)})}
+ let q=false;const run=()=>{q=false;mo.disconnect();try{scan(document.body)}catch(e){}mo.observe(document.body,{childList:true,subtree:true,characterData:true})};
+ const mo=new MutationObserver(()=>{if(!q){q=true;requestAnimationFrame(run)}});
+ if(document.body)run();})();
 </script>
 </body>
 </html>
