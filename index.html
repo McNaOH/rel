@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-/qXo5VS7aJE22YoM4gATNcvSvP1H8fpeOWfk/p1197Y='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-bWqD0atrfcmyg2Mx2D+/5xBgF2w1g8StwtuVPaFWju0=' 'sha256-sAnW21Tdbn9rqEe7fsR98xsScf6/xc8IwbuKOQG+aZY=' 'sha256-YuQ3mpkZ4m8b6M2Jyj0TnIv9vINaCalNulyGA61scGA=' 'sha256-o+ipR4WJToH5k/SvA5iUfcrEcZhklCA5FtQShh4JsxA='; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://ygvodjbocaakzzggphxd.supabase.co; manifest-src 'self'; connect-src https://ygvodjbocaakzzggphxd.supabase.co wss://ygvodjbocaakzzggphxd.supabase.co; form-action 'self'; base-uri 'none'; frame-src 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1211,6 +1211,7 @@ table .vip{margin-left:4px;padding:1px 6px 1px 4px;font-size:.55rem;letter-spaci
 .lb-who{min-width:0}
 @keyframes vip-shine{to{background-position:300% 0}}@keyframes vip-wob{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(12deg)}}
 @media (prefers-reduced-motion:reduce){.vip,.vip i{animation:none}}
+.gom-board{max-width:720px;margin:0 0 18px}.gom-board h3{margin-top:0}
 /* Game of the month */
 .gom{max-width:720px;margin:0 0 20px;padding:18px 22px;border-radius:16px;background:var(--band);color:var(--on-band);display:grid;gap:4px}
 .gom-tag{font:600 .75rem var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:var(--rose)}
@@ -1984,13 +1985,13 @@ a.win:active{transform:scale(.98)}
 <div class="g2-top" id="gDiveEBoard" hidden><h3>Endless Dive records</h3><table class="lb"><tbody></tbody></table></div>
 </div>
 </div>
-</div><div class="pane" data-pane="unicorn" data-label="&#9733; Game of the month"><div class="gom" id="gomBanner"><span class="gom-tag">Game of the month</span><h3 class="gom-name" id="gomName">Flappy Founder</h3><p class="gom-sub" id="gomSub">A new game takes this spot every month. The ranking starts again on the 1st.</p></div><div class="qwrap g2">
+</div><div class="pane" data-pane="unicorn" data-label="&#9733; Game of the month"><div class="gom" id="gomBanner"><span class="gom-tag">Game of the month</span><h3 class="gom-name" id="gomName">Flappy Founder</h3><p class="gom-sub" id="gomSub">A new game takes this spot every month. The ranking starts again on the 1st.</p></div><div class="g2-top gom-board"><h3 id="flapTopH">This month&#39;s high scores</h3><table class="lb"><tbody id="flapTop"><tr><td class="muted">Loading...</td></tr></tbody></table></div>
+<div class="qwrap g2">
 <div><canvas class="flap" id="flap" width="360" height="480" aria-label="Flappy Founder game: tap to fly" tabindex="0"></canvas></div>
 <div>
 <div class="qstat"><div><span class="muted small">Score</span><br><b id="flapScore">0</b></div><div><span class="muted small">Your best</span><br><b id="flapBest">0</b></div></div>
 <p class="g2-msg" id="flapMsg" role="status" aria-live="polite"></p>
 <div class="row"><button type="button" class="btn primary" id="flapNew">New game</button></div>
-<div class="g2-top"><h3 id="flapTopH">This month&#39;s high scores</h3><table class="lb"><tbody id="flapTop"><tr><td class="muted">Loading...</td></tr></tbody></table></div>
 <ul class="rules"><li>Play as many times as you want. Your best score counts.</li><li>Tap, click or press Space to flap.</li><li>Fly through the gaps. Each gap you pass is 1 point.</li><li>Touch a pipe or the ground and it is game over.</li></ul>
 </div>
 </div>
@@ -6905,9 +6906,9 @@ const cv=$("#flap");if(cv){
  const sc=$("#flapScore"),bs=$("#flapBest"),msg=$("#flapMsg");bs.textContent=best;
  function init(){bird={x:90,y:220,v:0};pipes=[];score=0;sc.textContent=0;st="ready";draw();msg.textContent="Tap or press Space to start."}
  let startP=null;
- async function begin(){if(starting)return;st="play";run=null;startP=null;
+ async function begin(){if(starting)return;st="play";run=null;startP=null;msg.textContent="";
   if(SB&&typeof ST!=="undefined"&&ST.member){starting=true;startP=SB.rpc("flappy_start").then(({data,error})=>(!error&&data&&data.run)?data.run:null).catch(()=>null);run=await startP;starting=false}
-  msg.textContent=run?"Fly! Your score will be saved.":(typeof ST!=="undefined"&&ST.member?"Could not reach the server, so this game will not be saved.":"Practice game. Members' scores go on the leaderboard.")}
+  if(st==="play"&&!run)msg.textContent=(typeof ST!=="undefined"&&ST.member)?"Could not reach the server, so this game will not be saved.":"Practice game. Log in as a member to get on the leaderboard."}
  function flap(){if(st==="over"){if(starting||saving)return;init()}if(st==="ready"){begin();last=performance.now();acc=0;requestAnimationFrame(loop)}bird.v=-6.6}
  function step(){bird.v+=0.38;bird.y+=bird.v;
   if(!pipes.length||pipes[pipes.length-1].x<W-SPACE)pipes.push({x:W,top:60+Math.random()*(GROUND-GAP-120),done:false});
@@ -6927,7 +6928,7 @@ const cv=$("#flap");if(cv){
   cx.fillStyle="#D9921A";cx.beginPath();cx.arc(0,0,14,0,7);cx.fill();cx.fillStyle="#fff";cx.beginPath();cx.arc(5,-4,5,0,7);cx.fill();
   cx.fillStyle="#1D1315";cx.beginPath();cx.arc(6,-4,2.2,0,7);cx.fill();cx.fillStyle="#E8673C";cx.beginPath();cx.moveTo(12,0);cx.lineTo(20,3);cx.lineTo(12,6);cx.fill();cx.restore();
   cx.fillStyle="#fff";cx.strokeStyle="#1D1315";cx.lineWidth=4;cx.font="700 40px sans-serif";cx.textAlign="center";
-  if(st!=="ready"){cx.strokeText(score,W/2,70);cx.fillText(score,W/2,70)}if(st==="over"){cx.font="700 22px sans-serif";cx.strokeText("Tap to play again",W/2,170);cx.fillText("Tap to play again",W/2,170)}else{cx.font="700 22px sans-serif";cx.strokeText("Tap to fly",W/2,150);cx.fillText("Tap to fly",W/2,150)}}
+  if(st==="play"){cx.strokeText(score,W/2,70);cx.fillText(score,W/2,70)}else if(st==="over"){cx.strokeText(score,W/2,70);cx.fillText(score,W/2,70);cx.font="700 22px sans-serif";cx.strokeText("Tap to play again",W/2,170);cx.fillText("Tap to play again",W/2,170)}else{cx.font="700 22px sans-serif";cx.strokeText("Tap to fly",W/2,150);cx.fillText("Tap to fly",W/2,150)}}
  async function loadTop(){const tb=$("#flapTop");if(!tb||!SB)return;try{const {data,error}=await SB.rpc("arcade_board",{p_game:GOM_BOARD});if(error)throw error;
   if(data&&data.length){const M=["\ud83e\udd47","\ud83e\udd48","\ud83e\udd49"],myN=(typeof ST!=="undefined"&&ST.member)?ST.member.rel_id:null;tb.innerHTML=data.map((r,i)=>`<tr${r.rel_id&&r.rel_id===myN?' class="lb-me"':""}><td class="n">${i<3?M[i]:i+1}</td><td><span class="lb-who">${avatar(r.full_name,r.photo_path,false,r.rel_id)}${esc(r.full_name)}${r.rel_id&&r.rel_id===myN?" (you)":""}</span></td><td class="p">${Number(r.best).toLocaleString("en-US")}</td></tr>`).join("")}else tb.innerHTML='<tr><td colspan="3" class="muted">No scores yet this month. Be the first.</td></tr>'}catch(e){tb.innerHTML='<tr><td colspan="3" class="muted">The high scores open soon.</td></tr>'}}
  const tapIt=e=>{e.preventDefault();if(st==="over"&&performance.now()-overAt<400)return;flap()};
